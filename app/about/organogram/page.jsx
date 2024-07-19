@@ -4,7 +4,7 @@ import Partners from "@/components/Shared/Parther";
 const Organogram = () => {
 
     return ( 
-        <main className="text-4xl text-center h-screen">
+        <main>
             <Picture />
             <Partners />
         </main>

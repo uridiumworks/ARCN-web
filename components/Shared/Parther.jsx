@@ -4,21 +4,21 @@ import Image from "next/image";
 
 const Partners = () => {
     return (
-        <main className='mx-auto space-y-6'>
+        <main className='mx-auto space-y-10 py-20'>
             <div className='font-semibold place-content-center text-[50px] text-center '>
                 <h1>Partner with us to digitise
                 <br />agriculture in Africa</h1>
             </div>
-            <div className='flex flex-col lg:flex-row gap-4 justify-center'>
+            <div className='flex flex-col lg:flex-row gap-10 justify-center'>
                 <div>
                     <Image src={farmer} alt="farmer" />
                 </div>
-                <div className=''>
-                    <div className="border">
+                <div className=' place-content-center'>
+                    <div className="">
                         <p className='font-normal text-[17px]'>
                         We are committed to working with equally ambitious<br />
-                        Research Institutes and stakeholders to bridge the sustainability gap in
-                        Africa, ensuring smallholder farmers have everything they need to
+                        Research Institutes and stakeholders to bridge the sustainability gap in<br />
+                        Africa, ensuring smallholder farmers have everything they need to<br />
                         succeed.
                         </p> 
                     </div>

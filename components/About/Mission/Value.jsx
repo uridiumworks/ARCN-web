@@ -10,7 +10,7 @@ const Value = () => {
     return (
         <main>
             <div className="">
-                <div className="pt-20">
+                <div className="pt-20 space-y-6">
                     <div className="text-center place-content-center">
                         <h1 className="font-semibold text-sm">OUR VALUE</h1>
                         <p className="font-bold text-[40px]">Core Values we define</p>
@@ -18,6 +18,7 @@ const Value = () => {
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-5 pt-14 justify-evenly">
+
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
                             <Image src={Gray} alt="Gray" />
                             <p className="font-bold text-xl">Customer-Centric Success</p>
@@ -37,7 +38,8 @@ const Value = () => {
                         </div>
                     </div>
                     
-                    <div className="flex space-y-6 flex-col md:flex-row gap-5 justify-evenly">
+                    <div className="flex flex-col md:flex-row gap-5 justify-evenly">
+                        
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">  
                             <Image src={Pink} alt="Pink" />
                             <p className="font-bold text-xl">Seamlessness</p>

@@ -27,8 +27,8 @@ const Intro = () => {
             the Forestry and Botanical Department (renamed Agricultural
             Department) for southern Nigeria was created. In 1912 this was divided
             into two regional departments resulting in the establishment of a
-            Department of Agriculture for northern Nigeria.  Then in 1914, with
-            Nigeria’s unification, the two departments were merged to form a new
+            Department of Agriculture for northern Nigeria.Then in 1914, with
+            Nigeria's unification, the two departments were merged to form a new
             Department of Agriculture.
           </p>
 
