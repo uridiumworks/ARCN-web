@@ -1,8 +1,14 @@
+import Banner from "@/components/Mandate/Initiatives/Banner";
+import AROCs from "@/components/Mandate/Initiatives/AROCs";
+import Services from "@/components/Mandate/Initiatives/Services";
+
 const Initiatives = () => {
 
     return ( 
-        <main className="text-4xl text-center h-screen">
-            Initiatives
+        <main>
+            <Banner />
+            <AROCs />
+            <Services/>
         </main>
     );
 }

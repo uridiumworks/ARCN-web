@@ -6,20 +6,27 @@ import { usePathname } from "next/navigation";
 
 const Tabs = [
   {
-    name: "Research",
+    name: "OVERVIEW",
     status: "active",
-    url: "/mandate",
+    url: "/Research",
   },
   {
-    name: "Training",
+    name: "RESEARCH INSTITUTES",
     status: "active",
-    url: "/mandate/training",
+    url: "/Research/research",
   },
   {
-    name: "Extension",
+    name: "COORDINATION REPORT",
     status: "active",
-    url: "/mandate/initiatives",
+    url: "/Research/coorination",
   },
+
+  {
+    name: "OUR TECHNOLOGIES",
+    status: "active",
+    url: "/Research/technology",
+  },
+
 ];
 
 export default function LayoutProvider({ children }) {
@@ -31,7 +38,7 @@ export default function LayoutProvider({ children }) {
 
         <div className="w-full">
           <div className="w-full whitespace-nowrap">
-            <ul className="flex text-sm justify-center text-center lg:text-lg gap-4 border-b -mb-px">
+            <ul className="flex text-sm justify-evenly lg:text-lg gap-4 border-b -mb-px">
               {Tabs.map(({ name, status, url }, index) => {
                 const activeTab = cn(currentRoute === url ? "font-bold font-Satoshi_Bold border-b-2" : "border-b-0 text-[#667085] font-Satoshi_Medium", "inline-block py-4 px-3.5 text-sm");
 

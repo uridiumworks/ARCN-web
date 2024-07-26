@@ -4,7 +4,16 @@ export const content = [
   "./components/**/*.{js,ts,jsx,tsx,mdx}",
   "./app/**/*.{js,ts,jsx,tsx,mdx}",
 ];
+
 export const theme = {
+  theme: {
+    fontFamily: {
+      manrope: ["Manrope", "sans-serif"],
+      montserrat:["Manrope", "sans-serif"],
+    },
+
   extend: {},
-};
-export const plugins = [];
+},
+
+// export const plugins = [],
+}

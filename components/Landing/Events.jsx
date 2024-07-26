@@ -6,6 +6,7 @@ const Events = () => {
     return (
         <main className="w-full ">
             <h1 className='font-semibold text-3xl px-20'>UPCOMING EVENTS</h1>
+            
             <div className='w-full py-9 flex flex-col lg:flex-row place-content-evenly'>
                 <div className='space-y-8'>
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
