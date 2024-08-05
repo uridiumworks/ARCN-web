@@ -7,7 +7,7 @@ const Intro = () => {
 
       <div className="w-[80%] py-5 flex flex-col lg:flex-row space-y-9 items-start gap-8 mx-auto">
        
-        <Image src="/Images/Homepage/plants.svg"  alt="plants" width={426} height={431.16} />
+        <Image src="/Images/Homepage/plants.png"  alt="plants" width={426} height={431.16} />
 
         <div className="space-y-7">
           <h1 className="font-bold text-4xl">Introducing ARCN</h1>

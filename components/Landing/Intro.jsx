@@ -1,4 +1,4 @@
-import plants from "@/assets/Images/Homepage/plants.svg"
+import plants from "@/assets/Images/Homepage/plants.png";
 import Image from "next/image";
 
 const Intro = () => {
