@@ -17,7 +17,7 @@ const Super = () => {
 
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div className="">
-                            <Image src={World} alt="overlay" width={180}/>
+                            <Image src={World} alt="overlay" width={180} className="rounded-[13.4px]" />
                         </div>
                         <div className='space-y-4'>
                         <p className="font-medium text-xl">ARCN Research Coordination Report 2023</p>
@@ -41,7 +41,7 @@ const Super = () => {
 
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src={World} alt="overlay" width={180} />
+                            <Image src={World} alt="overlay" width={180} className="rounded-[13.4px]"  />
                         </div>
                         <div className='space-y-4'>
                             <p className="font-medium text-xl">ARCN Research Coordination Report 2023</p>
@@ -65,7 +65,7 @@ const Super = () => {
                 </div>
 
                 <div className="p-9 text-center">
-                    <button type="button" className="border py-2 px-9 font-bold text-sm rounded-[4px] text-[#15271C] bg-[#E6E6E6] w-full md:w-[152px] h-[52px]">
+                    <button type="button" className="border py-2 px-9 font-bold text-sm rounded-[4px] text-[#15271C] w-full md:w-[152px] h-[52px]">
                         VIEW ALL
                     </button>
                 </div>

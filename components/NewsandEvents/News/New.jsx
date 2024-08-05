@@ -12,7 +12,7 @@ const New = () => {
                     <h1 className="font-semibold text-4xl text-center pt-20">News</h1>
                 </div>
 
-                <div>
+                <div className="">
                     
                     <div className="gap-5 px-10 h-[591.59px] flex flex-col md:flex-row">
 
@@ -88,7 +88,7 @@ const New = () => {
                         </div>
                     </div>
 
-                    <div className="gap-5 px-10 h-[591.59px] flex flex-col md:flex-row">
+                    <div className="gap-5 py-10 px-10 h-[591.59px] flex flex-col md:flex-row">
 
                         <div>
                             <div>

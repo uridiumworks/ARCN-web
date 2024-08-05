@@ -1,4 +1,5 @@
 import Events from "@/components/Landing/Events";
+import Impact from "@/components/Landing/Impact";
 import Institutes from "@/components/Landing/Institutes";
 import Intro from "@/components/Landing/Intro";
 import News from "@/components/Landing/News";
@@ -12,11 +13,12 @@ export default function Home() {
     <MainLayout>
       <div>
         <Intro />
-        <Research />
         <Institutes />
+        <Impact />
+        <Research />
         <News />
-        <Review />
         <Events />
+        <Review />
         <Partners />
       </div>
     </MainLayout>

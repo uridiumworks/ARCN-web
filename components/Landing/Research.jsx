@@ -1,11 +1,17 @@
 import { LuChevronRight } from "react-icons/lu";
+import { FaCaretRight } from "react-icons/fa6";
+import Image from "next/image";
+import Search from "@/public/Images/Homepage/Search.png";
+import Discuss from "@/public/Images/Homepage/Discuss.png";
+import Planting from "@/public/Images/Homepage/Planting.png";
+import Record from "@/public/Images/Homepage/Record.png";
 
 const Research = () => {
   return (
-    <main className="gap-4 w-full flex flex-col lg:flex-row mx-auto lg:w-[900px]">
-      <div className="lg:w-1/2 space-y-3">
+    <main className="gap-1.5 p-5 w-full flex flex-col lg:flex-row mx-auto lg:w-[900px]">
+      <div className="lg:w-1/2 space-y-4">
         <div className="p-3">
-          <h1 className="font-semibold text-[30px] md:text-[50px]">Why Research Institutes Trust Us</h1>
+          <h1 className="font-semibold text-[30px] md:text-[50px]">Our Core Areas</h1>
           <p className="font-normal text-lg">
             Lorem ipsum dolor sit amet consectetur. Egestas luctus augue
             faucibus nullam rutrum sed. Nibh eu adipiscing lectus diam magna.
@@ -15,59 +21,38 @@ const Research = () => {
           </p>
         </div>
 
-        <div className="border w-full h-[596px] rounded-xl px-6 bg-[#36A879] text-white ">
-          <h1 className="font-bold py-7 text-xl">Periodoic Research</h1>
-          <p className="font-light text-2xl">
-            Prepare periodic master plans for at research , training and
-            extension and advise the Federal Government on the financial
-            requirements for the implementation of such plans
-          </p>
-          <div className='flex pt-72 items-center text-white font-medium text-[16px]'>
-            <p>Learn more</p>
-            <LuChevronRight />
+        <div className="relative w-full px-5 ">
+          <Image src={Search} alt="Search" width={568} height={596} />
+          <div className='flex border border-hidden py-2 px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-[16px]'>
+            <p>Agricultural Research</p>
+            <FaCaretRight />
           </div>
         </div>
 
-        <div className="border grid grid-cols-1 w-full h-[596px] rounded-xl px-6  bg-[#B3DC77] text-white">
-          <h1 className="font-bold py-7 text-xl">Budget</h1>
-          <p className="font-light place-self-start text-2xl">
-            Prepare annual budget for the agricultural research , training and
-            extension programmed of the institute under it aegis and receive
-            grants for allocation to the institutes for the implementation of
-            the annual programmes and to universities and other bodies for
-            special research or training projects
-          </p>
-          <div className='flex place-self-start items-center text-white font-medium text-[16px]'>
-            <p>Learn more</p>
-            <LuChevronRight />
+        <div className="relative w-full px-5 ">
+          <Image src={Planting} alt="Planting" />
+          <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
+            <p>Extension Services</p>
+            <FaCaretRight />
           </div>
         </div>
 
       </div>
 
-      <div className='gap-3 lg:w-1/2 pt-28 space-y-3'>
-        <div className="border w-full h-[596px] rounded-xl px-6 bg-[#5CC4B0] text-white">
-          <h1 className="font-bold py-7 text-xl">National policies</h1>
-          <p className="font-light text-2xl">
-            Advise the Federal Government on national policies and priorities in
-            agricultural research, training and extension activities;
-          </p>
-          <div className='flex items-center pt-80 text-white font-medium text-[16px]'>
-            <p>Learn more</p>
-            <LuChevronRight />
-          </div>
+      <div className='lg:w-1/2 pt-28 space-y-4'>
+        <div className="relative w-full px-5 ">
+          <Image src={Discuss} alt="Discuss" />
+          <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
+            <p>Agricultural Training</p>
+            <FaCaretRight />
+          </div>  
         </div>
 
-        <div className="border w-full h-[596px] rounded-xl px-6 bg-[#99C6D6] text-white">
-          <h1 className="font-bold py-7 text-xl">Collaboration</h1>
-          <p className="font-light text-2xl">
-            Promote collaboration between scientists and engaged in research in
-            the agricultural sciences in Nigeria and their counterparts in other
-            countries or international bodies
-          </p>
-          <div className='flex items-center pt-72 text-white font-medium text-[16px]'>
-            <p>Learn more</p>
-            <LuChevronRight />
+        <div className="relative w-full px-5 ">
+          <Image src={Record} alt="Record" />
+          <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
+            <p>Agricultural Innovations</p>
+            <FaCaretRight />
           </div>
         </div>
 

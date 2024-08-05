@@ -20,7 +20,7 @@ const Intern = () => {
                     <div className='space-y-8'>
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -41,7 +41,7 @@ const Intern = () => {
                         
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]" />
                             </div>
 
                             <div className='space-y-4'>
@@ -65,7 +65,7 @@ const Intern = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -86,7 +86,7 @@ const Intern = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -108,7 +108,7 @@ const Intern = () => {
                 </div>
 
                 <div className="text-center place-content-center">
-                    <button type="button" className="border font-bold rounded-[4px] text-black bg-[#E6E6E6] space-y-6 w-[110px] md:w-[119px] h-[40px]">
+                    <button type="button" className="border font-bold rounded-[4px] text-black space-y-6 w-[110px] md:w-[119px] h-[40px]">
                         VIEW ALL
                     </button>
                 </div>

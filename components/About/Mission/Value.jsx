@@ -9,14 +9,14 @@ import Image from "next/image";
 const Value = () => {
     return (
         <main>
-            <div className="">
-                <div className="pt-20 space-y-6">
-                    <div className="text-center place-content-center">
-                        <h1 className="font-semibold text-sm">OUR VALUE</h1>
-                        <p className="font-bold text-[40px]">Core Values we define</p>
-                        <p className="font-normal text-xl">These values reflect the mission and journey of your company,<br />emphasizing customer success, innovation, empowermen <br />efficiency, collaboration, and growth.</p>
-                    </div>
-
+            <div className=" pt-20 space-y-6">
+                <div className="text-center place-content-center">
+                    <h1 className="font-semibold text-sm">OUR VALUE</h1>
+                    <p className="font-bold text-[40px]">Core Values we define</p>
+                    <p className="font-normal text-xl">These values reflect the mission and journey of your company,<br />emphasizing customer success, innovation, empowermen <br />efficiency, collaboration, and growth.</p>
+                </div>
+                
+                <div className="lg:w-[1000px] mx-auto space-y-6">
                     <div className="flex flex-col md:flex-row gap-5 pt-14 justify-evenly">
 
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">

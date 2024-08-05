@@ -7,8 +7,8 @@ const Vent = () => {
     return ( 
         <main>
             <Banner />
-            <World />
             <Events />
+            <World />
         </main>
     );
 }

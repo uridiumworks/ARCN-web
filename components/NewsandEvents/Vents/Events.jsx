@@ -1,9 +1,24 @@
+import { LuShare2 } from "react-icons/lu";
+import { LuCalendar } from "react-icons/lu";
+
 const Events = () => {
 
     return ( 
         <main>
-            <div className="space-y-8 px-20">
+            <div className="space-y-8 px-20 pt-6 ">
                 <div className="py-8 space-y-6">
+                    <div className="flex gap-4">
+                        <div className="flex gap-2">
+                            <p className="font-bold text-sm">Share</p>
+                            <LuShare2 />
+                        </div>
+
+                        <div className="flex gap-2">
+                            <p className="font-bold text-sm">Add To calendar</p>
+                            <LuCalendar />
+                        </div>
+
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur. A quis elit morbi facilisis pharetra volutpat. Sit velit pharetra suspendisse adipiscing tristique morbi consectetur tristique. Et sed hac nisl tincidunt vitae non. Convallis enim consectetur adipiscing sollicitudin tristique quam sed porta. Est pretium eu cursus sagittis at. Nisl sed eu nulla convallis non a sapien massa. Pellentesque viverra nibh et maecenas. Turpis mauris placerat tellus felis at nisi varius.</p>
                     <p>Risus consequat cursus eros auctor eget pulvinar elit faucibus dignissim. Neque viverra sit fusce at a massa. Tincidunt at at velit sit morbi. Tristique lectus condimentum vitae netus tellus morbi elit vel. Lacus sagittis venenatis nunc et ullamcorper mattis. Sed enim feugiat porttitor quisque dui nisi cras. Porttitor sollicitudin nulla magna natoque nisi lectus. Sagittis nec enim in quisque nisi ut non sed pellentesque. Nec massa aliquet mattis nec blandit bibendum id. Pulvinar sed mattis est.</p>
                 </div>

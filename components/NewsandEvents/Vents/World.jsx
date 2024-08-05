@@ -1,5 +1,5 @@
 import { LuMapPin } from "react-icons/lu";
-// import World from "@/public/Images/Homepage/World.png";
+import Overlay from "@/public/Images/Homepage/Overlay.png";
 import Image from "next/image";
 
 
@@ -9,15 +9,15 @@ const World = () => {
     return ( 
         <main>
             <div>
-                <div>
-                    <h1>OTHER UPCOMING EVENTS</h1>
+                <div className="pt-7">
+                    <h1 className="font-semibold text-4xl">OTHER UPCOMING EVENTS</h1>
                 </div>
 
-                {/* <div className="flex flex-col lg:flex-row gap-20 px-20">
+                <div className="flex flex-col lg:flex-row gap-20 px-20">
                     <div className='space-y-8'>
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={Overlay} alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -36,7 +36,7 @@ const World = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={Overlay} alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -55,7 +55,7 @@ const World = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={Overlay} alt="Overlay" width={201} className="rounded-[13.4px]" />
                             </div>
 
                             <div className='space-y-4'>
@@ -76,7 +76,7 @@ const World = () => {
                     <div className='space-y-8'>
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={Overlay} alt="Overlay" width={201} />
                             </div>
 
                             <div className='space-y-4'>
@@ -95,7 +95,7 @@ const World = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={Overlay} alt="Overlay" width={201} />
                             </div>
 
                             <div className='space-y-4'>
@@ -114,7 +114,7 @@ const World = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} />
+                                <Image src={Overlay} alt="Overlay" width={201} />
                             </div>
 
                             <div className='space-y-4'>
@@ -131,7 +131,7 @@ const World = () => {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         </main>
     );

@@ -1,8 +1,11 @@
+import Image from "next/image";
+import Enviroment from "@/public/Images/News and Events/Enviroment.png";
+
 const Banner = () => {
 
     return ( 
-        <main className="bg-black border-2 w-full md:h-[750px] h-[450px]  ">
-            
+        <main>
+            <Image src={Enviroment} alt="Enviroment" />
         </main>
     );
 }
