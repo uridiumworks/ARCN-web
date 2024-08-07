@@ -1,4 +1,5 @@
 "use client"
+
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -11,41 +12,38 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { FiUploadCloud } from 'react-icons/fi';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 
 interface Props {
-    setCreateReport: React.Dispatch<React.SetStateAction<boolean>>;
+    setCreateEntreprenuership: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
 const formSchema = z.object({
-    title: z.string().min(3, { message: "title must be at least 3 characters.", }),
-    uploadBanner: z.string().min(3, { message: "uploaded Banner must be provided.", }),
-    blogPosttext: z.string().min(3, { message: "blog Post text must be at least 3 characters.", }),
-    publisherName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
-    authorEmail: z.string().min(3, { message: "author Email must be at least 3 characters.", }).email({ message: "Invalid email format." }),
-    publishDate: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
+    subject: z.string().min(3, { message: "subject must be at least 3 characters.", }),
+    description: z.string().min(6, { message: "description must be at least 6 characters.", }),
+    venue: z.string().min(3, { message: "Venue must be at least 3 characters." }),
+    uploadBanner: z.any(),
+    authorName: z.string().min(3, { message: "Author's name must be at least 3 characters." }),
+    eventStartDate: z.string().min(3, { message: "Event start Date must be provided" }),
+    eventEndDate: z.string().min(3, { message: "Event end Date must be provided" }),
+    publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
+    durationPerDay: z.string().min(3, { message: "Duration Per Day must be provided" }),
 })
-
-const ReportForm = ({ setCreateReport }: Props) => {
-    const reactQuillRef = useRef<any>(null)
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            title: "",
+            subject: "",
+            description: "",
             uploadBanner: "",
-            blogPosttext: "",
-            publisherName: "",
-            authorEmail: "",
-            publishDate: "",
+            venue: "",
+            authorName: "",
+            eventStartDate: "",
+            eventEndDate: "",
+            durationPerDay: "",
         },
     });
-
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
@@ -53,7 +51,7 @@ const ReportForm = ({ setCreateReport }: Props) => {
     return (
         <div>
             <div className='w-full flex justify-end items-center'>
-                <Button onClick={() => setCreateReport(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
+                <Button onClick={() => setCreateEntreprenuership(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
             </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
@@ -61,18 +59,31 @@ const ReportForm = ({ setCreateReport }: Props) => {
                         <div className='w-[70%] grid grid-cols-1 gap-6'>
                             <FormField
                                 control={form.control}
-                                name="title"
+                                name="subject"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Title</FormLabel>
+                                        <FormLabel>Subject</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
                                                 type="text"
                                                 autoComplete="new-password"
                                                 placeholder='Enter Title'
-                                                className="bg-white outline-none"
+                                                className="bg-inherit outline-none"
                                             />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="description"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Description</FormLabel>
+                                        <FormControl>
+                                            <Textarea placeholder="Type your description here." {...field} rows={8} className="bg-inherit" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -106,31 +117,18 @@ const ReportForm = ({ setCreateReport }: Props) => {
                             />
                             <FormField
                                 control={form.control}
-                                name="blogPosttext"
+                                name="venue"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Blog Post Editor</FormLabel>
+                                        <FormLabel>Venue</FormLabel>
                                         <FormControl>
-                                            <>
-                                                {isMounted && <ReactQuill
-                                                    ref={reactQuillRef}
-                                                    theme="snow"
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                    modules={{
-                                                        toolbar: {
-                                                            container: [
-                                                                [{ header: [1, 2, 3, 4, false] }],
-                                                                ['bold', 'italic', 'underline'],
-                                                                [{ align: [] }],
-                                                                ['image', 'clean'], // Add image button
-                                                            ],
-                                                            // handlers: {
-                                                            //     image: imageHandler, // Set custom image handler
-                                                            // },
-                                                        },
-                                                    }} />}
-                                            </>
+                                            <Input
+                                                {...field}
+                                                type="text"
+                                                autoComplete="new-password"
+                                                placeholder='Enter Venue'
+                                                className="bg-inherit outline-none"
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -142,10 +140,10 @@ const ReportForm = ({ setCreateReport }: Props) => {
                             <div className='grid grid-cols-1 gap-6 mt-5'>
                                 <FormField
                                     control={form.control}
-                                    name="publisherName"
+                                    name="authorName"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{`Publisher's Name`}</FormLabel>
+                                            <FormLabel>{`Author`}</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
@@ -161,29 +159,10 @@ const ReportForm = ({ setCreateReport }: Props) => {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="authorEmail"
+                                    name="eventStartDate"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{`Author's Email`}</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    {...field}
-                                                    type="email"
-                                                    autoComplete="new-password"
-                                                    placeholder='Email'
-                                                    className="bg-inherit outline-none"
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="publishDate"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>{`Publish On`}</FormLabel>
+                                            <FormLabel>{`Event's Start Date`}</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
@@ -197,7 +176,51 @@ const ReportForm = ({ setCreateReport }: Props) => {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Publish</span></Button>
+                                <FormField
+                                    control={form.control}
+                                    name="eventEndDate"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{`Event's End Date`}</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="date"
+                                                    autoComplete="new-password"
+                                                    placeholder='DD/MM/YYYY'
+                                                    className="bg-inherit outline-none"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="durationPerDay"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Duration per day</FormLabel>
+                                            <FormControl>
+                                                <Select onValueChange={field.onChange}
+                                                    defaultValue={field.value}
+                                                >
+                                                    <SelectTrigger className="w-full bg-inherit">
+                                                        <SelectValue placeholder={field.value || "Select Option"}>{field.value || "Select Option"}</SelectValue>
+                                                    </SelectTrigger>
+                                                    <SelectContent
+                                                        className="bg-[#f3f3f3]"
+                                                    >
+                                                        <SelectItem value="1 hours">1 hour</SelectItem>
+                                                        <SelectItem value="2 hours">2 hours</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Post</span></Button>
                             </div>
                         </div>
                     </div>
@@ -207,4 +230,4 @@ const ReportForm = ({ setCreateReport }: Props) => {
     )
 }
 
-export default ReportForm
+export default EntreprenuershipForm

@@ -37,6 +37,11 @@ export const SideLink: Array<SideLinkType> = [
       icon: <MarketResearchIcon className="scale-95 stroke-[#fff]"/>,
     },
     {
+      name: "Programs and Projects",
+      url: "/admin/programs-and-projects",
+      icon: <MarketResearchIcon className="scale-95 stroke-[#fff]"/>,
+    },   
+    {
       name: "Users",
       url: "/admin/users",
       icon: <UserIcon className="scale-95 text-[white]" />,
