@@ -1,4 +1,4 @@
-"use client"
+"use client"; // Add this line at the top
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,19 +11,16 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { IoSearchOutline } from 'react-icons/io5';
 import { LuRefreshCw } from 'react-icons/lu';
 
-
-
-
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
-    setCreateEntreprenuership: React.Dispatch<React.SetStateAction<boolean>>;
+    setCreateNewNewsletter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const EntreprenuershipTable = <TData, TValue>({
+const NewsLettersTable = <TData, TValue>({
     columns,
     data,
-    setCreateEntreprenuership,
+    setCreateNewNewsletter,
 }: DataTableProps<TData, TValue>) => {
     const table = useReactTable({
         data,
@@ -40,7 +37,7 @@ const EntreprenuershipTable = <TData, TValue>({
                     type="text"
                     placeholder="Search with name..."
                     className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
-                    style={{ outline: "none" }}
+                    style={{outline: "none"}}
                 />
                 <IoSearchOutline
                     className="absolute top-[25%] left-[5%]"
@@ -51,7 +48,7 @@ const EntreprenuershipTable = <TData, TValue>({
         </div>
         <div className='w-fit flex justify-between items-center gap-2 px-5'>
             <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]"><LuRefreshCw size={20} /> <span className="text-[14px] font-noraml">Refresh</span></Button>
-            <Button onClick={() => setCreateEntreprenuership(true)} className="w-fit bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">New Event</span></Button>
+            <Button onClick={() => setCreateNewNewsletter(true)} className="w-fit bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">New News Letter</span></Button>
         </div>
     </div>
     <Table>
@@ -121,4 +118,4 @@ const EntreprenuershipTable = <TData, TValue>({
   )
 }
 
-export default EntreprenuershipTable
+export default NewsLettersTable

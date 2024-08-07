@@ -12,3 +12,5 @@ export { default as EventIcon} from "./hugeicons_news-01.svg";
 export { default as UserIcon} from "./ph_user.svg";
 export { default as SettingsIcon} from "./material-symbols-light_settings-outline.svg";
 export { default as LogoutIcon} from "./exit.svg";
+export { default as NotificationIcon} from "./Notifcation.svg";
+export { default as ArrowDownIcon} from "./Chevron Down.svg";

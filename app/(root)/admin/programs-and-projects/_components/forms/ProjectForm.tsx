@@ -15,20 +15,21 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 
 interface Props {
-    setCreateReport: React.Dispatch<React.SetStateAction<boolean>>;
+    setCreateNewProject: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
 
 const formSchema = z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
     uploadBanner: z.string().min(3, { message: "uploaded Banner must be provided.", }),
     blogPosttext: z.string().min(3, { message: "blog Post text must be at least 3 characters.", }),
-    publisherName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
-    authorEmail: z.string().min(3, { message: "author Email must be at least 3 characters.", }).email({ message: "Invalid email format." }),
-    publishDate: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
+    createdBy: z.string().min(3, { message: "Creator Name must be at least 3 characters.", }),
+    publishOn: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
+    bannerUsage: z.boolean().refine(value => value === true, {
+        message: "Check this box please.",
+    }),
 })
 
-const ReportForm = ({ setCreateReport }: Props) => {
+const ProjectForm = ({ setCreateNewProject }: Props) => {
     const reactQuillRef = useRef<any>(null)
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
@@ -40,9 +41,9 @@ const ReportForm = ({ setCreateReport }: Props) => {
             title: "",
             uploadBanner: "",
             blogPosttext: "",
-            publisherName: "",
-            authorEmail: "",
-            publishDate: "",
+            createdBy: "",
+            publishOn: "",
+            bannerUsage: false,
         },
     });
 
@@ -53,7 +54,7 @@ const ReportForm = ({ setCreateReport }: Props) => {
     return (
         <div>
             <div className='w-full flex justify-end items-center'>
-                <Button onClick={() => setCreateReport(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
+                <Button onClick={() => setCreateNewProject(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
             </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
@@ -142,10 +143,10 @@ const ReportForm = ({ setCreateReport }: Props) => {
                             <div className='grid grid-cols-1 gap-6 mt-5'>
                                 <FormField
                                     control={form.control}
-                                    name="publisherName"
+                                    name="createdBy"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{`Publisher's Name`}</FormLabel>
+                                            <FormLabel>{`Created by`}</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
@@ -161,26 +162,7 @@ const ReportForm = ({ setCreateReport }: Props) => {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="authorEmail"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>{`Author's Email`}</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    {...field}
-                                                    type="email"
-                                                    autoComplete="new-password"
-                                                    placeholder='Email'
-                                                    className="bg-inherit outline-none"
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="publishDate"
+                                    name="publishOn"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{`Publish On`}</FormLabel>
@@ -197,6 +179,34 @@ const ReportForm = ({ setCreateReport }: Props) => {
                                         </FormItem>
                                     )}
                                 />
+                                <FormField
+                                    control={form.control}
+                                    name="bannerUsage"
+                                    render={({ field }) => (
+                                        <div className="">
+                                            <FormItem>
+                                                <FormControl>
+                                                    <div className="items-top flex space-x-2 mt-8">
+                                                        <Checkbox
+                                                            id="acceptTermsAndCondition"
+                                                            checked={field.value}
+                                                            onCheckedChange={field.onChange}
+                                                        />
+                                                        <div className="grid gap-1.5 leading-none">
+                                                            <label
+                                                                htmlFor="acceptTermsAndCondition"
+                                                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                            >
+                                                                Use on Project Banner
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        </div>
+                                    )}
+                                />
                                 <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Publish</span></Button>
                             </div>
                         </div>
@@ -207,4 +217,4 @@ const ReportForm = ({ setCreateReport }: Props) => {
     )
 }
 
-export default ReportForm
+export default ProjectForm
