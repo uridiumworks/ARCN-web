@@ -1,13 +1,13 @@
-
+import plants from "@/assets/Images/Homepage/plants.png";
 import Image from "next/image";
 
 const Intro = () => {
   return (
     <main className="w-full">
 
-      <div className="w-[80%] py-5 flex flex-col lg:flex-row space-y-9 items-start gap-8 mx-auto">
+      <div className="w-[80%] flex flex-col lg:flex-row space-y-9 items-start gap-3 mx-auto">
        
-        <Image src="/Images/Homepage/plants.png"  alt="plants" width={426} height={431.16} />
+        <Image src={plants} alt="plants" width={426} height={431.16} />
 
         <div className="space-y-7">
           <h1 className="font-bold text-4xl">Introducing ARCN</h1>
@@ -27,8 +27,8 @@ const Intro = () => {
             the Forestry and Botanical Department (renamed Agricultural
             Department) for southern Nigeria was created. In 1912 this was divided
             into two regional departments resulting in the establishment of a
-            Department of Agriculture for northern Nigeria. Then in 1914, with
-            Nigeria&apos;s unification, the two departments were merged to form a new
+            Department of Agriculture for northern Nigeria.Then in 1914, with
+            Nigeria's unification, the two departments were merged to form a new
             Department of Agriculture.
           </p>
 
