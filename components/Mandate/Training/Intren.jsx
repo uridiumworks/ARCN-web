@@ -1,5 +1,5 @@
 import Image from "next/image";
-import World from "@/public/Images/Homepage/World.png";
+import World from "/Images/Homepage/World.png";
 import { LuMapPin } from "react-icons/lu";
 import { LuClock5 } from "react-icons/lu";
 

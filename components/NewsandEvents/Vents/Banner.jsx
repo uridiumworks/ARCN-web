@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Enviroment from "@/public/Images/News and Events/Enviroment.png";
+import Enviroment from "/Images/News and Events/Enviroment.png";
 
 const Banner = () => {
 

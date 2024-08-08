@@ -1,6 +1,6 @@
-import Damilola from "../../public/Images/Homepage/damilola.png";
-import Haneefah from "../../public/Images/Homepage/Haneefah.png";
-import Fuad from "../../public/Images/Homepage/fuad.png";
+import Damilola from "/Images/Homepage/damilola.png";
+import Haneefah from "/Images/Homepage/Haneefah.png";
+import Fuad from "/Images/Homepage/fuad.png";
 import Image from "next/image";
 
 const Review = () => {

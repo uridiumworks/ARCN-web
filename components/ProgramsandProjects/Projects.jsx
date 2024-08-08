@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Casava from "@/public/Images/Mandatepage/Casava.png";
-import Soybeans from "@/public/Images/Mandatepage/Soybeans.png";
-import Beans from "@/public/Images/Mandatepage/Beans.png";
-import Grains from "@/public/Images/Mandatepage/Grains.png";
+import Casava from "/Images/Mandatepage/Casava.png";
+import Soybeans from "/Images/Mandatepage/Soybeans.png";
+import Beans from "/Images/Mandatepage/Beans.png";
+import Grains from "/Images/Mandatepage/Grains.png";
 
 
 

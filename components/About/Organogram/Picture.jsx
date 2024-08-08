@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Diagram from "../../../public/Images/Aboutpage/Diagram.png";
+import Diagram from "/Images/Aboutpage/Diagram.png";
 
 const Picture = () => {
     return (

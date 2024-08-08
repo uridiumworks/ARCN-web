@@ -1,6 +1,6 @@
-import Books from "../../public/Images/Homepage/Books.png";
-import Overlay from "../../public/Images/Homepage/Overlay.png";
-import Horizontal from "@/public/Images/Homepage/Horizontal.png";
+import Books from "/Images/Homepage/Books.png";
+import Overlay from "/Images/Homepage/Overlay.png";
+import Horizontal from "/Images/Homepage/Horizontal.png";
 import Image from "next/image";
 
 const News = () => {

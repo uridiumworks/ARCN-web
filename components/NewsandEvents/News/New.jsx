@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Place from "@/public/Images/News and Events/Place.png";
-import Wheat from "@/public/Images/News and Events/wheat.png";
-import Borancow from "@/public/Images/News and Events/Borancow.png";
+import Place from "/Images/News and Events/Place.png";
+import Wheat from "/Images/News and Events/wheat.png";
+import Borancow from "/Images/News and Events/Borancow.png";
 
 const New = () => {
 

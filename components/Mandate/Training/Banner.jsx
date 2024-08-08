@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Worker from "@/public/Images/Mandatepage/Worker.png";
+import Worker from "/Images/Mandatepage/Worker.png";
 
 const Banner = () => {
 

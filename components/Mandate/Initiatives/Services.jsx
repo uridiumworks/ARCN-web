@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { LuMapPin } from "react-icons/lu";
-import World from "../../../public/Images/Homepage/World.png";
+import World from "/Images/Homepage/World.png";
 
 
 const Services = () => {

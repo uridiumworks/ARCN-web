@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Desktop from "@/public/Images/Aboutpage/Desktop.png";
 
 const Banner = () => {
     return (

@@ -1,5 +1,5 @@
 import { LuMapPin } from "react-icons/lu";
-import Overlay from "@/public/Images/Homepage/Overlay.png";
+import Overlay from "/Images/Homepage/Overlay.png";
 import Image from "next/image";
 
 

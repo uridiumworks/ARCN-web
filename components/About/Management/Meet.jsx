@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Organ from "../../../public/Images/Aboutpage/Organ.png";
+import Organ from "/Images/Aboutpage/Organ.png";
 
 const Meet = () => {
     return (

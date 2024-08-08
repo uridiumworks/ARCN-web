@@ -1,5 +1,4 @@
 import { LuMapPin } from "react-icons/lu";
-import World from "../../public/Images/Homepage/World.png";
 import Image from "next/image";
 
 const Events = () => {
@@ -11,7 +10,7 @@ const Events = () => {
                 <div className='space-y-8'>
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]" />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]" />
                         </div>
                         <div className='space-y-4'>
                             <h1 className="font-normal text-[15.5px] text-[#1315175C]">6:00 PM · <span className="font-normal text-[15.5px] text-[#D19D20]">7:00 PM GMT+2</span></h1>
@@ -29,7 +28,7 @@ const Events = () => {
 
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]" />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]" />
                         </div>
                         <div className='space-y-4'>
                             <h1 className="font-normal text-[15.5px] text-[#1315175C]">6:00 PM · <span className="font-normal text-[15.5px] text-[#D19D20]">7:00 PM GMT+2</span></h1>
@@ -49,7 +48,7 @@ const Events = () => {
                 <div className="space-y-8">
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]" />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]" />
                         </div>
                         <div className='space-y-4'>
                             <h1 className="font-normal text-[15.5px] text-[#1315175C]">6:00 PM · <span className="font-normal text-[15.5px] text-[#D19D20]">7:00 PM GMT+2</span></h1>
@@ -67,7 +66,7 @@ const Events = () => {
 
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2 '>
                         <div className="rounded-2xl">
-                            <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]"  />
                         </div>
                         <div className='space-y-4'>
                             <h1 className="font-normal text-[15.5px] text-[#1315175C]">6:00 PM · <span className="font-normal text-[15.5px] text-[#D19D20]">7:00 PM GMT+2</span></h1>

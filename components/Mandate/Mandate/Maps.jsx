@@ -1,5 +1,5 @@
 import Image from "next/image";
-import maps from "@/public/Images/Mandatepage/maps.png"
+import maps from "/Images/Mandatepage/maps.png"
 
 const Maps = () => {
     return (

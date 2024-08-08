@@ -1,9 +1,4 @@
-import Gray from "../../../public/Images/Aboutpage/Gray.png";
-import Lime from "../../../public/Images/Aboutpage/Lime.png";
-import Peach from "../../../public/Images/Aboutpage/Peach.png";
-import Pink from "../../../public/Images/Aboutpage/Pink.png";
-import Purple from "../../../public/Images/Aboutpage/Purple.png";
-import Lemon from "../../../public/Images/Aboutpage/Lemon.png";
+
 import Image from "next/image";
 
 const Value = () => {
@@ -20,19 +15,19 @@ const Value = () => {
                     <div className="flex flex-col md:flex-row gap-5 pt-14 justify-evenly">
 
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src={Gray} alt="Gray" />
+                            <Image src="/Images/Aboutpage/Gray.png" alt="Gray" />
                             <p className="font-bold text-xl">Customer-Centric Success</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
 
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src={Lime} alt="Lime" />
+                            <Image src="/Images/Aboutpage/Lime.png" alt="Lime" />
                             <p className="font-bold text-xl">Continuous Innovation</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
                         
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src={Peach} alt="Peach" />
+                            <Image src="/Images/Aboutpage/Peach.png" alt="Peach" />
                             <p className="font-bold text-xl">Empowerment & Growth</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
@@ -41,19 +36,19 @@ const Value = () => {
                     <div className="flex flex-col md:flex-row gap-5 justify-evenly">
                         
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">  
-                            <Image src={Pink} alt="Pink" />
+                            <Image src="/Images/Aboutpage/Pink.png" alt="Pink" />
                             <p className="font-bold text-xl">Seamlessness</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
 
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src={Purple} alt="Purple" />
+                            <Image src="/Images/Aboutpage/Purple.png" alt="Purple" />
                             <p className="font-bold text-xl">Collaboration</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
                         
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src={Lemon} alt="Lemon" />
+                            <Image src="/Images/Aboutpage/Lemon.png" alt="Lemon" />
                             <p className="font-bold text-xl">Endless Progress</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
