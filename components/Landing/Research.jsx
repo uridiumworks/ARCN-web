@@ -22,7 +22,7 @@ const Research = () => {
         </div>
 
         <div className="relative w-full px-5 ">
-          <Image src={Search} alt="Search" width={568} height={596} />
+          <Image src="/Images/Homepage/Search.png" alt="Search" width={568} height={596} />
           <div className='flex border border-hidden py-2 px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-[16px]'>
             <p>Agricultural Research</p>
             <FaCaretRight />
@@ -30,7 +30,7 @@ const Research = () => {
         </div>
 
         <div className="relative w-full px-5 ">
-          <Image src={Planting} alt="Planting" />
+          <Image src="/Images/Homepage/Planting.png" alt="Planting" />
           <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
             <p>Extension Services</p>
             <FaCaretRight />
@@ -41,7 +41,7 @@ const Research = () => {
 
       <div className='lg:w-1/2 pt-28 space-y-4'>
         <div className="relative w-full px-5 ">
-          <Image src={Discuss} alt="Discuss" />
+          <Image src="/Images/Homepage/Discuss.png" alt="Discuss" />
           <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
             <p>Agricultural Training</p>
             <FaCaretRight />
@@ -49,7 +49,7 @@ const Research = () => {
         </div>
 
         <div className="relative w-full px-5 ">
-          <Image src={Record} alt="Record" />
+          <Image src="/Images/Homepage/Record.png" alt="Record" />
           <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
             <p>Agricultural Innovations</p>
             <FaCaretRight />

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Worker from "/Images/Mandatepage/Worker.png";
 
 const Banner = () => {
 
@@ -10,7 +9,7 @@ const Banner = () => {
                 <p className="font-normal text-[21px]">Transforming Food, Land, and Water Systems in a Climate Crisis</p>
             </div>
             <div>
-                <Image src={Worker} alt="worker" />
+                <Image src="/Images/Mandatepage/Worker.png" alt="worker" />
             </div>
         </main>
     );

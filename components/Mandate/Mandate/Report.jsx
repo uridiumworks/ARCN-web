@@ -1,5 +1,4 @@
 import { LuMapPin } from "react-icons/lu";
-import World from "/Images/Homepage/World.png"
 import Image from "next/image";
 
 const Report = () => {
@@ -20,7 +19,7 @@ const Report = () => {
         <div className="flex flex-col md:flex-row gap-4 justify-evenly ">
           <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
             <div className="">
-              <Image src={World} alt="overlay" width={180} className="rounded-[13.4px]" />
+              <Image src="/Images/Homepage/World.png" alt="overlay" width={180} className="rounded-[13.4px]" />
             </div>
             <div className='space-y-4'>
               <p className="font-medium text-xl">ARCN Research Coordination Report 2023</p>
@@ -44,7 +43,7 @@ const Report = () => {
 
           <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
             <div>
-              <Image src={World} alt="overlay" width={180} className="rounded-[13.4px]"  />
+              <Image src="/Images/Homepage/World.png" alt="overlay" width={180} className="rounded-[13.4px]"  />
             </div>
             <div className='space-y-4'>
               <p className="font-medium text-xl">ARCN Research Coordination Report 2023</p>

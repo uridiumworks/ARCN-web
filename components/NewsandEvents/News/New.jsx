@@ -1,7 +1,4 @@
 import Image from "next/image";
-import Place from "/Images/News and Events/Place.png";
-import Wheat from "/Images/News and Events/wheat.png";
-import Borancow from "/Images/News and Events/Borancow.png";
 
 const New = () => {
 
@@ -18,7 +15,7 @@ const New = () => {
 
                         <div>
                             <div>
-                                <Image src={Place} alt="Place" width={395}  height={268.59}/>
+                                <Image src="/Images/News and Events/Place.png" alt="Place" width={395}  height={268.59}/>
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -38,7 +35,7 @@ const New = () => {
 
                         <div>
                             <div>
-                                <Image src={Wheat} alt="Wheat" width={395}  height={268.59} />
+                                <Image src="/Images/News and Events/wheat.png" alt="Wheat" width={395}  height={268.59} />
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -55,7 +52,7 @@ const New = () => {
 
                         <div>
                             <div >
-                                <Image src={Borancow} alt="Borancow" width={395}  height={268.59} />
+                                <Image src="/Images/News and Events/Borancow.png" alt="Borancow" width={395}  height={268.59} />
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -72,7 +69,7 @@ const New = () => {
 
                         <div>
                             <div >
-                                <Image src={Borancow} alt="Borancow" width={395}  height={268.59} />
+                                <Image src="/Images/News and Events/Borancow.png" alt="Borancow" width={395}  height={268.59} />
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -92,7 +89,7 @@ const New = () => {
 
                         <div>
                             <div>
-                                <Image src={Place} alt="Place" width={395}  height={268.59}/>
+                                <Image src="/Images/News and Events/Place.png" alt="Place" width={395}  height={268.59}/>
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -112,7 +109,7 @@ const New = () => {
 
                         <div>
                             <div>
-                                <Image src={Wheat} alt="Wheat" width={395}  height={268.59} />
+                                <Image src="/Images/News and Events/wheat.png" alt="Wheat" width={395}  height={268.59} />
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -129,7 +126,7 @@ const New = () => {
 
                         <div>
                             <div >
-                                <Image src={Borancow} alt="Borancow" width={395}  height={268.59} />
+                                <Image src="/Images/News and Events/Borancow.png" alt="Borancow" width={395}  height={268.59} />
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">
@@ -146,7 +143,7 @@ const New = () => {
 
                         <div>
                             <div >
-                                <Image src={Borancow} alt="Borancow" width={395}  height={268.59} />
+                                <Image src="/Images/News and Events/Borancow.png" alt="Borancow" width={395}  height={268.59} />
                             </div>
                             <div>
                                 <h1 className="font-semibold text-[23px]">

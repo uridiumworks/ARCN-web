@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { LuMapPin } from "react-icons/lu";
-import World from "/Images/Homepage/World.png";
 
 
 const Services = () => {
@@ -17,7 +16,7 @@ const Services = () => {
 
                     <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div className="">
-                            <Image src={World} alt="overlay" width={180} className="rounded-[13.4px]" />
+                            <Image src="/Images/Homepage/World.png" alt="overlay" width={180} className="rounded-[13.4px]" />
                         </div>
                         <div className='space-y-4'>
                         <p className="font-medium text-xl">Initiative A</p>

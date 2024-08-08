@@ -1,5 +1,4 @@
 import Image from "next/image";
-import maps from "/Images/Mandatepage/maps.png"
 
 const Maps = () => {
     return (
@@ -35,7 +34,7 @@ const Maps = () => {
                 </div>
 
                 <div className="mx-auto w-full lg:w-[939px] py-10 ">
-                    <Image src={maps} alt="maps"/>
+                    <Image src="/Images/Mandatepage/maps.png" alt="maps"/>
                 </div>
                 
             </div>
