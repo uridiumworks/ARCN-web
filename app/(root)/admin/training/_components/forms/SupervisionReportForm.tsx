@@ -9,7 +9,8 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FiUploadCloud } from 'react-icons/fi';
-import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';// Import the styles
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
@@ -115,7 +116,7 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
                                 <FormControl>
                                     <>
                                         {isMounted && <ReactQuill
-                                            ref={reactQuillRef}
+                                            // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
                                             onChange={field.onChange}
