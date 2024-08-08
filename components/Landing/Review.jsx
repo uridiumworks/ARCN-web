@@ -54,7 +54,7 @@ const Review = () => {
             <br />dictum ipsum rhoncus. <br />Sodales amet tincidunt sed <br />sed ipsum           
             ullamcorper sapien.”
           </p>
-          <p className="font-medium text-sm pt-7 pb-7">Fu'ad L.
+          <p className="font-medium text-sm pt-7 pb-7">Fu&aposad L.
           <span className="font-normal text-[#7C8B98] text-sm"><br />National Horticultural Research Institue</span></p>
         </div>
       </div>
