@@ -1,10 +1,6 @@
 import { LuChevronRight } from "react-icons/lu";
 import { FaCaretRight } from "react-icons/fa6";
 import Image from "next/image";
-import Search from "/Images/Homepage/Search.png";
-import Discuss from "/Images/Homepage/Discuss.png";
-import Planting from "/Images/Homepage/Planting.png";
-import Record from "/Images/Homepage/Record.png";
 
 const Research = () => {
   return (
