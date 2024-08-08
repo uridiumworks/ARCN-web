@@ -1,5 +1,4 @@
 import { LuChevronRight } from "react-icons/lu";
-import farmer from "../../public/Images/Homepage/farmer.png";
 import Image from "next/image";
 
 const Partners = () => {
@@ -11,7 +10,7 @@ const Partners = () => {
             </div>
             <div className='flex flex-col lg:flex-row gap-10 justify-center'>
                 <div>
-                    <Image src={farmer} alt="farmer" />
+                    <Image src="/Images/Homepage/farmer.png" alt="farmer" />
                 </div>
                 <div className=' place-content-center'>
                     <div className="">

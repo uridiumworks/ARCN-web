@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Worker from "@/public/Images/Mandatepage/Worker.png";
 
 const Collection = () => {
 
@@ -10,7 +9,7 @@ const Collection = () => {
                 <p className="font-normal text-[21px]">A collection of ARCN featured news and upcoming events</p>
             </div>
             <div>
-                <Image src={Worker} alt="worker" height={481} />
+                <Image src="/Images/Mandatepage/Worker.png" alt="worker" height={481} />
             </div>
         </main>
     );

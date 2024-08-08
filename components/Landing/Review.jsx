@@ -1,6 +1,4 @@
-import Damilola from "../../public/Images/Homepage/damilola.png";
-import Haneefah from "../../public/Images/Homepage/Haneefah.png";
-import Fuad from "../../public/Images/Homepage/fuad.png";
+
 import Image from "next/image";
 
 const Review = () => {
@@ -14,7 +12,7 @@ const Review = () => {
 
         <div className="border rounded-md h-[600px] bg-[#96E3E1] p-8 ">
           <Image
-            src={Damilola}
+            src="/Images/Homepage/damilola.png"
             alt="Damilola"
             width={86}
           />
@@ -30,7 +28,7 @@ const Review = () => {
 
         <div className="border rounded-md h-[600px] text-black bg-[#BCF5C5] p-8  ">
           <Image
-            src={Haneefah}
+            src="/Images/Homepage/Haneefah.png"
             alt="Haneefah"
            
           />
@@ -46,7 +44,7 @@ const Review = () => {
 
         <div className="border rounded-mdh-[600px] text-black bg-[#96E3E1] p-8  ">
           <Image
-            src={Fuad}
+            src="/Images/Homepage/fuad.png"
             alt="Avatar"
            width={86}
           />
@@ -56,7 +54,7 @@ const Review = () => {
             <br />dictum ipsum rhoncus. <br />Sodales amet tincidunt sed <br />sed ipsum           
             ullamcorper sapien.”
           </p>
-          <p className="font-medium text-sm pt-7 pb-7">Fu'ad L.
+          <p className="font-medium text-sm pt-7 pb-7">Fu&aposad L.
           <span className="font-normal text-[#7C8B98] text-sm"><br />National Horticultural Research Institue</span></p>
         </div>
       </div>

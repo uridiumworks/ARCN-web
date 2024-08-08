@@ -1,6 +1,4 @@
-import Books from "../../public/Images/Homepage/Books.png";
-import Overlay from "../../public/Images/Homepage/Overlay.png";
-import Horizontal from "@/public/Images/Homepage/Horizontal.png";
+
 import Image from "next/image";
 
 const News = () => {
@@ -14,7 +12,7 @@ const News = () => {
 
             <div className="flex flex-row-reverse">
               <div>
-                <Image src={Books} alt="Books" width={216.26} height={216.26} className="rounded-2xl" />
+                <Image src="/Images/Homepage/Books.png" alt="Books" width={216.26} height={216.26} className="rounded-2xl" />
               </div>
               <div>
                 <h1 className="font-normal text-[21px]">ARCN JOURNAL.</h1>
@@ -54,7 +52,7 @@ const News = () => {
             </div>
 
               <div className="">
-                <Image src={Overlay} alt="Overlay" width={216.26} />
+                <Image src="/Images/Homepage/Overlay.png" alt="Overlay" width={216.26} />
               </div>
             </div>
           </div>
@@ -64,7 +62,7 @@ const News = () => {
           <h1 className="font-bold text-2xl text-[#333333]">News Alert</h1>
           <div>
             <div>
-              <Image src={Horizontal} alt="Horizontal" width={574} height={298.96} />
+              <Image src="/Images/Homepage/Horizontal.png" alt="Horizontal" width={574} height={298.96} />
             </div>
             <p className="font-semibold text-[32px] border-b-2 w-fit">
               Nature-positive farms on remote <br />hillsides in India show the future

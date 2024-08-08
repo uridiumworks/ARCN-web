@@ -1,5 +1,4 @@
 import Image from "next/image";
-import World from "@/public/Images/Homepage/World.png";
 import { LuMapPin } from "react-icons/lu";
 import { LuClock5 } from "react-icons/lu";
 
@@ -20,7 +19,7 @@ const Intern = () => {
                     <div className='space-y-8'>
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
+                                <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -41,7 +40,7 @@ const Intern = () => {
                         
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]" />
+                                <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]" />
                             </div>
 
                             <div className='space-y-4'>
@@ -65,7 +64,7 @@ const Intern = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
+                                <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
@@ -86,7 +85,7 @@ const Intern = () => {
 
                         <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
                             <div>
-                                <Image src={World} alt="Overlay" width={201} className="rounded-[13.4px]"  />
+                                <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} className="rounded-[13.4px]"  />
                             </div>
 
                             <div className='space-y-4'>
