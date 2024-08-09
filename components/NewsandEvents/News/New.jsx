@@ -8,18 +8,19 @@ const New = () => {
     return ( 
         <main>
             <div>
-                <div>
+                <div className="">
                     <h1 className="font-semibold text-4xl text-center pt-20">News</h1>
                 </div>
 
-                <div className="">
+                <div className="lg:w-[1200px] pt-4 mx-auto">
                     
                     <div className="gap-5 px-10 h-[591.59px] flex flex-col md:flex-row">
 
                         <div>
                             <div>
-                                <Image src={Place} alt="Place" width={395}  height={268.59}/>
+                                <Image src={Place} alt="Place" width={395} height={268.59} className="rounded-lg"/>
                             </div>
+                            
                             <div>
                                 <h1 className="font-semibold text-[23px]">
                                     Nature-positive farms on
@@ -32,7 +33,7 @@ const New = () => {
                                 dependent farmers in remote mountain villages:
                                 the deluges br…
                                 </p>
-                                <p className="font-bold text-lg text-[#15271C] "><span className="font-normal text-lg text-[#999999]">Friday, June 17 2022</span>  Read more</p>
+                                <p className="font-bold text-lg text-[#15271C] "><span className="font-normal text-lg text-[#999999]">Friday, June 17 2022</span><br />Read more</p>
                             </div>
                         </div>
 
