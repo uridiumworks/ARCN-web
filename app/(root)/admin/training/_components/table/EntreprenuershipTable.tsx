@@ -17,11 +17,13 @@ import { LuRefreshCw } from 'react-icons/lu';
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
+    setCreateEntreprenuership: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const EntreprenuershipTable = <TData, TValue>({
     columns,
     data,
+    setCreateEntreprenuership,
 }: DataTableProps<TData, TValue>) => {
     const table = useReactTable({
         data,
@@ -49,7 +51,7 @@ const EntreprenuershipTable = <TData, TValue>({
         </div>
         <div className='w-fit flex justify-between items-center gap-2 px-5'>
             <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]"><LuRefreshCw size={20} /> <span className="text-[14px] font-noraml">Refresh</span></Button>
-            <Button className="w-fit bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">New Event</span></Button>
+            <Button onClick={() => setCreateEntreprenuership(true)} className="w-fit bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">New Event</span></Button>
         </div>
     </div>
     <Table>

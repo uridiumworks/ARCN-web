@@ -3,6 +3,7 @@
 import Navbar from "@/components/navbar";
 import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "./_components/Sidebar";
+import AdminNavbar from "./admin/_components/AdminNavbar";
 
 
 
@@ -34,7 +35,7 @@ export default function RootLayout({
           <Sidebar />
         </div>
         <div className="w-full h-auto">
-          <Navbar />
+          <AdminNavbar />
           {children}
         </div>
       </div>

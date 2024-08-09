@@ -1,11 +1,10 @@
 import Image from "next/image";
-import Diagram from "../../../public/Images/Aboutpage/Diagram.png";
 
 const Picture = () => {
     return (
         <main className="w-full">
             <div className="">
-                <Image src={Diagram} alt="Diagram" />
+                <Image src="/Images/Aboutpage/Diagram.png" alt="Diagram" />
             </div>
         </main>
     )

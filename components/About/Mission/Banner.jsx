@@ -1,4 +1,4 @@
-import "./style.css";
+import Image from "next/image";
 
 const Banner = () => {
     return (
