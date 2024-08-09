@@ -1,10 +1,10 @@
-const Research = () => {
+const institutes = () => {
 
     return ( 
         <main className="text-4xl text-center h-screen">
-            Research
+            institutes
         </main>
     );
 }
  
-export default Research;
+export default institutes;

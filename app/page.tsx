@@ -5,6 +5,7 @@ import Intro from "@/components/Landing/Intro";
 import News from "@/components/Landing/News";
 import Research from "@/components/Landing/Research";
 import Review from "@/components/Landing/Review";
+import Banner from "@/components/Landing/Banner";
 import MainLayout from "@/components/Shared/MainLayout";
 import Partners from "@/components/Shared/Parther";
 
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <MainLayout>
       <div>
+        <Banner />
         <Intro />
         <Institutes />
         <Impact />
