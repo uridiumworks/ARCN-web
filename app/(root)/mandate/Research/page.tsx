@@ -64,7 +64,7 @@ const Research = () => {
                     <div className="grid lg:grid-cols-3 gap-8 w-full lg:w-[1/2]">
                         <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
                             <div className="space-y-2 items-center flex gap-2">
-                                <Image src="Image/Icons/National.png"{Roots} alt="Roots" width={42} height={42} />
+                                <Image src="Image/Icons/National.png" alt="Roots" width={42} height={42} />
                             </div>
                             <h1 className="font-semibold text-sm">Cocoa Research Institute of Nigeria</h1>
                             <p  className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
@@ -81,7 +81,7 @@ const Research = () => {
 
                         <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
                             <div className="space-y-2 items-center flex gap-2">
-                                <Image src="Image/Icons/Cereals.png"{Cereals} alt="Cereals" width={42} height={42} />
+                                <Image src="Image/Icons/Cereals.png" alt="Cereals" width={42} height={42} />
                             </div>
                             <h1 className="font-semibold text-sm">Cocoa Research Institute of Nigeria</h1>
                             <p  className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
