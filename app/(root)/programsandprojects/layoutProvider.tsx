@@ -8,21 +8,11 @@ const Tabs = [
   {
     name: "Mission & Vision",
     status: "active",
-    url: "/about",
-  },
-  {
-    name: "Management",
-    status: "active",
-    url: "/about/management",
-  },
-  {
-    name: "Organogram",
-    status: "active",
-    url: "/about/organogram",
+    url: "/programandprojects",
   },
 ];
 
-export default function LayoutProvider({ children }) {
+const LayoutProvider = ({ children }: {children: React.ReactNode}) => {
   const currentRoute = usePathname();
 
   return (
@@ -50,3 +40,5 @@ export default function LayoutProvider({ children }) {
     </div>
   );
 }
+
+export default LayoutProvider;

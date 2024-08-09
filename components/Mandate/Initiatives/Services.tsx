@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LuMapPin } from "react-icons/lu";
+
 
 
 const Services = () => {

@@ -6,13 +6,23 @@ import { usePathname } from "next/navigation";
 
 const Tabs = [
   {
-    name: "Mission & Vision",
+    name: "Research",
     status: "active",
-    url: "/programandprojects",
+    url: "/mandate",
+  },
+  {
+    name: "Training",
+    status: "active",
+    url: "/mandate/training",
+  },
+  {
+    name: "Extension",
+    status: "active",
+    url: "/mandate/initiatives",
   },
 ];
 
-export default function LayoutProvider({ children }) {
+const LayoutProvider = ({ children }: {children: React.ReactNode}) => {
   const currentRoute = usePathname();
 
   return (
@@ -40,3 +50,5 @@ export default function LayoutProvider({ children }) {
     </div>
   );
 }
+
+export default LayoutProvider;
