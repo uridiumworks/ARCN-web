@@ -5,7 +5,7 @@ const Impact = () => {
                 <div className=" place-content-center text-center p-9 space-y-9">
                     <h1 className="text-[#E6E9E7] text-5xl font-semibold">Impacts Based On Numbers</h1>
 
-                    <div className="flex w-full flex-col md:flex-row justify-center gap-6">
+                    <div className="flex w-full flex-col lg:w-[900px] mx-auto md:flex-row justify-center gap-6">
                         <div className="border border-[#409A72] bg-[#409A72] w-[191px] h-[121px] rounded-lg text-center place-content-center">
                             <h1 className="text-[#FBBA03] text-4xl font-semibold">638</h1>
                             <p className="text-[#FFFFFF] text-base font-normal">Agricultural <br/>Innovations</p>

@@ -22,7 +22,7 @@ const Tabs = [
   },
 ];
 
-export default function LayoutProvider({ children }) {
+const LayoutProvider = ({ children }: {children: React.ReactNode}) => {
   const currentRoute = usePathname();
 
   return (
@@ -50,3 +50,5 @@ export default function LayoutProvider({ children }) {
     </div>
   );
 }
+
+export default LayoutProvider;
