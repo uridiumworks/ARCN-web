@@ -1,3 +1,4 @@
+import Journal from "@/components/Shared/Journal";
 import Image from "next/image";
 import { IoArrowForwardSharp } from "react-icons/io5";
 
@@ -274,6 +275,7 @@ const Research = () => {
                     </div>
                 </div>
             </div>
+            <Journal />
         </main>
     );
 }

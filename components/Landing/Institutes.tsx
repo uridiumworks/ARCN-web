@@ -33,14 +33,14 @@ const Institutes = () => {
 
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg gap-3.5 lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Rubber.png" alt="Rubber" width={42} height={42} />
+                  <Image src="/Image/Icons/Rubber.png" alt="Rubber" width={42} height={42} />
                   <h1 className="font-semibold text-[15px]">Rubber Research Institute of Nigeria</h1>
                 </div>
               </div>
 
               <div className="border py-1.5 px-3 rounded-lg bg-[#FFFFFF] gap-3.5 lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/National.png" alt="national" width={42} height={42} />
+                  <Image src="/Image/Icons/National.png" alt="national" width={42} height={42} />
                   <h1 className="font-semibold text-[14px]">National Horticultural Research Institute</h1>
                 </div>
               </div>
@@ -49,14 +49,14 @@ const Institutes = () => {
             <div className="grid lg:grid-cols-3 gap-4 w-full lg:w-[1/2]  ">
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Roots.png" alt="Roots" width={42} height={42} />
+                  <Image src="/Image/Icons/Roots.png" alt="Roots" width={42} height={42} />
                   <h1 className="font-semibold text-[14.31]">Cocoa Research Institute of Nigeria</h1>
                 </div>
               </div>
 
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg gap-3.5 lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Cereals.png" alt="Cereals" width={42} height={42} />
+                  <Image src="/Image/Icons/Cereals.png" alt="Cereals" width={42} height={42} />
                   <h1 className="font-semibold text-[15px]">Rubber Research Institute of Nigeria</h1>
                 </div>
 
@@ -82,21 +82,21 @@ const Institutes = () => {
             <div className="grid lg:grid-cols-3 gap-4 w-full lg:w-[1/2]  ">
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Akure.png" alt="Akure" width={42} height={42} />
+                  <Image src="/Image/Icons/Akure.png" alt="Akure" width={42} height={42} />
                   <h1 className="font-semibold text-[14.31]">Cocoa Research Institute of Nigeria</h1>
                 </div>
               </div>
 
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg gap-3.5 lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Ibandan.png" alt="Ibandan" width={42} height={42} />
+                  <Image src="/Image/Icons/Ibandan.png" alt="Ibandan" width={42} height={42} />
                   <h1 className="font-semibold text-[15px]">Rubber Research Institute of Nigeria</h1>
                 </div>
               </div>
 
               <div className="border py-1.5 px-3 rounded-lg bg-[#FFFFFF] gap-3.5 lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Ishiagu.png" alt="Ishiagu" width={42} height={42} />
+                  <Image src="/Image/Icons/Ishiagu.png" alt="Ishiagu" width={42} height={42} />
                   <h1 className="font-semibold text-[14px]">National Horticultural Research Institute</h1>
                 </div>
               </div>
@@ -105,14 +105,14 @@ const Institutes = () => {
             <div className="grid lg:grid-cols-3 gap-4 w-full lg:w-[1/2]  ">
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Moor.png" alt="Moor" width={42} height={42} />
+                  <Image src="/Image/Icons/Moor.png" alt="Moor" width={42} height={42} />
                   <h1 className="font-semibold text-[14.31]">Cocoa Research Institute of Nigeria</h1>
                 </div>
               </div>
 
               <div className="border-[0.59px] py-1.5 px-3 bg-[#FFFFFF] rounded-lg gap-3.5 lg:h-[60px] ">
                 <div className="space-y-2 flex gap-2">
-                  <Image src="Image/Icons/Kaduna.png" alt="Kaduna" width={42} height={42} />
+                  <Image src="/Image/Icons/Kaduna.png" alt="Kaduna" width={42} height={42} />
                   <h1 className="font-semibold text-[15px]">Rubber Research Institute of Nigeria</h1>
                 </div>
               </div>

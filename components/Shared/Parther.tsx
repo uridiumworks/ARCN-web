@@ -10,7 +10,7 @@ const Partners = () => {
             </div>
             <div className='flex flex-col lg:flex-row gap-10 justify-center'>
                 <div>
-                    <Image src="/Images/Homepage/farmer.png" alt="farmer" />
+                    <Image src="/Images/Homepage/farmer.png" alt="farmer" width={436} height={427} />
                 </div>
                 <div className=' place-content-center'>
                     <div className="">

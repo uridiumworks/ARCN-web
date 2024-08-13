@@ -1,3 +1,4 @@
+import Journal from "@/components/Shared/Journal";
 import Bander from "./_components/Bander";
 import Events from "./_components/Events";
 import Institutes from "./_components/Institutes";
@@ -19,6 +20,7 @@ export default function Home() {
       <Review />
       <Events />
       <Partners />
+      <Journal />
     </main>
   );
 }

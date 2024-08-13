@@ -34,7 +34,7 @@ const Maps = () => {
                 </div>
 
                 <div className="mx-auto w-full lg:w-[939px] py-10 ">
-                    <Image src="/Images/Mandatepage/maps.png" alt="maps"/>
+                    <Image src="/Images/Mandatepage/maps.png" alt="maps" width={600} height={400}/>
                 </div>
                 
             </div>

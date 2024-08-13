@@ -3,6 +3,7 @@ import Maps from "@/components/Mandate/Mandate/Maps";
 import Report from "@/components/Mandate/Mandate/Report";
 import Research from "@/components/Mandate/Mandate/Research";
 import Technolody from "@/components/Mandate/Mandate/Technology";
+import Journal from "@/components/Shared/Journal";
 
 const Mandate = () => {
 
@@ -13,6 +14,7 @@ const Mandate = () => {
             <Maps />
             <Report />
             <Technolody />
+            <Journal />
         </main>
     );
 }

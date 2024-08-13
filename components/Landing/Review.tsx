@@ -15,6 +15,7 @@ const Review = () => {
             src="/Images/Homepage/damilola.png"
             alt="Damilola"
             width={86}
+            height={86}
           />
           <p className="font-medium text-xl">
             “Lorem ipsum dolor sit <br />amet consectetur. Nec id sem velit in
@@ -30,7 +31,8 @@ const Review = () => {
           <Image
             src="/Images/Homepage/Haneefah.png"
             alt="Haneefah"
-           
+            width={86}
+            height={86}
           />
           <p className="font-medium text-xl">
             “Lorem ipsum dolor sit <br />amet consectetur. Nec id sem velit in
@@ -47,6 +49,7 @@ const Review = () => {
             src="/Images/Homepage/fuad.png"
             alt="Avatar"
            width={86}
+           height={86}
           />
           <p className="font-medium text-xl">
             “Lorem ipsum dolor sit <br />amet consectetur. Nec id <br />sem velit in

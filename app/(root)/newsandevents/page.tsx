@@ -1,6 +1,7 @@
 import Collection from "@/components/NewsandEvents/News/Collection";
 import New from "@/components/NewsandEvents/News/New";
 import Upcoming from "@/components/NewsandEvents/News/Upcoming";
+import Journal from "@/components/Shared/Journal";
 
 const NewsandEvents = () => {
 
@@ -9,6 +10,7 @@ const NewsandEvents = () => {
             <Collection />
             <New />
             <Upcoming />
+            <Journal />
         </main>
     );
 }
