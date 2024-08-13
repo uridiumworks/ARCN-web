@@ -284,7 +284,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                         <FormLabel>Blog Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {isMounted && <ReactQuill
+                                                {/* {isMounted && <ReactQuill
                                                     // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
@@ -301,7 +301,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />}
+                                                    }} />} */}
                                             </>
                                         </FormControl>
                                         <FormMessage />

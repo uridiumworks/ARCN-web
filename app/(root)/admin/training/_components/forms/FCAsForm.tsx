@@ -283,7 +283,7 @@ const FCAsForm = ({setCreateFCAs}: Props) => {
                                         <FormLabel>Blog Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {isMounted && <ReactQuill
+                                                {/* {isMounted && <ReactQuill
                                                     // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
@@ -300,7 +300,7 @@ const FCAsForm = ({setCreateFCAs}: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />}
+                                                    }} />} */}
                                             </>
                                         </FormControl>
                                         <FormMessage />

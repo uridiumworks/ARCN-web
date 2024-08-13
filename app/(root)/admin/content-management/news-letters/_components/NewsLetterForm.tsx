@@ -147,7 +147,7 @@ const NewsLetterForm = ({setCreateNewNewsletter}: Props) => {
                                 <FormLabel>Blog Post Editor</FormLabel>
                                 <FormControl>
                                     <>
-                                        {isMounted && <ReactQuill
+                                        {/* {isMounted && <ReactQuill
                                             // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
@@ -164,7 +164,7 @@ const NewsLetterForm = ({setCreateNewNewsletter}: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />}
+                                            }} />} */}
                                     </>
                                 </FormControl>
                                 <FormMessage />

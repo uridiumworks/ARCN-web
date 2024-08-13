@@ -114,7 +114,7 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
                                         <FormLabel>Blog Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {isMounted && <ReactQuill
+                                                {/* {isMounted && <ReactQuill
                                                     // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
@@ -131,7 +131,7 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />}
+                                                    }} />} */}
                                             </>
                                         </FormControl>
                                         <FormMessage />

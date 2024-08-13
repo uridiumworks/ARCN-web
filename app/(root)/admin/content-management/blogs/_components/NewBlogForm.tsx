@@ -206,7 +206,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                         <FormLabel>Blog Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {isMounted && <ReactQuill
+                                                {/* {isMounted && <ReactQuill
                                                     // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
@@ -223,7 +223,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />}
+                                                    }} />} */}
                                             </>
                                         </FormControl>
                                         <FormMessage />

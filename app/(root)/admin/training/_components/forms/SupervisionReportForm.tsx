@@ -115,7 +115,7 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
                                 <FormLabel>Blog Post Editor</FormLabel>
                                 <FormControl>
                                     <>
-                                        {isMounted && <ReactQuill
+                                        {/* {isMounted && <ReactQuill
                                             // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
@@ -132,7 +132,7 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />}
+                                            }} />} */}
                                     </>
                                 </FormControl>
                                 <FormMessage />

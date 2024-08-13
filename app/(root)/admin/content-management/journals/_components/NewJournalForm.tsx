@@ -148,7 +148,7 @@ const NewJournalForm = ({setCreateNewJournal}: Props) => {
                                 <FormLabel>Blog Post Editor</FormLabel>
                                 <FormControl>
                                     <>
-                                        {isMounted && <ReactQuill
+                                        {/* {isMounted && <ReactQuill
                                             // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
@@ -165,7 +165,7 @@ const NewJournalForm = ({setCreateNewJournal}: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />}
+                                            }} />} */}
                                     </>
                                 </FormControl>
                                 <FormMessage />
