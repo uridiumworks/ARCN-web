@@ -9,8 +9,6 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FiUploadCloud } from 'react-icons/fi';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -31,11 +29,6 @@ const formSchema = z.object({
 })
 
 const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
-    const reactQuillRef = useRef<any>(null)
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -114,8 +107,8 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
                                 <FormLabel>Blog Post Editor</FormLabel>
                                 <FormControl>
                                     <>
-                                        {isMounted && <ReactQuill
-                                            ref={reactQuillRef}
+                                        {/* {isMounted && <ReactQuill
+                                            // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
                                             onChange={field.onChange}
@@ -131,7 +124,7 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />}
+                                            }} />} */}
                                     </>
                                 </FormControl>
                                 <FormMessage />
