@@ -10,7 +10,7 @@ const Navbar = (props: Props) => {
     return (
         <div className='flex items-center justify-between px-20 py-3 bg-[#000]'>
             <div>
-                <Image src="/Images/logo.png" width={150} height={71} alt="" />
+                <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
             </div>
             <div className='text-center'>
                 <div className='flex justify-center items-center gap-4 text-white'>
