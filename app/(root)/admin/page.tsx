@@ -1,15 +1,15 @@
 
 import React from 'react'
-import ResearchPageView from './research/page'
+import AdminDashboard from './dashboard/page'
 
 
 
-const AdminDashboard = () => {
+const Admin = () => {
     return (
         <>
-            <ResearchPageView/>
+            <AdminDashboard/>
         </>
     )
 }
 
-export default AdminDashboard
+export default Admin
