@@ -34,13 +34,11 @@ const Value = () => {
                     </div>
                     
                     <div className="flex flex-col md:flex-row gap-5 justify-evenly">
-                        
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">  
                             <Image src="/Images/Aboutpage/Pink.png" alt="Pink" width={64} height={64} />
                             <p className="font-bold text-xl">Seamlessness</p>
                             <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
                         </div>
-
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
                             <Image src="/Images/Aboutpage/Purple.png" alt="Purple" width={64} height={64} />
                             <p className="font-bold text-xl">Collaboration</p>

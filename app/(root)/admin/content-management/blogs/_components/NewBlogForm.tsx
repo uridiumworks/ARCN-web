@@ -10,8 +10,6 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FiUploadCloud } from 'react-icons/fi';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { Checkbox } from '@/components/ui/checkbox';
 
 interface Props {
@@ -34,12 +32,6 @@ const formSchema = z.object({
 })
 
 const NewBlogForm = ({ setCreateNewBlog }: Props) => {
-    const reactQuillRef = useRef<any>(null)
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -79,6 +71,37 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
     //       const quill = reactQuillRef.current.getEditor();
     //       const range = quill.getSelection();
     //       quill.insertEmbed(range.index, 'image', imageUrl);
+    //     };
+    //   };
+
+    // const imageHandler = async () => {
+    //     const input = document.createElement('input');
+    //     input.setAttribute('type', 'file');
+    //     input.setAttribute('accept', 'image/*');
+    //     input.click();
+    
+    //     input.onchange = async () => {
+    //       const file = input.files?.[0];
+    //       if (!file) return;
+    
+    //       const formData = new FormData();
+    //       formData.append('file', file);
+    
+    //       // Upload the image to your server or cloud storage
+    //       const uploadUrl = 'YOUR_UPLOAD_URL'; // Replace with your upload URL
+    //       const response = await fetch(uploadUrl, {
+    //         method: 'POST',
+    //         body: formData,
+    //       });
+    
+    //       const data = await response.json();
+    //       const imageUrl = data.url; // Adjust based on your response structure
+    
+    //       // Create a new HTML string with the image included
+    //       const newValue = `${field.value}<img src="${imageUrl}" alt="Image" />`;
+          
+    //       // Update the editor's value
+    //       field.onChange(newValue);
     //     };
     //   };
 
@@ -174,8 +197,8 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                         <FormLabel>Blog Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {isMounted && <ReactQuill
-                                                    ref={reactQuillRef}
+                                                {/* {isMounted && <ReactQuill
+                                                    // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
                                                     onChange={field.onChange}
@@ -191,7 +214,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />}
+                                                    }} />} */}
                                             </>
                                         </FormControl>
                                         <FormMessage />
