@@ -1,14 +1,26 @@
 "use client";
 
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import BlogTable from './table/BlogTable'
 import { Blogscolumns } from './table/column'
 import { data } from './table/dummyData'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import { BsxSchoolIcon, Calendaricon, HealthIcon, JournalIcon, MarketResearchIcon, MaterialSymbols } from '@/assets/icons';
+import { useDashboardData } from '@/hooks/Dashboard.hooks';
 
 const ViewBlogDashboard = () => {
+    const [token, setToken] = useState<string | null>(null)
+    const {loading, dashboard, error} = useDashboardData(token)
+
+    console.log(dashboard)
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    },[])
+
+    if (loading ) return <p>Loading....</p>
     return (
         <>
             <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
@@ -27,8 +39,8 @@ const ViewBlogDashboard = () => {
                         <div className='w-full h-full border-2 border-[#d1d9e2] p-5 flex justify-between items-start'>
                             <div className='w-fit h-full'>
                                 <p className='text-lg text-[#667582]'>Total NARIS</p>
-                                <p className='text-2xl text-[#667582]'>645.48</p>
-                                <p className='text-md text-[#667582]'>+2% monthly growth</p>
+                                <p className='text-2xl text-[#667582]'>{dashboard?.totalNARs}</p>
+                                <p className='text-md text-[#667582]'>{dashboard?.narGrowth > 0 ? `+${dashboard?.narGrowth}` : dashboard?.narGrowth}% monthly growth</p>
                             </div>
                             <div className='w-fit h-fit p-2 bg-[#d6e8be] rounded-md'>
                                 <MarketResearchIcon className="scale-95 text-[#2E7636]"/>
