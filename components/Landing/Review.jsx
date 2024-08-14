@@ -15,6 +15,7 @@ const Review = () => {
             src="/Images/Homepage/damilola.png"
             alt="Damilola"
             width={86}
+            height={86}
           />
           <p className="font-medium text-xl">
             “Lorem ipsum dolor sit <br />amet consectetur. Nec id sem velit in
@@ -29,7 +30,7 @@ const Review = () => {
         <div className="border rounded-md h-[600px] text-black bg-[#BCF5C5] p-8  ">
           <Image
             src="/Images/Homepage/Haneefah.png"
-            alt="Haneefah"
+            alt="Haneefah" height={86} width={86}
            
           />
           <p className="font-medium text-xl">
@@ -46,7 +47,7 @@ const Review = () => {
           <Image
             src="/Images/Homepage/fuad.png"
             alt="Avatar"
-           width={86}
+           width={86} height={86}
           />
           <p className="font-medium text-xl">
             “Lorem ipsum dolor sit <br />amet consectetur. Nec id <br />sem velit in

@@ -52,7 +52,7 @@ const News = () => {
             </div>
 
               <div className="">
-                <Image src="/Images/Homepage/Overlay.png" alt="Overlay" width={216.26} />
+                <Image src="/Images/Homepage/Overlay.png" alt="Overlay" width={216.26} height={216.26} />
               </div>
             </div>
           </div>
