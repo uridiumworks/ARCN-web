@@ -11,6 +11,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FiUploadCloud } from 'react-icons/fi';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useBlogsData, useCreateBlog } from '@/hooks/Blogs.hooks';
+import ButtonSpinner from '@/components/Shared/ButtonSpinner';
 
 interface Props {
     setCreateNewBlog: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,6 +34,11 @@ const formSchema = z.object({
 })
 
 const NewBlogForm = ({ setCreateNewBlog }: Props) => {
+    const [token, setToken] = useState<string | null>(null)
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const { createBlog, data, loading: createLoading, error: createError } = useCreateBlog(token)
+    const { loading, blogs, error } = useBlogsData(token, triggerRefetch)
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -47,6 +54,18 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
             bannerUsage: false,
         },
     });
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    }, [])
+
+
+    useEffect(() => {
+        if (data) {
+            setTriggerRefetch(true)
+        }
+    }, [data])
 
     // const imageHandler = () => {
     //     const input:any = document.createElement('input');
@@ -79,27 +98,27 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
     //     input.setAttribute('type', 'file');
     //     input.setAttribute('accept', 'image/*');
     //     input.click();
-    
+
     //     input.onchange = async () => {
     //       const file = input.files?.[0];
     //       if (!file) return;
-    
+
     //       const formData = new FormData();
     //       formData.append('file', file);
-    
+
     //       // Upload the image to your server or cloud storage
     //       const uploadUrl = 'YOUR_UPLOAD_URL'; // Replace with your upload URL
     //       const response = await fetch(uploadUrl, {
     //         method: 'POST',
     //         body: formData,
     //       });
-    
+
     //       const data = await response.json();
     //       const imageUrl = data.url; // Adjust based on your response structure
-    
+
     //       // Create a new HTML string with the image included
     //       const newValue = `${field.value}<img src="${imageUrl}" alt="Image" />`;
-          
+
     //       // Update the editor's value
     //       field.onChange(newValue);
     //     };
@@ -109,6 +128,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        await createBlog(values)
     }
     return (
         <div>
@@ -249,7 +269,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                     name="authorEmail"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{`Author's Name`}</FormLabel>
+                                            <FormLabel>{`Author's Email`}</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
@@ -354,7 +374,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                         </div>
                                     )}
                                 />
-                                <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Publish</span></Button>
+                                <Button type="submit" disabled={createLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{createLoading ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
                             </div>
                         </div>
                     </div>

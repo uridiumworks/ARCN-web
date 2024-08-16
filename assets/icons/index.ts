@@ -14,3 +14,5 @@ export { default as SettingsIcon} from "./material-symbols-light_settings-outlin
 export { default as LogoutIcon} from "./exit.svg";
 export { default as NotificationIcon} from "./Notifcation.svg";
 export { default as ArrowDownIcon} from "./Chevron Down.svg";
+export { default as EditIcon} from "./tabler_edit.svg";
+export { default as RedDeleteIcon} from "./material-symbols_delete-outline.svg";

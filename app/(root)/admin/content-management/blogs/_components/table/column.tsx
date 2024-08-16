@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
 import { ContentManagementBlogsTableType } from "./types";
 import { Checkbox } from "@/components/ui/checkbox";
+import BlogAction from "../dropdowns/BlogAction";
 
 
 
@@ -44,7 +45,7 @@ export const ContentManagementBlogscolumns: ColumnDef<ContentManagementBlogsTabl
       header: "Action",
       cell: ({ row }) => {
         const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        return <BlogAction blogData={blogData}/>;
       },
     },
   ];
