@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FiUploadCloud } from 'react-icons/fi';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useBlogsData, useCreateBlog } from '@/hooks/Blogs.hooks';
 
 interface Props {
     setCreateNewBlog: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,6 +33,11 @@ const formSchema = z.object({
 })
 
 const NewBlogForm = ({ setCreateNewBlog }: Props) => {
+    const [token, setToken] = useState<string | null>(null)
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const {createBlog, data, loading: createLoading, error:createError } = useCreateBlog(token)
+    const {loading, blogs, error} = useBlogsData(token, triggerRefetch)
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -47,6 +53,18 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
             bannerUsage: false,
         },
     });
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    },[])
+
+
+    useEffect(() => {
+       if(data){
+        setTriggerRefetch(true)
+       }
+    },[data])
 
     // const imageHandler = () => {
     //     const input:any = document.createElement('input');
@@ -109,6 +127,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+      await createBlog(values)
     }
     return (
         <div>
@@ -249,7 +268,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                     name="authorEmail"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{`Author's Name`}</FormLabel>
+                                            <FormLabel>{`Author's Email`}</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
