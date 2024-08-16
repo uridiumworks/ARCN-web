@@ -13,6 +13,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useBlogData, useUpdateBlog } from '@/hooks/Blogs.hooks';
 import { useRouter } from 'next/navigation';
+import ButtonSpinner from '@/components/Shared/ButtonSpinner';
 
 
 
@@ -388,7 +389,7 @@ const UpdateBlog = ({ params }: Props) => {
                                                 </div>
                                             )}
                                         />
-                                        <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Publish</span></Button>
+                                        <Button type="submit" disabled={updateLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{updateLoading ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
                                     </div>
                                 </div>
                             </div>
