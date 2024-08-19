@@ -1,41 +1,31 @@
-import { getAPI } from "@/lib/Axios";
-import { useEffect, useState } from "react";
+import { getAPI } from "@/lib/Axios"
+import { useEffect, useState } from "react"
+
 
 const useDashboardData = (token: string | null) => {
-    const [dashboard, setDashboard] = useState<any>(() => {
-        const savedData = localStorage.getItem("dashboardData");
-        return savedData ? JSON.parse(savedData) : [];
-    });
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const [dashboard, setDashboard] = useState<any>([])
+    const [loading, setLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        async function fetchDashboard() {
+        async function fetchDashboard(){
             try {
-                setLoading(true);
-                setError(null);
+                setLoading(true)
+                setError(null)
+                const response: any = await getAPI("odata/GetDashboardData", token as any)
 
-                const response: any = await getAPI("odata/GetDashboardData", token as any);
-
-                
-                setDashboard(response);
-                localStorage.setItem("dashboardData", JSON.stringify(response)); // Save to localStorage
+                console.log(response)
+                setDashboard(response)
                 
             } catch (error: any) {
-                setLoading(false);
-                setError(error.message);
-            } finally {
-                setLoading(false);
+                setLoading(false)
+                setError(error)
             }
         }
+        fetchDashboard()
+    },[token])
+    return {loading, error, dashboard}
+    
+}
 
-        // Only fetch data if it's not in localStorage
-        if (!localStorage.getItem("dashboardData")) {
-            fetchDashboard();
-        }
-    }, [token]);
-
-    return { loading, error, dashboard };
-};
-
-export { useDashboardData };
+export {useDashboardData}
