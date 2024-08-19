@@ -9,20 +9,20 @@ const News = () => {
       <div  className=" flex flex-col lg:w-[1200px] lg:flex-row gap-20">
         <div className="space-y-10 pt-20">
           <h1 className="font-bold text-base">Journals</h1>
-          <div className="flex flex-col lg:flex-row gap-2 border border-[1.08] border-[#E8E8E8] p-3 bg-[#FFFFFFCC] rounded-[12.91px]">
+          <div className="flex flex-col lg:flex-row items-center justify-center border border-[1.08] border-[#E8E8E8] p-3 bg-[#FFFFFFCC] rounded-[12.91px]">
 
-            <div className="flex flex-row-reverse">
+            <div className="flex flex-row-reverse gap-0.5">
               <div>
                 <Image src="/Images/Homepage/Books.png" alt="Books" width={216.26} height={216.26} className="rounded-2xl" />
               </div>
               <div>
                 <h1 className="font-normal text-[21px]">ARCN JOURNAL.</h1>
                 <p className="font-normal text-sm text-[#999999]">
-                  ARCN plays a pivotal role in the dissemination of cutting-edge
-                  <br />research through its <br />published journals. These journals serve as
-                  a platform for researchers  <br />from diverse fields and various
-                  institutes to share their findings, insights, and innovations
-                  with the global academic community.
+                  ARCN plays a pivotal role in the dissemination of <br />cutting-edge
+                  research through its published journals. <br />These journals serve as
+                  a platform for researchers from diverse fields and various
+                  institutes to share their<br /> findings, insights, and innovations
+                  with the global<br /> academic community.
                 </p>
                 <div className="font-medium text-[13px] py-4 text-[#30A85F]">
                   <button className="border py-2 px-5 bg-[#0C513F0D]">
@@ -38,12 +38,11 @@ const News = () => {
             <div>
               <h1 className="font-normal text-[21px]">ARCN NEWSLETTER</h1>
               <p className="font-normal text-sm text-[#999999]">
-                We are delighted to bring you the latest updates and highlights
-                from ARCN, where
-                groundbreaking research meets global collaboration. Our
-                newsletters serve as a conduit for sharing cutting-edge
-                discoveries and insights that shape the future of science,
-                technology, and beyond.
+                We are delighted to bring you the latest updates and<br /> highlights
+                from ARCN, where groundbreaking research <br />meets global
+                collaboration. Our newsletters serve as a <br />conduit for sharing
+                cutting-edge discoveries and insights that shape the future
+                of science,technology, and beyond.
               </p>
               <div className="font-medium text-[13px] py-4 text-[#30A85F]">
                 <button className="border py-2 px-5 bg-[#0C513F0D]">

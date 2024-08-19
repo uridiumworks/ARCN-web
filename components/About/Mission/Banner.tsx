@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import "./style.css"
 const Banner = () => {
     return (
         <main className="w-full border-2 picker h-[551px] place-content-center text-center">

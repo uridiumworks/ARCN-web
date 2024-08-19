@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 
-
 const Technolody = () => {
     return (
         <main>
@@ -11,10 +10,9 @@ const Technolody = () => {
                     <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque <br />montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit semper cras sed duis tortor <br />tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>
                 </div>
 
-                <div className="p-3 lg:w-[1200px] mx-auto flex flex-col md:flex-row gap-3 border-2">
-
+                <div className="p-3 lg:w-[100%] mx-auto grid grid-cols-1 md:grid-cols-4 gap-3">
                     <div className="relative">
-                        <Image src="/Image/Mandatepage/Casava.png" alt="" width={368} height={200} />
+                        <Image src="/Image/Mandatepage/Casava.png" alt="casava" width={368} height={200} />
                         <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
                             <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                             <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
@@ -22,7 +20,7 @@ const Technolody = () => {
                     </div>
 
                     <div className="relative">
-                        <Image src="/Image/Mandatepage/Soybeans.png" alt="" width={368} height={310} />
+                        <Image src="/Image/Mandatepage/Soybeans.png" alt="soybeans" width={368} height={310} />
                         <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
                             <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                             <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
@@ -30,7 +28,7 @@ const Technolody = () => {
                     </div>
 
                     <div className="relative">
-                        <Image src="/Image/Mandatepage/Beans.png" alt="" width={368} height={310} />
+                        <Image src="/Image/Mandatepage/Beans.png" alt="beans" width={368} height={310} />
                         <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
                             <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                             <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
@@ -38,7 +36,7 @@ const Technolody = () => {
                     </div>
 
                     <div className="relative">
-                        <Image src="/Image/Mandatepage/Grains.png" alt="" width={368} height={310} />
+                        <Image src="/Image/Mandatepage/Grains.png" alt="grains" width={368} height={310} />
                         <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
                             <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                             <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
