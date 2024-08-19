@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(root)/about/layoutProvider.tsx", "app/(root)/about/layout.tsx", "app/(root)/layout.tsx", "app/(root)/mandate/layoutProvider.tsx", "app/(root)/mandate/layout.tsx", "components/index.js", "app/layout.ts"],
   "exclude": ["node_modules"]
 }
