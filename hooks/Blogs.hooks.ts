@@ -56,7 +56,7 @@ const useBlogData = (
       }
     }
     fetchDashboard();
-  }, [token, triggerRefetch]);
+  }, [token, triggerRefetch, id]);
 
   return { loading, error, blog };
 };

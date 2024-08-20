@@ -4,11 +4,14 @@ import Image from "next/image";
 
 const Research = () => {
   return (
-    <main className="gap-1.5 p-5 w-full flex flex-col lg:flex-row mx-auto lg:w-[900px]">
-      <div className="lg:w-1/2 space-y-4">
+    <main className="flex flex-col gap-4 p-5 w-full lg:flex-row mx-auto lg:w-[900px]">
+      {/* Left Column */}
+      <div className="lg:w-1/2 space-y-8">
         <div className="p-3">
-          <h1 className="font-semibold text-[30px] md:text-[50px]">Our Core Areas</h1>
-          <p className="font-normal text-lg">
+          <h1 className="font-semibold text-[28px] md:text-[40px] lg:text-[50px]">
+            Our Core Areas
+          </h1>
+          <p className="font-normal text-base md:text-lg">
             Lorem ipsum dolor sit amet consectetur. Egestas luctus augue
             faucibus nullam rutrum sed. Nibh eu adipiscing lectus diam magna.
             Nulla gravida dolor magnis faucibus purus. Tortor tortor interdum in
@@ -17,41 +20,64 @@ const Research = () => {
           </p>
         </div>
 
-        <div className="relative w-full px-5 ">
-          <Image src="/Images/Homepage/Search.png" alt="Search" width={568} height={596} />
-          <div className='flex border border-hidden py-2 px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-[16px]'>
+        <div className="relative w-full px-3 md:px-5">
+          <Image
+            src="/Images/Homepage/Search.png"
+            alt="Search"
+            width={568}
+            height={596}
+            className="w-full h-auto object-cover"
+          />
+          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
             <p>Agricultural Research</p>
-            <FaCaretRight />
+            <FaCaretRight className="ml-2" />
           </div>
         </div>
 
-        <div className="relative w-full px-5 ">
-          <Image src="/Images/Homepage/Planting.png" alt="Planting" width={568} height={596} />
-          <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
+        <div className="relative w-full px-3 md:px-5">
+          <Image
+            src="/Images/Homepage/Planting.png"
+            alt="Planting"
+            width={568}
+            height={596}
+            className="w-full h-auto object-cover"
+          />
+          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
             <p>Extension Services</p>
-            <FaCaretRight />
+            <FaCaretRight className="ml-2" />
           </div>
         </div>
-
       </div>
 
-      <div className='lg:w-1/2 pt-28 space-y-4'>
-        <div className="relative w-full px-5 ">
-          <Image src="/Images/Homepage/Discuss.png" alt="Discuss" width={568} height={596} />
-          <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
+      {/* Right Column */}
+      <div className="lg:w-1/2 pt-14 space-y-8">
+        <div className="relative w-full px-3 md:px-5">
+          <Image
+            src="/Images/Homepage/Discuss.png"
+            alt="Discuss"
+            width={568}
+            height={596}
+            className="w-full h-auto object-cover"
+          />
+          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
             <p>Agricultural Training</p>
-            <FaCaretRight />
-          </div>  
-        </div>
-
-        <div className="relative w-full px-5 ">
-          <Image src="/Images/Homepage/Record.png" alt="Record" width={568} height={596} />
-          <div className='flex border border-hidden absolute bottom-5 rounded-[88px] py-2 px-5 bg-[#000000B2] place-self-start items-center text-white font-medium text-[16px]'>
-            <p>Agricultural Innovations</p>
-            <FaCaretRight />
+            <FaCaretRight className="ml-2" />
           </div>
         </div>
 
+        <div className="relative w-full px-3 md:px-5">
+          <Image
+            src="/Images/Homepage/Record.png"
+            alt="Record"
+            width={568}
+            height={596}
+            className="w-full h-auto object-cover"
+          />
+          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
+            <p>Agricultural Innovations</p>
+            <FaCaretRight className="ml-2" />
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -18,38 +18,38 @@ const Footer = () => {
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-5 '>
 
                     <div>
-                        <h2 className='mb-4 lg:text-lg text-lg font-semibold dark:text-white font-DM_Sans'>Company</h2>
-                        <ul className="mb-4 text-base font-normal lg:text-sm">
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Home</li>
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>About Us</li>
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Services</li>
+                        <h2 className="mb-4 text-lg lg:text-xl font-semibold">Company</h2>
+                        <ul className="text-base lg:text-sm">
+                            <li className="mb-4"><a href="#">Home</a></li>
+                            <li className="mb-4"><a href="#">About Us</a></li>
+                            <li className="mb-4"><a href="#">Services</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h2 className='mb-4 lg:text-lg text-xl font-semibold dark:text-white font-DM_Sans'>Our Services</h2>
-                        <ul className="mb-4 text-base font-normal lg:text-sm">
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Research</li>
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Training</li>
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Extension</li>
+                        <h2 className="mb-4 text-lg lg:text-xl font-semibold">Our Services</h2>
+                        <ul className="text-base lg:text-sm">
+                            <li className="mb-4"><a href="#">Research</a></li>
+                            <li className="mb-4"><a href="#">Training</a></li>
+                            <li className="mb-4"><a href="#">Extension</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h2 className='mb-4 lg:text-lg text-xl font-semibold dark:text-white font-DM_Sans'>Publications</h2>
-                        <ul className="mb-4 text-base font-normal lg:text-sm">
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Research papers</li>
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Reports</li>
-                        <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Newsletter</li>
+                        <h2 className="mb-4 text-lg lg:text-xl font-semibold">Publications</h2>
+                        <ul className="text-base lg:text-sm">
+                            <li className="mb-4"><a href="#">Research papers</a></li>
+                            <li className="mb-4"><a href="#">Reports</a></li>
+                            <li className="mb-4"><a href="#">Newsletter</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h2 className="mb-4 text-lg font-semibold font-DM_Sans">Social Profiles</h2>
-                        <div className="flex gap-5">
-                        <a href="/" target="_blank"><img src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
-                        <a href="/" target="_blank"><img src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
-                        <a href="/" target="_blank"><img src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a >
+                        <h2 className="mb-4 text-lg font-semibold">Social Profiles</h2>
+                        <div className="flex gap-5 justify-center lg:justify-start">
+                            <a href="/" target="_blank"><img src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><img src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><img src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a>
                         </div>
                     </div>
                 </div>
