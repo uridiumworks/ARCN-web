@@ -3,7 +3,7 @@ import { CircleCheck } from 'lucide-react'
 
 const AgriculturalBusiness = () => {
     return (
-        <section className='w-full'>
+        <section className='w-full font-montserrat'>
             <div className='bg-black h-[390px] text-white flex justify-between' >
                 <div className='space-y-8 py-24 px-32'>
                     <h2 className='font-bold text-2xl text-[32px]'>Agricultural Business & Entrepreneurship</h2>

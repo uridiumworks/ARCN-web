@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const AccountUnit = () => {
   return (
-    <section className='w-full'>
+    <section className='w-full '>
     <div className='bg-black h-[400px] flex justify-between' >
         <div className='space-y-8 py-24 px-32 text-white'>
             <h2 className='font-bold text-2xl text-[32px]'>Finance and Account Unit</h2>
