@@ -7,12 +7,11 @@ const Impact = () => {
                         Impacts Based On Numbers
                     </h1>
 
-                    <div className="flex flex-col md:flex-row justify-center gap-6 mx-auto w-full md:w-[90%] lg:w-[900px]">
-                        <div className="border border-[#409A72] bg-[#409A72] w-full md:w-[191px] h-[121px] rounded-lg text-center flex flex-col justify-center">
-                            <h1 className="text-[#FBBA03] text-2xl lg:text-4xl font-semibold">638</h1>
-                            <p className="text-[#FFFFFF] text-sm lg:text-base font-normal">
-                                Agricultural <br /> Innovations
-                            </p>
+                    <div className="flex flex-col md:flex-row w-ful lg:w-[900px] mx-auto justify-center gap-6">
+
+                        <div className="border border-[#409A72] bg-[#409A72] w-[191px] h-[121px] rounded-lg text-center place-content-center">
+                            <h1 className="text-[#FBBA03] text-4xl font-semibold">638</h1>
+                            <p className="text-[#FFFFFF] text-base font-normal">Agricultural <br/>Innovations</p>
                         </div>
 
                         <div className="border border-[#409A72] bg-[#409A72] w-full md:w-[255px] h-[121px] rounded-lg text-center flex flex-col justify-center">

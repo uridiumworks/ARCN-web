@@ -9,8 +9,9 @@ const Review = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div className="border rounded-md bg-[#96E3E1] p-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 space-y- gap-5">
+
+        <div className="border rounded-md h-[600px] bg-[#96E3E1] p-8 ">
           <Image
             src="/Images/Homepage/damilola.png"
             alt="Damilola"
