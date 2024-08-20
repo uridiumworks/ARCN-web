@@ -32,54 +32,55 @@ const News = () => {
             </div>
 
           </div>
-        <div>
-          <div className="flex flex-col lg:flex-row border border-[1.08] border-[#E8E8E8] bg-[#FFFFFFCC] rounded-[12.91px] p-3 gap-2">
-            <div>
-              <h1 className="font-normal text-[21px]">ARCN NEWSLETTER</h1>
-              <p className="font-normal text-sm text-[#999999]">
-                We are delighted to bring you the latest updates and highlights
-                from ARCN, where groundbreaking research meets global
-                collaboration. Our newsletters serve as a conduit for sharing
-                cutting-edge discoveries and insights that shape the future
-                of science, technology, and beyond.
-              </p>
-              <div className="font-medium text-sm lg:text-[13px] py-4 text-[#30A85F]">
-                <button className="border py-2 px-5 bg-[#0C513F0D]">
-                  Check Newsletters
-                </button>
+          <div>
+            <div className="flex flex-col lg:flex-row border border-[1.08] border-[#E8E8E8] bg-[#FFFFFFCC] rounded-[12.91px] p-3 gap-2">
+              <div>
+                <h1 className="font-normal text-[21px]">ARCN NEWSLETTER</h1>
+                <p className="font-normal text-sm text-[#999999]">
+                  We are delighted to bring you the latest updates and highlights
+                  from ARCN, where groundbreaking research meets global
+                  collaboration. Our newsletters serve as a conduit for sharing
+                  cutting-edge discoveries and insights that shape the future
+                  of science, technology, and beyond.
+                </p>
+                <div className="font-medium text-sm lg:text-[13px] py-4 text-[#30A85F]">
+                  <button className="border py-2 px-5 bg-[#0C513F0D]">
+                    Check Newsletters
+                  </button>
+                </div>
+              </div>
+              <div className="lg:w-1/2">
+                <Image
+                  src="/Images/Homepage/Overlay.png"
+                  alt="Overlay"
+                  width={216}
+                  height={216}
+                  className="mx-auto lg:mx-0"
+                />
               </div>
             </div>
-            <div className="lg:w-1/2">
-              <Image
-                src="/Images/Homepage/Overlay.png"
-                alt="Overlay"
-                width={216}
-                height={216}
-                className="mx-auto lg:mx-0"
-              />
-            </div>
           </div>
-        </div>
 
-        <div className="w-full md:w-[1000px] space-y-3 h-fit">
-          <h1 className="font-bold text-2xl text-[#333333]">News Alert</h1>
-          <div>
+          <div className="w-full md:w-[1000px] space-y-3 h-fit">
+            <h1 className="font-bold text-2xl text-[#333333]">News Alert</h1>
             <div>
-              <Image src="/Images/Homepage/Horizontal.png" alt="Horizontal" width={574} height={298.96} />
-            </div>
-            <p className="font-semibold text-lg lg:text-[32px] border-b-2 w-fit">
-              Nature-positive farms on remote hillsides in India show the future
-              of resilient farming
-            </p>
-            <div className="space-y-2">
-              <p className="font-medium text-sm lg:text-[21px] border-b-2">
+              <div>
+                <Image src="/Images/Homepage/Horizontal.png" alt="Horizontal" width={574} height={298.96} />
+              </div>
+              <p className="font-semibold text-lg lg:text-[32px] border-b-2 w-fit">
                 Nature-positive farms on remote hillsides in India show the future
                 of resilient farming
               </p>
-              <p className="font-medium text-sm lg:text-[21px]">
-                Nature-positive farms on remote hillsides in India show the future
-                of resilient farming
-              </p>
+              <div className="space-y-2">
+                <p className="font-medium text-sm lg:text-[21px] border-b-2">
+                  Nature-positive farms on remote hillsides in India show the future
+                  of resilient farming
+                </p>
+                <p className="font-medium text-sm lg:text-[21px]">
+                  Nature-positive farms on remote hillsides in India show the future
+                  of resilient farming
+                </p>
+              </div>
             </div>
           </div>
         </div>
