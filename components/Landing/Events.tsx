@@ -8,9 +8,8 @@ const Events = () => {
             
             <div className='w-full py-9 flex flex-col lg:flex-row place-content-evenly'>
                 <div className='space-y-8'>
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border p-4 rounded-xl flex flex-col-reverse md:flex-row-reverse gap-2'>
                         <div>
-                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                             <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                         </div>
                         <div className='space-y-4'>
@@ -27,7 +26,7 @@ const Events = () => {
                         </div>
                     </div>
 
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border p-4 rounded-xl flex flex-col-reverse md:flex-row-reverse gap-2'>
                         <div>
                             <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                         </div>
@@ -47,7 +46,7 @@ const Events = () => {
                 </div>
 
                 <div className="space-y-8">
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border p-4 rounded-xl flex flex-col-reverse md:flex-row-reverse gap-2'>
                         <div>
                             <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201}  className="rounded-[13.4px]" />
                         </div>
@@ -65,7 +64,7 @@ const Events = () => {
                         </div>
                     </div>
 
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2 '>
+                    <div className='border p-4 rounded-xl flex flex-col-reverse md:flex-row-reverse gap-2 '>
                         <div className="rounded-2xl">
                             <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                         </div>

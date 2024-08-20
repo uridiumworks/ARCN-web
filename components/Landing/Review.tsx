@@ -8,7 +8,7 @@ const Review = () => {
         <h1 className="font-bold text-[40px]">Reveiws By Research Institutes</h1>
       </div>
 
-      <div className="grid grid-cols-3 space-y- gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 space-y- gap-5">
 
         <div className="border rounded-md h-[600px] bg-[#96E3E1] p-8 ">
           <Image

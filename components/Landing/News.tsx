@@ -11,7 +11,7 @@ const News = () => {
           <h1 className="font-bold text-base">Journals</h1>
           <div className="flex flex-col lg:flex-row items-center justify-center border border-[1.08] border-[#E8E8E8] p-3 bg-[#FFFFFFCC] rounded-[12.91px]">
 
-            <div className="flex flex-row-reverse gap-0.5">
+            <div className="flex flex-col-reverse lg:flex-row-reverse gap-0.5">
               <div>
                 <Image src="/Images/Homepage/Books.png" alt="Books" width={216.26} height={216.26} className="rounded-2xl" />
               </div>
@@ -57,7 +57,7 @@ const News = () => {
           </div>
         </div>
 
-        <div className=" w-[1000px] space-y-3 h-fit">
+        <div className="w-full md:w-[1000px] space-y-3 h-fit">
           <h1 className="font-bold text-2xl text-[#333333]">News Alert</h1>
           <div>
             <div>

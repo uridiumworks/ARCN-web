@@ -3,20 +3,20 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Footer = () => {
     return (
-        <main className="lg:h-[506px] bg-[#121212] text-center  space-y-5 text-white">
-            <div className='flex flex-col lg:flex-row '>
-                <div>
+        <main className="lg:h-[506px] bg-[#121212] space-y-5 text-white">
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 justify-center p-10 '>
+                <div className='space-y-7'>
                     <div>
                         <Image src="/Images/logo.png" width={212} height={71.47} alt="logo" />
                     </div>
-                    <p className='font-normal text-sm'>The mandate of ARCN is to coordinate,<br /> supervise and regulate agricultural <br />research,training and extension in the National<br /> Agricultural Research Institutes (NARIs) and <br />Federal Colleges of Agriculture (FCAs).</p>
-                    <div className='flex object-center gap-2.5 items-center'>
-                        <IoLocationSharp />
+                    <p className='font-normal text-sm'>The mandate of ARCN is to coordinate, <br />supervise and regulate agricultural<br /> research,training and extension in the National <br />Agricultural Research Institutes (NARIs) and <br />Federal Colleges of Agriculture (FCAs).</p>
+                    <div className='flex object-center gap-1.5 items-center'>
+                        <IoLocationSharp className='size-6' />
                         <p className='font-medium text-sm'>Agricultural Research House, Plot 223D <br />Cadastral Zone B6, Mabushi, Abuja</p>
                     </div>
                 </div>
-                
-                {/* <div className='text-white flex flex-col lg:flex-row'>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-5 '>
+
                     <div>
                         <h2 className='mb-4 lg:text-lg text-lg font-semibold dark:text-white font-DM_Sans'>Company</h2>
                         <ul className="mb-4 text-base font-normal lg:text-sm">
@@ -25,6 +25,7 @@ const Footer = () => {
                         <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Services</li>
                         </ul>
                     </div>
+
                     <div>
                         <h2 className='mb-4 lg:text-lg text-xl font-semibold dark:text-white font-DM_Sans'>Our Services</h2>
                         <ul className="mb-4 text-base font-normal lg:text-sm">
@@ -33,6 +34,7 @@ const Footer = () => {
                         <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Extension</li>
                         </ul>
                     </div>
+
                     <div>
                         <h2 className='mb-4 lg:text-lg text-xl font-semibold dark:text-white font-DM_Sans'>Publications</h2>
                         <ul className="mb-4 text-base font-normal lg:text-sm">
@@ -41,6 +43,7 @@ const Footer = () => {
                         <li className="mb-4 text-base font-normal font-DM_Sans" ><a href="#"></a>Newsletter</li>
                         </ul>
                     </div>
+
                     <div>
                         <h2 className="mb-4 text-lg font-semibold font-DM_Sans">Social Profiles</h2>
                         <div className="flex gap-5">
@@ -49,10 +52,14 @@ const Footer = () => {
                         <a href="/" target="_blank"><img src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a >
                         </div>
                     </div>
-                </div> */}
+                </div>
               
             </div>
-            <hr className='border-2 border-red-500' />
+            <hr className='border border-white' />
+
+            <div className='text-center p-3 text-sm font-normal'>
+                <h1>© 2024 ARCN. All rights reserved.</h1>
+            </div>
         </main>
     )
 }
