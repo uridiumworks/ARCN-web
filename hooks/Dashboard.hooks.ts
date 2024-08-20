@@ -13,8 +13,10 @@ const useDashboardData = (token: string | null) => {
                 setLoading(true)
                 setError(null)
                 const response: any = await getAPI("odata/GetDashboardData", token as any)
+
                 console.log(response)
                 setDashboard(response)
+                
             } catch (error: any) {
                 setLoading(false)
                 setError(error)
