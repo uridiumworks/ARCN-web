@@ -7,7 +7,7 @@ const Super = () => {
     return ( 
         <main>
             <div>
-                <div className="place-content-center text-center space-y-7 py-10">
+                <div className="place-content-center text-center space-y-7 py-10 font-montserrat">
                     <h1 className="font-bold text-4xl">Supervision Report</h1>
                     <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque <br />montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit semper cras sed duis tortor <br />tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>
                 </div>

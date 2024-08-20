@@ -5,7 +5,7 @@ const Technolody = () => {
     return (
         <main>
             <div>
-                <div className="place-content-center text-center p-9 space-y-4">
+                <div className="place-content-center text-center p-9 space-y-4 font-montserrat">
                     <h1 className="font-bold text-4xl">Our Technologies</h1>
                     <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque <br />montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit semper cras sed duis tortor <br />tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>
                 </div>

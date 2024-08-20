@@ -3,7 +3,7 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Footer = () => {
     return (
-        <main className="lg:h-[506px] bg-[#121212] space-y-5 text-white">
+        <main className="lg:h-[506px] bg-[#121212] space-y-5 text-white font-montserrat">
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 justify-center p-10 '>
                 <div className='space-y-7'>
                     <div>
