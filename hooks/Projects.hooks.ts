@@ -2,10 +2,10 @@ import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
-const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
-  const [blogs, setBlogs] = useState<any>(() => {
+const useProjectsData = (token: string | null, triggerRefetch?: boolean) => {
+  const [projects, setProjects] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("blogData");
+        const savedData = localStorage.getItem("projectData");
         return savedData ? JSON.parse(savedData) : [];
       }
       return []; // Return a default value for SSR
@@ -18,11 +18,11 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
       try {
         setLoading(true);
         setError(null);
-        const response: any = await getAPI("odata/GetAllBlog", token as any);
+        const response: any = await getAPI("odata/GetAllProject", token as any);
 
         console.log(response);
-        localStorage.setItem("blogData", JSON.stringify(response)); // Save to localStorage
-        setBlogs(response);
+        localStorage.setItem("projectData", JSON.stringify(response)); // Save to localStorage
+        setProjects(response);
         setLoading(false);
       } catch (error: any) {
         setLoading(false);
@@ -32,15 +32,15 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
     fetchDashboard();
   }, [token, triggerRefetch]);
 
-  return { loading, error, blogs };
+  return { loading, error, projects };
 };
 
-const useBlogData = (
+const useProjectData = (
   token: string | null,
   id: any,
   triggerRefetch?: boolean
 ) => {
-  const [blog, setBlog] = useState<any>([]);
+  const [project, setProject] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -50,12 +50,12 @@ const useBlogData = (
         setLoading(true);
         setError(null);
         const response: any = await getAPI(
-          `odata/GetBlogById/${id}`,
+          `odata/GetProjectById/${id}`,
           token as any
         );
 
         console.log(response);
-        setBlog(response);
+        setProject(response);
         setLoading(false);
       } catch (error: any) {
         setLoading(false);
@@ -65,21 +65,21 @@ const useBlogData = (
     fetchDashboard();
   }, [token, triggerRefetch]);
 
-  return { loading, error, blog };
+  return { loading, error, project };
 };
 
-const useCreateBlog = (token: string | null) => {
+const useCreateProject = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
 
-  const createBlog = async (payload: any) => {
+  const createProject = async (payload: any) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await postAPI(
-        "/api/Blog/CreateBlog",
+        "/api/Project/CreateProject",
         payload,
         token as any
       );
@@ -103,15 +103,15 @@ const useCreateBlog = (token: string | null) => {
     }
   };
 
-  return { createBlog, data, loading, error };
+  return { createProject, data, loading, error };
 };
 
-const useDeleteBlog = (token: string | null) => {
+const useDeleteProject = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
-  const deleteBlog = async (id: string, closeDeleteDialogRef: any) => {
+  const deleteProject = async (id: string, closeDeleteDialogRef: any) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -123,7 +123,7 @@ const useDeleteBlog = (token: string | null) => {
         return;
       }
 
-      const response = await deleteAPI(`/api/Blog/Delete/${id}`, token);
+      const response = await deleteAPI(`/api/Project/Delete/${id}`, token);
       setSuccess(response.success);
       setLoading(false);
       closeDeleteDialogRef?.current.click();
@@ -143,15 +143,15 @@ const useDeleteBlog = (token: string | null) => {
     }
   };
 
-  return { deleteBlog, loading, error, success };
+  return { deleteProject, loading, error, success };
 };
 
-const useUpdateBlog = (token: string | null) => {
+const useUpdateProject = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
-  const updateBlog = async (id: any, payload: any) => {
+  const updateProject = async (id: any, payload: any) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -163,7 +163,7 @@ const useUpdateBlog = (token: string | null) => {
       }
 
       const response = await putAPI(
-        `/api/Blog/UpdateBlog/${id}`,
+        `/api/Project/UpdateProject/${id}`,
         payload,
         token as any
       );
@@ -185,13 +185,13 @@ const useUpdateBlog = (token: string | null) => {
     }
   };
 
-  return { updateBlog, loading, error, success };
+  return { updateProject, loading, error, success };
 };
 
 export {
-  useBlogsData,
-  useBlogData,
-  useCreateBlog,
-  useDeleteBlog,
-  useUpdateBlog,
+  useProjectsData,
+  useProjectData,
+  useCreateProject,
+  useDeleteProject,
+  useUpdateProject,
 };

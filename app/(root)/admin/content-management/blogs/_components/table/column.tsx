@@ -29,7 +29,7 @@ export const ContentManagementBlogscolumns: ColumnDef<ContentManagementBlogsTabl
       header: "Author's Name",
     },
     {
-      accessorKey: "dateCreated",
+      accessorKey: "publishDate",
       header: "Date Created",
     },
     {

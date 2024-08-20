@@ -13,6 +13,9 @@ import { FiUploadCloud } from 'react-icons/fi';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useBlogsData, useCreateBlog } from '@/hooks/Blogs.hooks';
 import ButtonSpinner from '@/components/Shared/ButtonSpinner';
+import { useUploadImage } from '@/hooks/BannerUpload.hooks';
+import { FaFilePdf } from 'react-icons/fa6';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
 interface Props {
     setCreateNewBlog: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,37 +24,41 @@ interface Props {
 const formSchema = z.object({
     title: z.string().min(3, { message: "Title must be at least 3 characters.", }),
     category: z.string().min(1, { message: "Category must be selected", }),
-    uploadBanner: z.any(),
+    bannerUrl: z.any(),
     blogPosttext: z.any(),
     authorName: z.string().min(3, { message: "Author Name must be at least 3 characters.", }),
     authorEmail: z.string().min(3, { message: "Author Email must be at least 3 characters." }).email({ message: "Invalid email format." }),
     authorPhoneNumber: z.string().min(11, { message: "Author Phone Number must be 11 characters." }),
     publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
     visibility: z.string().min(3, { message: "Visibility must be provided" }),
-    bannerUsage: z.boolean().refine(value => value === true, {
+    useBanner: z.boolean().refine(value => value === true, {
         message: "Visibility must be provided",
     }),
 })
 
 const NewBlogForm = ({ setCreateNewBlog }: Props) => {
+    const docImgRef = useRef<HTMLInputElement | null>(null);
+    const [imageName, setImageName] = useState<string>("")
     const [token, setToken] = useState<string | null>(null)
     const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
     const { createBlog, data, loading: createLoading, error: createError } = useCreateBlog(token)
     const { loading, blogs, error } = useBlogsData(token, triggerRefetch)
+    const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
+
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: "",
             category: "blogs",
-            uploadBanner: "",
+            bannerUrl: "",
             blogPosttext: "",
             authorName: "",
             authorEmail: "",
             authorPhoneNumber: "",
             publishDate: "",
             visibility: "",
-            bannerUsage: false,
+            useBanner: false,
         },
     });
 
@@ -125,6 +132,29 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
     //   };
 
 
+    const handleFileChangeDocHandler = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file: any = event.target.files?.["0"];
+        console.log(event.target.files?.["0"], "selectedFile");
+        new Promise<void>((resolve, reject) => {
+            const blober = URL.createObjectURL(file);
+            setTimeout(() => {
+                // setSelectedDocFile(blober);
+                // form.setValue("identificationImageUrl", blober);
+                // console.log(setSelectedDocFile, "select");
+            }, 1000);
+            resolve();
+        });
+        setImageName(file?.name)
+        uploadImage(file, "docs");
+    };
+
+    useEffect(() => {
+        if (ImageUrl) {
+            form.setValue("bannerUrl", ImageUrl)
+        }
+    }, [ImageUrl])
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
@@ -185,13 +215,25 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                             />
                             <FormField
                                 control={form.control}
-                                name="uploadBanner"
+                                name="bannerUrl"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Upload banner</FormLabel>
                                         <FormControl>
                                             <>
-                                                <div className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
+                                                <div style={{ display: "none" }}>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        name="bannerImage"
+                                                        onChange={(event) => handleFileChangeDocHandler(event)}
+                                                        ref={docImgRef}
+                                                    />
+                                                </div>
+                                                <div onClick={() => {
+                                                    if (imageLoading) return;
+                                                    docImgRef.current?.click()
+                                                }} className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
                                                     <div>
                                                         <div className='w-full flex justify-center items-center gap-3'>
                                                             <FiUploadCloud size={"16px"} />
@@ -203,6 +245,15 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {form.getValues("bannerUrl") && <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
+                                                    <div className="flex justify-start items-center gap-3">
+                                                        <FaFilePdf color="#ED1B24" />
+                                                        <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">{imageName}</p>
+                                                    </div>
+                                                    <FaRegTrashAlt style={{ cursor: "pointer" }} color="#FF3236" onClick={() => {
+                                                        form.setValue("bannerUrl", "")
+                                                    }} />
+                                                </div>}
                                             </>
                                         </FormControl>
                                         <FormMessage />
@@ -348,7 +399,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="bannerUsage"
+                                    name="useBanner"
                                     render={({ field }) => (
                                         <div className="">
                                             <FormItem>
@@ -374,7 +425,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                                         </div>
                                     )}
                                 />
-                                <Button type="submit" disabled={createLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{createLoading ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
+                                <Button type="submit" disabled={createLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{createLoading ? <ButtonSpinner /> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
                             </div>
                         </div>
                     </div>

@@ -14,20 +14,23 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useBlogData, useUpdateBlog } from '@/hooks/Blogs.hooks';
 import { useRouter } from 'next/navigation';
 import ButtonSpinner from '@/components/Shared/ButtonSpinner';
+import { FaFilePdf } from 'react-icons/fa6';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { useUploadImage } from '@/hooks/BannerUpload.hooks';
 
 
 
 const formSchema = z.object({
     title: z.string().min(3, { message: "Title must be at least 3 characters.", }),
     category: z.string().min(1, { message: "Category must be selected", }),
-    uploadBanner: z.any(),
+    bannerUrl: z.any(),
     blogPosttext: z.any(),
     authorName: z.string().min(3, { message: "Author Name must be at least 3 characters.", }),
     authorEmail: z.string().min(3, { message: "Author Email must be at least 3 characters." }).email({ message: "Invalid email format." }),
     authorPhoneNumber: z.string().min(11, { message: "Author Phone Number must be 11 characters." }),
     publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
     visibility: z.string().min(3, { message: "Visibility must be provided" }),
-    bannerUsage: z.boolean().refine(value => value === true, {
+    useBanner: z.boolean().refine(value => value === true, {
         message: "Visibility must be provided",
     }),
 })
@@ -38,10 +41,14 @@ type Props = {
 
 const UpdateBlog = ({ params }: Props) => {
     const router = useRouter();
+    const docImgRef = useRef<HTMLInputElement | null>(null);
+    const [imageName, setImageName] = useState<string>("")
     const [token, setToken] = useState<string | null>(null)
     const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
     const { updateBlog, success, loading: updateLoading, error: updateError } = useUpdateBlog(token)
     const { loading, blog, error } = useBlogData(token, params?.blogId, triggerRefetch)
+    const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
+
 
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -49,14 +56,14 @@ const UpdateBlog = ({ params }: Props) => {
         defaultValues: {
             title: "",
             category: "blogs",
-            uploadBanner: "",
+            bannerUrl: "",
             blogPosttext: "",
             authorName: "",
             authorEmail: "",
             authorPhoneNumber: "",
             publishDate: "",
             visibility: "",
-            bannerUsage: false,
+            useBanner: false,
         },
     });
 
@@ -137,6 +144,29 @@ const UpdateBlog = ({ params }: Props) => {
     //   };
 
 
+    const handleFileChangeDocHandler = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file: any = event.target.files?.["0"];
+        console.log(event.target.files?.["0"], "selectedFile");
+        new Promise<void>((resolve, reject) => {
+            const blober = URL.createObjectURL(file);
+            setTimeout(() => {
+                // setSelectedDocFile(blober);
+                // form.setValue("identificationImageUrl", blober);
+                // console.log(setSelectedDocFile, "select");
+            }, 1000);
+            resolve();
+        });
+        setImageName(file?.name)
+        uploadImage(file, "docs");
+    };
+
+    useEffect(() => {
+        if (ImageUrl) {
+            form.setValue("bannerUrl", ImageUrl)
+        }
+    }, [ImageUrl])
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
@@ -200,25 +230,46 @@ const UpdateBlog = ({ params }: Props) => {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="uploadBanner"
+                                        name="bannerUrl"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Upload banner</FormLabel>
                                                 <FormControl>
-                                                    <>
-                                                        <div className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
-                                                            <div>
-                                                                <div className='w-full flex justify-center items-center gap-3'>
-                                                                    <FiUploadCloud size={"16px"} />
-                                                                    <span className='font-[Montserrat] font-bold text-xs text-[#0B2545]'>Click to upload image</span>
-                                                                    <span className='font-[Montserrat] font-medium text-xs text-[#475467] leading-[20px]'>or drag and drop</span>
-                                                                </div>
-                                                                <div className='w-full flex justify-center items-center gap-3'>
-                                                                    <span className='font-[Montserrat] font-normal text-xs leading-[18px] text-[#475467]'>SVG, PNG, JPG or GIF (max. 800x400px)</span>
-                                                                </div>
-                                                            </div>
+                                                <>
+                                                <div style={{ display: "none" }}>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        name="bannerImage"
+                                                        onChange={(event) => handleFileChangeDocHandler(event)}
+                                                        ref={docImgRef}
+                                                    />
+                                                </div>
+                                                <div onClick={() => {
+                                                    if (imageLoading) return;
+                                                    docImgRef.current?.click()
+                                                }} className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
+                                                    <div>
+                                                        <div className='w-full flex justify-center items-center gap-3'>
+                                                            <FiUploadCloud size={"16px"} />
+                                                            <span className='font-[Montserrat] font-bold text-xs text-[#0B2545]'>Click to upload image</span>
+                                                            <span className='font-[Montserrat] font-medium text-xs text-[#475467] leading-[20px]'>or drag and drop</span>
                                                         </div>
-                                                    </>
+                                                        <div className='w-full flex justify-center items-center gap-3'>
+                                                            <span className='font-[Montserrat] font-normal text-xs leading-[18px] text-[#475467]'>SVG, PNG, JPG or GIF (max. 800x400px)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {form.getValues("bannerUrl") && <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
+                                                    <div className="flex justify-start items-center gap-3">
+                                                        <FaFilePdf color="#ED1B24" />
+                                                        <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">{imageName}</p>
+                                                    </div>
+                                                    <FaRegTrashAlt style={{ cursor: "pointer" }} color="#FF3236" onClick={() => {
+                                                        form.setValue("bannerUrl", "")
+                                                    }} />
+                                                </div>}
+                                            </>
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -363,7 +414,7 @@ const UpdateBlog = ({ params }: Props) => {
                                         />
                                         <FormField
                                             control={form.control}
-                                            name="bannerUsage"
+                                            name="useBanner"
                                             render={({ field }) => (
                                                 <div className="">
                                                     <FormItem>

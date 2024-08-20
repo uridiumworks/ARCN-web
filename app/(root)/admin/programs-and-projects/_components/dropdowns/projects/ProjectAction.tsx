@@ -4,18 +4,18 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import React, { useState } from 'react'
 import { FiDelete } from 'react-icons/fi'
 import { IoIosArrowDown } from 'react-icons/io'
-import DeleteAction from './DeleteAction'
 import { useRouter } from 'next/navigation';
 import { EditIcon, RedDeleteIcon } from '@/assets/icons'
 import { FaEye } from 'react-icons/fa6'
+import DeleteAction from './DeleteAction'
 
 
-const BlogAction = ({blogData}: any) => {
+const ProjectAction = ({projectData}: any) => {
   const [dialog, setDialog] = useState(0);
   const router = useRouter();
   return (
     <Dialog>
-      {dialog === 1 && <DeleteAction id={blogData?.blogId}/>}
+      {dialog === 1 && <DeleteAction id={projectData?.projectId}/>}
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
         <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>
@@ -26,19 +26,10 @@ const BlogAction = ({blogData}: any) => {
         >
           <DropdownMenuItem
             className="flex justify-start gap-3 items-center cursor-pointer"
-            onClick={() => router.push(`/admin/content-management/blogs/${blogData?.blogId}`)}
+            onClick={() => router.push(`/admin/programs-and-projects/projects/${projectData?.projectId}`)}
           >
             <EditIcon className="scale-95" /> <span>Edit</span>
           </DropdownMenuItem>
-
-          <DropdownMenuItem
-            className="flex justify-start gap-3 items-center cursor-pointer"
-            onClick={() => router.push(`/admin/content-management/blogs/${blogData?.blogId}/view-blog`)}
-          >
-            <FaEye /> <span>View</span>
-          </DropdownMenuItem>
-        
-
           <DialogTrigger asChild>
             <DropdownMenuItem
               className="flex justify-start gap-3 items-center cursor-pointer"
@@ -55,4 +46,4 @@ const BlogAction = ({blogData}: any) => {
   )
 }
 
-export default BlogAction
+export default ProjectAction

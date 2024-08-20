@@ -4,13 +4,14 @@ import { DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitl
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useDeleteBlog } from '@/hooks/Blogs.hooks'
+import { useDeleteProject } from '@/hooks/Projects.hooks'
 import React, { useEffect, useRef, useState } from 'react'
 
 const DeleteAction = ({id}: any) => {
   console.log("🚀 ~ DeleteAction ~ id:", id)
   const closeDeleteDialogRef = useRef<HTMLButtonElement>(null);
   const [token, setToken] = useState<string | null>(null)
-  const { deleteBlog, loading, error, success } = useDeleteBlog(token)
+  const { deleteProject, loading, error, success } = useDeleteProject(token)
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -37,7 +38,7 @@ const DeleteAction = ({id}: any) => {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button disabled={loading} type='button' onClick={() => deleteBlog(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
+              <Button disabled={loading} type='button' onClick={() => deleteProject(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
                 {loading ? <ButtonSpinner/>  : "Delete"}
               </Button>
             </div>

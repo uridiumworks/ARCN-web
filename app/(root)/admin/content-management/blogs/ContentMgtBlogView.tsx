@@ -23,22 +23,10 @@ const ContentMgtBlogView = () => {
 
     useEffect(() => {
         if(blogs?.length > 0){
-            const adjustedBlogs = blogs?.map((blog:any, index:number) => {
-                let objData = {
-                    title: blog?.title,
-                    authorName: blog?.authorName,
-                    dateCreated: blog?.publishDate,
-                    authorEmail: blog?.authorEmail,
-                    authorPhoneNumber: blog?.authorPhoneNumber,
-                    action: null,
-                    ...blog
-                }
-                return objData;
-            })
-            setBlogArray(adjustedBlogs)
+            setBlogArray(blogs)
         }
     },[blogs])
-    if (loading ) return <p>Loading....</p>
+    if (loading && blogs?.length < 1) return <p>Loading....</p>
 
     return (
         <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
