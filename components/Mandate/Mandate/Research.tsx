@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Research = () => {
     return (
-        <main className="h-auto md:h-[600px] bg-[#15271C]">
+        <main className="h-auto md:h-[600px] bg-[#15271C] font-montserrat">
             <div className="text-white text-center">
                 <h1 className="font-bold text-[65px]">Research</h1>
                 <p className="font-normal text-[21px]">Take a look at some of our technologies</p>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Maps = () => {
     return (
-        <main className="bg-[#F6F6F6]">
+        <main className="bg-[#F6F6F6] font-montserrat">
             <div>
                 <div>
                     <div className="flex flex-col md:flex-row justify-center gap-20 p-10 font-semibold text-[20px]  lg:text-[15px] ">

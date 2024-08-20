@@ -4,7 +4,7 @@ import Image from "next/image";
 const Value = () => {
     return (
         <main>
-            <div className=" pt-20 space-y-6">
+            <div className=" pt-20 space-y-6 font-montserrat">
                 <div className="text-center place-content-center">
                     <h1 className="font-semibold text-sm">OUR VALUE</h1>
                     <p className="font-bold text-[40px]">Core Values we define</p>
