@@ -5,7 +5,7 @@ const Upcoming = () => {
 
     return ( 
         <main>
-            <div>
+            <div className="font-montserrat">
                 <div className="py-5">
                     <h1 className='font-semibold text-3xl px-20'>UPCOMING EVENTS</h1>
                 </div>
