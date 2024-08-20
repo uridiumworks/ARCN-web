@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import { usePathname } from "next/navigation";
 import Sidebar from "./_components/Sidebar";
 import AdminNavbar from "./admin/_components/AdminNavbar";
+import Footer from "@/components/footer";
 
 export default function RootLayout({
   children,
@@ -27,6 +28,7 @@ export default function RootLayout({
         <div>
           {children}
         </div>
+        <Footer />
       </main>
     );
   }
