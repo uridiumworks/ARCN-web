@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Bander = () => {
     return (
-        <main className="h-full md:h-auto banner bg-[#00000099] font-montserrat text-black">
+        <main className="h-[809px] md:h-auto banner bg-[#00000099] font-montserrat text-black">
             <div className="h-full bg-[#00000099] opacity-8">
                 <div className="h-[80%] md:h-[100%] opacity-80 py-9 flex justify-center items-center">
                     <div className="w-full font-montserrat text-white space-y-5 text-center px-4 md:px-0">
