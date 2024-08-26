@@ -11,7 +11,6 @@ const Projects = () => {
   const [projectArray, setProjectArray] = useState<any[]>([])
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
   const {loading, projects, error} = useProjectsData(token, triggerRefetch)
-  console.log("🚀 ~ Projects ~ projects:", projects)
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");

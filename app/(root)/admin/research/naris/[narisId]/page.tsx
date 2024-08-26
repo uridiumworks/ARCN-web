@@ -14,11 +14,15 @@ import { Textarea } from '@/components/ui/textarea';
 import { FaFilePdf } from 'react-icons/fa6';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useUploadImage } from '@/hooks/BannerUpload.hooks';
-import { useCreateNaris, useNarissData } from '@/hooks/Naris.hooks';
+import { useCreateNaris, useNarisData, useNarissData, useUpdateNaris } from '@/hooks/Naris.hooks';
+import { useRouter } from 'next/navigation';
 
-interface Props {
-    setCreateNewInstitute: React.Dispatch<React.SetStateAction<boolean>>;
-}
+
+
+type Props = {
+    params: { narisId: any };
+};
+
 
 const formSchema = z.object({
     institutionName: z.string().min(3, { message: "subject must be at least 3 characters.", }),
@@ -26,34 +30,23 @@ const formSchema = z.object({
     email: z.string().min(3, { message: "Email must be at least 3 characters." }).email({ message: "Invalid email format." }),
     website: z.string().min(3, { message: "Website must be at least 3 characters." }).url({ message: "Invalid website URL." }),
     address: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    stateId: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    localGovernmentAreaId: z.string().min(3, { message: "Address must be at least 3 characters." }),
+    stateId: z.any(),
+    localGovernmentAreaId: z.any(),
     establishDate: z.string().min(3, { message: "Date Established must be provided." }),
     joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
     logoUrl: z.any(),
     description: z.any(),
 })
 
-const NarisForm = ({ setCreateNewInstitute }: Props) => {
+const UpdateNaris = ({ params }: Props) => {
+    const router = useRouter();
     const docImgRef = useRef<HTMLInputElement | null>(null);
     const [token, setToken] = useState<string | null>(null)
-    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
     const [imageName, setImageName] = useState<string>("")
-    const { createNaris, data, loading: createLoading, error: createError } = useCreateNaris(token)
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const { updateNaris, success, loading: updateLoading, error: updateError } = useUpdateNaris(token)
     const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
-    const { loading, nariss, error } = useNarissData(token, triggerRefetch)
-
-    useEffect(() => {
-        const userToken = localStorage.getItem("userToken");
-        setToken(userToken)
-    }, [])
-
-
-    useEffect(() => {
-        if (data) {
-            setTriggerRefetch(true)
-        }
-    }, [data])
+    const { loading, naris, error } = useNarisData(token, params?.narisId, triggerRefetch)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -91,24 +84,34 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
     };
 
     useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    }, [])
+
+    useEffect(() => {
         if (ImageUrl) {
             form.setValue("logoUrl", ImageUrl)
         }
     }, [ImageUrl])
 
-
-
+    useEffect(() => {
+        if (naris) {
+            form.reset(naris)
+        }
+    }, [naris])
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
-        await createNaris(values)
+        await updateNaris(params?.narisId, values)
     }
     return (
-        <div>
-            <div className='w-full flex justify-end items-center'>
-                <Button onClick={() => setCreateNewInstitute(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
-            </div>
-            <Form {...form}>
+        <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
+            <div className='w-full min-h-[70vh]'>
+                <div>
+                    <div className='w-full flex justify-end items-center'>
+                        <Button onClick={() => router.push(`/admin/research`)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
+                    </div>
+                    <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
                     <div className="w-full flex justify-start gap-5 mt-5">
                         <div className='w-[70%] grid grid-cols-1 gap-6'>
@@ -200,7 +203,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                             <FormControl>
                                                 <Input
                                                     {...field}
-                                                    type="email"
+                                                    type="text"
                                                     autoComplete="new-password"
                                                     placeholder='Enter Title'
                                                     className="bg-white outline-none"
@@ -240,7 +243,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                             <FormControl>
                                                 <Input
                                                     {...field}
-                                                    type="email"
+                                                    type="text"
                                                     autoComplete="new-password"
                                                     placeholder='Enter Title'
                                                     className="bg-white outline-none"
@@ -375,8 +378,10 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                     </div>
                 </form>
             </Form>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default NarisForm
+export default UpdateNaris
