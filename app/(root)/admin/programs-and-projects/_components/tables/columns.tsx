@@ -5,6 +5,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
 import { ProgramsTableType, ProjectsTableType } from "./types";
+import ProjectAction from "../dropdowns/projects/ProjectAction";
+import ProgramAction from "../dropdowns/programs/ProgramAction";
 
 
 
@@ -27,15 +29,15 @@ export const Projectscolumns: ColumnDef<ProjectsTableType>[] = [
       header: "Institute Name",
     },
     {
-      accessorKey: "dateCreated",
+      accessorKey: "publishOn",
       header: "Date Created",
     },
     {
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const projectData: any = row.original;
+        return <ProjectAction projectData={projectData}/>;
       },
     },
   ];
@@ -75,8 +77,8 @@ export const Projectscolumns: ColumnDef<ProjectsTableType>[] = [
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const programData: any = row.original;
+        return <ProgramAction programData={programData} />;
       },
     },
   ];

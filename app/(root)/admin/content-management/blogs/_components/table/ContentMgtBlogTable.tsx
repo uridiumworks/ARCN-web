@@ -39,6 +39,16 @@ const ContentMgtBlogTable = <TData, TValue>({
                             placeholder="Search with name..."
                             className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
                             style={{outline: "none"}}
+                            value={
+                                (table
+                                  .getColumn("title")
+                                  ?.getFilterValue() as string) ?? ""
+                              }
+                              onChange={(event) =>
+                                table
+                                  .getColumn("title")
+                                  ?.setFilterValue(event.target.value)
+                              }
                         />
                         <IoSearchOutline
                             className="absolute top-[25%] left-[5%]"

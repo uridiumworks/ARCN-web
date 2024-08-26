@@ -7,6 +7,7 @@ import { IoIosArrowDown } from 'react-icons/io'
 import DeleteAction from './DeleteAction'
 import { useRouter } from 'next/navigation';
 import { EditIcon, RedDeleteIcon } from '@/assets/icons'
+import { FaEye } from 'react-icons/fa6'
 
 
 const BlogAction = ({blogData}: any) => {
@@ -24,16 +25,23 @@ const BlogAction = ({blogData}: any) => {
           align="end"
         >
           <DropdownMenuItem
-            className="flex justify-start gap-3 items-center"
+            className="flex justify-start gap-3 items-center cursor-pointer"
             onClick={() => router.push(`/admin/content-management/blogs/${blogData?.blogId}`)}
           >
             <EditIcon className="scale-95" /> <span>Edit</span>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="flex justify-start gap-3 items-center cursor-pointer"
+            onClick={() => router.push(`/admin/content-management/blogs/${blogData?.blogId}/view-blog`)}
+          >
+            <FaEye /> <span>View</span>
           </DropdownMenuItem>
         
 
           <DialogTrigger asChild>
             <DropdownMenuItem
-              className="flex justify-start gap-3 items-center"
+              className="flex justify-start gap-3 items-center cursor-pointer"
               onClick={() => {
                 setDialog((prev) => (prev = 1));
               }}
