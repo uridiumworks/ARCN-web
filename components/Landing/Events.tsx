@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const Events = () => {
     return (
-        <main className="w-full p-4 md:p-8">
-            <h1 className='font-semibold text-2xl md:text-3xl px-4 md:px-20 text-center lg:text-left'>UPCOMING EVENTS</h1>
+        <main className="w-full p-4 md:p-8 font-montserrat">
+            <h1 className='font-semibold text-2xl md:text-3xl text-center lg:text-left'>UPCOMING EVENTS</h1>
             
             <div className='w-full py-6 md:py-9 flex flex-col gap-8 lg:flex-row lg:place-content-evenly'>
                 <div className='space-y-8'>

@@ -4,7 +4,7 @@ const Function = () => {
     return (
         <main>
             <div className=''>
-                <div className='border-0 w-full py-20 lg:w-[1000px] bg-[#F9F9F9] mx-auto'>
+                <div className='border-0 w-full py-20 font-montserrat lg:w-[1000px] bg-[#F9F9F9] mx-auto'>
                     <div className='text-center space-y-4'>
                         <h1 className="font-medium text-5xl">ARCN Function</h1>
                         <p className="font-normal text-lg">Lorem ipsum dolor sit amet consectetur. Purus semper nunc sit proin <br />sagittis. Sit sit tempus commodo pellentesque cursus proin maecenas.</p>

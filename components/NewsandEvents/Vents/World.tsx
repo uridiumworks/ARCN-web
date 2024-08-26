@@ -7,7 +7,7 @@ const World = () => {
 
     return ( 
         <main>
-            <div>
+            <div className="font-montserrat">
                 <div className="pt-7">
                     <h1 className="font-semibold text-4xl">OTHER UPCOMING EVENTS</h1>
                 </div>

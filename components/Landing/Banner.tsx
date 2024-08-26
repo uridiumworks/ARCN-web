@@ -3,10 +3,10 @@ import Image from "next/image";
 
 const Bander = () => {
     return (
-        <main className="h-full md:h-auto banner bg-[#00000099] text-black">
+        <main className="h-[809px] md:h-auto banner bg-[#00000099] font-montserrat text-black">
             <div className="h-full bg-[#00000099] opacity-8">
-                <div className="h-[70%] md:h-[60%] opacity-80 flex justify-center items-center">
-                    <div className="w-full text-white space-y-5 text-center px-4 md:px-0">
+                <div className="h-[80%] md:h-[100%] opacity-80 py-9 flex justify-center items-center">
+                    <div className="w-full font-montserrat text-white space-y-5 text-center px-4 md:px-0">
                         <h1 className="font-bold text-[32px] md:text-[47px]">
                             ARCN and UNN introduce new
                             <br />strategy agroecological sustainable farming
@@ -23,7 +23,7 @@ const Bander = () => {
                         </button>
                     </div>
                 </div>
-                <div className="h-[30%] md:h-[40%] bg-[#000000B2] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 p-4 md:p-8">
+                <div className="h-[20%] md:h-[10%] font-montserrat bg-[#000000B2] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 p-4 ">
                     <div>
                         <Image src="/Images/Homepage/Newpaper.png" width={220.3} height={148.78} alt="paper" />
                     </div>
@@ -38,7 +38,7 @@ const Bander = () => {
                     <div>
                         <button
                             type="button"
-                            className="py-2 px-8 w-full md:w-[234.02px] h-[44.75px] font-Rubik rounded-sm font-bold text-[12.05px] text-white bg-[#04662A]"
+                            className="py-2 px-8 w-full md:w-[234.02px] font-montserrat h-[44.75px] font-Rubik rounded-sm font-bold text-[12.05px] text-white bg-[#04662A]"
                         >
                             SUBMIT NOW
                         </button>

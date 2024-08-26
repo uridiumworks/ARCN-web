@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Research = () => {
   return (
-    <main className="flex flex-col gap-4 p-5 w-full lg:flex-row mx-auto lg:w-[900px]">
+    <main className="flex flex-col gap-4 font-montserrat p-5 w-full lg:flex-row mx-auto lg:w-[900px]">
       {/* Left Column */}
       <div className="lg:w-1/2 space-y-8">
         <div className="p-3">
@@ -28,7 +28,7 @@ const Research = () => {
             height={596}
             className="w-full h-auto object-cover"
           />
-          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
+          <div className="flex border border-hidden font-montserrat py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
             <p>Agricultural Research</p>
             <FaCaretRight className="ml-2" />
           </div>
