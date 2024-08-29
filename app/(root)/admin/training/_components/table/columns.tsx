@@ -6,6 +6,7 @@ import { EntreprenuershipTableType, FCAsTableType, SupervisionReportTableType } 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
+import EntrepreneurshipAction from "../dropdowns/entrepreneurship/EntrepreneurshipAction";
 
 
 
@@ -118,8 +119,8 @@ export const FCAscolumns: ColumnDef<FCAsTableType>[] = [
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const entrepreneurshipData: any = row.original;
+        return <EntrepreneurshipAction entrepreneurshipData={entrepreneurshipData} />;
       },
     },
   ];

@@ -1,5 +1,4 @@
 "use client"
-
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -10,18 +9,19 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FiUploadCloud } from 'react-icons/fi';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
-import { useCreateEntrepreneurship, useEntrepreneurshipsData } from '@/hooks/Entrepreneurships.hooks';
-import { useUploadImage } from '@/hooks/BannerUpload.hooks';
 import { FaFilePdf } from 'react-icons/fa6';
 import { FaRegTrashAlt } from 'react-icons/fa';
+import { useUploadImage } from '@/hooks/BannerUpload.hooks';
+import { useRouter } from 'next/navigation';
+import { useEntrepreneurshipData, useUpdateEntrepreneurship } from '@/hooks/Entrepreneurships.hooks';
 
-interface Props {
-    setCreateEntreprenuership: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
+
+type Props = {
+    params: { entrepreneurshipId: any };
+};
 
 const formSchema = z.object({
     subject: z.string().min(3, { message: "subject must be at least 3 characters.", }),
@@ -33,26 +33,16 @@ const formSchema = z.object({
     eventEndDate: z.string().min(3, { message: "Event end Date must be provided" }),
     durationPerDay: z.string().min(3, { message: "Duration Per Day must be provided" }),
 })
-const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
+
+const UpdateEntrepreneurship = ({ params }: Props) => {
+    const router = useRouter();
     const docImgRef = useRef<HTMLInputElement | null>(null);
     const [token, setToken] = useState<string | null>(null)
-    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
     const [imageName, setImageName] = useState<string>("")
-    const { createEntrepreneurship, data, loading: createLoading, error: createError } = useCreateEntrepreneurship(token)
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const { updateEntrepreneurship, success, loading: updateLoading, error: updateError } = useUpdateEntrepreneurship(token)
     const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
-    const { loading, entrepreneurships, error } = useEntrepreneurshipsData(token, triggerRefetch)
-
-    useEffect(() => {
-        const userToken = localStorage.getItem("userToken");
-        setToken(userToken)
-    }, [])
-
-
-    useEffect(() => {
-        if (data) {
-            setTriggerRefetch(true)
-        }
-    }, [data])
+    const { loading, entrepreneurship, error } = useEntrepreneurshipData(token, params?.entrepreneurshipId, triggerRefetch)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -66,7 +56,6 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
             durationPerDay: "",
         },
     });
-
     const handleFileChangeDocHandler = async (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -86,22 +75,34 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
     };
 
     useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    }, [])
+
+    useEffect(() => {
         if (ImageUrl) {
             form.setValue("bannerUrl", ImageUrl)
         }
     }, [ImageUrl])
 
+    useEffect(() => {
+        if (entrepreneurship) {
+            form.reset(entrepreneurship)
+        }
+    }, [entrepreneurship])
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
-        await createEntrepreneurship(values)
-
+        await updateEntrepreneurship(params?.entrepreneurshipId, values)
     }
     return (
-        <div>
-            <div className='w-full flex justify-end items-center'>
-                <Button onClick={() => setCreateEntreprenuership(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
-            </div>
-            <Form {...form}>
+        <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
+            <div className='w-full min-h-[70vh]'>
+                <div>
+                    <div className='w-full flex justify-end items-center'>
+                        <Button onClick={() => router.push(`/admin/training`)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
+                    </div>
+                    <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
                     <div className="w-full flex justify-start gap-5 mt-5">
                         <div className='w-[70%] grid grid-cols-1 gap-6'>
@@ -295,8 +296,10 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
                     </div>
                 </form>
             </Form>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default EntreprenuershipForm
+export default UpdateEntrepreneurship
