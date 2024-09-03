@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
 import EntrepreneurshipAction from "../dropdowns/entrepreneurship/EntrepreneurshipAction";
+import FCAsAction from "../dropdowns/FCAs/FCAsAction";
 
 
 
@@ -26,23 +27,23 @@ export const FCAscolumns: ColumnDef<FCAsTableType>[] = [
       header: "Institution Name",
     },
     {
-      accessorKey: "dateEstablished",
+      accessorKey: "establishDate",
       header: "Date Established",
     },
     {
-      accessorKey: "dateJoined",
+      accessorKey: "joinDate",
       header: "Date Joined",
     },
     {
-      accessorKey: "location",
+      accessorKey: "address",
       header: "Location",
     },
     {
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const fCAsData: any = row.original;
+        return <FCAsAction fCAsData={fCAsData} />;
       },
     },
   ];
