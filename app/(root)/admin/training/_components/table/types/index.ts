@@ -3,9 +3,9 @@
 export type FCAsTableType = {
     checkbox: any;
     institutionName: string;
-    dateEstablished: string;
-    dateJoined: string;
-    location: string;
+    establishDate: string;
+    joinDate: string;
+    address: string;
     action: any;
   };
 
