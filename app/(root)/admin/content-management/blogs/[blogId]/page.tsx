@@ -85,64 +85,7 @@ const UpdateBlog = ({ params }: Props) => {
             form.reset(blog)
         }
     }, [blog])
-
-    // const imageHandler = () => {
-    //     const input:any = document.createElement('input');
-    //     input.setAttribute('type', 'file');
-    //     input.setAttribute('accept', 'image/*');
-    //     input.click();
-
-    //     input.onchange = async () => {
-    //       const file = input.files[0];
-    //       const formData = new FormData();
-    //       formData.append('file', file);
-
-    //       // Replace with your image upload API endpoint
-    //       const response = await fetch('/api/upload', {
-    //         method: 'POST',
-    //         body: formData,
-    //       });
-
-    //       const data = await response.json();
-    //       const imageUrl = data.url; // Assuming your API returns the image URL
-
-    //       const quill = reactQuillRef.current.getEditor();
-    //       const range = quill.getSelection();
-    //       quill.insertEmbed(range.index, 'image', imageUrl);
-    //     };
-    //   };
-
-    // const imageHandler = async () => {
-    //     const input = document.createElement('input');
-    //     input.setAttribute('type', 'file');
-    //     input.setAttribute('accept', 'image/*');
-    //     input.click();
-
-    //     input.onchange = async () => {
-    //       const file = input.files?.[0];
-    //       if (!file) return;
-
-    //       const formData = new FormData();
-    //       formData.append('file', file);
-
-    //       // Upload the image to your server or cloud storage
-    //       const uploadUrl = 'YOUR_UPLOAD_URL'; // Replace with your upload URL
-    //       const response = await fetch(uploadUrl, {
-    //         method: 'POST',
-    //         body: formData,
-    //       });
-
-    //       const data = await response.json();
-    //       const imageUrl = data.url; // Adjust based on your response structure
-
-    //       // Create a new HTML string with the image included
-    //       const newValue = `${field.value}<img src="${imageUrl}" alt="Image" />`;
-
-    //       // Update the editor's value
-    //       field.onChange(newValue);
-    //     };
-    //   };
-
+  
 
     const handleFileChangeDocHandler = async (
         event: React.ChangeEvent<HTMLInputElement>
@@ -173,7 +116,6 @@ const UpdateBlog = ({ params }: Props) => {
         await updateBlog(params?.blogId, values)
     }
     return (
-
         <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
             <div className='w-full min-h-[70vh]'>
                 <div>
