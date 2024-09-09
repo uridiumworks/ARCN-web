@@ -1,27 +1,42 @@
-"use client"
-import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import React, { useEffect, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form';
+"use client";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { cn } from '@/lib/utils';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { FiUploadCloud } from 'react-icons/fi';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Textarea } from '@/components/ui/textarea';
-import { useUploadImage } from '@/hooks/BannerUpload.hooks';
-import { useCreateSupervisionReport, useSupervisionReportsData } from '@/hooks/SupervisionReports.hooks';
-import { FaFilePdf } from 'react-icons/fa6';
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { FiUploadCloud } from "react-icons/fi";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
+import { FaFilePdf } from "react-icons/fa6";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { useUploadImage } from "@/hooks/BannerUpload.hooks";
+import { useRouter } from "next/navigation";
+import {
+  useEntrepreneurshipData,
+  useUpdateEntrepreneurship,
+} from "@/hooks/Entrepreneurships.hooks";
+import { useSupervisionReportData, useUpdateSupervisionReport } from "@/hooks/SupervisionReports.hooks";
 
-
-
-interface Props {
-    setCreateSupervisionReport: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
+type Props = {
+  params: { supervisionReportId: any };
+};
 
 const formSchema = z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
@@ -32,26 +47,30 @@ const formSchema = z.object({
     publishOn: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
 })
 
-const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
-    const docImgRef = useRef<HTMLInputElement | null>(null);
-    const [token, setToken] = useState<string | null>(null)
-    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
-    const [imageName, setImageName] = useState<string>("")
-    const { createSupervisionReport, data, loading: createLoading, error: createError } = useCreateSupervisionReport(token)
-    const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
-    const { loading, supervisionReports, error } = useSupervisionReportsData(token, triggerRefetch)
+const UpdateSupervisionReport = ({ params }: Props) => {
+    const router = useRouter();
+  const docImgRef = useRef<HTMLInputElement | null>(null);
+  const [token, setToken] = useState<string | null>(null);
+  const [imageName, setImageName] = useState<string>("");
+  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const {
+    updateSupervisionReport,
+    success,
+    loading: updateLoading,
+    error: updateError,
+  } = useUpdateSupervisionReport(token);
+  const {
+    uploadImage,
+    data: ImageUrl,
+    loading: imageLoading,
+    error: imageError,
+  } = useUploadImage(token);
+  const { loading, supervisionReport, error } = useSupervisionReportData(
+    token,
+    params?.supervisionReportId,
+    triggerRefetch
+  );
 
-    useEffect(() => {
-        const userToken = localStorage.getItem("userToken");
-        setToken(userToken)
-    }, [])
-
-
-    useEffect(() => {
-        if (data) {
-            setTriggerRefetch(true)
-        }
-    }, [data])
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -66,39 +85,56 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
 
     const handleFileChangeDocHandler = async (
         event: React.ChangeEvent<HTMLInputElement>
-    ) => {
+      ) => {
         const file: any = event.target.files?.["0"];
         console.log(event.target.files?.["0"], "selectedFile");
         new Promise<void>((resolve, reject) => {
-            const blober = URL.createObjectURL(file);
-            setTimeout(() => {
-                // setSelectedDocFile(blober);
-                // form.setValue("identificationImageUrl", blober);
-                // console.log(setSelectedDocFile, "select");
-            }, 1000);
-            resolve();
+          const blober = URL.createObjectURL(file);
+          setTimeout(() => {
+            // setSelectedDocFile(blober);
+            // form.setValue("identificationImageUrl", blober);
+            // console.log(setSelectedDocFile, "select");
+          }, 1000);
+          resolve();
         });
-        setImageName(file?.name)
+        setImageName(file?.name);
         uploadImage(file, "docs");
-    };
-
-    useEffect(() => {
+      };
+    
+      useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken);
+      }, []);
+    
+      useEffect(() => {
         if (ImageUrl) {
-            form.setValue("bannerUrl", ImageUrl)
+          form.setValue("bannerUrl", ImageUrl);
         }
-    }, [ImageUrl])
-
-    async function onSubmit(values: z.infer<typeof formSchema>) {
+      }, [ImageUrl]);
+    
+      useEffect(() => {
+        if (supervisionReport) {
+          form.reset(supervisionReport);
+        }
+      }, [supervisionReport]);
+    
+      async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
-        await createSupervisionReport(values)
-
-    }
+        await updateSupervisionReport(params?.supervisionReportId, values);
+      }
   return (
-    <div>
-    <div className='w-full flex justify-end items-center'>
-        <Button onClick={() => setCreateSupervisionReport(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
-    </div>
-    <Form {...form}>
+    <div className="w-full min-h-screen bg-[#f9fafb] p-10">
+    <div className="w-full min-h-[70vh]">
+      <div>
+        <div className="w-full flex justify-end items-center">
+          <Button
+            onClick={() => router.push(`/admin/training`)}
+            className="bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black"
+          >
+            Go back
+          </Button>
+        </div>
+        <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
             <div className="w-full flex justify-start gap-5 mt-5">
                 <div className='w-[70%] grid grid-cols-1 gap-6'>
@@ -286,8 +322,10 @@ const SupervisionReportForm = ({setCreateSupervisionReport}: Props) => {
             </div>
         </form>
     </Form>
-</div>
+      </div>
+    </div>
+  </div>
   )
 }
 
-export default SupervisionReportForm
+export default UpdateSupervisionReport

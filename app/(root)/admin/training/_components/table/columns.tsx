@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
 import EntrepreneurshipAction from "../dropdowns/entrepreneurship/EntrepreneurshipAction";
 import FCAsAction from "../dropdowns/FCAs/FCAsAction";
+import SupervisionReportAction from "../dropdowns/supervision-report/SupervisionReportAction";
 
 
 
@@ -79,8 +80,8 @@ export const FCAscolumns: ColumnDef<FCAsTableType>[] = [
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const supervisionReportData: any = row.original;
+        return <SupervisionReportAction supervisionReportData={supervisionReportData} />;
       },
     },
   ];
