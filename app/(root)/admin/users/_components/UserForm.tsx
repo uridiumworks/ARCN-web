@@ -1,6 +1,6 @@
 "use client";
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
+import { useCreateUser, useGetAllUsers } from '@/hooks/user.hook';
 
 
 interface Props {
@@ -22,10 +23,19 @@ const formSchema = z.object({
     lastName: z.string().min(3, { message: "Last Name must be at least 3 characters.", }),
     email: z.string().min(3, { message: "Email must be at least 3 characters." }).email({ message: "Invalid email format." }),
     phoneNumber: z.string().min(11, { message: "Phone Number must be at least 11 characters.", }),
-    role: z.string().min(11, { message: "User role is required.", }),
+    role: z.string().min(3, { message: "User role is required.", }),
 })
 
 const UserForm = ({setDialog}: Props) => {
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const { createUser, data, loading: createLoading, error: createError } = useCreateUser()
+    const { loading, users, error } = useGetAllUsers(triggerRefetch)
+
+    useEffect(() => {
+        if (data) {
+            setTriggerRefetch(true)
+        }
+    }, [data])
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -40,6 +50,7 @@ const UserForm = ({setDialog}: Props) => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        await createUser(values)
     }
     return (
         <DialogContent className="bg-white h-auto">
