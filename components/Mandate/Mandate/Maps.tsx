@@ -1,6 +1,13 @@
 import Image from "next/image";
+import {Loader, LoaderOptions} from 'google-maps';
 
 const Maps = () => {
+    // const options: LoaderOptions = {/* todo */};
+    // const loader = new Loader('my-api-key', options);
+    // const map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat: -34.397, lng: 150.644},
+    //     zoom: 8,
+    // });
     return (
         <main className="bg-[#F6F6F6] font-montserrat">
             <div>
@@ -36,8 +43,11 @@ const Maps = () => {
                 <div className="mx-auto w-full lg:w-[939px] py-10 ">
                     <Image src="/Images/Mandatepage/maps.png" alt="maps" width={600} height={400}/>
                 </div>
-                
             </div>
+            
+            
+            
+
         </main>
     )
 }
