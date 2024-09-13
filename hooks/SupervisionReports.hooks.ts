@@ -34,6 +34,38 @@ const useSupervisionReportsData = (token: string | null, triggerRefetch?: boolea
 
   return { loading, error, supervisionReports };
 };
+const useClientSupervisionReportsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [supervisionReports, setSupervisionReports] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("SupervisionReportData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllSupervisionReport", token as any);
+
+        console.log(response);
+        localStorage.setItem("SupervisionReportData", JSON.stringify(response)); // Save to localStorage
+        setSupervisionReports(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, supervisionReports };
+};
 
 const useSupervisionReportData = (
   token: string | null,
@@ -51,6 +83,38 @@ const useSupervisionReportData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetSupervisionReportById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setSupervisionReport(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, supervisionReport };
+};
+const useClientSupervisionReportData = (
+  token: string | null,
+  id: any,
+  triggerRefetch?: boolean
+) => {
+  const [supervisionReport, setSupervisionReport] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetSupervisionReportById/${id}`,
           token as any
         );
 
@@ -190,6 +254,8 @@ const useUpdateSupervisionReport = (token: string | null) => {
 
 export {
   useSupervisionReportsData,
+  useClientSupervisionReportData,
+  useClientSupervisionReportsData,
   useSupervisionReportData,
   useCreateSupervisionReport,
   useDeleteSupervisionReport,

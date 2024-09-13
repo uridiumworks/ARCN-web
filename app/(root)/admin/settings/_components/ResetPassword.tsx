@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useResetPassword } from '@/hooks/Password.hook';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { passwordStrength } from 'check-password-strength';
@@ -14,22 +15,23 @@ import * as z from "zod";
 const formSchema = z.object({
     currentPassword: z.string().min(3, { message: "Current Password must be at least 3 characters.", }).max(100),
     newPassword: z.string().min(3, { message: "New Password must be at least 3 characters.", }).max(100),
-    confirmNewPassword: z.string()
+    confirmPassword: z.string()
         .min(3, { message: "Confirm New Password must be at least 3 characters." })
         .max(100),
-}).refine(data => data.newPassword === data.confirmNewPassword, {
+}).refine(data => data.newPassword === data.confirmPassword, {
     message: "Confirm New Password must match New Password.",
-    path: ["confirmNewPassword"], // Path to the field that should show the error
+    path: ["confirmPassword"], // Path to the field that should show the error
 })
 
 
 const ResetPassword = () => {
+    const { resetPassword, data, loading: createLoading, error: createError } = useResetPassword()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             currentPassword: "",
             newPassword: "",
-            confirmNewPassword: "",
+            confirmPassword: "",
         },
     });
 
@@ -75,6 +77,7 @@ const ResetPassword = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        await resetPassword(values)
     }
 
     return (
@@ -141,7 +144,7 @@ const ResetPassword = () => {
                             <div>
                                 <FormField
                                     control={form.control}
-                                    name="confirmNewPassword"
+                                    name="confirmPassword"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Confirm New Password</FormLabel>

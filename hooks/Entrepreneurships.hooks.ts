@@ -34,6 +34,38 @@ const useEntrepreneurshipsData = (token: string | null, triggerRefetch?: boolean
 
   return { loading, error, entrepreneurships };
 };
+const useClientEntrepreneurshipsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [entrepreneurships, setEntrepreneurships] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("entrepreneurshipData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllEntrepreneurship", token as any);
+
+        console.log(response);
+        localStorage.setItem("entrepreneurshipData", JSON.stringify(response)); // Save to localStorage
+        setEntrepreneurships(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, entrepreneurships };
+};
 
 const useEntrepreneurshipData = (
   token: string | null,
@@ -51,6 +83,38 @@ const useEntrepreneurshipData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetEntrepreneurshipById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setEntrepreneurship(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, entrepreneurship };
+};
+const useClientEntrepreneurshipData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [entrepreneurship, setEntrepreneurship] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetEntrepreneurshipById/${id}`,
           token as any
         );
 
@@ -191,6 +255,8 @@ const useUpdateEntrepreneurship = (token: string | null) => {
 
 export {
   useEntrepreneurshipsData,
+  useClientEntrepreneurshipsData,
+  useClientEntrepreneurshipData,
   useEntrepreneurshipData,
   useCreateEntrepreneurship,
   useDeleteEntrepreneurship,

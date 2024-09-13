@@ -34,6 +34,37 @@ const useFCAsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, fcas };
 };
+const useClientFCAsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [fcas, setFcas] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("FCAData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllFCA", token as any);
+        console.log(response);
+        localStorage.setItem("FCAData", JSON.stringify(response)); // Save to localStorage
+        setFcas(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, fcas };
+};
 
 const useFCAData = (
   token: string | null,
@@ -51,6 +82,38 @@ const useFCAData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetFCAById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setFca(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, fca };
+};
+const useClientFCAData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [fca, setFca] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetFCAById/${id}`,
           token as any
         );
 
@@ -191,7 +254,9 @@ const useUpdateFCA = (token: string | null) => {
 
 export {
   useFCAsData,
+  useClientFCAsData,
   useFCAData,
+  useClientFCAData,
   useCreateFCA,
   useDeleteFCA,
   useUpdateFCA,
