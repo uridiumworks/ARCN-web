@@ -20,14 +20,13 @@ interface Props {
 }
 
 const formSchema = z.object({
-    subject: z.string().min(3, { message: "subject must be at least 3 characters.", }),
+    title: z.string().min(3, { message: "subject must be at least 3 characters.", }),
     description: z.string().min(6, { message: "description must be at least 6 characters.", }),
     venue: z.string().min(3, { message: "Venue must be at least 3 characters." }),
-    uploadBanner: z.any(),
-    authorName: z.string().min(3, { message: "Author's name must be at least 3 characters." }),
+    bannerUrl: z.any(),
+    publisherName: z.string().min(3, { message: "Author's name must be at least 3 characters." }),
     eventStartDate: z.string().min(3, { message: "Event start Date must be provided" }),
     eventEndDate: z.string().min(3, { message: "Event end Date must be provided" }),
-    publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
     durationPerDay: z.string().min(3, { message: "Duration Per Day must be provided" }),
 })
 
@@ -35,11 +34,11 @@ const ProgramForm = ({setCreateNewProgram}: Props) => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            subject: "",
+            title: "",
             description: "",
-            uploadBanner: "",
+            bannerUrl: "",
             venue: "",
-            authorName: "",
+            publisherName: "",
             eventStartDate: "",
             eventEndDate: "",
             durationPerDay: "",
@@ -60,7 +59,7 @@ const ProgramForm = ({setCreateNewProgram}: Props) => {
                         <div className='w-[70%] grid grid-cols-1 gap-6'>
                             <FormField
                                 control={form.control}
-                                name="subject"
+                                name="title"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Subject</FormLabel>
@@ -92,7 +91,7 @@ const ProgramForm = ({setCreateNewProgram}: Props) => {
                             />
                             <FormField
                                 control={form.control}
-                                name="uploadBanner"
+                                name="bannerUrl"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Upload banner</FormLabel>
@@ -141,7 +140,7 @@ const ProgramForm = ({setCreateNewProgram}: Props) => {
                             <div className='grid grid-cols-1 gap-6 mt-5'>
                                 <FormField
                                     control={form.control}
-                                    name="authorName"
+                                    name="publisherName"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{`Author`}</FormLabel>

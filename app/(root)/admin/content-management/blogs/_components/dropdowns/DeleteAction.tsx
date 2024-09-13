@@ -1,3 +1,4 @@
+import ButtonSpinner from '@/components/Shared/ButtonSpinner'
 import { Button } from '@/components/ui/button'
 import { DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -36,8 +37,8 @@ const DeleteAction = ({id}: any) => {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button type='button' onClick={() => deleteBlog(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
-                Delete
+              <Button disabled={loading} type='button' onClick={() => deleteBlog(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
+                {loading ? <ButtonSpinner/>  : "Delete"}
               </Button>
             </div>
     </DialogContent>
