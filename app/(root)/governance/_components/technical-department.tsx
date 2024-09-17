@@ -121,7 +121,7 @@ const Fisheries = () => {
                     <h2 className='font-bold md:text-3xl text-2xl'>Fisheries & Aquaculture</h2>
                     <p className='text-sm text-gray mt-4 pb-5'>Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
-                <div className=' bg-black p-8 rounded-xl lg:w-[1250px] w-full h-full lg:h-[288px] lg:ml-20 '>
+                <div className=' bg-black p-8 rounded-xl g:w-[1250px] w-full h-full lg:h-[288px] lg:ml-20 '>
                     <h2 className='font-bold text-white '>Fisheries & Aquaculture</h2>
                     <p className='text-base text-white mt-4 pb-10 font-normal'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla <br></br>tristique ac aliquam donec. Luctus.</p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-2 h-[40px] flex items-center justify-center'>
