@@ -3,8 +3,8 @@ import { CircleCheck } from 'lucide-react'
 
 const AgriculturalExtensions = () => {
     return (
-        <section className='w-full'>
-            <div className='bg-[#2E7636] h-[400px] text-white flex justify-between' >
+        <section className='w-full font-montserrat'>
+            <div className='bg-[#2E7636] h-[400px]  text-white flex justify-between' >
                 <div className='space-y-8 py-24 px-32'>
                     <h2 className='font-bold text-2xl text-[32px]'>Records & Registry Unit</h2>
                     <p className=''>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>

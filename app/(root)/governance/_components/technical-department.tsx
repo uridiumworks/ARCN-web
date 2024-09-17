@@ -2,20 +2,20 @@ import React from 'react'
 
 const TechnicalDepartment = () => {
     return (
-        <section className="px-10 py-20">
-            <div className="px-16">
+        <section className="md:px-10 md:py-20">
+            <div className="lg:px-16 px-8">
                 <h1 className="text-3xl font-bold text-[#1B222B]">Technical Department</h1>
                 <p className="text-lg text-gray mt-4 pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat <br></br> elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
             </div>
 
             <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[1400px] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
-                <div className="py-10 px-20">
+                <div className="lg:py-10 lg:px-20 p-8">
                     <div>
-                        <h2 className="text-[32px] text-black text-bold mb-5 font-bold">Extension & Socio-Economic Department</h2>
+                        <h2 className="lg:text-[32px] text-xl text-black text-bold mb-5 font-bold">Extension & Socio-Economic Department</h2>
                         <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                     </div>
 
-                    <div className='flex h-[288.71px] p-3 gap-4 space-x-7 '>
+                    <div className='flex flex-col h-full w-full lg:flex-row lg:h-[288.71px] gap-4 lg:space-x-7 '>
                         <div className='bg-[#FFC74E] border p-8 rounded-lg text-left '>
                             <h1 className="font-bold text-2xl mt-1">Transport Unit</h1>
                             <p className='pt-5 text-xs pb-6 mt-5'>
@@ -27,7 +27,7 @@ const TechnicalDepartment = () => {
                             </div>
                         </div>
 
-                        <div className='bg-[#2E7636] p-8 border rounded-lg text-left w-[375px]'>
+                        <div className='bg-[#2E7636] p-8 border rounded-lg text-left lg:w-[375px]'>
                             <h1 className="font-bold text-xl text-white ">Records & Registry Unit</h1>
                             <p className='pt-8 pb-6 text-xs text-white'>
                                 Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -38,7 +38,7 @@ const TechnicalDepartment = () => {
                             </div>
                         </div>
 
-                        <div className='bg-black p-6 border rounded-lg text-left w-[400px]'>
+                        <div className='bg-black p-6 border rounded-lg text-left lg:w-[400px]'>
                             <h1 className="font-bold text-xl text-white mt-1">Maintenance Unit</h1>
                             <p className='pt-5 text-xs text-white mt-5 pb-3'>
                                 Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -65,14 +65,14 @@ export default TechnicalDepartment
 
 const LivestockDepartment = () => {
     return (
-        <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[1400px] pt-10 rounded-2xl bg-[#2A59FE4D] mx-auto'>
-            <div className="py-10 px-20">
+        <div className=' mb-8 mt-10 md:grid-cols-2 w-full lg:w-[1400px] lg:pt-10 lg:pr-14 lg:pb-20 p-10  rounded-2xl bg-[#2A59FE4D] mx-auto'>
+            <div className="lg:py-10 lg:px-20 p-8">
                 <div>
-                    <h2 className="text-[32px] text-black text-bold mb-5 font-bold">Livestock Department</h2>
+                    <h2 className="lg:text-[32px] text-2xl text-black text-bold mb-5 font-bold">Livestock Department</h2>
                     <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
 
-                <div className='flex h-[288.71px] p-3 gap-4 space-x-7 '>
+                <div className='flex lg:flex-row flex-col lg:h-[288.71px] p-3 gap-4 lg:space-x-7 '>
                     <div className='bg-[#FFC74E] flex-col justify-between border p-8 rounded-lg text-left '>
                         <div>
                         <h1 className="font-bold text-2xl mt-1">Transport Unit</h1>
@@ -86,7 +86,7 @@ const LivestockDepartment = () => {
                         </div>
                     </div>
 
-                    <div className='bg-[#2E7636] flex-col justify-between p-8 border rounded-lg text-left w-[375px]'>
+                    <div className='bg-[#2E7636] flex-col justify-between p-8 border rounded-lg text-left lg:w-[375px]'>
                         <h1 className="font-bold text-xl text-white ">Records & Registry Unit</h1>
                         <p className='pt-8 pb-6 text-xs text-white'>
                             Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -97,7 +97,7 @@ const LivestockDepartment = () => {
                         </div>
                     </div>
 
-                    <div className='bg-black p-6 flex-col justify-betweenborder rounded-lg text-left w-[400px]'>
+                    <div className='bg-black p-6 flex-col justify-betweenborder rounded-lg text-left lg:w-[400px]'>
                         <h1 className="font-bold text-xl text-white mt-1">Maintenance Unit</h1>
                         <p className='pt-5 text-xs text-white mt-5 pb-3'>
                             Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -116,12 +116,12 @@ const LivestockDepartment = () => {
 const Fisheries = () => {
     return (
         <section className='px-8 py-20'>
-            <div className='mb-8 mt-1 md:grid-cols-2 lg:w-[1400px] pt-10 pr-14 pb-20 rounded-2xl bg-[#c2e989] mx-auto'>
-                <div className='px-20 '>
-                    <h2 className='font-bold text-3xl'>Fisheries & Aquaculture</h2>
+            <div className='mb-8 mt-1 md:grid-cols-2 lg:w-[1400px] w-full lg:pt-10 lg:pr-14 lg:pb-20 p-10 rounded-2xl bg-[#c2e989] mx-auto'>
+                <div className='lg:px-20 '>
+                    <h2 className='font-bold md:text-3xl text-2xl'>Fisheries & Aquaculture</h2>
                     <p className='text-sm text-gray mt-4 pb-5'>Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
-                <div className=' bg-black p-8 rounded-xl w-[1250px] h-[288px] ml-20 '>
+                <div className=' bg-black p-8 rounded-xl g:w-[1250px] w-full h-full lg:h-[288px] lg:ml-20 '>
                     <h2 className='font-bold text-white '>Fisheries & Aquaculture</h2>
                     <p className='text-base text-white mt-4 pb-10 font-normal'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla <br></br>tristique ac aliquam donec. Luctus.</p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-2 h-[40px] flex items-center justify-center'>
