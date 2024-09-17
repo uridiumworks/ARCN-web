@@ -26,8 +26,8 @@ const formSchema = z.object({
     email: z.string().min(3, { message: "Email must be at least 3 characters." }).email({ message: "Invalid email format." }),
     website: z.string().min(3, { message: "Website must be at least 3 characters." }).url({ message: "Invalid website URL." }),
     address: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    stateId: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    localGovernmentAreaId: z.string().min(3, { message: "Address must be at least 3 characters." }),
+    stateId: z.string().min(1, { message: "Address must be at least 3 characters." }),
+    localGovernmentAreaId: z.string().min(1, { message: "Address must be at least 3 characters." }),
     establishDate: z.string().min(3, { message: "Date Established must be provided." }),
     joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
     logoUrl: z.any(),
@@ -200,7 +200,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                             <FormControl>
                                                 <Input
                                                     {...field}
-                                                    type="email"
+                                                    type="text"
                                                     autoComplete="new-password"
                                                     placeholder='Enter Title'
                                                     className="bg-white outline-none"
@@ -240,7 +240,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                             <FormControl>
                                                 <Input
                                                     {...field}
-                                                    type="email"
+                                                    type="text"
                                                     autoComplete="new-password"
                                                     placeholder='Enter Title'
                                                     className="bg-white outline-none"

@@ -1,7 +1,12 @@
-const div
- = () => {
+"use client";
 
-    return ( 
+import { useClientNarissData } from "@/hooks/Naris.hooks";
+
+const Federal = () => {
+    const { loading, nariss, error } = useClientNarissData();
+
+
+    return (
         <main>
             <div>
                 <div className="py-10 px-7 lg:px-32 place-content-center space-y-7 font-montserrat">
@@ -10,7 +15,7 @@ const div
                 </div>
 
                 <div className="bg-[#F6F6F6] font-montserrat ">
-                    <div className="flex flex-col md:flex-row justify-center gap-20 p-10 font-semibold text-[20px] lg:text-[15px]">
+                    {/* <div className="flex flex-col md:flex-row justify-center gap-20 p-10 font-semibold text-[20px] lg:text-[15px]">
                         <div className="space-y-5">
                             <p>Federal College of Agriculture, Akure</p>
                             <p>Federal College of Agriculture, Ibadan</p>
@@ -28,8 +33,18 @@ const div
                             <p>Federal College of Horticultural Technology, Dadinkowa, gombe</p>
                             <p>Federal College of Veterinary and Medical Laboratory Technology, vom</p> 
                         </div>
+                    </div> */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 p-10 font-semibold text-[20px]  lg:text-[15px] ">
+                        {nariss?.length > 0 && (
+                            <>
+                                {nariss?.slice(0, 10)?.map((n, index) => (
+                                    <div key={index}>
+                                        <p>{n.institutionName}</p>
+                                    </div>
+                                ))}
+                            </>
+                        )}
                     </div>
-
                     <div className="text-center p-9">
                         <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">Detailed view</button>
                     </div>
@@ -38,6 +53,6 @@ const div
         </main>
     );
 }
- 
-export default div
-;
+
+export default Federal
+    ;
