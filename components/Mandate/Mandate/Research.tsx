@@ -1,6 +1,10 @@
+"use client";
+import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Image from "next/image";
 
 const Research = () => {
+    const { loading, nariss, error } = useClientNarissData();
+
     return (
         <main className="h-auto md:h-[600px] bg-[#15271C] font-montserrat">
             <div className="text-white text-center">

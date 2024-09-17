@@ -32,7 +32,7 @@ const Institutes = () => {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <>
                 {nariss?.length > 0 &&
-                  nariss?.map((naris: any, index: number) => (
+                  nariss?.slice(0, 4)?.map((naris: any, index: number) => (
                     <div
                       key={index}
                       className="border-[0.59px] py-2 px-3 bg-white rounded-lg flex items-center gap-3"
@@ -68,7 +68,7 @@ const Institutes = () => {
           <div className="border rounded-lg p-6 lg:p-10 bg-[#F9F9F9] space-y-4 lg:space-y-7">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <>
-              {fcas?.length > 0 && fcas?.map((fca:any, index: number) => (
+              {fcas?.length > 0 && fcas?.slice(0, 4)?.map((fca:any, index: number) => (
                  <div key={index} className="border-[0.59px] py-2 px-3 bg-white rounded-lg flex items-center gap-3">
                  <Image
                    src="/Image/Icons/Ibandan.png"
