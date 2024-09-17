@@ -3,7 +3,7 @@ const AROCs = () => {
     return ( 
         <main>
             <div>
-                <div className="p-10 space-y-5">
+                <div className="p-10 space-y-5 font-montserrat">
                     <h1 className="font-bold text-4xl">AROCs</h1>
                     <p className="font-normal text-base">Federal College of Agriculture  are non-profit research organizations conducting innovative research. Home to <br />more than 9,000 scientists, researchers, technicians and staff, the Centers work to transform food, land and water <br />systems in a climate crisis. Click on a Center below to learn more.</p>
                 </div>

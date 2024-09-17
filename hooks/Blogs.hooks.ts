@@ -3,7 +3,13 @@ import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
 const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
-  const [blogs, setBlogs] = useState<any>(null);
+  const [blogs, setBlogs] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("blogData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -15,6 +21,7 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
         const response: any = await getAPI("odata/GetAllBlog", token as any);
 
         console.log(response);
+        localStorage.setItem("blogData", JSON.stringify(response)); // Save to localStorage
         setBlogs(response);
         setLoading(false);
       } catch (error: any) {
@@ -33,7 +40,7 @@ const useBlogData = (
   id: any,
   triggerRefetch?: boolean
 ) => {
-  const [blog, setBlog] = useState<any>(null);
+  const [blog, setBlog] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 

@@ -4,7 +4,7 @@ const New = () => {
 
     return ( 
         <main>
-            <div>
+            <div className="font-montserrat">
                 <div className="">
                     <h1 className="font-semibold text-4xl text-center pt-20">News</h1>
                 </div>

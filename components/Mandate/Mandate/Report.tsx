@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Report = () => {
   return (
-    <main className="w-full">
+    <main className="w-full font-montserrat">
       <div>
         <div className="text-center place-content-center py-10 space-y-4">
           <h1 className="font-bold text-4xl">Coordination Report</h1>

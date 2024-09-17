@@ -4,7 +4,7 @@ import { UsersTableType } from "./types";
 
 export const Userscolumns: ColumnDef<UsersTableType>[] = [
     {
-      accessorKey: "fullName",
+      accessorKey: "userName",
       header: "Full Name",
     },
     {
