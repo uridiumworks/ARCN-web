@@ -47,9 +47,9 @@ const Footer = () => {
                     <div>
                         <h2 className="mb-4 text-lg font-semibold">Social Profiles</h2>
                         <div className="flex gap-5 justify-center lg:justify-start">
-                            <a href="/" target="_blank"><img src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
-                            <a href="/" target="_blank"><img src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
-                            <a href="/" target="_blank"><img src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><Image src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><Image src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><Image src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a>
                         </div>
                     </div>
                 </div>

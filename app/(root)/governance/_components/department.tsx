@@ -22,7 +22,7 @@ const Department = ({setTab}:any) => {
                     </div>
                 </div>
                 <div>
-                    <img src="../Images/OBJECTS.png" alt=""  width={392.62} height={371}/>
+                    <Image src="../Images/OBJECTS.png" alt=""  width={392.62} height={371}/>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@ const Department = ({setTab}:any) => {
                     </div>
                 </div>
                 <div className='pb-1.5'>
-                    <img src="../Images/OBJECT(1).png" alt=""  width={392.62} height={371}/>
+                    <Image src="../Images/OBJECT(1).png" alt=""  width={392.62} height={371}/>
                 </div>
             </div>
     
