@@ -10,12 +10,12 @@ const Partners = () => {
                     <br /> agriculture in Africa
                 </h1>
             </div>
-            <div className='flex flex-col lg:flex-row gap-10 px-20 justify-center items-center lg:gap-20+'>
+            <div className='flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center lg:gap-20+'>
                 <div className='flex-shrink-0'>
                     <Image src="/Images/Homepage/farmer.png" width={436} height={427} alt="farmer" className='w-full max-w-md lg:max-w-lg' />
                 </div>
                 <div className='text-center lg:text-left'>
-                    <p className='font-normal text-base lg:text-lg xl:text-xl'>
+                    <p className='font-normal text-sm md:text-base lg:text-lg xl:text-xl'>
                         We are committed to working with equally ambitious
                         <br />
                         Research Institutes and stakeholders to bridge the sustainability gap in
