@@ -10,7 +10,7 @@ const Technolody = () => {
                     <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque <br />montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit semper cras sed duis tortor <br />tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>
                 </div>
 
-                <div className="p-3 lg:w-[100%] mx-auto grid grid-cols-1 md:grid-cols-4 gap-3">
+                <div className="p-3 lg:w-[100%] mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5">
                     <div className="relative">
                         <Image src="/Image/Mandatepage/Casava.png" alt="casava" width={368} height={200} />
                         <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">

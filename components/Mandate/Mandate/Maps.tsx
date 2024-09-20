@@ -1,6 +1,7 @@
 "use client";
 import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Image from "next/image";
+import {Loader, LoaderOptions} from 'google-maps';
 
 const Maps = () => {
   const { loading, nariss, error } = useClientNarissData();

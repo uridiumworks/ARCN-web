@@ -12,7 +12,7 @@ const Research = () => {
                 <p className="font-normal text-[21px]">Take a look at some of our technologies</p>
             </div>
             
-            <div className="p-3 lg:w-[100%] mx-auto grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-3">
+            <div className="p-3 lg:w-[100%] mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5 md:gap-3">
 
                 <div className="relative">
                     <Image src="/Image/Mandatepage/Casava.png" alt="casava" width={368} height={200} />

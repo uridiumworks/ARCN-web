@@ -4,18 +4,18 @@ const News = () => {
   return (
     <main className="bg-[#FBFAFA] w-full font-montserrat py-9">
       <h1 className="font-bold text-2xl text-center pb-5">PUBLICATIONS</h1>
-      <div className="flex-col md:flex-row flex w-full md:w-[100%] gap-14 px-6 md:px-16">
-        <div className="space-y-4 w-full md:w-[60%] pt-20">
+      <div className="flex flex-col lg:flex-row w-full md:w-[100%] gap-14 px-6 md:px-16">
+        <div className="space-y-4 w-full lg:w-[60%] pt-20">
           <div>
             <h1 className="font-bold text-base">Journals</h1>
           </div>
-          <div className="flex flex-col md:flex-row gap-5 p-2 border bg-[#FFFFFFCC] rounded-[12.91px]">
+          <div className="flex flex-col lg:flex-row gap-5 p-9 lg:p-2 border bg-[#FFFFFFCC] rounded-[12.91px]">
             <div>
               <Image src="/Images/Homepage/Books.png" alt="Books" width={216.26} height={216.26} className="rounded-2xl" />
             </div>
-            <div>
+            <div className="space-y-4">
               <h1 className="font-normal text-[21px]">ARCN JOURNAL.</h1>
-              <p className="font-normal text-sm text-[#999999]">
+              <p className="font-normal text-base lg:text-sm text-[#999999]">
                 ARCN plays a pivotal role in the dissemination of cutting-edge
                 research through its <br />published journals. These journals serve as
                 a platform for researchers from diverse fields and various
@@ -34,10 +34,10 @@ const News = () => {
             <h1 className="font-normal text-[16.41px] text-[#1315175C]"><span className="font-medium text-[#131517] text-[16.95px]">Jun 8</span> Saturday</h1>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-3 p-2 border bg-[#FFFFFFCC] rounded-[12.91px] ">
-            <div>
+          <div className="flex flex-col lg:flex-row gap-3 p-9 lg:p-2 border bg-[#FFFFFFCC] rounded-[12.91px] ">
+            <div className="space-y-4">
               <h1 className="font-normal text-[21px]">ARCN NEWSLETTER</h1>
-              <p className="font-normal text-sm text-[#999999]">
+              <p className="font-normal text-base lg:text-sm text-[#999999]">
                 We are delighted to bring you the latest updates and highlights
                 from ARCN, where groundbreaking research meets global
                 collaboration. Our newsletters serve as a <br />conduit for sharing
@@ -61,7 +61,7 @@ const News = () => {
           </div>
         </div>
 
-        <div className="space-y-3 md:w-[40%] h-fit">
+        <div className="space-y-3 lg:w-[40%] h-fit">
           <h1 className="font-bold text-2xl text-[#333333]">News Alert</h1>
 
           <div className="space-y-4">

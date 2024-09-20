@@ -15,9 +15,9 @@ const Programs = () => {
 
             <div className="w-full py-9 flex flex-col gap-6 md:flex-row place-content-evenly">
                 <div className='space-y-8'>
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border p-4 shadow-xl rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-md" />
                         </div>
 
                         <div className='space-y-4'>
@@ -36,9 +36,9 @@ const Programs = () => {
                         </div>
                     </div>
                     
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border shadow-xl p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-md" />
                         </div>
 
                         <div className='space-y-4'>
@@ -61,9 +61,9 @@ const Programs = () => {
 
                 <div className='space-y-8'>
 
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border shadow-xl p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-md" />
                         </div>
 
                         <div className='space-y-4'>
@@ -82,9 +82,9 @@ const Programs = () => {
                         </div>
                     </div>
 
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border shadow-xl p-4 rounded-xl flex flex-row-reverse gap-2'>
                         <div>
-                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} />
+                            <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-md" />
                         </div>
 
                         <div className='space-y-4'>

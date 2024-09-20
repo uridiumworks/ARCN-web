@@ -11,7 +11,7 @@ const AccountUnit = () => {
             <p className=''>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
         </div>
         <div className='mt-44'>
-            <img src="../Images/group.png" alt="" width={300} height={300} />
+            <Image src="../Images/group.png" alt="" width={300} height={300} />
         </div>
     </div>
     <div>
