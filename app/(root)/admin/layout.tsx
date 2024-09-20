@@ -19,7 +19,7 @@ export default function RootLayout({
 
   return (
     <main>
-      <div style={{fontFamily: "Montserrat"}}>
+      <div>
         {children}
       </div>
     </main>
