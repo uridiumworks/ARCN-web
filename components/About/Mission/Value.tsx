@@ -12,7 +12,8 @@ const Value = () => {
                 </div>
                 
                 <div className="lg:w-[1000px] mx-auto space-y-6">
-                    <div className="flex flex-col md:flex-row gap-5 pt-14 justify-evenly">
+                    <div className="flex flex-col md:flex-row gap-7
+                     lg:gap-5 pt-14 lg:justify-evenly">
 
                         <div className="border rounded-xl w-[420px] space-y-3 p-4">
                             <Image src="/Images/Aboutpage/Gray.png" alt="Gray" width={64} height={64} />

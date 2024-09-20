@@ -4,21 +4,19 @@ const New = () => {
 
     return ( 
         <main>
-            <div className="font-montserrat">
-                <div className="">
+            <div className="font-montserrat mx-auto">
+                <div className="w-full h-full mx-auto">
                     <h1 className="font-semibold text-4xl text-center pt-20">News</h1>
                 </div>
+                <div className="w-full h-full">
+                    <div className="gap-8 px-10 h-[591.59px] flex flex-col md:flex-row space-y-4">
 
-                <div className="lg:w-[1200px] pt-4 mx-auto">
-                    
-                    <div className="gap-5 px-10 h-[591.59px] flex flex-col md:flex-row">
-
-                        <div>
+                        <div className="space-y-3">
                             <div>
-                                <Image src="/Images/News and Events/Place.png" alt="Place" width={395}  height={268.59}/>
+                                <Image src="/Images/News and Events/Place.png" alt="Place" width={395}  height={268.59} className="shadow-lg"/>
                             </div>
                             
-                            <div>
+                            <div className="space-y-2">
                                 <h1 className="font-semibold text-[23px]">
                                     Nature-positive farms on
                                     remote hillsides in India
@@ -30,11 +28,11 @@ const New = () => {
                                 dependent farmers in remote mountain villages:
                                 the deluges br…
                                 </p>
-                                <p className="font-bold text-lg text-[#15271C] "><span className="font-normal text-lg text-[#999999]">Friday, June 17 2022</span><br />Read more</p>
+                                <p className="font-bold text-lg text-[#15271C] "><span className="font-normal text-lg text-[#999999]">Friday, June 17 2022</span><br /> Read more</p>
                             </div>
                         </div>
 
-                        <div>
+                        <div className="space-y-3">
                             <div>
                                 <Image src="/Images/News and Events/wheat.png" alt="Wheat" width={395}  height={268.59} />
                             </div>
@@ -51,7 +49,7 @@ const New = () => {
                             </div>
                         </div>
 
-                        <div>
+                        <div className="space-y-3">
                             <div >
                                 <Image src="/Images/News and Events/Borancow.png" alt="Borancow" width={395}  height={268.59} />
                             </div>
@@ -68,7 +66,7 @@ const New = () => {
                             </div>
                         </div>
 
-                        <div>
+                        <div className="space-y-3">
                             <div >
                                 <Image src="/Images/News and Events/Borancow.png" alt="Borancow" width={395}  height={268.59} />
                             </div>
@@ -86,7 +84,7 @@ const New = () => {
                         </div>
                     </div>
 
-                    <div className="gap-5 py-10 px-10 h-[591.59px] flex flex-col md:flex-row">
+                    <div className="gap-5 px-10 h-[591.59px] flex flex-col md:flex-row">
 
                         <div>
                             <div>

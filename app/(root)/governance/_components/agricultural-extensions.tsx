@@ -1,16 +1,17 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
+import Image from 'next/image'
 
 const AgriculturalExtensions = () => {
     return (
-        <section className='w-full'>
-            <div className='bg-[#2E7636] h-[400px] text-white flex justify-between' >
+        <section className='w-full font-montserrat'>
+            <div className='bg-[#2E7636] h-[400px]  text-white flex justify-between' >
                 <div className='space-y-8 py-24 px-32'>
                     <h2 className='font-bold text-2xl text-[32px]'>Records & Registry Unit</h2>
                     <p className=''>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div >
                 <div className='mt-36'>
-                    <img src='../Images/image 88.png' alt='' width={200} height={200} />
+                    <Image src='../Images/image 88.png' alt='' width={200} height={200} />
                 </div>
             </div>
             <div>

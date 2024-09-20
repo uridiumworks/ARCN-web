@@ -38,7 +38,7 @@ const Institutes = () => {
                       className="border-[0.59px] py-2 px-3 bg-white rounded-lg flex items-center gap-3"
                     >
                       <Image
-                        src="/Image/Icons/Cocoa.png"
+                        src="/Images/Icons/Cocoa.png"
                         alt="Cocoa"
                         width={42}
                         height={42}
@@ -71,7 +71,7 @@ const Institutes = () => {
               {fcas?.length > 0 && fcas?.slice(0, 4)?.map((fca:any, index: number) => (
                  <div key={index} className="border-[0.59px] py-2 px-3 bg-white rounded-lg flex items-center gap-3">
                  <Image
-                   src="/Image/Icons/Ibandan.png"
+                   src="/Images/Icons/Ibandan.png"
                    alt="Ibandan"
                    width={42}
                    height={42}

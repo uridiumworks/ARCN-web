@@ -1,5 +1,6 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
+import Image from 'next/image'
 
 const SecurityUnit = () => {
   return (
@@ -10,7 +11,7 @@ const SecurityUnit = () => {
                 <p className='pt-2'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
                 <div className='mt-36'>
-                    <img src="../Images/police.png" alt="" width={270} height={270} />
+                    <Image src="../Images/police.png" alt="" width={270} height={270} />
                 </div>
             </div>
             <div>

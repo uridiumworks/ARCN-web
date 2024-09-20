@@ -5,76 +5,76 @@ import Image from "next/image";
 const Projects = () => {
 
     return ( 
-        <main>
+        <main className="lg:w-[80%] flex flex-col justify-center items-center mx-auto">
             <div className="place-content-center text-center p-9 space-y-4">
                 <h1 className="font-bold text-4xl">Our Projects</h1>
                 <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque <br />montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit semper cras sed duis tortor <br />tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>
             </div>
 
-            <div className="p-3 flex flex-col md:flex-row gap-3">
+            <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Casava.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Casava.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] bottom-0 rounded-b-md text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Soybeans.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Soybeans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Beans.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Beans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Grains.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Grains.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
             </div>
 
-            <div className="p-3 flex flex-col md:flex-row gap-3">
+            <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Casava.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Casava.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Soybeans.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Soybeans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Beans.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Beans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                 </div>
 
                 <div className="relative">
-                    <Image src="/Images/Mandatepage/Grains.png" alt="" width={368} />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 text-white p-2">
+                    <Image src="/Images/Mandatepage/Grains.png" alt="" width={368} height={310.4} className="rounded-b-md"  />
+                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
                         <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
                         <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>

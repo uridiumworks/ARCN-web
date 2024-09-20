@@ -1,5 +1,6 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
+import Image from 'next/image'
 
 const Ruminant = () => {
     return (
@@ -10,7 +11,7 @@ const Ruminant = () => {
                     <p className=''>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
                 <div className='mt-36'>
-                    <img src="../Images/agric.png" alt="" width={250} height={250} />
+                    <Image src="../Images/agric.png" alt="" width={250} height={250} />
                 </div>
             </div>
 

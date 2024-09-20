@@ -3,7 +3,7 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Footer = () => {
     return (
-        <main className="lg:h-[506px] bg-[#121212] space-y-5 text-white font-montserrat">
+        <main className="lg:h-[506px] bg-[#121212] space-y-5 text-white  font-montserrat">
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 justify-center p-10 '>
                 <div className='space-y-7'>
                     <div>
@@ -47,9 +47,9 @@ const Footer = () => {
                     <div>
                         <h2 className="mb-4 text-lg font-semibold">Social Profiles</h2>
                         <div className="flex gap-5 justify-center lg:justify-start">
-                            <a href="/" target="_blank"><img src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
-                            <a href="/" target="_blank"><img src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
-                            <a href="/" target="_blank"><img src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><Image src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><Image src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
+                            <a href="/" target="_blank"><Image src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a>
                         </div>
                     </div>
                 </div>
