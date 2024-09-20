@@ -6,16 +6,49 @@ import React, { useState } from 'react'
 import { Input } from './ui/input'
 import { Search, Menu } from 'lucide-react'
 import { Button } from './ui/button'
+import { useRouter } from 'next/navigation'
 
 type Props = {}
 
 const Navbar = (props: Props) => {
+    const router = useRouter();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     }
 
+    const routePathLinks = (arg: any) => {
+        switch (arg) {
+            case "Governance":
+                router.push("/governance")
+                break;
+
+            case "Home":
+                router.push("/")
+                break;
+            case "About Us":
+                router.push("/about")
+                break;
+            case "mandate":
+                router.push("/mandate")
+                break;
+            case "News & Events":
+                router.push("/newsandevents")
+                break;
+            case "Programs & Projects":
+                router.push("/programsandprojects")
+                break;
+            case "Impacts":
+                router.push("/impacts")
+                break;
+            case "Careers":
+                router.push("/career")
+                break;
+            default:
+                break;
+        }
+    }
     return (
         <div className='flex items-center justify-between px-4 md:px-20 py-3 sticky z-10 top-0 bg-[#000]'>
             <div>
@@ -24,12 +57,12 @@ const Navbar = (props: Props) => {
             <div className='hidden md:block text-center'>
                 <div className='flex justify-center items-center gap-4 text-white'>
                     {topNav.map((t, index) => (
-                        <p className='font[Montserrat] uppercase font-[400] text-[12px] text-[#EFEFEF]' key={index}>{t}</p>
+                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] uppercase font-[400] text-[12px] text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
                     ))}
                 </div>
                 <div className='flex justify-center mt-2 gap-6 text-white'>
                     {mainNav.map((t, index) => (
-                        <p className='font[Montserrat] font-[800] text-[14px] uppercase text-[#EFEFEF]' key={index}>{t}</p>
+                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-[800] text-[14px] uppercase text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
                     ))}
                 </div>
             </div>
