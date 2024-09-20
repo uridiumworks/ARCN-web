@@ -5,14 +5,14 @@ const Upcoming = () => {
 
     return ( 
         <main>
-            <div className="font-montserrat">
+            <div className="font-montserrat py-10">
                 <div className="py-5">
                     <h1 className='font-semibold text-3xl px-20'>UPCOMING EVENTS</h1>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-20 px-20">
-                    <div className='space-y-8'>
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                <div className="flex flex-col lg:flex-row gap-20 lg:py-10 lg:px-20 w-full p-9">
+                    <div className='lg:space-y-8'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -31,7 +31,7 @@ const Upcoming = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -50,7 +50,7 @@ const Upcoming = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -71,7 +71,7 @@ const Upcoming = () => {
                     </div>
 
                     <div className='space-y-8'>
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -90,7 +90,7 @@ const Upcoming = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -109,7 +109,7 @@ const Upcoming = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>

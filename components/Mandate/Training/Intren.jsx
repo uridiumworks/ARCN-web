@@ -16,8 +16,8 @@ const Intern = () => {
 
                 <div className="w-full py-9 flex flex-col gap-6 md:flex-row place-content-evenly">
 
-                    <div className='space-y-8'>
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='space-y-8 px-3'>
+                        <div className='border p-4 shadow-md rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -38,8 +38,8 @@ const Intern = () => {
                             </div>
                         </div>
                         
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
-                            <div>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
+                            <div> 
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                             </div>
 
@@ -60,9 +60,9 @@ const Intern = () => {
                         </div>
                     </div>
 
-                    <div className='space-y-8'>
+                    <div className='space-y-8 px-3'>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -83,7 +83,7 @@ const Intern = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border shadow-md p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>

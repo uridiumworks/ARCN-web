@@ -17,7 +17,7 @@ const Report = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 justify-evenly ">
-          <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+          <div className='border p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
             <div className="">
               <Image src="/Images/Homepage/World.png" alt="overlay" width={180} height={201} className="rounded-[13.4px]" />
             </div>
@@ -41,7 +41,7 @@ const Report = () => {
             </div>
           </div>  
 
-          <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+          <div className='border p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
             <div>
               <Image src="/Images/Homepage/World.png" alt="overlay" width={180} height={201} className="rounded-[13.4px]"  />
             </div>
