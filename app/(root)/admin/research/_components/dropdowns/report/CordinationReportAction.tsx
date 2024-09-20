@@ -10,12 +10,12 @@ import { FaEye } from 'react-icons/fa6'
 import DeleteAction from './DeleteAction'
 
 
-const ReportAction = ({reportData}: any) => {
+const CordinationReportAction = ({cordinationReportData}: any) => {
   const [dialog, setDialog] = useState(0);
   const router = useRouter();
   return (
     <Dialog>
-      {dialog === 1 && <DeleteAction id={reportData?.reportsId}/>}
+      {dialog === 1 && <DeleteAction id={cordinationReportData?.cordinationReportId}/>}
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
         <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>
@@ -26,7 +26,7 @@ const ReportAction = ({reportData}: any) => {
         >
           <DropdownMenuItem
             className="flex justify-start gap-3 items-center cursor-pointer"
-            onClick={() => router.push(`/admin/research/reports/${reportData?.reportsId}`)}
+            onClick={() => router.push(`/admin/research/cordinationReport/${cordinationReportData?.cordinationReportId}`)}
           >
             <EditIcon className="scale-95" /> <span>Edit</span>
           </DropdownMenuItem>
@@ -46,4 +46,4 @@ const ReportAction = ({reportData}: any) => {
   )
 }
 
-export default ReportAction
+export default CordinationReportAction
