@@ -34,6 +34,37 @@ const useReportsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, reports };
 };
+const useClientReportsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [reports, setReports] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("reportData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllCordinationReport", token as any);
+        console.log(response);
+        localStorage.setItem("reportData", JSON.stringify(response)); // Save to localStorage
+        setReports(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, reports };
+};
 
 const useReportData = (
   token: string | null,
@@ -51,6 +82,39 @@ const useReportData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetReportsById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setReport(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, report };
+};
+
+const useClientReportData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [report, setReport] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetCordinationReportById/${id}`,
           token as any
         );
 
@@ -192,6 +256,8 @@ const useUpdateReport = (token: string | null) => {
 export {
   useReportsData,
   useReportData,
+  useClientReportsData,
+  useClientReportData,
   useCreateReport,
   useDeleteReport,
   useUpdateReport,

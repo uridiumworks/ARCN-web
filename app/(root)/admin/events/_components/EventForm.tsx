@@ -30,6 +30,8 @@ const formSchema = z.object({
     authorName: z.string().min(3, { message: "Author's name must be at least 3 characters." }),
     eventStartDate: z.string().min(3, { message: "Event start Date must be provided" }),
     eventEndDate: z.string().min(3, { message: "Event end Date must be provided" }),
+    eventStartTime: z.string().min(3, { message: "Event start Time must be provided" }),
+    eventEndTime: z.string().min(3, { message: "Event end Time must be provided" }),
     durationPerDay: z.string().min(3, { message: "Duration Per Day must be provided" }),
 })
 
@@ -64,6 +66,8 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
             authorName: "",
             eventStartDate: "",
             eventEndDate: "",
+            eventStartTime: "",
+            eventEndTime: "",
             durationPerDay: "",
         },
     });
@@ -258,6 +262,44 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
                                                 <Input
                                                     {...field}
                                                     type="date"
+                                                    autoComplete="new-password"
+                                                    placeholder='DD/MM/YYYY'
+                                                    className="bg-inherit outline-none"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="eventStartTime"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{`Event's End Date`}</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="time"
+                                                    autoComplete="new-password"
+                                                    placeholder='DD/MM/YYYY'
+                                                    className="bg-inherit outline-none"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="eventEndTime"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{`Event's End Date`}</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="time"
                                                     autoComplete="new-password"
                                                     placeholder='DD/MM/YYYY'
                                                     className="bg-inherit outline-none"

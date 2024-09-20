@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 const useNarissData = (token: string | null, triggerRefetch?: boolean) => {
   const [nariss, setNariss] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("narisData");
-        return savedData ? JSON.parse(savedData) : [];
-      }
-      return []; // Return a default value for SSR
-});
+      const savedData = localStorage.getItem("narisData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,6 +35,72 @@ const useNarissData = (token: string | null, triggerRefetch?: boolean) => {
   return { loading, error, nariss };
 };
 
+const useClientNarissData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [nariss, setNariss] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+      const savedData = localStorage.getItem("narisData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllNaris", token as any);
+
+        console.log(response);
+        localStorage.setItem("narisData", JSON.stringify(response)); // Save to localStorage
+        setNariss(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, nariss };
+};
+
+
+const useClientNarisData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [naris, setNaris] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetNarisById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setNaris(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, naris };
+};
 const useNarisData = (
   token: string | null,
   id: any,
@@ -191,6 +257,8 @@ const useUpdateNaris = (token: string | null) => {
 
 export {
   useNarissData,
+  useClientNarissData,
+  useClientNarisData,
   useNarisData,
   useCreateNaris,
   useDeleteNaris,

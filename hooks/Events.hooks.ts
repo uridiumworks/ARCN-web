@@ -34,6 +34,37 @@ const useEventsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, events };
 };
+const useClientEventsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [events, setEvents] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("EventData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllEvent", token as any);
+        console.log(response);
+        localStorage.setItem("EventData", JSON.stringify(response)); // Save to localStorage
+        setEvents(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, events };
+};
 
 const useEventData = (
   token: string | null,
@@ -51,6 +82,38 @@ const useEventData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetEventById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setEvent(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, event };
+};
+const useClientEventData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [event, setEvent] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetEventById/${id}`,
           token as any
         );
 
@@ -192,6 +255,8 @@ const useUpdateEvent = (token: string | null) => {
 export {
   useEventsData,
   useEventData,
+  useClientEventData,
+  useClientEventsData,
   useCreateEvent,
   useDeleteEvent,
   useUpdateEvent,
