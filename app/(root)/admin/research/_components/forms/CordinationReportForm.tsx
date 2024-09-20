@@ -15,6 +15,7 @@ import { FaFilePdf } from 'react-icons/fa6';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useCreateReport, useReportsData } from '@/hooks/Reports.hooks';
 import { useUploadImage } from '@/hooks/BannerUpload.hooks';
+import { useCordinationReportsData, useCreateCordinationReport } from '@/hooks/CordinationReport.hooks';
 
 interface Props {
     setCreateReport: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,19 +26,19 @@ const formSchema = z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
     bannerUrl: z.string().min(3, { message: "uploaded Banner must be provided.", }),
     description: z.any(),
-    authorName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
+    publisherName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
     authorEmail: z.string().min(3, { message: "author Email must be at least 3 characters.", }).email({ message: "Invalid email format." }),
     publishDate: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
 })
 
-const ReportForm = ({ setCreateReport }: Props) => {
+const CordinationReportForm = ({ setCreateReport }: Props) => {
     const docImgRef = useRef<HTMLInputElement | null>(null);
     const [token, setToken] = useState<string | null>(null)
     const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
     const [imageName, setImageName] = useState<string>("")
-    const { createReport, data, loading: createLoading, error: createError } = useCreateReport(token)
+    const { createReport, data, loading: createLoading, error: createError } = useCreateCordinationReport(token)
     const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
-    const { loading, reports, error } = useReportsData(token, triggerRefetch)
+    const { loading, cordinationReport, error } = useCordinationReportsData(token, triggerRefetch)
 
     useEffect(() => {
         const userToken = localStorage.getItem("userToken");
@@ -56,7 +57,7 @@ const ReportForm = ({ setCreateReport }: Props) => {
             title: "",
             bannerUrl: "",
             description: "",
-            authorName: "",
+            publisherName: "",
             authorEmail: "",
             publishDate: "",
         },
@@ -207,7 +208,7 @@ const ReportForm = ({ setCreateReport }: Props) => {
                             <div className='grid grid-cols-1 gap-6 mt-5'>
                                 <FormField
                                     control={form.control}
-                                    name="authorName"
+                                    name="publisherName"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{`Publisher's Name`}</FormLabel>
@@ -272,4 +273,4 @@ const ReportForm = ({ setCreateReport }: Props) => {
     )
 }
 
-export default ReportForm
+export default CordinationReportForm

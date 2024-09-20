@@ -15,7 +15,7 @@ export type NarisTableType = {
 export type CordinationReportTableType = {
     checkbox: any;
     title: string;
-    authorName: string;
+    publisherName: string;
     authorEmail: string;
     publishDate: string;
     action: any;

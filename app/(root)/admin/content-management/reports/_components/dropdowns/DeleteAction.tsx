@@ -6,13 +6,15 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useDeleteBlog } from '@/hooks/Blogs.hooks'
 import { useDeleteJournal } from '@/hooks/Journals.hooks'
+import { useDeleteNewsLetter } from '@/hooks/NewsLetters.hooks'
+import { useDeleteReport } from '@/hooks/Reports.hooks'
 import React, { useEffect, useRef, useState } from 'react'
 
 const DeleteAction = ({id}: any) => {
   console.log("🚀 ~ DeleteAction ~ id:", id)
   const closeDeleteDialogRef = useRef<HTMLButtonElement>(null);
   const [token, setToken] = useState<string | null>(null)
-  const { deleteJournal, loading, error, success } = useDeleteJournal(token)
+  const { deleteReport, loading, error, success } = useDeleteReport(token)
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -25,9 +27,9 @@ const DeleteAction = ({id}: any) => {
     <DialogContent className="bg-white p-10">
     <DialogHeader>
           <AlertIcon />
-          <DialogTitle>Delete journal post</DialogTitle>
+          <DialogTitle>Delete report</DialogTitle>
           <DialogDescription className="py-4">
-            Are you sure you want to delete this post? This action cannot be
+            Are you sure you want to delete this report? This action cannot be
             undone.
           </DialogDescription>
         </DialogHeader>
@@ -41,7 +43,7 @@ const DeleteAction = ({id}: any) => {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button disabled={loading} type='button' onClick={() => deleteJournal(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
+              <Button disabled={loading} type='button' onClick={() => deleteReport(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
                 {loading ? <ButtonSpinner/>  : "Delete"}
               </Button>
             </div>

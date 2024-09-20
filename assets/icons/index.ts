@@ -16,3 +16,4 @@ export { default as NotificationIcon} from "./Notifcation.svg";
 export { default as ArrowDownIcon} from "./Chevron Down.svg";
 export { default as EditIcon} from "./tabler_edit.svg";
 export { default as RedDeleteIcon} from "./material-symbols_delete-outline.svg";
+export { default as AlertIcon} from "./Alert Icon.svg";

@@ -30,7 +30,7 @@ if (loading && fcas?.length < 1) return <p>Loading....</p>
     <div className='w-full min-h-[70vh]'>
       {createFCAs ? <FCAsForm setCreateFCAs={setCreateFCAs}/> : <>
         <div>
-            <p className='text-[#374151] text-[24px] leading-[30px] font-bold font-[Montserrat]'>Federal College of Agricultures</p>
+            <p className='text-[#374151] text-[24px] leading-[30px] font-bold font-[Montserrat]' style={{fontFamily: "Montserrat"}}>Federal College of Agricultures</p>
             <p className='text-[#374151] text-[18px] leading-[32.4px] font-normal font-[Montserrat]'>Here’s a list of all your research institutes</p>
         </div>
         <div className='w-full min-h-[70vh] bg-white rounded-md mt-5'>

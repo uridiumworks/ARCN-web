@@ -1,3 +1,4 @@
+import { AlertIcon } from '@/assets/icons'
 import ButtonSpinner from '@/components/Shared/ButtonSpinner'
 import { Button } from '@/components/ui/button'
 import { DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -22,12 +23,14 @@ const DeleteAction = ({id}: any) => {
   return (
     <>
     <DialogContent className="bg-white p-10">
-      <DialogHeader>
-        <DialogTitle>Delete blog post</DialogTitle>
-        <DialogDescription className="py-4">
-        Are you sure you want to delete this post? This action cannot be undone.
-        </DialogDescription>
-      </DialogHeader>
+    <DialogHeader>
+          <AlertIcon />
+          <DialogTitle>Delete program</DialogTitle>
+          <DialogDescription className="py-4">
+            Are you sure you want to delete this program? This action cannot be
+            undone.
+          </DialogDescription>
+        </DialogHeader>
             <div className="grid grid-cols-2 mt-8 gap-3">
               <DialogClose asChild>
                 <Button
