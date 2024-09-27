@@ -1,8 +1,8 @@
 import React from 'react'
 import PublicationsMotto from './_components/PublicationsMotto'
 import Journals from './_components/Journals'
-import Reports from './_components/reports'
 import Newsletter from './_components/Newsletter'
+import Reports from './_components/reports'
 
 
 const page = () => {
@@ -10,8 +10,8 @@ const page = () => {
     <div>
       <PublicationsMotto/>
       <Journals/>
-      <Reports/>
       <Newsletter/>
+      <Reports/>
     </div>
   )
 }
