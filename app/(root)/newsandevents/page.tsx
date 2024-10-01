@@ -9,7 +9,7 @@ const NewsandEvents = () => {
         <main>
             <Collection />
             <New />
-            <Upcoming />
+            <Upcoming/>
             <Journal />
         </main>
     );

@@ -34,6 +34,38 @@ const useProgramsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, programs };
 };
+const useClientProgramsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [programs, setPrograms] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("programData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllProgram", token as any);
+
+        console.log(response);
+        localStorage.setItem("programData", JSON.stringify(response)); // Save to localStorage
+        setPrograms(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, programs };
+};
 
 const useProgramData = (
   token: string | null,
@@ -51,6 +83,38 @@ const useProgramData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetProgramById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setProgram(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, program };
+};
+const useClientProgramData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [program, setProgram] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetProgramById/${id}`,
           token as any
         );
 
@@ -191,6 +255,8 @@ const useUpdateProgram = (token: string | null) => {
 export {
   useProgramsData,
   useProgramData,
+  useClientProgramsData,
+  useClientProgramData,
   useCreateProgram,
   useDeleteProgram,
   useUpdateProgram,
