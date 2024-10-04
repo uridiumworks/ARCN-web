@@ -34,6 +34,38 @@ const useNewsLettersData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, newsLetters };
 };
+const useClientNewsLettersData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [newsLetters, setNewsLetters] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("NewsLetterData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllNewsLetter", token as any);
+
+        console.log(response);
+        localStorage.setItem("NewsLetterData", JSON.stringify(response)); // Save to localStorage
+        setNewsLetters(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, newsLetters };
+};
 
 const useNewsLetterData = (
   token: string | null,
@@ -51,6 +83,38 @@ const useNewsLetterData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetNewsLetterById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setNewsLetter(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, newsLetter };
+};
+const useClientNewsLetterData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [newsLetter, setNewsLetter] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetNewsLetterById/${id}`,
           token as any
         );
 
@@ -190,6 +254,8 @@ const useUpdateNewsLetter = (token: string | null) => {
 
 export {
   useNewsLettersData,
+  useClientNewsLettersData,
+  useClientNewsLetterData,
   useNewsLetterData,
   useCreateNewsLetter,
   useDeleteNewsLetter,
