@@ -30,7 +30,7 @@ const JournalTable = <TData, TValue>({
 
   return (
     <>
-    <div className='w-full h-auto p-5 flex justify-between items-center '>
+    <div className='w-full lg:h-auto p-5 flex justify-between items-center '>
         <div className='w-fit flex justify-between items-center gap-2 px-5'>
             <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]"><CiFilter size={20} /> <span className="text-[14px] font-noraml">Filter</span> <IoIosArrowDown color="#121212" size={20} /></Button>
             <div className="relative">

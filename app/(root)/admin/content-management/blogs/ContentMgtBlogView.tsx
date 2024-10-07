@@ -29,15 +29,15 @@ const ContentMgtBlogView = () => {
     if (loading && blogs?.length < 1) return <p>Loading....</p>
 
     return (
-        <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
-            <div className='w-full min-h-[70vh]'>
+        <div className='w-full lg:min-h-screen bg-[#f9fafb] p-10'>
+            <div className='w-full lg:min-h-[70vh]'>
 
                {createNewBlog ? <NewBlogForm setCreateNewBlog={setCreateNewBlog} /> : <>
                                 <div>
                     <p className='text-[#374151] text-[24px] leading-[30px] font-bold font-[Montserrat]'>Blogs</p>
                     <p className='text-[#374151] text-[18px] leading-[32.4px] font-normal font-[Montserrat]'>Here’s a list of all blogs created</p>
                 </div>
-                <div className='w-full min-h-[70vh] bg-white rounded-md mt-5'>
+                <div className='w-full lg:min-h-[70vh] bg-white rounded-md mt-5'>
                     <ContentMgtBlogTable columns={ContentManagementBlogscolumns} data={blogArray ?? []} setCreateNewBlog={setCreateNewBlog}/>
                 </div>
                 </>}

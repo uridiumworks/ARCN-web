@@ -38,7 +38,7 @@ const JournalAction = ({journalData}: any) => {
             <FaEye /> <span>View</span>
           </DropdownMenuItem>
         
-
+        
           <DialogTrigger asChild>
             <DropdownMenuItem
               className="flex justify-start gap-3 items-center cursor-pointer"

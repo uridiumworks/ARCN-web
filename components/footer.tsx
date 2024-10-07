@@ -15,7 +15,7 @@ const Footer = () => {
                         <p className='font-medium text-sm'>Agricultural Research House, Plot 223D <br />Cadastral Zone B6, Mabushi, Abuja</p>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-5 '>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-5 '>
 
                     <div>
                         <h2 className="mb-4 text-lg lg:text-xl font-semibold">Company</h2>

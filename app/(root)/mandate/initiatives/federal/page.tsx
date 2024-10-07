@@ -2,12 +2,12 @@ import Journal from "@/components/Shared/Journal";
 import Image from "next/image";
 import { IoArrowForwardSharp } from "react-icons/io5";
 
-const Research = () => {
+const Federal = () => {
   return (
     <main>
       <div>
         <div className="lg:px-20 px-2 py-10 space-y-8">
-          <h1 className="font-bold text-4xl">Research Institutes</h1>
+          <h1 className="font-bold text-4xl">Federal College of Agriculture</h1>
           <p className="font-medium text-base">
             <span className="text-[15.88px] font-medium text-[#2D7636]">
               ARCN Research Institutes
@@ -25,7 +25,7 @@ const Research = () => {
 
         <div className="lg:w-[1200px] mx-auto space-y-5 pb-8">
           <div className="grid lg:grid-cols-3 gap-8 lg:w-[1/2]">
-            <div className="border-[0.59px] space-y-2 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
+            <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
                   src="/Images/Icons/cocoa.png"
@@ -35,7 +35,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                Cocoa Research Institute of Nigeria
+                Federal College of Agriculture, Akure
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -49,8 +49,8 @@ const Research = () => {
               </div>
             </div>
 
-            <div className="border-[0.59px] space-y-8 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
-              <div className="space-y-2 items-center flex gap-2">
+            <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
+              <div className="items-center flex gap-2">
                 <Image
                   src="/Images/Icons/Rubber.png"
                   alt="Rubber"
@@ -58,9 +58,9 @@ const Research = () => {
                   height={42}
                 />
               </div>
-              <div>
+              <div className="space-y-5">
                 <h1 className="font-semibold text-sm">
-                  Cocoa Research Institute of Nigeria
+                    Federal College of Agriculture, Ibadan
                 </h1>
                 <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                   Rubber research institute of Nigeria is the only Federal
@@ -75,7 +75,7 @@ const Research = () => {
               </div>
             </div>
 
-            <div className="border-[0.59px] space-y-2 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
+            <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
                   src="/Images/Icons/Nationl.png"
@@ -85,7 +85,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                National Horticultural Research Institute
+              Federal College of Agriculture, Ishiagu
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 The National Horticultural Research Institute (Headquarter);
@@ -101,17 +101,17 @@ const Research = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 w-full lg:w-[1/2]">
-            <div className="border-[0.59px] space-y-1 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
+            <div className="border-[0.59px] space-y-0.5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Root.png"
+                  src="/Images/Icons/Products.png"
                   alt="Roots"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                National Root Crops Research Institute
+                Federal College of Animal Health & production, moor plantation, Ibadan
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Nigerian Stored Products Research Institute (NSPRI) was
@@ -129,14 +129,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Cereals.png"
+                  src="/Images/Icons/Rubber.png"
                   alt="Cereals"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                National Cereals Research Institute
+                Federal cooperative college, kaduna
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Rubber research institute of Nigeria is the only Federal
@@ -152,14 +152,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-2 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Animals.png"
+                  src="/Images/Icons/Nationl.png"
                   alt="cocoa"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                National Animal Production And Research Institute
+                Federal College of Animal Health and production, Vom
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 The National Horticultural Research Institute (Headquarter);
@@ -178,14 +178,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-1.5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Fishes.png"
+                  src="/Images/Icons/Products.png"
                   alt="Roots"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                National Institute For Fresh Fisheries Research
+              Federal College of Agricultural Produce Technology,Kano
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Nigerian Stored Products Research Institute (NSPRI) was
@@ -203,14 +203,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-3.5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Liason.png"
+                  src="/Images/Icons/Rubber.png"
                   alt="Cereals"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              National Agricultural Extension Research Liason Services
+              Rubber Research Institute of Nigeria
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Rubber research institute of Nigeria is the only Federal
@@ -226,14 +226,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-2 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Veterinary.png"
+                  src="/Images/Icons/Nationl.png"
                   alt="cocoa"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              National Veterinary Research Institute
+              National Horticultural Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -252,55 +252,8 @@ const Research = () => {
             <div className="border-[0.59px] space-y-1.5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Marine.png"
-                  alt="Roots"
-                  width={42}
-                  height={42}
-                />
-              </div>
-              <h1 className="font-semibold text-sm">
-              Nigerian Institute For Oceanography And Marine Research
-              </h1>
-              <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
-                Cocoa Research Institute of Nigeria (CRIN) was established in
-                Ibadan, Oyo State on 1st December, 1964 as a successor
-                autonomous research organization to the Nigerian Substation of
-                the defunct West African Cocoa Research Institute (WACRI) by
-                Nigeria Statute, Act No. 6 of 1950.
-              </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
-            </div>
-
-            <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
-              <div className="space-y-2 items-center flex gap-2">
-                <Image
-                  src="/Images/Icons/OilPalm.png"
-                  alt="Cereals"
-                  width={42}
-                  height={42}
-                />
-              </div>
-              <h1 className="font-semibold text-sm">
-              Nigerian Institute For Oil Palm Research
-              </h1>
-              <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
-                Rubber research institute of Nigeria is the only Federal
-                Government agency in Nigeria that has the mandate to conduct
-                research and development on rubber and other latex producing
-                plants of economic importance. 
-              </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
-            </div>
-
-            <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
-              <div className="space-y-2 items-center flex gap-2">
-                <Image
                   src="/Images/Icons/Products.png"
-                  alt="cocoa"
+                  alt="Roots"
                   width={42}
                   height={42}
                 />
@@ -319,20 +272,67 @@ const Research = () => {
                 <IoArrowForwardSharp className="text-xl" />
               </div>
             </div>
+
+            <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
+              <div className="space-y-2 items-center flex gap-2">
+                <Image
+                  src="/Images/Icons/Rubber.png"
+                  alt="Cereals"
+                  width={42}
+                  height={42}
+                />
+              </div>
+              <h1 className="font-semibold text-sm">
+              Rubber Research Institute of Nigeria
+              </h1>
+              <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
+                Rubber research institute of Nigeria is the only Federal
+                Government agency in Nigeria that has the mandate to conduct
+                research and development on rubber and other latex producing
+                plants of economic importance. 
+              </p>
+              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                <IoArrowForwardSharp className="text-xl" />
+              </div>
+            </div>
+
+            <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
+              <div className="space-y-2 items-center flex gap-2">
+                <Image
+                  src="/Images/Icons/Nationl.png"
+                  alt="cocoa"
+                  width={42}
+                  height={42}
+                />
+              </div>
+              <h1 className="font-semibold text-sm">
+              National Horticultural Research Institute
+              </h1>
+              <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
+                Cocoa Research Institute of Nigeria (CRIN) was established in
+                Ibadan, Oyo State on 1st December, 1964 as a successor
+                autonomous research organization to the Nigerian Substation of
+                the defunct West African Cocoa Research Institute (WACRI) by
+                Nigeria Statute, Act No. 6 of 1950.
+              </p>
+              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                <IoArrowForwardSharp className="text-xl" />
+              </div>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 w-full lg:w-[1/2]">
             <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Training.png"
+                  src="/Images/Icons/Products.png"
                   alt="Roots"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Institute Of Agricultural Research And Training
+              Nigerian Stored Products Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -349,14 +349,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Agricultural.png"
+                  src="/Images/Icons/Rubber.png"
                   alt="Cereals"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Institute For Agricultural Research
+              Rubber Research Institute of Nigeria
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Rubber research institute of Nigeria is the only Federal
@@ -372,14 +372,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/LakeChad.png"
+                  src="/Images/Icons/Nationl.png"
                   alt="cocoa"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Lake Chad Research Institute
+              National Horticultural Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -398,14 +398,14 @@ const Research = () => {
             <div className="border-[0.59px] space-y-3 py-1.5 px-3 w-full lg:w-[520px] bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
               <div className="space-y-2 items-center flex gap-2">
                 <Image
-                  src="/Images/Icons/Mechanization.png"
+                  src="/Images/Icons/Nationl.png"
                   alt="cocoa"
                   width={42}
                   height={42}
                 />
               </div>
               <h1 className="font-semibold text-sm">
-                National Centre For Agricultural Mechanization
+              National Horticultural Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 The National Horticultural Research Institute (Headquarter);
@@ -426,4 +426,4 @@ const Research = () => {
   );
 };
 
-export default Research;
+export default Federal;
