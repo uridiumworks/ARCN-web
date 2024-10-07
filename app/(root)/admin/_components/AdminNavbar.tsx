@@ -24,15 +24,15 @@ const AdminNavbar = () => {
                 <p className='font-[Montserrat] font-black italic text-lg leading-[10.5px]'>Hi, {userData?.firstName}</p>
             </div>
             <div className="flex justify-start items-center gap-4">
-                <div className='relative w-fit h-fit'>
+                {/* <div className='relative w-fit h-fit'>
                     <NotificationIcon />
                     <Badge className='absolute top-0 -right-[8%] bg-[#e62e2e] text-white text-xs'>10</Badge>
-                </div>
+                </div> */}
                 <Avatar>
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>AM</AvatarFallback>
                 </Avatar>
-                <ArrowDownIcon />
+                {/* <ArrowDownIcon /> */}
             </div>
         </div>
     )

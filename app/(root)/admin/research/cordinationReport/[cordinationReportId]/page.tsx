@@ -16,31 +16,32 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { useUploadImage } from '@/hooks/BannerUpload.hooks';
 import { useCreateReport, useReportData, useReportsData, useUpdateReport } from '@/hooks/Reports.hooks';
 import { useRouter } from 'next/navigation';
+import { useCordinationReportData, useUpdateCordinationReport } from '@/hooks/CordinationReport.hooks';
 
 
 
 type Props = {
-    params: { reportsId: any };
+    params: { cordinationReportId: any };
 };
 
 const formSchema = z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
     bannerUrl: z.string().min(3, { message: "uploaded Banner must be provided.", }),
     description: z.any(),
-    authorName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
+    publisherName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
     authorEmail: z.string().min(3, { message: "author Email must be at least 3 characters.", }).email({ message: "Invalid email format." }),
     publishDate: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
 })
 
-const UpdateReport = ({ params }: Props) => {
+const UpdateCordinationReport = ({ params }: Props) => {
     const router = useRouter();
     const docImgRef = useRef<HTMLInputElement | null>(null);
     const [token, setToken] = useState<string | null>(null)
     const [imageName, setImageName] = useState<string>("")
     const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
-    const { updateReport, success, loading: updateLoading, error: updateError } = useUpdateReport(token)
+    const { updateReport, success, loading: updateLoading, error: updateError } = useUpdateCordinationReport(token)
     const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
-    const { loading, report, error } = useReportData(token, params?.reportsId, triggerRefetch)
+    const { loading, report, error } = useCordinationReportData(token, params?.cordinationReportId, triggerRefetch)
 
     useEffect(() => {
         const userToken = localStorage.getItem("userToken");
@@ -53,7 +54,7 @@ const UpdateReport = ({ params }: Props) => {
             title: "",
             bannerUrl: "",
             description: "",
-            authorName: "",
+            publisherName: "",
             authorEmail: "",
             publishDate: "",
         },
@@ -95,7 +96,7 @@ const UpdateReport = ({ params }: Props) => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
-        await updateReport(params?.reportsId, values)
+        await updateReport(params?.cordinationReportId, values)
     }
     return (
         <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
@@ -212,7 +213,7 @@ const UpdateReport = ({ params }: Props) => {
                             <div className='grid grid-cols-1 gap-6 mt-5'>
                                 <FormField
                                     control={form.control}
-                                    name="authorName"
+                                    name="publisherName"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{`Publisher's Name`}</FormLabel>
@@ -279,4 +280,4 @@ const UpdateReport = ({ params }: Props) => {
     )
 }
 
-export default UpdateReport
+export default UpdateCordinationReport

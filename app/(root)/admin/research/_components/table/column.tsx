@@ -6,7 +6,7 @@ import { CordinationReportTableType, NarisTableType } from "./types";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
 import NarisAction from "../dropdowns/naris/NarisAction";
-import ReportAction from "../dropdowns/report/ReportAction";
+import CordinationReportAction from "../dropdowns/report/CordinationReportAction";
 
 
 
@@ -62,7 +62,7 @@ export const CordinationReportTablecolumns: ColumnDef<CordinationReportTableType
       header: "Title",
     },
     {
-      accessorKey: "authorName",
+      accessorKey: "publisherName",
       header: "Publisher",
     },
     {
@@ -77,8 +77,8 @@ export const CordinationReportTablecolumns: ColumnDef<CordinationReportTableType
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const reportData: any = row.original;
-        return <ReportAction reportData={reportData}/>;
+        const cordinationReportData: any = row.original;
+        return <CordinationReportAction cordinationReportData={cordinationReportData}/>;
       },
     },
   ];

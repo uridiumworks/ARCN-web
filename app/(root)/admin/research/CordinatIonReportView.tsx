@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import CordinationReportTable from './_components/table/CordinationReportTable'
 import { CordinationReportTablecolumns } from './_components/table/column'
-import ReportForm from './_components/forms/ReportForm'
+import ReportForm from './_components/forms/CordinationReportForm'
 import { useReportsData } from '@/hooks/Reports.hooks'
+import CordinationReportForm from './_components/forms/CordinationReportForm'
+import { useCordinationReportsData } from '@/hooks/CordinationReport.hooks'
 
 const CordinationReportView = () => {
   const [createReport, setCreateReport] = useState<boolean>(false)
   const [token, setToken] = useState<string | null>(null)
   const [reportArray, setReportArray] = useState<any[]>([])
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
-  const {loading, reports, error} = useReportsData(token, triggerRefetch)
+  const {loading, cordinationReport, error} = useCordinationReportsData(token, triggerRefetch)
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -17,16 +19,16 @@ const CordinationReportView = () => {
 },[])
 
 useEffect(() => {
-  if(reports?.length > 0){
-    setReportArray(reports)
+  if(cordinationReport?.length > 0){
+    setReportArray(cordinationReport)
   }
-},[reports])
-if (loading && reports?.length < 1) return <p>Loading....</p>
+},[cordinationReport])
+if (loading && cordinationReport?.length < 1) return <p>Loading....</p>
 
   return (
     <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
     <div className='w-full min-h-[70vh]'>
-      {createReport ? <ReportForm setCreateReport={setCreateReport}/> : <>
+      {createReport ? <CordinationReportForm setCreateReport={setCreateReport}/> : <>
         <div>
             <p className='text-[#374151] text-[24px] leading-[30px] font-bold font-[Montserrat]'>Cordination Report</p>
             <p className='text-[#374151] text-[18px] leading-[32.4px] font-normal font-[Montserrat]'>Here’s a list of all reports created</p>

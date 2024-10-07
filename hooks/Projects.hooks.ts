@@ -34,6 +34,38 @@ const useProjectsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, projects };
 };
+const useClientProjectsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [projects, setProjects] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+        const savedData = localStorage.getItem("projectData");
+        return savedData ? JSON.parse(savedData) : [];
+      }
+      return []; // Return a default value for SSR
+});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllProject", token as any);
+
+        console.log(response);
+        localStorage.setItem("projectData", JSON.stringify(response)); // Save to localStorage
+        setProjects(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, projects };
+};
 
 const useProjectData = (
   token: string | null,
@@ -51,6 +83,38 @@ const useProjectData = (
         setError(null);
         const response: any = await getAPI(
           `odata/GetProjectById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setProject(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, project };
+};
+const useClientProjectData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [project, setProject] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetProjectById/${id}`,
           token as any
         );
 
@@ -190,6 +254,8 @@ const useUpdateProject = (token: string | null) => {
 
 export {
   useProjectsData,
+  useClientProjectsData,
+  useClientProjectData,
   useProjectData,
   useCreateProject,
   useDeleteProject,
