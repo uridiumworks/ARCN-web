@@ -17,6 +17,8 @@ import { useUploadImage } from '@/hooks/BannerUpload.hooks';
 import { useCreateReport, useReportData, useReportsData, useUpdateReport } from '@/hooks/Reports.hooks';
 import { useRouter } from 'next/navigation';
 import { useCordinationReportData, useUpdateCordinationReport } from '@/hooks/CordinationReport.hooks';
+import ButtonSpinner from '@/components/Shared/ButtonSpinner';
+import Loader from '@/components/Shared/Loader';
 
 
 
@@ -99,6 +101,8 @@ const UpdateCordinationReport = ({ params }: Props) => {
         await updateReport(params?.cordinationReportId, values)
     }
     return (
+        <>
+      <Loader loading={loading} />
         <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
             <div className='w-full min-h-[70vh]'>
                 <div>
@@ -268,7 +272,7 @@ const UpdateCordinationReport = ({ params }: Props) => {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Publish</span></Button>
+                                <Button type="submit" disabled={updateLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{updateLoading ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
                             </div>
                         </div>
                     </div>
@@ -277,6 +281,7 @@ const UpdateCordinationReport = ({ params }: Props) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

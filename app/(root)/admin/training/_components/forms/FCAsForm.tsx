@@ -28,6 +28,7 @@ import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useCreateFCA, useFCAsData } from "@/hooks/FCAs.hooks";
+import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 
 interface Props {
   setCreateFCAs: React.Dispatch<React.SetStateAction<boolean>>;
@@ -149,8 +150,8 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           autoComplete="current-password"
         >
-          <div className="w-full flex justify-start gap-5 mt-5">
-            <div className="w-[70%] grid grid-cols-1 gap-6">
+            <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+            <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
                 name="institutionName"
@@ -432,9 +433,14 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
               />
               <Button
                 type="submit"
+                disabled={createLoading}
                 className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
               >
-                <span className="text-[14px] font-noraml">Submit</span>
+                {createLoading ? (
+                    <ButtonSpinner />
+                  ) : (
+                    <span className="text-[14px] font-noraml">Submit</span>
+                  )}
               </Button>
             </div>
           </div>

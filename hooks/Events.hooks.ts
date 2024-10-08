@@ -1,17 +1,19 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "./use-toast"; // Import the useToast hook
 
 const useEventsData = (token: string | null, triggerRefetch?: boolean) => {
   const [events, setEvents] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("EventData");
-        return savedData ? JSON.parse(savedData) : [];
-      }
-      return []; // Return a default value for SSR
-});
+      const savedData = localStorage.getItem("EventData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -27,6 +29,11 @@ const useEventsData = (token: string | null, triggerRefetch?: boolean) => {
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch events data.",
+        });
       }
     }
     fetchDashboard();
@@ -34,16 +41,18 @@ const useEventsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, events };
 };
+
 const useClientEventsData = (token?: string | null, triggerRefetch?: boolean) => {
   const [events, setEvents] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("EventData");
-        return savedData ? JSON.parse(savedData) : [];
-      }
-      return []; // Return a default value for SSR
-});
+      const savedData = localStorage.getItem("EventData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -58,6 +67,11 @@ const useClientEventsData = (token?: string | null, triggerRefetch?: boolean) =>
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client events data.",
+        });
       }
     }
     fetchDashboard();
@@ -74,6 +88,7 @@ const useEventData = (
   const [event, setEvent] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -91,6 +106,11 @@ const useEventData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch event data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -98,6 +118,7 @@ const useEventData = (
 
   return { loading, error, event };
 };
+
 const useClientEventData = (
   id: any,
   token?: string | null,
@@ -106,6 +127,7 @@ const useClientEventData = (
   const [event, setEvent] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -123,6 +145,11 @@ const useClientEventData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client event data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -135,6 +162,7 @@ const useCreateEvent = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   const createEvent = async (payload: any) => {
     setLoading(true);
@@ -148,8 +176,9 @@ const useCreateEvent = (token: string | null) => {
       );
       console.log("API response:", response); // Debugging
       setData(response?.message);
-
-      setLoading(false);
+      toast({
+        description: "Event created successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -158,8 +187,20 @@ const useCreateEvent = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -173,6 +214,7 @@ const useDeleteEvent = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const deleteEvent = async (id: string, closeDeleteDialogRef: any) => {
     setLoading(true);
@@ -183,12 +225,19 @@ const useDeleteEvent = (token: string | null) => {
       const token = localStorage.getItem("userToken");
       if (!token) {
         setError("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
       const response = await deleteAPI(`/api/Event/Delete/${id}`, token);
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "Event deleted successfully.",
+      });
       closeDeleteDialogRef?.current.click();
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
@@ -198,8 +247,20 @@ const useDeleteEvent = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -213,6 +274,7 @@ const useUpdateEvent = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const updateEvent = async (id: any, payload: any) => {
     setLoading(true);
@@ -222,7 +284,12 @@ const useUpdateEvent = (token: string | null) => {
     try {
       if (!token) {
         setError("No token found");
-        console.log("No token found")
+        console.log("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
@@ -232,7 +299,9 @@ const useUpdateEvent = (token: string | null) => {
         token as any
       );
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "Event updated successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -241,8 +310,20 @@ const useUpdateEvent = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);

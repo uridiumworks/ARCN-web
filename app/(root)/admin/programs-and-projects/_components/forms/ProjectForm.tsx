@@ -101,8 +101,8 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
             </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
-                    <div className="w-full flex justify-start gap-5 mt-5">
-                        <div className='w-[70%] grid grid-cols-1 gap-6'>
+                <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+                <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
                             <FormField
                                 control={form.control}
                                 name="title"
@@ -201,7 +201,7 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
                                 )}
                             />
                         </div>
-                        <div className='w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3'>
+                        <div className="w-full mt-3 md:mt-0 md:w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
                             <p className="font-[Montserrat] font-bold text-base leading-[19px] text-[#4D4D4D]">Publish</p>
                             <div className='grid grid-cols-1 gap-6 mt-5'>
                                 <FormField
