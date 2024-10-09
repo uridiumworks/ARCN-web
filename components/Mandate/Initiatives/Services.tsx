@@ -7,14 +7,14 @@ const Services = () => {
     return ( 
         <main>
             <div>
-                <div className="text-center place-content-center py-9 space-y-4">
+                <div className="text-center place-content-center py-9 space-y-4 font-montserrat">
                     <h1 className="font-bold text-[40px]">Extension Services Initiatives</h1>
                     <p>Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id <br />ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi. <br />Magna nulla consequat.</p>
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-6 justify-evenly ">
 
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                         <div className="">
                             <Image src="/Images/Homepage/World.png" alt="overlay" width={180} height={201} className="rounded-[13.4px]" />
                         </div>
@@ -32,7 +32,7 @@ const Services = () => {
                         </div>
                     </div>  
 
-                    <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                    <div className='border p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
                         <div>
                             <Image src="/Images/Homepage/World.png" alt="overlay" width={180} height={201} className="rounded-[13.4px]"  />
                         </div>

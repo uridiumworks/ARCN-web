@@ -1,7 +1,7 @@
 const Ourmandate = () => {
     return (
         <main>
-            <div className="place-content-center text-center ">
+            <div className="place-content-center text-center font-montserrat ">
                 <div className="space-y-5 py-8">
                     <h1 className="font-semibold text-lg">OUR MANDATE</h1>
                     <p className="font-bold text-[40px]">Coordinating, Supervising, and <br />Regulating Agricultural Research and <br />Training.</p>

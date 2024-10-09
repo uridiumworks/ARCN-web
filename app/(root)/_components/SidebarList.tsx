@@ -5,7 +5,7 @@ import { BottomSideLink, SideLink, SideLinkDropdown } from './SideLink'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const SidebarList = () => {
     const currentRoute = usePathname();
@@ -21,8 +21,8 @@ const SidebarList = () => {
         }
     };
     return (
-        <aside className='w-full h-screen overflow-y-auto flex-col justify-between items-start'>
-            <div>
+        <aside className='w-full lg:h-[calc(90vh - 10px)]'>
+            <div className=''>
                 {SideLink?.map((link, index) => {
                     const active = link?.url === currentRoute ? true : false;
                     return (
@@ -46,7 +46,7 @@ const SidebarList = () => {
                             >
                                 <div
                                     className={cn(
-                                        "flex items-center justify-start gap-3 px-3 py-3 bg-secondary-100 hover:bg-primary-200  text-[#5f6d7e] hover:text-primary-300 hover:font-[600] border-l-4 border-transparent hover:border-l-4 hover:border-primary-300",
+                                        "flex items-center justify-start gap-3 px-3 py-3 hover:bg-primary-200 text-[#5f6d7e] hover:text-primary-300 hover:font-[600] border-l-4 border-transparent hover:border-l-4 hover:border-primary-300",
                                         {
                                             "bg-primary-200 text-white font-[600] border-y-2 border-primary-300":
                                                 (link?.url.includes("content-management") &&
@@ -56,6 +56,10 @@ const SidebarList = () => {
                                         {
                                             "bg-[#30a85f] text-white font-[600] border-y-2 border-primary-300":
                                                 active,
+                                        },
+                                        {
+                                            "bg-[#30a85f] text-white font-[600] border-y-2 border-primary-300":
+                                            (link?.url.includes("content-management") && dropDown) ? true : false,
                                         }
                                     )}
                                 >
@@ -63,7 +67,7 @@ const SidebarList = () => {
                                     <div className="ml-2 my-auto">
                                         <p className="text-sm">{link?.name}</p>
                                     </div>
-                                    {link?.url.includes("content-management") && <IoIosArrowDown color="#5f6d7e" />}
+                                    {link?.url.includes("content-management") && ( dropDown ? <IoIosArrowUp color="#fff" /> : <IoIosArrowDown color="#5f6d7e" />)}
                                 </div>
                             </Link>
                             {link?.url.includes("content-management") ? (
@@ -76,9 +80,9 @@ const SidebarList = () => {
                                         className={cn(
                                             "ml-4 relative my-2 transition-all ease-linear duration-300",
                                             {
-                                                "-top-32": !dropDown,
+                                                "-top-52": !dropDown,
                                                 // "-translate-y-32": !dropDown,
-                                                "-mb-32": !dropDown,
+                                                "-mb-52": !dropDown,
                                             },
                                             {
                                                 // "translate-y-0": dropDown,
@@ -134,7 +138,7 @@ const SidebarList = () => {
                             >
                                 <div
                                     className={cn(
-                                        "flex items-center justify-start gap-3 px-3 py-3 bg-secondary-100 hover:bg-primary-200  text-[#5f6d7e] hover:text-primary-300 hover:font-[600] border-l-4 border-transparent hover:border-l-4 hover:border-primary-300",
+                                        "flex items-center justify-start gap-3 px-3 py-3 bg-secondary-100 hover:bg-primary-200 text-[#5f6d7e] hover:text-primary-300 hover:font-[600] border-l-4 border-transparent hover:border-l-4 hover:border-primary-300",
                                         {
                                             "bg-[#30a85f] text-white font-[600] border-y-2 border-primary-300":
                                                 active,
@@ -145,7 +149,6 @@ const SidebarList = () => {
                                     <div className="ml-2 my-auto">
                                         <p className="text-sm">{link?.name}</p>
                                     </div>
-
                                 </div>
                             </Link>
                         </div>

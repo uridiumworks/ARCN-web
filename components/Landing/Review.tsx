@@ -2,15 +2,16 @@ import Image from "next/image";
 
 const Review = () => {
   return (
-    <main className="flex flex-col space-y-8 lg:space-y-0 lg:space-x-8 mx-auto w-full max-w-[1300px] py-10 px-4 lg:px-0">
+    <main className="flex flex-col md:flex-row font-montserrat items-center space-y-8 lg:space-y-0 lg:space-x-8 w-[100%] h-[100%] py-10 px-4 lg:px-0">
       <div className="text-center lg:text-left">
-        <h1 className="font-bold text-[28px] lg:text-[40px]">
+        <h1 className="font-bold text-[28px] lg:text-[40px] px-5">
           Reviews By Research Institutes
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div className="border rounded-md bg-[#96E3E1] p-8">
+      <div className="grid grid-cols-1 w-[100%]  lg:grid-cols-3 space-y- gap-5">
+
+        <div className="border rounded-md h-[600px] bg-[#96E3E1] p-8 ">
           <Image
             src="/Images/Homepage/damilola.png"
             alt="Damilola"

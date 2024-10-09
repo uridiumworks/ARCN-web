@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import 'react-quill/dist/quill.snow.css';
 
 export default function RootLayout({
   children,

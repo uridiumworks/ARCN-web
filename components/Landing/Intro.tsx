@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Intro = () => {
   return (
-    <main className="w-full pt-14">
+    <main className="w-full pt-14 font-montserrat">
       <div className="w-[80%] flex flex-col lg:flex-row space-y-9 items-start gap-5 mx-auto">
        
         <Image src="/Images/Homepage/plants.png" alt="plants" width={426} height={431.16} />

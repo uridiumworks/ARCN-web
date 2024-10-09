@@ -21,7 +21,7 @@ interface CreateUserPayload {
     lastName: string;
     email: string;
     phoneNumber: string;
-    roleName: string;
+    role: string;
   }
   
   interface CreateUserResponse {
@@ -47,8 +47,8 @@ interface CreateUserPayload {
  
   
   
-  const useGetAllUsers = () => {
-    const [users, setUsers] = useState<any[] | null>(null);
+  const useGetAllUsers = (triggerRefetch : boolean) => {
+    const [users, setUsers] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
   
@@ -64,7 +64,8 @@ interface CreateUserPayload {
             return;
           }
   
-          const response = await getAPI('/api/User/GetAllUsers', token);
+          const response = await getAPI('/odata/GetAllUsers', token);
+          console.log("🚀 ~ fetchUsers ~ response:", response)
           setUsers(response.data);
         } catch (err) {
           if (err instanceof AxiosError && err.response) {
@@ -79,7 +80,7 @@ interface CreateUserPayload {
       };
   
       fetchUsers();
-    }, []);
+    }, [triggerRefetch]);
   
     return { users, loading, error };
   };

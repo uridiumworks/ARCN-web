@@ -6,9 +6,10 @@ const Sidebar = () => {
   return (
     <>
     <div
-      className={`h-screen sticky bottom-0 top-0 w-72 flex flex-col justify-between font-[500] bg-[#000000]`}
+      className={`max-h-screen sidebar h-auto sticky bottom-0 top-0 w-72 flex flex-col justify-between font-[500] bg-[#000000] overflow-y-auto hidden lg:block`}
+      style={{scrollbarWidth: "thin"}}
     >
-         <div className="flex justify-center items-center mb-10">
+         <div className="flex justify-center items-center mb-3">
          <Image src="/Images/logo.png" width={150} height={71} alt="" />
         </div>
         <div className='w-full h-screen'>
