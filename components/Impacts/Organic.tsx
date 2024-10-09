@@ -7,7 +7,7 @@ const Organic = () => {
                 <div className="text-center">
                     <h1 className="font-bold text-[40px] text-[#0A1425]">IMPACT STORIES</h1>
                 </div>
-                <div className="w-[80%] mx-auto flex flex-col md:flex-row gap-7">
+                <div className="lg:w-[80%] mx-auto flex flex-col md:flex-row gap-7">
                     <div className="space-y-4">
                         <Image src="/Images/Homepage/greens.png" alt="plants" width={384} height={300}/>
                         <p className="font-bold text-xl text-[#323539] ">Soil fertility enhancement through organic amendments and cover crops.</p>

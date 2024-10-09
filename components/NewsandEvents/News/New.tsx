@@ -22,7 +22,7 @@ const New = () => {
           <h1 className="font-semibold text-4xl text-center pt-20">News</h1>
         </div>
         <div className="w-full h-full">
-          <div className="gap-8 px-10 h-[591.59px] flex flex-col md:flex-row space-y-4">
+          <div className="gap-8 px-10 lg:h-[591.59px] flex flex-col md:flex-row space-y-4">
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0, 4)?.map((n: any, index: number) => (
@@ -58,7 +58,7 @@ const New = () => {
             )}
           </div>
 
-          <div className="gap-5 px-10 h-[591.59px] flex flex-col md:flex-row">
+          <div className="gap-5 px-10 lg:h-[591.59px] flex flex-col md:flex-row">
           {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(4, 8)?.map((n: any, index: number) => (

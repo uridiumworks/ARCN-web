@@ -21,7 +21,7 @@ const Programs = () => {
         </p>
       </div>
 
-      <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="p-10 justify-center w-[100%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {programs?.length > 0 && (
           <>
             {programs?.slice(0, 8)?.map((p: any, index: number) => (
