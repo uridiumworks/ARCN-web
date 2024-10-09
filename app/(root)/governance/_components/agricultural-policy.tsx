@@ -11,8 +11,8 @@ const AgriculturalPolicy = () => {
                     <h2 className='font-bold text-2xl lg:text-[32px]'>Agricultural Policy & Socio-Economics</h2>
                     <p className='text-sm'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
-                <div className='mt-44'>
-                    <img src="../Images/agric.png" alt="" width={220} height={250} />
+                <div className='mt-36'>
+                    <img src="../Images/agric.png" alt="" width={250} height={250} />
                 </div>
             </div>
 

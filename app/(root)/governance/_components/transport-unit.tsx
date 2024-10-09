@@ -11,8 +11,8 @@ const TransportUnit = () => {
                     <h2 className='font-bold text-2xl lg:text-[32px]'>Transport Unit</h2>
                     <p className='text-base'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
-                <div className='mt-36 '>
-                    <img src="../Images/Vehicle_1.png" alt="" width={300} height={300} />
+                <div className='mt-44'>
+                    <Image src="../Images/Vehicle_1.png" alt="" width={300} height={300} />
                 </div>
             </div>
             <div>

@@ -11,48 +11,97 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { FiUploadCloud } from 'react-icons/fi';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
+import { FaFilePdf } from 'react-icons/fa6';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { useUploadImage } from '@/hooks/BannerUpload.hooks';
+import { useCreateNaris, useNarissData } from '@/hooks/Naris.hooks';
 
 interface Props {
     setCreateNewInstitute: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const formSchema = z.object({
-    instituteName: z.string().min(3, { message: "subject must be at least 3 characters.", }),
+    institutionName: z.string().min(3, { message: "subject must be at least 3 characters.", }),
     phoneNumber: z.string().min(11, { message: "Phone Number must be at least 11 characters.", }),
     email: z.string().min(3, { message: "Email must be at least 3 characters." }).email({ message: "Invalid email format." }),
     website: z.string().min(3, { message: "Website must be at least 3 characters." }).url({ message: "Invalid website URL." }),
     address: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    state: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    lga: z.string().min(3, { message: "Address must be at least 3 characters." }),
-    dateEstablished: z.string().min(3, { message: "Date Established must be provided." }),
-    dateJoined: z.string().min(3, { message: "Date Joined must be provided." }),
-    uploadBanner: z.any(),
-    blogPosttext: z.any(),
+    stateId: z.string().min(1, { message: "Address must be at least 3 characters." }),
+    localGovernmentAreaId: z.string().min(1, { message: "Address must be at least 3 characters." }),
+    establishDate: z.string().min(3, { message: "Date Established must be provided." }),
+    joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
+    logoUrl: z.any(),
+    description: z.any(),
 })
 
 const NarisForm = ({ setCreateNewInstitute }: Props) => {
+    const docImgRef = useRef<HTMLInputElement | null>(null);
+    const [token, setToken] = useState<string | null>(null)
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const [imageName, setImageName] = useState<string>("")
+    const { createNaris, data, loading: createLoading, error: createError } = useCreateNaris(token)
+    const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
+    const { loading, nariss, error } = useNarissData(token, triggerRefetch)
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    }, [])
+
+
+    useEffect(() => {
+        if (data) {
+            setTriggerRefetch(true)
+        }
+    }, [data])
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            instituteName: "",
+            institutionName: "",
             phoneNumber: "",
             email: "",
             website: "",
-            address: "", 
-            state: "", 
-            lga: "", 
-            dateEstablished: "", 
-            dateJoined: "", 
-            uploadBanner: "",
-            blogPosttext: "",
+            address: "",
+            stateId: "",
+            localGovernmentAreaId: "",
+            establishDate: "",
+            joinDate: "",
+            logoUrl: "",
+            description: "",
         },
     });
+
+    const handleFileChangeDocHandler = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file: any = event.target.files?.["0"];
+        console.log(event.target.files?.["0"], "selectedFile");
+        new Promise<void>((resolve, reject) => {
+            const blober = URL.createObjectURL(file);
+            setTimeout(() => {
+                // setSelectedDocFile(blober);
+                // form.setValue("identificationImageUrl", blober);
+                // console.log(setSelectedDocFile, "select");
+            }, 1000);
+            resolve();
+        });
+        setImageName(file?.name)
+        uploadImage(file, "docs");
+    };
+
+    useEffect(() => {
+        if (ImageUrl) {
+            form.setValue("logoUrl", ImageUrl)
+        }
+    }, [ImageUrl])
 
 
 
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        await createNaris(values)
     }
     return (
         <div>
@@ -65,7 +114,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                         <div className='w-[70%] grid grid-cols-1 gap-6'>
                             <FormField
                                 control={form.control}
-                                name="instituteName"
+                                name="institutionName"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Institute Name</FormLabel>
@@ -151,7 +200,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                             <FormControl>
                                                 <Input
                                                     {...field}
-                                                    type="email"
+                                                    type="text"
                                                     autoComplete="new-password"
                                                     placeholder='Enter Title'
                                                     className="bg-white outline-none"
@@ -165,7 +214,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                             <div className='w-[100%] grid grid-cols-2 gap-3'>
                                 <FormField
                                     control={form.control}
-                                    name="state"
+                                    name="stateId"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>State</FormLabel>
@@ -184,14 +233,14 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="lga"
+                                    name="localGovernmentAreaId"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>LGA</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
-                                                    type="email"
+                                                    type="text"
                                                     autoComplete="new-password"
                                                     placeholder='Enter Title'
                                                     className="bg-white outline-none"
@@ -205,12 +254,12 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                             <div className='w-[100%] grid grid-cols-2 gap-3'>
                                 <FormField
                                     control={form.control}
-                                    name="dateEstablished"
+                                    name="establishDate"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Date Established</FormLabel>
                                             <FormControl>
-                                            <Input
+                                                <Input
                                                     {...field}
                                                     type="date"
                                                     autoComplete="new-password"
@@ -224,12 +273,12 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="dateJoined"
+                                    name="joinDate"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Date Joined</FormLabel>
                                             <FormControl>
-                                            <Input
+                                                <Input
                                                     {...field}
                                                     type="date"
                                                     autoComplete="new-password"
@@ -244,13 +293,25 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                             </div>
                             <FormField
                                 control={form.control}
-                                name="uploadBanner"
+                                name="logoUrl"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Upload banner</FormLabel>
                                         <FormControl>
                                             <>
-                                                <div className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
+                                                <div style={{ display: "none" }}>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        name="bannerImage"
+                                                        onChange={(event) => handleFileChangeDocHandler(event)}
+                                                        ref={docImgRef}
+                                                    />
+                                                </div>
+                                                <div onClick={() => {
+                                                    if (imageLoading) return;
+                                                    docImgRef.current?.click()
+                                                }} className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
                                                     <div>
                                                         <div className='w-full flex justify-center items-center gap-3'>
                                                             <FiUploadCloud size={"16px"} />
@@ -262,15 +323,24 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {form.getValues("logoUrl") && <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
+                                                    <div className="flex justify-start items-center gap-3">
+                                                        <FaFilePdf color="#ED1B24" />
+                                                        <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">{imageName}</p>
+                                                    </div>
+                                                    <FaRegTrashAlt style={{ cursor: "pointer" }} color="#FF3236" onClick={() => {
+                                                        form.setValue("logoUrl", "")
+                                                    }} />
+                                                </div>}
                                             </>
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
-                                   <FormField
+                            <FormField
                                 control={form.control}
-                                name="blogPosttext"
+                                name="description"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Blog Post Editor</FormLabel>
@@ -300,7 +370,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
                                     </FormItem>
                                 )}
                             />
-                                <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Submit</span></Button>
+                            <Button type="submit" className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">Submit</span></Button>
                         </div>
                     </div>
                 </form>

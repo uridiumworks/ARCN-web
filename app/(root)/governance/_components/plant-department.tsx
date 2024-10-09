@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const PlantDepartment = () => {
@@ -23,7 +24,7 @@ const PlantDepartment = () => {
                                     <button className='font-normal text-sm text-[#FFC74E]'>Learn More</button>
                                 </div>
                                 <div className='mt-1 justify-end text-right me-[-32px]'>
-                                    <img src="../Images/Vehicle_1.png" alt="" width={120} height={140} />
+                                    <Image src="../Images/Vehicle_1.png" alt="" width={120} height={140} />
                                 </div>
                             </div>
                         </div>
@@ -39,7 +40,7 @@ const PlantDepartment = () => {
                                     <button className='font-normal text-sm text-[#2E7636]'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-32px]'>
-                                    <img src="../Images/books.png" alt="" width={90} height={50} />
+                                    <Image src="../Images/books.png" alt="" width={90} height={50} />
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,7 @@ const PlantDepartment = () => {
                                     <button className='font-normal text-sm text-black'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-20px]'>
-                                    <img src="../Images/boy.png" alt="" width={93} height={70} />
+                                    <Image src="../Images/boy.png" alt="" width={93} height={70} />
                                 </div>
                             </div>
                         </div>
@@ -71,7 +72,7 @@ const PlantDepartment = () => {
                                     <button className='font-normal text-sm text-[#75CDFD]'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-32px]'>
-                                    <img src="../Images/police.png" alt="" width={100} height={100} />
+                                    <Image src="../Images/police.png" alt="" width={100} height={100} />
                                 </div>
                             </div>
                         </div>
@@ -115,7 +116,7 @@ const Knowledge = () => {
                                     <button className='font-normal text-sm text-[#FFC74E]'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-32px]'>
-                                    <img src="../Images/Vehicle_1.png" alt="" width={150} height={140} />
+                                    <Image src="../Images/Vehicle_1.png" alt="" width={150} height={140} />
                                 </div>
                             </div>
                         </div>
@@ -132,7 +133,7 @@ const Knowledge = () => {
                                     <button className='font-normal text-sm text-[#2E7636]'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-32px]'>
-                                    <img src="../Images/books.png" alt="" width={115} height={70} />
+                                    <Image src="../Images/books.png" alt="" width={115} height={70} />
                                 </div>
                             </div>
                         </div>
@@ -148,7 +149,7 @@ const Knowledge = () => {
                                     <button className='font-normal text-sm text-black'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-20px]'>
-                                    <img src="../Images/boy.png" alt="" width={100} height={70} />
+                                    <Image src="../Images/boy.png" alt="" width={100} height={70} />
                                 </div>
                             </div>
                         </div>
@@ -182,7 +183,7 @@ const PlanningResearch = () => {
                                     <button className='font-normal text-sm text-[#FFC74E]'>Learn More</button>
                                 </div>
                                 <div className=' justify-end text-right me-[-32px]'>
-                                    <img src="../Images/Vehicle_1.png" alt="" width={150} height={140} />
+                                    <Image src="../Images/Vehicle_1.png" alt="" width={150} height={140} />
                                 </div>
                             </div>
                         </div>
@@ -199,7 +200,7 @@ const PlanningResearch = () => {
                                     <button className='font-normal text-sm text-[#2E7636]'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-32px]'>
-                                    <img src="../Images/books.png" alt="" width={100} height={70} />
+                                    <Image src="../Images/books.png" alt="" width={100} height={70} />
                                 </div>
                             </div>
                         </div>
@@ -215,7 +216,7 @@ const PlanningResearch = () => {
                                     <button className='font-normal text-sm text-black'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-20px]'>
-                                    <img src="../Images/boy.png" alt="" width={100} height={70} />
+                                    <Image src="../Images/boy.png" alt="" width={100} height={70} />
                                 </div>
                             </div>
                         </div>

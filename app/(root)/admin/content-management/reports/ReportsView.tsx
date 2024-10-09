@@ -1,21 +1,32 @@
 "use client"
-import React, { useState } from 'react'
-import { ContentManagementBlogscolumns } from '../blogs/_components/table/column';
+import React, { useEffect, useState } from 'react'
+import { ContentManagementBlogscolumns, Reportscolumns } from '../blogs/_components/table/column';
 import ReportForm from './_components/ReportForm';
 import ReportsTable from './_components/table/ReportsTable';
+import { useReportsData } from '@/hooks/Reports.hooks';
 
 const ReportsView = () => {
     const [createNewReport, setCreateNewReport] = useState<boolean>(false)
+    const [reportsArray, setReportsArray] = useState<any[]>([])
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const [token, setToken] = useState<string | null>(null)
+    const {loading, reports, error} = useReportsData(token, triggerRefetch)
 
-    const ContentManagementBlogsTableData = [ {
-        checkbox: "",
-        title: "string",
-        authorName: "string",
-        dateCreated: "string",
-        authorEmail: "string",
-        authorPhoneNumber: "string",
-        action: "any"
-      }];
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    },[])
+
+    useEffect(() => {
+         setTriggerRefetch(!triggerRefetch)
+     },[])
+
+    useEffect(() => {
+        if(reports?.length > 0){
+          setReportsArray(reports)
+        }
+    },[reports])
+    if (loading && reports?.length < 1) return <p>Loading....</p>
   return (
     <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
     <div className='w-full min-h-[70vh]'>
@@ -26,7 +37,7 @@ const ReportsView = () => {
             <p className='text-[#374151] text-[18px] leading-[32.4px] font-normal font-[Montserrat]'>Here’s a list of all reports created</p>
         </div>
         <div className='w-full min-h-[70vh] bg-white rounded-md mt-5'>
-            <ReportsTable columns={ContentManagementBlogscolumns} data={ContentManagementBlogsTableData ?? []} setCreateNewReport={setCreateNewReport}/>
+            <ReportsTable columns={Reportscolumns} data={reportsArray ?? []} setCreateNewReport={setCreateNewReport}/>
         </div>
         </>}
     </div>

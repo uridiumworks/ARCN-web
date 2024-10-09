@@ -5,6 +5,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { CordinationReportTableType, NarisTableType } from "./types";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
+import NarisAction from "../dropdowns/naris/NarisAction";
+import CordinationReportAction from "../dropdowns/report/CordinationReportAction";
 
 
 
@@ -23,23 +25,23 @@ export const Nariscolumns: ColumnDef<NarisTableType>[] = [
       header: "Institution Name",
     },
     {
-      accessorKey: "dateEstablished",
+      accessorKey: "establishDate",
       header: "Date Established",
     },
     {
-      accessorKey: "dateJoined",
+      accessorKey: "joinDate",
       header: "Date Joined",
     },
     {
-      accessorKey: "location",
+      accessorKey: "website",
       header: "Location",
     },
     {
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const narisData: any = row.original;
+        return <NarisAction narisData={narisData}/>;
       },
     },
   ];
@@ -60,7 +62,7 @@ export const CordinationReportTablecolumns: ColumnDef<CordinationReportTableType
       header: "Title",
     },
     {
-      accessorKey: "publisher",
+      accessorKey: "publisherName",
       header: "Publisher",
     },
     {
@@ -68,15 +70,15 @@ export const CordinationReportTablecolumns: ColumnDef<CordinationReportTableType
         header: "Author's Email",
     },
     {
-      accessorKey: "dateCreated",
+      accessorKey: "publishDate",
       header: "Date Created",
     },
     {
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>;
+        const cordinationReportData: any = row.original;
+        return <CordinationReportAction cordinationReportData={cordinationReportData}/>;
       },
     },
   ];

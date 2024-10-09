@@ -13,6 +13,10 @@ import { FiUploadCloud } from 'react-icons/fi';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Textarea } from '@/components/ui/textarea';
+import { useCreateEvent, useEventsData } from '@/hooks/Events.hooks';
+import { useUploadImage } from '@/hooks/BannerUpload.hooks';
+import { FaFilePdf } from 'react-icons/fa6';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
 interface Props {
     setCreateNewEvent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,35 +26,82 @@ const formSchema = z.object({
     subject: z.string().min(3, { message: "subject must be at least 3 characters.", }),
     description: z.string().min(6, { message: "description must be at least 6 characters.", }),
     venue: z.string().min(3, { message: "Venue must be at least 3 characters." }),
-    uploadBanner: z.any(),
+    bannerUrl: z.any(),
     authorName: z.string().min(3, { message: "Author's name must be at least 3 characters." }),
     eventStartDate: z.string().min(3, { message: "Event start Date must be provided" }),
     eventEndDate: z.string().min(3, { message: "Event end Date must be provided" }),
-    publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
+    eventStartTime: z.string().min(3, { message: "Event start Time must be provided" }),
+    eventEndTime: z.string().min(3, { message: "Event end Time must be provided" }),
     durationPerDay: z.string().min(3, { message: "Duration Per Day must be provided" }),
 })
 
 const EventForm = ({ setCreateNewEvent }: Props) => {
+    const docImgRef = useRef<HTMLInputElement | null>(null);
+    const [token, setToken] = useState<string | null>(null);
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+    const [imageName, setImageName] = useState<string>("");
+    const { createEvent, data, loading: createLoading, error: createError } = useCreateEvent(token);
+    const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token);
+    const { loading, events, error } = useEventsData(token, triggerRefetch);
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken);
+    }, [])
+
+
+    useEffect(() => {
+        if (data) {
+            setTriggerRefetch(true)
+        }
+    }, [data])
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             subject: "",
             description: "",
-            uploadBanner: "",
+            bannerUrl: "",
             venue: "",
             authorName: "",
             eventStartDate: "",
             eventEndDate: "",
+            eventStartTime: "",
+            eventEndTime: "",
             durationPerDay: "",
         },
     });
+
+    const handleFileChangeDocHandler = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file: any = event.target.files?.["0"];
+        console.log(event.target.files?.["0"], "selectedFile");
+        new Promise<void>((resolve, reject) => {
+            const blober = URL.createObjectURL(file);
+            setTimeout(() => {
+                // setSelectedDocFile(blober);
+                // form.setValue("identificationImageUrl", blober);
+                // console.log(setSelectedDocFile, "select");
+            }, 1000);
+            resolve();
+        });
+        setImageName(file?.name)
+        uploadImage(file, "docs");
+    };
+
+    useEffect(() => {
+        if (ImageUrl) {
+            form.setValue("bannerUrl", ImageUrl)
+        }
+    }, [ImageUrl])
 
 
 
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        await createEvent(values)
     }
     return (
         <div>
@@ -95,13 +146,25 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
                             />
                             <FormField
                                 control={form.control}
-                                name="uploadBanner"
+                                name="bannerUrl"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Upload banner</FormLabel>
                                         <FormControl>
-                                            <>
-                                                <div className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
+                                        <>
+                                                <div style={{ display: "none" }}>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        name="bannerImage"
+                                                        onChange={(event) => handleFileChangeDocHandler(event)}
+                                                        ref={docImgRef}
+                                                    />
+                                                </div>
+                                                <div onClick={() => {
+                                                    if (imageLoading) return;
+                                                    docImgRef.current?.click()
+                                                }} className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
                                                     <div>
                                                         <div className='w-full flex justify-center items-center gap-3'>
                                                             <FiUploadCloud size={"16px"} />
@@ -113,6 +176,15 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {form.getValues("bannerUrl") && <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
+                                                    <div className="flex justify-start items-center gap-3">
+                                                        <FaFilePdf color="#ED1B24" />
+                                                        <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">{imageName}</p>
+                                                    </div>
+                                                    <FaRegTrashAlt style={{ cursor: "pointer" }} color="#FF3236" onClick={() => {
+                                                        form.setValue("bannerUrl", "")
+                                                    }} />
+                                                </div>}
                                             </>
                                         </FormControl>
                                         <FormMessage />
@@ -190,6 +262,44 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
                                                 <Input
                                                     {...field}
                                                     type="date"
+                                                    autoComplete="new-password"
+                                                    placeholder='DD/MM/YYYY'
+                                                    className="bg-inherit outline-none"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="eventStartTime"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{`Event's End Date`}</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="time"
+                                                    autoComplete="new-password"
+                                                    placeholder='DD/MM/YYYY'
+                                                    className="bg-inherit outline-none"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="eventEndTime"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{`Event's End Date`}</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="time"
                                                     autoComplete="new-password"
                                                     placeholder='DD/MM/YYYY'
                                                     className="bg-inherit outline-none"

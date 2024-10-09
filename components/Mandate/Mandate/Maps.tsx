@@ -1,45 +1,43 @@
+"use client";
+import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Image from "next/image";
+import {Loader, LoaderOptions} from 'google-maps';
 
 const Maps = () => {
-    return (
-        <main className="bg-[#F6F6F6]">
-            <div>
-                <div>
-                    <div className="flex flex-col md:flex-row justify-center gap-20 p-10 font-semibold text-[20px]  lg:text-[15px] ">
-                        <div className="space-y-5">
-                            <p>Cocoa Research Institute Of Nigeria, Ibada</p>
-                            <p>National Root Crops Research Institute, Umudike</p>
-                            <p>National Cereals Research Institute, Badeggi</p>
-                            <p>National Animal Production And Research  Institute, Zaria</p> 
-                            <p>National Horticultural Research Institute, Ibada</p> 
-                            <p>National Institute For Fresh Fisheries Research, New Bussa</p>
-                            <p>National Agricultural Extension Research Liason Services, Zaria</p>
-                            <p>National Veterinary Research Institute, VOM</p>
-                        </div>
+  const { loading, nariss, error } = useClientNarissData();
 
-                        <div className="space-y-5">
-                            <p>Nigerian Institute For Oceanography And Marine Research, Lagos</p>
-                            <p>Nigerian Institute For Oil Palm Research, Beni</p>
-                            <p>Nigerian Stored Products Research Institute, Ilori</p>
-                            <p>Institute Of Agricultural Research And Training, Ibada</p>
-                            <p>Institute For Agricultural Research, Zaria</p>
-                            <p>Lake Chad Research Institute, Maidguri</p> 
-                            <p>Rubber Research Institute Of Nigeria, Benin City</p>
-                            <p>National Centre For Agricultural Mechanization</p>
-                        </div>
-                    </div>
-                    <div className="text-center">
-                        <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">Detailed view</button>
-                    </div>
-                </div>
-
-                <div className="mx-auto w-full lg:w-[939px] py-10 ">
-                    <Image src="/Images/Mandatepage/maps.png" alt="maps" width={600} height={400}/>
-                </div>
-                
-            </div>
-        </main>
-    )
-}
+  return (
+    <main className="bg-[#F6F6F6] font-montserrat">
+      <div>
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 p-10 font-semibold text-[20px]  lg:text-[15px] ">
+            {nariss?.length > 0 && (
+              <>
+                {nariss?.slice(0, 10)?.map((n: any, index: number) => (
+                  <div key={index}>
+                    <p>{n.institutionName}</p>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+          <div className="text-center">
+            <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">
+              Detailed view
+            </button>
+          </div>
+        </div>
+        <div className="mx-auto w-full lg:w-[939px] py-10 ">
+          <Image
+            src="/Images/Mandatepage/maps.png"
+            alt="maps"
+            width={600}
+            height={400}
+          />
+        </div>
+      </div>
+    </main>
+  );
+};
 
 export default Maps;

@@ -11,28 +11,49 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { FiUploadCloud } from 'react-icons/fi';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
+import { FaFilePdf } from 'react-icons/fa6';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { useUploadImage } from '@/hooks/BannerUpload.hooks';
+import { useCreateReport, useReportData, useReportsData, useUpdateReport } from '@/hooks/Reports.hooks';
+import { useRouter } from 'next/navigation';
+import { useCordinationReportData, useUpdateCordinationReport } from '@/hooks/CordinationReport.hooks';
 
-interface Props {
-    setCreateReport: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
+
+type Props = {
+    params: { cordinationReportId: any };
+};
 
 const formSchema = z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
-    uploadBanner: z.string().min(3, { message: "uploaded Banner must be provided.", }),
-    blogPosttext: z.string().min(3, { message: "blog Post text must be at least 3 characters.", }),
+    bannerUrl: z.string().min(3, { message: "uploaded Banner must be provided.", }),
+    description: z.any(),
     publisherName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
     authorEmail: z.string().min(3, { message: "author Email must be at least 3 characters.", }).email({ message: "Invalid email format." }),
     publishDate: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
 })
 
-const ReportForm = ({ setCreateReport }: Props) => {
+const UpdateCordinationReport = ({ params }: Props) => {
+    const router = useRouter();
+    const docImgRef = useRef<HTMLInputElement | null>(null);
+    const [token, setToken] = useState<string | null>(null)
+    const [imageName, setImageName] = useState<string>("")
+    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const { updateReport, success, loading: updateLoading, error: updateError } = useUpdateCordinationReport(token)
+    const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
+    const { loading, report, error } = useCordinationReportData(token, params?.cordinationReportId, triggerRefetch)
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("userToken");
+        setToken(userToken)
+    }, [])
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: "",
-            uploadBanner: "",
-            blogPosttext: "",
+            bannerUrl: "",
+            description: "",
             publisherName: "",
             authorEmail: "",
             publishDate: "",
@@ -40,15 +61,51 @@ const ReportForm = ({ setCreateReport }: Props) => {
     });
 
 
+    const handleFileChangeDocHandler = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file: any = event.target.files?.["0"];
+        console.log(event.target.files?.["0"], "selectedFile");
+        new Promise<void>((resolve, reject) => {
+            const blober = URL.createObjectURL(file);
+            setTimeout(() => {
+                // setSelectedDocFile(blober);
+                // form.setValue("identificationImageUrl", blober);
+                // console.log(setSelectedDocFile, "select");
+            }, 1000);
+            resolve();
+        });
+        setImageName(file?.name)
+        uploadImage(file, "docs");
+    };
+
+    useEffect(() => {
+        if (ImageUrl) {
+            form.setValue("bannerUrl", ImageUrl)
+        }
+    }, [ImageUrl])
+
+    useEffect(() => {
+        if (report) {
+            form.reset(report)
+        }
+    }, [report])
+
+
+
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        await updateReport(params?.cordinationReportId, values)
     }
     return (
-        <div>
-            <div className='w-full flex justify-end items-center'>
-                <Button onClick={() => setCreateReport(false)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
-            </div>
-            <Form {...form}>
+        <div className='w-full min-h-screen bg-[#f9fafb] p-10'>
+            <div className='w-full min-h-[70vh]'>
+                <div>
+                    <div className='w-full flex justify-end items-center'>
+                        <Button onClick={() => router.push(`/admin/research`)} className='bg-white text-black border-2 border-[#dcdee6] hover:bg-white hover:text-black'>Go back</Button>
+                    </div>
+                    <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
                     <div className="w-full flex justify-start gap-5 mt-5">
                         <div className='w-[70%] grid grid-cols-1 gap-6'>
@@ -73,13 +130,25 @@ const ReportForm = ({ setCreateReport }: Props) => {
                             />
                             <FormField
                                 control={form.control}
-                                name="uploadBanner"
+                                name="bannerUrl"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Upload banner</FormLabel>
                                         <FormControl>
-                                            <>
-                                                <div className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
+                                        <>
+                                                <div style={{ display: "none" }}>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        name="bannerImage"
+                                                        onChange={(event) => handleFileChangeDocHandler(event)}
+                                                        ref={docImgRef}
+                                                    />
+                                                </div>
+                                                <div onClick={() => {
+                                                    if (imageLoading) return;
+                                                    docImgRef.current?.click()
+                                                }} className='w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]'>
                                                     <div>
                                                         <div className='w-full flex justify-center items-center gap-3'>
                                                             <FiUploadCloud size={"16px"} />
@@ -91,6 +160,15 @@ const ReportForm = ({ setCreateReport }: Props) => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {form.getValues("bannerUrl") && <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
+                                                    <div className="flex justify-start items-center gap-3">
+                                                        <FaFilePdf color="#ED1B24" />
+                                                        <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">{imageName}</p>
+                                                    </div>
+                                                    <FaRegTrashAlt style={{ cursor: "pointer" }} color="#FF3236" onClick={() => {
+                                                        form.setValue("bannerUrl", "")
+                                                    }} />
+                                                </div>}
                                             </>
                                         </FormControl>
                                         <FormMessage />
@@ -99,7 +177,7 @@ const ReportForm = ({ setCreateReport }: Props) => {
                             />
                             <FormField
                                 control={form.control}
-                                name="blogPosttext"
+                                name="description"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Blog Post Editor</FormLabel>
@@ -196,8 +274,10 @@ const ReportForm = ({ setCreateReport }: Props) => {
                     </div>
                 </form>
             </Form>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default ReportForm
+export default UpdateCordinationReport

@@ -5,7 +5,7 @@ const Events = () => {
 
     return ( 
         <main>
-            <div className="space-y-8 px-20 pt-6 ">
+            <div className="space-y-8 px-20 pt-6 font-montserrat">
                 <div className="py-8 space-y-6">
                     <div className="flex gap-4">
                         <div className="flex gap-2">

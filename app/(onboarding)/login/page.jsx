@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLoginUser } from '@/hooks/user.hook';
+import Image from 'next/image';
 
 const Login = () => {
   const { login, data, loading, error } = useLoginUser();
@@ -44,7 +45,7 @@ const Login = () => {
     <div className="bg-gray-100 flex items-center justify-center h-screen">
       <div className="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
         <div className="flex justify-center mb-6">
-          <img src="/logo.png" alt="Logo" className="w-16 h-16" />
+          <Image src="/logo.png" alt="Logo" className="w-16 h-16" />
         </div>
         <h2 className="text-2xl font-semibold text-center text-gray-800">Login</h2>
         <p className="text-center text-gray-500 mb-8">Enter your credentials to login</p>
