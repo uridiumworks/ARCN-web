@@ -25,6 +25,7 @@
     "draft-js": "^0.11.7",
     "lucide-react": "^0.408.0",
     "moment": "^2.30.1",
+    "new-arcn": "file:",
     "next": "^14.2.5",
     "react": "^18",
     "react-dom": "^18",
