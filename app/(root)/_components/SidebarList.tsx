@@ -21,7 +21,7 @@ const SidebarList = () => {
         }
     };
     return (
-        <aside className='w-full h-[calc(90vh - 10px)]'>
+        <aside className='w-full lg:h-[calc(90vh - 10px)]'>
             <div className=''>
                 {SideLink?.map((link, index) => {
                     const active = link?.url === currentRoute ? true : false;

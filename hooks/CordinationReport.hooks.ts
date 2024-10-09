@@ -1,6 +1,7 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "./use-toast";
 
 const useCordinationReportsData = (token: string | null, triggerRefetch?: boolean) => {
     const [cordinationReport, setCordinationReport] = useState<any>(() => {
@@ -12,6 +13,7 @@ const useCordinationReportsData = (token: string | null, triggerRefetch?: boolea
     });
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const { toast } = useToast()
 
     useEffect(() => {
         async function fetchDashboard() {
@@ -27,6 +29,11 @@ const useCordinationReportsData = (token: string | null, triggerRefetch?: boolea
             } catch (error: any) {
                 setLoading(false);
                 setError(error);
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "An unknown error occurred",
+                })
             }
         }
         fetchDashboard();
@@ -74,6 +81,7 @@ const useCordinationReportData = (
     const [report, setReport] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const { toast } = useToast()
 
     useEffect(() => {
         async function fetchDashboard() {
@@ -91,6 +99,11 @@ const useCordinationReportData = (
             } catch (error: any) {
                 setLoading(false);
                 setError(error);
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "An unknown error occurred",
+                })
             }
         }
         fetchDashboard();
@@ -136,6 +149,7 @@ const useCreateCordinationReport = (token: string | null) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<any>(null);
     const [data, setData] = useState<string | null>(null);
+    const { toast } = useToast()
 
     const createReport = async (payload: any) => {
         setLoading(true);
@@ -147,6 +161,10 @@ const useCreateCordinationReport = (token: string | null) => {
                 token as any
             );
             console.log("API response:", response); // Debugging
+            toast({
+                // variant: "default",
+                description: "Report created.",
+              })
             setData(response?.message);
 
             setLoading(false);
@@ -158,8 +176,20 @@ const useCreateCordinationReport = (token: string | null) => {
                         ? errorResponse.errors.join(", ")
                         : errorResponse.message || "An unknown error occurred"
                 );
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: errorResponse.errors
+                    ? errorResponse.errors.join(", ")
+                    : errorResponse.message || "An unknown error occurred",
+                  })
             } else {
                 setError("An unknown error occurred");
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "An unknown error occurred",
+                })
             }
         } finally {
             setLoading(false);
@@ -173,6 +203,7 @@ const useDeleteCordinationReport = (token: string | null) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<boolean>(false);
+    const { toast } = useToast()
 
     const deleteReport = async (id: string, closeDeleteDialogRef: any) => {
         setLoading(true);
@@ -188,6 +219,10 @@ const useDeleteCordinationReport = (token: string | null) => {
 
             const response = await deleteAPI(`/api/CordinationReport/Delete/${id}`, token);
             setSuccess(response.success);
+            toast({
+                // variant: "default",
+                description: "Report deleted.",
+              })
             setLoading(false);
             closeDeleteDialogRef?.current.click();
         } catch (err: any) {
@@ -198,8 +233,20 @@ const useDeleteCordinationReport = (token: string | null) => {
                         ? errorResponse.errors.join(", ")
                         : errorResponse.message || "An unknown error occurred"
                 );
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: errorResponse.errors
+                    ? errorResponse.errors.join(", ")
+                    : errorResponse.message || "An unknown error occurred",
+                  })
             } else {
                 setError("An unknown error occurred");
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "An unknown error occurred",
+                })
             }
         } finally {
             setLoading(false);
@@ -213,6 +260,7 @@ const useUpdateCordinationReport = (token: string | null) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<boolean>(false);
+    const { toast } = useToast()
 
     const updateReport = async (id: any, payload: any) => {
         setLoading(true);
@@ -232,6 +280,10 @@ const useUpdateCordinationReport = (token: string | null) => {
                 token as any
             );
             setSuccess(response.success);
+            toast({
+                // variant: "default",
+                description: "Report updated.",
+              })
             setLoading(false);
         } catch (err: any) {
             if (err instanceof AxiosError && err.response) {
@@ -241,8 +293,20 @@ const useUpdateCordinationReport = (token: string | null) => {
                         ? errorResponse.errors.join(", ")
                         : errorResponse.message || "An unknown error occurred"
                 );
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: errorResponse.errors
+                    ? errorResponse.errors.join(", ")
+                    : errorResponse.message || "An unknown error occurred",
+                  })
             } else {
                 setError("An unknown error occurred");
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "An unknown error occurred",
+                })
             }
         } finally {
             setLoading(false);

@@ -1,6 +1,7 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "./use-toast";
 
 const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
   const [blogs, setBlogs] = useState<any>(() => {
@@ -12,6 +13,8 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
 });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast()
+
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -27,6 +30,11 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        })
       }
     }
     fetchDashboard();
@@ -43,6 +51,8 @@ const useBlogData = (
   const [blog, setBlog] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast()
+
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -60,6 +70,11 @@ const useBlogData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        })
       }
     }
     fetchDashboard();
@@ -72,6 +87,8 @@ const useCreateBlog = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
+  const { toast } = useToast()
+
 
   const createBlog = async (payload: any) => {
     setLoading(true);
@@ -85,7 +102,10 @@ const useCreateBlog = (token: string | null) => {
       );
       console.log("API response:", response); // Debugging
       setData(response?.message);
-
+      toast({
+        // variant: "default",
+        description: "Blog created.",
+      })
       setLoading(false);
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
@@ -95,8 +115,20 @@ const useCreateBlog = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+          ? errorResponse.errors.join(", ")
+          : errorResponse.message || "An unknown error occurred",
+        })
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        })
       }
     } finally {
       setLoading(false);
@@ -110,6 +142,7 @@ const useDeleteBlog = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast()
 
   const deleteBlog = async (id: string, closeDeleteDialogRef: any) => {
     setLoading(true);
@@ -125,6 +158,10 @@ const useDeleteBlog = (token: string | null) => {
 
       const response = await deleteAPI(`/api/Blog/Delete/${id}`, token);
       setSuccess(response.success);
+      toast({
+        // variant: "default",
+        description: "Blog deleted.",
+      })
       setLoading(false);
       closeDeleteDialogRef?.current.click();
     } catch (err: any) {
@@ -135,8 +172,20 @@ const useDeleteBlog = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+          ? errorResponse.errors.join(", ")
+          : errorResponse.message || "An unknown error occurred",
+        })
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        })
       }
     } finally {
       setLoading(false);
@@ -150,6 +199,7 @@ const useUpdateBlog = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast()
 
   const updateBlog = async (id: any, payload: any) => {
     setLoading(true);
@@ -169,6 +219,10 @@ const useUpdateBlog = (token: string | null) => {
       );
       setSuccess(response.success);
       setLoading(false);
+      toast({
+        // variant: "default",
+        description: "Blog updated.",
+      })
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -177,8 +231,20 @@ const useUpdateBlog = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+          ? errorResponse.errors.join(", ")
+          : errorResponse.message || "An unknown error occurred",
+        })
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        })
       }
     } finally {
       setLoading(false);

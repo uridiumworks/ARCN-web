@@ -29,6 +29,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useRouter } from "next/navigation";
 import { useFCAData, useUpdateFCA } from "@/hooks/FCAs.hooks";
+import ButtonSpinner from "@/components/Shared/ButtonSpinner";
+import Loader from "@/components/Shared/Loader";
 
 type Props = {
   params: { fcaId: any };
@@ -141,6 +143,8 @@ const UpdateFCA = ({ params }: Props) => {
     await updateFCA(params?.fcaId, values);
   }
   return (
+    <>
+    <Loader loading={loading} />
     <div className="w-full min-h-screen bg-[#f9fafb] p-10">
       <div className="w-full min-h-[70vh]">
         <div>
@@ -440,9 +444,10 @@ const UpdateFCA = ({ params }: Props) => {
                   />
                   <Button
                     type="submit"
+                    disabled={updateLoading}
                     className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                   >
-                    <span className="text-[14px] font-noraml">Submit</span>
+                   {updateLoading ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Submit</span>}
                   </Button>
                 </div>
               </div>
@@ -451,6 +456,7 @@ const UpdateFCA = ({ params }: Props) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
