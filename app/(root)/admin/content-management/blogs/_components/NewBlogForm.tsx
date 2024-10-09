@@ -29,7 +29,10 @@ import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   setCreateNewBlog: React.Dispatch<React.SetStateAction<boolean>>;
@@ -67,14 +70,11 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
     createBlog,
     data,
     loading: createLoading,
-    error: createError,
   } = useCreateBlog(token);
-  const { loading, blogs, error } = useBlogsData(token, triggerRefetch);
   const {
     uploadImage,
     data: ImageUrl,
     loading: imageLoading,
-    error: imageError,
   } = useUploadImage(token);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -94,7 +94,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
   });
 
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
+    const userToken = typeof window !== "undefined" ? localStorage.getItem("userToken") : null;
     setToken(userToken);
   }, []);
 
@@ -103,83 +103,17 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
       setTriggerRefetch(true);
     }
   }, [data]);
+
   useEffect(() => {
-    setIsMounted(true)
+    setIsMounted(true);
   }, []);
 
-  // const imageHandler = () => {
-  //     const input:any = document.createElement('input');
-  //     input.setAttribute('type', 'file');
-  //     input.setAttribute('accept', 'image/*');
-  //     input.click();
-
-  //     input.onchange = async () => {
-  //       const file = input.files[0];
-  //       const formData = new FormData();
-  //       formData.append('file', file);
-
-  //       // Replace with your image upload API endpoint
-  //       const response = await fetch('/api/upload', {
-  //         method: 'POST',
-  //         body: formData,
-  //       });
-
-  //       const data = await response.json();
-  //       const imageUrl = data.url; // Assuming your API returns the image URL
-
-  //       const quill = reactQuillRef.current.getEditor();
-  //       const range = quill.getSelection();
-  //       quill.insertEmbed(range.index, 'image', imageUrl);
-  //     };
-  //   };
-
-  // const imageHandler = async () => {
-  //     const input = document.createElement('input');
-  //     input.setAttribute('type', 'file');
-  //     input.setAttribute('accept', 'image/*');
-  //     input.click();
-
-  //     input.onchange = async () => {
-  //       const file = input.files?.[0];
-  //       if (!file) return;
-
-  //       const formData = new FormData();
-  //       formData.append('file', file);
-
-  //       // Upload the image to your server or cloud storage
-  //       const uploadUrl = 'YOUR_UPLOAD_URL'; // Replace with your upload URL
-  //       const response = await fetch(uploadUrl, {
-  //         method: 'POST',
-  //         body: formData,
-  //       });
-
-  //       const data = await response.json();
-  //       const imageUrl = data.url; // Adjust based on your response structure
-
-  //       // Create a new HTML string with the image included
-  //       const newValue = `${field.value}<img src="${imageUrl}" alt="Image" />`;
-
-  //       // Update the editor's value
-  //       field.onChange(newValue);
-  //     };
-  //   };
-
-  const handleFileChangeDocHandler = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file: any = event.target.files?.["0"];
-    console.log(event.target.files?.["0"], "selectedFile");
-    new Promise<void>((resolve, reject) => {
-      const blober = URL.createObjectURL(file);
-      setTimeout(() => {
-        // setSelectedDocFile(blober);
-        // form.setValue("identificationImageUrl", blober);
-        // console.log(setSelectedDocFile, "select");
-      }, 1000);
-      resolve();
-    });
-    setImageName(file?.name);
-    uploadImage(file, "docs");
+  const handleFileChangeDocHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file: any = event.target.files?.[0];
+    if (file) {
+      setImageName(file.name);
+      uploadImage(file, "docs");
+    }
   };
 
   useEffect(() => {
@@ -189,9 +123,10 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
   }, [ImageUrl]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     await createBlog(values);
+    
   }
+
   return (
     <div>
       <div className="w-full flex justify-end items-center">
@@ -203,10 +138,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
         </Button>
       </div>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          autoComplete="current-password"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="off">
           <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
@@ -219,7 +151,6 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                       <Input
                         {...field}
                         type="text"
-                        autoComplete="new-password"
                         placeholder="Enter Title"
                         className="bg-white outline-none"
                       />
@@ -235,17 +166,11 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                   <FormItem>
                     <FormLabel>Category</FormLabel>
                     <FormControl>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        disabled={true}
-                      >
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Blogs">
-                            {"Blogs"}
-                          </SelectValue>
+                          <SelectValue placeholder="Blogs">Blogs</SelectValue>
                         </SelectTrigger>
-                        <SelectContent className="bg-[#f3f3f3]">
+                        <SelectContent>
                           <SelectItem value="blogs">Blogs</SelectItem>
                         </SelectContent>
                       </Select>
@@ -259,39 +184,32 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                 name="bannerUrl"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Upload banner</FormLabel>
+                    <FormLabel>Upload Banner</FormLabel>
                     <FormControl>
                       <>
                         <div style={{ display: "none" }}>
                           <input
                             type="file"
                             accept="image/*"
-                            name="bannerImage"
-                            onChange={(event) =>
-                              handleFileChangeDocHandler(event)
-                            }
                             ref={docImgRef}
+                            onChange={handleFileChangeDocHandler}
                           />
                         </div>
                         <div
                           onClick={() => {
-                            if (imageLoading) return;
-                            docImgRef.current?.click();
+                            if (!imageLoading) docImgRef.current?.click();
                           }}
                           className="w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]"
                         >
                           <div>
                             <div className="w-full flex justify-center items-center gap-3">
                               <FiUploadCloud size={"16px"} />
-                              <span className="font-[Montserrat] font-bold text-xs text-[#0B2545]">
+                              <span className="font-bold text-xs text-[#0B2545]">
                                 Click to upload image
-                              </span>
-                              <span className="font-[Montserrat] font-medium text-xs text-[#475467] leading-[20px]">
-                                or drag and drop
                               </span>
                             </div>
                             <div className="w-full flex justify-center items-center gap-3">
-                              <span className="font-[Montserrat] font-normal text-xs leading-[18px] text-[#475467]">
+                              <span className="font-normal text-xs text-[#475467]">
                                 SVG, PNG, JPG or GIF (max. 800x400px)
                               </span>
                             </div>
@@ -301,16 +219,12 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                           <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
                             <div className="flex justify-start items-center gap-3">
                               <FaFilePdf color="#ED1B24" />
-                              <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">
-                                {imageName}
-                              </p>
+                              <p className="text-base font-medium text-[#5F6D7E]">{imageName}</p>
                             </div>
                             <FaRegTrashAlt
                               style={{ cursor: "pointer" }}
                               color="#FF3236"
-                              onClick={() => {
-                                form.setValue("bannerUrl", "");
-                              }}
+                              onClick={() => form.setValue("bannerUrl", "")}
                             />
                           </div>
                         )}
@@ -330,22 +244,16 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                       <>
                         {isMounted && (
                           <ReactQuill
-                            // ref={reactQuillRef}
                             theme="snow"
                             value={field.value}
                             onChange={field.onChange}
                             modules={{
-                              toolbar: {
-                                container: [
-                                  [{ header: [1, 2, 3, 4, false] }],
-                                  ["bold", "italic", "underline"],
-                                  [{ align: [] }],
-                                  ["image", "clean"], // Add image button
-                                ],
-                                // handlers: {
-                                //     image: imageHandler, // Set custom image handler
-                                // },
-                              },
+                              toolbar: [
+                                [{ header: [1, 2, 3, 4, false] }],
+                                ["bold", "italic", "underline"],
+                                [{ align: [] }],
+                                ["image", "clean"],
+                              ],
                             }}
                           />
                         )}
@@ -356,158 +264,118 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                 )}
               />
             </div>
-            <div className="w-full mt-3 md:mt-0 md:w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
-              <p className="font-[Montserrat] font-bold text-base leading-[19px] text-[#4D4D4D]">
-                Publish
-              </p>
-              <div className="grid grid-cols-1 gap-6 mt-5">
-                <FormField
-                  control={form.control}
-                  name="authorName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{`Author's Name`}</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          type="text"
-                          autoComplete="new-password"
-                          placeholder="Name"
-                          className="bg-inherit outline-none"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="authorEmail"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{`Author's Email`}</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          type="email"
-                          autoComplete="new-password"
-                          placeholder="Email"
-                          className="bg-inherit outline-none"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="authorPhoneNumber"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{`Author's Phone Number`}</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          type="text"
-                          autoComplete="new-password"
-                          placeholder="Phone Number"
-                          className="bg-inherit outline-none"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="publishDate"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{`Publish Date`}</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          type="date"
-                          autoComplete="new-password"
-                          placeholder="DD/MM/YYYY"
-                          className="bg-inherit outline-none"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="visibility"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Visibility</FormLabel>
-                      <FormControl>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <SelectTrigger className="w-full bg-inherit">
-                            <SelectValue
-                              placeholder={field.value || "Select Option"}
-                            >
-                              {field.value || "Select Option"}
-                            </SelectValue>
-                          </SelectTrigger>
-                          <SelectContent className="bg-[#f3f3f3]">
-                            <SelectItem value="Visibility">
-                              Visibility
-                            </SelectItem>
-                            <SelectItem value="Hidden">Hidden</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="useBanner"
-                  render={({ field }) => (
-                    <div className="">
-                      <FormItem>
-                        <FormControl>
-                          <div className="items-top flex space-x-2 mt-8">
-                            <Checkbox
-                              id="acceptTermsAndCondition"
-                              checked={field.value}
-                              onCheckedChange={field.onChange}
-                            />
-                            <div className="grid gap-1.5 leading-none">
-                              <label
-                                htmlFor="acceptTermsAndCondition"
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                              >
-                                Use on Homepage Banner
-                              </label>
-                            </div>
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    </div>
-                  )}
-                />
-                <Button
-                  type="submit"
-                  disabled={createLoading}
-                  className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
-                >
-                  {createLoading ? (
-                    <ButtonSpinner />
-                  ) : (
-                    <span className="text-[14px] font-noraml">Publish</span>
-                  )}
-                </Button>
-              </div>
+            <div className="w-full md:w-[30%] grid grid-cols-1 gap-6 mt-5 md:mt-0">
+              <FormField
+                control={form.control}
+                name="authorName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Author Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="text"
+                        placeholder="Author Name"
+                        className="bg-white outline-none"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="authorEmail"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Author Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="email"
+                        placeholder="Author Email"
+                        className="bg-white outline-none"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="authorPhoneNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Author Phone Number</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="text"
+                        placeholder="Author Phone Number"
+                        className="bg-white outline-none"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="publishDate"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Publish Date</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="date"
+                        className="bg-white outline-none"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="visibility"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Visibility</FormLabel>
+                    <FormControl>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select Visibility">Select Visibility</SelectValue>
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="public">Public</SelectItem>
+                          <SelectItem value="private">Private</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="useBanner"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel className="ml-2">Use Banner</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
+          </div>
+          <div className="w-full flex justify-end mt-5">
+            <Button type="submit" className="bg-blue-500 text-white">
+              {createLoading ? <ButtonSpinner /> : "Create Blog"}
+            </Button>
           </div>
         </form>
       </Form>
