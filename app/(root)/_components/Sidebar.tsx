@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <>
     <div
-      className={`max-h-screen h-auto sticky bottom-0 top-0 w-72 flex flex-col justify-between font-[500] bg-[#000000] overflow-y-auto`}
+      className={`max-h-screen sidebar h-auto sticky bottom-0 top-0 w-72 flex flex-col justify-between font-[500] bg-[#000000] overflow-y-auto hidden lg:block`}
       style={{scrollbarWidth: "thin"}}
     >
          <div className="flex justify-center items-center mb-3">

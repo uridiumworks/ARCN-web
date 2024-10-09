@@ -1,17 +1,19 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "./use-toast"; // Import the useToast hook
 
 const useProgramsData = (token: string | null, triggerRefetch?: boolean) => {
   const [programs, setPrograms] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("programData");
-        return savedData ? JSON.parse(savedData) : [];
-      }
-      return []; // Return a default value for SSR
-});
+      const savedData = localStorage.getItem("programData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -27,6 +29,50 @@ const useProgramsData = (token: string | null, triggerRefetch?: boolean) => {
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch programs data.",
+        });
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, programs };
+};
+
+const useClientProgramsData = (token?: string | null, triggerRefetch?: boolean) => {
+  const [programs, setPrograms] = useState<any>(() => {
+    if (typeof window !== 'undefined') {
+      const savedData = localStorage.getItem("programData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI("/client/GetAllProgram", token as any);
+
+        console.log(response);
+        localStorage.setItem("programData", JSON.stringify(response)); // Save to localStorage
+        setPrograms(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client programs data.",
+        });
       }
     }
     fetchDashboard();
@@ -43,6 +89,7 @@ const useProgramData = (
   const [program, setProgram] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -60,6 +107,50 @@ const useProgramData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch program data by ID.",
+        });
+      }
+    }
+    fetchDashboard();
+  }, [token, triggerRefetch]);
+
+  return { loading, error, program };
+};
+
+const useClientProgramData = (
+  id: any,
+  token?: string | null,
+  triggerRefetch?: boolean
+) => {
+  const [program, setProgram] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response: any = await getAPI(
+          `/client/GetProgramById/${id}`,
+          token as any
+        );
+
+        console.log(response);
+        setProgram(response);
+        setLoading(false);
+      } catch (error: any) {
+        setLoading(false);
+        setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client program data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -72,6 +163,7 @@ const useCreateProgram = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   const createProgram = async (payload: any) => {
     setLoading(true);
@@ -85,8 +177,9 @@ const useCreateProgram = (token: string | null) => {
       );
       console.log("API response:", response); // Debugging
       setData(response?.message);
-
-      setLoading(false);
+      toast({
+        description: "Program created successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -95,8 +188,20 @@ const useCreateProgram = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -110,6 +215,7 @@ const useDeleteProgram = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const deleteProgram = async (id: string, closeDeleteDialogRef: any) => {
     setLoading(true);
@@ -120,12 +226,19 @@ const useDeleteProgram = (token: string | null) => {
       const token = localStorage.getItem("userToken");
       if (!token) {
         setError("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
       const response = await deleteAPI(`/api/ARCNProgram/Delete/${id}`, token);
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "Program deleted successfully.",
+      });
       closeDeleteDialogRef?.current.click();
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
@@ -135,8 +248,20 @@ const useDeleteProgram = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -150,6 +275,7 @@ const useUpdateProgram = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const updateProgram = async (id: any, payload: any) => {
     setLoading(true);
@@ -159,6 +285,11 @@ const useUpdateProgram = (token: string | null) => {
     try {
       if (!token) {
         setError("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
@@ -168,7 +299,9 @@ const useUpdateProgram = (token: string | null) => {
         token as any
       );
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "Program updated successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -177,8 +310,20 @@ const useUpdateProgram = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -191,6 +336,8 @@ const useUpdateProgram = (token: string | null) => {
 export {
   useProgramsData,
   useProgramData,
+  useClientProgramsData,
+  useClientProgramData,
   useCreateProgram,
   useDeleteProgram,
   useUpdateProgram,

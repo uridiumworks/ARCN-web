@@ -1,17 +1,19 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "./use-toast"; // Import the useToast hook
 
 const useFCAsData = (token: string | null, triggerRefetch?: boolean) => {
   const [fcas, setFcas] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("FCAData");
-        return savedData ? JSON.parse(savedData) : [];
-      }
-      return []; // Return a default value for SSR
-});
+      const savedData = localStorage.getItem("FCAData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -27,6 +29,11 @@ const useFCAsData = (token: string | null, triggerRefetch?: boolean) => {
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch FCA data.",
+        });
       }
     }
     fetchDashboard();
@@ -34,16 +41,18 @@ const useFCAsData = (token: string | null, triggerRefetch?: boolean) => {
 
   return { loading, error, fcas };
 };
+
 const useClientFCAsData = (token?: string | null, triggerRefetch?: boolean) => {
   const [fcas, setFcas] = useState<any>(() => {
     if (typeof window !== 'undefined') {
-        const savedData = localStorage.getItem("FCAData");
-        return savedData ? JSON.parse(savedData) : [];
-      }
-      return []; // Return a default value for SSR
-});
+      const savedData = localStorage.getItem("FCAData");
+      return savedData ? JSON.parse(savedData) : [];
+    }
+    return []; // Return a default value for SSR
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -58,6 +67,11 @@ const useClientFCAsData = (token?: string | null, triggerRefetch?: boolean) => {
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client FCA data.",
+        });
       }
     }
     fetchDashboard();
@@ -74,6 +88,7 @@ const useFCAData = (
   const [fca, setFca] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -91,6 +106,11 @@ const useFCAData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch FCA data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -98,6 +118,7 @@ const useFCAData = (
 
   return { loading, error, fca };
 };
+
 const useClientFCAData = (
   id: any,
   token?: string | null,
@@ -106,6 +127,7 @@ const useClientFCAData = (
   const [fca, setFca] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -123,6 +145,11 @@ const useClientFCAData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client FCA data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -135,6 +162,7 @@ const useCreateFCA = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   const createFCA = async (payload: any) => {
     setLoading(true);
@@ -148,8 +176,9 @@ const useCreateFCA = (token: string | null) => {
       );
       console.log("API response:", response); // Debugging
       setData(response?.message);
-
-      setLoading(false);
+      toast({
+        description: "FCA created successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -158,8 +187,20 @@ const useCreateFCA = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -173,6 +214,7 @@ const useDeleteFCA = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const deleteFCA = async (id: string, closeDeleteDialogRef: any) => {
     setLoading(true);
@@ -183,12 +225,19 @@ const useDeleteFCA = (token: string | null) => {
       const token = localStorage.getItem("userToken");
       if (!token) {
         setError("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
       const response = await deleteAPI(`/api/FCA/Delete/${id}`, token);
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "FCA deleted successfully.",
+      });
       closeDeleteDialogRef?.current.click();
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
@@ -198,8 +247,20 @@ const useDeleteFCA = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -213,6 +274,7 @@ const useUpdateFCA = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const updateFCA = async (id: any, payload: any) => {
     setLoading(true);
@@ -222,7 +284,12 @@ const useUpdateFCA = (token: string | null) => {
     try {
       if (!token) {
         setError("No token found");
-        console.log("No token found")
+        console.log("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
@@ -232,7 +299,9 @@ const useUpdateFCA = (token: string | null) => {
         token as any
       );
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "FCA updated successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -241,8 +310,20 @@ const useUpdateFCA = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);

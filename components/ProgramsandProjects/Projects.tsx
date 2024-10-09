@@ -1,94 +1,53 @@
+"use client";
+import { useClientProjectsData } from "@/hooks/Projects.hooks";
 import Image from "next/image";
 
-
-
 const Projects = () => {
+  const { loading, projects, error } = useClientProjectsData();
 
-    return ( 
-        <main className="lg:w-[80%] flex flex-col justify-center items-center mx-auto">
-            <div className="place-content-center text-center p-9 space-y-4">
-                <h1 className="font-bold text-4xl">Our Projects</h1>
-                <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque <br />montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit semper cras sed duis tortor <br />tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>
-            </div>
-
-            <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Casava.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] bottom-0 rounded-b-md text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
+  return (
+    <main className="lg:w-[80%] flex flex-col justify-center items-center mx-auto">
+      <div className="place-content-center text-center p-9 space-y-4">
+        <h1 className="font-bold text-4xl">Our Projects</h1>
+        <p className="font-normal text-base">
+          Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
+          etiam euismod quisque <br />
+          montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit
+          semper cras sed duis tortor <br />
+          tempor amet gravida. Rhoncus quis nisl etiam tortor.
+        </p>
+      </div>
+      <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {projects?.length > 0 && (
+          <>
+            {projects?.slice(0, 8)?.map((p: any, index: number) => (
+              <div key={index} className="relative">
+                <Image
+                  src={p?.bannerUrl || "/Images/Mandatepage/Casava.png"}
+                  alt={p?.title}
+                  width={368}
+                  height={310.4}
+                  className="rounded-b-md"
+                />
+                <div className="absolute w-full bg-[#000000CC] bottom-0 rounded-b-md text-white p-2">
+                  <h1 className="font-medium text-[15.52px]">{p?.title}</h1>
+                  <p className="font-normal text-[10.35px]">{p?.description}</p>
                 </div>
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+      <div className="p-9 text-center">
+        <button
+          type="button"
+          className="border py-2 px-9 font-bold text-sm rounded-[4px] text-[#15271C] w-full md:w-[152px] h-[52px]"
+        >
+          VIEW ALL
+        </button>
+      </div>
+    </main>
+  );
+};
 
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Soybeans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Beans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Grains.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Casava.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Soybeans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Beans.png" alt="" width={368} height={310.4} className="rounded-b-md" />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-
-                <div className="relative">
-                    <Image src="/Images/Mandatepage/Grains.png" alt="" width={368} height={310.4} className="rounded-b-md"  />
-                    <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">Lorem ipsum dolor sit amet consectetur. Tellus varius <br />fermentum nisi a quis tristique velit adipiscing magna.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="p-9 text-center">
-                <button type="button" className="border py-2 px-9 font-bold text-sm rounded-[4px] text-[#15271C] w-full md:w-[152px] h-[52px]">
-                    VIEW ALL
-                </button>
-            </div>
-
-        </main>
-    );
-}
- 
 export default Projects;

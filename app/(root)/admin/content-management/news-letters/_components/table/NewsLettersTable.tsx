@@ -29,28 +29,43 @@ const NewsLettersTable = <TData, TValue>({
     });
   return (
     <>
-    <div className='w-full h-auto p-5 flex justify-between items-center '>
-        <div className='w-fit flex justify-between items-center gap-2 px-5'>
-            <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]"><CiFilter size={20} /> <span className="text-[14px] font-noraml">Filter</span> <IoIosArrowDown color="#121212" size={20} /></Button>
-            <div className="relative">
-                <Input
-                    type="text"
-                    placeholder="Search with name..."
-                    className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
-                    style={{outline: "none"}}
-                />
-                <IoSearchOutline
-                    className="absolute top-[25%] left-[5%]"
-                    size={20}
-                    color="#868da5"
-                />
-            </div>
+     <div className="w-full h-auto p-2 md:p-5 flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
+        <div className="w-fit flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-2 px-2 md:px-5">
+          <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]">
+            <CiFilter size={20} />{" "}
+            <span className="text-[14px] font-noraml">Filter</span>{" "}
+            <IoIosArrowDown color="#121212" size={20} />
+          </Button>
+          <div className="relative">
+            <Input
+              type="text"
+              placeholder="Search with name..."
+              className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
+              style={{ outline: "none" }}
+              value={
+                (table.getColumn("title")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) =>
+                table.getColumn("title")?.setFilterValue(event.target.value)
+              }
+            />
+            <IoSearchOutline
+              className="absolute top-[25%] left-[5%]"
+              size={20}
+              color="#868da5"
+            />
+          </div>
         </div>
-        <div className='w-fit flex justify-between items-center gap-2 px-5'>
-            <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]"><LuRefreshCw size={20} /> <span className="text-[14px] font-noraml">Refresh</span></Button>
-            <Button onClick={() => setCreateNewNewsletter(true)} className="w-fit bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"><span className="text-[14px] font-noraml">New News Letter</span></Button>
+        <div className="w-fit self-start flex justify-between items-center gap-2 px-5">
+          {/* <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]"><LuRefreshCw size={20} /> <span className="text-[14px] font-noraml">Refresh</span></Button> */}
+          <Button
+            onClick={() => setCreateNewNewsletter(true)}
+            className="w-fit bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
+          >
+            <span className="text-[14px] font-noraml">New News Letter</span>
+          </Button>
         </div>
-    </div>
+      </div>
     <Table>
         <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

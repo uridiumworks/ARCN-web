@@ -28,6 +28,7 @@ import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useCreateReport, useReportsData } from "@/hooks/Reports.hooks";
+import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 
 interface Props {
   setCreateNewReport: React.Dispatch<React.SetStateAction<boolean>>;
@@ -144,8 +145,8 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           autoComplete="current-password"
         >
-          <div className="w-full flex justify-start gap-5 mt-5">
-            <div className="w-[70%] grid grid-cols-1 gap-6">
+             <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
                 name="title"
@@ -290,7 +291,7 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
                 )}
               />
             </div>
-            <div className="w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
+            <div className="w-full mt-3 md:mt-0 md:w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
               <p className="font-[Montserrat] font-bold text-base leading-[19px] text-[#4D4D4D]">
                 Publish
               </p>
@@ -431,9 +432,14 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
                 />
                 <Button
                   type="submit"
+                  disabled={createLoading}
                   className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                 >
-                  <span className="text-[14px] font-noraml">Publish</span>
+                  {createLoading ? (
+                    <ButtonSpinner />
+                  ) : (
+                    <span className="text-[14px] font-noraml">Publish</span>
+                  )}
                 </Button>
               </div>
             </div>

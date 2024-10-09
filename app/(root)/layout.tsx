@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./_components/Sidebar";
 import AdminNavbar from "./admin/_components/AdminNavbar";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function RootLayout({
   children,
@@ -29,6 +30,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <Toaster />
       </main>
     );
   }
@@ -44,6 +46,7 @@ export default function RootLayout({
           {children}
         </div>
       </div>
+      <Toaster />
     </main>
   );
 }

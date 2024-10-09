@@ -1,6 +1,7 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "./use-toast"; // Import the useToast hook
 
 const useNarissData = (token: string | null, triggerRefetch?: boolean) => {
   const [nariss, setNariss] = useState<any>(() => {
@@ -12,6 +13,7 @@ const useNarissData = (token: string | null, triggerRefetch?: boolean) => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -27,6 +29,11 @@ const useNarissData = (token: string | null, triggerRefetch?: boolean) => {
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch Naris data.",
+        });
       }
     }
     fetchDashboard();
@@ -45,6 +52,7 @@ const useClientNarissData = (token?: string | null, triggerRefetch?: boolean) =>
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -60,6 +68,11 @@ const useClientNarissData = (token?: string | null, triggerRefetch?: boolean) =>
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch client Naris data.",
+        });
       }
     }
     fetchDashboard();
@@ -67,7 +80,6 @@ const useClientNarissData = (token?: string | null, triggerRefetch?: boolean) =>
 
   return { loading, error, nariss };
 };
-
 
 const useClientNarisData = (
   id: any,
@@ -77,6 +89,7 @@ const useClientNarisData = (
   const [naris, setNaris] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -94,6 +107,11 @@ const useClientNarisData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch Naris data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -101,6 +119,7 @@ const useClientNarisData = (
 
   return { loading, error, naris };
 };
+
 const useNarisData = (
   token: string | null,
   id: any,
@@ -109,6 +128,7 @@ const useNarisData = (
   const [naris, setNaris] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -126,6 +146,11 @@ const useNarisData = (
       } catch (error: any) {
         setLoading(false);
         setError(error);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Failed to fetch Naris data by ID.",
+        });
       }
     }
     fetchDashboard();
@@ -138,6 +163,7 @@ const useCreateNaris = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
+  const { toast } = useToast(); // Initialize toast
 
   const createNaris = async (payload: any) => {
     setLoading(true);
@@ -151,8 +177,9 @@ const useCreateNaris = (token: string | null) => {
       );
       console.log("API response:", response); // Debugging
       setData(response?.message);
-
-      setLoading(false);
+      toast({
+        description: "Naris created successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -161,8 +188,20 @@ const useCreateNaris = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -176,6 +215,7 @@ const useDeleteNaris = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const deleteNaris = async (id: string, closeDeleteDialogRef: any) => {
     setLoading(true);
@@ -186,12 +226,19 @@ const useDeleteNaris = (token: string | null) => {
       const token = localStorage.getItem("userToken");
       if (!token) {
         setError("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
       const response = await deleteAPI(`/api/Naris/Delete/${id}`, token);
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "Naris deleted successfully.",
+      });
       closeDeleteDialogRef?.current.click();
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
@@ -201,8 +248,20 @@ const useDeleteNaris = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
@@ -216,6 +275,7 @@ const useUpdateNaris = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const { toast } = useToast(); // Initialize toast
 
   const updateNaris = async (id: any, payload: any) => {
     setLoading(true);
@@ -225,7 +285,12 @@ const useUpdateNaris = (token: string | null) => {
     try {
       if (!token) {
         setError("No token found");
-        console.log("No token found")
+        console.log("No token found");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "No token found.",
+        });
         return;
       }
 
@@ -235,7 +300,9 @@ const useUpdateNaris = (token: string | null) => {
         token as any
       );
       setSuccess(response.success);
-      setLoading(false);
+      toast({
+        description: "Naris updated successfully.",
+      });
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
@@ -244,8 +311,20 @@ const useUpdateNaris = (token: string | null) => {
             ? errorResponse.errors.join(", ")
             : errorResponse.message || "An unknown error occurred"
         );
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
       } else {
         setError("An unknown error occurred");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
       }
     } finally {
       setLoading(false);
