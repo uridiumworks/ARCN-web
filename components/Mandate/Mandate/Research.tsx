@@ -11,7 +11,7 @@ const Research = () => {
     <main className="h-auto md:h-[600px] bg-[#15271C] font-montserrat">
       <div className="text-white text-center">
         <h1 className="font-bold text-[65px]">Research</h1>
-        <p className="font-normal text-[21px]">
+        <p className="font-normal text-[19px] md:text-[21px]">
           Take a look at some of our technologies
         </p>
       </div>
