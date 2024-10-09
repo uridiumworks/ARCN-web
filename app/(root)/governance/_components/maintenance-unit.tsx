@@ -1,6 +1,7 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const MaintenanceUnit = () => {
     return (
