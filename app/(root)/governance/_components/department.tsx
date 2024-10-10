@@ -22,7 +22,7 @@ const Department = ({setTab}:any) => {
                     </div>
                 </div>
                 <div>
-                    <Image src="../Images/OBJECTS.png" alt=""  width={392.62} height={371}/>
+                    <Image src="/Images/OBJECTS.png" alt=""  width={392.62} height={371}/>
                 </div>
             </div>
 
