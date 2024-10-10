@@ -11,7 +11,7 @@ const MaintenanceUnit = () => {
                     <p> Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
                 <div className='mt-36'>
-                    <Image src="../Images/boy.png" alt="" width={190} height={190} />
+                    <Image src="/Images/boy.png" alt="" width={190} height={190} />
                 </div>
             </div>
             <div>

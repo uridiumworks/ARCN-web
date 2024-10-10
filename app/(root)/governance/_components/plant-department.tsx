@@ -72,7 +72,7 @@ const PlantDepartment = () => {
                                     <button className='font-normal text-sm text-[#75CDFD]'>Learn More</button>
                                 </div>
                                 <div className='justify-end text-right me-[-32px]'>
-                                    <Image src="../Images/police.png" alt="" width={100} height={100} />
+                                    <Image src="/Images/police.png" alt="" width={100} height={100} />
                                 </div>
                             </div>
                         </div>
