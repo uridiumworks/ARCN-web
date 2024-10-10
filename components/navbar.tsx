@@ -48,8 +48,8 @@ const Navbar = (props: Props) => {
             case "Careers":
                 router.push("/career")
                 break;
-            case "Publication":
-                router.push("/")
+            case "Publications":
+                router.push("/publications")
                 break;
             default:
                 break;
