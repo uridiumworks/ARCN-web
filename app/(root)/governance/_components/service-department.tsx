@@ -1,4 +1,5 @@
 
+import Link from 'next/link'
 import React from 'react'
 
 const ServiceDepartment = () => {
@@ -16,7 +17,7 @@ const ServiceDepartment = () => {
                         <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                     </div>
 
-                    <div className='flex flex-col lg:flex-row w-full h-full lg:h-[288.71px] gap-4 space-x-7 '>
+                    <div className='flex flex-col lg:flex-row w-full h-full lg:h-[288.71px] gap-4 lg:space-x-7 '>
                         <div className='bg-[#FFC74E] border p-8 lg:w-[400px] rounded-lg text-left '>
                             <h1 className="font-bold text-2xl lg:text-xl">Transport Unit</h1>
                             <p className='pt-5 text-xs pb-6 mt-4'>
@@ -24,7 +25,7 @@ const ServiceDepartment = () => {
                                 non sapien fringilla tristique ac aliquam donec. Luctus.
                             </p>
                             <div className='border border-none rounded-full bg-black w-[140px] mt-2 h-[40px] flex items-center justify-center'>
-                                <button className='font-normal text-sm text-[#FFC74E]'>Learn More</button>
+                                <Link href="/governance/transport-unit" className='font-normal text-sm text-[#FFC74E]'>Learn More</Link>
                             </div>
                         </div>
 
@@ -35,7 +36,7 @@ const ServiceDepartment = () => {
                                 non sapien fringilla tristique ac aliquam donec. Luctus.
                             </p>
                             <div className='border border-none rounded-full bg-white w-[140px] mt-8 h-[35px] flex items-center justify-center'>
-                                <button className='font-normal text-sm text-[#2E7636]'>Learn More</button>
+                                <Link href="/governance/records-unit" className='font-normal text-sm text-[#2E7636]'>Learn More</Link>
                             </div>
                         </div>
 
@@ -46,7 +47,7 @@ const ServiceDepartment = () => {
                                 non sapien fringilla tristique ac aliquam donec. Luctus.
                             </p>
                             <div className='border border-none rounded-full bg-white w-[130px] mt-8 h-[35px] flex items-center justify-center'>
-                                <button className='font-normal text-sm text-black'>Learn More</button>
+                                <Link href="/governance/maintenance-unit" className='font-normal text-sm text-black'>Learn More</Link>
                             </div>
                         </div>
 
@@ -57,7 +58,7 @@ const ServiceDepartment = () => {
                                 non sapien fringilla tristique ac aliquam donec. Luctus.
                             </p>
                             <div className='border border-none rounded-full bg-white w-[140px] mt-8 h-[40px] flex items-center justify-center'>
-                                <button className='font-normal text-sm text-[#75CDFD]'>Learn More</button>
+                                <Link href="/governance/security-unit" className='font-normal text-sm text-[#75CDFD]'>Learn More</Link>
                             </div>
                         </div>
                     </div>

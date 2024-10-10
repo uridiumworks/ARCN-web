@@ -8,7 +8,7 @@ const FinanceDepartment = () => {
                     <h2 className='font-bold text-lg md:text-3xl'>Finance and Account Department</h2>
                     <p className='text-sm text-gray mt-4 pb-5'>Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
-                <div className=' bg-black p-10 rounded-xl lg:w-[1300px] lg:h-[288px] lg:ml-20 '>
+                <div className=' bg-black p-10 rounded-xl lg:w-[1360px] lg:h-[288px]  '>
                     <h2 className='font-bold text-white text-xl md:text-[25.88px] '>Finance And Account Unit</h2>
                     <p className='text-base text-white mt-4 pb-10 font-normal'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla <br></br>tristique ac aliquam donec. Luctus.</p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-2 h-[40px] flex items-center justify-center'>
