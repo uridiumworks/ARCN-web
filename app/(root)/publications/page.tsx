@@ -5,7 +5,7 @@ import Reports from './_components/reports'
 import Newsletter from './_components/Newsletter'
 
 
-const page = () => {
+const Page = () => {
   return (
     <div>
       <PublicationsMotto/>
@@ -16,4 +16,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

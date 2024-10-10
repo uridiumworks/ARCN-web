@@ -26,7 +26,7 @@ const LayoutProvider = ({ children }: {children: React.ReactNode}) => {
   const currentRoute = usePathname();
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen sticky z-0 top-0">
       <div className="border-[#B4BDBD33] dark:border-[#57585833] rounded">
 
         <div className="w-full">

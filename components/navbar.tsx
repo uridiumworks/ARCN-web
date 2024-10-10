@@ -42,19 +42,25 @@ const Navbar = (props: Props) => {
             case "Impacts":
                 router.push("/impacts")
                 break;
+            case "Contact":
+                router.push("/contact")
+                break;
             case "Careers":
                 router.push("/career")
+                break;
+            case "Publications":
+                router.push("/publications")
                 break;
             default:
                 break;
         }
     }
     return (
-        <div className='flex items-center justify-between px-4 md:px-20 py-3 sticky z-10 top-0 bg-[#000]'>
+        <div className='flex items-center justify-between px-4 lg:px-20 py-3 sticky z-10 top-0 bg-[#000]'>
             <div>
                 <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
             </div>
-            <div className='hidden md:block text-center'>
+            <div className='hidden lg:block text-center'>
                 <div className='flex justify-center items-center gap-4 text-white'>
                     {topNav.map((t, index) => (
                         <p onClick={() => routePathLinks(t)} className='font[Montserrat] uppercase font-[400] text-[12px] text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
@@ -66,7 +72,7 @@ const Navbar = (props: Props) => {
                     ))}
                 </div>
             </div>
-            <div className='hidden md:flex items-center justify-between rounded-md px-3 bg-[#3C3C3C]'>
+            <div className='hidden lg:flex items-center justify-between rounded-md px-3 bg-[#3C3C3C]'>
                 <Input type='search' placeholder='Search' className='outline-none bg-transparent text-[#EFEFEF] text-[12px] focus-visible:outline-none border-[#3C3C3C]' />
                 <Search color='#2E7636' size="16px" />
             </div>
