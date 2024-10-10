@@ -1,6 +1,6 @@
 import React from 'react'
-import JournalsMotto from './_components/journals-motto'
-import Soil from './_components/Soil'
+import JournalsMotto from '../_components/journals-motto'
+import Soil from '../_components/Soil'
 
 const page = () => {
     return (

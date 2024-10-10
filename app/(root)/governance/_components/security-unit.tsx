@@ -1,5 +1,6 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
+import Link from 'next/link'
 import Image from 'next/image'
 
 const SecurityUnit = () => {
@@ -69,7 +70,7 @@ const AdministrationDepartment3 = () => {
                         non sapien fringilla tristique ac aliquam donec. Luctus.
                     </p>
                     <div className='border border-none rounded-full bg-black w-[140px] mt-2 h-[40px] flex items-center justify-center'>
-                        <button className='font-normal text-sm text-[#FFC74E]'>Learn More</button>
+                        <Link href="/governance/transport-unit" className='font-normal text-sm text-[#FFC74E]'>Learn More</Link>
                     </div>
                 </div>
 
@@ -80,7 +81,7 @@ const AdministrationDepartment3 = () => {
                         non sapien fringilla tristique ac aliquam donec. Luctus.
                     </p>
                     <div className='border border-none rounded-full bg-white w-[130px] mt-8 h-[35px] flex items-center justify-center'>
-                        <button className='font-normal text-sm text-black'>Learn More</button>
+                        <Link href="/governance/maintenance-unit" className='font-normal text-sm text-black'>Learn More</Link>
                     </div>
                 </div>
 
@@ -91,7 +92,7 @@ const AdministrationDepartment3 = () => {
                         non sapien fringilla tristique ac aliquam donec. Luctus.
                     </p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-8 h-[35px] flex items-center justify-center'>
-                        <button className='font-normal text-sm text-[#2E7636]'>Learn More</button>
+                        <Link href="/governance/records-unit" className='font-normal text-sm text-[#2E7636]'>Learn More</Link>
                     </div>
                 </div>
             </div>
