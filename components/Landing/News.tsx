@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const News = () => {
   return (
@@ -9,7 +10,7 @@ const News = () => {
           <div>
             <h1 className="font-bold text-base">Journals</h1>
           </div>
-          <div className="flex flex-col lg:flex-row gap-5 p-9 lg:p-2 border bg-[#FFFFFFCC] rounded-[12.91px]">
+          <div className="flex flex-col lg:flex-row-reverse gap-5 p-9 lg:p-2 border bg-[#FFFFFFCC] rounded-[12.91px]">
             <div>
               <Image src="/Images/Homepage/Books.png" alt="Books" width={216.26} height={216.26} className="rounded-2xl" />
             </div>
@@ -22,11 +23,13 @@ const News = () => {
                 institutes to share their findings, insights, and innovations
                 with the <br />global academic community.
               </p>
-              <div className="font-medium text-[13px] py-2 text-[#30A85F]">
-                <button className="border-0 py-2 px-4 bg-[#0C513F0D]">
-                  Check Journals
-                </button>
-              </div>
+              <Link href={"/publications/journals"}>
+                <div className="font-medium text-[13px]  text-[#30A85F]">
+                  <button className="border-0 py-2 px-4 bg-[#0C513F0D]">
+                    Check Journals
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -44,11 +47,13 @@ const News = () => {
                 cutting-edge discoveries and insights that shape the future
                 of science, technology, and beyond.
               </p>
-              <div className="font-medium text-sm lg:text-[13px] py-2 text-[#30A85F]">
-                <button className="border-0 py-2 px-4 bg-[#0C513F0D]">
-                  Check Newsletters
-                </button>
-              </div>
+              <Link href={"/publications/newsletter"}>
+                <div className="font-medium text-sm lg:text-[13px]  text-[#30A85F]">
+                  <button className="border-0 py-2 px-4 bg-[#0C513F0D]">
+                    Check Newsletters
+                  </button>
+                </div>
+              </Link>
             </div>
             <div>
               <Image

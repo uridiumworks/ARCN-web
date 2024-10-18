@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Department = ({setTab}:any) => {
     return (
-        <section className='px-10 py-24'>
+        <section className='w-full px-10 py-24'>
             <div className='lg:px-32'>
                 <h1 className="text-2xl font-bold text-[#1B222B]">Our Department</h1>
                 <p className="text-lg text-gray mt-4 pt-10"></p>
@@ -22,7 +22,7 @@ const Department = ({setTab}:any) => {
                     </div>
                 </div>
                 <div>
-                    <Image src="../Images/OBJECTS.png" alt=""  width={392.62} height={371}/>
+                    <Image src="/Images/OBJECTS.png" alt=""  width={392.62} height={371}/>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@ const Department = ({setTab}:any) => {
                     </div>
                 </div>
                 <div className='pb-1.5'>
-                    <Image src="../Images/OBJECT(1).png" alt=""  width={392.62} height={371}/>
+                    <Image src="/Images/OBJECT(1).png" alt=""  width={392.62} height={371}/>
                 </div>
             </div>
     

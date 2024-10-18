@@ -1,6 +1,7 @@
 "use client";
 
 import { useClientNarissData } from "@/hooks/Naris.hooks";
+import Link from "next/link";
 
 const AROCs = () => {
   const { loading, nariss, error } = useClientNarissData();
@@ -51,6 +52,7 @@ const AROCs = () => {
             )}
           </div>
 
+          <Link href={"/mandate/initiatives/federal"}></Link>
           <div className="text-center p-9">
             <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">
               Detailed view
