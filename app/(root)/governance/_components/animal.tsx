@@ -1,6 +1,8 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
+
 
 const Animal = () => {
     return (
@@ -71,15 +73,15 @@ const Mandates02 = () => {
 
 const AdministrationDepartment02 = () => {
     return (
-        <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[1270px] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
+        <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[90%] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
             <div className="lg:py-10 p-8 lg:px-20">
                 <div>
                     <h2 className="lg:text-[32px] text-2xl text-black text-bold mb-5 font-bold">Other Administration Department</h2>
                     <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
 
-                <div className='flex flex-col lg:flex-row lg:h-[288.71px] w-full p-3 gap-4 lg:space-x-7 '>
-                    <div className='bg-[#FFC74E] border p-6 rounded-lg text-left lg:w-[375px]'>
+                <div className='flex flex-col lg:flex-row lg:w-[70%] lg:h-[288.71px] w-full p-3 gap-4 lg:space-x-7 '>
+                    <div className='bg-[#FFC74E] border p-6 rounded-[16.17px] text-left lg:w-[45%]'>
                         <h1 className="font-bold text-2xl mt-1">Ruminant & Non-<br/>Ruminat Division</h1>
                         <p className='pt-5 text-xs pb-6'>
                             Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -90,7 +92,7 @@ const AdministrationDepartment02 = () => {
                         </div>
                     </div>
 
-                    <div className='bg-black p-6 border rounded-lg text-left lg:w-[375px]'>
+                    <div className='bg-black p-6 border rounded-[16.17px] text-left lg:w-[45%]'>
                         <h1 className="font-bold text-xl text-white mt-1">Livestock Nutrition & <br/>Farming System</h1>
                         <p className='pt-6 text-xs text-white pb-3'>
                             Lorem ipsum dolor sit amet consectetur. Dui <br />

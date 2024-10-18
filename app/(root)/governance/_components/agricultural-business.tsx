@@ -12,7 +12,7 @@ const AgriculturalBusiness = () => {
                     <p> Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
                 <div className='mt-36'>
-                    <Image src="../Images/boy.png" alt="" width={190} height={190} />
+                    <Image src="/Images/boy.png" alt="" width={190} height={190} />
                 </div>
             </div>
             <div>
@@ -66,15 +66,15 @@ const Mandates03 = () => {
 
 const AdministrationDepartment03 = () => {
     return (
-        <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[1350px] w-full lg:pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
-            <div className="lg:py-10 p-6 lg:px-20">
+        <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[90%] w-full lg:pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
+            <div className="lg:py-10 p-6 lg:px-10">
                 <div>
                     <h2 className="lg:text-[32px] text-2xl text-black text-bold mb-5 font-bold">Other Administration Department</h2>
                     <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
 
-                <div className='flex flex-col lg:flex-row lg:h-[288.71px] w-full lg:p-3 gap-4 lg:space-x-7 '>
-                    <div className='bg-[#FFC74E] border p-8 rounded-lg text-left lg:w-[375px] '>
+                <div className='flex flex-col lg:flex-row lg:w-[70%] lg:h-[288.71px] w-full lg:p-3 gap-4 lg:space-x-7 '>
+                    <div className='bg-[#FFC74E] border p-8 rounded-[16.17px] text-left lg:w-[45%] '>
                         <h1 className="font-bold text-xl mt-1">Agricultural Policy & <br/>Socio-Economics</h1>
                         <p className='pt-5 text-xs pb-6 '>
                             Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -85,7 +85,7 @@ const AdministrationDepartment03 = () => {
                         </div>
                     </div>
 
-                    <div className='bg-[#2E7636] p-8 border rounded-lg text-left lg:w-[375px]'>
+                    <div className='bg-[#2E7636] p-8 border rounded-[16.17px] text-left lg:w-[45%]'>
                             <h1 className="font-bold text-xl text-white ">Agricultural Extensions & Training</h1>
                             <p className='pt-6 pb-6 text-xs text-white'>
                                 Lorem ipsum dolor sit amet consectetur. Dui <br />

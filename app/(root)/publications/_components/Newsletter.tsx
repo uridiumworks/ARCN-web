@@ -3,6 +3,7 @@ import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { newsletterData } from './data'
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 
@@ -25,16 +26,18 @@ const Newsletter = () => {
                 </div>
             </div>
 
-            <div className='py-10 grid grid-cols-1 md:grid-cols-4 gap-5'>
+            <div className='py-10 w-[100%] grid grid-cols-1 md:grid-cols-4 gap-5 mx-auto'>
                 {newsletterData.map((newsletter: NewsletterProps) => (
-                    <div key={newsletter.id} className=' space-y-4 border-x-3'>
-                        <Image src={newsletter.imgUrl} alt='image' width={384} height={200}/>
-                        <h1 className='text-[20px] font-[700] py-1 text-center font-montserrat'>{newsletter.title}</h1>
-                        <p className='text-[14px] text-[##858C95e] text-center py-3 '>{newsletter.desc}</p>
+                    <div key={newsletter.id} className='border-2 rounded-lg h-[100%] space-y-3'>
+                        <Image src={newsletter.imgUrl} alt='image' width={384} height={200} className='rounded-lg'/>
+                        <h1 className='text-base font-[700] text-center font-montserrat'>{newsletter.title}</h1>
+                        <p className='text-xs text-[##858C95e] text-center '>{newsletter.desc}</p>
 
-                        <div className='border  bg-[#0C513F0D w-[300px] h-[48px] mx-auto'>
-                            <button className='text-[#0C513F] py-3 px-24'>Read more</button>
-                        </div>
+                        <Link href={'/publications/newsletter'}>
+                            <div className='bg-[#0C513F0D] w-[95%] rounded-lg h-[48px] py-3 px-20 '>
+                                <button className='text-[#0C513F] '>READ MORE</button>
+                            </div>
+                        </Link>
                     </div>
                 ))}
             </div>

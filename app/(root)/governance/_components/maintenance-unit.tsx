@@ -54,7 +54,7 @@ const Mandates2 = () => {
 const AdministrationDepartment2 = () => {
     return (
 
-        <div className=' mb-24 mt-10 md:grid-cols-2 lg:w-[1400px] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
+        <div className=' mb-24 mt-10 md:grid-cols-2 lg:w-[90%] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
             <div className="lg:py-10 p-6 lg:px-20">
                 <div>
                     <h1 className="lg:text-[32px] text-2xl text-black text-bold mb-5 font-bold">Other Administration Department</h1>
@@ -62,8 +62,8 @@ const AdministrationDepartment2 = () => {
                 </div>
             </div>
 
-            <div className='flex lg:flex-row flex-col lg:h-[288.71px]  w-full p-8 gap-4 lg:space-x-7 lg:ml-14  '>
-                <div className='bg-[#FFC74E] border p-8 rounded-lg text-left '>
+            <div className='flex lg:flex-row flex-col lg:h-[50%] lg:w-[90%]  w-full p-8 gap-4 lg:space-x-7 lg:ml-14  '>
+                <div className='bg-[#FFC74E] border p-7 rounded-[16.17px] text-left w-[45%] '>
                     <h1 className="font-bold text-xl mt-1">Transport Unit</h1>
                     <p className='pt-5 text-xs pb-6 mt-5'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -74,7 +74,7 @@ const AdministrationDepartment2 = () => {
                     </div>
                 </div>
 
-                <div className='bg-[#2E7636] p-8 border rounded-lg text-left lg:w-[375px]'>
+                <div className='bg-[#2E7636] p-8 border rounded-[16.17px] text-left lg:w-[45%]'>
                     <h1 className="font-bold text-xl text-white">Records & Registry Unit</h1>
                     <p className='pt-5 pb-5 text-xs text-white'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -85,7 +85,7 @@ const AdministrationDepartment2 = () => {
                     </div>
                 </div>
 
-                <div className='bg-[#75CDFD] border p-6 rounded-lg text-left lg:w-[375px]'>
+                <div className='bg-[#75CDFD] border p-6 rounded-[16.17px] text-left lg:w-[45%]'>
                     <h1 className="font-bold text-xl mt-1">Security Unit</h1>
                     <p className='pt-5 text-xs mt-4 pb-3'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />

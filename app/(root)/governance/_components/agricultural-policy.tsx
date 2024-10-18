@@ -6,7 +6,7 @@ import Link from 'next/link'
 const AgriculturalPolicy = () => {
     return (
         <section className='w-full '>
-            <div className='bg-[#FFC74E] lg:h-[400px] flex justify-between' >
+            <div className='bg-[#FFC74E] lg:w-[100%] lg:h-[400px] flex justify-between' >
                 <div className='space-y-8 p-10 lg:py-24 lg:px-32'>
                     <h2 className='font-bold text-2xl lg:text-[32px]'>Agricultural Policy & Socio-Economics</h2>
                     <p className='text-sm'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
@@ -84,15 +84,15 @@ const Mandates01 = () => {
 
 const AdministrationDepartment01 = () => {
   return (
-    <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[1400px] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
+    <div className=' mb-8 mt-10 md:grid-cols-2 lg:w-[90%] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
     <div className="lg:py-10 p-6 lg:px-20">
         <div>
             <h2 className="lg:text-[32px] text-2xl text-black text-bold mb-5 font-bold">Other Administration Department</h2>
             <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
         </div>
 
-        <div className='flex flex-col lg:flex-row lg:h-[288.71px]  w-full p-3 gap-4 lg:space-x-7 '>
-            <div className='bg-[#2E7636] p-8 border rounded-lg text-left lg:w-[375px]'>
+        <div className='flex flex-col lg:flex-row lg:w-[80%] lg:h-[40%]  w-full p-3 gap-4 lg:space-x-7 '>
+            <div className='bg-[#2E7636] p-8 border rounded-[16.17px] text-left lg:w-[45%]'>
                 <h1 className="font-bold text-xl text-white ">Agricultural Extensions & Training</h1>
                 <p className='pt-6 pb-6 text-xs text-white'>
                     Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -103,7 +103,7 @@ const AdministrationDepartment01 = () => {
                 </div>
             </div>
 
-            <div className='bg-black p-6 border rounded-lg text-left lg:w-[375px]'>
+            <div className='bg-black p-6 border rounded-[16.17px] text-left lg:w-[45%]'>
                 <h1 className="font-bold text-xl text-white mt-1">Agricultural Business & Entrepreneurship</h1>
                 <p className='pt-5 text-xs text-white  pb-3'>
                     Lorem ipsum dolor sit amet consectetur. Dui <br />

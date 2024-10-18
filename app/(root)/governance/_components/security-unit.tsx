@@ -54,7 +54,7 @@ const Mandates3 = () => {
 const AdministrationDepartment3 = () => {
     return (
 
-        <div className=' mb-24 mt-10 md:grid-cols-2 lg:w-[1400px] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
+        <div className=' mb-24 mt-10 md:grid-cols-2 lg:w-[90%] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
             <div className="py-10 px-20">
                 <div>
                     <h1 className="text-[32px] text-black text-bold mb-5 font-bold"> Other Administration Department</h1>
@@ -62,8 +62,8 @@ const AdministrationDepartment3 = () => {
                 </div>
             </div>
 
-            <div className='flex h-[288.71px] p-8 gap-4 space-x-7 ml-14  '>
-            <div className='bg-[#FFC74E] border p-8 rounded-lg text-left '>
+            <div className='flex h-[50%] lg:w-[90%] p-8 gap-4 space-x-7 ml-14  '>
+                <div className='bg-[#FFC74E] border p-7 rounded-lg text-left w-[45%] '>
                     <h1 className="font-bold text-xl mt-1">Transport Unit</h1>
                     <p className='pt-5 text-xs pb-6 mt-5'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -74,7 +74,7 @@ const AdministrationDepartment3 = () => {
                     </div>
                 </div>
 
-                <div className='bg-black p-6 border rounded-lg text-left w-[375px]'>
+                <div className='bg-black p-6 border rounded-lg text-left w-[45%]'>
                     <h1 className="font-bold text-xl text-white mt-1">Maintenance Unit</h1>
                     <p className='pt-5 text-xs text-white mt-5 pb-2'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
@@ -85,7 +85,7 @@ const AdministrationDepartment3 = () => {
                     </div>
                 </div>
 
-                <div className='bg-[#2E7636] p-8 border rounded-lg text-left w-[375px]'>
+                <div className='bg-[#2E7636] p-8 border rounded-lg text-left w-[45%]'>
                     <h1 className="font-bold text-xl text-white">Records & Registry Unit</h1>
                     <p className='pt-5 pb-5 text-xs text-white'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />

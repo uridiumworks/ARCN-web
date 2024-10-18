@@ -2,6 +2,7 @@
 import { LuMapPin } from "react-icons/lu";
 import Image from "next/image";
 import { useClientEventsData } from "@/hooks/Events.hooks";
+import Link from "next/link";
 
 const Upcoming = () => {
   const { loading, events, error } = useClientEventsData();
@@ -21,15 +22,17 @@ const Upcoming = () => {
                     key={index}
                     className="border p-4 rounded-xl flex flex-row-reverse gap-2"
                   >
-                    <div>
-                      <Image
-                        src={event?.bannerUrl || "/Images/Homepage/World.png"}
-                        alt="Overlay"
-                        width={201}
-                        height={201}
-                        className="rounded-[13.4px]"
-                      />
-                    </div>
+                    <Link href={"/newsandevents/events"}>
+                      <div>
+                        <Image
+                          src={event?.bannerUrl || "/Images/Homepage/World.png"}
+                          alt="Overlay"
+                          width={201}
+                          height={201}
+                          className="rounded-[13.4px]"
+                        />
+                      </div>
+                    </Link>
                     <div className="space-y-4">
                       <h1 className="font-normal text-[15.5px] text-[#1315175C]">
                         6:00 PM ·

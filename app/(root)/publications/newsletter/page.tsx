@@ -1,15 +1,14 @@
 import React from 'react'
 import FundingMotto from '../_components/fundingMotto'
-import Text01 from '../_components/text'
+import Text from '../_components/text'
 
-const page = () => {
+const Newsletters = () => {
   return (
     <div>
         <FundingMotto/>
-        <Text01/>
-        
+        <Text/> 
     </div>
   )
 }
 
-export default page
+export default Newsletters

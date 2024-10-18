@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Department = ({setTab}:any) => {
     return (
-        <section className='px-10 py-24'>
+        <section className='w-full px-10 py-24'>
             <div className='lg:px-32'>
                 <h1 className="text-2xl font-bold text-[#1B222B]">Our Department</h1>
                 <p className="text-lg text-gray mt-4 pt-10"></p>
