@@ -26,22 +26,27 @@ export const ContentManagementBlogscolumns: ColumnDef<ContentManagementBlogsTabl
     {
       accessorKey: "title",
       header: "Title",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorName",
       header: "Author's Name",
+      enableGlobalFilter:true
     },
     {
       accessorKey: "publishDate",
       header: "Date Created",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorEmail",
       header: "Author's Email",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorPhoneNumber",
       header: "Author's Phone Number",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "action",
@@ -66,22 +71,27 @@ export const ContentManagementBlogscolumns: ColumnDef<ContentManagementBlogsTabl
     {
       accessorKey: "title",
       header: "Title",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorName",
       header: "Author's Name",
+      enableGlobalFilter:true
     },
     {
       accessorKey: "publishDate",
       header: "Date Created",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorEmail",
       header: "Author's Email",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorPhoneNumber",
       header: "Author's Phone Number",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "action",
@@ -107,22 +117,27 @@ export const ContentManagementBlogscolumns: ColumnDef<ContentManagementBlogsTabl
     {
       accessorKey: "title",
       header: "Title",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorName",
       header: "Author's Name",
+      enableGlobalFilter:true
     },
     {
       accessorKey: "publishDate",
       header: "Date Created",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorEmail",
       header: "Author's Email",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorPhoneNumber",
       header: "Author's Phone Number",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "action",
@@ -146,22 +161,27 @@ export const ContentManagementBlogscolumns: ColumnDef<ContentManagementBlogsTabl
     {
       accessorKey: "title",
       header: "Title",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorName",
       header: "Author's Name",
+      enableGlobalFilter:true
     },
     {
       accessorKey: "publishDate",
       header: "Date Created",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorEmail",
       header: "Author's Email",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "authorPhoneNumber",
       header: "Author's Phone Number",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "action",

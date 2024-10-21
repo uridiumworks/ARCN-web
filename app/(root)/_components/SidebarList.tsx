@@ -7,19 +7,19 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
+
 const SidebarList = () => {
     const currentRoute = usePathname();
 
     const [dropDown, setDropDown] = useState(false);
-
-    
-
 
     const dropDownHandler = () => {
         if (dropDown) {
             setDropDown((prev) => (prev = false));
         }
     };
+
+
     return (
         <aside className='w-full lg:h-[calc(90vh - 10px)]'>
             <div className=''>
@@ -146,7 +146,7 @@ const SidebarList = () => {
                                     )}
                                 >
                                     {link?.icon}
-                                    <div className="ml-2 my-auto">
+                                    <div className="ml                  -2 my-auto">
                                         <p className="text-sm">{link?.name}</p>
                                     </div>
                                 </div>

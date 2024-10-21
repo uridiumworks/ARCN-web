@@ -1,9 +1,10 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import { useToast } from "./use-toast"; // Import the useToast hook
+import {useRouter} from 'next/navigation'
 
-const useReportsData = (token: string | null, triggerRefetch?: boolean) => {
+const useReportsData = (token: string | null) => {
   const [reports, setReports] = useState<any>(() => {
     if (typeof window !== 'undefined') {
       const savedData = localStorage.getItem("reportData");
@@ -15,8 +16,8 @@ const useReportsData = (token: string | null, triggerRefetch?: boolean) => {
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast(); // Initialize toast
 
-  useEffect(() => {
-    async function fetchDashboard() {
+
+  const fetchDashboard = useCallback(async () => {
       try {
         setLoading(true);
         setError(null);
@@ -35,11 +36,11 @@ const useReportsData = (token: string | null, triggerRefetch?: boolean) => {
           description: "Failed to fetch reports data.",
         });
       }
-    }
-    fetchDashboard();
-  }, [token, triggerRefetch]);
+    },[])
+   
 
-  return { loading, error, reports };
+
+  return { loading, error, reports,fetchDashboard };
 };
 
 const useClientReportsData = (token?: string | null, triggerRefetch?: boolean) => {
@@ -275,8 +276,9 @@ const useUpdateReport = (token: string | null) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const { toast } = useToast(); // Initialize toast
+  const {push} = useRouter();
 
-  const updateReport = async (id: any, payload: any) => {
+  const updateReport = async (id: any, payload: any,url:string) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -301,6 +303,7 @@ const useUpdateReport = (token: string | null) => {
       toast({
         description: "Report updated successfully.",
       });
+      push(url)
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

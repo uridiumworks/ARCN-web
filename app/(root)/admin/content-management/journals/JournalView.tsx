@@ -12,9 +12,8 @@ import Loader from "@/components/Shared/Loader";
 const JournalView = () => {
   const [createNewJournal, setCreateNewJournal] = useState<boolean>(false);
   const [journalsArray, setJournalsArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
-  const { loading, journals, error } = useJournalsData(token, triggerRefetch);
+  const { loading, journals, error,fetchDashboard } = useJournalsData(token);
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -22,23 +21,27 @@ const JournalView = () => {
   }, []);
 
   useEffect(() => {
-    setTriggerRefetch(!triggerRefetch);
-  }, []);
+    async function fetch(){
+      await fetchDashboard()
+    }
+    fetch()
+  },[])
 
+  
   useEffect(() => {
     if (journals?.length > 0) {
       setJournalsArray(journals);
     }
   }, [journals]);
-  // if (loading && journals?.length < 1) return <p>Loading....</p>;
 
-  return (
+
+  return (  
     <>
       <Loader loading={loading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewJournal ? (
-            <NewJournalForm setCreateNewJournal={setCreateNewJournal} />
+            <NewJournalForm setCreateNewJournal={setCreateNewJournal} onAction={fetchDashboard} />
           ) : (
             <>
               <div>

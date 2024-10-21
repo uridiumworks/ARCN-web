@@ -1,9 +1,10 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import { useToast } from "./use-toast"; // Import the useToast hook
+import {useRouter} from 'next/navigation'
 
-const useJournalsData = (token: string | null, triggerRefetch?: boolean) => {
+const useJournalsData = (token: string | null) => {
   const [journals, setJournals] = useState<any>(() => {
     if (typeof window !== 'undefined') {
       const savedData = localStorage.getItem("JournalData");
@@ -15,31 +16,32 @@ const useJournalsData = (token: string | null, triggerRefetch?: boolean) => {
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast(); // Initialize toast
 
-  useEffect(() => {
-    async function fetchDashboard() {
-      try {
-        setLoading(true);
-        setError(null);
-        const response: any = await getAPI("odata/GetJournals", token as any);
+ 
+  const fetchDashboard = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response: any = await getAPI("odata/GetJournals", token as any);
 
-        console.log(response);
-        localStorage.setItem("JournalData", JSON.stringify(response)); // Save to localStorage
-        setJournals(response);
-        setLoading(false);
-      } catch (error: any) {
-        setLoading(false);
-        setError(error);
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "Failed to fetch journals data.",
-        });
-      }
+      console.log(response);
+      localStorage.setItem("JournalData", JSON.stringify(response)); // Save to localStorage
+      setJournals(response);
+      setLoading(false);
+    } catch (error: any) {
+      setLoading(false);
+      setError(error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Failed to fetch journals data.",
+      });
     }
-    fetchDashboard();
-  }, [token, triggerRefetch]);
+  },[token] )
 
-  return { loading, error, journals };
+
+  // console.log(triggerRefetch,"HIIII")
+
+  return { loading, error, journals,fetchDashboard };
 };
 
 const useJournalData = (
@@ -198,8 +200,9 @@ const useUpdateJournal = (token: string | null) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const { toast } = useToast(); // Initialize toast
+  const {push} = useRouter();
 
-  const updateJournal = async (id: any, payload: any) => {
+  const updateJournal = async (id: any, payload: any,url:string) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -225,6 +228,7 @@ const useUpdateJournal = (token: string | null) => {
       toast({
         description: "Journal updated successfully.",
       });
+      push(url)
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

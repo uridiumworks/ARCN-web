@@ -147,7 +147,7 @@ const UpdateReport = ({ params }: Props) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateReport(params?.reportsId, values);
+    await updateReport(params?.reportsId, values,"/admin/content-management/reports");
   }
   return (
     <>

@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { ColumnDef, flexRender, getCoreRowModel, useReactTable,getFilteredRowModel } from '@tanstack/react-table';
 import Image from 'next/image';
 import React from 'react';
 import { CiFilter } from 'react-icons/ci';
@@ -26,6 +26,7 @@ const ReportsTable = <TData, TValue>({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
     });
   return (
     <>
@@ -43,10 +44,10 @@ const ReportsTable = <TData, TValue>({
               className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
               style={{ outline: "none" }}
               value={
-                (table.getColumn("title")?.getFilterValue() as string) ?? ""
+                (table.getColumn("authorName")?.getFilterValue() as string) ?? ""
               }
               onChange={(event) =>
-                table.getColumn("title")?.setFilterValue(event.target.value)
+                table.getColumn("authorName")?.setFilterValue(event.target.value)
               }
             />
             <IoSearchOutline

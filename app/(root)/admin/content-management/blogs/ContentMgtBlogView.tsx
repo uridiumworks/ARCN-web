@@ -9,9 +9,8 @@ import Loader from "@/components/Shared/Loader";
 const ContentMgtBlogView = () => {
   const [token, setToken] = useState<string | null>(null);
   const [blogArray, setBlogArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [createNewBlog, setCreateNewBlog] = useState<boolean>(false);
-  const { loading, blogs, error } = useBlogsData(token, triggerRefetch);
+  const { loading, blogs, error,fetchDashboard } = useBlogsData(token);
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -19,8 +18,12 @@ const ContentMgtBlogView = () => {
   }, []);
 
   useEffect(() => {
-    setTriggerRefetch(!triggerRefetch);
-  }, []);
+    async function fetch(){
+      await fetchDashboard()
+    }
+    fetch()
+  },[])
+
 
   useEffect(() => {
     if (blogs?.length > 0) {
@@ -35,7 +38,7 @@ const ContentMgtBlogView = () => {
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewBlog ? (
-            <NewBlogForm setCreateNewBlog={setCreateNewBlog} />
+            <NewBlogForm setCreateNewBlog={setCreateNewBlog} onAction={fetchDashboard} />
           ) : (
             <>
               <div>
