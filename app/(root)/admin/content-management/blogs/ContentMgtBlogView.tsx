@@ -3,14 +3,15 @@ import React, { useEffect, useState } from "react";
 import ContentMgtBlogTable from "./_components/table/ContentMgtBlogTable";
 import { ContentManagementBlogscolumns } from "./_components/table/column";
 import NewBlogForm from "./_components/NewBlogForm";
-import { useBlogsData } from "@/hooks/Blogs.hooks";
+// import { useBlogsData } from "@/hooks/Blogs.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useBlog } from "@/contexts/Blogs.context";
 
 const ContentMgtBlogView = () => {
   const [token, setToken] = useState<string | null>(null);
   const [blogArray, setBlogArray] = useState<any[]>([]);
   const [createNewBlog, setCreateNewBlog] = useState<boolean>(false);
-  const { loading, blogs, error,fetchDashboard } = useBlogsData(token);
+  const { isLoading, blogs,getBlogs } = useBlog();
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -19,10 +20,10 @@ const ContentMgtBlogView = () => {
 
   useEffect(() => {
     async function fetch(){
-      await fetchDashboard()
+      await getBlogs()
     }
     fetch()
-  },[])
+  },[getBlogs])
 
 
   useEffect(() => {
@@ -34,11 +35,11 @@ const ContentMgtBlogView = () => {
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewBlog ? (
-            <NewBlogForm setCreateNewBlog={setCreateNewBlog} onAction={fetchDashboard} />
+            <NewBlogForm setCreateNewBlog={setCreateNewBlog} onAction={getBlogs} />
           ) : (
             <>
               <div>

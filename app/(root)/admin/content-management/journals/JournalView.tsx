@@ -8,12 +8,13 @@ import NewJournalForm from "./_components/NewJournalForm";
 import JournalTable from "./_components/table/JournalTable";
 import { useJournalsData } from "@/hooks/Journals.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useJournal } from "@/contexts/Journals.context";
 
 const JournalView = () => {
   const [createNewJournal, setCreateNewJournal] = useState<boolean>(false);
   const [journalsArray, setJournalsArray] = useState<any[]>([]);
   const [token, setToken] = useState<string | null>(null);
-  const { loading, journals, error,fetchDashboard } = useJournalsData(token);
+  const { isLoading, journals, getJournals } = useJournal();
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -21,27 +22,28 @@ const JournalView = () => {
   }, []);
 
   useEffect(() => {
-    async function fetch(){
-      await fetchDashboard()
+    async function fetch() {
+      await getJournals();
     }
-    fetch()
-  },[])
+    fetch();
+  }, [getJournals]);
 
-  
   useEffect(() => {
     if (journals?.length > 0) {
       setJournalsArray(journals);
     }
   }, [journals]);
 
-
-  return (  
+  return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewJournal ? (
-            <NewJournalForm setCreateNewJournal={setCreateNewJournal} onAction={fetchDashboard} />
+            <NewJournalForm
+              setCreateNewJournal={setCreateNewJournal}
+              onAction={getJournals}
+            />
           ) : (
             <>
               <div>
