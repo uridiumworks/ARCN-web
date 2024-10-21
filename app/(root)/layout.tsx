@@ -6,6 +6,10 @@ import Sidebar from "./_components/Sidebar";
 import AdminNavbar from "./admin/_components/AdminNavbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { BlogsProvider } from "@/contexts/Blogs.context";
+import { JournalsProvider } from "@/contexts/Journals.context";
+import { ReportsProvider } from "@/contexts/Reports.context";
+import { NewsletterProvider } from "@/contexts/Newsletter.context";
 
 export default function RootLayout({
   children,
@@ -13,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  
+
   // Extract the first part of the pathname
   const adminText = pathname.split("/")[1];
 
@@ -25,10 +29,8 @@ export default function RootLayout({
   if (adminText !== "admin") {
     return (
       <main>
-          <Navbar />
-        <div>
-          {children}
-        </div>
+        <Navbar />
+        <div>{children}</div>
         <Footer />
         <Toaster />
       </main>
@@ -43,7 +45,13 @@ export default function RootLayout({
         </div>
         <div className="w-full h-auto">
           <AdminNavbar />
-          {children}
+          <BlogsProvider>
+            <JournalsProvider>
+              <ReportsProvider>
+                <NewsletterProvider>{children}</NewsletterProvider>
+              </ReportsProvider>
+            </JournalsProvider>
+          </BlogsProvider>
         </div>
       </div>
       <Toaster />

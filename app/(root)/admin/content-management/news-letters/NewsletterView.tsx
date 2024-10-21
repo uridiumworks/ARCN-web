@@ -8,6 +8,7 @@ import NewsLetterForm from "./_components/NewsLetterForm";
 import NewsLettersTable from "./_components/table/NewsLettersTable";
 import { useNewsLettersData } from "@/hooks/NewsLetters.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useNewsletter } from "@/contexts/Newsletter.context";
 
 const NewsletterView = () => {
   const [createNewNewsletter, setCreateNewNewsletter] =
@@ -15,9 +16,10 @@ const NewsletterView = () => {
   const [newsLettersArray, setNewsLettersArray] = useState<any[]>([]);
   // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
-  const { loading, newsLetters, error,fetchDashboard } = useNewsLettersData(
-    token
-  );
+  // const { loading, newsLetters, error,fetchDashboard } = useNewsLettersData(
+  //   token
+  // );
+  const {isLoading,getNewsletters,newsLetters} = useNewsletter()
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -26,10 +28,10 @@ const NewsletterView = () => {
 
   useEffect(() => {
     async function fetch(){
-      await fetchDashboard()
+      await getNewsletters()
     }
     fetch()
-  },[fetchDashboard])
+  },[getNewsletters])
 
   useEffect(() => {
     if (newsLetters?.length > 0) {
@@ -40,11 +42,11 @@ const NewsletterView = () => {
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewNewsletter ? (
-            <NewsLetterForm setCreateNewNewsletter={setCreateNewNewsletter} onAction={fetchDashboard}  />
+            <NewsLetterForm setCreateNewNewsletter={setCreateNewNewsletter} onAction={getNewsletters}  />
           ) : (
             <>
               <div>

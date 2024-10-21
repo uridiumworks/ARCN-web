@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useBlog } from "@/contexts/Blogs.context";
 import { useDeleteBlog } from "@/hooks/Blogs.hooks";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -29,7 +30,8 @@ const DeleteAction = ({ id }: any) => {
   console.log("🚀 ~ DeleteAction ~ id:", id);
   const closeDeleteDialogRef = useRef<HTMLButtonElement>(null);
   const [token, setToken] = useState<string | null>(null);
-  const { deleteBlog, loading, error, success } = useDeleteBlog(token);
+  // const { deleteBlog, loading, error, success } = useDeleteBlog(token);
+  const {deleteBlog,isUpdating} = useBlog()
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
@@ -58,12 +60,12 @@ const DeleteAction = ({ id }: any) => {
             </Button>
           </DialogClose>
           <Button
-            disabled={loading}
+            disabled={isUpdating}
             type="button"
             onClick={() => deleteBlog(id, closeDeleteDialogRef)}
             className="bg-red-600 text-white hover:bg-red-600 hover:text-white"
           >
-            {loading ? <ButtonSpinner /> : "Delete"}
+            {isUpdating ? <ButtonSpinner /> : "Delete"}
           </Button>
         </div>
       </DialogContent>
