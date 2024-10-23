@@ -2,6 +2,7 @@
 import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Image from "next/image";
 import {Loader, LoaderOptions} from 'google-maps';
+import Link from "next/link";
 
 const Maps = () => {
   const { loading, nariss, error } = useClientNarissData();
@@ -21,11 +22,13 @@ const Maps = () => {
               </>
             )}
           </div>
-          <div className="text-center">
-            <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">
-              Detailed view
-            </button>
-          </div>
+          <Link href={"/mandate/Research"}>
+            <div className="text-center">
+              <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">
+                Detailed view
+              </button>
+            </div>
+          </Link>
         </div>
         <div className="mx-auto w-full lg:w-[939px] py-10 ">
           <Image
