@@ -1,9 +1,10 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import { useToast } from "./use-toast";
+import {useRouter} from 'next/navigation'
 
-const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
+const useBlogsData = (token: string | null) => {
   const [blogs, setBlogs] = useState<any>(() => {
     if (typeof window !== 'undefined') {
         const savedData = localStorage.getItem("blogData");
@@ -16,8 +17,7 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
   const { toast } = useToast()
 
 
-  useEffect(() => {
-    async function fetchDashboard() {
+  const fetchDashboard = useCallback(async () => {
       try {
         setLoading(true);
         setError(null);
@@ -36,11 +36,11 @@ const useBlogsData = (token: string | null, triggerRefetch?: boolean) => {
           description: "An unknown error occurred",
         })
       }
-    }
-    fetchDashboard();
-  }, [token, triggerRefetch]);
+    },[token])
+  
 
-  return { loading, error, blogs };
+
+  return { loading, error, blogs,fetchDashboard };
 };
 
 const useBlogData = (
@@ -87,6 +87,7 @@ const useCreateBlog = (token: string | null) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<string | null>(null);
+  // const {push} = useRouter();
   const { toast } = useToast()
 
 
@@ -106,6 +107,7 @@ const useCreateBlog = (token: string | null) => {
         // variant: "default",
         description: "Blog created.",
       })
+      // push(url)
       setLoading(false);
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
@@ -200,8 +202,9 @@ const useUpdateBlog = (token: string | null) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const { toast } = useToast()
+  const {push} = useRouter();
 
-  const updateBlog = async (id: any, payload: any) => {
+  const updateBlog = async (id: any, payload: any,url:string) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -223,6 +226,7 @@ const useUpdateBlog = (token: string | null) => {
         // variant: "default",
         description: "Blog updated.",
       })
+       push(url)
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

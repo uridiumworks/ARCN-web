@@ -14,6 +14,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
@@ -38,6 +39,7 @@ const JournalTable = <TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
   });
 
   return (
@@ -56,10 +58,10 @@ const JournalTable = <TData, TValue>({
               className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
               style={{ outline: "none" }}
               value={
-                (table.getColumn("title")?.getFilterValue() as string) ?? ""
+                (table.getColumn("authorName")?.getFilterValue() as string) ?? ""
               }
               onChange={(event) =>
-                table.getColumn("title")?.setFilterValue(event.target.value)
+                table.getColumn("authorName")?.setFilterValue(event.target.value)
               }
             />
             <IoSearchOutline

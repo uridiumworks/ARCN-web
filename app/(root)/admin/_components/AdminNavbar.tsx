@@ -20,6 +20,7 @@ import SidebarList from "../../_components/SidebarList";
 
 const AdminNavbar = () => {
   const [userData, setUserData] = useState<any>(null);
+  // const [isOpen,setIsOpen] = useState(false)
 
   useEffect(() => {
     const savedUserData = localStorage.getItem("userData");
@@ -42,10 +43,10 @@ const AdminNavbar = () => {
           <AvatarFallback>AM</AvatarFallback>
         </Avatar>
         <div className="block lg:hidden">
-          <DropdownMenu>
+          <DropdownMenu >
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="w-fit p-1">
-                <GiHamburgerMenu />
+                <GiHamburgerMenu /> hiii
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-[#000000] overflow-y-auto">

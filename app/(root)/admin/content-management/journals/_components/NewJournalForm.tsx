@@ -29,9 +29,14 @@ import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   setCreateNewJournal: React.Dispatch<React.SetStateAction<boolean>>;
+  onAction : () => Promise<void>
 }
 
 const formSchema = z.object({
@@ -46,9 +51,10 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-  authorPhoneNumber: z
+    authorPhoneNumber: z
     .string()
-    .min(11, { message: "Author Phone Number must be 11 characters." }),
+    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
+    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -56,18 +62,19 @@ const formSchema = z.object({
   }),
 });
 
-const NewJournalForm = ({ setCreateNewJournal }: Props) => {
+const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const {
     createJournal,
     data,
     loading: createLoading,
     error: createError,
   } = useCreateJournal(token);
-  const { loading, journals, error } = useJournalsData(token, triggerRefetch);
+  // const { loading, journals, error } = useJournalsData(token, triggerRefetch);
   const {
     uploadImage,
     data: ImageUrl,
@@ -96,68 +103,10 @@ const NewJournalForm = ({ setCreateNewJournal }: Props) => {
     setToken(userToken);
   }, []);
 
+
   useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
-
-  // const imageHandler = () => {
-  //     const input:any = document.createElement('input');
-  //     input.setAttribute('type', 'file');
-  //     input.setAttribute('accept', 'image/*');
-  //     input.click();
-
-  //     input.onchange = async () => {
-  //       const file = input.files[0];
-  //       const formData = new FormData();
-  //       formData.append('file', file);
-
-  //       // Replace with your image upload API endpoint
-  //       const response = await fetch('/api/upload', {
-  //         method: 'POST',
-  //         body: formData,
-  //       });
-
-  //       const data = await response.json();
-  //       const imageUrl = data.url; // Assuming your API returns the image URL
-
-  //       const quill = reactQuillRef.current.getEditor();
-  //       const range = quill.getSelection();
-  //       quill.insertEmbed(range.index, 'image', imageUrl);
-  //     };
-  //   };
-
-  // const imageHandler = async () => {
-  //     const input = document.createElement('input');
-  //     input.setAttribute('type', 'file');
-  //     input.setAttribute('accept', 'image/*');
-  //     input.click();
-
-  //     input.onchange = async () => {
-  //       const file = input.files?.[0];
-  //       if (!file) return;
-
-  //       const formData = new FormData();
-  //       formData.append('file', file);
-
-  //       // Upload the image to your server or cloud storage
-  //       const uploadUrl = 'YOUR_UPLOAD_URL'; // Replace with your upload URL
-  //       const response = await fetch(uploadUrl, {
-  //         method: 'POST',
-  //         body: formData,
-  //       });
-
-  //       const data = await response.json();
-  //       const imageUrl = data.url; // Adjust based on your response structure
-
-  //       // Create a new HTML string with the image included
-  //       const newValue = `${field.value}<img src="${imageUrl}" alt="Image" />`;
-
-  //       // Update the editor's value
-  //       field.onChange(newValue);
-  //     };
-  //   };
+    setIsMounted(true);
+  }, []);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -184,9 +133,15 @@ const NewJournalForm = ({ setCreateNewJournal }: Props) => {
   }, [ImageUrl]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await createJournal(values);
+    try {
+      await createJournal(values);
+      onAction()
+      setCreateNewJournal(false)
+    } catch(e){
+ 
+    }
   }
+
   return (
     <div>
       <div className="w-full flex justify-end items-center">
@@ -315,38 +270,37 @@ const NewJournalForm = ({ setCreateNewJournal }: Props) => {
                   </FormItem>
                 )}
               />
-              <FormField
+             <FormField
                 control={form.control}
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Blog Post Editor</FormLabel>
+                    <FormLabel>Journal Post Editor</FormLabel>
                     <FormControl>
                       <>
-                        {/* {isMounted && <ReactQuill
-                                            // ref={reactQuillRef}
-                                            theme="snow"
-                                            value={field.value}
-                                            onChange={field.onChange}
-                                            modules={{
-                                                toolbar: {
-                                                    container: [
-                                                        [{ header: [1, 2, 3, 4, false] }],
-                                                        ['bold', 'italic', 'underline'],
-                                                        [{ align: [] }],
-                                                        ['image', 'clean'], // Add image button
-                                                    ],
-                                                    // handlers: {
-                                                    //     image: imageHandler, // Set custom image handler
-                                                    // },
-                                                },
-                                            }} />} */}
+                        {isMounted && (
+                          <ReactQuill
+                            theme="snow"
+                            value={field.value}
+                            onChange={field.onChange}
+                            className="h-64"
+                            modules={{
+                              toolbar: [
+                                [{ header: [1, 2, 3, 4, false] }],
+                                ["bold", "italic", "underline"],
+                                [{ align: [] }],
+                                ["image", "clean"],
+                              ],
+                            }}
+                          />
+                        )}
                       </>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )}
-              />
+                )} />
+
+
             </div>
             <div className="w-full mt-3 md:mt-0 md:w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
               <p className="font-[Montserrat] font-bold text-base leading-[19px] text-[#4D4D4D]">
@@ -377,7 +331,7 @@ const NewJournalForm = ({ setCreateNewJournal }: Props) => {
                   name="authorEmail"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{`Author's Name`}</FormLabel>
+                      <FormLabel>{`Author's Email`}</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -404,6 +358,12 @@ const NewJournalForm = ({ setCreateNewJournal }: Props) => {
                           autoComplete="new-password"
                           placeholder="Phone Number"
                           className="bg-inherit outline-none"
+                          maxLength={11} // Max length set to 11
+                          pattern="\d*" // Only allows numeric values
+                          onInput={(e) => {
+                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                            field.onChange(e); // Update the field value
+                          }}
                         />
                       </FormControl>
                       <FormMessage />

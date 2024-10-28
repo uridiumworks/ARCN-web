@@ -33,8 +33,14 @@ import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 interface Props {
   setCreateNewNewsletter: React.Dispatch<React.SetStateAction<boolean>>;
+  onAction: () => Promise<void>
 }
 
 const formSchema = z.object({
@@ -49,9 +55,10 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-  authorPhoneNumber: z
+    authorPhoneNumber: z
     .string()
-    .min(11, { message: "Author Phone Number must be 11 characters." }),
+    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
+    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -59,21 +66,22 @@ const formSchema = z.object({
   }),
 });
 
-const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
+const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const {
     createNewsLetter,
     data,
     loading: createLoading,
     error: createError,
   } = useCreateNewsLetter(token);
-  const { loading, newsLetters, error } = useNewsLettersData(
-    token,
-    triggerRefetch
-  );
+  // const { loading, newsLetters, error } = useNewsLettersData(
+  //   token,
+  //   triggerRefetch
+  // );
   const {
     uploadImage,
     data: ImageUrl,
@@ -102,11 +110,11 @@ const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
     setToken(userToken);
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setTriggerRefetch(true);
+  //   }
+  // }, [data]);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -132,9 +140,20 @@ const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
     }
   }, [ImageUrl]);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await createNewsLetter(values);
+    // console.log(values);
+    try {
+      await createNewsLetter(values);
+      onAction()
+     setCreateNewNewsletter(false)
+    }catch(error){
+
+    }
+   
   }
   return (
     <div>
@@ -269,14 +288,15 @@ const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Blog Post Editor</FormLabel>
+                    <FormLabel>NewsLetter Post Editor</FormLabel>
                     <FormControl>
                       <>
-                        {/* {isMounted && <ReactQuill
+                        {isMounted && <ReactQuill
                                             // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
                                             onChange={field.onChange}
+                                            className="h-64"
                                             modules={{
                                                 toolbar: {
                                                     container: [
@@ -289,7 +309,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />} */}
+                                            }} />}
                       </>
                     </FormControl>
                     <FormMessage />
@@ -326,7 +346,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
                   name="authorEmail"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{`Author's Name`}</FormLabel>
+                      <FormLabel>{`Author's Email`}</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -353,6 +373,12 @@ const NewsLetterForm = ({ setCreateNewNewsletter }: Props) => {
                           autoComplete="new-password"
                           placeholder="Phone Number"
                           className="bg-inherit outline-none"
+                          maxLength={11} // Max length set to 11
+                          pattern="\d*" // Only allows numeric values
+                          onInput={(e) => {
+                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                            field.onChange(e); // Update the field value
+                          }}
                         />
                       </FormControl>
                       <FormMessage />

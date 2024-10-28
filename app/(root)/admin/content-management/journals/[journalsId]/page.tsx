@@ -142,7 +142,7 @@ const UpdateJournal = ({ params }: Props) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateJournal(params?.journalsId, values);
+    await updateJournal(params?.journalsId, values,"/admin/content-management/journals");
   }
 
   return (

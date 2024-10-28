@@ -36,6 +36,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   setCreateNewBlog: React.Dispatch<React.SetStateAction<boolean>>;
+  onAction: () => Promise<void>;
 }
 
 const formSchema = z.object({
@@ -50,9 +51,10 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-  authorPhoneNumber: z
+    authorPhoneNumber: z
     .string()
-    .min(11, { message: "Author Phone Number must be 11 characters." }),
+    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
+    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -60,11 +62,11 @@ const formSchema = z.object({
   }),
 });
 
-const NewBlogForm = ({ setCreateNewBlog }: Props) => {
+const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const {
     createBlog,
@@ -98,11 +100,11 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
     setToken(userToken);
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setTriggerRefetch(true);
+  //   }
+  // }, [data]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -123,7 +125,14 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
   }, [ImageUrl]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await createBlog(values);
+    try {
+      await createBlog(values);
+      await onAction()
+      setCreateNewBlog(false)
+    } catch (error) {
+      
+    }
+
     
   }
 
@@ -139,7 +148,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="off">
-          <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+          <div className="w-full flex flex-col gap-20 md:flex-row md:justify-start md:gap-5 mt-5">
             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
@@ -166,7 +175,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                   <FormItem>
                     <FormLabel>Category</FormLabel>
                     <FormControl>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}   disabled={true}>
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Blogs">Blogs</SelectValue>
                         </SelectTrigger>
@@ -237,6 +246,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
               <FormField
                 control={form.control}
                 name="blogPosttext"
+                className="mb-"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Blog Post Editor</FormLabel>
@@ -247,6 +257,7 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                             theme="snow"
                             value={field.value}
                             onChange={field.onChange}
+                            className="h-64"
                             modules={{
                               toolbar: [
                                 [{ header: [1, 2, 3, 4, false] }],
@@ -313,6 +324,12 @@ const NewBlogForm = ({ setCreateNewBlog }: Props) => {
                         type="text"
                         placeholder="Author Phone Number"
                         className="bg-white outline-none"
+                        maxLength={11} // Max length set to 11
+                        pattern="\d*" // Only allows numeric values
+                        onInput={(e) => {
+                          e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                          field.onChange(e); // Update the field value
+                        }}
                       />
                     </FormControl>
                     <FormMessage />

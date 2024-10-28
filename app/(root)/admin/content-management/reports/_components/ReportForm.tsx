@@ -30,8 +30,14 @@ import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useCreateReport, useReportsData } from "@/hooks/Reports.hooks";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 interface Props {
   setCreateNewReport: React.Dispatch<React.SetStateAction<boolean>>;
+  onAction: () => Promise<void>
 }
 
 const formSchema = z.object({
@@ -46,9 +52,10 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-  authorPhoneNumber: z
+    authorPhoneNumber: z
     .string()
-    .min(11, { message: "Author Phone Number must be 11 characters." }),
+    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
+    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -56,18 +63,20 @@ const formSchema = z.object({
   }),
 });
 
-const ReportForm = ({ setCreateNewReport }: Props) => {
+const ReportForm = ({ setCreateNewReport,onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const {
     createReport,
     data,
     loading: createLoading,
     error: createError,
   } = useCreateReport(token);
-  const { loading, reports, error } = useReportsData(token, triggerRefetch);
+  // const { loading, reports, error } = useReportsData(token);
   const {
     uploadImage,
     data: ImageUrl,
@@ -95,11 +104,15 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
     setToken(userToken);
   }, []);
 
+
   useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
+    setIsMounted(true);
+  }, []);
+  // useEffect(() => {
+  //   if (data) {
+  //     setTriggerRefetch(true);
+  //   }
+  // }, [data]);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -127,8 +140,13 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await createReport(values);
+    try {
+      await createReport(values);
+      onAction()
+      setCreateNewReport(false)
+    }catch(err) {
 
+    }
   }
   return (
     <div>
@@ -263,14 +281,15 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
                 name="blogPosttext"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Blog Post Editor</FormLabel>
+                    <FormLabel>Report Post Editor</FormLabel>
                     <FormControl>
                       <>
-                        {/* {isMounted && <ReactQuill
+                        {isMounted && <ReactQuill
                                             // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
                                             onChange={field.onChange}
+                                            className="h-64"
                                             modules={{
                                                 toolbar: {
                                                     container: [
@@ -283,7 +302,7 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />} */}
+                                            }} />}
                       </>
                     </FormControl>
                     <FormMessage />
@@ -320,7 +339,7 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
                   name="authorEmail"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{`Author's Name`}</FormLabel>
+                      <FormLabel>{`Author's Email`}</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -347,6 +366,12 @@ const ReportForm = ({ setCreateNewReport }: Props) => {
                           autoComplete="new-password"
                           placeholder="Phone Number"
                           className="bg-inherit outline-none"
+                          maxLength={11} // Max length set to 11
+                          pattern="\d*" // Only allows numeric values
+                          onInput={(e) => {
+                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                            field.onChange(e); // Update the field value
+                          }}
                         />
                       </FormControl>
                       <FormMessage />

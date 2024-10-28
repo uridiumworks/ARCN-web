@@ -146,7 +146,7 @@ const UpdateNewsLetters = ({ params }: Props) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateNewsLetter(params?.newsLetterId, values);
+    await updateNewsLetter(params?.newsLetterId, values,"/admin/content-management/news-letters");
   }
   return (
     <>

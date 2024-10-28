@@ -32,6 +32,11 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import Loader from "@/components/Shared/Loader";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
@@ -63,6 +68,7 @@ const UpdateBlog = ({ params }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const {
     updateBlog,
@@ -139,9 +145,13 @@ const UpdateBlog = ({ params }: Props) => {
     }
   }, [ImageUrl]);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateBlog(params?.blogId, values);
+    await updateBlog(params?.blogId, values,"/admin/content-management/blogs");
   }
   return (
     <>
@@ -282,26 +292,24 @@ const UpdateBlog = ({ params }: Props) => {
                         <FormItem>
                           <FormLabel>Blog Post Editor</FormLabel>
                           <FormControl>
-                            <>
-                              {/* {isMounted && <ReactQuill
-                                            // ref={reactQuillRef}
-                                            theme="snow"
-                                            value={field.value}
-                                            onChange={field.onChange}
-                                            modules={{
-                                                toolbar: {
-                                                    container: [
-                                                        [{ header: [1, 2, 3, 4, false] }],
-                                                        ['bold', 'italic', 'underline'],
-                                                        [{ align: [] }],
-                                                        ['image', 'clean'], // Add image button
-                                                    ],
-                                                    // handlers: {
-                                                    //     image: imageHandler, // Set custom image handler
-                                                    // },
-                                                },
-                                            }} />} */}
-                            </>
+                          <>
+                        {isMounted && (
+                          <ReactQuill
+                            theme="snow"
+                            value={field.value}
+                            onChange={field.onChange}
+                            className="h-64"
+                            modules={{
+                              toolbar: [
+                                [{ header: [1, 2, 3, 4, false] }],
+                                ["bold", "italic", "underline"],
+                                [{ align: [] }],
+                                ["image", "clean"],
+                              ],
+                            }}
+                          />
+                        )}
+                      </>
                           </FormControl>
                           <FormMessage />
                         </FormItem>

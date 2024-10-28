@@ -1,9 +1,10 @@
 import { deleteAPI, getAPI, postAPI, putAPI } from "@/lib/Axios";
 import { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import { useToast } from "./use-toast"; // Import the useToast hook
+import {useRouter} from 'next/navigation'
 
-const useNewsLettersData = (token: string | null, triggerRefetch?: boolean) => {
+const useNewsLettersData = (token: string | null) => {
   const [newsLetters, setNewsLetters] = useState<any>(() => {
     if (typeof window !== 'undefined') {
       const savedData = localStorage.getItem("NewsLetterData");
@@ -15,31 +16,29 @@ const useNewsLettersData = (token: string | null, triggerRefetch?: boolean) => {
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast(); // Initialize toast
 
-  useEffect(() => {
-    async function fetchDashboard() {
-      try {
-        setLoading(true);
-        setError(null);
-        const response: any = await getAPI("odata/GetAllNewsLetter", token as any);
+  const fetchDashboard = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response: any = await getAPI("odata/GetAllNewsLetter", token as any);
 
-        console.log(response);
-        localStorage.setItem("NewsLetterData", JSON.stringify(response)); // Save to localStorage
-        setNewsLetters(response);
-        setLoading(false);
-      } catch (error: any) {
-        setLoading(false);
-        setError(error);
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "Failed to fetch newsletters data.",
-        });
-      }
+      console.log(response);
+      localStorage.setItem("NewsLetterData", JSON.stringify(response)); // Save to localStorage
+      setNewsLetters(response);
+      setLoading(false);
+    } catch (error: any) {
+      setLoading(false);
+      setError(error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Failed to fetch newsletters data.",
+      });
     }
-    fetchDashboard();
-  }, [token, triggerRefetch]);
+  },[token])
 
-  return { loading, error, newsLetters };
+
+  return { loading, error, newsLetters,fetchDashboard };
 };
 
 const useClientNewsLettersData = (token?: string | null, triggerRefetch?: boolean) => {
@@ -276,8 +275,9 @@ const useUpdateNewsLetter = (token: string | null) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const { toast } = useToast(); // Initialize toast
+  const {push} = useRouter();
 
-  const updateNewsLetter = async (id: any, payload: any) => {
+  const updateNewsLetter = async (id: any, payload: any,url:string) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -303,6 +303,7 @@ const useUpdateNewsLetter = (token: string | null) => {
       toast({
         description: "Newsletter updated successfully.",
       });
+      push(url)
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
