@@ -13,7 +13,11 @@ const FinanceDepartment = () => {
                     <h2 className='font-bold text-white text-xl md:text-[25.88px] '>Finance And Account Unit</h2>
                     <p className='text-base text-white mt-4 pb-10 font-normal'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla <br></br>tristique ac aliquam donec. Luctus.</p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-2 h-[40px] flex items-center justify-center'>
-                    <Link href="/governance/account-unit" className='font-normal text-sm text-black'>Learn More</Link>
+                    <Link href={"/governance/account-unit"}>
+                        <button  className='font-normal text-sm text-black'>
+                            Learn More
+                        </button>
+                    </Link>
                     </div>
                 </div>
             </div>
