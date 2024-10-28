@@ -137,13 +137,13 @@ const UpdateNaris = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("logoUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     if (naris) {
       form.reset(naris);
     }
-  }, [naris]);
+  }, [form, naris]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

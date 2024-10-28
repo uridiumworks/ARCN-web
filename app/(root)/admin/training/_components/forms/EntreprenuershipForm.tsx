@@ -129,7 +129,7 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

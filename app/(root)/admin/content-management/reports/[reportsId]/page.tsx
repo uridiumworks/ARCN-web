@@ -119,7 +119,7 @@ const UpdateReport = ({ params }: Props) => {
     if (report) {
       form.reset(report);
     }
-  }, [report]);
+  }, [form, report]);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -143,7 +143,7 @@ const UpdateReport = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

@@ -42,6 +42,7 @@ const SessionTimeout: React.FC = () => {
       console.log("Checking for inactivity warning with timestamp:", storedTimeStamp.current); // Should log
       warningInactive(storedTimeStamp.current);
     }, 180000); // 3 minutes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const warningInactive = (timeString: string | null) => {

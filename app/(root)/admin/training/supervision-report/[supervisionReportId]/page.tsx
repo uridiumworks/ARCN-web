@@ -124,13 +124,13 @@ const UpdateSupervisionReport = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     if (supervisionReport) {
       form.reset(supervisionReport);
     }
-  }, [supervisionReport]);
+  }, [form, supervisionReport]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
