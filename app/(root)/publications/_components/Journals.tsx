@@ -3,6 +3,7 @@ import { Search } from 'lucide-react'
 import React from 'react'
 import Image from 'next/image'
 import { journalData } from './data'
+import Link from 'next/link'
 
 
 type JournalProps = {
@@ -30,7 +31,9 @@ const Journals = () => {
             <div className='py-10 grid grid-cols-1 md:grid-cols-4 gap-5'>
                 {journalData.map((journal: JournalProps) => (
                     <div key={journal.id} className='py-5'>
-                        <Image src={journal.imgUrl} alt='image' width={384} height={300}/>
+                        <Link href={"/publications/journals"}>
+                            <Image src={journal.imgUrl} alt='image' width={384} height={300}/>
+                        </Link>
                         <h1 className='text-[20px] font-[700] py-1 font-montserrat'>{journal.title}</h1>
                         <p className='text-[16px] text-[##858C95e] '>{journal.desc}</p>
                     </div>
