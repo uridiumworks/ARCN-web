@@ -9,14 +9,10 @@ const Research = () => {
       <div className="lg:w-1/2 space-y-8">
         <div className="p-3">
           <h1 className="font-semibold text-[28px] md:text-[40px] lg:text-[50px]">
-            Our Core Areas
+          Our Mandate
           </h1>
           <p className="font-normal text-base md:text-lg">
-            Lorem ipsum dolor sit amet consectetur. Egestas luctus augue
-            faucibus nullam rutrum sed. Nibh eu adipiscing lectus diam magna.
-            Nulla gravida dolor magnis faucibus purus. Tortor tortor interdum in
-            risus ut sodales ultrices id sodales. Id hac eu sed neque sapien. Id
-            commodo sed hac interdum sit. Mauris.
+          The Council’s core mandate is to plan, manage, coordinate, supervise, and regulate agricultural research, training, and extension activities in the National Agricultural Research Institutes (NARIs) and Federal Colleges of Agriculture (FCAs).The Council’s core mandate is to plan, manage, coordinate, supervise, and regulate agricultural research, training, and extension activities in the National Agricultural Research Institutes (NARIs) and Federal Colleges of Agriculture (FCAs).
           </p>
         </div>
 
