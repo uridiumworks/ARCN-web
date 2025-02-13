@@ -108,7 +108,7 @@ const UpdateProject = ({ params }: Props) => {
     if (project) {
       form.reset(project);
     }
-  }, [project]);
+  }, [form, project]);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -132,7 +132,7 @@ const UpdateProject = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

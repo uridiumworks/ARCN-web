@@ -135,7 +135,7 @@ const NarisForm = ({ setCreateNewInstitute }: Props) => {
     if (ImageUrl) {
       form.setValue("logoUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

@@ -130,13 +130,13 @@ const UpdateEvent = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     if (event) {
       form.reset(event);
     }
-  }, [event]);
+  }, [event, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

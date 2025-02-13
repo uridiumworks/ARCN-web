@@ -63,7 +63,7 @@ const Research = () => {
               </div>
               <div>
                 <h1 className="font-semibold text-sm">
-                  Cocoa Research Institute of Nigeria
+                  Rubber Research Institute of Nigeria
                 </h1>
                 <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                   Rubber research institute of Nigeria is the only Federal
@@ -224,7 +224,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              National Agricultural Extension Research Liason Services
+                National Agricultural Extension Research Liason Services
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Rubber research institute of Nigeria is the only Federal
@@ -249,7 +249,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              National Veterinary Research Institute
+                National Veterinary Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -277,7 +277,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Nigerian Institute For Oceanography And Marine Research
+                Nigerian Institute For Oceanography And Marine Research
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -303,7 +303,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Nigerian Institute For Oil Palm Research
+                Nigerian Institute For Oil Palm Research
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Rubber research institute of Nigeria is the only Federal
@@ -328,7 +328,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Nigerian Stored Products Research Institute
+                Nigerian Stored Products Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -356,7 +356,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Institute Of Agricultural Research And Training
+                Institute Of Agricultural Research And Training
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in
@@ -382,7 +382,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Institute For Agricultural Research
+                Institute For Agricultural Research, Zaria
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Rubber research institute of Nigeria is the only Federal
@@ -407,7 +407,7 @@ const Research = () => {
                 />
               </div>
               <h1 className="font-semibold text-sm">
-              Lake Chad Research Institute
+                Lake Chad Research Institute
               </h1>
               <p className="font-normal grid grid-cols-1 gap-3.5 text-[13px]">
                 Cocoa Research Institute of Nigeria (CRIN) was established in

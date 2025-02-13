@@ -85,13 +85,13 @@ const UpdateCordinationReport = ({ params }: Props) => {
         if (ImageUrl) {
             form.setValue("bannerUrl", ImageUrl)
         }
-    }, [ImageUrl])
+    }, [ImageUrl, form])
 
     useEffect(() => {
         if (report) {
             form.reset(report)
         }
-    }, [report])
+    }, [form, report])
 
 
 

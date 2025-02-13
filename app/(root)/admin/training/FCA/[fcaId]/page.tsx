@@ -130,13 +130,13 @@ const UpdateFCA = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("logoUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     if (fca) {
       form.reset(fca);
     }
-  }, [fca]);
+  }, [fca, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

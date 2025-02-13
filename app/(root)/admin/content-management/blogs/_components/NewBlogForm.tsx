@@ -122,7 +122,7 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -246,7 +246,6 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
               <FormField
                 control={form.control}
                 name="blogPosttext"
-                className="mb-"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Blog Post Editor</FormLabel>

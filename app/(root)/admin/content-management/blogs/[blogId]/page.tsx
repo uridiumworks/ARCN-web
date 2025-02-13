@@ -119,7 +119,7 @@ const UpdateBlog = ({ params }: Props) => {
     if (blog) {
       form.reset(blog);
     }
-  }, [blog]);
+  }, [blog, form]);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -143,7 +143,7 @@ const UpdateBlog = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     setIsMounted(true);

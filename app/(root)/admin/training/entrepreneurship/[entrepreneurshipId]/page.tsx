@@ -125,13 +125,13 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     if (entrepreneurship) {
       form.reset(entrepreneurship);
     }
-  }, [entrepreneurship]);
+  }, [entrepreneurship, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

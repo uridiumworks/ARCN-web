@@ -1,37 +1,58 @@
-import plants from "@/assets/Images/Homepage/plants.png";
 import Image from "next/image";
 
 const Intro = () => {
   return (
-    <main className="w-full pt-14 font-montserrat">
-      <div className="w-[80%] flex flex-col lg:flex-row space-y-9 items-start gap-5 mx-auto">
-       
-        <Image src="/Images/Homepage/plants.png" alt="plants" width={426} height={431.16} />
-
-        <div className="space-y-7">
-          <h1 className="font-bold text-4xl">Introducing ARCN</h1>
-          <p className="text-base">
-            The Agricultural Research Council of Nigeria dedicates itself to
-            achieving significant improvements in agricultural productivity,
-            marketing and competitiveness by generating appropriate technologies
-            and policy options, promoting innovation, establishing a knowledge
-            management capacity and strengthening the agricultural research
-            system. 
+    <main className="w-full pt-14 px-6 font-montserrat flex flex-col sm:flex-row gap-12">
+      <div>
+        <Image
+          src="/Images/Homepage/maleperson-img.png"
+          alt="plants"
+          width={1200}
+          height={1200}
+          className="h-full w-full object-contain"
+        />
+      </div>
+      <div className="flex flex-col gap-4">
+        <h2 className="font-bold text-[#171717] text-3xl sm:text-4xl">Introducing ARCN</h2>
+        <div className="flex flex-col gap-3">
+          <p className="text-sm sm:text-base text-[#000] font-normal">
+            Welcome to the Agricultural Research Council of Nigeria (ARCN),
+            Nigeria’s apex organization for coordinating agricultural research,
+            training, and extension services. Established by Decree 44 of 1999
+            (now an Act), ARCN leads efforts in agricultural innovation and
+            development.
           </p>
-          <p className="text-base">
-            Agricultural research in Nigeria started formally with the
-            establishment of a botanical garden in Lagos during the late 19th
-            century. This garden was part of a network of gardens established
-            under British rule, focusing on the introduction of new crops. In 1903
-            the Forestry and Botanical Department (renamed Agricultural
-            Department) for southern Nigeria was created. In 1912 this was divided
-            into two regional departments resulting in the establishment of a
-            Department of Agriculture for northern Nigeria.Then in 1914, with
-            Nigeria&aposs unification, the two departments were merged to form a new
-            Department of Agriculture.
+          <p className="text-sm sm:text-base text-[#000] font-normal">
+            Our journey began in the late 19th century with a botanical garden
+            in Lagos. Today, we manage a network of National Agricultural
+            Research Institutes and Federal Colleges of Agriculture nationwide,
+            exemplifying Nigeria’s commitment to agricultural excellence.
           </p>
-
-          <button className="px-5 py-2 border w-[271.94px] h-[52px] rounded-lg ">READ MORE</button>
+          <p className="text-sm sm:text-base text-[#000] font-normal">
+            ARCN seeks to advance food security, economic growth, and rural
+            development through research, planning, coordination, and
+            regulation. By partnering with researchers, farmers, policymakers,
+            and industry stakeholders, we ensure practical solutions for
+            Nigerian agriculture.
+          </p>
+          <div className="flex flex-col gap-2">
+            <p className="text-sm sm:text-base text-[#000] font-normal">Our focus areas include:</p>
+            <ul className="flex flex-col gap-2 list-disc">
+              <li className="text-sm sm:text-base text-[#000] font-normal">Advancing evidence-based agricultural policies</li>
+              <li className="text-sm sm:text-base text-[#000] font-normal">Promoting innovation and technology in agriculture</li>
+              <li className="text-sm sm:text-base text-[#000] font-normal">Building capacity in the agricultural sector</li>
+              <li className="text-sm sm:text-base text-[#000] font-normal">
+                Encouraging collaboration with global agricultural scientists
+              </li>
+              <li className="text-sm sm:text-base text-[#000] font-normal">Facilitating knowledge transfer from research to practice</li>
+            </ul>
+          </div>
+          <p className="text-sm sm:text-base text-[#000] font-normal">
+            Whether you are a researcher, farmer, student, or policymaker, ARCN
+            is your partner in transforming Nigerian agriculture. Explore our
+            programs and join us in creating a food-secure and prosperous
+            Nigeria.
+          </p>
         </div>
       </div>
     </main>

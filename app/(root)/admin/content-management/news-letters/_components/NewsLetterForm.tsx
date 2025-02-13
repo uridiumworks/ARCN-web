@@ -138,7 +138,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
     }
-  }, [ImageUrl]);
+  }, [ImageUrl, form]);
 
   useEffect(() => {
     setIsMounted(true);
