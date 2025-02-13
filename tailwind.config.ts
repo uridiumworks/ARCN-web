@@ -22,6 +22,7 @@ const config = {
         "engagement-res": "repeat(auto-fit,minmax(25rem,1fr))",
         "home-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
         "home-publication-res": "repeat(auto-fit,minmax(20rem,1fr))",
+        "footer-res": "repeat(auto-fit,minmax(10rem,1fr))"
       },
       colors: {
         border: "hsl(var(--border))",

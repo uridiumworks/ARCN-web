@@ -2,8 +2,8 @@ import CustomContainer from "../CustomContainer";
 
 const Impact = () => {
   return (
-    <section>
-      <div className="min-h-[36.5rem] bg-[#011610] flex items-center py-4 lg:py-16">
+    <section className="">
+      <div className="min-h-[36.5rem] bg-[#011610] flex items-center py-16 md:py-24">
         <CustomContainer>
           <div className="text-center space-y-9">
             <h1 className="text-[#E6E9E7] text-3xl sm:text-5xl font-semibold">

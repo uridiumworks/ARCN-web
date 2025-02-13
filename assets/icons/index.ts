@@ -36,4 +36,6 @@ export { default as WebIcon } from "./web-icon.svg";
 export { default as FlowerHandIcon } from "./flower-hand-icon.svg";
 export { default as FarmerForkIcon } from "./farmer-fork-icon.svg";
 export { default as TractorIcon } from "./tractor-icon.svg";
-export {default as LocationOutlineIcon2} from './location-outline-icon2.svg'
+export { default as LocationOutlineIcon2 } from "./location-outline-icon2.svg";
+export { default as WWWIcon } from "./www-icon.svg";
+export { default as MailIcon } from "./mail-icon.svg";

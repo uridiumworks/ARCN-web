@@ -13,7 +13,7 @@ const Tabs = [
   {
     name: "Mission & Vision",
     status: "active",
-    url: "/about",
+    url: "/about/mission",
   },
   {
     name: "Management",

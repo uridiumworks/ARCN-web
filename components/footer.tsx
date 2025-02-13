@@ -1,67 +1,104 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
 import { IoLocationSharp } from "react-icons/io5";
+import CustomContainer from "./CustomContainer";
+import { MailIcon, WWWIcon } from "@/assets/icons";
+import Link from "next/link";
 
 const Footer = () => {
-    return (
-        <main className="lg:h-[506px] bg-[#121212] space-y-5 text-white  font-montserrat">
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 justify-center p-10 '>
-                <div className='space-y-7'>
-                    <div>
-                        <Image src="/Images/logo.png" width={212} height={71.47} alt="logo" />
-                    </div>
-                    <p className='font-normal text-sm'>The mandate of ARCN is to coordinate, <br />supervise and regulate agricultural<br /> research,training and extension in the National <br />Agricultural Research Institutes (NARIs) and <br />Federal Colleges of Agriculture (FCAs).</p>
-                    <div className='flex object-center gap-1.5 items-center'>
-                        <IoLocationSharp className='size-6' />
-                        <p className='font-medium text-sm'>Agricultural Research House, Plot 223D <br />Cadastral Zone B6, Mabushi, Abuja</p>
-                    </div>
-                </div>
-                <div className='grid grid-cols-2 lg:grid-cols-4 gap-5 '>
-
-                    <div>
-                        <h2 className="mb-4 text-lg lg:text-xl font-semibold">Company</h2>
-                        <ul className="text-base lg:text-sm">
-                            <li className="mb-4"><a href="#">Home</a></li>
-                            <li className="mb-4"><a href="#">About Us</a></li>
-                            <li className="mb-4"><a href="#">Services</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 className="mb-4 text-lg lg:text-xl font-semibold">Our Services</h2>
-                        <ul className="text-base lg:text-sm">
-                            <li className="mb-4"><a href="#">Research</a></li>
-                            <li className="mb-4"><a href="#">Training</a></li>
-                            <li className="mb-4"><a href="#">Extension</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 className="mb-4 text-lg lg:text-xl font-semibold">Publications</h2>
-                        <ul className="text-base lg:text-sm">
-                            <li className="mb-4"><a href="#">Research papers</a></li>
-                            <li className="mb-4"><a href="#">Reports</a></li>
-                            <li className="mb-4"><a href="#">Newsletter</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 className="mb-4 text-lg font-semibold">Social Profiles</h2>
-                        <div className="flex gap-5 justify-center lg:justify-start">
-                            <a href="/" target="_blank"><Image src="/Images/Homepage/facebook.png" alt="facebook" width={44} height={44} /></a>
-                            <a href="/" target="_blank"><Image src="/Images/Homepage/twitter.png" alt="twitter" width={44} height={44} /></a>
-                            <a href="/" target="_blank"><Image src="/Images/Homepage/Linkin.png" alt="linkedin" width={44} height={44} /></a>
-                        </div>
-                    </div>
-                </div>
-              
+  return (
+    <footer className="lg:min-h-[31.875rem] bg-[#121212] text-white py-16 md:py-24">
+      <div className="flex flex-col gap-6 ">
+        <CustomContainer>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-between">
+            <div className="flex flex-col gap-6">
+              <div>
+                <Image
+                  src="/Images/logo.png"
+                  width={212}
+                  height={71.47}
+                  alt="logo"
+                />
+              </div>
+              <div className="flex items-start gap-2">
+                <IoLocationSharp className="size-6" />
+                <p className="font-medium leading-8 text-sm">
+                  Agricultural Research House, Plot 223D <br />
+                  Cadastral Zone B6, Mabushi, P .M. B. <br />
+                  5026, Wuse Abuja
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <MailIcon />{" "}
+                <p className="font-medium text-sm">es@arcn.gov.ng</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <WWWIcon />{" "}
+                <Link href="#" className="font-medium text-sm">
+                  www.arcn.gov.ng
+                </Link>
+              </div>
             </div>
-            <hr className='border border-white' />
+            <div className="grid grid-cols-footer-res gap-5">
+              <div className="flex flex-col gap-4">
+                <h2 className="text-base sm:text-lg font-semibold">Company</h2>
+                <ul className="text-base flex flex-col gap-4 font-normal text-[#EFEFEF]">
+                  <li>
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">About Us</a>
+                  </li>
+                  <li>
+                    <a href="#">Services</a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className='text-center p-3 text-sm font-normal'>
-                <h1>© 2024 ARCN. All rights reserved.</h1>
+              <div className="flex flex-col gap-4">
+                <h2 className="text-base sm:text-lg font-semibold">
+                  Our Services
+                </h2>
+                <ul className="text-base flex flex-col gap-4 font-normal text-[#EFEFEF]">
+                  <li>
+                    <a href="#">Research</a>
+                  </li>
+                  <li>
+                    <a href="#">Training</a>
+                  </li>
+                  <li>
+                    <a href="#">Extension</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <h2 className="text-base sm:text-lg font-semibold">
+                  Publications
+                </h2>
+                <ul className="text-base flex flex-col gap-4 font-normal text-[#EFEFEF]">
+                  <li>
+                    <a href="#">Research papers</a>
+                  </li>
+                  <li>
+                    <a href="#">Reports</a>
+                  </li>
+                  <li>
+                    <a href="#">Newsletter</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </main>
-    )
-}
+          </div>
+        </CustomContainer>
+        <hr className="border border-white my-3" />
+
+        <div className="text-center text-sm font-normal">
+          <h1>© 2024 ARCN. All rights reserved.</h1>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

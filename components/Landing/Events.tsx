@@ -92,9 +92,9 @@ const Events = () => {
             {data.map((el, i) => (
               <div
                 key={i}
-                className="flex justify-between items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-4"
+                className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-4"
               >
-                <div className="flex flex-col gap-2.5 items-start">
+                <div className="flex flex-col gap-2.5 items-start order-2 lg:order-1">
                   <div className="flex gap-1 text-sm font-medium">
                     <span className="text-[#1315175C]">6:00 PM ·</span>
                     <span className="text-[#D19D20]">7:00 PM GMT+2</span>
@@ -117,7 +117,7 @@ const Events = () => {
                     Register Here
                   </div>
                 </div>
-                <div className="relative w-[9.375rem] h-[9.375rem] shrink-0 rounded-xl overflow-hidden bg-red-200 ">
+                <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                   <Image
                     src="/images/Homepage/event-imgholder.png"
                     alt="event-imgholder"

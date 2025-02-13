@@ -19,7 +19,7 @@ const logos = [
 export default function OurPartners() {
   return (
     <section className="py-16 md:py-24">
-      <h3 className="text-center font-bold text-4xl text-black mb-20">
+      <h3 className="text-center font-bold text-4xl text-black mb-14">
         Our Partners
       </h3>
       <div className="flex overflow-hidden">
@@ -34,7 +34,7 @@ export default function OurPartners() {
                 alt="img"
                 width={150}
                 height={150}
-                className="h-12 w-auto object-contain"
+                className="h-32 w-auto object-contain"
                 priority={i < 3} // Prioritize loading first 3 images
               />
             </div>
@@ -51,7 +51,7 @@ export default function OurPartners() {
                 alt="img"
                 width={150}
                 height={150}
-                className="h-12 w-auto object-contain"
+                className="h-32 w-auto object-contain"
        
               />
             </div>

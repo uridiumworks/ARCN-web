@@ -5,8 +5,8 @@ const Intro = () => {
   return (
     <section className="pt-16 md:pt-24">
       <CustomContainer>
-        <div className="flex flex-col sm:flex-row sm:items-start  gap-12">
-          <div className="shrink md:shrink-0  object-contain relative overflow-hidden rounded-md">
+        <div className="flex flex-col items-start lg:flex-row sm:items-center  gap-12">
+          <div className="shrink lg:shrink-0  object-contain relative overflow-hidden rounded-md">
             <div className="absolute flex flex-col gap-1 py-4 justify-center text-center bg-[#00000061] bottom-0 left-0 w-full">
               <h3 className="text-white font-bold text-base">
                 Prof. Garba Hamidu Sharubutu

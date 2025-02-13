@@ -137,9 +137,9 @@ const TabOne = () => {
         {data.map((el, i) => (
           <div
             key={i}
-            className="flex gap-4 items-center border-[0.59px] border-[#E7E7E7] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
+            className="flex gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#E7E7E7] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
           >
-            <div className="object-contain">
+            <div className="object-contain shrink-0">
               <Image
                 width={35}
                 height={35}
@@ -153,13 +153,13 @@ const TabOne = () => {
                 {el.title}
               </h3>
               <div className="flex items-center gap-3">
-                <LocationOutlineIcon />{" "}
+               <div> <LocationOutlineIcon /></div>{" "}
                 <p className="font-normal text-sm text-[#111111]">
                   {el.location}
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <WebIcon />{" "}
+              <div><WebIcon /></div>  {" "}
                 <Link
                   href={el.webUrl}
                   className="text-[#30A85F] font-normal text-sm"
@@ -185,7 +185,7 @@ const TabTwo = () => {
         {data.map((el, i) => (
           <div
             key={i}
-            className="flex gap-4 items-center border-[0.59px] border-[#E7E7E7] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
+            className="flex  gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#E7E7E7] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
           >
             <div className="object-contain">
               <Image
@@ -253,11 +253,11 @@ const Institutes = () => {
           </div>
           <div className="flex flex-col gap-10">
             {/* tab */}
-            <div className="self-center bg-[#F2F2F2] rounded-[2rem] p-1 flex justify-between gap-5">
+            <div className="sm:self-center bg-[#F2F2F2] rounded-[2rem] p-1 flex flex-row sm:justify-between gap-3 sm:gap-5">
               {tabs.map((el, i) => (
                 <div
                   key={el}
-                  className={`font-medium text-sm transition rounded-full p-5 cursor-pointer ${
+                  className={`font-medium text-[0.75rem] sm:text-sm transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
                     currentTab === i
                       ? "bg-[#30A85F] text-white"
                       : "bg-transparent text-[#111111]"

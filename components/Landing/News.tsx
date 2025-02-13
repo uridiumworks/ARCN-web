@@ -125,7 +125,7 @@ const News = () => {
           <h2 className="uppercase font-semibold text-[#171717] text-4xl text-center">
             Publications
           </h2>
-          <div className="grid grid-cols-home-publication-res gap-5">
+          <div className="grid grid-cols-home-publication-res gap-6">
             {data.map((el, i) => (
               <div
                 key={i}
@@ -138,7 +138,7 @@ const News = () => {
                   <div className="flex gap-4 justify-start">
                     {el.imgs.map((img, i) => (
                       <div
-                        className="relative  overflow-hidden"
+                        className="relative  overflow-hidden rounded-md"
                         key={i}
                       >
                         <Image
@@ -165,11 +165,11 @@ const News = () => {
                 </div>
               </div>
             ))}
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col  gap-3.5  col-span-1 sm:col-span-full lg:col-span-1">
               <h3 className="font-medium text-[#131517] text-xl sm:text-2xl">
                 NEWS ALERTS
               </h3>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-6">
                 <div className="flex flex-col gap-3 items-start rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
                   <h4 className="text-[#131517] text-[1.345rem] font-medium">
                     News Title
