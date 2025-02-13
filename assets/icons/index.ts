@@ -29,5 +29,11 @@ export { default as IitaIcon } from "./iita-icon.svg";
 export { default as IlriIcon } from "./ilri-icon.svg";
 export { default as SyngentaIcon } from "./syngenta-icon.svg";
 export { default as TheWorldBankIcon } from "./theworldbank-icon.svg";
-export { default as WorldfishIcon } from "./worlffish-icon.svg";    
-export {default as RoundedCheckIcon} from './roundedcheck-icon.svg'
+export { default as WorldfishIcon } from "./worlffish-icon.svg";
+export { default as RoundedCheckIcon } from "./roundedcheck-icon.svg";
+export { default as LocationOutlineIcon } from "./location-outline-icon.svg";
+export { default as WebIcon } from "./web-icon.svg";
+export { default as FlowerHandIcon } from "./flower-hand-icon.svg";
+export { default as FarmerForkIcon } from "./farmer-fork-icon.svg";
+export { default as TractorIcon } from "./tractor-icon.svg";
+export {default as LocationOutlineIcon2} from './location-outline-icon2.svg'

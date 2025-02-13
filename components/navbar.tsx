@@ -56,24 +56,25 @@ const Navbar = (props: Props) => {
         }
     }
     return (
-        <div className='flex items-center justify-between px-4 lg:px-20 py-3 sticky z-10 top-0 bg-[#000]'>
-            <div>
-                <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
+        <div className='px-6 py-4  sticky z-10 top-0 bg-[#121212]'>
+          <div className="w-full sm:max-w-[75rem] sm:mx-auto flex items-center justify-between">
+          <div>
+                <Image src="/Images/logov1.png" width={95} height={41} alt="logo" />
             </div>
-            <div className='hidden lg:block text-center'>
+            <div className='hidden lg:flex lg:flex-col lg:gap-6 text-center'>
                 <div className='flex justify-center items-center gap-4 text-white'>
                     {topNav.map((t, index) => (
-                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] uppercase font-[400] text-[12px] text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
+                        <p onClick={() => routePathLinks(t)} className='uppercase font-normal text-[0.75rem] text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
                     ))}
                 </div>
                 <div className='flex justify-center mt-2 gap-6 text-white'>
                     {mainNav.map((t, index) => (
-                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-[800] text-[14px] uppercase text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
+                        <p onClick={() => routePathLinks(t)} className='font-extrabold text-sm uppercase text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
                     ))}
                 </div>
             </div>
-            <div className='hidden lg:flex items-center justify-between rounded-md px-3 bg-[#3C3C3C]'>
-                <Input type='search' placeholder='Search' className='outline-none bg-transparent text-[#EFEFEF] text-[12px] focus-visible:outline-none border-[#3C3C3C]' />
+            <div className='hidden lg:flex items-center justify-between rounded-md px-4 bg-[#FFFFFF0F]  border-[#3C3C3C] py-1   '>
+                <Input type='search' placeholder='Search' className='outline-none bg-transparent text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-none placeholder:text-[#EFEFEF]' />
                 <Search color='#2E7636' size="16px" />
             </div>
             <div className='md:hidden flex items-center'>
@@ -81,12 +82,13 @@ const Navbar = (props: Props) => {
                     <Menu size="24px" color='#EFEFEF' />
                 </Button>
             </div>
+          </div>
 
             {/* Mobile menu */}
             {isMobileMenuOpen && (
-                <div className='absolute top-0 left-0 w-full h-screen bg-[#000] z-50 flex flex-col items-center p-4'>
+                <div className='absolute top-0 left-0 w-full h-screen bg-[#121212] z-50 flex flex-col items-center p-4'>
                     <div className='flex justify-between w-full'>
-                        <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
+                        <Image src="/Images/logov1.png" width={150} height={71} alt="logo" />
                         <Button onClick={toggleMobileMenu} variant="ghost" className="p-2">
                             <Menu size="24px" color='#EFEFEF' />
                         </Button>
