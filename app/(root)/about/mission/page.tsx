@@ -12,7 +12,7 @@ export default function Missionpage() {
             <Ourmandate />
             <Function />
             <Value />
-            <Partners />
+            {/* <Partners /> */}
             <Journal />
         </main>
      );

@@ -10,7 +10,7 @@ export default function HistoryPage() {
       <Banner />
       <HistoryDetails />
       <InternationalEngagement />
-      <Partners />
+      {/* <Partners /> */}
       <Journal />
     </main>
   );

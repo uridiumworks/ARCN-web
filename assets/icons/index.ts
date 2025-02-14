@@ -30,6 +30,7 @@ export { default as IlriIcon } from "./ilri-icon.svg";
 export { default as SyngentaIcon } from "./syngenta-icon.svg";
 export { default as TheWorldBankIcon } from "./theworldbank-icon.svg";
 export { default as WorldfishIcon } from "./worlffish-icon.svg";
+export { default as AfaasIcon } from "./afaas-icon.svg";
 export { default as RoundedCheckIcon } from "./roundedcheck-icon.svg";
 export { default as LocationOutlineIcon } from "./location-outline-icon.svg";
 export { default as WebIcon } from "./web-icon.svg";
@@ -39,3 +40,7 @@ export { default as TractorIcon } from "./tractor-icon.svg";
 export { default as LocationOutlineIcon2 } from "./location-outline-icon2.svg";
 export { default as WWWIcon } from "./www-icon.svg";
 export { default as MailIcon } from "./mail-icon.svg";
+export {default as PlantGrowthIcon} from './plant-growth-icon.svg';
+export {default as PlantIcon2} from './plant-icon2.svg';
+export {default as TractorIcon2} from './tractor-icon2.svg';
+export {default as FarmerIcon2} from './farmer-icon2.svg'

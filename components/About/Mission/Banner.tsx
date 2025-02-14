@@ -1,16 +1,16 @@
 import Image from "next/image";
-import "./style.css"
+import "./style.css";
 const Banner = () => {
-    return (
-        <main className="w-full picker h-[350px] place-content-center text-center font-montserrat">
-            <div className="w-full h-[350px] bg-[#000000CC] opacity-8 flex justify-center items-center">
-                <div className="w-full text-white">
-                    <h1 className="font-bold font- text-[65px]">ABOUT US</h1>
-                    <p className="font-normal text-[21px]">What you need to know about Agricultural Research Council of Nigeria</p>
-                </div>
-            </div>
-        </main>
-    )
-}
+  return (
+    <section className="w-full picker h-[30rem] lg:h-[34.375rem] place-content-center text-center overflow-hidden">
+      <div className="w-full text-white flex flex-col gap-2">
+        <h1 className="font-bold  text-[2.5rem]">ABOUT US</h1>
+        <p className="font-normal text-lg">
+          What you need to know about Agricultural Research Council of Nigeria
+        </p>
+      </div>
+    </section>
+  );
+};
 
 export default Banner;

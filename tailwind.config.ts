@@ -19,7 +19,9 @@ const config = {
     },
     extend: {
       gridTemplateColumns: {
-        "engagement-res": "repeat(auto-fit,minmax(25rem,1fr))",
+        "engagement-res": "repeat(auto-fit,minmax(18rem,1fr))",
+        "about-mandate-res" : "repeat(auto-fit,minmax(30rem,1fr))",
+        "about-core-res" : "repeat(auto-fit,minmax(28rem,1fr))",
         "home-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
         "home-publication-res": "repeat(auto-fit,minmax(20rem,1fr))",
         "footer-res": "repeat(auto-fit,minmax(10rem,1fr))"

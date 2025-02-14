@@ -92,7 +92,7 @@ const Navbar = (props: Props) => {
     }
   };
   return (
-    <div className="px-8 py-4  sticky z-10 top-0 bg-[#121212]">
+    <div className="px-8 py-4  sticky z-20 top-0 bg-[#121212]">
       <div className="w-full sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
         <div>
           <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />

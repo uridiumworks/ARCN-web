@@ -178,9 +178,7 @@ const News = () => {
                     ARCN plays a pivotal role in the dissemination of
                     cutting-edge research through its published journals. These
                     journals serve as a platform for researchers from diverse
-                    fields and various institutes to share their findings,
-                    insights, and innovations with the global academic
-                    community.
+                    fields and...
                   </p>
                   <div className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] py-2 px-4 cursor-pointer">
                     Read More
@@ -193,9 +191,7 @@ const News = () => {
                   <p className="font-normal text-sm text-[#464646]">
                     We are delighted to bring you the latest updates and
                     highlights from ARCN, where groundbreaking research meets
-                    global collaboration. Our newsletters serve as a conduit for
-                    sharing cutting-edge discoveries and insights that shape the
-                    future of science, technology, and beyond.
+                    global collaboration.
                   </p>
                   <div className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] py-2 px-4 cursor-pointer">
                     Read More

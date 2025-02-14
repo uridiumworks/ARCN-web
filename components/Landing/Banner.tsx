@@ -9,7 +9,7 @@ const Bander = () => {
         <div className="w-full sm:max-w-[77.5rem] sm:mx-auto px-8">
           <div className="min-h-[80%] py-5 md:py-9 flex justify-center items-center">
             <div className="w-full text-white flex flex-col gap-4 lg:gap-8 text-center sm:py-4 px-4 md:px-0">
-              <h1 className="font-bold text-2xl sm:text-3xl lg:text-[2.5rem] leading-[3rem]">
+              <h1 className="font-bold text-2xl sm:text-3xl lg:text-[2.5rem] leading-[6rem]">
                 ARCN and UNN introduce new strategy agroecological sustainable
                 farming
               </h1>
@@ -53,9 +53,9 @@ const Bander = () => {
               <div>
                 <button
                   type="button"
-                  className="py-3.5 px-8 lg:px-16  font-sans rounded-sm font-bold text-sm lg:text-[0.75rem] text-white bg-[#04662A]"
+                  className="py-3.5 px-8 flex items-center gap-1  font-sans rounded-sm font-bold text-sm lg:text-[0.75rem] text-white bg-[#04662A]"
                 >
-                  SUBMIT NOW
+                 <span>SUBMIT</span> <span> NOW</span>
                 </button>
               </div>
             </div>

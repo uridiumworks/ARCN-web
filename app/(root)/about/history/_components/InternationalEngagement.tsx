@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import {
   AfricariceIcon,
@@ -16,7 +16,9 @@ import {
   SyngentaIcon,
   TheWorldBankIcon,
   WorldfishIcon,
+  AfaasIcon
 } from "@/assets/icons";
+import CustomContainer from "@/components/CustomContainer";
 
 const data = [
   {
@@ -50,28 +52,28 @@ const data = [
     icon: <FaraIcon />,
   },
   {
-    title: "IFPRI",
+    title: "IFPRI - International Food Policy Research Institute",
     content:
       "Country lead of BioRAPP; Active engagement in development of policy capacity including strategic planning, MEL; Policy Communications; Extension Policy Development; Policy Performance Assessment, etc.",
     icon: <IfpriIcon />,
   },
   {
-    title: "IITA",
+    title: "IITA - International Institute of Tropical Agriculture",
     content: "IITA",
     icon: <IitaIcon />,
   },
   {
-    title: "ICRISAT",
+    title: "ICRISAT -International Crops Research Institute for the Semi-Arid Tropics",
     content: "International Crops Research Institute for the Semi-Arid Tropics",
     icon: <IcrisatIcon />,
   },
   {
-    title: "WorldFish",
+    title: "WorldFish - International Center for Living Aquatic Resources Management",
     content: "International Center for Living Aquatic Resources Management",
     icon: <WorldfishIcon />,
   },
   {
-    title: "ILRI",
+    title: "ILRI -International Livestock Research Institute",
     content: "International Livestock Research Institute",
     icon: <IlriIcon />,
   },
@@ -81,27 +83,24 @@ const data = [
     icon: <AfricariceIcon />,
   },
   {
-    title: "WorldFish",
+    title: "Africa Forum for Agricultural Advisory Services (AFAAS)",
     content: "International Center for Living Aquatic Resources Management",
-    icon: <WorldfishIcon />,
+    icon: <AfaasIcon />,
   },
+
   {
     title: "Global Research Alliance for Greenhouse Gases Emissions (GRA)",
     content:
       "Member representing Nigeria; Building institutional capacity to mitigate the impact of climate change.",
     icon: <GraIcon />,
   },
+
   {
-    title:
-      "Food and Agriculture Organization of the United Nations (FAO) in the African region",
+    title: "Global Alliance For Improved Nutrition",
     content: "",
-    icon: <AfricariceIcon />,
+    icon: <GainIcon />,
   },
-  {
-    title: "Africa Forum for Agricultural Advisory Services (AFAAS)",
-    content: "International Center for Living Aquatic Resources Management",
-    icon: <WorldfishIcon />,
-  },
+  
   {
     title: "Syngenta",
     content: "",
@@ -112,34 +111,34 @@ const data = [
     content: "",
     icon: <TheWorldBankIcon />,
   },
-  {
-    title: "Global Alliance For Improved Nutrition",
-    content: "",
-    icon: <GainIcon />,
-  },
+  
 ];
 
 export default function InternationalEngagement() {
   return (
-    <div className="flex flex-col gap-8 px-6 pt-10">
-      <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[3.75rem]">
-        International Engagements
-      </h2>
-      <div className="grid grid-cols-engagement-res gap-10">
-        {data.map((el, i) => (
-          <div key={i} className="flex flex-col gap-3">
-            {el.icon}{" "}
-            <div className="flex flex-col gap-2.5">
-              <h3 className="font-bold text-base sm:text-xl text-[#0A1425]">
-                {el.title}
-              </h3>
-              <p className="text-sm sm:text-base font-normal text-[#495057]">
+    <section className="bg-white py-16 md:py-24">
+      <CustomContainer>
+        <div className="flex flex-col gap-8 ">
+          <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[3.75rem]">
+            International Engagements
+          </h2>
+          <div className="grid grid-cols-engagement-res gap-12">
+            {data.map((el, i) => (
+              <div key={i} className="flex flex-col gap-3 px-3 py-5 border border-[#EBEBEB] rounded-lg">
+                {el.icon}{" "}
+                <div className="flex flex-col gap-2.5 ">
+                  <h3 className="font-semibold text-base sm:text-lg text-[#0A1425]">
+                    {el.title}
+                  </h3>
+                  {/* <p className="text-sm sm:text-base font-normal text-[#495057]">
                 {el.content}
-              </p>
-            </div>
+              </p> */}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      </CustomContainer>
+    </section>
   );
 }

@@ -137,7 +137,7 @@ const TabOne = () => {
         {data.map((el, i) => (
           <div
             key={i}
-            className="flex gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#E7E7E7] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
+            className="flex gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#e7e7e772] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
           >
             <div className="object-contain shrink-0">
               <Image
@@ -185,7 +185,7 @@ const TabTwo = () => {
         {data.map((el, i) => (
           <div
             key={i}
-            className="flex  gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#E7E7E7] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
+            className="flex  gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#e7e7e772] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
           >
             <div className="object-contain">
               <Image
