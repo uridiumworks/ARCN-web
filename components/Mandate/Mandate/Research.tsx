@@ -27,9 +27,9 @@ const Research = () => {
                   width={368}
                   height={200}
                 />
-                <div className="absolute md:w-full bg-[#000000CC] bottom-0 text-white p-2">
-                  <h1 className="font-medium text-[15.52px]">{p?.title}</h1>
-                  <p className="font-normal text-[10.35px]">{p?.description}</p>
+                <div className="absolute w-full bg-[#000000CC] rounded-b-md bottom-0 text-white p-2">
+                  <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
+                  <p className="font-normal text-[10.35px]">{p?.description}Lorem ipsum dolor sit amet consectetur. Tellus varius fermentum nisi a quis tristique velit adipiscing magna.</p>
                 </div>
               </div>
             ))}

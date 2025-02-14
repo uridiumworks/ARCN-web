@@ -1,6 +1,7 @@
 import { LuChevronRight } from "react-icons/lu";
 import { FaCaretRight } from "react-icons/fa6";
 import Image from "next/image";
+import Link from "next/link";
 
 const Research = () => {
   return (
@@ -24,10 +25,12 @@ const Research = () => {
             height={596}
             className="w-full h-auto object-cover"
           />
-          <div className="flex border border-hidden font-montserrat py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
-            <p>Agricultural Research</p>
-            <FaCaretRight className="ml-2" />
-          </div>
+          <Link href={"/mandate"}>
+            <div className="flex border border-hidden font-montserrat py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
+              <p>Agricultural Research</p>
+              <FaCaretRight className="ml-2" />
+            </div>  
+          </Link>
         </div>
 
         <div className="relative w-full px-3 md:px-5">
@@ -38,10 +41,13 @@ const Research = () => {
             height={596}
             className="w-full h-auto object-cover"
           />
-          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
-            <p>Extension Services</p>
-            <FaCaretRight className="ml-2" />
-          </div>
+          <Link href={"/mandate/initiatives"}>
+            <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
+              <p>Extension Services</p>
+              <FaCaretRight className="ml-2" />
+            </div>
+          </Link>
+          
         </div>
       </div>
 
@@ -55,10 +61,13 @@ const Research = () => {
             height={596}
             className="w-full h-auto object-cover"
           />
-          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
-            <p>Agricultural Training</p>
-            <FaCaretRight className="ml-2" />
-          </div>
+          <Link href={"/mandate/training"}>
+            <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
+              <p>Agricultural Training</p>
+              <FaCaretRight className="ml-2" />
+            </div>
+          </Link>
+          
         </div>
 
         <div className="relative w-full px-3 md:px-5">
@@ -69,10 +78,13 @@ const Research = () => {
             height={596}
             className="w-full h-auto object-cover"
           />
-          <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
-            <p>Agricultural Innovations</p>
-            <FaCaretRight className="ml-2" />
-          </div>
+          <Link href={"/programsandprojects"}>
+            <div className="flex border border-hidden py-2 px-4 md:px-5 rounded-[88px] bg-[#000000B2] absolute bottom-5 items-center text-white font-medium text-sm md:text-[16px]">
+              <p>Agricultural Innovations</p>
+              <FaCaretRight className="ml-2" />
+            </div>
+          </Link>
+          
         </div>
       </div>
     </main>

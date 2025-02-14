@@ -1,17 +1,18 @@
 import React from 'react'
 import { CircleCheck } from 'lucide-react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 const TransportUnit = () => {
     return (
-        <section className='w-full'>
-            <div className='bg-[#FFC74E] h-[400px] flex justify-between' >
-                <div className='space-y-8 py-24 px-32'>
-                    <h2 className='font-bold text-2xl text-[32px]'>Transport Unit</h2>
-                    <p className=''>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
+        <section className='w-full h-full'>
+            <div className='bg-[#FFC74E] lg:h-[360px] flex justify-between' >
+                <div className='space-y-8 p-6 lg:py-24 lg:px-32'>
+                    <h2 className='font-bold text-2xl lg:text-[32px]'>Transport Unit</h2>
+                    <p className='text-base'>Lorem ipsum dolor sit amet consectetur. Dui non sapien fringilla tristique ac aliquam donec. Luctus.</p>
                 </div>
                 <div className='mt-44'>
-                    <Image src="../Images/Vehicle_1.png" alt="" width={300} height={300} />
+                    <Image src="/Images/Vehicle_1.png" alt="" width={300} height={300} />
                 </div>
             </div>
             <div>
@@ -28,11 +29,11 @@ export default TransportUnit
 
 const Mandates = () => {
     return (
-        <div className='px-10 py-14 ml-24'>
-            <h2 className='font-semibold text-[32px]'>Mandates</h2>
-            <div className='font-normal py-6 '>
+        <div className='lg:px-10 lg:py-14 lg:ml-24 p-4'>
+            <h2 className='font-semibold lg:text-[32px] text-2xl'>Mandates</h2>
+            <div className='font-normal lg:[32px] text-base py-6 '>
                 <div className='flex items-center gap-2 justify-start' ><CircleCheck size={24} />
-                    <p className='py-4'>Responsible for the provision of transportation services for staff of the Council on official assignment nationwide using official vehicles;</p>
+                    <p className='lg:py-4'>Responsible for the provision of transportation services for staff of the Council on official assignment nationwide using official vehicles;</p>
                 </div>
                 <div className='flex items-center gap-2 justify-start' ><CircleCheck size={24} />
                     <p className='py-4'>Responsible for the repairs and maintenance of all official vehicles in the Council;</p>
@@ -57,45 +58,45 @@ const Mandates = () => {
 const AdministrationDepartment = () => {
     return (
 
-        <div className=' mb-24 mt-10 md:grid-cols-2 lg:w-[1400px] pt-10 rounded-2xl bg-[#F6E8414D] mx-auto'>
-            <div className="py-10 px-20">
+        <div className=' mb-24 mt-10 md:grid-cols-2 lg:w-[90%] pt-10 w-full rounded-2xl bg-[#F6E8414D] mx-auto'>
+            <div className="lg:py-10 lg:px-20">
                 <div>
                     <h1 className="text-[32px] text-black text-bold mb-5 font-bold">Other Administration Department</h1>
                     <p className="text-base text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet sagittis sit. In.</p>
                 </div>
             </div>
 
-            <div className='flex h-[288.71px] p-8 gap-4 space-x-7 ml-14  '>
-                <div className='bg-[#2E7636] p-8 border rounded-lg text-left w-[375px]'>
+            <div className='flex lg:flex-row flex-col lg:w-[90%] lg:h-[50%] w-full p-6 gap-4 lg:space-x-7 lg:ml-14  '>
+                <div className='bg-[#2E7636] p-8 border rounded-[16.17px] text-left lg:w-[45%]'>
                     <h1 className="font-bold text-xl text-white">Records & Registry Unit</h1>
                     <p className='pt-5 pb-5 text-xs text-white'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
                         non sapien fringilla tristique ac aliquam donec. Luctus.
                     </p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-8 h-[35px] flex items-center justify-center'>
-                        <button className='font-normal text-sm text-[#2E7636]'>Learn More</button>
+                        <Link href="/governance/records-unit" className='font-normal text-sm text-[#2E7636]'>Learn More</Link>
                     </div>
                 </div>
 
-                <div className='bg-black p-6 border rounded-lg text-left w-[375px]'>
+                <div className='bg-black p-6 border rounded-[16.17px] text-left lg:w-[45%]'>
                     <h1 className="font-bold text-xl text-white mt-1">Maintenance Unit</h1>
                     <p className='pt-5 text-xs text-white mt-5 pb-2'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
                         non sapien fringilla tristique ac aliquam donec. Luctus.
                     </p>
                     <div className='border border-none rounded-full bg-white w-[130px] mt-8 h-[35px] flex items-center justify-center'>
-                        <button className='font-normal text-sm text-black'>Learn More</button>
+                        <Link href="/governance/maintenance-unit" className='font-normal text-sm text-black'>Learn More</Link>
                     </div>
                 </div>
 
-                <div className='bg-[#75CDFD] border p-6 rounded-lg text-left w-[375px]'>
+                <div className='bg-[#75CDFD] border p-6 rounded-[16.17px] text-left lg:w-[45%]'>
                     <h1 className="font-bold text-xl mt-1">Security Unit</h1>
                     <p className='pt-5 text-xs mt-4 pb-3'>
                         Lorem ipsum dolor sit amet consectetur. Dui <br />
                         non sapien fringilla tristique ac aliquam donec. Luctus.
                     </p>
                     <div className='border border-none rounded-full bg-white w-[140px] mt-8 h-[40px] flex items-center justify-center'>
-                        <button className='font-normal text-sm text-[#75CDFD]'>Learn More</button>
+                        <Link href="/governance/security-unit" className='font-normal text-sm text-[#75CDFD]'>Learn More</Link>
                     </div>
                 </div>
             </div>

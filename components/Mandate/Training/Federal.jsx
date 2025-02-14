@@ -1,6 +1,7 @@
 "use client";
 
 import { useClientNarissData } from "@/hooks/Naris.hooks";
+import Link from "next/link";
 
 const Federal = () => {
     const { loading, nariss, error } = useClientNarissData();
@@ -45,9 +46,11 @@ const Federal = () => {
                             </>
                         )}
                     </div>
-                    <div className="text-center p-9">
-                        <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">Detailed view</button>
-                    </div>
+                    <Link href={"/mandate/training/college"}>
+                        <div className="text-center p-9">
+                            <button className="bg-[#30A85F] border py-3 px-10 text-white rounded-md">Detailed view</button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </main>

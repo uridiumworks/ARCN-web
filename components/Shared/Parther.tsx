@@ -1,5 +1,6 @@
 import { LuChevronRight } from "react-icons/lu";
 import Image from "next/image";
+import Link from "next/link";
 
 const Partners = () => {
     return (
@@ -23,10 +24,12 @@ const Partners = () => {
                         <br />
                         succeed.
                     </p>
-                    <div className='flex items-center justify-center lg:justify-start text-[#669933] font-medium text-base lg:text-lg xl:text-xl mt-6'>
-                        <p>Learn more</p>
-                        <LuChevronRight className='ml-2' />
-                    </div>
+                    <Link href={"/contact"}>
+                        <div className='flex items-center justify-center lg:justify-start text-[#669933] font-medium text-base lg:text-lg xl:text-xl mt-6'>
+                            <p>Get in touch</p>
+                            <LuChevronRight className='ml-2' />
+                        </div>
+                    </Link>
                 </div>
             </div>
         </main>

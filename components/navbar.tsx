@@ -60,15 +60,15 @@ const Navbar = (props: Props) => {
             <div>
                 <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
             </div>
-            <div className='hidden lg:block text-center'>
-                <div className='flex justify-center items-center gap-4 text-white'>
+            <div className='hidden lg:block space-y-3 pb-3 text-center'>
+                <div className='flex justify-center items-center gap-4 text-[#EFEFEF]'>
                     {topNav.map((t, index) => (
-                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] uppercase font-[400] text-[12px] text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
+                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-normal text-xs text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
                     ))}
                 </div>
                 <div className='flex justify-center mt-2 gap-6 text-white'>
                     {mainNav.map((t, index) => (
-                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-[800] text-[14px] uppercase text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
+                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-extrabold text-sm uppercase text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
                     ))}
                 </div>
             </div>
@@ -96,7 +96,7 @@ const Navbar = (props: Props) => {
                             <p className='font[Montserrat] font-[800] text-[14px] uppercase text-[#EFEFEF] mb-4' key={index}>{t}</p>
                         ))}
                     </div>
-                    <div className='flex mt-6 rounded-md w-full bg-[#3C3C3C] p-3'>
+                    <div className='flex mt-6 rounded-md text-[#EFEFEF] w-full bg-[#3C3C3C] p-3'>
                         <Input type='search' placeholder='Search' className='outline-none bg-transparent text-[#EFEFEF] text-[12px] focus-visible:outline-none border-[#3C3C3C]' />
                         <Search color='#2E7636' size="16px" />
                     </div>
