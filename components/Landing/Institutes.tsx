@@ -112,21 +112,37 @@ const data = [
     title: "National Horticultural Research Institute",
     location: "Jericho Reservation Area, Ibadan, Nigeria.",
     webUrl: "nihort.gov.ng",
+    imgUrl: "/images/Homepage/nhri-img.png",
   },
   {
     title: "Cocoa Research Institute of Nigeria",
-    location: "Oyo State",
-    webUrl: "nihort.gov.ng",
+    location: "Idi-Ayunre Oluyole Local Govt. Area Ibadan,Oyo State",
+    webUrl: "crin.gov.ng",
+    imgUrl: "/images/Homepage/plcholder-img.png",
   },
   {
-    title: "National Horticultural Research Institute",
-    location: "Jericho Reservation Area, Ibadan, Nigeria.",
-    webUrl: "nihort.gov.ng",
+    title: "Rubber Research Institute of Nigeria",
+    location: "Km 19, Benin-Sapele High Way, Benin City.",
+    webUrl: "rrin.gov.ng",
+    imgUrl: "/images/Homepage/rrin-img.png",
   },
   {
-    title: "Cocoa Research Institute of Nigeria",
-    location: "Oyo State",
-    webUrl: "nihort.gov.ng",
+    title: "National Root Crops Research Institute",
+    location: "Km 8 Umuahia-Ikot Ekpene Road Umuahia, Abia State",
+    webUrl: "nrcri.gov.ng",
+    imgUrl: "/images/Homepage/nrcri-img.png",
+  },
+  {
+    title: "National Cereals Research Institute",
+    location: "National Cereals Research Institute (NCRI),Badeggi, Niger",
+    webUrl: "ncribadeggi.org.ng",
+    imgUrl: "/images/Homepage/ncri-img.png",
+  },
+  {
+    title: "National Animal Production And Research  Institute",
+    location: "No 2, Sokoto Road , Shika Zaria, kaduna",
+    webUrl: "napri.gov.ng",
+    imgUrl: "/images/Homepage/napri-img.png",
   },
 ];
 
@@ -144,7 +160,7 @@ const TabOne = () => {
                 width={35}
                 height={35}
                 alt=""
-                src="/Images/Homepage/plcholder-img.png"
+                src={el.imgUrl}
                 className="w-full h-full"
               />
             </div>
@@ -153,13 +169,18 @@ const TabOne = () => {
                 {el.title}
               </h3>
               <div className="flex items-center gap-3">
-               <div> <LocationOutlineIcon /></div>{" "}
+                <div>
+                  {" "}
+                  <LocationOutlineIcon />
+                </div>{" "}
                 <p className="font-normal text-sm text-[#111111]">
                   {el.location}
                 </p>
               </div>
               <div className="flex items-center gap-3">
-              <div><WebIcon /></div>  {" "}
+                <div>
+                  <WebIcon />
+                </div>{" "}
                 <Link
                   href={el.webUrl}
                   className="text-[#30A85F] font-normal text-sm"
@@ -192,7 +213,7 @@ const TabTwo = () => {
                 width={35}
                 height={35}
                 alt=""
-                src="/Images/Homepage/plcholder-img.png"
+                src={el.imgUrl}
                 className="w-full h-full"
               />
             </div>

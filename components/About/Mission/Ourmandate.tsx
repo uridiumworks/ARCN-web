@@ -6,7 +6,7 @@ const Ourmandate = () => {
       <CustomContainer>
         <div className="flex flex-col gap-8 px-6">
           <div className="grid grid-cols-about-mandate-res gap-10">
-            <div className="flex flex-col gap-10 text-center">
+            <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
               <h3 className="font-medium text-2xl sm:text-3xl text-[#0A1425]">
                 OUR MANDATE
               </h3>
@@ -18,7 +18,7 @@ const Ourmandate = () => {
                 Agriculture (FCAs)
               </p>
             </div>
-            <div className="flex flex-col gap-10 text-center">
+            <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
               <h3 className="font-medium text-2xl sm:text-3xl text-[#0A1425]">
                 OUR MISSION
               </h3>
@@ -32,8 +32,8 @@ const Ourmandate = () => {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-[100%] sm:grid-cols-[50%] sm:justify-center">
-            <div className="flex flex-col gap-10 text-center">
+          <div className="grid grid-cols-[100%] rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
+            <div className="flex flex-col gap-4">
               <h3 className="font-medium text-2xl sm:text-3xl text-[#0A1425]">
                 OUR VISION
               </h3>

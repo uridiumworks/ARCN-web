@@ -9,7 +9,7 @@ const Bander = () => {
         <div className="w-full sm:max-w-[77.5rem] sm:mx-auto px-8">
           <div className="min-h-[80%] py-5 md:py-9 flex justify-center items-center">
             <div className="w-full text-white flex flex-col gap-4 lg:gap-8 text-center sm:py-4 px-4 md:px-0">
-              <h1 className="font-bold text-2xl sm:text-3xl lg:text-[2.5rem] leading-[6rem]">
+              <h1 className="font-bold text-2xl sm:text-3xl lg:text-[2.5rem] leading-[2.5rem] sm:leading-[4rem]" >
                 ARCN and UNN introduce new strategy agroecological sustainable
                 farming
               </h1>

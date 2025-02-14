@@ -8,17 +8,17 @@ const Partners = () => {
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="text-center">
-            <h1 className="font-semibold text-3xl sm:text-5xl text-[#1B222B]">
+            <h2 className="font-semibold text-3xl sm:text-5xl text-[#1B222B]">
             Partner with us to advance agricultural
               <br /> research training and extension in Nigeria
-            </h1>
+            </h2>
           </div>
           <div className="flex flex-col lg:flex-row gap-10 justify-center items-center lg:gap-20">
             <div className="flex-shrink-0">
               <Image
                 src="/Images/Homepage/farmer.png"
-                width={436}
-                height={400}
+                width={536}
+                height={700}
                 alt="farmer"
                 className="w-full max-w-md lg:max-w-lg"
               />
