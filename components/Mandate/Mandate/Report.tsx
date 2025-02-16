@@ -37,6 +37,7 @@ const Report = () => {
                       className="rounded-[13.4px]"
                     />
                   </div>
+
                   <div className="space-y-4">
                     <p className="font-medium text-xl">
                       {r.title}

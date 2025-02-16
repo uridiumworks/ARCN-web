@@ -6,7 +6,7 @@ const Services = () => {
 
     return ( 
         <main>
-            <div>
+            <div className="py-10">
                 <div className="text-center place-content-center py-9 space-y-4 font-montserrat">
                     <h1 className="font-bold text-[40px]">Extension Services Initiatives</h1>
                     <p>Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id <br />ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi. <br />Magna nulla consequat.</p>

@@ -2,7 +2,7 @@ import Image from "next/image"
 import React from "react"
 
 
-const Text01 = () => {
+const Text = () => {
     return (
         <section className='px-10 py-20 flex flex-col mx-auto md:w-[1152px] justify-center text-center'>
             <div className=' text-start'>
@@ -52,9 +52,7 @@ const Text01 = () => {
 
             <p className='mt-3 text-start'>Lorem ipsum dolor sit amet consectetur. Viverra at magna placerat mattis. Et nullam hac at felis eu vulputate in a aenean. Pretium nibh ac sed viverra ac urna interdum. Lobortis bibendum enim scelerisque id. Consectetur eget neque luctus magna in elementum. Lacus amet sed arcu in elementum.</p>
             
-
-            
         </section>
     )
 }
-export default Text01
+export default Text

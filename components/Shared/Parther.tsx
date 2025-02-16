@@ -1,5 +1,6 @@
 import { LuChevronRight } from "react-icons/lu";
 import Image from "next/image";
+import Link from "next/link";
 import CustomContainer from "../CustomContainer";
 
 const Partners = () => {
@@ -33,12 +34,14 @@ const Partners = () => {
                 <br />
                 succeed.
               </p>
+              <Link href={"/contact"}>
               <div className="flex items-center cursor-pointer">
                 <p className="text-[#669933] font-medium text-base">
                 Get in touch
                 </p>
                 <LuChevronRight color="#669933" />
               </div>
+              </Link>
             </div>
           </div>
         </div>

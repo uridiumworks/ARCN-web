@@ -1,5 +1,6 @@
 import Journal from "@/components/Shared/Journal";
 import Image from "next/image";
+import Link from "next/link";
 import { IoArrowForwardSharp } from "react-icons/io5";
 
 const Federal = () => {
@@ -44,9 +45,11 @@ const Federal = () => {
                 the defunct West African Cocoa Research Institute (WACRI) by
                 Nigeria Statute, Act No. 6 of 1950.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -70,9 +73,11 @@ const Federal = () => {
                 </p>
               </div>
 
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -94,9 +99,11 @@ const Federal = () => {
                 and Agricultural Organization as fruits and vegetables research
                 and demonstration centre.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -121,9 +128,11 @@ const Federal = () => {
                 during the colonial era. It became Nigerian Stored Products
                 Research Institute after the independence in 1960.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -144,9 +153,11 @@ const Federal = () => {
                 research and development on rubber and other latex producing
                 plants of economic importance.
               </p>
-              <div className="w-[41.86px]  h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-2 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -168,9 +179,11 @@ const Federal = () => {
                 and Agricultural Organization as fruits and vegetables research
                 and demonstration centre.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -195,9 +208,11 @@ const Federal = () => {
                 during the colonial era. It became Nigerian Stored Products
                 Research Institute after the independence in 1960.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-3.5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -218,9 +233,11 @@ const Federal = () => {
                 research and development on rubber and other latex producing
                 plants of economic importance. 
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-2 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -242,9 +259,11 @@ const Federal = () => {
                 the defunct West African Cocoa Research Institute (WACRI) by
                 Nigeria Statute, Act No. 6 of 1950.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -268,9 +287,11 @@ const Federal = () => {
                 the defunct West African Cocoa Research Institute (WACRI) by
                 Nigeria Statute, Act No. 6 of 1950.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -291,9 +312,11 @@ const Federal = () => {
                 research and development on rubber and other latex producing
                 plants of economic importance. 
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -315,9 +338,11 @@ const Federal = () => {
                 the defunct West African Cocoa Research Institute (WACRI) by
                 Nigeria Statute, Act No. 6 of 1950.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -341,9 +366,11 @@ const Federal = () => {
                 the defunct West African Cocoa Research Institute (WACRI) by
                 Nigeria Statute, Act No. 6 of 1950.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-5 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -364,9 +391,11 @@ const Federal = () => {
                 research and development on rubber and other latex producing
                 plants of economic importance. 
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
 
             <div className="border-[0.59px] space-y-3 py-1.5 px-3 bg-[#FFFFFF] text-black rounded-lg lg:h-[276px] ">
@@ -388,9 +417,11 @@ const Federal = () => {
                 the defunct West African Cocoa Research Institute (WACRI) by
                 Nigeria Statute, Act No. 6 of 1950.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -414,9 +445,11 @@ const Federal = () => {
                 and Agricultural Organization as fruits and vegetables research
                 and demonstration centre.
               </p>
-              <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
-                <IoArrowForwardSharp className="text-xl" />
-              </div>
+              <Link href={"/mandate/nigeria"}>
+                <div className="w-[41.86px] h-[41.86px] border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <IoArrowForwardSharp className="text-xl" />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
