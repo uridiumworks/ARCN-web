@@ -1,61 +1,72 @@
+"use client";
+import CustomContainer from "@/components/CustomContainer";
+import {
+  FarmerIcon2,
+  PlantGrowthIcon,
+  PlantIcon2,
+  TractorIcon2,
+} from "@/assets/icons";
+import Link from "next/link";
 
-import Image from "next/image";
+const data = [
+  {
+    description:
+      "Demand Driven agricultural technologies generated and innovations promoted",
+    icon: <TractorIcon2 />,
+  },
+  {
+    description:
+      "Appropriate policy options for agricultural growth formulated and made available",
+    icon: <FarmerIcon2 />,
+  },
+  {
+    description:
+      "Agricultural Research, training and extension system strengthened",
+    icon: <PlantIcon2 />,
+  },
+  {
+    description: "Agricultural Knowledge management system established",
+    icon: <PlantGrowthIcon />,
+  },
+];
 
 const Value = () => {
-    return (
-        <main>
-            <div className=" pt-20 space-y-6 font-montserrat">
-                <div className="text-center place-content-center">
-                    <h1 className="font-semibold text-sm">OUR VALUE</h1>
-                    <p className="font-bold text-[40px]">Core Values we define</p>
-                    <p className="font-normal text-xl">These values reflect the mission and journey of your company,<br />emphasizing customer success, innovation, empowermen <br />efficiency, collaboration, and growth.</p>
-                </div>
-                
-                <div className="lg:w-[1000px] mx-auto space-y-6">
-                    <div className="flex flex-col md:flex-row gap-7
-                     lg:gap-5 pt-14 lg:justify-evenly">
-
-                        <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src="/Images/Aboutpage/Gray.png" alt="Gray" width={64} height={64} />
-                            <p className="font-bold text-xl">Customer-Centric Success</p>
-                            <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                        </div>
-
-                        <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src="/Images/Aboutpage/Lime.png" alt="Lime" width={64} height={64} />
-                            <p className="font-bold text-xl">Continuous Innovation</p>
-                            <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                        </div>
-                        
-                        <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src="/Images/Aboutpage/Peach.png" alt="Peach" width={64} height={64} />
-                            <p className="font-bold text-xl">Empowerment & Growth</p>
-                            <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                        </div>
-                    </div>
-                    
-                    <div className="flex flex-col md:flex-row gap-5 justify-evenly">
-                        <div className="border rounded-xl w-[420px] space-y-3 p-4">  
-                            <Image src="/Images/Aboutpage/Pink.png" alt="Pink" width={64} height={64} />
-                            <p className="font-bold text-xl">Seamlessness</p>
-                            <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                        </div>
-                        <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src="/Images/Aboutpage/Purple.png" alt="Purple" width={64} height={64} />
-                            <p className="font-bold text-xl">Collaboration</p>
-                            <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                        </div>
-                        
-                        <div className="border rounded-xl w-[420px] space-y-3 p-4">
-                            <Image src="/Images/Aboutpage/Lemon.png" alt="Lemon" width={64} height={64} />
-                            <p className="font-bold text-xl">Endless Progress</p>
-                            <p className="font-normal text-base">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    )
-}
+  return (
+    <section className="py-16 md:py-24">
+      <CustomContainer>
+        <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-6 text-center">
+            <h3 className="text-[#0A1425] font-bold text-2xl sm:text-[2.5rem] ">
+              Our Result Areas
+            </h3>
+            <p className="text-[#64728F] text-lg">
+              Taking into account the priority areas of our stakeholders, the
+              Council has designed four result areas to complement and add value
+              to our partners&apos; strategies and programmes, including those
+              of <Link href="#" className="underline text-[#125FFE]">
+                FARA
+              </Link>{" "}
+              and{" "}
+              <Link href="#" className="underline text-[#125FFE]">
+                CORAF/WECARD
+              </Link>{" "}
+              .
+            </p>
+          </div>
+          <div className="px-0 sm:px-4 lg:px-8 grid grid-cols-about-core-res gap-8">
+            {data.map((el, i) => (
+              <div key={i} className="flex flex-col gap-4 items-center">
+                {el.icon}
+                <p className="font-normal text-[#1B222B] text-center text-lg sm:text-xl">
+                  {el.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CustomContainer>
+    </section>
+  );
+};
 
 export default Value;

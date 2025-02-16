@@ -5,20 +5,15 @@ import Value from "@/components/About/Mission/Value";
 import Journal from "@/components/Shared/Journal";
 import Partners from "@/components/Shared/Parther";
 
-
-
-const Management = () => {
-    
+export default function Missionpage() {
     return ( 
         <main>
             <Banner />
             <Ourmandate />
             <Function />
             <Value />
-            <Partners />
+            {/* <Partners /> */}
             <Journal />
         </main>
      );
 }
- 
-export default Management;

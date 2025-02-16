@@ -1,19 +1,23 @@
+import CustomContainer from "../CustomContainer";
+
 const Journal = () => {
-    return (
-        <main className='px-4 lg:px-8 bg-[#F7F7F7] font-montserrat'>
-            <div className="text-center h-auto py-10 lg:py-20 space-y-5 flex flex-col items-center">
-                <h1 className="text-3xl lg:text-5xl font-medium">
-                    Journal of Applied Agricultural Research (JAAR)
-                </h1>
-                <p className="text-base font-normal font-sans text-[#111111]">
-                    CALL FOR PAPERS AND SUBMISSION OF MANUSCRIPTS
-                </p>
-                <button className="bg-[#71C348] text-white py-3 px-6 font-sans font-bold rounded-full text-sm lg:text-sm">
-                    Submit Now
-                </button>
-            </div>
-        </main>
-    )
-}
+  return (
+    <section className="py-12 md:py-20 bg-[#F7F7F7]">
+      <CustomContainer>
+        <div className="text-center flex flex-col gap-7">
+          <h1 className="text-3xl sm:text-4xl font-medium text-[#111111]">
+            Journal of Applied Agricultural Research (JAAR)
+          </h1>
+          <p className="text-base font-normal text-[#111111]">
+            CALL FOR PAPERS AND SUBMISSION OF MANUSCRIPTS
+          </p>
+          <button className="bg-[#71C348] text-white py-4 px-8 rounded-full self-center font-sans font-bold">
+            Submit Now
+          </button>
+        </div>
+      </CustomContainer>
+    </section>
+  );
+};
 
 export default Journal;
