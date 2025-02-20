@@ -119,7 +119,7 @@ const Events = () => {
                 </div>
                 <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                   <Image
-                    src="/images/Homepage/event-imgholder.png"
+                    src="/Images/Homepage/event-imgholder.png"
                     alt="event-imgholder"
                     className="object-cover"
                     width={150}

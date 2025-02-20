@@ -96,8 +96,8 @@ const data = [
   {
     type: "ARCN JOURNAL",
     imgs: [
-      "/images/Homepage/journal-img-1.png",
-      "/images/Homepage/journal-img-2.png",
+      "/Images/Homepage/journal-img-1.png",
+      "/Images/Homepage/journal-img-2.png",
     ],
     subject: "Journal Title",
     content:
@@ -107,8 +107,8 @@ const data = [
   {
     type: "NEWSLETTER",
     imgs: [
-      "/images/Homepage/newsletter-img-1.png",
-      "/images/Homepage/newsletter-img-2.png",
+      "/Images/Homepage/newsletter-img-1.png",
+      "/Images/Homepage/newsletter-img-2.png",
     ],
     subject: "Journal Title",
     content:

@@ -29,7 +29,7 @@ const Meet = () => {
             <div className="flex flex-col gap-10">
               <div className="mt-8 text-center sm:self-center">
                 <Image
-                  src="/images/image 75.png"
+                  src="/Images/image 75.png"
                   alt=""
                   width={250}
                   height={280}
@@ -46,7 +46,7 @@ const Meet = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 items-center justify-center mt-8">
                 <div className="text-center mx-auto">
                   <Image
-                    src="/images/image 75 (1).png"
+                    src="/Images/image 75 (1).png"
                     alt=""
                     width={170}
                     height={170}
@@ -61,7 +61,7 @@ const Meet = () => {
                 </div>
                 <div className="text-center mx-auto">
                   <Image
-                    src="/images/image 75 (2).png"
+                    src="/Images/image 75 (2).png"
                     alt=""
                     width={170}
                     height={170}
@@ -76,7 +76,7 @@ const Meet = () => {
                 </div>
                 <div className="text-center mx-auto">
                   <Image
-                    src="/images/image 75 (3).png"
+                    src="/Images/image 75 (3).png"
                     alt=""
                     width={170}
                     height={170}
@@ -90,7 +90,7 @@ const Meet = () => {
                 </div>
                 <div className="text-center mx-auto">
                   <Image
-                    src="/images/image 75 (4).png"
+                    src="/Images/image 75 (4).png"
                     alt=""
                     width={170}
                     height={170}
@@ -108,7 +108,7 @@ const Meet = () => {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3 items-center text-center justify-center mt-8">
                 <div className="text center mx-auto">
                   <Image
-                    src="/images/image 75 (5).png"
+                    src="/Images/image 75 (5).png"
                     alt=""
                     width={170}
                     height={170}
@@ -123,7 +123,7 @@ const Meet = () => {
                 </div>
                 <div className="">
                   <Image
-                    src="/images/image 75 (6).png"
+                    src="/Images/image 75 (6).png"
                     alt=""
                     width={170}
                     height={170}
@@ -139,7 +139,7 @@ const Meet = () => {
                 </div>
                 <div className="">
                   <Image
-                    src="/images/image 75 (7).png"
+                    src="/Images/image 75 (7).png"
                     alt=""
                     width={170}
                     height={170}
@@ -155,7 +155,7 @@ const Meet = () => {
                 </div>
                 <div className="">
                   <Image
-                    src="/images/image 76.png"
+                    src="/Images/image 76.png"
                     alt=""
                     width={170}
                     height={170}
@@ -171,7 +171,7 @@ const Meet = () => {
                 </div>
                 <div className="">
                   <Image
-                    src="/images/image 75 (8).png"
+                    src="/Images/image 75 (8).png"
                     alt=""
                     width={170}
                     height={170}
