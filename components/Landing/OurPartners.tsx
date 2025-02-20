@@ -3,17 +3,17 @@ import Image from "next/image";
 import React from "react";
 
 const logos = [
-  "/images/Homepage/partner-logo2.png",
-  "/images/Homepage/partner-logo3.png",
-  "/images/Homepage/partner-logo4.png",
-  "/images/Homepage/partner-logo5.png",
-  "/images/Homepage/partner-logo6.png",
-  "/images/Homepage/partner-logo7.png",
-  "/images/Homepage/partner-logo8.png",
-  "/images/Homepage/partner-logo9.png",
-  "/images/Homepage/partner-logo10.png",
-  "/images/Homepage/partner-logo11.png",
-  "/images/Homepage/partner-logo12.png",
+  "/Images/Homepage/partner-logo2.png",
+  "/Images/Homepage/partner-logo3.png",
+  "/Images/Homepage/partner-logo4.png",
+  "/Images/Homepage/partner-logo5.png",
+  "/Images/Homepage/partner-logo6.png",
+  "/Images/Homepage/partner-logo7.png",
+  "/Images/Homepage/partner-logo8.png",
+  "/Images/Homepage/partner-logo9.png",
+  "/Images/Homepage/partner-logo10.png",
+  "/Images/Homepage/partner-logo11.png",
+  "/Images/Homepage/partner-logo12.png",
 ];
 
 export default function OurPartners() {

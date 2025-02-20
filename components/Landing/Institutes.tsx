@@ -114,37 +114,37 @@ const data = [
     title: "National Horticultural Research Institute",
     location: "Jericho Reservation Area, Ibadan, Nigeria.",
     webUrl: "nihort.gov.ng",
-    imgUrl: "/images/Homepage/nhri-img.png",
+    imgUrl: "/Images/Homepage/nhri-img.png",
   },
   {
     title: "Cocoa Research Institute of Nigeria",
     location: "Idi-Ayunre Oluyole Local Govt. Area Ibadan,Oyo State",
     webUrl: "crin.gov.ng",
-    imgUrl: "/images/Homepage/plcholder-img.png",
+    imgUrl: "/Images/Homepage/plcholder-img.png",
   },
   {
     title: "Rubber Research Institute of Nigeria",
     location: "Km 19, Benin-Sapele High Way, Benin City.",
     webUrl: "rrin.gov.ng",
-    imgUrl: "/images/Homepage/rrin-img.png",
+    imgUrl: "/Images/Homepage/rrin-img.png",
   },
   {
     title: "National Root Crops Research Institute",
     location: "Km 8 Umuahia-Ikot Ekpene Road Umuahia, Abia State",
     webUrl: "nrcri.gov.ng",
-    imgUrl: "/images/Homepage/nrcri-img.png",
+    imgUrl: "/Images/Homepage/nrcri-img.png",
   },
   {
     title: "National Cereals Research Institute",
     location: "National Cereals Research Institute (NCRI),Badeggi, Niger",
     webUrl: "ncribadeggi.org.ng",
-    imgUrl: "/images/Homepage/ncri-img.png",
+    imgUrl: "/Images/Homepage/ncri-img.png",
   },
   {
     title: "National Animal Production And Research  Institute",
     location: "No 2, Sokoto Road , Shika Zaria, kaduna",
     webUrl: "napri.gov.ng",
-    imgUrl: "/images/Homepage/napri-img.png",
+    imgUrl: "/Images/Homepage/napri-img.png",
   },
 ];
 
