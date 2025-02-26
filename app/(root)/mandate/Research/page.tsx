@@ -11,9 +11,9 @@ const Research = () => {
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="flex flex-col gap-6">
-            <ResearchInstitueBreadcrumbs />
+            <ResearchInstitueBreadcrumbs text="Research Institutes" />
             <div className="flex flex-col gap-8">
-              <h1 className="font-bold text-4xl">Research Institutes</h1>
+              <h2 className="font-bold text-4xl">Research Institutes</h2>
               <p className="font-medium text-base">
                 <span className="text-[15.88px] font-medium text-[#2D7636]">
                   ARCN Research Institutes
@@ -146,7 +146,10 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link
+                  href={"/mandate/Research/nrcri/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>

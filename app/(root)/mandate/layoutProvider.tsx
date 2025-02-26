@@ -28,7 +28,10 @@ const Tabs = [
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   const currentRoute = usePathname();
 
-  if (currentRoute.endsWith("institute")) {
+  if (
+    currentRoute.endsWith("institute") ||
+    currentRoute.includes("coordination-report")
+  ) {
     return <div className="w-full min-h-screen">{children}</div>;
   } else {
     return (

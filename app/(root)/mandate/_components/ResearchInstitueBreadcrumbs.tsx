@@ -11,7 +11,11 @@ import {
 import Link from "next/link";
 import { HomeIcon } from "@/assets/icons";
 
-export default function ResearchInstitueBreadcrumbs() {
+type Props = {
+  text:string;
+}
+
+export default function ResearchInstitueBreadcrumbs({text}:Props) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -28,7 +32,7 @@ export default function ResearchInstitueBreadcrumbs() {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator color="#2E3545"/>
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
@@ -39,10 +43,10 @@ export default function ResearchInstitueBreadcrumbs() {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator color="#2E3545" />
         <BreadcrumbItem>
           <BreadcrumbPage className="font-medium text-sm text-[#2E7636]">
-            Research Institutes
+           {text}
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>

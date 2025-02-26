@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
-import { HomeIcon } from "@/assets/icons";
+import { WhiteHomeIcon } from "@/assets/icons";
 
 type Props = {
   text: string;
@@ -22,7 +22,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
         <BreadcrumbItem>
           <BreadcrumbLink className="flex items-center gap-1">
             <div>
-              <HomeIcon className="" />
+              <WhiteHomeIcon />
             </div>
             <Link
               href="/"
@@ -32,7 +32,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator color="#fff" />
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
@@ -43,7 +43,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator color="#fff" />
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
@@ -54,7 +54,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator color="#fff" />
         <BreadcrumbItem>
           <BreadcrumbPage className="font-medium text-sm text-[#30A85F]">
             {text}

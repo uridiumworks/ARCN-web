@@ -3,6 +3,7 @@ import { LuMapPin } from "react-icons/lu";
 import Image from "next/image";
 import { useClientReportsData } from "@/hooks/Reports.hooks";
 import CustomContainer from "@/components/CustomContainer";
+import Link from "next/link";
 
 // const ReportOld = () => {
 //   const { loading, reports, error } = useClientReportsData();
@@ -91,10 +92,12 @@ const data = [
   {
     title: "ARCN Research Coordination Report 2023",
     description: "Our land. Our future. We are #GenerationRestorations.",
+    slug: "arcn-research-coordination-report",
   },
   {
     title: "ARCN Research Coordination Report 2023",
     description: "Our land. Our future. We are #GenerationRestorations.",
+    slug: "arcn-research-coordination-report-2",
   },
 ];
 
@@ -134,9 +137,12 @@ const Report = () => {
                     <button className="bg-transparent border border-[#E6E6E6] font-sans font-medium text-sm text-[#07A460] rounded-sm px-7 py-2.5">
                       Download
                     </button>
-                    <button className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5">
+                    <Link
+                      href={`/mandate/Research/coordination-report/${el.slug}/report`}
+                      className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5"
+                    >
                       View
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
@@ -153,9 +159,12 @@ const Report = () => {
             ))}
           </div>
 
-          <button className="self-center py-3 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm">
+          <Link
+            href="/mandate/Research/coordination-report"
+            className="self-center py-3 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
+          >
             VIEW ALL
-          </button>
+          </Link>
         </div>
       </CustomContainer>
     </section>

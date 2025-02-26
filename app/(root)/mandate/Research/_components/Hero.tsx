@@ -35,7 +35,7 @@ export default function Hero({
   phoneNumber,
 }: Props) {
   return (
-    <section className="flex flex-col gap-6 bg-[#101010] pt-3 px-3 pb-6 sm:pb-16">
+    <section className="flex flex-col gap-6 bg-[#101010] pt-3 px-3 pb-6 sm:pb-16 mt-3">
       <ResearchInstitueBreadcrumbs text={accroymn} />
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">

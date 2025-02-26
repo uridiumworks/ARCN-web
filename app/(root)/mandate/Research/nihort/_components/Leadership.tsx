@@ -31,7 +31,7 @@ export default function Leadership({
             <h3 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
               Leadership
             </h3>
-            <div className="flex flex-col gap-6 sm:px-12">
+            <div className="flex flex-col gap-6 sm:px-16">
               <div className="flex items-center gap-2">
                 <div>
                   <CircleCheck color="#30A85F" size={20} />

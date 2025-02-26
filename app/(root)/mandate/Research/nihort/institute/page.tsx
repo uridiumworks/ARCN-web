@@ -6,7 +6,7 @@ import Leadership from "../_components/Leadership";
 
 export default function ResearchNihortInstitutePage() {
   return (
-    <section className="pb-4">
+    <section>
       <Hero
         logo="/Images/Mandatepage/nihort-img.png"
         accroymn="NIHORT"

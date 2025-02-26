@@ -53,3 +53,5 @@ export { default as WhiteEmailIcon } from "./white-email-icon.svg";
 export { default as WhiteLocationPointerIcon } from "./white-location-pointer-icon.svg";
 export { default as WhitePhoneIcon } from "./white-phone-icon.svg";
 export { default as WhiteWeburlIcon } from "./white-weburl-icon.svg";
+export { default as WhiteHomeIcon } from "./white-home-icon.svg";
+export {default as GrayLocationPointerIcon} from './gray-location-pointer-icon.svg'
