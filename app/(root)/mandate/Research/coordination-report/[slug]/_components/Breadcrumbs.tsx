@@ -12,10 +12,10 @@ import Link from "next/link";
 import { HomeIcon } from "@/assets/icons";
 
 type Props = {
-  text:string;
-}
+  text: string;
+};
 
-export default function ResearchInstitueBreadcrumbs({text}:Props) {
+export default function CustomBreadcrumbs({ text }: Props) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -32,21 +32,32 @@ export default function ResearchInstitueBreadcrumbs({text}:Props) {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator color="#2E3545"/>
+        <BreadcrumbSeparator className="text-[#2E3545]" />
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
-              href="/mandate"
+              href="/mandate/Research"
               className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               Research
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator color="#2E3545" />
+        <BreadcrumbSeparator className="text-[#2E3545]" />
+        <BreadcrumbItem>
+          <BreadcrumbLink>
+            <Link
+              href="/mandate/Research/coordination-report"
+              className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
+            >
+              Research Coordination Report
+            </Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator className="text-[#2E3545]" />
         <BreadcrumbItem>
           <BreadcrumbPage className="font-medium text-sm text-[#2E7636]">
-           {text}
+            {text}
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>

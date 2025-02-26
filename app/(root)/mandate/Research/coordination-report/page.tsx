@@ -1,6 +1,6 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import ResearchInstitueBreadcrumbs from "../../_components/ResearchInstitueBreadcrumbs";
+import ResearchInstitueBreadcrumbsV1 from "../../_components/ResearchInstitueBreadcrumbsv1";
 import Reports from "./_components/Reports";
 import Journal from "@/components/Shared/Journal";
 import Partners from "@/components/Shared/Parther";
@@ -11,7 +11,7 @@ export default function page() {
       <CustomContainer>
         <div className="flex flex-col gap-10 sm:gap-14">
           <div className="flex flex-col gap-6">
-            <ResearchInstitueBreadcrumbs text="Research Coordination Report" />
+            <ResearchInstitueBreadcrumbsV1 text="Research Coordination Report" />
             <div className="flex flex-col gap-8">
               <h2 className="font-bold text-4xl">
                 Research Coordination Report

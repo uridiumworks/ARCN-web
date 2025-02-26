@@ -46,7 +46,7 @@ export default function Hero({
             </h2>
           </div>
           <div className="grid grid-cols-research-institutes-details-res gap-7 sm:gap-10">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3 ">
               <div>
                 <WhiteLocationPointerIcon />
               </div>
@@ -56,7 +56,7 @@ export default function Hero({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3 ">
               <div>
                 <WhiteWeburlIcon />
               </div>
@@ -68,7 +68,7 @@ export default function Hero({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3 ">
               <div>
                 <WhiteEmailIcon />
               </div>
@@ -78,7 +78,7 @@ export default function Hero({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3 ">
               <div>
                 <WhitePhoneIcon />
               </div>

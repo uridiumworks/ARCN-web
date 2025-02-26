@@ -25,7 +25,7 @@ export default function Reports() {
       {data.map((el, i) => (
         <div
           key={i}
-          className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-4"
+          className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-5"
         >
           <div className="flex flex-col gap-6 items-start order-2 lg:order-1">
             <div className="flex flex-col gap-2">

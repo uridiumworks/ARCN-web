@@ -5,16 +5,15 @@ import Super from "@/components/Mandate/Training/Super";
 import Journal from "@/components/Shared/Journal";
 
 const training = () => {
+  return (
+    <section>
+      <Banner />
+      <Federal />
+      <Intern />
+      <Super />
+      <Journal />
+    </section>
+  );
+};
 
-    return ( 
-        <main>
-            <Banner />
-            <Federal />
-            <Intern />
-            <Super />
-            <Journal />
-        </main>
-    );
-}
- 
 export default training;

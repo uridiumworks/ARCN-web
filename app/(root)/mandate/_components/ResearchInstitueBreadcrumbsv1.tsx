@@ -9,52 +9,41 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
-import { WhiteHomeIcon } from "@/assets/icons";
+import { HomeIcon } from "@/assets/icons";
 
 type Props = {
   text: string;
 };
 
-export default function ResearchInstitueBreadcrumbs({ text }: Props) {
+export default function ResearchInstitueBreadcrumbsV1({ text }: Props) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink className="flex items-center gap-1">
             <div>
-              <WhiteHomeIcon />
+              <HomeIcon />
             </div>
             <Link
               href="/"
-              className="font-medium text-sm text-white hover:text-[#30A85F] transition"
+              className="font-medium text-sm text-[#A5ACBA] hover:text-[#30A85F] transition"
             >
               Home
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator className="text-white" />
+        <BreadcrumbSeparator className="text-[#2E3545]" />
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
               href="/mandate"
-              className="font-medium text-sm text-white hover:text-[#30A85F] transition"
+              className="font-medium text-sm text-[#A5ACBA] hover:text-[#30A85F] transition"
             >
               Research
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator className="text-white" />
-        <BreadcrumbItem>
-          <BreadcrumbLink>
-            <Link
-              href="/mandate/Research"
-              className="font-medium text-sm text-white hover:text-[#30A85F] transition"
-            >
-              Research Institutes
-            </Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator  className="text-white" />
+        <BreadcrumbSeparator className="text-[#2E3545]" />
         <BreadcrumbItem>
           <BreadcrumbPage className="font-medium text-sm text-[#30A85F]">
             {text}

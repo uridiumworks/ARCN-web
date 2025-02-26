@@ -57,7 +57,7 @@ export default function Leadership({
           </div>
 
           <div className="grid  grid-cols-research-institutes-details-res gap-7 sm:gap-10">
-            <div className="flex items-center  gap-3">
+            <div className="flex items-center justify-center  gap-3">
               <div>
                 <BlackLocationPointerIcon />
               </div>
@@ -67,17 +67,19 @@ export default function Leadership({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div>
                 <BlackWebUrlIcon />
               </div>
               <div className="flex flex-col gap-1.5">
                 <h4 className="font-medium text-black text-base">Website</h4>
-                <Link href="#" className="font-normal text-[#121212] text-sm">{website}</Link>
+                <Link href="#" className="font-normal text-[#121212] text-sm">
+                  {website}
+                </Link>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div>
                 <BlackEmailIcon />
               </div>
@@ -87,7 +89,7 @@ export default function Leadership({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div>
                 <BlackPhoneIcon />
               </div>

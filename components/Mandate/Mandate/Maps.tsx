@@ -53,12 +53,12 @@ const Maps = () => {
           <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around gap-8">
             {nariss?.length > 0 && (
               <>
-                {nariss?.slice(0, 10)?.map((n: any, index: number) => (
+                {nariss?.slice(0, 10)?.map((n, index) => (
                   <p
                     key={index}
                     className="text-[#2D3657] font-semibold text-sm"
                   >
-                    {n.institutionName}
+                    {n?.institutionName}
                   </p>
                 ))}
               </>
