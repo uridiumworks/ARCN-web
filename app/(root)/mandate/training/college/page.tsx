@@ -123,7 +123,7 @@ const College = () => {
                 </div>
 
                 <Link
-                  href={"/mandate/training/test/institute"}
+                  href={"/mandate/training/fcahpt/institute"}
                   className="self-start"
                 >
                   <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
@@ -156,10 +156,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -187,10 +184,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -219,10 +213,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -251,10 +242,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -283,10 +271,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -315,10 +300,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -349,10 +331,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -381,10 +360,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -414,10 +390,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -447,10 +420,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -479,10 +449,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -512,10 +479,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -545,17 +509,13 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/test/institute"}
-                  className="self-start"
-                >
+                <Link href={"/mandate/training"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
                 </Link>
               </div>
-
-            </div>   
+            </div>
           </div>
         </div>
       </CustomContainer>
