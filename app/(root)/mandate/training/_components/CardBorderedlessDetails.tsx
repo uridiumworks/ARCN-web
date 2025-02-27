@@ -5,12 +5,21 @@ import { CircleCheck } from "lucide-react";
 type Props = {
   title: string;
   points: string[];
+  titleSize?: string;
 };
 
-export default function CardBorderedlessDetails({ title, points }: Props) {
+export default function CardBorderedlessDetails({
+  title,
+  points,
+  titleSize = "",
+}: Props) {
   return (
     <div className="flex flex-col gap-6">
-      <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111]">
+      <h3
+        className={`font-medium ${
+          titleSize ? titleSize : "text-3xl sm:text-[2.625rem]"
+        } text-[#111111]`}
+      >
         {title}
       </h3>
       <div className="flex flex-col gap-4">

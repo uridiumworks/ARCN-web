@@ -31,18 +31,61 @@ export default function Leadership({
             <h3 className="font-medium text-[2rem] text-center sm:text-[2.625rem] text-[#111111]">
               Leadership
             </h3>
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-start gap-6">
               <div className="flex items-center gap-3">
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
                 <p className="text-sm sm:text-lg font-normal">
                   {" "}
-                  <span className="font-bold">Provost/CEO:</span> Dr. Elizabeth Oluwakemi Augustus
+                  <span className="font-bold">Provost:</span> Dr. Muhammad
+                  Yusha&apos;u Gwaram
                 </p>
               </div>
 
-              
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Deputy Provost:</span> Dr. Bashir
+                  Barau
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Acting Registrar:</span> Mal.
+                  Idris Sani
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Acting Bursar:</span> Mr.
+                  Oghenemaro Sunday Usikpedo
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">College Librarian:</span> Dr.
+                  Farida Sani Stores
+                </p>
+              </div>
             </div>
           </div>
 
