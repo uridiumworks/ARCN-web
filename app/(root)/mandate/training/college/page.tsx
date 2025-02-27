@@ -131,9 +131,7 @@ const College = () => {
                   </div>
                 </Link>
               </div>
-            </div>
 
-            <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
@@ -230,9 +228,7 @@ const College = () => {
                   </div>
                 </Link>
               </div>
-            </div>
 
-            <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
@@ -328,9 +324,7 @@ const College = () => {
                   </div>
                 </Link>
               </div>
-            </div>
 
-            <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
@@ -429,9 +423,7 @@ const College = () => {
                   </div>
                 </Link>
               </div>
-            </div>
 
-            <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
@@ -529,10 +521,7 @@ const College = () => {
                   </div>
                 </Link>
               </div>
-            </div>
 
-            <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="hidden md:block"></div>
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
@@ -565,8 +554,8 @@ const College = () => {
                   </div>
                 </Link>
               </div>
-              <div className="hidden md:block"></div>
-            </div>
+
+            </div>   
           </div>
         </div>
       </CustomContainer>

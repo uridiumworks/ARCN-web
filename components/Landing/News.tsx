@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import CustomContainer from "../CustomContainer";
+import { useClientNewsLettersData } from "@/hooks/NewsLetters.hooks";
 
 // const NewsOld = () => {
 //   return (
@@ -118,6 +120,8 @@ const data = [
 ];
 
 const News = () => {
+  // const { newsLetters } = useClientNewsLettersData();
+  // console.log(newsLetters);
   return (
     <section className="py-16 md:py-24 bg-[#FBFAFA]">
       <CustomContainer>
@@ -127,10 +131,7 @@ const News = () => {
           </h2>
           <div className="grid grid-cols-home-publication-res gap-6">
             {data.map((el, i) => (
-              <div
-                key={i}
-                className="flex flex-col gap-3.5"
-              >
+              <div key={i} className="flex flex-col gap-3.5">
                 <h3 className="font-medium text-[#131517] text-xl sm:text-2xl ">
                   {el.type}
                 </h3>

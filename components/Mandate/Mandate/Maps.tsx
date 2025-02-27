@@ -50,7 +50,7 @@ const Maps = () => {
     <section className="py-16 md:py-24 bg-[#F6F6F6]">
       <CustomContainer>
         <div className="flex flex-col gap-8">
-          <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around gap-8">
+          <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around  gap-8">
             {nariss?.length > 0 && (
               <>
                 {nariss?.slice(0, 10)?.map((n, index) => (
@@ -67,7 +67,7 @@ const Maps = () => {
           {/* button */}
           <Link
             href="/mandate/Research"
-            className="self-center bg-[#30A85F] text-white rounded-sm border border-[#E6E6E6] font-sans text-sm px-8 py-4"
+            className="self-start sm:self-center bg-[#30A85F] text-white rounded-sm border border-[#E6E6E6] font-sans text-sm px-8 py-4"
           >
             Detailed view
           </Link>

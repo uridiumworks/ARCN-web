@@ -20,7 +20,8 @@ const data = [
 ];
 
 const Super = () => {
-  // const { loading, supervisionReports, error } = useClientSupervisionReportsData();
+  const { loading, supervisionReports, error } = useClientSupervisionReportsData();
+  console.log(supervisionReports)
 
   return (
     <section className="py-16 md:py-24">

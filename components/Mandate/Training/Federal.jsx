@@ -45,7 +45,7 @@ const Federal = () => {
             {/* button */}
             <Link
               href="/mandate/training/college"
-              className="self-center bg-[#30A85F] text-white rounded-sm border border-[#E6E6E6] font-sans text-sm px-8 py-4"
+              className="sm:self-center self-start bg-[#30A85F] text-white rounded-sm border border-[#E6E6E6] font-sans text-sm px-8 py-4"
             >
               Detailed view
             </Link>

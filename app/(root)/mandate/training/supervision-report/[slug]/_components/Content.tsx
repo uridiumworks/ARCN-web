@@ -13,13 +13,13 @@ export default function Content() {
           <CustomBreadcrumbs text="Report" />
 
           <div className="flex flex-col gap-10">
-            <div className="shrink-0 rounded-3xl overflow-hidden w-full h-[28rem] md:h-[35rem]">
+            <div className="shrink-0 rounded-3xl overflow-hidden w-full h-auto">
               <Image
                 className="w-full h-auto object-cover"
                 src="/Images/Mandatepage/coordination-report-holder-img.png"
                 alt=""
                 height={560}
-                width={700}
+                width={750}
               />
             </div>
 

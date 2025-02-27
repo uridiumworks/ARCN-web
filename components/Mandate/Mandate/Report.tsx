@@ -102,6 +102,10 @@ const data = [
 ];
 
 const Report = () => {
+
+  const { loading, reports, error } = useClientReportsData();
+  console.log(reports)
+
   return (
     <section className="bg-white py-16 md:py-24">
       <CustomContainer>
@@ -119,9 +123,9 @@ const Report = () => {
           </div>
 
           <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
-            {data.map((el, i) => (
+            {reports?.length > 0 && reports?.slice(0,4)?.map((el, i) => (
               <div
-                key={i}
+                key={el?.reportsId}
                 className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-5"
               >
                 <div className="flex flex-col gap-6 items-start order-2 lg:order-1">
@@ -130,15 +134,15 @@ const Report = () => {
                       {el.title}
                     </h3>
                     <p className="font-normal text-[#464646] text-sm">
-                      {el.description}
+                      {el.description || "---"}
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    <button className="bg-transparent border border-[#E6E6E6] font-sans font-medium text-sm text-[#07A460] rounded-sm px-7 py-2.5">
+                    {/* <button className="bg-transparent border border-[#E6E6E6] font-sans font-medium text-sm text-[#07A460] rounded-sm px-7 py-2.5">
                       Download
-                    </button>
+                    </button> */}
                     <Link
-                      href={`/mandate/Research/coordination-report/${el.slug}/report`}
+                      href={`/mandate/Research/coordination-report/${el.reportsId}/report`}
                       className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5"
                     >
                       View
