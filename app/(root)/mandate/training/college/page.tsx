@@ -11,7 +11,11 @@ const College = () => {
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="flex flex-col gap-6">
-            <ResearchInstitueBreadcrumbsV1 text="Federal College of Agricultures" />
+            <ResearchInstitueBreadcrumbsV1
+              text="Federal College of Agricultures"
+              secondaryText="Training"
+              secondaryUrl="/mandate/training"
+            />
             <div className="flex flex-col gap-8">
               <h2 className="font-bold text-4xl">
                 Federal College of Agricultures

@@ -4,15 +4,14 @@ import Services from "@/components/Mandate/Initiatives/Services";
 import Journal from "@/components/Shared/Journal";
 
 const Initiatives = () => {
+  return (
+    <section>
+      <Banner />
+      <AROCs />
+      <Services />
+      <Journal />
+    </section>
+  );
+};
 
-    return ( 
-        <main>
-            <Banner />
-            <AROCs />
-            <Services/>
-            <Journal />
-        </main>
-    );
-}
- 
 export default Initiatives;

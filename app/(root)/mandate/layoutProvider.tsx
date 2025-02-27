@@ -15,14 +15,14 @@ const Tabs = [
     name: "Training",
     status: "active",
     url: "/mandate/training",
-    subUrl: "",
+    subUrl: "/mandate/training/college",
   },
-  {
-    name: "Extension",
-    status: "active",
-    url: "/mandate/initiatives",
-    subUrl: "",
-  },
+  // {
+  //   name: "Extension",
+  //   status: "active",
+  //   url: "/mandate/initiatives",
+  //   subUrl: "/mandate/initiatives/federal",
+  // },
 ];
 
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
@@ -30,7 +30,8 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
 
   if (
     currentRoute.endsWith("institute") ||
-    currentRoute.includes("coordination-report")
+    currentRoute.includes("coordination-report") ||
+    currentRoute.includes("supervision-report")
   ) {
     return <div className="w-full min-h-screen">{children}</div>;
   } else {
@@ -38,7 +39,7 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
       <div className="w-full min-h-screen">
         <div className="border-[#B4BDBD33] dark:border-[#57585833] rounded">
           <div className="w-full">
-            <div className="w-full">
+            <div className="w-full sm:sticky sm:top-[6.775rem] sm:z-10 bg-white sm:backdrop-blur sm:supports-[backdrop-filter]:bg-background/60">
               <ul className="flex flex-col gap-3 sm:flex-row text-sm justify-center text-center py-3 sm:text-lg sm:gap-8">
                 {Tabs.map(({ name, status, url, subUrl }, index) => {
                   const activeTab = cn(

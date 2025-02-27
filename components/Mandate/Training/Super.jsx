@@ -69,7 +69,7 @@ const Super = () => {
                   </div>
                   <div className="flex gap-2">
                     <Link
-                      href={`/mandate/Research/coordination-report/${el.slug}/report`}
+                      href={`/mandate/training/supervision-report/${el.slug}/report`}
                       className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5"
                     >
                       View
@@ -89,6 +89,13 @@ const Super = () => {
               </div>
             ))}
           </div>
+
+          <Link
+            href="/mandate/training/supervision-report"
+            className="self-center py-3 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
+          >
+            VIEW ALL
+          </Link>
         </div>
       </CustomContainer>
     </section>
