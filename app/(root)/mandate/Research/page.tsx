@@ -55,7 +55,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -82,7 +82,7 @@ const Research = () => {
                     plants of economic importance.
                   </p>
                 </div>
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -175,7 +175,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -204,7 +204,10 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link
+                  href={"/mandate/Research/napri/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -233,7 +236,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -262,7 +265,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -291,7 +294,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -320,7 +323,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -348,7 +351,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -377,7 +380,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -406,7 +409,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -434,7 +437,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -463,7 +466,7 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link href={"/mandate/Research"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -492,7 +495,10 @@ const Research = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/nigeria"} className="self-start">
+                <Link
+                  href={"/mandate/Research/ncam/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>

@@ -1,6 +1,6 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedlessDetails from "./CardBorderedlessDetails";
+import CardBorderedlessDetails from "../../_components/CardBorderedlessDetails";
 
 export default function Overview() {
   return (
