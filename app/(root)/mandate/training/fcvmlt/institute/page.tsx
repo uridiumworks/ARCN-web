@@ -9,12 +9,12 @@ export default function TrainingFcvmltInstituePage() {
     <section>
       <Hero
         logo="/Images/Mandatepage/fcvmlt-logo.png"
-        accroymn="FCAHPT"
-        email="fcahptvomvet@gmail.com"
-        phoneNumber="08053153651"
-        location="National Veterinary Research Institute, Vom (NVRI), P.M.B 05, Jos-South L.G.A, Jos, Plateau, Nigeria"
-        title="Federal College of Animal Health and Production Technology, Vom (FCAHPT)"
-        website="https://www.fcahptvom.gov.ng"
+        accroymn="FCVMLT"
+        email="contact@fcvmlt.edu.ng"
+        phoneNumber="+2348114655118"
+        location="PMB 02 Vom, Jos South LGA, Jos, Plateau State, Nigeria"
+        title="Federal College of Veterinary and Medical Laboratory Technology (FCVMLT), Vom"
+        website="www.fcvmlt.edu.ng"
       />
       <Overview />
       <Values />
