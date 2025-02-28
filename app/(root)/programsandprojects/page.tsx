@@ -1,3 +1,4 @@
+import CustomContainer from "@/components/CustomContainer";
 import Banner from "@/components/ProgramsandProjects/Banner";
 import Programs from "@/components/ProgramsandProjects/Programs";
 import Projects from "@/components/ProgramsandProjects/Projects";
@@ -7,8 +8,10 @@ export default function Home() {
     return (
       <main>
         <Banner />
-        <Projects />
-        <Programs />
+        <CustomContainer>
+          <Projects />
+          <Programs />
+        </CustomContainer>
         <Journal />
       </main>
       
