@@ -9,7 +9,7 @@ export default function ResearchNapriInstitutePage() {
   return (
     <section>
       <Hero
-        logo="/Images/Mandatepage/ncam-logo.png"
+        logo="/Images/Mandatepage/napri-logo.png"
         accroymn="NAPRI"
         email="info@napri.gov.ng"
         phoneNumber="+2348062853385"

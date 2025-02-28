@@ -47,15 +47,20 @@ const Research = () => {
                     Cocoa Research Institute of Nigeria
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    The Cocoa Research Institute of Nigeria (CRIN) is
+                    Nigeria&apos;s premier research institution dedicated to the
+                    development and improvement of cocoa and other tree crops.
+                    Established in 1964, CRIN applies science and technology to
+                    increase productivity, improve quality, and add value to its
+                    mandate crops while disseminating research findings through
+                    extension services and capacity building.
                   </p>
                 </div>
 
-                <Link href={"/mandate/Research"} className="self-start">
+                <Link
+                  href={"/mandate/Research/crin/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -196,11 +201,12 @@ const Research = () => {
                     National Animal Production And Research Institute
                   </h2>
                   <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                    The National Animal Production Research Institute (NAPRI)
+                    originated from the Shika Cattle Stud farm established in
+                    1928. Initially focused on selecting indigenous breeds of
+                    bulls for breeding native herds, the institute evolved
+                    through various stages before being established as an
+                    autonomous research institute
                   </p>
                 </div>
 
@@ -286,15 +292,18 @@ const Research = () => {
                     National Veterinary Research Institute
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    The National Veterinary Research Institute (NVRI) is
+                    Nigeria&apos;s premier institute for veterinary research and
+                    vaccine production. Established in 1924 as a Veterinary
+                    Laboratory in Vom, following devastating Rinderpest
+                    outbreaks that decimated cattle populations in West Africa.
                   </p>
                 </div>
 
-                <Link href={"/mandate/Research"} className="self-start">
+                <Link
+                  href={"/mandate/Research/nvri/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -315,11 +324,12 @@ const Research = () => {
                     Nigerian Institute For Oceanography And Marine Research
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    Nigerian Stored Products Research Institute (NSPRI) was
+                    established in 1948 as West African Stored Products Research
+                    Unit (WASPRU) to assess the quality of exportable crops from
+                    Nigeria, Ghana, Sierra Leone, and Gambia to United Kingdom
+                    during the colonial era. It became Nigerian Stored Products
+                    Research Institute after the independence in 1960.
                   </p>
                 </div>
 
@@ -372,15 +382,20 @@ const Research = () => {
                     Nigerian Stored Products Research Institute
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    The Nigerian Stored Products Research Institute (NSPRI)
+                    focuses on research into bulk storage problems of export
+                    commodities and local food crops. Established in 1948 as the
+                    West African Stored Products Research Unit (WASPRU), it
+                    became NSPRI after Nigeria&apos;s independence in 1960. The
+                    institute specializes in improving and maintaining the
+                    quality of bulk commodity crops and local food crops.
                   </p>
                 </div>
 
-                <Link href={"/mandate/Research"} className="self-start">
+                <Link
+                  href={"/mandate/Research/nspri/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -401,11 +416,12 @@ const Research = () => {
                     Institute Of Agricultural Research And Training
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    Nigerian Stored Products Research Institute (NSPRI) was
+                    established in 1948 as West African Stored Products Research
+                    Unit (WASPRU) to assess the quality of exportable crops from
+                    Nigeria, Ghana, Sierra Leone, and Gambia to United Kingdom
+                    during the colonial era. It became Nigerian Stored Products
+                    Research Institute after the independence in 1960.
                   </p>
                 </div>
 
@@ -458,11 +474,11 @@ const Research = () => {
                     Lake Chad Research Institute
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    The National Horticultural Research Institute (Headquarter);
+                    located in Ibadan was established in 1975 with the
+                    assistance of United Nations Development Programme in
+                    conjunction with food and Agricultural Organization as
+                    fruits and vegetables research and demonstration centre.
                   </p>
                 </div>
 
@@ -487,11 +503,13 @@ const Research = () => {
                     National Centre For Agricultural Mechanization
                   </h2>
                   <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                    The National Centre for Agricultural Mechanization (NCAM) is
+                    Nigeria&apos;s premier institution dedicated to accelerating
+                    agricultural mechanization in the country. Established
+                    through Decree No. 35 of 1990 and later amended in the
+                    Agricultural Research Council of Nigeria (ARCN) 2021 Act,
+                    NCAM serves as a hub for developing and promoting
+                    agricultural mechanization
                   </p>
                 </div>
 

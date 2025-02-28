@@ -38,33 +38,45 @@ export default function Leadership({
                 </div>{" "}
                 <p className="text-sm sm:text-lg font-normal">
                   {" "}
-                  <span className="font-bold">Executive Director:</span>{" "}
-                  Professor Hassan Mohammed Rabiu
+                  <span className="font-bold">Provost/CEO:</span> Dr. Chukwu
+                  Otuh Okoh Chukwu, PhD, FAMLSN
                 </p>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-center gap-3">
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <h4 className="text-sm sm:text-lg font-bold">
-                    Key Personnel:
-                  </h4>
-                  <p className="text-sm sm:text-lg font-normal">
-                    . Dr. Matha O. Otu (Deputy Director Research)
-                  </p>
-                  <p className="text-sm sm:text-lg font-normal">
-                    . Dr. Yunusa M. Ishiaku (Assistant Director, Extension and
-                    Linkages)
-                  </p>
-                  <p className="text-sm sm:text-lg font-normal">
-                    . Alh. Gambo Ibrahim Muktar (Finance Officer)
-                  </p>
-                  <p className="text-sm sm:text-lg font-normal">
-                    . Mal. Lawan Saminu (Institute Secretary)
-                  </p>
-                </div>
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">
+                    Deputy Provost (Academics):
+                  </span>{" "}
+                  Oluwatayo Beatrice Olatundun
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">
+                    Deputy Provost (Planning):
+                  </span>{" "}
+                  Okeke Osemeka Ikenna
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Registrar:</span> Umar Baba-Aliyu
+                </p>
               </div>
             </div>
           </div>
@@ -86,7 +98,10 @@ export default function Leadership({
               </div>
               <div className="flex flex-col gap-1.5">
                 <h4 className="font-medium text-black text-base">Website</h4>
-                <Link  href={website.startsWith('www') ? website : `www.${website}`} className="font-normal text-[#121212] text-sm">
+                <Link
+                  href={website.startsWith("www") ? website : `www.${website}`}
+                  className="font-normal text-[#121212] text-sm"
+                >
                   {website}
                 </Link>
               </div>

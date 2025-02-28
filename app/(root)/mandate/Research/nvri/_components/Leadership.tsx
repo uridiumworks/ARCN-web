@@ -31,18 +31,77 @@ export default function Leadership({
             <h3 className="font-medium text-[2rem] text-center sm:text-[2.625rem] text-[#111111]">
               Leadership
             </h3>
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-start gap-6">
               <div className="flex items-center gap-3">
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
                 <p className="text-sm sm:text-lg font-normal">
                   {" "}
-                  <span className="font-bold">Provost/CEO:</span> Dr. Elizabeth Oluwakemi Augustus
+                  <span className="font-bold">
+                    Director/Chief Executive:
+                  </span>{" "}
+                  Dr. Maryam Muhammad
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Director Production:</span> Dr.
+                  Nicholas Douglas Nwankpa
                 </p>
               </div>
 
-              
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Director Research:</span> Dr. Sati
+                  Ngulunku
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">Director, Planning:</span> Mosun
+                  E. Ogedengbe
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">
+                    Director Quality Assurance:
+                  </span>{" "}
+                  Dr. Ogo Isaac Ndudim
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div>
+                  <CircleCheck color="#30A85F" size={20} />
+                </div>{" "}
+                <p className="text-sm sm:text-lg font-normal">
+                  {" "}
+                  <span className="font-bold">
+                    Director Diagnostic and Extension:
+                  </span>{" "}
+                  Dr. Bashir Bolajoko
+                </p>
+              </div>
             </div>
           </div>
 
@@ -63,7 +122,10 @@ export default function Leadership({
               </div>
               <div className="flex flex-col gap-1.5">
                 <h4 className="font-medium text-black text-base">Website</h4>
-                <Link href="#" className="font-normal text-[#121212] text-sm">
+                <Link
+                  href={website.startsWith("www") ? website : `www.${website}`}
+                  className="font-normal text-[#121212] text-sm"
+                >
                   {website}
                 </Link>
               </div>
