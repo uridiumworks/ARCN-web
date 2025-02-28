@@ -194,9 +194,9 @@ const TabOne = () => {
           </div>
         ))}
       </div>
-      <button className="self-center text-center font-sans font-medium text-base rounded-lg px-8 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]">
+      <Link href="/mandate/Research" className="self-center text-center font-sans font-medium text-base rounded-lg px-8 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]">
         See All Reseach Institutes
-      </button>
+      </Link>
     </div>
   );
 };
@@ -242,9 +242,9 @@ const TabTwo = () => {
           </div>
         ))}
       </div>
-      <button className="self-center text-center font-sans font-medium text-base rounded-lg px-10 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]">
+      <Link href="/mandate/training/college" className="self-center text-center font-sans font-medium text-base rounded-lg px-10 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]">
         See All Reseach Institutes
-      </button>
+      </Link>
     </div>
   );
 };
