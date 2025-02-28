@@ -1,59 +1,105 @@
+"use client";
 import Image from "next/image";
-
-
+import { useClientSupervisionReportsData } from "@/hooks/SupervisionReports.hooks";
+import CustomContainer from "@/components/CustomContainer";
+import Link from "next/link";
+import { GrayLocationPointerIcon } from "@/assets/icons";
+const data = [
+  {
+    title: "ARCN Supervision of Training Report 2023",
+    description: "Our land. Our future. We are #GenerationRestorations.",
+    location: "Live-streamed event via Zoom",
+    slug: "arcn-research-coordination-report",
+    dateString: "13th August 2023",
+  },
+  {
+    title: "ARCN Supervision of Training Report 2023",
+    description: "Our land. Our future. We are #GenerationRestorations.",
+    location: "Live-streamed event via Zoom",
+    slug: "arcn-research-coordination-report-2",
+    dateString: "13th August 2023",
+  },
+];
 
 const Services = () => {
+  // const { loading, supervisionReports, error } = useClientSupervisionReportsData();
 
-    return ( 
-        <main>
-            <div className="py-10">
-                <div className="text-center place-content-center py-9 space-y-4 font-montserrat">
-                    <h1 className="font-bold text-[40px]">Extension Services Initiatives</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id <br />ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi. <br />Magna nulla consequat.</p>
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-6 justify-evenly ">
-
-                    <div className='border p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
-                        <div className="">
-                            <Image src="/Images/Homepage/World.png" alt="overlay" width={180} height={201} className="rounded-[13.4px]" />
-                        </div>
-                        <div className='space-y-4'>
-                        <p className="font-medium text-xl">Initiative A</p>
-                        <p className="font-normal text-base text-[#464646]">Our land. Our future. We are #GenerationRestoration.</p>
-                        <div className='flex gap-2 items-center text-[#1315175C]'>  
-                            <p className="font-normal text-[20px]">13th August 2023</p>
-                        </div>
-                        <div className="flex gap-3">
-                            <button type="button" className="border rounded-[4px] text-[#FFFFFF] bg-[#30A85F] space-y-6 w-full lg:w-[119px] h-[40px]">
-                            View
-                            </button>
-                        </div>
-                        </div>
-                    </div>  
-
-                    <div className='border p-4 rounded-xl flex flex-col-reverse lg:flex-row-reverse gap-2'>
-                        <div>
-                            <Image src="/Images/Homepage/World.png" alt="overlay" width={180} height={201} className="rounded-[13.4px]"  />
-                        </div>
-                        <div className='space-y-4'>
-                            <p className="font-medium text-xl">Initiative A</p>
-                            <p className="font-normal text-[16px] text-[#464646]">Our land. Our future. We are #GenerationRestoration.</p>
-                            <div className='flex gap-2 items-center text-[#1315175C]'>  
-                                <p className="font-normal text-[20px]">13th August 2023</p>
-                            </div>
-
-                            <div className="flex gap-3">
-                                <button type="button" className="border rounded-[4px] text-[#FFFFFF] bg-[#30A85F] space-y-6 w-full lg:w-[119px] h-[40px]">
-                                View
-                                </button>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
+  return (
+    <section className="py-16 md:py-24">
+      <CustomContainer>
+        <div className="flex flex-col gap-10 sm:gap-14">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col text-center gap-8">
+              <h2 className="font-bold text-4xl">Supervision Report</h2>
+              <p className="font-medium text-base">
+                {/* <span className="text-[15.88px] font-medium text-[#2D7636]">
+                    ARCN Research Institutes
+                  </span>{" "} */}
+                Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper
+                quis etiam <br />
+                euismod quisque montes arcu risus. Magnis posuere tincidunt elit
+                ultrices tortor. Sit
+                <br />
+                semper cras sed duis tortor tempor amet gravida. Rhoncus quis
+                nisl etiam tortor.
+              </p>
             </div>
-        </main>
-    );
-}
- 
+          </div>
+
+          <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
+            {data.map((el, i) => (
+              <div
+                key={i}
+                className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-5"
+              >
+                <div className="flex flex-col gap-6 items-start order-2 lg:order-1">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-xl text-[#131517] font-medium">
+                      {el.title}
+                    </h3>
+                    <p className="font-normal text-[#464646] text-sm">
+                      {el.description}
+                    </p>
+                    <div className="flex gap-3 items-center">
+                      
+                      <p className="font-normal text-[#1315175C] text-[0.9375rem]">
+                        {el.dateString}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Link
+                      href={`/mandate/initiatives`}
+                      className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5"
+                    >
+                      View
+                    </Link>
+                  </div>
+                </div>
+                <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                  <Image
+                    src="/Images/Homepage/event-imgholder.png"
+                    alt="event-imgholder"
+                    className="object-cover"
+                    width={150}
+                    height={150}
+                    priority
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* <Link
+            href="/mandate/training/supervision-report"
+            className="self-center py-3 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
+          >
+            VIEW ALL
+          </Link> */}
+        </div>
+      </CustomContainer>
+    </section>
+  );
+};
+
 export default Services;

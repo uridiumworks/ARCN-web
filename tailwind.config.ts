@@ -1,12 +1,12 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx,js,jsx}',
-    './components/**/*.{ts,tsx,js,jsx}',
-    './app/**/*.{ts,tsx,js,jsx}',
-    './src/**/*.{ts,tsx,js,jsx}',
+    "./pages/**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx,js,jsx}",
+    "./app/**/*.{ts,tsx,js,jsx}",
+    "./src/**/*.{ts,tsx,js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -19,7 +19,14 @@ const config = {
     },
     extend: {
       gridTemplateColumns: {
-        "engagement-res": "repeat(auto-fit,minmax(25rem,1fr))",
+        "engagement-res": "repeat(auto-fit,minmax(18rem,1fr))",
+        "about-mandate-res": "repeat(auto-fit,minmax(30rem,1fr))",
+        "about-core-res": "repeat(auto-fit,minmax(28rem,1fr))",
+        "home-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
+        "home-publication-res": "repeat(auto-fit,minmax(20rem,1fr))",
+        "footer-res": "repeat(auto-fit,minmax(10rem,1fr))",
+        "mandate-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
+        "research-institutes-details-res": "repeat(auto-fit,minmax(14rem,1fr))",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -70,17 +77,22 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        scroll: "scroll 30s linear infinite",
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
+        sans: ["var(--font-montserrat)"],
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

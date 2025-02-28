@@ -1,109 +1,187 @@
-"use client"
+"use client";
 
-import { mainNav, topNav } from '@/constants'
-import Image from 'next/image'
-import React, { useState } from 'react'
-import { Input } from './ui/input'
-import { Search, Menu } from 'lucide-react'
-import { Button } from './ui/button'
-import { useRouter } from 'next/navigation'
+import { mainNav, topNav } from "@/constants";
+import Image from "next/image";
+import React, { useState } from "react";
+import { Input } from "./ui/input";
+import { Search, Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
+import { usePathname, useRouter } from "next/navigation";
 
-type Props = {}
+type Props = {};
 
 const Navbar = (props: Props) => {
-    const router = useRouter();
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
+  const pathname = usePathname();
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const isActiveFunc = (arg: string) => {
+    switch (arg) {
+      case "Governance":
+        return pathname.toLowerCase().includes("governance");
+
+      case "Home":
+        return pathname.toLowerCase() === "/";
+
+      case "About Us":
+        return pathname.toLowerCase().includes("about");
+      case "mandate":
+        return pathname.toLowerCase().includes("mandate");
+      case "News & Events":
+        return pathname.toLowerCase().includes("newsandevents");
+
+      case "Programs & Projects":
+        return pathname.toLowerCase().includes("programsandprojects");
+
+      case "Impacts":
+        return pathname.toLowerCase().includes("impacts");
+      case "Contact":
+        return pathname.toLowerCase().includes("contact");
+      case "Careers":
+        return pathname.toLowerCase().includes("career");
+      case "Publications":
+        return pathname.toLowerCase().includes("publications");
+
+      default:
+        return false;
     }
+  };
 
-    const routePathLinks = (arg: any) => {
-        switch (arg) {
-            case "Governance":
-                router.push("/governance")
-                break;
+  console.log(isActiveFunc("About Us"), "me");
 
-            case "Home":
-                router.push("/")
-                break;
-            case "About Us":
-                router.push("/about")
-                break;
-            case "mandate":
-                router.push("/mandate")
-                break;
-            case "News & Events":
-                router.push("/newsandevents")
-                break;
-            case "Programs & Projects":
-                router.push("/programsandprojects")
-                break;
-            case "Impacts":
-                router.push("/impacts")
-                break;
-            case "Contact":
-                router.push("/contact")
-                break;
-            case "Careers":
-                router.push("/career")
-                break;
-            case "Publications":
-                router.push("/publications")
-                break;
-            default:
-                break;
-        }
+  const routePathLinks = (arg: any) => {
+    switch (arg) {
+      case "Governance":
+        router.push("/governance");
+        break;
+
+      case "Home":
+        router.push("/");
+        break;
+      case "About Us":
+        router.push("/about/history");
+        break;
+      case "mandate":
+        router.push("/mandate");
+        break;
+      case "News & Events":
+        router.push("/newsandevents");
+        break;
+      case "Programs & Projects":
+        router.push("/programsandprojects");
+        break;
+      case "Impacts":
+        router.push("/impacts");
+        break;
+      case "Contact":
+        router.push("/contact");
+        break;
+      case "Careers":
+        router.push("/career");
+        break;
+      case "Publications":
+        router.push("/publications");
+        break;
+      default:
+        break;
     }
-    return (
-        <div className='flex items-center justify-between px-4 lg:px-20 py-3 sticky z-10 top-0 bg-[#000]'>
-            <div>
-                <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
-            </div>
-            <div className='hidden lg:block space-y-3 pb-3 text-center'>
-                <div className='flex justify-center items-center gap-4 text-[#EFEFEF]'>
-                    {topNav.map((t, index) => (
-                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-normal text-xs text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
-                    ))}
-                </div>
-                <div className='flex justify-center mt-2 gap-6 text-white'>
-                    {mainNav.map((t, index) => (
-                        <p onClick={() => routePathLinks(t)} className='font[Montserrat] font-extrabold text-sm uppercase text-[#EFEFEF] cursor-pointer' key={index}>{t}</p>
-                    ))}
-                </div>
-            </div>
-            <div className='hidden lg:flex items-center justify-between rounded-md px-3 bg-[#3C3C3C]'>
-                <Input type='search' placeholder='Search' className='outline-none bg-transparent text-[#EFEFEF] text-[12px] focus-visible:outline-none border-[#3C3C3C]' />
-                <Search color='#2E7636' size="16px" />
-            </div>
-            <div className='md:hidden flex items-center'>
-                <Button onClick={toggleMobileMenu} variant="ghost" className="p-2">
-                    <Menu size="24px" color='#EFEFEF' />
-                </Button>
-            </div>
-
-            {/* Mobile menu */}
-            {isMobileMenuOpen && (
-                <div className='absolute top-0 left-0 w-full h-screen bg-[#000] z-50 flex flex-col items-center p-4'>
-                    <div className='flex justify-between w-full'>
-                        <Image src="/Images/logo.png" width={150} height={71} alt="logo" />
-                        <Button onClick={toggleMobileMenu} variant="ghost" className="p-2">
-                            <Menu size="24px" color='#EFEFEF' />
-                        </Button>
-                    </div>
-                    <div className='mt-8 flex flex-col items-center text-white'>
-                        {mainNav.map((t, index) => (
-                            <p className='font[Montserrat] font-[800] text-[14px] uppercase text-[#EFEFEF] mb-4' key={index}>{t}</p>
-                        ))}
-                    </div>
-                    <div className='flex mt-6 rounded-md text-[#EFEFEF] w-full bg-[#3C3C3C] p-3'>
-                        <Input type='search' placeholder='Search' className='outline-none bg-transparent text-[#EFEFEF] text-[12px] focus-visible:outline-none border-[#3C3C3C]' />
-                        <Search color='#2E7636' size="16px" />
-                    </div>
-                </div>
-            )}
+  };
+  return (
+    <div className="px-8 py-4  sticky z-20 top-0 bg-[#121212]">
+      <div className="w-full sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
+        <div>
+          <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
         </div>
-    )
-}
+        <div className="hidden lg:flex lg:flex-col lg:gap-6 text-center">
+          <div className="flex justify-center items-center gap-4 text-white">
+            {topNav.map((t, index) => (
+              <p
+                onClick={() => routePathLinks(t)}
+                className={`uppercase font-normal text-[0.75rem] ${
+                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
+                }  cursor-pointer`}
+                key={index}
+              >
+                {t}
+              </p>
+            ))}
+          </div>
+          <div className="flex justify-center mt-2 gap-6 text-white">
+            {mainNav.map((t, index) => (
+              <p
+                onClick={() => routePathLinks(t)}
+                className={`font-extrabold text-sm uppercase ${
+                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
+                }  cursor-pointer`}
+                key={index}
+              >
+                {t}
+              </p>
+            ))}
+          </div>
+        </div>
+        <div className="hidden lg:flex items-center justify-between rounded-md px-4 bg-[#FFFFFF0F]  border-[#3C3C3C] py-1   ">
+          <Input
+            type="search"
+            placeholder="Search"
+            className="outline-none bg-transparent text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-none placeholder:text-[#EFEFEF]"
+          />
+          <Search color="#2E7636" size="16px" />
+        </div>
+        <div className="lg:hidden flex items-center">
+          <Menu size="24px" color="#EFEFEF" onClick={toggleMobileMenu} />
+        </div>
+      </div>
 
-export default Navbar
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-0 left-0 w-full h-screen bg-[#121212] z-50 flex flex-col gap-7 items-center p-4">
+          <div className="flex  items-center justify-between w-full">
+            <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
+
+            <X
+              size="24px"
+              color="#EFEFEF"
+              onClick={toggleMobileMenu}
+              className="cursor-pointer"
+            />
+          </div>
+
+          <div className="flex flex-col gap-4 px-6 self-stretch">
+            <div className=" flex flex-col gap-6 items-center text-white">
+              {mainNav.map((t, index) => (
+                <p
+                  className={`font-extrabold text-sm uppercase  ${
+                    isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
+                  }`}
+                  key={index}
+                  onClick={() => {
+                    routePathLinks(t);
+                    toggleMobileMenu();
+                  }}
+                >
+                  {t}
+                </p>
+              ))}
+            </div>
+            <div className="flex items-center mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
+              <Input
+                type="search"
+                placeholder="Search"
+                className="outline-none bg-transparent text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-[#3C3C3C]"
+              />
+              <Search color="#2E7636" size="24px" />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Navbar;

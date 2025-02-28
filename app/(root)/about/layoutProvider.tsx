@@ -13,7 +13,7 @@ const Tabs = [
   {
     name: "Mission & Vision",
     status: "active",
-    url: "/about",
+    url: "/about/mission",
   },
   {
     name: "Management",
@@ -31,17 +31,17 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   const currentRoute = usePathname();
 
   return (
-    <div className="w-full min-h-screen sticky z-0 top-0">
+    <div className="w-full min-h-screen">
       <div className="border-[#B4BDBD33] dark:border-[#57585833] rounded">
-        <div className="w-full">
-          <div className="w-full whitespace-nowrap">
-            <ul className="flex text-sm justify-center text-center lg:text-lg gap-4 border-b -mb-px">
+        <div className="w-full relative">
+          <div className="w-full sm:sticky sm:top-[6.775rem] sm:z-10 bg-white sm:backdrop-blur sm:supports-[backdrop-filter]:bg-background/60">
+            <ul className="flex flex-col gap-3 sm:flex-row text-sm justify-center text-center py-3 sm:text-lg sm:gap-8">
               {Tabs.map(({ name, status, url }, index) => {
                 const activeTab = cn(
                   currentRoute === url
-                    ? "font-bold font-Satoshi_Bold border-b-2"
-                    : "border-b-0 text-[#667085] font-Satoshi_Medium",
-                  "inline-block py-4 px-3.5 text-sm"
+                    ? "text-[#30A85F] bg-[#F2F2F2] rounded-sm"
+                    : " text-[#444444]",
+                  "inline-block py-4 px-3.5 text-sm font-medium transition hover:text-[#30A85F]"
                 );
 
                 return (

@@ -10,7 +10,7 @@ const Partners = () => {
             </div>
             <div className='flex flex-col lg:flex-row'>
                 <div>
-                    <Image src="/images/Homepage/farmer.png" width={436} height={427} alt="farmer" />
+                    <Image src="/Images/Homepage/farmer.png" width={436} height={427} alt="farmer" />
                 </div>
                 <div>
                     <p className='font-normal text-[17px]'>We are committed to working with equally ambitious

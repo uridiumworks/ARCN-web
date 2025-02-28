@@ -1,39 +1,53 @@
 import { LuChevronRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
+import CustomContainer from "../CustomContainer";
 
 const Partners = () => {
-    return (
-        <main className='mx-auto space-y-10 py-10 lg:py-20 px-4 lg:px-8'>
-            <div className='text-center'>
-                <h1 className='font-semibold text-2xl lg:text-4xl xl:text-5xl'>
-                    Partner with us to digitise
-                    <br /> agriculture in Africa
-                </h1>
+  return (
+    <section className="py-16 md:py-24">
+      <CustomContainer>
+        <div className="flex flex-col gap-12">
+          <div className="text-center">
+            <h2 className="font-semibold text-3xl sm:text-5xl text-[#1B222B]">
+            Partner with us to advance agricultural
+              <br /> research training and extension in Nigeria
+            </h2>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-10 justify-center items-center lg:gap-20">
+            <div className="flex-shrink-0">
+              <Image
+                src="/Images/Homepage/farmer.png"
+                width={536}
+                height={700}
+                alt="farmer"
+                className="w-full max-w-md lg:max-w-lg"
+              />
             </div>
-            <div className='flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center lg:gap-20+'>
-                <div className='flex-shrink-0'>
-                    <Image src="/Images/Homepage/farmer.png" width={436} height={427} alt="farmer" className='w-full max-w-md lg:max-w-lg' />
-                </div>
-                <div className='text-center lg:text-left'>
-                    <p className='font-normal text-sm md:text-base lg:text-lg xl:text-xl'>
-                        We are committed to working with equally ambitious
-                        <br />
-                        Research Institutes and stakeholders to bridge the sustainability gap in
-                        Africa, ensuring smallholder farmers have everything they need to
-                        <br />
-                        succeed.
-                    </p>
-                    <Link href={"/contact"}>
-                        <div className='flex items-center justify-center lg:justify-start text-[#669933] font-medium text-base lg:text-lg xl:text-xl mt-6'>
-                            <p>Get in touch</p>
-                            <LuChevronRight className='ml-2' />
-                        </div>
-                    </Link>
-                </div>
+            <div className="flex flex-col items-start gap-4">
+              <p className="text-[#1B222B] font-normal text-base">
+                We are committed to working with equally ambitious
+                <br />
+                Research Institutes and stakeholders to bridge the
+                sustainability gap in Africa, ensuring smallholder farmers have
+                everything they need to
+                <br />
+                succeed.
+              </p>
+              <Link href={"/contact"}>
+              <div className="flex items-center cursor-pointer">
+                <p className="text-[#669933] font-medium text-base">
+                Get in touch
+                </p>
+                <LuChevronRight color="#669933" />
+              </div>
+              </Link>
             </div>
-        </main>
-    )
-}
+          </div>
+        </div>
+      </CustomContainer>
+    </section>
+  );
+};
 
 export default Partners;

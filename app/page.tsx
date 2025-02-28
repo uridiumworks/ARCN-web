@@ -9,6 +9,7 @@ import Banner from "@/components/Landing/Banner";
 import MainLayout from "@/components/Shared/MainLayout";
 import Partners from "@/components/Shared/Parther";
 import Journal from "@/components/Shared/Journal";
+import OurPartners from "@/components/Landing/OurPartners";
 
 export default function Home() {
   return (
@@ -21,11 +22,10 @@ export default function Home() {
         <Research />
         <News />
         <Events />
-        <Review />
+        <OurPartners />
         <Partners />
         <Journal />
       </div>
     </MainLayout>
-    
   );
 }

@@ -1,60 +1,123 @@
 "use client";
+import CustomContainer from "@/components/CustomContainer";
 import { useClientEntrepreneurshipsData } from "@/hooks/Entrepreneurships.hooks";
 import Image from "next/image";
-import { LuMapPin } from "react-icons/lu";
-import { LuClock5 } from "react-icons/lu";
+import { MapPin, Clock } from "lucide-react";
+import moment from "moment";
 
+function formatDate(eventStartDate, eventEndDate) {
+  // Parse the dates using moment
+  const startDate = moment(eventStartDate);
+  const endDate = moment(eventEndDate);
 
+  // Format to your desired output style
+  // 'Do' gives day with ordinal (12th), 'MMMM' gives full month name, 'YYYY' gives 4-digit year
+  const formattedStartDay = startDate.format("Do");
+  const formattedEndDay = endDate.format("Do");
+  const formattedMonth = endDate.format("MMMM");
+  const formattedYear = endDate.format("YYYY");
+
+  // Combine into final string
+  return `${formattedStartDay} - ${formattedEndDay} ${formattedMonth}, ${formattedYear}`;
+}
+
+const data = [
+  {
+    title: "E-Learning Programs",
+    description: "Our land. Our future. We are #GenerationRestoration.",
+    location: "Live-streamed event via Zoom",
+    dateString: "12th - 16th July, 2024",
+  },
+  {
+    title: "E-Learning Programs",
+    description: "Our land. Our future. We are #GenerationRestoration.",
+    location: "Live-streamed event via Zoom",
+    dateString: "12th - 16th July, 2024",
+  },
+];
 
 const Intern = () => {
-    const { loading, entrepreneurships, error } = useClientEntrepreneurshipsData();
+  const { loading, entrepreneurships, error } =
+    useClientEntrepreneurshipsData();
 
-    return (
-        <main>
-            <div className="space-y-6 font-montserrat">
-                <div className="text-center space-y-6 py-10">
-                    <h1 className="font-bold text-[40px]">Enterpreneurship</h1>
-                    <p className="font-normal text-xl">Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id <br />ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi. <br />Magna nulla consequat.</p>
+  console.log(entrepreneurships);
+
+  return (
+    <section className="flex flex-col gap-10 py-14 md:py-20">
+      <CustomContainer>
+        <div className="flex flex-col gap-4 text-center">
+          <h2 className="font-bold text-3xl text-[#0A1425] sm:text-4xl">
+            Enterpreneurship
+          </h2>
+          <p className="font-normal text-base text-[#64728F] sm:text-xl">
+            Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh.
+            Id <br />
+            ullamcorper nec leo porta. Enim nunc lacinia dui vehicula
+            pellentesque morbi. <br />
+            Magna nulla consequat.
+          </p>
+        </div>
+      </CustomContainer>
+
+      <CustomContainer>
+        <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
+          {entrepreneurships?.length > 0 && (
+            <>
+              {entrepreneurships?.slice(0, 4)?.map((el, index) => (
+                <div
+                  key={el?.entrepreneurshipId}
+                  className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-5"
+                >
+                  <div className="flex flex-col gap-3 items-start order-2 lg:order-1">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-xl text-[#131517] font-medium">
+                        {el?.subject}
+                      </h3>
+                      <p className="font-normal text-[#464646] text-sm">
+                        {el.description || "--"}
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <div className="flex gap-2 items-center">
+                        <div>
+                          <MapPin size={20} color="#1315175C" />
+                        </div>
+                        <p className="text-[0.9375rem] font-normal text-[#1315175C]">
+                          {el?.venue}
+                        </p>
+                      </div>
+
+                      {el?.eventStartDate && el?.eventEndDate && (
+                        <div className="flex gap-2 items-center">
+                          <div>
+                            <Clock size={20} color="#000000" />
+                          </div>
+
+                          <p className="text-[0.9375rem] font-normal text-[#1315175C]">
+                            {formatDate(el.eventStartDate, el.eventEndDate)}{" "}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                    <Image
+                      src="/Images/Homepage/event-imgholder.png"
+                      alt="event-imgholder"
+                      className="object-cover"
+                      width={150}
+                      height={150}
+                      priority
+                    />
+                  </div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 p-10 font-semibold text-[20px]  lg:text-[15px] ">
-                    {entrepreneurships?.length > 0 && (
-                        <>
-                            {entrepreneurships?.slice(0, 4)?.map((e, index) => (
-                                <div key={index} className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
-                                    <div>
-                                        <Image src={e?.bannerUrl || "/Images/Homepage/World.png"} alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
-                                    </div>
-
-                                    <div className='space-y-4'>
-                                        <h1 className="font-normal text-[15.5px] text-[#1315175C]">6:00 PM · <span className="font-normal text-[15.5px] text-[#D19D20]">7:00 PM GMT+2</span></h1>
-                                        <p className="font-medium text-xl">{e?.subject}</p>
-                                        <p className="font-normal text-sm text-[#464646]">{e?.description}</p>
-                                        <div className='flex gap-1 items-center text-[#1315175C]'>
-                                            <LuMapPin />
-                                            <p className="font-normal text-[15.25px]">Live-streamed event via Zoom</p>
-                                        </div>
-
-                                        <div className='flex gap-1 items-center'>
-                                            <LuClock5 />
-                                            <p className="font-normal text-[15.25px] text-[#1315175C] ">{e?.eventStartDate} - {e?.eventEndDate}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </>
-                    )}
-                </div>
-
-                <div className="text-center place-content-center">
-                    <button type="button" className="border font-bold rounded-[4px] text-black space-y-6 w-[110px] md:w-[119px] h-[40px]">
-                        VIEW ALL
-                    </button>
-                </div>
-
-            </div>
-        </main>
-    );
-}
+              ))}
+            </>
+          )}
+        </div>
+      </CustomContainer>
+    </section>
+  );
+};
 
 export default Intern;
