@@ -84,7 +84,7 @@ const New = () => {
                         Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
                       <p className="font-normal text-base" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
-                      Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages the deluges br…
+                      Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages the deluges br…a
                       </p>
                       <p className="font-bold text-lg text-[#15271C] ">
                         <span className="font-normal text-lg text-[#999999]">
