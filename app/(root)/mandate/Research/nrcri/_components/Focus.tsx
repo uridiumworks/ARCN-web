@@ -72,7 +72,6 @@ export default function Focus() {
               "Empowerment of smallholder farmers through training programs in sustainable agricultural practices and value chain development.",
               "Significant contributions to Nigeria's status as the global leader in cassava and yam production.",
             ]}
-            subContent=""
           />
 
           <CardBorderedDetails
@@ -91,7 +90,6 @@ export default function Focus() {
               "Root and Tuber Breeding Project (RTB): Developing climate-resilient varieties to mitigate the effects of climate change on agriculture.",
               "Post-Harvest Management Program: Reducing food waste and increasing shelf life through innovative storage techniques.",
             ]}
-            subContent=""
           />
 
           <div className="flex flex-col gap-6 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">

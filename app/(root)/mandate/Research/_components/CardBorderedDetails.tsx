@@ -4,12 +4,16 @@ import { CircleCheck } from "lucide-react";
 type Props = {
   title: string;
   points: string[];
-  subContent: string;
+  subContent?: string;
+  endContent?: string;
+  subContentClassNames?: string;
 };
 export default function CardBorderedDetails({
   title,
   points,
-  subContent,
+  subContent = "",
+  endContent = "",
+  subContentClassNames = "font-normal",
 }: Props) {
   return (
     <div className="flex flex-col gap-6 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
@@ -18,7 +22,9 @@ export default function CardBorderedDetails({
       </h3>
       <div className="flex flex-col gap-4">
         {subContent && (
-          <h3 className="font-normal text-black text-sm sm:text-lg">
+          <h3
+            className={`${subContentClassNames} text-black text-sm sm:text-lg`}
+          >
             {subContent}
           </h3>
         )}
@@ -41,6 +47,12 @@ export default function CardBorderedDetails({
             )}
           </div>
         ))}
+
+        {endContent && (
+          <h3 className={`font-normal text-black text-sm sm:text-lg`}>
+            {endContent}
+          </h3>
+        )}
       </div>
     </div>
   );

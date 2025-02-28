@@ -372,15 +372,17 @@ const Research = () => {
                     Nigerian Stored Products Research Institute
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    The Nigerian Stored Products Research Institute (NSPRI)
+                    focuses on research into bulk storage problems of export
+                    commodities and local food crops. Established in 1948 as the
+                    West African Stored Products Research Unit (WASPRU), it
+                    became NSPRI after Nigeria&apos;s independence in 1960. The
+                    institute specializes in improving and maintaining the
+                    quality of bulk commodity crops and local food crops.
                   </p>
                 </div>
 
-                <Link href={"/mandate/Research"} className="self-start">
+                <Link href={"/mandate/Research/nspri/institute"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
