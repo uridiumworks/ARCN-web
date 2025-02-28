@@ -28,6 +28,7 @@ const config = {
         "mandate-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
         "research-institutes-details-res": "repeat(auto-fit,minmax(14rem,1fr))",
       },
+      
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

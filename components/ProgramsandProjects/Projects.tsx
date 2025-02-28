@@ -19,7 +19,8 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="flex flex-col w-10/12 mx-56">
+        <div className="flex flex-col mx-auto">
+          
           <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {projects?.length > 0 && (
               <>

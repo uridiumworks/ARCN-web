@@ -1,5 +1,6 @@
 import { LuMapPin } from "react-icons/lu";
 import Image from "next/image";
+import CustomContainer from "@/components/CustomContainer";
 
 
 
@@ -7,14 +8,16 @@ const World = () => {
 
     return ( 
         <main>
-            <div className="space-y-10 py-20 w-11/12 mx-auto">
-                <div className="pt-7 px-16">
+            <CustomContainer>
+            <div className="space-y-10 py-20 lg:w-11/12 lg:mx-auto">
+                <div className="pt-7 lg:px-16">
                     <h1 className="font-semibold text-4xl">OTHER UPCOMING EVENTS</h1>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-10 px-20">
+                <div className="flex flex-col lg:flex-row gap-10 lg:px-20">
+
                     <div className='space-y-8'>
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border p-4 rounded-xl flex flex-col md:flex-row-reverse gap-2'>
                             <div className="flex flex-col items-end">
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -33,7 +36,7 @@ const World = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border p-4 rounded-xl flex flex-col md:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]"  />
                             </div>
@@ -52,7 +55,7 @@ const World = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border p-4 rounded-xl flex flex-col md:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                             </div>
@@ -73,7 +76,7 @@ const World = () => {
                     </div>
 
                     <div className='space-y-8'>
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border p-4 rounded-xl flex flex-col md:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                             </div>
@@ -92,7 +95,7 @@ const World = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border p-4 rounded-xl flex flex-col md:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                             </div>
@@ -111,7 +114,7 @@ const World = () => {
                             </div>
                         </div>
 
-                        <div className='border p-4 rounded-xl flex flex-row-reverse gap-2'>
+                        <div className='border p-4 rounded-xl flex flex-col md:flex-row-reverse gap-2'>
                             <div>
                                 <Image src="/Images/Homepage/World.png" alt="Overlay" width={201} height={201} className="rounded-[13.4px]" />
                             </div>
@@ -132,6 +135,7 @@ const World = () => {
                     </div>
                 </div>
             </div>
+            </CustomContainer>
         </main>
     );
 }
