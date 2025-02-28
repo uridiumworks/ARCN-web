@@ -60,7 +60,7 @@ const College = () => {
                 </div>
 
                 <Link
-                  href={"/mandate/training/fca-akure/institute"}
+                  href={"/mandate/training/fca-ibadan/institute"}
                   className="self-start"
                 >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
@@ -80,7 +80,7 @@ const College = () => {
                 </div>
                 <div className="flex flex-col gap-2.5">
                   <h2 className="font-semibold text-base">
-                    Federal College of Agricultural Produce Technology, Kano
+                    Federal College of Agricultural Produce Technology, Kano
                   </h2>
                   <p className="font-normal text-sm">
                     Federal College of Agricultural Produce Technology, Kano is
@@ -100,25 +100,26 @@ const College = () => {
                 </Link>
               </div>
 
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/Ishiagu.png"
-                    alt="Ishiagu"
+                    src="/Images/Icons/Health.png"
+                    alt="Health"
                     width={42}
                     height={42}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
                   <h2 className="font-semibold text-base">
-                    Federal College of Agriculture, Ishiagu
+                    Federal College of Animal Health and production, Vom
                   </h2>
                   <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                    Federal College of Animal Health and Production Technology,
+                    Vom is a pioneering institution in veterinary education in
+                    West Africa. Established in 1941 as Veterinary School Vom,
+                    it has evolved into a leading institution for training
+                    middle-level manpower in animal health and production
+                    technology.
                   </p>
                 </div>
 
@@ -126,7 +127,7 @@ const College = () => {
                   href={"/mandate/training/fcahpt/institute"}
                   className="self-start"
                 >
-                  <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
                 </Link>
@@ -147,12 +148,12 @@ const College = () => {
                     plantation, Ibadan
                   </h2>
                   <p className="font-normal text-sm">
-                    Nigerian Stored Products Research Institute (NSPRI) was
-                    established in 1948 as West African Stored Products Research
-                    Unit (WASPRU) to assess the quality of exportable crops from
-                    Nigeria, Ghana, Sierra Leone, and Gambia to United Kingdom
-                    during the colonial era. It became Nigerian Stored Products
-                    Research Institute after the independence in 1960.
+                    Federal College of Animal Health and Production Technology,
+                    Vom is a pioneering institution in veterinary education in
+                    West Africa. Established in 1941 as Veterinary School Vom,
+                    it has evolved into a leading institution for training
+                    middle-level manpower in animal health and production
+                    technology.
                   </p>
                 </div>
 
@@ -191,30 +192,35 @@ const College = () => {
                 </Link>
               </div>
 
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
-                    src="/Images/Icons/Health.png"
-                    alt="Health"
+                    src="/Images/Icons/Ishiagu.png"
+                    alt="Ishiagu"
                     width={42}
                     height={42}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
                   <h2 className="font-semibold text-base">
-                    Federal College of Animal Health and production, Vom
+                    Federal College of Agriculture, Ishiagu
                   </h2>
                   <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                    he Federal College of Agriculture, Ishiagu is a premier
+                    agricultural institution that offers both National Diploma
+                    (ND) and Higher National Diploma (HND) programs. The
+                    institution stands as a center of excellence for
+                    agricultural education and training, focusing on developing
+                    skilled agricultural technologists and promoting sustainable
+                    agricultural practices in Nigeria.
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
-                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                <Link
+                  href={"/mandate/training/fca-ishiagu/institute"}
+                  className="self-start"
+                >
+                  <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
                 </Link>
@@ -234,15 +240,17 @@ const College = () => {
                     Federal College of Agriculture, Akure
                   </h2>
                   <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                    The Federal College of Agriculture, Akure is a premier
+                    agricultural training institution established on January 10,
+                    1957. Originally known as the School of Agriculture, Akure,
+                    it has evolved into a comprehensive agricultural training
+                    center offering both National Diploma (ND) and Higher
+                    National Diploma (HND) programs in various agricultural
+                    fields.
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training/feca/institute"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -382,15 +390,17 @@ const College = () => {
                     Technology, vom
                   </h2>
                   <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                    The Federal College of Veterinary and Medical Laboratory
+                    Technology (FCVMLT) is a premier institution dedicated to
+                    veterinary and medical laboratory technology education in
+                    Nigeria.
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link
+                  href={"/mandate/training/fcvmlt/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -420,7 +430,10 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link
+                  href={"/mandate/training/fcvmlt/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>

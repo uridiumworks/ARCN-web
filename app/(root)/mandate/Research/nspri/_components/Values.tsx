@@ -9,7 +9,7 @@ export default function Values() {
         <CustomContainer>
           <div className="flex flex-col items-center text-center">
             <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
-              Research Focus
+              Core Values
             </h2>
             <p className="text-[#111111] font-normal text-base sm:text-lg">
               Efficiency, Accountability, Innovation, Teamwork, Integrity
