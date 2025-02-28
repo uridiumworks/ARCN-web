@@ -62,7 +62,10 @@ export default function Hero({
               </div>
               <div className="flex flex-col gap-1.5">
                 <h4 className="font-medium text-white text-base">Website</h4>
-                <Link href="#" className="font-normal text-[#EFEFEF] text-sm">
+                <Link
+                  href={website}
+                  className="font-normal text-[#EFEFEF] text-sm"
+                >
                   {website}
                 </Link>
               </div>

@@ -38,11 +38,10 @@ export default function Leadership({
                 </div>{" "}
                 <p className="text-sm sm:text-lg font-normal">
                   {" "}
-                  <span className="font-bold">Provost/CEO:</span> Dr. Elizabeth Oluwakemi Augustus
+                  <span className="font-bold">Provost/CEO:</span> Dr. Elizabeth
+                  Oluwakemi Augustus
                 </p>
               </div>
-
-              
             </div>
           </div>
 
@@ -63,7 +62,10 @@ export default function Leadership({
               </div>
               <div className="flex flex-col gap-1.5">
                 <h4 className="font-medium text-black text-base">Website</h4>
-                <Link href="#" className="font-normal text-[#121212] text-sm">
+                <Link
+                  href={website.startsWith("www") ? website : `www.${website}`}
+                  className="font-normal text-[#121212] text-sm"
+                >
                   {website}
                 </Link>
               </div>
