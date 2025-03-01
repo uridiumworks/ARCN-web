@@ -9,9 +9,8 @@ const Governance: React.FC = () => {
   return (
     <div className='px-2 lg:px-0 w-full bg-white flex justify-center items-center py-28  flex-col'>
       <div className="text-center mb-6 px-2 md:px-8">
-        <h1 className="text-2xl sm:text-3xl md:text-[50px] font-semibold text-[#1B222B]">
-            Meet The Management
-        </h1>
+        <h1 className="text-2xl sm:text-3xl md:text-[50px] font-semibold text-[#1B222B]">Meet The Management</h1>
+
         <p className="text-base sm:text-lg text-gray-600 mt-4 max-w-4xl mx-auto leading-relaxed">
             ARCN is a corporate body with perpetual succession established as a grade 'A' parastatal of the 
             Federal Ministry of Agriculture and Rural Development. It has a Governing Board answerable to the 
@@ -19,7 +18,6 @@ const Governance: React.FC = () => {
             sectors covering key stakeholder groups. The Executive Secretary is the CEO, with seven directorates.
         </p>
       </div>
-
 
       <div className='mt-8 text-center'>
           <Image src="/Images/image 75.png" alt="" width={250} height={280} className='rounded-full' />
