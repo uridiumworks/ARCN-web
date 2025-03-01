@@ -1,6 +1,5 @@
 import LayoutProvider from "./layoutProvider";
 
-
 export const metadata = {
   title: "Mandate",
 };
@@ -10,10 +9,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-
-    <LayoutProvider>
-      {children}
-    </LayoutProvider>
-  );
+  return <LayoutProvider>{children}</LayoutProvider>;
 }

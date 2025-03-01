@@ -33,8 +33,8 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-full min-h-screen">
       <div className="border-[#B4BDBD33] dark:border-[#57585833] rounded">
-        <div className="w-full">
-          <div className="w-full sm:fixed z-10 sm:top-[6.5rem] bg-white">
+        <div className="w-full relative">
+          <div className="w-full sm:sticky sm:top-[6.775rem] sm:z-10 bg-white sm:backdrop-blur sm:supports-[backdrop-filter]:bg-background/60">
             <ul className="flex flex-col gap-3 sm:flex-row text-sm justify-center text-center py-3 sm:text-lg sm:gap-8">
               {Tabs.map(({ name, status, url }, index) => {
                 const activeTab = cn(

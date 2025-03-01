@@ -1,6 +1,7 @@
 "use client";
 import { useClientNewsLettersData } from "@/hooks/NewsLetters.hooks";
 import Image from "next/image";
+import Link from "next/link";
 
 const New = () => {
   const { loading, newsLetters, error } = useClientNewsLettersData();
@@ -17,13 +18,13 @@ const New = () => {
 
   return (
     <section className="">
-      <div className="font-montserrat mx-auto">
+      <div className="">
         <div className="w-full h-full mx-auto">
-          <h1 className="font-semibold font-montserrat text-4xl text-center pt-20">News</h1>
+          <h1 className="font-semibold font-montserrat text-4xl text-center pt-20 pb-8">News</h1>
         </div>
 
         <div className="w-full h-full">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-9 lg:mx-44 p-5 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-9 lg:p-5 ">
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0, 3)?.map((n: any, index: number) => (
@@ -40,20 +41,22 @@ const New = () => {
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <h1 className="font-semibold text-base">
+                    <div className="space-y-4">
+                      <h1 className="font-semibold text-sm">
                        Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
-                      <p className="font-normal text-base" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
+                      <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
                        Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages the deluges br…
                       </p>
                       <div className="flex flex-row">
-                        <p className="font-bold text-lg text-[#15271C] ">
-                          <span className="font-normal text-lg text-[#999999]">
-                              {convertToReadableDate(n?.publishDate)}
+                        <p className="font-bold flex gap-2 text-sm text-[#15271C] ">
+                          <span className="font-normal text-sm text-[#999999]">
+                            {convertToReadableDate(n?.publishDate)}
                           </span>
                           <br /> 
-                          <span className="cursor-pointer hover:underline">Read more</span>
+                          <Link href={`/newsandevents/test/news`} passHref>
+                            <span className="cursor-pointer hover:underline">Read more</span>
+                          </Link>
                         </p>
                       </div>
                     </div>
@@ -63,7 +66,7 @@ const New = () => {
             )}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-9 lg:mx-44 p-5 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-9 p-5 ">
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0,3)?.map((n: any, index: number) => (
@@ -79,19 +82,21 @@ const New = () => {
                         style={{height: "auto", maxHeight: 268.59}}
                       />
                     </div>
-                    <div className="space-y-2">
-                      <h1 className="font-semibold text-base">
+                    <div className="space-y-4">
+                      <h1 className="font-semibold text-sm">
                         Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
-                      <p className="font-normal text-base" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
-                      Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages the deluges br…
+                      <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
+                      Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages the deluges br…a
                       </p>
-                      <p className="font-bold text-lg text-[#15271C] ">
-                        <span className="font-normal text-lg text-[#999999]">
+                      <p className="font-bold flex gap-2 text-sm text-[#15271C] ">
+                        <span className="font-normal text-sm text-[#999999]">
                             {convertToReadableDate(n?.publishDate)}
                         </span>
                         <br /> 
-                        <span className="cursor-pointer hover:underline">Read more</span>
+                        <Link href={`/newsandevents/test/news`} passHref>
+                          <span className="cursor-pointer hover:underline">Read more</span>
+                        </Link>
                       </p>
                     </div>
                   </div>
