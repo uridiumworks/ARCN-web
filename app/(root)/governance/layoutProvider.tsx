@@ -14,10 +14,9 @@ interface LayoutType {
 
 export default function LayoutProvider({ children }: LayoutType) {
   const currentRoute = usePathname()
-  const param = useParams()
+  // const param = useParams()
 
-  const slug = param.serviceDepartmentID
-  const slugPath = `/governance/department/service-department/${slug}`
+  const slugPath = `/governance/department/service-department/administration-department`
   const extension = `/governance/department/technical-department/extension-and-socio-economic`
   const livestock = `/governance/department/technical-department/livestock-department`
   const fisheries = `/governance/department/technical-department/fisheries-and-aquaculture`
