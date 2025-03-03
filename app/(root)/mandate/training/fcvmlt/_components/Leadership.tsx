@@ -14,14 +14,15 @@ type Props = {
   location: string;
   website: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 };
 
 export default function Leadership({
+  phoneNumber="",
   location,
   website,
-  email,
-  phoneNumber,
+  email
+ 
 }: Props) {
   return (
     <section className="bg-[#F9FFFB] py-9 sm:py-18">
@@ -117,7 +118,7 @@ export default function Leadership({
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3">
+           {phoneNumber &&  <div className="flex items-center justify-center gap-3">
               <div>
                 <BlackPhoneIcon />
               </div>
@@ -127,7 +128,7 @@ export default function Leadership({
                   {phoneNumber}
                 </p>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
       </CustomContainer>

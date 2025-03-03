@@ -148,6 +148,44 @@ const data = [
   },
 ];
 
+const data1 = [
+  {
+    title: "Federal College of Agriculture, Akure",
+    location: "Federal College of Agriculture, Akure",
+    webUrl: "fecaakure.edu.ng",
+    imgUrl: "/Images/Homepage/feca-logo.png",
+  },
+  {
+    title: "Federal College of Agriculture, Ibadan",
+    location: "Ibadan, Oyo State",
+    webUrl: "fcaib.edu.ng",
+    imgUrl: "/Images/Homepage/fca-ibadan-logo.png",
+  },
+  {
+    title: "Federal College of Agriculture, Ishiagu",
+    location: "Ishiagu in Ivo LGA of Ebonyi State",
+    webUrl: "fcaishiagu.edu.ng",
+    imgUrl: "/Images/Homepage/fca-ishiagu-logo.png",
+  },
+  {
+    title: "Federal College of Animal Health and production, Vom",
+    location: "Vom",
+    webUrl: "portal.fcahptvom.edu.ng",
+    imgUrl: "/Images/Homepage/fap-vom-logo.png",
+  },
+  {
+    title: "Federal Cooperative College, kaduna",
+    location: "Kaduna",
+    webUrl: "fcck.edu.ng",
+    imgUrl: "/Images/Homepage/fcc-kaduna-logo.png",
+  },
+  {
+    title: "Federal Cooperative College, Oji River",
+    location: "Industrial Layout, Oji River, Enugu",
+    webUrl: "fccojiriver.edu.ng",
+    imgUrl: "/Images/Homepage/fcc-river-logo.png",
+  },
+];
 const TabOne = () => {
   return (
     <div className="flex flex-col gap-14">
@@ -184,7 +222,7 @@ const TabOne = () => {
                   <WebIcon />
                 </div>{" "}
                 <Link
-                  href={el.webUrl}
+                  href={`www.${el.webUrl}`}
                   className="text-[#30A85F] font-normal text-sm"
                 >
                   {el.webUrl}
@@ -194,7 +232,10 @@ const TabOne = () => {
           </div>
         ))}
       </div>
-      <Link href="/mandate/Research" className="self-center text-center font-sans font-medium text-base rounded-lg px-8 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]">
+      <Link
+        href="/mandate/Research"
+        className="self-center text-center font-sans font-medium text-base rounded-lg px-8 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
+      >
         See All Reseach Institutes
       </Link>
     </div>
@@ -205,7 +246,7 @@ const TabTwo = () => {
   return (
     <div className="flex flex-col gap-14 ">
       <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
-        {data.map((el, i) => (
+        {data1.map((el, i) => (
           <div
             key={i}
             className="flex  gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#e7e7e772] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
@@ -232,7 +273,7 @@ const TabTwo = () => {
               <div className="flex items-center gap-3">
                 <WebIcon />{" "}
                 <Link
-                  href={el.webUrl}
+                  href={`www.${el.webUrl}`}
                   className="text-[#30A85F] font-normal text-sm"
                 >
                   {el.webUrl}
@@ -242,7 +283,10 @@ const TabTwo = () => {
           </div>
         ))}
       </div>
-      <Link href="/mandate/training/college" className="self-center text-center font-sans font-medium text-base rounded-lg px-10 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]">
+      <Link
+        href="/mandate/training/college"
+        className="self-center text-center font-sans font-medium text-base rounded-lg px-10 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
+      >
         See All Reseach Institutes
       </Link>
     </div>

@@ -14,14 +14,14 @@ type Props = {
   location: string;
   website: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 };
 
 export default function Leadership({
+  phoneNumber = "",
   location,
   website,
   email,
-  phoneNumber,
 }: Props) {
   return (
     <section className="bg-[#F9FFFB] py-9 sm:py-18">
@@ -125,17 +125,19 @@ export default function Leadership({
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3">
-              <div>
-                <BlackPhoneIcon />
+            {phoneNumber && (
+              <div className="flex items-center justify-center gap-3">
+                <div>
+                  <BlackPhoneIcon />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <h4 className="font-medium text-black text-base">Phone</h4>
+                  <p className="font-normal text-[#121212] text-sm">
+                    {phoneNumber}
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col gap-1.5">
-                <h4 className="font-medium text-black text-base">Phone</h4>
-                <p className="font-normal text-[#121212] text-sm">
-                  {phoneNumber}
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </CustomContainer>
