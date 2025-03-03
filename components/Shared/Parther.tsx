@@ -7,25 +7,25 @@ const Partners = () => {
   return (
     <section className="py-16 md:py-24">
       <CustomContainer>
-        <div className="flex flex-col gap-12">
-          <div className="text-center">
-            <h2 className="font-semibold text-3xl sm:text-5xl text-[#1B222B]">
+        <div className="flex flex-col items-center px-0 sm:px-16  gap-12">
+          
+            <h2 className="font-semibold text-3xl text-center sm:text-5xl sm:leading-[4rem] text-[#1B222B]">
             Partner with us to advance agricultural
               <br /> research training and extension in Nigeria
             </h2>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-10 justify-center items-center lg:gap-20">
-            <div className="flex-shrink-0">
+       
+          <div className="flex flex-col lg:flex-row gap-10  justify-center items-center lg:gap-20">
+            <div className="shrink-0 w-[25%]">
               <Image
                 src="/Images/Homepage/farmer.png"
-                width={536}
+                width={836}
                 height={700}
                 alt="farmer"
-                className="w-full max-w-md lg:max-w-lg"
+                className="w-full"
               />
             </div>
             <div className="flex flex-col items-start gap-4">
-              <p className="text-[#1B222B] font-normal text-base">
+              <p className="text-[#1B222B] font-normal text-base leading-[1.75rem]">
                 We are committed to working with equally ambitious
                 <br />
                 Research Institutes and stakeholders to bridge the
@@ -39,7 +39,7 @@ const Partners = () => {
                 <p className="text-[#669933] font-medium text-base">
                 Get in touch
                 </p>
-                <LuChevronRight color="#669933" />
+                <LuChevronRight color="#669933" size={24} />
               </div>
               </Link>
             </div>

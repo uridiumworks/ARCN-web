@@ -188,24 +188,24 @@ const data1 = [
 ];
 const TabOne = () => {
   return (
-    <div className="flex flex-col gap-14">
+    <div className="flex flex-col gap-16">
       <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
         {data.map((el, i) => (
           <div
             key={i}
-            className="flex gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#e7e7e772] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
+            className="flex gap-5 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#e7e7e772] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
           >
-            <div className="object-contain shrink-0">
+            <div className="object-contain h-auto w-auto shrink-0">
               <Image
-                width={35}
-                height={35}
+                width={120}
+                height={120}
                 alt=""
                 src={el.imgUrl}
                 className="w-full h-full"
               />
             </div>
             <div className="flex flex-col gap-3">
-              <h3 className="font-semibold text-base text-[#111111]">
+              <h3 className="font-semibold text-base leading-[1.18375rem] text-[#111111]">
                 {el.title}
               </h3>
               <div className="flex items-center gap-3">
@@ -213,7 +213,7 @@ const TabOne = () => {
                   {" "}
                   <LocationOutlineIcon />
                 </div>{" "}
-                <p className="font-normal text-sm text-[#111111]">
+                <p className="font-normal text-sm leading-[1.4rem] text-[#111111]">
                   {el.location}
                 </p>
               </div>
@@ -223,7 +223,7 @@ const TabOne = () => {
                 </div>{" "}
                 <Link
                   href={`www.${el.webUrl}`}
-                  className="text-[#30A85F] font-normal text-sm"
+                  className="text-[#30A85F] font-normal text-sm leading-[1.4rem]"
                 >
                   {el.webUrl}
                 </Link>
@@ -234,7 +234,7 @@ const TabOne = () => {
       </div>
       <Link
         href="/mandate/Research"
-        className="self-center text-center font-sans font-medium text-base rounded-lg px-8 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
+        className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
         See All Reseach Institutes
       </Link>
@@ -244,29 +244,29 @@ const TabOne = () => {
 
 const TabTwo = () => {
   return (
-    <div className="flex flex-col gap-14 ">
+    <div className="flex flex-col gap-16">
       <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
         {data1.map((el, i) => (
           <div
             key={i}
             className="flex  gap-4 flex-col sm:flex-row items-start lg:items-center border-[0.59px] border-[#e7e7e772] rounded-lg py-5 px-2.5 bg-white shadow-sm shadow-[#0000000D]"
           >
-            <div className="object-contain">
+            <div className="object-contain h-auto w-auto">
               <Image
-                width={35}
-                height={35}
+                width={120}
+                height={120}
                 alt=""
                 src={el.imgUrl}
                 className="w-full h-full"
               />
             </div>
             <div className="flex flex-col gap-3">
-              <h3 className="font-semibold text-base text-[#111111]">
+              <h3 className="font-semibold text-base leading-[1.18375rem] text-[#111111]">
                 {el.title}
               </h3>
               <div className="flex items-center gap-3">
                 <LocationOutlineIcon />{" "}
-                <p className="font-normal text-sm text-[#111111]">
+                <p className="font-normal text-sm leading-[1.4rem] text-[#111111]">
                   {el.location}
                 </p>
               </div>
@@ -274,7 +274,7 @@ const TabTwo = () => {
                 <WebIcon />{" "}
                 <Link
                   href={`www.${el.webUrl}`}
-                  className="text-[#30A85F] font-normal text-sm"
+                  className="text-[#30A85F] leading-[1.4rem] font-normal text-sm"
                 >
                   {el.webUrl}
                 </Link>
@@ -285,7 +285,7 @@ const TabTwo = () => {
       </div>
       <Link
         href="/mandate/training/college"
-        className="self-center text-center font-sans font-medium text-base rounded-lg px-10 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
+        className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
         See All Reseach Institutes
       </Link>
@@ -308,13 +308,13 @@ const Institutes = () => {
     <section className="py-16 md:py-24">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <div className="self-center text-center flex flex-col gap-8">
-            <h2 className="font-medium text-3xl sm:text-5xl text-[#111111]">
+          <div className="self-center text-center flex flex-col gap-6">
+            <h2 className="font-medium text-3xl sm:text-5xl sm:leading-[2.875rem] text-[#111111]">
               Our Institutions
             </h2>
-            <p className="text-[#111111] text-opacity-[90%] text-base sm:text-xl">
-              Explore our network of research institutes and Federal Colleges of
-              Agriculture dedicated to advancing agricultural innovation and
+            <p className="text-[#111111] text-opacity-[90%] text-base sm:text-lg sm:leading-[1.531875rem]">
+              Explore our network of research institutes and Federal Colleges of <br />
+              Agriculture dedicated to advancing agricultural innovation and <br />
               sustainability across Nigeria.
             </p>
           </div>
@@ -324,7 +324,7 @@ const Institutes = () => {
               {tabs.map((el, i) => (
                 <div
                   key={el}
-                  className={`font-medium text-[0.75rem] sm:text-sm transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
+                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1.575rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
                     currentTab === i
                       ? "bg-[#30A85F] text-white"
                       : "bg-transparent text-[#111111]"

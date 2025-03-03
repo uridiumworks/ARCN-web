@@ -15,7 +15,7 @@ const Impact = () => {
                 <h1 className="text-[#FBBA03] text-2xl sm:text-4xl font-semibold">
                   638
                 </h1>
-                <p className="text-[#FFFFFF] text-base font-normal">
+                <p className="text-[#FFFFFF] text-base font-normal text-opacity-85">
                   Agricultural <br />
                   Innovations
                 </p>
@@ -25,7 +25,7 @@ const Impact = () => {
                 <h1 className="text-[#FBBA03] text-2xl sm:text-4xl font-semibold">
                   105
                 </h1>
-                <p className="text-[#FFFFFF] text-sm sm:text-base font-normal">
+                <p className="text-[#FFFFFF] text-sm sm:text-base font-normal text-opacity-85">
                   Improved Agricultural <br /> Technologies
                 </p>
               </div>
@@ -34,7 +34,7 @@ const Impact = () => {
                 <h1 className="text-[#FBBA03] text-2xl sm:text-4xl font-semibold">
                   132
                 </h1>
-                <p className="text-[#FFFFFF] text-sm sm:text-base font-normal">
+                <p className="text-[#FFFFFF] text-sm sm:text-base font-normal text-opacity-85">
                   Small and medium sized <br /> enterprises (SMEs) supported
                 </p>
               </div>
@@ -43,7 +43,7 @@ const Impact = () => {
                 <h1 className="text-[#FBBA03] text-2xl sm:text-4xl font-semibold">
                   2791
                 </h1>
-                <p className="text-[#FFFFFF] text-sm sm:text-base font-normal">
+                <p className="text-[#FFFFFF] text-sm sm:text-base font-normal text-opacity-85">
                   Students trained in <br /> Masters and PhD
                 </p>
               </div>
