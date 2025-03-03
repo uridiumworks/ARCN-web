@@ -4,44 +4,41 @@ const Ourmandate = () => {
   return (
     <section className="py-16 md:py-24">
       <CustomContainer>
-        <div className="flex flex-col gap-8 px-6">
+        <div className="flex flex-col gap-8 sm:px-14">
           <div className="grid grid-cols-about-mandate-res gap-10">
-            <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-              <h3 className="font-medium text-2xl sm:text-3xl text-[#0A1425]">
-                OUR MANDATE
+            <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
+              <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                Our Vision
               </h3>
 
-              <p className="font-normal text-sm sm:text-lg text-[#64728F] ">
-                The mandate of ARCN is to coordinate, supervise and regulate
-                agricultural research,training and extension in the National
-                Agricultural Research Institutes (NARIs) and Federal Colleges of
-                Agriculture (FCAs)
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-              <h3 className="font-medium text-2xl sm:text-3xl text-[#0A1425]">
-                OUR MISSION
-              </h3>
-
-              <p className="font-normal text-sm sm:text-lg text-[#64728F] ">
-                To achieve significant improvements in agricultural
-                productivity, marketing and competitiveness by generating
-                appropriate technologies and policy options, promoting
-                innovation, establishing a knowledgeable Management capacity and
-                strengthening the agricultural research system.
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-[100%] rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-            <div className="flex flex-col gap-4">
-              <h3 className="font-medium text-2xl sm:text-3xl text-[#0A1425]">
-                OUR VISION
-              </h3>
-
-              <p className="font-normal text-sm sm:text-lg text-[#64728F] ">
+              <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#464646] ">
                 To reduce poverty and increase food security by contributing to
                 the establishment of sustainable agricultural growth and
                 development in Nigeria
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
+              <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                Our Mission
+              </h3>
+
+              <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#464646] ">
+                To achieve significant improvements in <br /> agricultural
+                productivity, marketing <br /> and competitiveness by generating
+                appropriate <br /> technologies and policy options, promoting <br />
+                innovation, establishing a knowledgeable <br /> Management capacity and
+                strengthening the <br /> agricultural research system.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-[100%] rounded-xl pt-5 pb-5 sm:pb-14 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
+            <div className="flex flex-col gap-3">
+              <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                Our Mandate
+              </h3>
+
+              <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#464646] ">
+              The mandate of ARCN is to coordinate, supervise and regulate agricultural research,training and <br /> extension in the National Agricultural Research Institutes (NARIs) and Federal Colleges of Agriculture <br /> (FCAs)
               </p>
             </div>
           </div>

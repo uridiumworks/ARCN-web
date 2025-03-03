@@ -6,17 +6,17 @@ export default function HistoryDetails() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white pb-16 py-5 md:pb-24 md:pt-12">
       <CustomContainer>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
-            <h2 className="text-[#0A1425] font-bold text-center text-2xl sm:text-[2.5rem]">
+            <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[3.75rem]">
               Our History
             </h2>
           </div>
 
-          <div className="flex flex-col gap-6">
-            <p className="text-[#64728F] font-normal text-base sm:text-xl">
+          <div className="flex flex-col gap-6 sm:px-6">
+            <p className="text-[#64728F] font-normal text-base sm:leading-[2rem]">
               Although agricultural research in Nigeria started in the late 19
               century with the establishment of a botanical garden in Lagos,
               there was always a problem with the coordination of the research
@@ -30,7 +30,7 @@ export default function HistoryDetails() {
               Nigeria&apos;s unification, the two departments were merged to
               form a new Department of Agriculture.
             </p>
-            <p className="text-[#64728F] font-normal text-base sm:text-xl">
+            <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
               Progress was made in terms of infrastructure and human resources
               resulting in new research stations, more research personnel, and a
               more technical research program that included plant. breeding and
@@ -43,7 +43,7 @@ export default function HistoryDetails() {
             </p>
             {showAll && (
               <>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
                   Agricultural research was largely the domain of the local
                   colonial government until World War Il, when the British
                   government sought a more active role in the promotion of
@@ -62,7 +62,7 @@ export default function HistoryDetails() {
                   (NITR), Nigerian Stored Products Research Institute (NSPRI)
                   and Cocoa Research Institute of Nigeria (CRIN) came on board.
                 </p>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
                   With regional governments formed after Nigeria achieved
                   independence in 1960, research activities were regionalized,
                   which eliminated federal government involvement. The&apos;
@@ -78,7 +78,7 @@ export default function HistoryDetails() {
                   Establishment Order in 1980, under which many research
                   stations and departments were upgraded to national institutes.
                 </p>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
                   The research institutes underwent further significant
                   reorganization, including review of their mandates as part of
                   the green revolution programme of the early 1980s. The changes
@@ -97,7 +97,7 @@ export default function HistoryDetails() {
                   with Nigeria&apos;s unification, the two departments were
                   merged to form a new Department of Agriculture.
                 </p>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base  leading-[2rem]">
                   Progress was made in terms of infrastructure and human
                   resources resulting in new research stations, more research
                   personnel, and a more technical research program that included
@@ -109,7 +109,7 @@ export default function HistoryDetails() {
                   with the establishment of the Fisheries Development Branch by
                   the Department of Agriculture.
                 </p>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base  leading-[2rem]">
                   Agricultural research was largely the domain of the local
                   colonial government until World War Il, when the British
                   government sought a more active role in the promotion of
@@ -128,7 +128,7 @@ export default function HistoryDetails() {
                   (NITR), Nigerian Stored Products Research Institute (NSPRI)
                   and Cocoa Research Institute of Nigeria (CRIN) came on board.
                 </p>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base sm:leading-[2rem]">
                   With regional governments formed after Nigeria achieved
                   independence in 1960, research activities were regionalized,
                   which eliminated federal government involvement. The&apos;
@@ -144,7 +144,7 @@ export default function HistoryDetails() {
                   Establishment Order in 1980, under which many research
                   stations and departments were upgraded to national institutes.
                 </p>
-                <p className="text-[#64728F] font-normal text-base sm:text-xl">
+                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
                   The research institutes underwent further significant
                   reorganization, including review of their mandates as part of
                   the green revolution programme of the early 1980s. The changes
@@ -155,7 +155,7 @@ export default function HistoryDetails() {
             )}
 
             <button
-              className="self-center bg-[#0C513F0D] rounded-md px-3.5 py-2.5 font-sans font-medium text-sm text-[#0C513F]"
+              className="self-center bg-[#0C513F0D] rounded-md px-7 py-2 leading-[1.595rem] font-sans font-medium text-sm text-[#0C513F]"
               onClick={() => setShowAll((prev) => !prev)}
             >
               {showAll ? "See Less" : "See More"}

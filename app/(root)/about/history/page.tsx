@@ -6,12 +6,12 @@ import HistoryDetails from "./_components/HistoryDetails";
 import InternationalEngagement from "./_components/InternationalEngagement";
 export default function HistoryPage() {
   return (
-    <main>
+    <section>
       <Banner />
       <HistoryDetails />
       <InternationalEngagement />
       {/* <Partners /> */}
       <Journal />
-    </main>
+    </section>
   );
 }
