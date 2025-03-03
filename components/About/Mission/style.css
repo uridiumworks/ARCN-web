@@ -2,6 +2,6 @@
 .picker {
     background-image: url('/Images/Aboutpage/Desktop.png');
     background-size: cover;
-    background-position: center;
+    background-position: 10% 20%;
     background-repeat: no-repeat;
 }

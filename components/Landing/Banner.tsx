@@ -43,10 +43,10 @@ const Bander = () => {
                 />
               </div>
               <div className=" text-center flex flex-col items-center gap-3.5">
-                <h2 className="font-medium text-2xl lg:text-[2.125rem] lg:leading-[2.796875rem] text-white">
+                <h2 className="font-medium text-2xl lg:text-[2rem] lg:leading-[2.796875rem] text-white">
                   Journal of Applied Agricultural Research (JAAR)
                 </h2>
-                <p className="font-normal text-base lg:text-[1.290625rem] lg:leading-[1.303125rem] text-white text-opacity-[94%]">
+                <p className="font-normal text-base lg:text-[1.2rem] lg:leading-[1.303125rem] text-white text-opacity-[94%]">
                   CALL FOR PAPERS AND SUBMISSION OF MANUSCRIPTS
                 </p>
               </div>
