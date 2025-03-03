@@ -3,9 +3,9 @@ import Image from "next/image";
 const Banner = () => {
 
     return ( 
-        <main className="bg-black w-full min-h-screen md:h-[430px] h-[350px] font-montserrat px-8 ">
-            <div className="text-white text-center place-content-center space-y-2 lg:p-3">
-                <h1 className="font-bold text-5xl lg:text-[65px]">PROGRAMS AND PROJECTS</h1>
+        <main className="bg-black w-full py-10 space-y-3 lg:min-h-screen font-montserrat px-8 ">
+            <div className="text-white text-center space-y-8 place-content-center  lg:p-3">
+                <h1 className="font-bold text-2xl lg:text-[65px]">PROGRAMS AND PROJECTS</h1>
                 <p className="font-normal text-[21px]">A collection of ARCN featured news and upcoming events</p>
             </div>
             <div>
