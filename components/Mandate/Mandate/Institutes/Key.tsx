@@ -1,4 +1,4 @@
-import { LuCheckCircle2 } from "react-icons/lu";
+import { LuCircleCheckBig } from "react-icons/lu";
 
 const Key = () => {
 
@@ -29,7 +29,7 @@ const Key = () => {
                 </div>
                 <div>
                 <div className='flex object-center gap-2.5 items-center font-normal'>
-                    <LuCheckCircle2 size={40}  className="text-[#30A85F]" />
+                    <LuCircleCheckBig size={40}  className="text-[#30A85F]" />
                     <p className="text-xl font-normal">Produced Improved varieties of Citrus, Pineapple, Mango, Pawpaw, Banana, Irvingia gabonensis (African Bush Mango), Persea americana (Avocado), Native pear (Dacryodes edulis), Walnut (Tetracarpidium conophorum), African locust bean (Parkia biglobosa), African star apple (Chrysophyllum albidum) among others.</p>
                 </div>
                 </div>

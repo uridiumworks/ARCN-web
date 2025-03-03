@@ -1,5 +1,5 @@
 import CustomContainer from "@/components/CustomContainer";
-import { LuCheckCircle2 } from "react-icons/lu";
+import { LuCircleCheckBig  } from "react-icons/lu";
 
 const Function = () => {
   return (
@@ -32,7 +32,7 @@ const Function = () => {
             <div className="flex flex-col lg:flex-row gap-20 pt-20 px-4 md:text-3xl lg:text-lg lg:justify-evenly">
               <div className="space-y-5">
                 <div className="flex object-center gap-2.5 items-start font-normal">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Advise the Federal Government on national <br />
                     policies and priorities in agricultural research, <br />
@@ -40,7 +40,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Ensure the implementation of the approved <br />
                     master plans by the appropriate research <br />
@@ -48,7 +48,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Prepare annual budget for the agricultural <br />
                     research , training and extension programmed of <br />
@@ -60,7 +60,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Advise the Federal government on the Re-
                     <br />
@@ -72,7 +72,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Establish and maintain a National Agricultural <br />
                     sciences library and documentation center and <br />
@@ -81,7 +81,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Plan, manage, conduct and promote research,
                     <br />
@@ -96,7 +96,7 @@ const Function = () => {
 
               <div className="space-y-5">
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Prepare periodic master plans for at research , <br />
                     training and extension and advise the Federal <br />
@@ -105,7 +105,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Supervise and coordinate the research, training <br />
                     and extension activities of research institutes <br />
@@ -113,7 +113,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Maintain an up-to-date record of all existing <br />
                     facilities for research, training and extension in <br />
@@ -123,7 +123,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Promote collaboration between scientists and <br />
                     engaged in research in the agricultural sciences <br />
@@ -132,7 +132,7 @@ const Function = () => {
                   </p>
                 </div>
                 <div className="flex font-normal gap-2.5 items-start">
-                  <LuCheckCircle2 />
+                  <LuCircleCheckBig />
                   <p>
                     Carry out such activities as may, in the opinion of <br />
                     the council, further the advancement of <br />
