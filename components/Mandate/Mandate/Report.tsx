@@ -45,15 +45,15 @@ const Report = () => {
                 (el, i) => (
                   <div
                     key={el?.reportsId}
-                    className="flex flex-col lg:flex-row lg:justify-between  gap-10 bg-white border border-[#E8E8E8] rounded-xl px-4 py-2"
+                    className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2 lg:py-1 "
                   >
                     <div className="flex flex-col gap-5 lg:self-center items-start order-2 lg:order-1">
                       <div className="flex flex-col gap-2">
-                        <h3 className="text-xl leading-[1.5rem] text-[#131517] font-medium">
+                        <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                           {el.title}
                         </h3>
                         {el.description && (
-                          <p className="font-normal text-[#464646] text-sm leading-[1.5rem]">
+                          <p className="font-normal text-[#464646] text-xs leading-[1.5rem]">
                             {el.description}
                           </p>
                         )}
@@ -70,11 +70,11 @@ const Report = () => {
                         </Link>
                       </div>
                     </div>
-                    <div className="relative w-[9.375rem] h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                    <div className="relative w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                       <Image
                         src="/Images/Homepage/event-imgholder.png"
                         alt="event-imgholder"
-                        className="object-cover h-full"
+                        className="object-cover h-full w-full"
                         width={150}
                         height={150}
                         priority

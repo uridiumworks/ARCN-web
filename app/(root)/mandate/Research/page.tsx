@@ -7,7 +7,7 @@ import ResearchInstitueBreadcrumbsV1 from "../_components/ResearchInstitueBreadc
 
 const Research = () => {
   return (
-    <section className="pb-14 md:pb-24">
+    <section className="pb-14 md:pb-24 pt-6">
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="flex flex-col gap-6">

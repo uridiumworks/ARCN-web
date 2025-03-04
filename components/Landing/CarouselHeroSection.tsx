@@ -50,7 +50,7 @@ export default function CarouselHeroSection() {
   }, []); // Removed nextSlide from dependencies
 
   return (
-    <div className="relative flex justify-center items-start overflow-hidden w-full h-[40rem] bg-red-300">
+    <div className="relative flex justify-center items-start overflow-hidden w-full h-[42rem] sm:h-[40rem] bg-red-300">
       {carouselItems.map((item, index) => (
         <div
           key={item.id}
@@ -72,12 +72,12 @@ export default function CarouselHeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-20"></div>
 
       {/* Carousel Content - Fixed text that doesn't change */}
-      <div className=" flex flex-col gap-6 items-center justify-center text-white z-30 px-8 sm:px-6 md:pt-4 lg:pt-20">
+      <div className=" flex flex-col gap-3 sm:gap-6 items-center justify-center text-white z-30 px-8 sm:px-6 pt-8 sm:pt-12 lg:pt-20 ">
         <h1 className="font-bold text-2xl text-center sm:text-3xl lg:text-[2.5rem] leading-[2.5rem] sm:leading-[2.875rem]">
           ARCN and UNN introduce new <br /> strategy agroecological sustainable
           farming
         </h1>
-        <div className="flex flex-col items-center gap-7">
+        <div className="flex flex-col items-center gap-5 sm:gap-7">
           <div className="flex flex-col gap-3">
             <p className="text-[#FFC84F] text-base text-center md:text-[1.25rem] font-medium leading-8 lg:leading-[2.125rem]">
               Regional government and CGIAR partnership launch agroforestry
@@ -106,7 +106,7 @@ export default function CarouselHeroSection() {
         </div>
       </div>
 
-      <div className="min-h-[10%] bg-[#000000B2] py-8 absolute bottom-0 left-0 w-full z-30">
+      <div className="min-h-[10%] bg-[#000000B2] py-4 sm:py-8 absolute bottom-0 left-0 w-full z-30">
         <CustomContainer>
           <div className="flex flex-col sm:flex-row sm:justify-between lg:justify-center items-center gap-8 sm:gap-14 lg:gap-24 ">
             <div className="hidden lg:block lg:shrink-0">
