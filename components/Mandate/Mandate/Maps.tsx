@@ -30,7 +30,7 @@ const Maps = () => {
           </div>
           {/* button */}
           <Link
-            href="/mandate/Research"
+            href="/mandate/research"
             className="self-start sm:self-center bg-[#30A85F] text-white rounded-sm border border-[#E6E6E6] font-sans text-sm leading-[2rem] px-10 py-2.5"
           >
             Detailed view

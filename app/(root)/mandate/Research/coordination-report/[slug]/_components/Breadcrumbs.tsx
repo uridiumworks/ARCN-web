@@ -36,7 +36,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
-              href="/mandate/Research"
+              href="/mandate/research"
               className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               Research
@@ -47,7 +47,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
-              href="/mandate/Research/coordination-report"
+              href="/mandate/research/coordination-report"
               className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               Research Coordination Report

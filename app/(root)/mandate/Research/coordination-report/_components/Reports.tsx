@@ -44,7 +44,7 @@ export default function Reports() {
             </div>
             <div className="flex gap-2">
               <Link
-                href={`/mandate/Research/coordination-report/${el.slug}/report`}
+                href={`/mandate/research/coordination-report/${el.slug}/report`}
                 className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5"
               >
                 View

@@ -63,7 +63,7 @@ const Report = () => {
                       Download
                     </button> */}
                         <Link
-                          href={`/mandate/Research/coordination-report/${el.reportsId}/report`}
+                          href={`/mandate/research/coordination-report/${el.reportsId}/report`}
                           className="bg-[#30A85F] text-white font-sans rounded-sm px-8 py-4 leading-[0.875rem] text-sm"
                         >
                           View
@@ -86,7 +86,7 @@ const Report = () => {
           </div>
 
           <Link
-            href="/mandate/Research/coordination-report"
+            href="/mandate/research/coordination-report"
             className="self-center py-2 px-10 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm leading-[2rem]"
           >
             VIEW ALL

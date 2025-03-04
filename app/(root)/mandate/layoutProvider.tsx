@@ -9,7 +9,7 @@ const Tabs = [
     name: "Research",
     status: "active",
     url: "/mandate",
-    subUrl: "/mandate/Research",
+    subUrl: "/mandate/research",
   },
   {
     name: "Training",

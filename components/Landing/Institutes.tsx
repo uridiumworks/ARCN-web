@@ -53,7 +53,7 @@ const InstitutesOld = () => {
                     </div>
                   ))}
               </>
-              <Link href={"/mandate/Research"}>
+              <Link href={"/mandate/research"}>
                 <div className="border border-[#2E7636] py-2 px-3 rounded-lg flex justify-center items-center">
                   <button className="font-medium text-base text-[#2E7636]">
                     See All Research Institutes
@@ -233,7 +233,7 @@ const TabOne = () => {
         ))}
       </div>
       <Link
-        href="/mandate/Research"
+        href="/mandate/research"
         className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
         See All Reseach Institutes

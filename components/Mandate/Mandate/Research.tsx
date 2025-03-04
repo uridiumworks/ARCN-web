@@ -22,7 +22,7 @@ const OurTechnologies = () => {
   const { loading, projects, error } = useClientProjectsData();
 
   return (
-    <div className="grid grid-cols-mandate-research-res gap-10">
+    <div className="grid grid-cols-mandate-research-res gap-14">
       {projects?.slice(0, 3)?.map(
         // @ts-ignore
         (el, i) => (

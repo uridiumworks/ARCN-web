@@ -47,7 +47,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
-              href="/mandate/Research"
+              href="/mandate/research"
               className="font-medium text-sm text-white hover:text-[#30A85F] transition"
             >
               Research Institutes
