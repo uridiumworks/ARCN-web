@@ -28,7 +28,7 @@ export default function Leadership({
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-8 sm:gap-10">
-            <h3 className="font-medium text-[2rem] text-center sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-medium text-3xl text-center sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
               Leadership
             </h3>
             <div className="flex flex-col gap-6 sm:px-16">

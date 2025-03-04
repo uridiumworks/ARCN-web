@@ -38,7 +38,7 @@ export default function Overview() {
           </div>
           <div className="flex flex-col gap-10 sm:px-14">
             <div className="grid grid-cols-cols-[100%] lg:grid-cols-2 gap-10">
-              <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
+              <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
                 <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
                   Our Vision
                 </h3>
@@ -52,7 +52,7 @@ export default function Overview() {
                   research and development.
                 </p>
               </div>
-              <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
+              <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
                 <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
                   OUR MISSION
                 </h3>
@@ -71,7 +71,7 @@ export default function Overview() {
               </div>
             </div>
             <div className="grid grid-cols-[100%] rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3">
                 <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
                   Our Mandate
                 </h3>
