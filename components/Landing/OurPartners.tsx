@@ -19,39 +19,39 @@ const logos = [
 export default function OurPartners() {
   return (
     <section className="py-16 md:py-24">
-      <h3 className="text-center font-bold text-3xl sm:text-4xl text-black mb-14 leading-[3.75rem]">
+      <h3 className="text-center font-bold text-3xl sm:text-4xl text-black mb-12 sm:leading-[3.75rem]">
         Our Partners
       </h3>
       <div className="flex overflow-hidden">
-        <div className="flex gap-6 animate-scroll">
+        <div className="flex gap-2 animate-scroll">
           {logos.map((logo, i) => (
             <div
               key={i}
-              className="flex items-center justify-center mx-8 min-w-[9.375rem]"
+              className="flex items-center justify-center mx-8 min-w-[7.5rem]"
             >
               <Image
                 src={logo}
                 alt="img"
-                width={150}
-                height={150}
-                className="h-32 w-auto object-contain"
+                width={120}
+                height={120}
+                className="h-24 w-auto object-contain"
                 priority={i < 3} // Prioritize loading first 3 images
               />
             </div>
           ))}
         </div>
-        <div className="flex gap-6 animate-scroll">
+        <div className="flex gap-2 animate-scroll">
           {logos.map((logo, i) => (
             <div
               key={i}
-              className="flex items-center justify-center mx-8 min-w-[9.375rem]"
+              className="flex items-center justify-center mx-8 min-w-[7.5rem]"
             >
               <Image
                 src={logo}
                 alt="img"
-                width={150}
-                height={150}
-                className="h-32 w-auto object-contain"
+                width={120}
+                height={120}
+                className="h-24 w-auto object-contain"
        
               />
             </div>

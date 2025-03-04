@@ -92,10 +92,10 @@ const Navbar = (props: Props) => {
     }
   };
   return (
-    <div className="py-5 sticky z-20 top-0 bg-[#121212]">
+    <div className="py-5 sticky z-50 top-0 bg-[#121212]">
       <div className="w-full px-8 sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
         <div>
-          <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
+          <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
         </div>
         <div className="hidden lg:flex lg:flex-col lg:gap-6 text-center">
           <div className="flex justify-center items-center gap-8 text-white">

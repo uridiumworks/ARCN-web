@@ -3,8 +3,6 @@ import Image from "next/image";
 import CustomContainer from "../CustomContainer";
 import { useClientNewsLettersData } from "@/hooks/NewsLetters.hooks";
 
-
-
 const data = [
   {
     type: "ARCN JOURNAL",
@@ -86,11 +84,8 @@ const News = () => {
                   <h4 className="text-[#131517] text-[1.345rem] leading-[1.5625rem] font-medium">
                     News Title
                   </h4>
-                  <p className="font-normal text-sm text-[#464646] sm:leading-[1.28625rem]">
-                    ARCN plays a pivotal role in the dissemination of
-                    cutting-edge research through its published journals. These
-                    journals serve as a platform for researchers from diverse
-                    fields and...
+                  <p className="font-normal text-[0.75rem] text-[#464646] leading-[1.28625rem] text-left">
+                  ARCN plays a pivotal role in the dissemination of cutting-edge research through its published journals. These journals serve as a platform for researchers from diverse fields and various institutes to share their findings, insights, and innovations with the global academic community.
                   </p>
                   <div className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] leading-[1.5625rem] py-1 px-4 cursor-pointer">
                     Read More
@@ -100,7 +95,7 @@ const News = () => {
                   <h4 className="text-[#131517] text-[1.345rem] font-medium leading-[1.5625rem]">
                     News Title
                   </h4>
-                  <p className="font-normal text-sm text-[#464646] sm:leading-[1.28625rem]">
+                  <p className="font-normal text-[0.75rem] text-[#464646] leading-[1.28625rem] text-left">
                     We are delighted to bring you the latest updates and
                     highlights from ARCN, where groundbreaking research meets
                     global collaboration.

@@ -37,21 +37,21 @@ const Events = () => {
                     key={el?.eventId}
                     className="flex flex-col lg:flex-row justify-between  gap-10 bg-white border border-[#E8E8E8] rounded-xl px-4 py-2"
                   >
-                    <div className="flex flex-col gap-1 lg:self-center items-start order-2 lg:order-1">
+                    <div className="flex flex-col  lg:self-center items-start order-2 lg:order-1">
                       <div className="flex text-sm gap-1 font-medium">
                         <span className="text-[#1315175C]">6:00 PM ·</span>
                         <span className="text-[#D19D20]">7:00 PM GMT+2</span>
                       </div>
-                      <div className="flex gap-1 flex-col">
+                      <div className="flex flex-col">
                         <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                           {el?.subject}
                         </h3>
-                        <p className="font-normal leading-[1.5rem] text-[#464646] text-sm">
+                        <p className="font-normal leading-[1.5rem] text-[#464646] text-[0.75rem]">
                           {el?.description}
                         </p>
                         <div className="flex items-center gap-2">
                           <LocationOutlineIcon2 className="scale-[.8]" />{" "}
-                          <p className="text-[#1315175C] leading-[1.5rem] text-sm font-normal">
+                          <p className="text-[#1315175C] leading-[1.5rem] text-[0.75rem] font-normal">
                             {el?.venue}
                           </p>
                         </div>
