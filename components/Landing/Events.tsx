@@ -35,7 +35,7 @@ const Events = () => {
                 (el, i) => (
                   <div
                     key={el?.eventId}
-                    className="flex flex-col lg:flex-row justify-between  gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2 lg:py-1"
+                    className="flex flex-col lg:flex-row justify-between  gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5"
                   >
                     <div className="flex flex-col  lg:self-center items-start order-2 lg:order-1">
                       <div className="flex text-sm gap-1 font-medium">

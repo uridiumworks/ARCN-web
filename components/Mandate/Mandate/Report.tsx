@@ -45,18 +45,18 @@ const Report = () => {
                 (el, i) => (
                   <div
                     key={el?.reportsId}
-                    className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2 lg:py-1 "
+                    className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5 "
                   >
-                    <div className="flex flex-col gap-5 lg:self-center items-start order-2 lg:order-1">
-                      <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-3 lg:self-center items-start order-2 lg:order-1">
+                      <div className="flex flex-col">
                         <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                           {el.title}
                         </h3>
-                        {el.description && (
+                       
                           <p className="font-normal text-[#464646] text-xs leading-[1.5rem]">
-                            {el.description}
+                            {el.description || "Our land. Our future. We are #GenerationRestoration."}
                           </p>
-                        )}
+                       
                       </div>
                       <div className="flex gap-2">
                         {/* <button className="bg-transparent border border-[#E6E6E6] font-sans font-medium text-sm text-[#07A460] rounded-sm px-7 py-2.5">

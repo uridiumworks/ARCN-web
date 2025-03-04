@@ -3,17 +3,22 @@ import Image from "next/image";
 import React from "react";
 
 const logos = [
-  "/Images/Homepage/partner-logo2.png",
-  "/Images/Homepage/partner-logo3.png",
-  "/Images/Homepage/partner-logo4.png",
-  "/Images/Homepage/partner-logo5.png",
-  "/Images/Homepage/partner-logo6.png",
-  "/Images/Homepage/partner-logo7.png",
-  "/Images/Homepage/partner-logo8.png",
-  "/Images/Homepage/partner-logo9.png",
-  "/Images/Homepage/partner-logo10.png",
-  "/Images/Homepage/partner-logo11.png",
-  "/Images/Homepage/partner-logo12.png",
+  "/Images/Homepage/aatf-icon.svg",
+  "/Images/Homepage/afaas-icon.svg",
+  "/Images/Homepage/africarice-icon.svg",
+  "/Images/Homepage/cabi-icon.svg",
+  "/Images/Homepage/cgiar-icon.svg",
+  "/Images/Homepage/coraf-icon.svg",
+  "/Images/Homepage/fara-icon.svg",
+  "/Images/Homepage/gain-icon.svg",
+  "/Images/Homepage/gra-icon.svg",
+  "/Images/Homepage/icrisat-icon.svg",
+  "/Images/Homepage/iita-icon.svg",
+  "/Images/Homepage/ilri-icon.svg",
+  "/Images/Homepage/theworldbank-icon.svg",
+  "/Images/Homepage/worlffish-icon.svg",
+  "/Images/Homepage/ifpri-icon.svg",
+  "/Images/Homepage/syngenta-icon.svg",
 ];
 
 export default function OurPartners() {
@@ -52,7 +57,6 @@ export default function OurPartners() {
                 width={120}
                 height={120}
                 className="h-24 w-auto object-contain"
-       
               />
             </div>
           ))}
