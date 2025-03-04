@@ -26,7 +26,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
             </div>
             <Link
               href="/"
-              className="font-medium text-sm text-white hover:text-[#30A85F] transition"
+              className="font-medium text-sm leading-[1.5rem] text-white hover:text-[#30A85F] transition"
             >
               Home
             </Link>
@@ -37,7 +37,7 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
           <BreadcrumbLink>
             <Link
               href="/mandate"
-              className="font-medium text-sm text-white hover:text-[#30A85F] transition"
+              className="font-medium text-sm leading-[1.5rem] text-white hover:text-[#30A85F] transition"
             >
               Research
             </Link>
@@ -48,15 +48,15 @@ export default function ResearchInstitueBreadcrumbs({ text }: Props) {
           <BreadcrumbLink>
             <Link
               href="/mandate/research"
-              className="font-medium text-sm text-white hover:text-[#30A85F] transition"
+              className="font-medium text-sm leading-[1.5rem] text-white hover:text-[#30A85F] transition"
             >
               Research Institutes
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator  className="text-white" />
+        <BreadcrumbSeparator className="text-white" />
         <BreadcrumbItem>
-          <BreadcrumbPage className="font-medium text-sm text-[#30A85F]">
+          <BreadcrumbPage className="font-medium leading-[1.5rem] text-sm text-[#30A85F]">
             {text}
           </BreadcrumbPage>
         </BreadcrumbItem>

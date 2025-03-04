@@ -8,7 +8,7 @@ export default function Overview() {
       <CustomContainer>
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-10">
-            <h4 className="text-center font-semibold text-[#013B43] text-sm sm:text-lg">
+          <h4 className="text-center font-semibold text-[#013B43]  text-sm sm:text-lg leading-[0.975rem]">
               OVERVIEW
             </h4>
             <p className="text-[#64728F] font-normal text-lg sm:text-xl">
