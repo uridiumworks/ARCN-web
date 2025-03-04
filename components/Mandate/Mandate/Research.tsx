@@ -22,20 +22,21 @@ const OurTechnologies = () => {
   const { loading, projects, error } = useClientProjectsData();
 
   return (
-    <div className="grid grid-cols-mandate-research-res gap-6">
+    <div className="grid grid-cols-mandate-research-res gap-10">
       {projects?.slice(0, 3)?.map(
         // @ts-ignore
         (el, i) => (
-          <div key={i} className="relative overflow-hidden rounded-md">
-            <Image
-              className="h-full w-full"
+          <div key={i} className="relative overflow-hidden rounded-lg max-h-[20rem]">
+           
+             <Image
+              className="h-full w-full object-cover"
               alt={el?.title}
               src={el?.bannerUrl || "/Images/Mandatepage/Casava.png"}
-              width={388}
-              height={210}
+              width={300}
+              height={110}
             />
 
-            <div className="absolute bottom-0 right-0 w-full bg-[#000000CC] pb-12 px-3 pt-3 text-white font-medium text-base sm:text-xl">
+            <div className="absolute bottom-0 right-0 w-full bg-[#000000CC] pb-8 sm:pb-12 px-3 pt-3 text-white font-medium text-base sm:text-xl sm:leading-[2.7rem]">
               {el?.title}
             </div>
           </div>
@@ -47,12 +48,12 @@ const OurTechnologies = () => {
 
 const Research = () => {
   return (
-    <div className="bg-[#15271C] flex flex-col px-4 pt-4 pb-20 gap-14 sm:gap-20 text-white">
-      <h2 className="text-center text-5xl sm:text-[4.0625rem] font-bold">
+    <div className="bg-[#15271C] flex flex-col px-4 pt-4 pb-16 sm:pb-20 gap-14 sm:gap-20 text-white">
+      <h2 className="text-center text-5xl sm:text-[4.0625rem] sm:leading-[5.28125rem] font-bold">
         Research
       </h2>
       <div className="flex flex-col gap-10">
-        <h3 className="text-center font-normal text-base sm:text-xl ">
+        <h3 className="text-center font-normal text-base sm:text-xl sm:leading-[2.1rem] ">
           Take a look at some of our technologies
         </h3>
         {/* researchs */}
