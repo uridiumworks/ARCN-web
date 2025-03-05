@@ -152,7 +152,6 @@ const ServiceDepartmentDetails = () => {
                     </div>
                 </div>
             </div>
-
         </section>
     );
 }

@@ -69,7 +69,7 @@ const TechnicalDepartmentData = [
 
 const TechnicalDepartment = () => {
     return (
-        <section className="w-[1250px] py-4 mx-auto">
+        <section className="w-full md:w-[1250px] py-4 mx-auto">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -107,8 +107,8 @@ const TechnicalDepartment = () => {
             
             <div className="py-10 space-y-10">
                 <div className="">
-                    <h1 className="text-[40px] font-bold text-[#1B222B]">Technical Department </h1>
-                    <p className="text-lg text-gray  pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat <br /> elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
+                    <h1 className="text-2xl sm:text-3xl md:text-[40px] font-bold text-[#1B222B]">Technical Department </h1>
+                    <p className="text-base sm:text-lg text-gray  pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat <br /> elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
                 </div>
 
                 {TechnicalDepartmentData?.map(({description, descriptionList, title, url}, index) => {
@@ -120,10 +120,10 @@ const TechnicalDepartment = () => {
                                     <p className="text-base text-gray mt-4 py-3">{description}</p>
                                 </div>
 
-                                <div className='grid grid-cols-3 gap-5 w-full mb-10 font-bold text-xl'>
+                                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-10 font-bold text-xl'>
                                     {descriptionList?.map((item, index) => {
                                         return (
-                                            <div key={index} className={cn(index === 0 && 'bg-[#FFC74E] text-black', index === 1 && 'bg-[#2E7636] text-white', index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', ' h-[150px] border p-8 flex items-center  rounded-[16.17px] text-left')}>
+                                            <div key={index} className={cn(index === 0 && 'bg-[#FFC74E] text-black', index === 1 && 'bg-[#2E7636] text-white', index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', ' h-[150px] p-8 flex items-center  rounded-[16.17px] text-left')}>
                                                 <h1 className="">{item}</h1>
                                             </div>
                                         )
