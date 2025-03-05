@@ -62,6 +62,7 @@ export default function Focus() {
               "1975: Further expansion to include cashew and tea research",
               "Present: Comprehensive research institute covering six mandate crops",
             ]}
+            shouldBoldPointText={false}
           />
 
           <CardBorderedDetails
