@@ -3,14 +3,13 @@ import Journal from "@/components/Shared/Journal";
 import Partners from "@/components/Shared/Parther";
 
 const Organogram = () => {
+  return (
+    <section>
+      <Picture />
+      <Partners />
+      <Journal />
+    </section>
+  );
+};
 
-    return ( 
-        <main>
-            <Picture />
-            <Partners />
-            <Journal />
-        </main>
-    );
-}
- 
 export default Organogram;

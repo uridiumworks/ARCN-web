@@ -20,8 +20,9 @@ const data = [
 ];
 
 const Super = () => {
-  const { loading, supervisionReports, error } = useClientSupervisionReportsData();
-  console.log(supervisionReports)
+  const { loading, supervisionReports, error } =
+    useClientSupervisionReportsData();
+  console.log(supervisionReports);
 
   return (
     <section className="py-16 md:py-24">
@@ -29,8 +30,10 @@ const Super = () => {
         <div className="flex flex-col gap-10 sm:gap-14">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col text-center gap-8">
-              <h2 className="font-bold text-4xl">Supervision Report</h2>
-              <p className="font-medium text-base">
+              <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.7rem]">
+                Supervision Report
+              </h2>
+              <p className="font-medium text-sm sm:text-base sm:leading-[1.75rem]">
                 {/* <span className="text-[15.88px] font-medium text-[#2D7636]">
                     ARCN Research Institutes
                   </span>{" "} */}
@@ -49,21 +52,21 @@ const Super = () => {
             {data.map((el, i) => (
               <div
                 key={i}
-                className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-5"
+                className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5"
               >
-                <div className="flex flex-col gap-6 items-start order-2 lg:order-1">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-xl text-[#131517] font-medium">
+                <div className="flex flex-col gap-2 items-start order-2 lg:order-1">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                       {el.title}
                     </h3>
-                    <p className="font-normal text-[#464646] text-sm">
+                    <p className="font-normal leading-[1.5rem] text-[#464646] text-xs">
                       {el.description}
                     </p>
                     <div className="flex gap-3 items-center">
                       <div>
                         <GrayLocationPointerIcon />
                       </div>
-                      <p className="font-normal text-[#1315175C] text-[0.9375rem]">
+                      <p className="font-normal text-[#1315175C] text-xs leading-[1.5rem]">
                         {el.location}
                       </p>
                     </div>
@@ -71,17 +74,17 @@ const Super = () => {
                   <div className="flex gap-2">
                     <Link
                       href={`/mandate/training/supervision-report/${el.slug}/report`}
-                      className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5"
+                      className="bg-[#30A85F] text-white font-sans rounded-sm px-7 py-2.5 leading-[0.875rem]"
                     >
                       View
                     </Link>
                   </div>
                 </div>
-                <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                <div className="relative w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                   <Image
                     src="/Images/Homepage/event-imgholder.png"
                     alt="event-imgholder"
-                    className="object-cover"
+                    className="object-cover h-full w-full"
                     width={150}
                     height={150}
                     priority
@@ -93,7 +96,7 @@ const Super = () => {
 
           <Link
             href="/mandate/training/supervision-report"
-            className="self-center py-3 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
+            className="self-center py-3 px-10 leading-[2rem] bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
           >
             VIEW ALL
           </Link>

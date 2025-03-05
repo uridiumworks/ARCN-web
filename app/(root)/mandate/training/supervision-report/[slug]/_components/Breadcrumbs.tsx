@@ -26,7 +26,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
             </div>
             <Link
               href="/"
-              className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
+              className="font-medium text-sm leading-[1.5rem] text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               Home
             </Link>
@@ -37,7 +37,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
           <BreadcrumbLink>
             <Link
               href="/mandate/training"
-              className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
+              className="font-medium text-sm leading-[1.5rem] text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               Training
             </Link>
@@ -48,7 +48,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
           <BreadcrumbLink>
             <Link
               href="/mandate/training/supervision-report"
-              className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
+              className="font-medium text-sm leading-[1.5rem] text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               Supervision Report
             </Link>
@@ -56,7 +56,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
         </BreadcrumbItem>
         <BreadcrumbSeparator className="text-[#2E3545]" />
         <BreadcrumbItem>
-          <BreadcrumbPage className="font-medium text-sm text-[#2E7636]">
+          <BreadcrumbPage className="font-medium leading-[1.5rem] text-sm text-[#2E7636]">
             {text}
           </BreadcrumbPage>
         </BreadcrumbItem>

@@ -9,16 +9,16 @@ export default function Values() {
     <section className="py-9 sm:py-18 flex flex-col gap-14">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center px-0 sm:px-8 md:px-16">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col items-center px-0 sm:px-8 md:px-16 gap-3.5">
+            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
             Core Values & Philosophy
-            </h2>
+            </h3>
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
-                <p className="text-sm sm:text-lg text-[#171616] font-normal">
+                <p className="text-sm sm:text-base text-[#171616] font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">Motto:</span> Safe food for life{" "}
                 </p>
@@ -28,7 +28,7 @@ export default function Values() {
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
-                <p className="text-sm sm:text-lg text-[#171616] font-normal">
+                <p className="text-sm sm:text-base text-[#171616] font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">Philosophy:</span> Training of
                   sound and effective middle level manpower citizens who can
@@ -44,7 +44,7 @@ export default function Values() {
       <div className="flex flex-col gap-12">
         <CustomContainer>
           <div className="flex flex-col gap-10">
-            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111]">
+            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
               Academic Programs
             </h3>
             <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8 items-start">

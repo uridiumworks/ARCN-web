@@ -1,15 +1,14 @@
 "use client";
 import { useClientProjectsData } from "@/hooks/Projects.hooks";
 import Image from "next/image";
-import Link from "next/link";
 
 const Projects = () => {
   const { loading, projects, error } = useClientProjectsData();
 
   return (
-    <section className="">
+    <section className="min-h-screen">
       <div className="">
-        <div className="text-center md:p-9 space-y-4">
+        <div className="text-center p-9 space-y-4">
           <h1 className="font-bold text-4xl">Our Projects</h1>
           <p className="font-normal text-base">
             Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
@@ -20,9 +19,9 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:w-8/12 lg:mx-auto ">
+        <div className="flex flex-col mx-auto">
           
-          <div className="p-3 grid grid-cols-1 md:grid-cols-3  gap-5">
+          <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {projects?.length > 0 && (
               <>
                 {projects?.slice(0, 3)?.map((p: any, index: number) => (
@@ -36,9 +35,7 @@ const Projects = () => {
                     />
                     <div className="absolute w-full bg-[#000000CC] bottom-0 rounded-b-md text-white p-2">
                       <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                      <Link href={`/programsandprojects/ffff/projects`} passHref>
-                        <p className="font-normal text-[10.35px]">{p?.description}Lorem ipsum dolor sit amet consectetur. Tellus varius fermentum nisi a quis tristique velit adipiscing magna.</p>
-                      </Link>
+                      <p className="font-normal text-[10.35px]">{p?.description}Lorem ipsum dolor sit amet consectetur. Tellus varius fermentum nisi a quis tristique velit adipiscing magna.</p>
                     </div>
                   </div>
                 ))}
@@ -46,7 +43,7 @@ const Projects = () => {
             )}
           </div>
 
-          <div className="p-3 grid grid-cols-1 md:grid-cols-3  gap-5">
+          <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {projects?.length > 0 && (
               <>
                 {projects?.slice(0, 3)?.map((p: any, index: number) => (

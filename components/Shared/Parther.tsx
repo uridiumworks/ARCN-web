@@ -15,7 +15,7 @@ const Partners = () => {
             </h2>
        
           <div className="flex flex-col lg:flex-row gap-10  justify-center items-center lg:gap-20">
-            <div className="shrink-0 w-[25%]">
+            <div className="shrink-0 w-[75%] lg:w-[25%]">
               <Image
                 src="/Images/Homepage/farmer.png"
                 width={836}
