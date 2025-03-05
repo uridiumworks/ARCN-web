@@ -13,7 +13,7 @@ export default function TrainingFcahptInstituePage() {
         email="fcahptvomvet@gmail.com"
         phoneNumber="08053153651"
         location="National Veterinary Research Institute, Vom (NVRI), P.M.B 05, Jos-South L.G.A, Jos, Plateau, Nigeria"
-        title="Federal College of Animal Health and Production Technology, Vom (FCAHPT)"
+        title="Federal College of Animal Health and Production <br /> Technology, Vom (FCAHPT)"
         website="https://www.fcahptvom.gov.ng"
       />
       <Overview />

@@ -118,16 +118,16 @@ export default function InternationalEngagement() {
   return (
     <section className="bg-white py-16 md:py-24">
       <CustomContainer>
-        <div className="flex flex-col gap-8 ">
+        <div className="flex flex-col gap-10">
           <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[3.75rem]">
             International Engagements
           </h2>
           <div className="grid grid-cols-engagement-res gap-12">
             {data.map((el, i) => (
-              <div key={i} className="flex flex-col gap-3 px-3 py-5 border border-[#EBEBEB] rounded-lg">
+              <div key={i} className="flex flex-col gap-3 px-3 py-4 border border-[#EBEBEB] rounded-lg">
                 {el.icon}{" "}
                 <div className="flex flex-col gap-2.5 ">
-                  <h3 className="font-semibold text-base sm:text-lg text-[#0A1425]">
+                  <h3 className="font-semibold text-base sm:leading-[2rem] text-[#0A1425]">
                     {el.title}
                   </h3>
                   {/* <p className="text-sm sm:text-base font-normal text-[#495057]">

@@ -7,7 +7,7 @@ import Partners from "@/components/Shared/Parther";
 
 export default function page() {
   return (
-    <section className="py-3">
+    <section className="py-6">
       <CustomContainer>
         <div className="flex flex-col gap-10 sm:gap-14">
           <div className="flex flex-col gap-6">
@@ -16,9 +16,9 @@ export default function page() {
               secondaryText="Training"
               secondaryUrl="/mandate/training"
             />
-            <div className="flex flex-col gap-8">
-              <h2 className="font-bold text-4xl">Supervision Report</h2>
-              <p className="font-medium text-base">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.7rem] ">Supervision Report</h2>
+              <p className="font-medium text-base leading-[1.75rem]">
                 {/* <span className="text-[15.88px] font-medium text-[#2D7636]">
                 ARCN Research Institutes
               </span>{" "} */}

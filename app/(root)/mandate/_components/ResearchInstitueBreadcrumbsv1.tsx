@@ -32,7 +32,7 @@ export default function ResearchInstitueBreadcrumbsV1({
             </div>
             <Link
               href="/"
-              className="font-medium text-sm text-[#A5ACBA] hover:text-[#30A85F] transition"
+              className="font-medium text-sm leading-[1.25rem] text-[#A5ACBA] hover:text-[#30A85F] transition"
             >
               Home
             </Link>
@@ -43,15 +43,15 @@ export default function ResearchInstitueBreadcrumbsV1({
           <BreadcrumbLink>
             <Link
               href={secondaryUrl}
-              className="font-medium text-sm text-[#A5ACBA] hover:text-[#30A85F] transition"
+              className="font-medium text-sm leading-[1.25rem] text-[#A5ACBA] hover:text-[#30A85F] transition"
             >
               {secondaryText}
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator className="text-[#2E3545]" />
+        <BreadcrumbSeparator className="text-[#2E3545]"  />
         <BreadcrumbItem>
-          <BreadcrumbPage className="font-medium text-sm text-[#30A85F]">
+          <BreadcrumbPage className="font-medium text-sm leading-[1.25rem] text-[#30A85F]">
             {text}
           </BreadcrumbPage>
         </BreadcrumbItem>

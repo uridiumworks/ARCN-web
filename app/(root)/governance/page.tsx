@@ -12,7 +12,7 @@ const Governance: React.FC = () => {
         <h1 className="text-2xl sm:text-3xl md:text-[50px] font-semibold text-[#1B222B]">Meet The Management</h1>
 
         <p className="text-base sm:text-lg text-gray-600 mt-4 max-w-4xl mx-auto leading-relaxed">
-            ARCN is a corporate body with perpetual succession established as a grade 'A' parastatal of the 
+            ARCN is a corporate body with perpetual succession established as a grade &apos;A&apos; parastatal of the 
             Federal Ministry of Agriculture and Rural Development. It has a Governing Board answerable to the 
             Minister of Agriculture and Rural Development. It has a chairman, members from public and private 
             sectors covering key stakeholder groups. The Executive Secretary is the CEO, with seven directorates.

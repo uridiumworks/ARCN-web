@@ -12,7 +12,7 @@ export default function NrcriPage() {
         email="info@nrcri.gov.ng"
         phoneNumber="0816 387 9811"
         location="Km 8, Umuahia-Ikot Ekpene Road, P.M.B 7006, Umuahia, Abia State, Nigeria."
-        title="National Root Crops Research Institute (NRCRI)"
+        title="National Root Crops Research <br /> Institute (NRCRI)"
         website="www.nrcri.gov.ng"
       />
       <Overview />

@@ -13,7 +13,7 @@ export default function TrainingFCAKanoInstituePage() {
         email="admin@fcapt.edu.ng"
         phoneNumber="+234 (0)8065531545"
         location="CBN Quarters Road, Hotoro GRA., Kwanar Sabo, Off Maiduguri Road, Adjacent Ahmad Musa Sport Complex, Tarauni, Kano, Nigeria"
-        title="Federal College of Agricultural Produce Technology, Kano"
+        title="Federal College of Agricultural <br /> Produce Technology, Kano"
         website="https://www.fcapt.edu.ng"
       />
       <Overview />

@@ -92,18 +92,18 @@ const Navbar = (props: Props) => {
     }
   };
   return (
-    <div className="px-8 py-4  sticky z-20 top-0 bg-[#121212]">
-      <div className="w-full sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
+    <div className="py-5 sticky z-50 top-0 bg-[#121212]">
+      <div className="w-full px-8 sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
         <div>
-          <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
+          <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
         </div>
         <div className="hidden lg:flex lg:flex-col lg:gap-6 text-center">
-          <div className="flex justify-center items-center gap-4 text-white">
+          <div className="flex justify-center items-center gap-8 text-white">
             {topNav.map((t, index) => (
               <p
                 onClick={() => routePathLinks(t)}
-                className={`uppercase font-normal text-[0.75rem] ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
+                className={`font-normal text-[0.75rem]  leading-[2rem] ${
+                  isActiveFunc(t) ? "text-[#30A85F]" : "text-opacity-85 text-[#EFEFEF]"
                 }  cursor-pointer`}
                 key={index}
               >
@@ -111,11 +111,11 @@ const Navbar = (props: Props) => {
               </p>
             ))}
           </div>
-          <div className="flex justify-center mt-2 gap-6 text-white">
+          <div className="flex justify-center gap-6 text-white">
             {mainNav.map((t, index) => (
               <p
                 onClick={() => routePathLinks(t)}
-                className={`font-extrabold text-sm uppercase ${
+                className={`font-bold text-sm leading-[2rem] uppercase ${
                   isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
                 }  cursor-pointer`}
                 key={index}
@@ -125,13 +125,13 @@ const Navbar = (props: Props) => {
             ))}
           </div>
         </div>
-        <div className="hidden lg:flex items-center justify-between rounded-md px-4 bg-[#FFFFFF0F]  border-[#3C3C3C] py-1   ">
-          <Input
+        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2.5 bg-[#FFFFFF0F] border  border-[#3C3C3C]">
+          <input
             type="search"
             placeholder="Search"
-            className="outline-none bg-transparent text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-none placeholder:text-[#EFEFEF]"
+            className="outline-none bg-transparent text-[#EFEFEF] py-1 px-1.5 text-[0.75rem] leading-[2rem] focus-visible:outline-none border-none placeholder:text-[#EFEFEF]"
           />
-          <Search color="#2E7636" size="16px" />
+          <Search color="#2E7636" size="14px" />
         </div>
         <div className="lg:hidden flex items-center">
           <Menu size="24px" color="#EFEFEF" onClick={toggleMobileMenu} />
@@ -140,7 +140,7 @@ const Navbar = (props: Props) => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-[#121212] z-50 flex flex-col gap-7 items-center p-4">
+        <div className="absolute top-0 left-0 w-full h-screen bg-[#121212]  z-50 flex flex-col gap-7 items-center p-4">
           <div className="flex  items-center justify-between w-full">
             <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
 
@@ -152,11 +152,11 @@ const Navbar = (props: Props) => {
             />
           </div>
 
-          <div className="flex flex-col gap-4 px-6 self-stretch">
+          <div className="flex flex-col gap-8 sm:gap-12 px-6 self-stretch justify-self-center absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-full sm:w-[75%] sm:mx-auto">
             <div className=" flex flex-col gap-6 items-center text-white">
               {mainNav.map((t, index) => (
                 <p
-                  className={`font-extrabold text-sm uppercase  ${
+                  className={`font-bold text-sm sm:text-lg uppercase  ${
                     isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
                   }`}
                   key={index}
@@ -169,11 +169,11 @@ const Navbar = (props: Props) => {
                 </p>
               ))}
             </div>
-            <div className="flex items-center mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
-              <Input
+            <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
+              <input
                 type="search"
                 placeholder="Search"
-                className="outline-none bg-transparent text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-[#3C3C3C]"
+                className="outline-none bg-transparent flex-1 py-1 px-1.5 text-[#EFEFEF] text-sm leading-[1.5rem] focus-visible:outline-none border-[#3C3C3C]"
               />
               <Search color="#2E7636" size="24px" />
             </div>
