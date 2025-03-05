@@ -19,13 +19,13 @@ const Research = () => {
                   ARCN Research Institutes
                 </span>{" "}
                 are non-profit research organizations conducting innovative{" "}
-                <br />
+                <br className="hidden md:block" />
                 research. Home to more than 9,000 scientists, researchers,
                 technicians and staff, the
-                <br />
+                <br className="hidden md:block" />
                 Centers work to transform food, land and water systems in a
                 climate crisis. Click on a
-                <br />
+                <br className="hidden md:block" />
                 Center below to learn more.
               </p>
             </div>

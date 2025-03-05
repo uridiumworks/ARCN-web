@@ -15,13 +15,13 @@ export default function ResearchNvriInstitutePage() {
         phoneNumber="+234 905 877 7764"
         location="P.M.B 01, Vom, Jos South, Plateau State, Nigeria"
         title="National Veterinary Research Institute (NVRI), Vom"
-        website="www.nvri.gov.ng"
+        website="https://www.nvri.gov.ng"
       />
       <Overview />
       <Values />
       <Focus />
       <Leadership
-        website="www.nvri.gov.ng"
+        website="https://www.nvri.gov.ng"
         phoneNumber="+234 905 877 7764"
         location="P.M.B 01, Vom, Jos South, Plateau State, Nigeria"
         email="edvr@nvri.gov.ng"

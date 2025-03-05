@@ -32,9 +32,9 @@ const Report = () => {
             </h2>
             <p className="text-black font-normal text-sm sm:text-base sm:leading-[1.75rem]">
               Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
-              etiam euismod quisque <br /> montes arcu risus. Magnis posuere
+              etiam euismod quisque <br className="hidden md:block" /> montes arcu risus. Magnis posuere
               tincidunt elit ultrices tortor. Sit semper cras sed duis tortor{" "}
-              <br /> tempor amet gravida. Rhoncus quis nisl etiam tortor.
+              <br className="hidden md:block" /> tempor amet gravida. Rhoncus quis nisl etiam tortor.
             </p>
           </div>
 
@@ -58,19 +58,19 @@ const Report = () => {
                           </p>
                        
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 mt-auto">
                         {/* <button className="bg-transparent border border-[#E6E6E6] font-sans font-medium text-sm text-[#07A460] rounded-sm px-7 py-2.5">
                       Download
                     </button> */}
                         <Link
                           href={`/mandate/research/coordination-report/${el.reportsId}/report`}
-                          className="bg-[#30A85F] text-white font-sans rounded-sm px-8 py-4 leading-[0.875rem] text-sm"
+                          className="bg-[#30A85F] text-white font-sans rounded-sm px-8 py-4 leading-[0.875rem] text-sm mt-auto"
                         >
                           View
                         </Link>
                       </div>
                     </div>
-                    <div className="relative w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                    <div className="relative w-full sm:w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                       <Image
                         src="/Images/Homepage/event-imgholder.png"
                         alt="event-imgholder"
