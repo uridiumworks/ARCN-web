@@ -80,10 +80,11 @@ export default function Leadership({
                   Website
                 </h4>
                 <Link
-                  href={website.startsWith("www") ? website : `www.${website}`}
+                  href={website}
+                  
                   className="font-normal text-[#121212] text-sm leading-[1.4rem]"
                 >
-                  {website}
+                  {website.split("https://")[1]}
                 </Link>
               </div>
             </div>

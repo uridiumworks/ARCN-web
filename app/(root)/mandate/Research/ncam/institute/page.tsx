@@ -15,13 +15,13 @@ export default function ResearchNcamInstitutePage() {
         phoneNumber="08033649168"
         location="Km 20, Ilorin-Lokoja Highway, Ilorin, Kwara State, Nigeria"
         title="National Centre for Agricultural Mechanization <br /> (NCAM)"
-        website="www.ncam.gov.ng"
+        website="https://www.ncam.gov.ng"
       />
       <Overview />
       <Values />
       <Focus />
       <Leadership
-        website="www.ncam.gov.ng"
+        website="https://www.ncam.gov.ng"
         email="ncamcontact@yahoo.com"
         location="Km 20, Ilorin-Lokoja Highway, Ilorin, Kwara State, Nigeria Website:"
         phoneNumber="08033649168"
