@@ -69,7 +69,7 @@ const TechnicalDepartmentData = [
 
 const TechnicalDepartment = () => {
     return (
-        <section className="w-full md:w-[1250px] py-4 mx-auto">
+        <section className="w-full md:w-[1250px] px-2.5 py-4 mx-auto">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -108,7 +108,7 @@ const TechnicalDepartment = () => {
             <div className="py-10 space-y-10">
                 <div className="">
                     <h1 className="text-2xl sm:text-3xl md:text-[40px] font-bold text-[#1B222B]">Technical Department </h1>
-                    <p className="text-base sm:text-lg text-gray  pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat <br /> elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
+                    <p className="text-base sm:text-lg text-gray pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat <br className='hidden md:block' /> elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
                 </div>
 
                 {TechnicalDepartmentData?.map(({description, descriptionList, title, url}, index) => {

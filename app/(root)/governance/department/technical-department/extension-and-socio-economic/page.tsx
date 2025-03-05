@@ -51,8 +51,8 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="h-[380px] w-full bg-[#FFC74E]">
-                <div className="w-[1250px] ml-32 space-y-8 pt-16">
+            <div className="h-full md:h-[380px] w-full bg-[#FFC74E]">
+                <div className="w-full p-3 md:p-0 md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
                     <h1 className="text-[40px] font-semibold">Extension & Socio-Economic Department</h1>
                     <p className="text-lg">
                         The Extension and Socio-economics Department of the Agricultural Research Council of Nigeria<br /> 
@@ -62,7 +62,7 @@ const ServiceDepartmentDetails = () => {
                 </div>
             </div>
 
-            <div className="w-[1250px] mx-auto py-5">
+            <div className="w-full md:w-[1250px] mx-auto py-5">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
