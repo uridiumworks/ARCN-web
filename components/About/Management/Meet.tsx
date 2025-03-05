@@ -10,7 +10,7 @@ const Meet = () => {
             <h2 className="text-3xl sm:text-5xl sm:leading-[4.125rem] text-[#1B222B] font-semibold">
               Governance of ARCN
             </h2>
-            <p className="font-normal text-lg hidden lg:block leading-[2.125rem] text-[#1B222B]">
+            <p className="font-normal text-lg leading-[2.125rem] text-[#1B222B]">
               ARCN is a corporate body with perpetual succession established as
               a grade &apos;A&apos; parastatal of the <br /> Federal Ministry of
               Agriculture and Food Security. It has a Governing Board answerable
@@ -29,7 +29,7 @@ const Meet = () => {
             </h3>
 
             <div className="flex flex-col gap-10">
-              <div className="mt-8 flex flex-col gap-5 text-center self-center">
+              <div className="mt-8 flex flex-col gap-5 text-center sm:self-center">
                 <Image
                   src="/Images/image 75.png"
                   alt=""
@@ -47,7 +47,7 @@ const Meet = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-4 gap-3 items-start justify-center mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 items-center justify-center mt-8">
                 <div className="text-center flex flex-col gap-5 mx-auto">
                   <Image
                     src="/Images/image 75 (1).png"
@@ -121,7 +121,7 @@ const Meet = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-5 gap-3 items-start text-center justify-center mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 items-center text-center justify-center mt-8">
                 <div className="text center flex flex-col gap-5 mx-auto">
                   <Image
                     src="/Images/image 75 (5).png"

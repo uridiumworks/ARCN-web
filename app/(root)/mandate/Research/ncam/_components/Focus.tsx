@@ -30,7 +30,7 @@ export default function Focus() {
       </div>
 
       <CustomContainer>
-        <div className="grid grid-cols-[100%] gap-10">
+        <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10">
           <CardBorderedDetails
             title="National and International Collaborations"
             subContent="NCAM collaborates with various organizations including:"

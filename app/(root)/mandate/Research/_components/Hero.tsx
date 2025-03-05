@@ -26,13 +26,14 @@ type Props = {
 };
 
 export default function Hero({
-  phoneNumber = "",
+  phoneNumber="",
   logo,
   title,
   accroymn,
   location,
   website,
   email,
+
 }: Props) {
   return (
     <section className="flex flex-col gap-6 bg-[#101010] pt-3 px-3 pb-6 sm:pb-16 mt-3">
@@ -68,13 +69,11 @@ export default function Hero({
               <div>
                 <WhiteWeburlIcon />
               </div>
-              <div className="flex flex-col">
-                <h4 className="font-medium text-white text-base leading-[1.6rem]">
-                  Website
-                </h4>
+              <div className="flex flex-col gap-1.5">
+                <h4 className="font-medium text-white text-base">Website</h4>
                 <Link
                   href={website}
-                  className="font-normal text-[#EFEFEF] text-sm leading-[1.4rem]"
+                  className="font-normal text-[#EFEFEF] text-sm"
                 >
                   {website}
                 </Link>
@@ -85,31 +84,23 @@ export default function Hero({
               <div>
                 <WhiteEmailIcon />
               </div>
-              <div className="flex flex-col">
-                <h4 className="font-medium text-white text-base leading-[1.6rem]">
-                  Email
-                </h4>
-                <p className="font-normal text-[#EFEFEF] text-sm leading-[1.4rem]">
-                  {email}
-                </p>
+              <div className="flex flex-col gap-1.5">
+                <h4 className="font-medium text-white text-base">Email</h4>
+                <p className="font-normal text-[#EFEFEF] text-sm">{email}</p>
               </div>
             </div>
 
-            {phoneNumber && (
-              <div className="flex items-center justify-start lg:justify-center gap-3 ">
-                <div>
-                  <WhitePhoneIcon />
-                </div>
-                <div className="flex flex-col ">
-                  <h4 className="font-medium text-white text-base leading-[1.6rem]">
-                    Phone
-                  </h4>
-                  <p className="font-normal text-[#EFEFEF] text-sm leading-[1.4rem]">
-                    {phoneNumber}
-                  </p>
-                </div>
+           {phoneNumber &&  <div className="flex items-center justify-center gap-3 ">
+              <div>
+                <WhitePhoneIcon />
               </div>
-            )}
+              <div className="flex flex-col gap-1.5">
+                <h4 className="font-medium text-white text-base">Phone</h4>
+                <p className="font-normal text-[#EFEFEF] text-sm">
+                  {phoneNumber}
+                </p>
+              </div>
+            </div>}
           </div>
         </div>
       </CustomContainer>

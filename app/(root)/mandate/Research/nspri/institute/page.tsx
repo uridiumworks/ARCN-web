@@ -9,12 +9,12 @@ export default function ResearchNspriInstitutePage() {
   return (
     <section>
       <Hero
-        logo="/Images/Mandatepage/nspri-logo.png"
+        logo="/Images/Mandatepage/nspri-img.png"
         accroymn="NSPRI"
         email="nspriinfo@nspri.gov.ng"
         phoneNumber="08117767204"
         location="Km 3 Asa Dam Road, PMB 1489, Ilorin, Kwara State, Nigeria"
-        title="Nigerian Stored Products Research Institute <br /> (NSPRI)"
+        title="Nigerian Stored Products Research Institute (NSPRI)"
         website="www.nspri.gov.ng"
       />
       <Overview />

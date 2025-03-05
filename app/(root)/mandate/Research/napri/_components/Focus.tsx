@@ -35,7 +35,7 @@ export default function Focus() {
             ]}
           />
 
-          <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-[100%] sm:grid-cols-2">
             <CardBorderedDetails
               title="Training and Consultancy"
               subContent="The institute offers training programs on:"

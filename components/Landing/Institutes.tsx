@@ -189,7 +189,7 @@ const data1 = [
 const TabOne = () => {
   return (
     <div className="flex flex-col gap-16">
-      <div className="grid grid-cols-[100%] lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
         {data.map((el, i) => (
           <div
             key={i}
@@ -233,7 +233,7 @@ const TabOne = () => {
         ))}
       </div>
       <Link
-        href="/mandate/research"
+        href="/mandate/Research"
         className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
         See All Reseach Institutes
@@ -245,7 +245,7 @@ const TabOne = () => {
 const TabTwo = () => {
   return (
     <div className="flex flex-col gap-16">
-      <div className="grid grid-cols-[100%] lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
         {data1.map((el, i) => (
           <div
             key={i}

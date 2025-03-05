@@ -24,7 +24,7 @@ const logos = [
 export default function OurPartners() {
   return (
     <section className="py-16 md:py-24">
-      <h3 className="text-center font-bold text-3xl sm:text-4xl text-black mb-12 sm:leading-[3.75rem]">
+      <h3 className="text-center font-bold text-3xl sm:text-4xl text-black mb-14 leading-[3.75rem]">
         Our Partners
       </h3>
       <div className="flex overflow-hidden">

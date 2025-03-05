@@ -6,7 +6,7 @@ const Intro = () => {
     <section className="pt-16 md:pt-24">
       <CustomContainer>
         <div className="flex flex-col items-start lg:flex-row sm:items-center lg:items-start gap-12">
-          <div className="shrink lg:shrink-0  object-contain relative h-auto sm:h-[31.25rem] overflow-hidden rounded-lg">
+          <div className="shrink lg:shrink-0  object-contain relative h-[31.25rem] overflow-hidden rounded-lg">
             <div className="absolute flex flex-col gap-1 py-4 justify-center text-center bg-[#00000061] bottom-0 left-0 w-full">
               <h3 className="text-white font-bold text-base">
                 Prof. Garba Hamidu Sharubutu
@@ -20,7 +20,7 @@ const Intro = () => {
               alt="plants"
               width={375}
               height={500}
-              className="sm:h-full w-full object-cover"
+              className="h-full w-full"
             />
           </div>
           <div className="flex flex-col gap-4">

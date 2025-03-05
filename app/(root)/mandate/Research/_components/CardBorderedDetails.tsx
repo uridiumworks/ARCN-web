@@ -7,7 +7,6 @@ type Props = {
   subContent?: string;
   endContent?: string;
   subContentClassNames?: string;
-  shouldBoldPointText?:boolean
 };
 export default function CardBorderedDetails({
   shouldBoldPointText=true,
@@ -16,8 +15,9 @@ export default function CardBorderedDetails({
   endContent="",
   title,
   points,
-
-  
+  subContent = "",
+  endContent = "",
+  subContentClassNames = "font-normal",
 }: Props) {
   return (
     <div className="flex flex-col gap-4 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
@@ -27,7 +27,7 @@ export default function CardBorderedDetails({
       <div className="flex flex-col gap-3">
         {subContent && (
           <h3
-            className={`${subContentClassNames} text-black text-sm leading-[2rem] sm:text-base`}
+            className={`${subContentClassNames} text-black text-sm sm:text-lg`}
           >
             {subContent}
           </h3>
@@ -53,7 +53,7 @@ export default function CardBorderedDetails({
         ))}
 
         {endContent && (
-          <h3 className={`font-normal text-black text-sm sm:text-base leading-[2rem]`}>
+          <h3 className={`font-normal text-black text-sm sm:text-lg`}>
             {endContent}
           </h3>
         )}

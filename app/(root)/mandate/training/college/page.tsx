@@ -61,7 +61,7 @@ const College = () => {
 
                 <Link
                   href={"/mandate/training/fca-ibadan/institute"}
-                  className="self-start mt-auto"
+                  className="self-start"
                 >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
@@ -79,7 +79,7 @@ const College = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                  <h2 className="font-semibold text-base">
                     Federal College of Agricultural Produce Technology, Kano
                   </h2>
                   <p className="font-normal text-xs leading-[1.349375rem]">
@@ -103,17 +103,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/fcahpt-logo.svg"
+                    src="/Images/Icons/Health.png"
                     alt="Health"
-                    width={60}
-                    height={60}
+                    width={42}
+                    height={42}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                  <h2 className="font-semibold text-base">
                     Federal College of Animal Health and production, Vom
                   </h2>
-                  <p className="font-normal text-xs leading-[1.349375rem]">
+                  <p className="font-normal text-sm">
                     Federal College of Animal Health and Production Technology,
                     Vom is a pioneering institution in veterinary education in
                     West Africa. Established in 1941 as Veterinary School Vom,
@@ -220,6 +220,99 @@ const College = () => {
                   href={"/mandate/training/fca-ishiagu/institute"}
                   className="self-start mt-auto"
                 >
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                    <IoArrowForwardSharp className="text-xl" />
+                  </div>
+                </Link>
+              </div>
+
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
+                <div>
+                  <Image
+                    src="/Images/Icons/Moor.png"
+                    alt="Moor"
+                    width={42}
+                    height={42}
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <h2 className="font-semibold text-base">
+                    Federal College of Animal Health and production, moor
+                    plantation, Ibadan
+                  </h2>
+                  <p className="font-normal text-sm">
+                    Federal College of Animal Health and Production Technology,
+                    Vom is a pioneering institution in veterinary education in
+                    West Africa. Established in 1941 as Veterinary School Vom,
+                    it has evolved into a leading institution for training
+                    middle-level manpower in animal health and production
+                    technology.
+                  </p>
+                </div>
+
+                <Link href={"/mandate/training"} className="self-start">
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                    <IoArrowForwardSharp className="text-xl" />
+                  </div>
+                </Link>
+              </div>
+
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
+                <div>
+                  <Image
+                    src="/Images/Icons/kaduna.png"
+                    alt="kaduna"
+                    width={42}
+                    height={42}
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <h2 className="font-semibold text-base">
+                    Federal Cooperative College, kaduna
+                  </h2>
+                  <p className="font-normal text-sm">
+                    Rubber research institute of Nigeria is the only Federal
+                    Government agency in Nigeria that has the mandate to conduct
+                    research and development on rubber and other latex producing
+                    plants of economic importance. 
+                  </p>
+                </div>
+
+                <Link href={"/mandate/training"} className="self-start">
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                    <IoArrowForwardSharp className="text-xl" />
+                  </div>
+                </Link>
+              </div>
+
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
+                <div>
+                  <Image
+                    src="/Images/Icons/Ishiagu.png"
+                    alt="Ishiagu"
+                    width={42}
+                    height={42}
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <h2 className="font-semibold text-base">
+                    Federal College of Agriculture, Ishiagu
+                  </h2>
+                  <p className="font-normal text-sm">
+                    he Federal College of Agriculture, Ishiagu is a premier
+                    agricultural institution that offers both National Diploma
+                    (ND) and Higher National Diploma (HND) programs. The
+                    institution stands as a center of excellence for
+                    agricultural education and training, focusing on developing
+                    skilled agricultural technologists and promoting sustainable
+                    agricultural practices in Nigeria.
+                  </p>
+                </div>
+
+                <Link
+                  href={"/mandate/training/fca-ishiagu/institute"}
+                  className="self-start"
+                >
                   <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -229,7 +322,7 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/feca-logo.svg"
+                    src="/Images/Icons/Akure.png"
                     alt="Akure"
                     width={60}
                     height={60}
@@ -239,7 +332,7 @@ const College = () => {
                   <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Agriculture, Akure
                   </h2>
-                  <p className="font-normal text-xs leading-[1.349375rem]">
+                  <p className="font-normal text-sm">
                     The Federal College of Agriculture, Akure is a premier
                     agricultural training institution established on January 10,
                     1957. Originally known as the School of Agriculture, Akure,
@@ -250,10 +343,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={"/mandate/training/feca/institute"}
-                  className="self-start mt-auto"
-                >
+                <Link href={"/mandate/training/feca/institute"} className="self-start">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -392,7 +482,7 @@ const College = () => {
                     Federal College of Veterinary and Medical Laboratory
                     Technology, vom
                   </h2>
-                  <p className="font-normal text-xs leading-[1.349375rem]">
+                  <p className="font-normal text-sm">
                     The Federal College of Veterinary and Medical Laboratory
                     Technology (FCVMLT) is a premier institution dedicated to
                     veterinary and medical laboratory technology education in
@@ -402,7 +492,7 @@ const College = () => {
 
                 <Link
                   href={"/mandate/training/fcvmlt/institute"}
-                  className="self-start mt-auto"
+                  className="self-start"
                 >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
@@ -435,7 +525,7 @@ const College = () => {
 
                 <Link
                   href={"/mandate/training/fcvmlt/institute"}
-                  className="self-start mt-auto"
+                  className="self-start"
                 >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />

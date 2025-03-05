@@ -7,11 +7,11 @@ export default function Values() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col gap-3.5 items-center text-center">
-          <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
+          <div className="flex flex-col items-center text-center">
+            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
               Core Values
-            </h3>
-            <p className="text-[#111111] font-normal text-sm sm:text-base leading-[1.531875rem]">
+            </h2>
+            <p className="text-[#111111] font-normal text-base sm:text-lg">
               Excellence, Innovation, Research Integrity, and Stakeholder
               Development
             </p>
@@ -20,7 +20,7 @@ export default function Values() {
       </div>
 
       <CustomContainer>
-        <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10">
           <CardBorderedlessDetails
             title="Facilities and Infrastructure"
             points={[
