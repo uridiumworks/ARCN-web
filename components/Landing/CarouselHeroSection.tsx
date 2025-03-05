@@ -72,7 +72,7 @@ export default function CarouselHeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-20"></div>
 
       {/* Carousel Content - Fixed text that doesn't change */}
-      <div className=" flex flex-col gap-3 sm:gap-6 items-center justify-center text-white z-30 px-8 sm:px-6 pt-8 sm:pt-12 lg:pt-20 ">
+      <div className=" flex flex-col gap-3 sm:gap-6 items-center justify-center text-white z-30 px-8 sm:px-6 pt-8 sm:pt-12 lg:pt-24 ">
         <h1 className="font-bold text-2xl text-center sm:text-3xl lg:text-[2.5rem] leading-[2.5rem] sm:leading-[2.875rem]">
           ARCN and UNN introduce new <br /> strategy agroecological sustainable
           farming

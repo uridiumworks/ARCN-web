@@ -8,11 +8,11 @@ export default function Values() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
               Core Values & Philosophy
-            </h2>
-            <p className="text-[#111111] font-normal text-base sm:text-lg">
+            </h3>
+            <p className="text-[#111111] font-normal text-base sm:text-base leading-[1.531875rem]">
               Excellence, Diligence, Dedication, and Professional Development
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function Values() {
             <CardBorderedlessDetails
               title="Academic Focus"
               subContent="FCVMLT offers various programs including:"
-              subContentClassNames="font-bold"
+              subContentClassNames="font-medium"
               points={[
                 "Medical Laboratory Technology",
                 "Veterinary Laboratory Technology",
