@@ -7,12 +7,12 @@ export default function Focus() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col items-center gap-3.5 text-center">
+          <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
               Research Focus
-            </h2>
-            <p className="text-[#111111] font-normal text-base sm:text-lg">
-              NAPRI conducts research on various livestock species including:
+            </h3>
+            <p className="text-[#111111] font-normal text-base sm:text-lg leading-[1.531875rem]">
+              NAPRI conducts research on various livestock species including: <br />
               Cattle, Sheep, Goats, Swine, Poultry, Rabbits, Donkeys, Horses,
               Camels
             </p>
@@ -35,54 +35,56 @@ export default function Focus() {
             ]}
           />
 
-          <CardBorderedDetails
-            title="Training and Consultancy"
-            subContent="The institute offers training programs on:"
-            points={[
-              "Artificial Insemination",
-              "Embryo Transfer",
-              "Modern poultry production and management",
-              "Cattle fattening",
-              "Sheep and goat production",
-              "Pasture establishment and management",
-              "Commercial dairy production",
-              "Dairy processing",
-            ]}
-          />
+          <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
+            <CardBorderedDetails
+              title="Training and Consultancy"
+              subContent="The institute offers training programs on:"
+              points={[
+                "Artificial Insemination",
+                "Embryo Transfer",
+                "Modern poultry production and management",
+                "Cattle fattening",
+                "Sheep and goat production",
+                "Pasture establishment and management",
+                "Commercial dairy production",
+                "Dairy processing",
+              ]}
+            />
 
-          <CardBorderedDetails
-            title="Consultancy Expertise"
-            subContent=""
-            points={[
-              "Livestock breeding and management",
-              "Feed formulation and nutrition",
-              "Pasture development",
-              "Animal health management",
-            ]}
-          />
+            <CardBorderedDetails
+              title="Consultancy Expertise"
+              subContent=""
+              points={[
+                "Livestock breeding and management",
+                "Feed formulation and nutrition",
+                "Pasture development",
+                "Animal health management",
+              ]}
+            />
 
-          <CardBorderedDetails
-            title="Recent Achievements"
-            subContent=""
-            points={[
-              "Development of improved livestock breeds",
-              "Advancement in artificial insemination techniques",
-              "Enhanced pasture management systems",
-              "Successful technology transfer to farmers",
-            ]}
-          />
+            <CardBorderedDetails
+              title="Recent Achievements"
+              subContent=""
+              points={[
+                "Development of improved livestock breeds",
+                "Advancement in artificial insemination techniques",
+                "Enhanced pasture management systems",
+                "Successful technology transfer to farmers",
+              ]}
+            />
 
-          <CardBorderedDetails
-            title="Impact Metrics"
-            subContent="NAPRI continues to be a cornerstone of Nigeria's agricultural research system, driving innovation in animal production to support food security and economic growth."
-            points={[
-              "40 communities trained in agricultural practices",
-              "150 farmers supported with agricultural inputs",
-              "Enhanced livestock productivity through genetic improvement",
-              "Increased availability of improved pasture species",
-              "Strengthened local farming communities through training programs",
-            ]}
-          />
+            <CardBorderedDetails
+              title="Impact Metrics"
+              endContent="NAPRI continues to be a cornerstone of Nigeria's agricultural research system, driving innovation in animal production to support food security and economic growth."
+              points={[
+                "40 communities trained in agricultural practices",
+                "150 farmers supported with agricultural inputs",
+                "Enhanced livestock productivity through genetic improvement",
+                "Increased availability of improved pasture species",
+                "Strengthened local farming communities through training programs",
+              ]}
+            />
+          </div>
         </div>
       </CustomContainer>
     </section>

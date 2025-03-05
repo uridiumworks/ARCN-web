@@ -7,7 +7,7 @@ import ResearchInstitueBreadcrumbsV1 from "../../_components/ResearchInstitueBre
 
 const College = () => {
   return (
-    <section className="pb-14 md:pb-24">
+    <section className="pb-14 md:pb-24 pt-6">
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="flex flex-col gap-6">
@@ -17,10 +17,10 @@ const College = () => {
               secondaryUrl="/mandate/training"
             />
             <div className="flex flex-col gap-8">
-              <h2 className="font-bold text-4xl">
+              <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.75rem]">
                 Federal College of Agricultures
               </h2>
-              <p className="font-medium text-base">
+              <p className="font-medium text-base leading-[1.75rem]">
                 <span className="text-[15.88px] font-medium text-[#2D7636]">
                   ARCN Research Institutes
                 </span>{" "}
@@ -42,17 +42,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div className="">
                   <Image
-                    src="/Images/Icons/ibandan.png"
+                    src="/Images/Icons/fca-ibadan-logo.svg"
                     alt="ibadan"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Agriculture, Ibadan
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     Federal College of Agriculture, Ibadan (formerly called
                     School of Agriculture) is Nigeria&apos;s premier
                     agricultural institution, established in 1921.
@@ -60,8 +60,8 @@ const College = () => {
                 </div>
 
                 <Link
-                  href={"/mandate/training/fca-akure/institute"}
-                  className="self-start"
+                  href={"/mandate/training/fca-ibadan/institute"}
+                  className="self-start mt-auto"
                 >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
@@ -72,17 +72,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div className="">
                   <Image
-                    src="/Images/Icons/kano.png"
+                    src="/Images/Icons/fca-kano-logo.svg"
                     alt="kano"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
-                    Federal College of Agricultural Produce Technology, Kano
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                    Federal College of Agricultural Produce Technology, Kano
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     Federal College of Agricultural Produce Technology, Kano is
                     the training arm of the Nigerian Stored Produce Research
                     Institute (NSPRI). Established in 1975 as School of Food
@@ -92,7 +92,7 @@ const College = () => {
                 </div>
                 <Link
                   href={"/mandate/training/fca-kano/institute"}
-                  className="self-start"
+                  className="self-start mt-auto"
                 >
                   <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
@@ -100,31 +100,125 @@ const College = () => {
                 </Link>
               </div>
 
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/Ishiagu.png"
-                    alt="Ishiagu"
-                    width={42}
-                    height={42}
+                    src="/Images/Icons/fcahpt-logo.svg"
+                    alt="Health"
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
-                    Federal College of Agriculture, Ishiagu
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                    Federal College of Animal Health and production, Vom
                   </h2>
-                  <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                  <p className="font-normal text-xs leading-[1.349375rem]">
+                    Federal College of Animal Health and Production Technology,
+                    Vom is a pioneering institution in veterinary education in
+                    West Africa. Established in 1941 as Veterinary School Vom,
+                    it has evolved into a leading institution for training
+                    middle-level manpower in animal health and production
+                    technology.
                   </p>
                 </div>
 
                 <Link
                   href={"/mandate/training/fcahpt/institute"}
-                  className="self-start"
+                  className="self-start mt-auto"
+                >
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                    <IoArrowForwardSharp className="text-xl" />
+                  </div>
+                </Link>
+              </div>
+
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
+                <div>
+                  <Image
+                    src="/Images/Icons/fcahp-moor-logo.svg"
+                    alt="Moor"
+                    width={60}
+                    height={60}
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                    Federal College of Animal Health and production, moor
+                    plantation, Ibadan
+                  </h2>
+                  <p className="font-normal text-xs leading-[1.349375rem]">
+                    Nigerian Stored Products Research Institute (NSPRI) was
+                    established in 1948 as West African Stored Products Research
+                    Unit (WASPRU) to assess the quality of exportable crops from
+                    Nigeria, Ghana, Sierra Leone, and Gambia to United Kingdom
+                    during the colonial era. It became Nigerian Stored Products
+                    Research Institute after the independence in 1960.
+                  </p>
+                </div>
+
+                <Link href={"/mandate/training"} className="self-start mt-auto">
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                    <IoArrowForwardSharp className="text-xl" />
+                  </div>
+                </Link>
+              </div>
+
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
+                <div>
+                  <Image
+                    src="/Images/Icons/fcc-kaduna-logo.svg"
+                    alt="kaduna"
+                    width={60}
+                    height={60}
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                    Federal Cooperative College, kaduna
+                  </h2>
+                  <p className="font-normal text-xs leading-[1.349375rem]">
+                    Rubber research institute of Nigeria is the only Federal
+                    Government agency in Nigeria that has the mandate to conduct
+                    research and development on rubber and other latex producing
+                    plants of economic importance. 
+                  </p>
+                </div>
+
+                <Link href={"/mandate/training"} className="self-start mt-auto">
+                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
+                    <IoArrowForwardSharp className="text-xl" />
+                  </div>
+                </Link>
+              </div>
+
+              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
+                <div>
+                  <Image
+                    src="/Images/Icons/fca-ishiagu-logo.svg"
+                    alt="Ishiagu"
+                    width={60}
+                    height={60}
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
+                    Federal College of Agriculture, Ishiagu
+                  </h2>
+                  <p className="font-normal text-xs leading-[1.349375rem]">
+                    The Federal College of Agriculture, Ishiagu is a premier
+                    agricultural institution that offers both National Diploma
+                    (ND) and Higher National Diploma (HND) programs. The
+                    institution stands as a center of excellence for
+                    agricultural education and training, focusing on developing
+                    skilled agricultural technologists and promoting sustainable
+                    agricultural practices in Nigeria.
+                  </p>
+                </div>
+
+                <Link
+                  href={"/mandate/training/fca-ishiagu/institute"}
+                  className="self-start mt-auto"
                 >
                   <div className="p-4 border rounded-full grid place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
@@ -135,114 +229,31 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/Moor.png"
-                    alt="Moor"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
-                    Federal College of Animal Health and production, moor
-                    plantation, Ibadan
-                  </h2>
-                  <p className="font-normal text-sm">
-                    Nigerian Stored Products Research Institute (NSPRI) was
-                    established in 1948 as West African Stored Products Research
-                    Unit (WASPRU) to assess the quality of exportable crops from
-                    Nigeria, Ghana, Sierra Leone, and Gambia to United Kingdom
-                    during the colonial era. It became Nigerian Stored Products
-                    Research Institute after the independence in 1960.
-                  </p>
-                </div>
-
-                <Link href={"/mandate/training"} className="self-start">
-                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
-                    <IoArrowForwardSharp className="text-xl" />
-                  </div>
-                </Link>
-              </div>
-
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
-                <div>
-                  <Image
-                    src="/Images/Icons/kaduna.png"
-                    alt="kaduna"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
-                    Federal Cooperative College, kaduna
-                  </h2>
-                  <p className="font-normal text-sm">
-                    Rubber research institute of Nigeria is the only Federal
-                    Government agency in Nigeria that has the mandate to conduct
-                    research and development on rubber and other latex producing
-                    plants of economic importance. 
-                  </p>
-                </div>
-
-                <Link href={"/mandate/training"} className="self-start">
-                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
-                    <IoArrowForwardSharp className="text-xl" />
-                  </div>
-                </Link>
-              </div>
-
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
-                <div>
-                  <Image
-                    src="/Images/Icons/Health.png"
-                    alt="Health"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
-                    Federal College of Animal Health and production, Vom
-                  </h2>
-                  <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
-                  </p>
-                </div>
-
-                <Link href={"/mandate/training"} className="self-start">
-                  <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
-                    <IoArrowForwardSharp className="text-xl" />
-                  </div>
-                </Link>
-              </div>
-
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
-                <div>
-                  <Image
-                    src="/Images/Icons/Akure.png"
+                    src="/Images/Icons/feca-logo.svg"
                     alt="Akure"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Agriculture, Akure
                   </h2>
-                  <p className="font-normal text-sm">
-                    Cocoa Research Institute of Nigeria (CRIN) was established
-                    in Ibadan, Oyo State on 1st December, 1964 as a successor
-                    autonomous research organization to the Nigerian Substation
-                    of the defunct West African Cocoa Research Institute (WACRI)
-                    by Nigeria Statute, Act No. 6 of 1950.
+                  <p className="font-normal text-xs leading-[1.349375rem]">
+                    The Federal College of Agriculture, Akure is a premier
+                    agricultural training institution established on January 10,
+                    1957. Originally known as the School of Agriculture, Akure,
+                    it has evolved into a comprehensive agricultural training
+                    center offering both National Diploma (ND) and Higher
+                    National Diploma (HND) programs in various agricultural
+                    fields.
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link
+                  href={"/mandate/training/feca/institute"}
+                  className="self-start mt-auto"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -252,18 +263,18 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/Technology.png"
+                    src="/Images/Icons/fcfmt-logo.svg"
                     alt="Cereals"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
 
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Fisheries and Marine Technology, Lagos
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     Rubber research institute of Nigeria is the only Federal
                     Government agency in Nigeria that has the mandate to conduct
                     research and development on rubber and other latex producing
@@ -271,7 +282,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -281,17 +292,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/Baga.png"
+                    src="/Images/Icons/fcfft-logo.svg"
                     alt="Baga"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College Of Freshwater Fisheries Technology, Baga.
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     The National Horticultural Research Institute (Headquarter);
                     located in Ibadan was established in 1975 with the
                     assistance of United Nations Development Programme in
@@ -300,7 +311,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -310,18 +321,18 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/NewBussa.png"
+                    src="/Images/Icons/fcfft-bussa-logo.svg"
                     alt="NewBussa"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College Of Freshwater Fisheries Technology, New
                     Bussa.
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     Nigerian Stored Products Research Institute (NSPRI) was
                     established in 1948 as West African Stored Products Research
                     Unit (WASPRU) to assess the quality of exportable crops from
@@ -331,7 +342,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -341,18 +352,18 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/gombe.png"
+                    src="/Images/Icons/fcht-gombe-logo.svg"
                     alt="Gombe"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Horticultural Technology, Dadinkowa,
                     gombe
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     Rubber research institute of Nigeria is the only Federal
                     Government agency in Nigeria that has the mandate to conduct
                     research and development on rubber and other latex producing
@@ -360,7 +371,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -370,27 +381,29 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg">
                 <div>
                   <Image
-                    src="/Images/Icons/Medical.png"
+                    src="/Images/Icons/fcvmlt-logo.svg"
                     alt="cocoa"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Veterinary and Medical Laboratory
                     Technology, vom
                   </h2>
-                  <p className="font-normal text-sm">
-                    The National Horticultural Research Institute (Headquarter);
-                    located in Ibadan was established in 1975 with the
-                    assistance of United Nations Development Programme in
-                    conjunction with food and Agricultural Organization as
-                    fruits and vegetables research and demonstration centre.
+                  <p className="font-normal text-xs leading-[1.349375rem]">
+                    The Federal College of Veterinary and Medical Laboratory
+                    Technology (FCVMLT) is a premier institution dedicated to
+                    veterinary and medical laboratory technology education in
+                    Nigeria.
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link
+                  href={"/mandate/training/fcvmlt/institute"}
+                  className="self-start mt-auto"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -400,17 +413,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
-                    src="/Images/Icons/kuru.png"
+                    src="/Images/Icons/fclrt-logo.svg"
                     alt="Kuru"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College Of Land Resources Technology, Kuru.
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     The Federal College of Land Resources Technology, Kuru-Jos
                     (formerly known as the Federal Soil Conservation School) was
                     established in 1968 by Decree 12. It was initially sited at
@@ -420,7 +433,10 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link
+                  href={"/mandate/training/fcvmlt/institute"}
+                  className="self-start mt-auto"
+                >
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -430,17 +446,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
-                    src="/Images/Icons/gombe.png"
+                    src="/Images/Icons/fcc-ibadan-logo.svg"
                     alt="gombe"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal Cooperative College, Ibadan
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     The history of Federal Co-operative College Ibadan is
                     situated on a tripod; the first of the tripod reflects the
                     pre-independence era; the second covers the
@@ -449,7 +465,7 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
@@ -459,17 +475,17 @@ const College = () => {
               <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
-                    src="/Images/Icons/river.png"
+                    src="/Images/Icons/fcc-river-logo.svg"
                     alt="river"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal Cooperative College, Oji River
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     Established in 1976 under the auspices of General Olusegun
                     Obasanjo’s military government, FCCO has emerged as a
                     premier Co-operative College in Nigeria. As a beacon of
@@ -479,27 +495,27 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
                 </Link>
               </div>
 
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
+              {/* <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
-                    src="/Images/Icons/kuru.png"
+                    src="/Images/Icons/fcc-river-logo.svg"
                     alt="Baga"
-                    width={42}
-                    height={42}
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="font-semibold text-base">
+                  <h2 className="font-semibold text-base leading-[1.726875rem]">
                     Federal College of Freshwater Fisheries, Baga
                   </h2>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-xs leading-[1.349375rem]">
                     The Federal College of Freshwater Fisheries Technology, Baga
                     was established by the Federal Government of Nigeria under
                     Lake Chad Research Institute in 1977 as a monotechnic
@@ -509,12 +525,12 @@ const College = () => {
                   </p>
                 </div>
 
-                <Link href={"/mandate/training"} className="self-start">
+                <Link href={"/mandate/training"} className="self-start mt-auto">
                   <div className="p-4 border rounded-full grid  place-content-center bg-[#F4F4F4]">
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

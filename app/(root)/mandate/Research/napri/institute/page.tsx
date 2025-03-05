@@ -9,12 +9,12 @@ export default function ResearchNapriInstitutePage() {
   return (
     <section>
       <Hero
-        logo="/Images/Mandatepage/ncam-logo.png"
+        logo="/Images/Mandatepage/napri-logo.png"
         accroymn="NAPRI"
         email="info@napri.gov.ng"
         phoneNumber="+2348062853385"
         location="P.M.B 1096, Shika, Zaria, Kaduna State, Nigeria"
-        title="National Animal Production Research Institute (NAPRI)"
+        title="National Animal Production Research Institute <br /> (NAPRI)"
         website="www.napri.gov.ng"
       />
       <Overview />

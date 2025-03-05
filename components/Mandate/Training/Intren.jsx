@@ -46,10 +46,10 @@ const Intern = () => {
     <section className="flex flex-col gap-10 py-14 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-4 text-center">
-          <h2 className="font-bold text-3xl text-[#0A1425] sm:text-4xl">
+          <h2 className="font-bold text-3xl text-[#0A1425] sm:text-4xl sm:leading-[2.7rem]">
             Enterpreneurship
           </h2>
-          <p className="font-normal text-base text-[#64728F] sm:text-xl">
+          <p className="font-normal text-sm text-[#64728F] sm:text-base sm:leading-[1.75rem]">
             Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh.
             Id <br />
             ullamcorper nec leo porta. Enim nunc lacinia dui vehicula
@@ -66,23 +66,23 @@ const Intern = () => {
               {entrepreneurships?.slice(0, 4)?.map((el, index) => (
                 <div
                   key={el?.entrepreneurshipId}
-                  className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-5"
+                  className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5"
                 >
-                  <div className="flex flex-col gap-3 items-start order-2 lg:order-1">
-                    <div className="flex flex-col gap-2">
-                      <h3 className="text-xl text-[#131517] font-medium">
+                  <div className="flex flex-col gap-1.5 lg:self-center items-start order-2 lg:order-1">
+                    <div className="flex flex-col gap-1">
+                      <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                         {el?.subject}
                       </h3>
-                      <p className="font-normal text-[#464646] text-sm">
+                      <p className="font-normal text-[#464646] text-xs leading-[1.5rem]">
                         {el.description || "--"}
                       </p>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                       <div className="flex gap-2 items-center">
                         <div>
                           <MapPin size={20} color="#1315175C" />
                         </div>
-                        <p className="text-[0.9375rem] font-normal text-[#1315175C]">
+                        <p className="text-xs leading-[1.5rem] font-normal text-[#1315175C]">
                           {el?.venue}
                         </p>
                       </div>
@@ -93,18 +93,18 @@ const Intern = () => {
                             <Clock size={20} color="#000000" />
                           </div>
 
-                          <p className="text-[0.9375rem] font-normal text-[#1315175C]">
+                          <p className="text-xs leading-[1.5rem] font-normal text-[#1315175C]">
                             {formatDate(el.eventStartDate, el.eventEndDate)}{" "}
                           </p>
                         </div>
                       )}
                     </div>
                   </div>
-                  <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                  <div className="relative w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                     <Image
                       src="/Images/Homepage/event-imgholder.png"
                       alt="event-imgholder"
-                      className="object-cover"
+                      className="object-cover h-full w-full"
                       width={150}
                       height={150}
                       priority

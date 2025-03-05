@@ -7,21 +7,21 @@ export default function Focus() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col gap-3.5 items-center text-center">
+            <h2 className="font-medium text-3xl text-center sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
               Research Focus
             </h2>
             <div className="flex flex-col gap-2 text-center">
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 NCAM is structured into nine departments, including:
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Quality research, teaching and extension for development
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Impactful community service
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Institutional integrity in honest service
               </p>
             </div>
@@ -30,7 +30,7 @@ export default function Focus() {
       </div>
 
       <CustomContainer>
-        <div className="flex flex-col gap-10">
+        <div className="grid grid-cols-[100%] gap-10">
           <CardBorderedDetails
             title="National and International Collaborations"
             subContent="NCAM collaborates with various organizations including:"
@@ -55,7 +55,6 @@ export default function Focus() {
 
           <CardBorderedDetails
             title="Consultancy Expertise"
-            subContent=""
             points={[
               "Feasibility studies for agricultural mechanization",
               "Equipment evaluation and certification",
@@ -65,7 +64,6 @@ export default function Focus() {
 
           <CardBorderedDetails
             title="Recent Achievements"
-            subContent=""
             points={[
               "Development of Multi-Crop Thresher with 90% local content",
               "Creation of various agricultural implements including Yam Mound Making Implement",
@@ -75,7 +73,7 @@ export default function Focus() {
 
           <CardBorderedDetails
             title="Impact Metrics"
-            subContent="NCAM remains a cornerstone of Nigeria's agricultural mechanization efforts, driving innovation and sustainability in farming practices to support food security and economic growth."
+            endContent="NCAM remains a cornerstone of Nigeria's agricultural mechanization efforts, driving innovation and sustainability in farming practices to support food security and economic growth."
             points={[
               "Enhanced agricultural productivity through mechanization",
               "Reduced dependence on imported agricultural machinery",

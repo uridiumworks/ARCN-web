@@ -9,7 +9,7 @@ return (
     <main>
         <Banner />
         <CustomContainer>   
-            <CustomBreadcrumbs text="Gender-and-Youth" />
+            <CustomBreadcrumbs text="Gender and Youth" />
             <Dolor />
             <Impart />
         </CustomContainer>   

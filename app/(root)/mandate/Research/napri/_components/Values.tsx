@@ -7,18 +7,18 @@ export default function Values() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col items-center gap-3.5 text-center">
+            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
               Core Values
-            </h2>
-            <div className="flex flex-col gap-3 text-center">
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+            </h3>
+            <div className="flex flex-col  text-center">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Quality research, teaching and extension for development
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Impactful community service
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Institutional integrity in honest service
               </p>
             </div>

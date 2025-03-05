@@ -5,11 +5,11 @@ import Partners from "@/components/Shared/Parther";
 const Management = () => {
     
     return ( 
-        <main>
+        <section>
             <Meet />
             <Partners />
             <Journal />
-        </main>
+        </section>
      );
 }
  

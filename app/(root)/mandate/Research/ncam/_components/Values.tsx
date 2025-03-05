@@ -8,10 +8,10 @@ export default function Values() {
       <div className="bg-[#F9FFFB] p-6">
         <CustomContainer>
           <div className="flex flex-col text-center gap-3.5 justify-center">
-            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111]">
+            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
               Core Values
             </h3>
-            <p className="text-base sm:text-lg font-normal text-[#111111]">
+            <p className="text-sm sm:text-base font-normal text-[#111111] leading-[1.531875rem]">
               Innovation, Quality, Efficiency, and Self-Reliance.
             </p>
           </div>

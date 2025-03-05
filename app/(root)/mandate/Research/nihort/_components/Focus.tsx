@@ -8,15 +8,15 @@ export default function Focus() {
     <section className="flex flex-col gap-12 py-14 md:py-20">
       <div className="bg-[#F9FFFB] p-6">
         <CustomContainer>
-          <div className="flex flex-col text-center gap-3.5 justify-center">
-            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111]">
+          <div className="flex flex-col text-center gap-2 sm:gap-3.5 justify-center">
+            <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
               Research Focus
             </h3>
-            <p className="text-base sm:text-lg font-normal text-[#111111]">
+            <p className="text-base sm:text-lg font-normal text-[#111111] leading-[1.531875rem]">
               NIHORT is structured into six research departments, including
-              Vegetables and Floriculture, Fruits and Spices, Citrus and Product
+              Vegetables and Floriculture, Fruits and Spices, Citrus and <br /> Product
               Development, and Information and Documentation. The institute also
-              boasts specialized units in Biotechnology, Genetic Resources, and
+              boasts specialized units in Biotechnology, <br /> Genetic Resources, and
               Seed Technology.
             </p>
           </div>
@@ -24,7 +24,7 @@ export default function Focus() {
       </div>
 
       <CustomContainer>
-        <div className="flex flex-col gap-10">
+        <div className="grid grid-cols-[100%] gap-10">
           <CardBorderedDetails
             title="National and International Collaborations"
             subContent="NIHORT actively collaborates with various universities, agricultural development programs, 
@@ -49,7 +49,6 @@ and non-governmental organizations to enhance its research outcomes. Partnership
 
           <CardBorderedDetails
             title="Consultancy Expertise"
-            subContent=""
             points={[
               "Feasibility studies for horticultural crop value chains",
               "Citrus orchard establishment and maintenance",
@@ -59,7 +58,6 @@ and non-governmental organizations to enhance its research outcomes. Partnership
 
           <CardBorderedDetails
             title="Recent Achievements"
-            subContent=""
             points={[
               "Establishment of biopesticide production centers.",
               "Development of postharvest processing innovations to reduce food losses.",
@@ -68,7 +66,7 @@ and non-governmental organizations to enhance its research outcomes. Partnership
           />
           <CardBorderedDetails
             title="Impact Metrics"
-            subContent="NIHORT remains a cornerstone of Nigeria's agricultural research ecosystem, driving innovation and sustainability in horticulture to support food security and economic growth."
+            endContent="NIHORT remains a cornerstone of Nigeria's agricultural research ecosystem, driving innovation and sustainability in horticulture to support food security and economic growth."
             points={[
               "Increased horticultural crop production and exports.",
               "Strengthened local economies through training and capacity building.",

@@ -25,7 +25,7 @@ const Events = () => {
     <section className="bg-white py-16 md:py-24">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="text-center text-[#171717] font-semibold text-2xl sm:text-4xl">
+          <h2 className="text-center text-[#171717] font-semibold text-2xl sm:text-4xl sm:leading-[2.7rem]">
             UPCOMING EVENTS
           </h2>
           <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
@@ -35,36 +35,36 @@ const Events = () => {
                 (el, i) => (
                   <div
                     key={el?.eventId}
-                    className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 bg-white border border-[#E8E8E8] rounded-xl p-4"
+                    className="flex flex-col lg:flex-row justify-between  gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5"
                   >
-                    <div className="flex flex-col gap-2.5 items-start order-2 lg:order-1">
-                      <div className="flex gap-1 text-sm font-medium">
+                    <div className="flex flex-col  lg:self-center items-start order-2 lg:order-1">
+                      <div className="flex text-sm gap-1 font-medium">
                         <span className="text-[#1315175C]">6:00 PM ·</span>
                         <span className="text-[#D19D20]">7:00 PM GMT+2</span>
                       </div>
-                      <div className="flex flex-col gap-2">
-                        <h3 className="text-xl text-[#131517] font-medium">
+                      <div className="flex flex-col">
+                        <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                           {el?.subject}
                         </h3>
-                        <p className="font-normal text-[#464646] text-sm">
+                        <p className="font-normal leading-[1.5rem] text-[#464646] text-[0.75rem]">
                           {el?.description}
                         </p>
                         <div className="flex items-center gap-2">
-                          <LocationOutlineIcon2 />{" "}
-                          <p className="text-[#1315175C] text-sm font-normal">
+                          <LocationOutlineIcon2 className="scale-[.8]" />{" "}
+                          <p className="text-[#1315175C] leading-[1.5rem] text-[0.75rem] font-normal">
                             {el?.venue}
                           </p>
                         </div>
                       </div>
-                      <div className="bg-[#07A46022] text-[#07A460] font-medium text-[0.75rem] rounded-full p-2.5 text-center cursor-pointer">
+                      <div className="bg-[#07A46022] text-[#07A460] font-medium text-[0.75rem] rounded-full px-2 py-1.5 text-center cursor-pointer">
                         Register Here
                       </div>
                     </div>
-                    <div className="relative w-[9.375rem] h-[9.375rem] shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                    <div className="relative w-[9.375rem] h-[9.375rem] lg:h-full  shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                       <Image
                         src="/Images/Homepage/event-imgholder.png"
                         alt="event-imgholder"
-                        className="object-cover"
+                        className="object-cover h-full w-full"
                         width={150}
                         height={150}
                         priority
