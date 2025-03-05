@@ -6,7 +6,7 @@ type Props = {
 };
 export default function CustomContainer({ children}: Props) {
   return (
-    <div className="w-full sm:max-w-[77.5rem] sm:mx-auto px-10">
+    <div className="w-full sm:max-w-[77.5rem] sm:mx-auto px-3.5 md:px-10">
       {children}
     </div>
   );

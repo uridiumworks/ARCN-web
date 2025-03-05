@@ -15,13 +15,13 @@ export default function ResearchNspriInstitutePage() {
         phoneNumber="08117767204"
         location="Km 3 Asa Dam Road, PMB 1489, Ilorin, Kwara State, Nigeria"
         title="Nigerian Stored Products Research Institute <br /> (NSPRI)"
-        website="www.nspri.gov.ng"
+        website="https://www.nspri.gov.ng"
       />
       <Overview />
       <Values />
       <Focus />
       <Leadership
-        website="www.nspri.gov.ng"
+        website="https://www.nspri.gov.ng"
         location="Km 3 Asa Dam Road, PMB 1489, Ilorin, Kwara State, Nigeria"
         email="nspriinfo@nspri.gov.ng"
         phoneNumber="08117767204"

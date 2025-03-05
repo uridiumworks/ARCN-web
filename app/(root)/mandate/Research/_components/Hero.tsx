@@ -74,9 +74,10 @@ export default function Hero({
                 </h4>
                 <Link
                   href={website}
+                  target="_blank"
                   className="font-normal text-[#EFEFEF] text-sm leading-[1.4rem]"
                 >
-                  {website}
+                  {website.split("https://")[1]}
                 </Link>
               </div>
             </div>

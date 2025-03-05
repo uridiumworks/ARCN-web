@@ -15,7 +15,7 @@ export default function ResearchNapriInstitutePage() {
         phoneNumber="+2348062853385"
         location="P.M.B 1096, Shika, Zaria, Kaduna State, Nigeria"
         title="National Animal Production Research Institute <br /> (NAPRI)"
-        website="www.napri.gov.ng"
+        website="https://www.napri.gov.ng"
       />
       <Overview />
       <Values />
@@ -24,7 +24,7 @@ export default function ResearchNapriInstitutePage() {
         email="info@napri.gov.ng"
         location="P.M.B 1096, Shika, Zaria, Kaduna State, Nigeria"
         phoneNumber="+2348062853385"
-        website="www.napri.gov.ng"
+        website="https://www.napri.gov.ng"
       />
     </section>
   );

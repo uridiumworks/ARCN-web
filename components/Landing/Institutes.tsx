@@ -20,7 +20,7 @@ const InstitutesOld = () => {
           </h1>
           <p className="font-normal text-base lg:text-lg">
             Explore our network of research institutes dedicated to advancing
-            <br />
+            <br className="hidden md:block" />
             agricultural innovation and sustainability across Nigeria.
           </p>
         </div>
@@ -324,7 +324,7 @@ const Institutes = () => {
               {tabs.map((el, i) => (
                 <div
                   key={el}
-                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1.575rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
+                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1rem] sm:leading-[1.575rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
                     currentTab === i
                       ? "bg-[#30A85F] text-white"
                       : "bg-transparent text-[#111111]"

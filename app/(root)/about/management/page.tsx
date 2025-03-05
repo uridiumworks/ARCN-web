@@ -7,7 +7,7 @@ const Management = () => {
     return ( 
         <section>
             <Meet />
-            <Partners />
+            {/* <Partners /> */}
             <Journal />
         </section>
      );
