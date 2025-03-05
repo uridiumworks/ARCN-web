@@ -9,10 +9,8 @@ const NewsandEvents = () => {
     return ( 
         <main>
             <Collection />
-            <CustomContainer>
-                <New />
-                <Upcoming/>
-            </CustomContainer>
+            <New />
+            <Upcoming/>
             <Journal />
         </main>
     );

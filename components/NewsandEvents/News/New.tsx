@@ -17,19 +17,19 @@ const New = () => {
 }
 
   return (
-    <section className="">
+    <section className="w-full">
       <div className="">
-        <div className="w-full h-full mx-auto">
+        <div className="w-full mx-auto">
           <h1 className="font-semibold font-montserrat text-4xl text-center pt-20 pb-8">News</h1>
         </div>
 
-        <div className="w-full h-full">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-9 lg:p-5 ">
+        <div className="lg:w-9/12 lg:mx-auto px-3 space-y-7">
+          <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-5 ">
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0, 3)?.map((n: any, index: number) => (
-                  <div key={index} className="space-y-3">
-                    <div>
+                  <div key={index} className="space-y-3 md:w-[395px]">
+                    <div className="h-[268.59px] w-full">
                       <Image
                         src={n?.bannerUrl || "/Images/News and Events/Place.png"}
                         // src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
@@ -54,7 +54,7 @@ const New = () => {
                             {convertToReadableDate(n?.publishDate)}
                           </span>
                           <br /> 
-                          <Link href={`/newsandevents/test/news`} passHref>
+                          <Link href={`/news-and-events/news`} passHref>
                             <span className="cursor-pointer hover:underline">Read more</span>
                           </Link>
                         </p>
@@ -66,15 +66,15 @@ const New = () => {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-9 p-5 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-5 ">
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0,3)?.map((n: any, index: number) => (
-                  <div key={index} className="space-y-3">
-                    <div>
+                  <div key={index} className="space-y-3 md:w-[395px]">
+                    <div className="h-[268.59px] w-full">
                       <Image
-                        // src={n?.bannerUrl || "/Images/News and Events/Place.png"}
-                        src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
+                        src={n?.bannerUrl || "/Images/News and Events/Place.png"}
+                        // src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
                         alt={n?.category}
                         width={395}
                         height={268.59}
@@ -94,7 +94,7 @@ const New = () => {
                             {convertToReadableDate(n?.publishDate)}
                         </span>
                         <br /> 
-                        <Link href={`/newsandevents/test/news`} passHref>
+                        <Link href={`/news-and-events/news`} passHref>
                           <span className="cursor-pointer hover:underline">Read more</span>
                         </Link>
                       </p>

@@ -3,13 +3,13 @@ import Image from "next/image";
 const Banner = () => {
 
     return ( 
-        <main className="bg-black w-full min-h-screen md:h-[430px] h-[350px] font-montserrat px-8 ">
-            <div className="text-white text-center place-content-center space-y-2 lg:p-3">
-                <h1 className="font-bold text-5xl lg:text-[65px]">PROGRAMS AND PROJECTS</h1>
+        <main className="bg-black w-full lg:min-h-screen h-[330px] px-4 font-montserrat lg:px-10 ">
+            <div className="text-white text-center place-content-center space-y-3 py-7 lg:space-y-8 lg:py-14">
+                <h1 className="font-bold text-3xl lg:text-[65px]">PROGRAMS AND PROJECTS</h1>
                 <p className="font-normal text-[21px]">A collection of ARCN featured news and upcoming events</p>
             </div>
             <div>
-                <Image src="/Images/Mandatepage/Worker.png" alt="worker" width={1849} height={481} />
+                <Image src="/Images/Mandatepage/Worker.png" alt="worker" width={1749} height={481} />
             </div>
         </main>
     );

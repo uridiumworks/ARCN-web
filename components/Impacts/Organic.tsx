@@ -3,7 +3,7 @@ const Organic = () => {
 
     return ( 
         <main>
-            <div className="w-[100%] pt-10 pb-16 space-y-8">
+            <div className="w-[100%] pt-10 pb-16 px-3 space-y-8">
                 <div className="text-center">
                     <h1 className="font-bold text-3xl text-[#0A1425]">IMPACT STORIES</h1>
                 </div>

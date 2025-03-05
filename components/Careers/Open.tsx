@@ -3,10 +3,10 @@ import { LuArrowRight } from "react-icons/lu";
 const Open = () => {
     return (
         <main>
-            <div className="space-y-5 font-montserrat lg:w-8/12 lg:mx-auto">
+            <div className="space-y-5 font-montserrat lg:w-9/12 lg:mx-auto">
                 <div className="text-[#000000] font-montserrat text-center px-3 lg:px-52 space-y-5 py-10">
-                    <h1 className="font-extrabold text-[40px]">Open Opportunities</h1>
-                    <p className="font-normal text-base">{`If you're the owner of an active brain, interesting thoughts, and a good soul, we would like to hear from you.`}</p>
+                    <h1 className="font-extrabold text-2xl lg:text-[40px]">Open Opportunities</h1>
+                    <p className="font-normal text-base">If you&lsquo;re the owner of an active brain, interesting thoughts, and a good soul, we would <br className="hidden md:block" />like to hear from you.</p>
                 </div>
 
                 <div className="flex flex-col gap-8 px-3.5 justify-center items-center pb-20">
@@ -59,8 +59,7 @@ const Open = () => {
                     </div>
 
                     <div className="bg-[#30A85F] border lg:w-[60%] rounded-2xl px-4 py-4 space-y-4 text-white items-center">
-                        <h1 className="font-bold text-2xl">{`Don't see a position you're interested in but
-                        you'd still like to apply?`}</h1>
+                        <h1 className="font-bold text-2xl">Don&lsquo;t see a position you&lsquo;re interested in but<br className="hidden md:block" />u&lsquo;d still like to apply?</h1>
                         <p className="font-normal text-sm">{`We welcome anyone to apply by sending submitting their resume and telling us why they're interested in
                         joining our #paid team!`}</p>
 
