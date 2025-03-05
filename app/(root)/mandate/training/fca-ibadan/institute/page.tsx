@@ -13,7 +13,7 @@ export default function TrainingFCAAkureInstituePage() {
         email="support@fcaib.edu.ng"
         phoneNumber="+234 802 344 4165"
         location="Federal College of Agriculture, Moor Plantation, Apata, Ibadan, Oyo State, Nigeria"
-        title="FEDERAL COLLEGE OF AGRICULTURE, IBADAN, OYO STATE, NIGERIA."
+        title="FEDERAL COLLEGE OF AGRICULTURE, <br /> IBADAN, OYO STATE, NIGERIA."
         website="https://fcaib.edu.ng"
       />
 

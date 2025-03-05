@@ -13,7 +13,7 @@ export default function TrainingFCAIshiaguInstituePage() {
         email="okoronkwo98@gmail.com"
         phoneNumber="08064086398"
         location="PMB 7008, Ishiagu, Ivo L.G.A., Ebonyi State, Nigeria"
-        title="Federal College of Agriculture (FCA), Ishiagu"
+        title="Federal College of Agriculture (FCA), <br /> Ishiagu"
         website="www.fcaishiagu.edu.ng"
       />
       <Overview />

@@ -2,13 +2,13 @@ import CustomContainer from "@/components/CustomContainer";
 
 const Institutes = () => {
   return (
-    <section className="py-14 md:py-20">
+    <section className="py-12 md:py-16">
       <CustomContainer>
-        <div className="flex flex-col gap-8 sm:px-16">
-          <h2 className="font-bold text-2xl sm:text-[2.25rem] sm:leading-10">
+        <div className="flex flex-col gap-8 sm:px-24">
+          <h2 className="font-bold text-2xl sm:text-[2.25rem] sm:leading-[2.7rem] text-[#171717]">
             Research Institutes
           </h2>
-          <p className="font-normal text-base">
+          <p className="font-normal text-base leading-[1.75rem] ">
             <span className="font-normal text-[0.9925rem] text-[#2D7636]">
               ARCN Research Institutes
             </span>{" "}

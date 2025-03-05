@@ -92,10 +92,10 @@ const Navbar = (props: Props) => {
     }
   };
   return (
-    <div className="py-5 sticky z-20 top-0 bg-[#121212]">
+    <div className="py-5 sticky z-50 top-0 bg-[#121212]">
       <div className="w-full px-8 sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
         <div>
-          <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
+          <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
         </div>
         <div className="hidden lg:flex lg:flex-col lg:gap-6 text-center">
           <div className="flex justify-center items-center gap-8 text-white">
@@ -140,7 +140,7 @@ const Navbar = (props: Props) => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-[#121212] z-50 flex flex-col gap-7 items-center p-4">
+        <div className="absolute top-0 left-0 w-full h-screen bg-[#121212]  z-50 flex flex-col gap-7 items-center p-4">
           <div className="flex  items-center justify-between w-full">
             <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
 
@@ -152,11 +152,11 @@ const Navbar = (props: Props) => {
             />
           </div>
 
-          <div className="flex flex-col gap-4 px-6 self-stretch">
+          <div className="flex flex-col gap-8 sm:gap-12 px-6 self-stretch justify-self-center absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-full sm:w-[75%] sm:mx-auto">
             <div className=" flex flex-col gap-6 items-center text-white">
               {mainNav.map((t, index) => (
                 <p
-                  className={`font-extrabold text-sm uppercase  ${
+                  className={`font-bold text-sm sm:text-lg uppercase  ${
                     isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
                   }`}
                   key={index}
@@ -169,11 +169,11 @@ const Navbar = (props: Props) => {
                 </p>
               ))}
             </div>
-            <div className="flex items-center mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
+            <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
               <input
                 type="search"
                 placeholder="Search"
-                className="outline-none bg-transparent py-1 px-1.5 text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-[#3C3C3C]"
+                className="outline-none bg-transparent flex-1 py-1 px-1.5 text-[#EFEFEF] text-sm leading-[1.5rem] focus-visible:outline-none border-[#3C3C3C]"
               />
               <Search color="#2E7636" size="24px" />
             </div>

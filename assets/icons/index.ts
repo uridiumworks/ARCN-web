@@ -54,4 +54,6 @@ export { default as WhiteLocationPointerIcon } from "./white-location-pointer-ic
 export { default as WhitePhoneIcon } from "./white-phone-icon.svg";
 export { default as WhiteWeburlIcon } from "./white-weburl-icon.svg";
 export { default as WhiteHomeIcon } from "./white-home-icon.svg";
-export {default as GrayLocationPointerIcon} from './gray-location-pointer-icon.svg'
+export { default as GrayLocationPointerIcon } from "./gray-location-pointer-icon.svg";
+export { default as RightButtonCarouselIcon } from "./right-button-icon.svg";
+export { default as LeftButtonCarouselIcon } from "./left-button-icon.svg";

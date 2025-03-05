@@ -7,12 +7,12 @@ export default function Focus() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col items-center gap-3.5 text-center">
+          <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
               Research Focus
-            </h2>
-            <p className="text-[#111111] font-normal text-base sm:text-lg">
-              NAPRI conducts research on various livestock species including:
+            </h3>
+            <p className="text-[#111111] font-normal text-base sm:text-lg leading-[1.531875rem]">
+              NAPRI conducts research on various livestock species including: <br />
               Cattle, Sheep, Goats, Swine, Poultry, Rabbits, Donkeys, Horses,
               Camels
             </p>
@@ -35,7 +35,7 @@ export default function Focus() {
             ]}
           />
 
-          <div className="grid grid-cols-[100%] sm:grid-cols-2">
+          <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
             <CardBorderedDetails
               title="Training and Consultancy"
               subContent="The institute offers training programs on:"
