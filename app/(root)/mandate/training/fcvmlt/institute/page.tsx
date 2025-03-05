@@ -13,13 +13,13 @@ export default function TrainingFcvmltInstituePage() {
         email="contact@fcvmlt.edu.ng"
         phoneNumber="+2348114655118"
         location="PMB 02 Vom, Jos South LGA, Jos, Plateau State, Nigeria"
-        title="Federal College of Veterinary and Medical Laboratory Technology (FCVMLT), Vom"
-        website="www.fcvmlt.edu.ng"
+        title="Federal College of Veterinary and Medical <br /> Laboratory Technology (FCVMLT), Vom"
+        website="https://www.fcvmlt.edu.ng"
       />
       <Overview />
       <Values />
       <Leadership
-        website="www.fcvmlt.edu.ng"
+        website="https://www.fcvmlt.edu.ng"
         email="contact@fcvmlt.edu.ng"
         location="PMB 02 Vom, Jos South LGA, Jos, Plateau State, Nigeria"
         phoneNumber="+2348114655118"

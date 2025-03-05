@@ -34,12 +34,10 @@ const Projects = () => {
                       height={310.4}
                       className="rounded-b-md"
                     />
-                    <Link href="">
-                      <div className="absolute w-full bg-[#000000CC] bottom-0 rounded-b-md text-white p-2">
-                        <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
-                        <p className="font-normal text-[10.35px]">{p?.description}Lorem ipsum dolor sit amet consectetur. Tellus varius fermentum nisi a quis tristique velit adipiscing magna.</p>
-                      </div>
-                    </Link>
+                    <div className="absolute w-full bg-[#000000CC] bottom-0 rounded-b-md text-white p-2">
+                      <h1 className="font-medium text-[15.52px]">Calcium A Cassava</h1>
+                      <p className="font-normal text-[10.35px]">{p?.description}Lorem ipsum dolor sit amet consectetur. Tellus varius fermentum nisi a quis tristique velit adipiscing magna.</p>
+                    </div>
                   </div>
                 ))}
               </>

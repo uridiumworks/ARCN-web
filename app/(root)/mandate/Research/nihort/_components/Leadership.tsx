@@ -75,13 +75,16 @@ export default function Leadership({
               <div>
                 <BlackWebUrlIcon />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <h4 className="font-medium text-black text-base">Website</h4>
+              <div className="flex flex-col ">
+                <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                  Website
+                </h4>
                 <Link
-                  href={website.startsWith("www") ? website : `www.${website}`}
-                  className="font-normal text-[#121212] text-sm"
+                  href={website}
+                  
+                  className="font-normal text-[#121212] text-sm leading-[1.4rem]"
                 >
-                  {website}
+                  {website.split("https://")[1]}
                 </Link>
               </div>
             </div>
@@ -90,20 +93,26 @@ export default function Leadership({
               <div>
                 <BlackEmailIcon />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <h4 className="font-medium text-black text-base">Email</h4>
-                <p className="font-normal text-[#121212] text-sm">{email}</p>
+              <div className="flex flex-col ">
+                <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                  Email
+                </h4>
+                <p className="font-normal text-[#121212] text-sm leading-[1.4rem]">
+                  {email}
+                </p>
               </div>
             </div>
 
             {phoneNumber && (
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-start lg:justify-center gap-3">
                 <div>
                   <BlackPhoneIcon />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <h4 className="font-medium text-black text-base">Phone</h4>
-                  <p className="font-normal text-[#121212] text-sm">
+                <div className="flex flex-col ">
+                  <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                    Phone
+                  </h4>
+                  <p className="font-normal text-[#121212] text-sm leading-[1.4rem]">
                     {phoneNumber}
                   </p>
                 </div>

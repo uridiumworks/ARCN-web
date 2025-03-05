@@ -27,16 +27,16 @@ export default function Leadership({
     <section className="bg-[#F9FFFB] py-9 sm:py-18">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <div className="flex flex-col items-center gap-8">
-            <h3 className="font-medium text-[2rem] text-center sm:text-[2.625rem] text-[#111111]">
+          <div className="flex flex-col items-center gap-8 sm:gap-10">
+            <h3 className="font-medium text-3xl text-center sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
               Leadership
             </h3>
-            <div className="flex flex-col items-start gap-6">
+            <div className="flex flex-col items-start gap-6 sm:px-16">
               <div className="flex items-center gap-3">
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">Executive Director:</span> Dr.
                   P.O. Adebola
@@ -46,7 +46,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">
                     Director, Research Operations:
@@ -59,7 +59,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">
                     Director, Research Outreach:
@@ -72,7 +72,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">
                     Director, Budget, Monitoring and Evaluation:
@@ -85,7 +85,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">Director, Planning:</span> Dr.
                   O.S. Ibiremo
@@ -96,7 +96,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">Director, Training:</span> Dr.
                   R.R. Ipinmoroti
@@ -107,7 +107,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal">
+                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">
                     Director, Production and Substations:
@@ -118,51 +118,63 @@ export default function Leadership({
             </div>
           </div>
 
-          <div className="grid  grid-cols-research-institutes-details-res gap-7 sm:gap-10">
-            <div className="flex items-center justify-center  gap-3">
+          <div className="grid  grid-cols-research-institutes-details-res self-stretch sm:self-center  lg:self-stretch gap-7 sm:gap-14 lg:gap-10">
+            <div className="flex items-center justify-start lg:justify-center  gap-3">
               <div>
                 <BlackLocationPointerIcon />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <h4 className="font-medium text-black text-base">Location</h4>
-                <p className="font-normal text-[#121212] text-sm">{location}</p>
+              <div className="flex flex-col ">
+                <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                  Location
+                </h4>
+                <p className="font-normal text-[#121212] text-sm leading-[1.4rem]">
+                  {location}
+                </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-start lg:justify-center gap-3">
               <div>
                 <BlackWebUrlIcon />
               </div>
-
-              <div className="flex flex-col gap-1.5">
-                <h4 className="font-medium text-black text-base">Website</h4>
+              <div className="flex flex-col ">
+                <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                  Website
+                </h4>
                 <Link
-                  href={website.startsWith("www") ? website : `www.${website}`}
-                  className="font-normal text-[#121212] text-sm"
+                  href={website}
+                  
+                  className="font-normal text-[#121212] text-sm leading-[1.4rem]"
                 >
-                  {website}
+                  {website.split("https://")[1]}
                 </Link>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-start lg:justify-center gap-3">
               <div>
                 <BlackEmailIcon />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <h4 className="font-medium text-black text-base">Email</h4>
-                <p className="font-normal text-[#121212] text-sm">{email}</p>
+              <div className="flex flex-col ">
+                <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                  Email
+                </h4>
+                <p className="font-normal text-[#121212] text-sm leading-[1.4rem]">
+                  {email}
+                </p>
               </div>
             </div>
 
             {phoneNumber && (
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-start lg:justify-center gap-3">
                 <div>
                   <BlackPhoneIcon />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <h4 className="font-medium text-black text-base">Phone</h4>
-                  <p className="font-normal text-[#121212] text-sm">
+                <div className="flex flex-col ">
+                  <h4 className="font-medium text-black text-base leading-[1.6rem] ">
+                    Phone
+                  </h4>
+                  <p className="font-normal text-[#121212] text-sm leading-[1.4rem]">
                     {phoneNumber}
                   </p>
                 </div>

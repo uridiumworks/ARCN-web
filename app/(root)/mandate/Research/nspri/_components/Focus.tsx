@@ -8,26 +8,26 @@ export default function Focus() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col items-center gap-3.5 text-center">
+          <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
               Research Focus
-            </h2>
+            </h3>
             <div className="flex flex-col gap-2 text-center">
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 Research activities are conducted through specialized
                 departments:
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Perishable Crops Research
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Durable Crops Research
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Research Outreach
               </p>
 
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Postharvest Engineering Research
               </p>
             </div>
@@ -50,7 +50,7 @@ export default function Focus() {
             ]}
           />
 
-          <div className="grid grid-cols-[100%] sm:grid-cols-2">
+          <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
             <CardBorderedDetails
               title="Training and Consultancy"
               subContent="Training Programs:"
@@ -75,10 +75,10 @@ export default function Focus() {
           </div>
 
           <div className="flex flex-col gap-6 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
-            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111]">
+            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
               Recent Achievements
             </h3>
-            <div className="grid grid-cols-[100%] sm:grid-cols-2">
+            <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
               <CardBorderedlessDetails
                 subContent="1. Solar Cold Storage System:"
                 subContentClassNames="font-bold"
@@ -137,10 +137,10 @@ export default function Focus() {
           </div>
 
           <div className="flex flex-col gap-6 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
-            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111]">
+            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
               Impact Metrics
             </h3>
-            <div className="grid grid-cols-[100%] sm:grid-cols-2">
+            <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
               <CardBorderedlessDetails
                 points={[
                   "1,200 farmers trained in agricultural practices",
@@ -167,7 +167,7 @@ export default function Focus() {
                 subContentClassNames="font-bold"
               />
             </div>
-            <p className={`font-normal text-black text-sm sm:text-lg`}>
+            <p className={`font-normal text-[#171616] text-sm sm:text-base leading-[2rem]`}>
               NSPRI continues to lead in postharvest research and technology
               development, significantly contributing to food security and
               agricultural sustainability in Nigeria.

@@ -92,7 +92,7 @@ const Navbar = (props: Props) => {
     }
   };
   return (
-    <div className="py-5 sticky z-20 top-0 bg-[#121212]">
+    <div className="py-5 sticky z-50 top-0 bg-[#121212]">
       <div className="w-full px-8 sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
         <div>
           <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
@@ -169,11 +169,11 @@ const Navbar = (props: Props) => {
                 </p>
               ))}
             </div>
-            <div className="flex items-center mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
+            <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
               <input
                 type="search"
                 placeholder="Search"
-                className="outline-none bg-transparent py-1 px-1.5 text-[#EFEFEF] text-[0.75rem] focus-visible:outline-none border-[#3C3C3C]"
+                className="outline-none bg-transparent flex-1 py-1 px-1.5 text-[#EFEFEF] text-sm leading-[1.5rem] focus-visible:outline-none border-[#3C3C3C]"
               />
               <Search color="#2E7636" size="24px" />
             </div>

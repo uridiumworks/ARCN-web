@@ -14,13 +14,13 @@ export default function ResearchCrinInstitutePage() {
         email="info@crin.gov.ng"
         location="Idi-Ayunre, Oluyole Local Government Area, Ibadan, Oyo State, Nigeria"
         title="Cocoa Research Institute of Nigeria (CRIN)"
-        website="www.crin.gov.ng"
+        website="https://www.crin.gov.ng"
       />
       <Overview />
       <Values />
       <Focus />
       <Leadership
-        website="www.crin.gov.ng"
+        website="https://www.crin.gov.ng"
         email="info@crin.gov.ng"
         location="Idi-Ayunre, Oluyole Local Government Area, Ibadan, Oyo State, Nigeria "
       />

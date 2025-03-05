@@ -20,7 +20,7 @@ const InstitutesOld = () => {
           </h1>
           <p className="font-normal text-base lg:text-lg">
             Explore our network of research institutes dedicated to advancing
-            <br />
+            <br className="hidden md:block" />
             agricultural innovation and sustainability across Nigeria.
           </p>
         </div>
@@ -189,7 +189,7 @@ const data1 = [
 const TabOne = () => {
   return (
     <div className="flex flex-col gap-16">
-      <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-[100%] lg:grid-cols-2 gap-6">
         {data.map((el, i) => (
           <div
             key={i}
@@ -233,7 +233,7 @@ const TabOne = () => {
         ))}
       </div>
       <Link
-        href="/mandate/Research"
+        href="/mandate/research"
         className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
         See All Reseach Institutes
@@ -245,7 +245,7 @@ const TabOne = () => {
 const TabTwo = () => {
   return (
     <div className="flex flex-col gap-16">
-      <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-[100%] lg:grid-cols-2 gap-6">
         {data1.map((el, i) => (
           <div
             key={i}
@@ -324,7 +324,7 @@ const Institutes = () => {
               {tabs.map((el, i) => (
                 <div
                   key={el}
-                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1.575rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
+                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1rem] sm:leading-[1.575rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
                     currentTab === i
                       ? "bg-[#30A85F] text-white"
                       : "bg-transparent text-[#111111]"

@@ -40,8 +40,8 @@ const News = () => {
           </h2>
           <div className="grid grid-cols-home-publication-res gap-6">
             {data.map((el, i) => (
-              <div key={i} className="flex flex-col gap-3.5">
-                <h3 className="font-medium text-[#131517] text-xl sm:text-2xl leading-[1.46625rem] text-opacity-85 ">
+              <div key={i} className={`flex flex-col gap-3.5 ${i === 0 ? "border-[0px] sm:border-r border-[#E7E7E7] sm:pr-2.5" : "sm:pr-2.5"} `}>
+                <h3 className={`font-medium text-[#131517] text-xl sm:text-2xl leading-[1.46625rem] text-opacity-85  `}>
                   {el.type}
                 </h3>
                 <div className="grid grid-rows-[min_content_auto] gap-8">
@@ -84,11 +84,13 @@ const News = () => {
                   <h4 className="text-[#131517] text-[1.345rem] leading-[1.5625rem] font-medium">
                     News Title
                   </h4>
-                  <p className="font-normal text-sm text-[#464646] sm:leading-[1.28625rem]">
+                  <p className="font-normal text-[0.75rem] text-[#464646] leading-[1.28625rem] text-left">
                     ARCN plays a pivotal role in the dissemination of
                     cutting-edge research through its published journals. These
                     journals serve as a platform for researchers from diverse
-                    fields and...
+                    fields and various institutes to share their findings,
+                    insights, and innovations with the global academic
+                    community.
                   </p>
                   <div className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] leading-[1.5625rem] py-1 px-4 cursor-pointer">
                     Read More
@@ -98,10 +100,13 @@ const News = () => {
                   <h4 className="text-[#131517] text-[1.345rem] font-medium leading-[1.5625rem]">
                     News Title
                   </h4>
-                  <p className="font-normal text-sm text-[#464646] sm:leading-[1.28625rem]">
-                    We are delighted to bring you the latest updates and
-                    highlights from ARCN, where groundbreaking research meets
-                    global collaboration.
+                  <p className="font-normal text-[0.75rem] text-[#464646] leading-[1.28625rem] text-left">
+                    ARCN plays a pivotal role in the dissemination of
+                    cutting-edge research through its published journals. These
+                    journals serve as a platform for researchers from diverse
+                    fields and various institutes to share their findings,
+                    insights, and innovations with the global academic
+                    community.
                   </p>
                   <div className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] leading-[1.5625rem] py-1 px-4 cursor-pointer">
                     Read More

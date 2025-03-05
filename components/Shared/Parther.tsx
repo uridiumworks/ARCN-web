@@ -9,13 +9,12 @@ const Partners = () => {
       <CustomContainer>
         <div className="flex flex-col items-center px-0 sm:px-16  gap-12">
           
-            <h2 className="font-semibold text-3xl text-center sm:text-5xl sm:leading-[4rem] text-[#1B222B]">
-            Partner with us to advance agricultural
-              <br /> research training and extension in Nigeria
+            <h2 className="font-semibold text-3xl text-center sm:text-4xl sm:leading-[3rem] text-[#1B222B]">
+            Partner with us to advance agricultural <br className="hidden lg:block" /> research training and extension in Nigeria
             </h2>
        
           <div className="flex flex-col lg:flex-row gap-10  justify-center items-center lg:gap-20">
-            <div className="shrink-0 w-[25%]">
+            <div className="shrink-0 w-full sm:w-[75%] lg:w-[25%]">
               <Image
                 src="/Images/Homepage/farmer.png"
                 width={836}

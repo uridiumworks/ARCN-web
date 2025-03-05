@@ -7,34 +7,34 @@ export default function Focus() {
     <section className="py-9 sm:py-18 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
-          <div className="flex flex-col items-center text-center">
-            <h2 className="font-medium text-[2rem] text-center sm:text-[2.625] text-[#111111]">
+          <div className="flex flex-col  gap-3.5 items-center text-center">
+            <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
               Research Focus
-            </h2>
+            </h3>
             <div className="flex flex-col gap-2 text-center">
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 CRIN&apos;s research activities are structured into various
                 directorates including:
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Research Operations
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Research Outreach
               </p>
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Value Added Research
               </p>
 
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Production and Substations
               </p>
 
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Training
               </p>
 
-              <p className="font-medium text-sm sm:text-lg text-[#111111]">
+              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
                 . Planning
               </p>
             </div>
@@ -62,6 +62,7 @@ export default function Focus() {
               "1975: Further expansion to include cashew and tea research",
               "Present: Comprehensive research institute covering six mandate crops",
             ]}
+            shouldBoldPointText={false}
           />
 
           <CardBorderedDetails

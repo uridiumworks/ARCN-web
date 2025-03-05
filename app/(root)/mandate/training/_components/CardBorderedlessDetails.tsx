@@ -18,20 +18,20 @@ export default function CardBorderedlessDetails({
   points,
 }: Props) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4 sm:gap-6">
       {title && (
         <h3
           className={`font-medium ${
-            titleSize ? titleSize : "text-3xl sm:text-[2.625rem]"
+            titleSize ? titleSize : "text-3xl sm:text-[2.5rem] leading-[2.875rem]"
           } text-[#111111]`}
         >
           {title}
         </h3>
       )}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3">
         {subContent && (
           <h3
-            className={`${subContentClassNames} text-black text-sm sm:text-lg`}
+            className={`${subContentClassNames} text-black text-sm sm:text-base`}
           >
             {subContent}
           </h3>

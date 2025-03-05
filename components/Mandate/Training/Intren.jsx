@@ -51,9 +51,9 @@ const Intern = () => {
           </h2>
           <p className="font-normal text-sm text-[#64728F] sm:text-base sm:leading-[1.75rem]">
             Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh.
-            Id <br />
+            Id <br className="hidden md:block" />
             ullamcorper nec leo porta. Enim nunc lacinia dui vehicula
-            pellentesque morbi. <br />
+            pellentesque morbi. <br className="hidden md:block" />
             Magna nulla consequat.
           </p>
         </div>
@@ -100,7 +100,7 @@ const Intern = () => {
                       )}
                     </div>
                   </div>
-                  <div className="relative w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                  <div className="relative w-full sm:w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                     <Image
                       src="/Images/Homepage/event-imgholder.png"
                       alt="event-imgholder"

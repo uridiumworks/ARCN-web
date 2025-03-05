@@ -14,7 +14,7 @@ export default function ResearchNihortInstitutePage() {
         phoneNumber="08022255504"
         location="P.M.B. 5432, Idi-Ishin, Jericho Reservation Area, Ibadan, Oyo State, Nigeria"
         title="NATIONAL HORTICULTURAL <br /> RESEARCH INSTITUTE"
-        website="nihort.gov.ng"
+        website="https://www.nihort.gov.ng"
       />
       <Overview />
       <Focus />
@@ -22,7 +22,7 @@ export default function ResearchNihortInstitutePage() {
         phoneNumber="08022255504"
         location="P.M.B. 5432, Idi-Ishin, Jericho Reservation Area, Ibadan, Oyo State, Nigeria"
         email="info@nihort.gov.ng"
-        website="nihort.gov.ng"
+        website="https://www.nihort.gov.ng"
       />
     </section>
   );

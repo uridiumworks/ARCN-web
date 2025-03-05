@@ -9,7 +9,7 @@ const Banner = () => {
           <h2 className="font-bold text-4xl sm:text-5xl lg:text-[3.75rem] leading-[5.28125rem]">
             Training
           </h2>
-          <p className="font-normal text-base sm:text-xl leading-[2.1rem]">
+          <p className="font-normal text-base sm:text-xl leading-[1.5rem] sm:leading-[2.1rem]">
             Transforming Food, Land, and Water Systems in a Climate Crisis
           </p>
         </div>
