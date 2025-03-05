@@ -22,17 +22,18 @@ type Props = {
   location: string;
   website: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 };
 
 export default function Hero({
+  phoneNumber="",
   logo,
   title,
   accroymn,
   location,
   website,
   email,
-  phoneNumber,
+
 }: Props) {
   return (
     <section className="flex flex-col gap-6 bg-[#101010] pt-3 px-3 pb-6 sm:pb-16 mt-3">
@@ -62,7 +63,10 @@ export default function Hero({
               </div>
               <div className="flex flex-col gap-1.5">
                 <h4 className="font-medium text-white text-base">Website</h4>
-                <Link href="#" className="font-normal text-[#EFEFEF] text-sm">
+                <Link
+                  href={website}
+                  className="font-normal text-[#EFEFEF] text-sm"
+                >
                   {website}
                 </Link>
               </div>
@@ -78,7 +82,7 @@ export default function Hero({
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3 ">
+           {phoneNumber &&  <div className="flex items-center justify-center gap-3 ">
               <div>
                 <WhitePhoneIcon />
               </div>
@@ -88,7 +92,7 @@ export default function Hero({
                   {phoneNumber}
                 </p>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
       </CustomContainer>

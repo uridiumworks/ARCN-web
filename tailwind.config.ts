@@ -27,6 +27,7 @@ const config = {
         "footer-res": "repeat(auto-fit,minmax(10rem,1fr))",
         "mandate-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
         "research-institutes-details-res": "repeat(auto-fit,minmax(14rem,1fr))",
+        
       },
       
       colors: {

@@ -6,20 +6,20 @@ const data = [
   {
     title: "Agricultural Research",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Faucibus id sed eget nec quisque eu vitae cum quam. Ornare sed commodo arcu feugiat nisl ut vivamus. Suscipit euismod mi malesuada dignissim. Ornare quam non nascetur turpis.Ut in sed et interdum dui fermentum id nisi. Et.",
-    icon: <FlowerHandIcon />,
+      "Driving innovation in Nigerian agriculture, we bring together brilliant minds to solve farming challenges. From developing better crop varieties to improving livestock production, our research shapes the future of agriculture. We connect Nigerian scientists with global experts, maintain a comprehensive agricultural library, and ensure research directly benefits farmers across the nation.",
+    icon: <FlowerHandIcon className="scale-75" />,
   },
   {
     title: "Agricultural Training",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Faucibus id sed eget nec quisque eu vitae cum quam. Ornare sed commodo arcu feugiat nisl ut vivamus. Suscipit euismod mi malesuada dignissim. Ornare quam non nascetur turpis.Ut in sed et interdum dui fermentum id nisi. Et.",
-    icon: <FarmerForkIcon />,
+      "Growing tomorrow's agricultural leaders is our passion! Through our network of Federal Colleges of Agriculture, we equip the next generation with practical skills and knowledge they need to succeed. Whether you're interested in modern farming techniques, livestock management, or agribusiness, our training programs open doors to exciting opportunities in agriculture.",
+    icon: <FarmerForkIcon className="scale-75" />,
   },
   {
     title: "Extension Services",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Faucibus id sed eget nec quisque eu vitae cum quam. Ornare sed commodo arcu feugiat nisl ut vivamus. Suscipit euismod mi malesuada dignissim. Ornare quam non nascetur turpis.Ut in sed et interdum dui fermentum id nisi. Et.",
-    icon: <TractorIcon />,
+      "Bridging the gap between research and real-world farming! We work hard to ensure innovative agricultural solutions reach the farmers who need them most. Through workshops, training sessions, and direct community engagement, we're making modern agricultural knowledge accessible to everyone - from small-scale farmers to large agricultural enterprises, transforming research into results.",
+    icon: <TractorIcon className="scale-75  " />,
   },
 ];
 
@@ -112,19 +112,19 @@ const Research = () => {
     <section className="py-16 md:py-24">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="text-center font-medium text-3xl sm:text-5xl text-[#111111]">
+          <h2 className="text-center font-medium text-3xl sm:text-5xl sm:leading-[2.875rem] text-[#111111]">
             Our Core Mandates
           </h2>
 
           <div className="grid grid-cols-home-research-res gap-10">
             {data.map((el, i) => (
-              <div key={i} className="flex gap-4 items-start">
+              <div key={i} className="flex gap-3 items-start">
                 <div> {el.icon}</div>
-                <div className="flex flex-col gap-4  -mt-1">
-                  <h3 className="font-medium text-[#1B222B] text-[1.74rem]">
+                <div className="flex flex-col gap-4 ">
+                  <h3 className="font-medium text-[#1B222B] text-[1.74rem] leading-[1.74rem]">
                     {el.title}
                   </h3>
-                  <p className="text-sm font-normal text-[#1B222B]">
+                  <p className="text-sm leading-[1.6rem] font-normal text-[#1B222B]">
                     {el.content}
                   </p>
                 </div>

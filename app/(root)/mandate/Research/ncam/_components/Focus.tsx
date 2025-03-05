@@ -30,7 +30,7 @@ export default function Focus() {
       </div>
 
       <CustomContainer>
-        <div className="flex flex-col gap-10">
+        <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10">
           <CardBorderedDetails
             title="National and International Collaborations"
             subContent="NCAM collaborates with various organizations including:"
@@ -55,7 +55,6 @@ export default function Focus() {
 
           <CardBorderedDetails
             title="Consultancy Expertise"
-            subContent=""
             points={[
               "Feasibility studies for agricultural mechanization",
               "Equipment evaluation and certification",
@@ -65,7 +64,6 @@ export default function Focus() {
 
           <CardBorderedDetails
             title="Recent Achievements"
-            subContent=""
             points={[
               "Development of Multi-Crop Thresher with 90% local content",
               "Creation of various agricultural implements including Yam Mound Making Implement",
@@ -75,7 +73,7 @@ export default function Focus() {
 
           <CardBorderedDetails
             title="Impact Metrics"
-            subContent="NCAM remains a cornerstone of Nigeria's agricultural mechanization efforts, driving innovation and sustainability in farming practices to support food security and economic growth."
+            endContent="NCAM remains a cornerstone of Nigeria's agricultural mechanization efforts, driving innovation and sustainability in farming practices to support food security and economic growth."
             points={[
               "Enhanced agricultural productivity through mechanization",
               "Reduced dependence on imported agricultural machinery",
