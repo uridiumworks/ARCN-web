@@ -21,10 +21,10 @@ export default function page() {
                 ARCN Research Institutes
               </span>{" "} */}
                 Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper
-                quis etiam <br />
+                quis etiam <br className="hidden md:block" />
                 euismod quisque montes arcu risus. Magnis posuere tincidunt elit
                 ultrices tortor. Sit
-                <br />
+                <br className="hidden md:block" />
                 semper cras sed duis tortor tempor amet gravida. Rhoncus quis
                 nisl etiam tortor.
               </p>
