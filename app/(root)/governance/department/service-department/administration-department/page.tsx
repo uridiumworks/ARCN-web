@@ -61,7 +61,7 @@ const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
             <div className="md:h-[380px] w-full bg-[#FCF8C6]">
-                <div className="w-full p-3 md:p-0 md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
+                <div className="w-full p-3 md:p-0 w-full md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
                     <h1 className="text-2xl sm:text-3xl md:text-[40px] font-semibold">Administration Department</h1>
                     <p className="text-lg">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
                     mandate as well as the NARS. It is responsible for managing and overseeing various administrative<br className='hidden md:block' /> activities for the smooth running of the council.</p>
@@ -152,7 +152,6 @@ const ServiceDepartmentDetails = () => {
                     </div>
                 </div>
             </div>
-
         </section>
     );
 }
