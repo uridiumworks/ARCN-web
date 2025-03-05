@@ -2,6 +2,7 @@ import { CircleCheck, House } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ContentComp, FunctionalComp, HeaderComp } from "../../../_components/externalComp";
 
 const FunctionData: string[] = [
     "Knowledge Management has a training function that crosscuts with the Extension Department, thus it develops and deploys a Knowledge Management system that promotes learning and innovation for NARIs.",
@@ -52,18 +53,17 @@ const AdminDepartmentData = [
 const TechnicalDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="h-[380px] w-full bg-[#B3C4C7]">
-                <div className="w-[1250px] ml-32 space-y-8 pt-16">
-                    <h1 className="text-[40px] font-semibold">Knowledge Management & Communication</h1>
-                    <p className="text-lg">
-                        The Knowledge Management and Communication Department enhances learning, innovation, and collaboration within NARS<br />  by developing
-                        systems for information sharing, research dissemination, and database management. It supports agricultural research<br /> 
-                        through a national science library, publications, and global visibility efforts while promoting communication among scientists and stakeholders.
-                    </p>
-                </div>
-            </div>
+            <HeaderComp
+                bgColor="bg-[#B3C4C7]"
+                title="Knowledge Management & Communication"
+                description={<>The Knowledge Management and Communication Department enhances learning, innovation, and collaboration within NARS<br className='hidden md:block' />  by developing
+                    systems for information sharing, research dissemination, and database management. It supports agricultural research<br className='hidden md:block' /> 
+                    through a national science library, publications, and global visibility efforts while promoting communication among scientists and stakeholders.
+                </>}
+            />
 
-            <div className="w-[1250px] mx-auto py-5">
+
+            <div className="w-full md:w-[1250px] mx-auto px-2.5 py-5">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -107,46 +107,16 @@ const TechnicalDepartmentDetails = () => {
                     </BreadcrumbList>
                 </Breadcrumb>
 
-                <div className='py-14'>
-                    <h2 className='font-semibold text-[32px]'>Functions</h2>
+                <FunctionalComp
+                    title="Functions"
+                    FunctionData={FunctionData}
+                />
 
-                    <div className='font-normal py-6 '>
-                        {FunctionData?.map((item, index) => {
-                            return (
-                                <div key={index} className='flex items-center gap-2 justify-start' >
-                                    <div>
-                                    <CircleCheck className="w-5 h-5" />
-
-                                    </div>
-                                    <p className='py-4 text-base'>{item}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div className="space-y-5">
-                    <h1 className="text-[38px] font-semibold">Knowledge Management & Communication Divisions</h1>
-                    
-                    <div className="space-y-7">
-                        {AdminDepartmentData?.map(({description, descriptionList, title}, index) => {
-                            return (
-                                <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-6 px-7 space-y-4 w-[94%]")}>
-                                    <h1 className="text-2xl font-bold">{title}</h1>
-                                    <div>
-                                        {description && <p>{description}</p>}
-                                        <ul className="font text-base list-disc list-inside">
-                                            {descriptionList?.map((item, index) => {
-                                                return <li key={index}>{item}</li>
-                                            })}
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+                <ContentComp
+                    title="Knowledge Management & Communication Divisions"
+                    AdminDepartmentData={AdminDepartmentData}
+                    listType="list-disc"
+                />
             </div>
         </section>
     );

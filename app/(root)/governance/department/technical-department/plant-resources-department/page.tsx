@@ -2,6 +2,7 @@ import { CircleCheck, House } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ContentComp, FunctionalComp, HeaderComp } from "../../../_components/externalComp";
 
   const FunctionData: string[] = [
     "Organic and inorganic agricultural systems.",
@@ -74,17 +75,14 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="h-[380px] w-full bg-[#FFDEE3]">
-                <div className="w-[1250px] ml-32 space-y-8 pt-16">
-                    <h1 className="text-[40px] font-semibold">Plant Resources Department</h1>
-                    <p className="text-lg">
-                        Plant resource department is organized into divisions which are framed to monitor production of solutions in research<br /> 
-                        development and innovation and also organize research
-                    </p>
-                </div>
-            </div>
+            <HeaderComp
+                bgColor="bg-[#FFDEE3]"
+                title="Plant Resources Department"
+                description={<>Plant resource department is organized into divisions which are framed to monitor production of solutions in research<br className='hidden md:block' /> 
+                        development and innovation and also organize research</>}
+            />
 
-            <div className="w-[1250px] mx-auto py-5">
+            <div className="w-full md:w-[1250px] mx-auto px-2.5 py-5">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -127,47 +125,17 @@ const ServiceDepartmentDetails = () => {
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
-
-                <div className='py-14'>
-                    <h2 className='font-semibold text-[32px]'>Research Focus</h2>
-
-                    <div className='font-normal py-6 '>
-                        {FunctionData?.map((item, index) => {
-                            return (
-                                <div key={index} className='flex items-center gap-2 justify-start' >
-                                    <div>
-                                    <CircleCheck className="w-5 h-5" />
-
-                                    </div>
-                                    <p className='py-4 text-base'>{item}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div className="space-y-5">
-                    <h1 className="text-[38px] font-semibold">Plant Resources Divisions</h1>
-                    
-                    <div className="space-y-7">
-                        {AdminDepartmentData?.map(({description, descriptionList, title}, index) => {
-                            return (
-                                <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-6 px-7 space-y-4 w-[94%]")}>
-                                    <h1 className="text-2xl font-bold">{title}</h1>
-                                    <div>
-                                        {description && <p>{description}</p>}
-                                        <ul className="font text-base list-decimal list-inside">
-                                            {descriptionList?.map((item, index) => {
-                                                return <li key={index}>{item}</li>
-                                            })}
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+                
+                <FunctionalComp
+                    title="Research Focus"
+                    FunctionData={FunctionData}
+                />
+                
+                <ContentComp
+                    title="Plant Resources Divisions"
+                    AdminDepartmentData={AdminDepartmentData}
+                    listType="list-decimal"
+                />
             </div>
         </section>
     );

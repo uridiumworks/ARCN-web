@@ -2,6 +2,7 @@ import { CircleCheck, House } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ContentComp, FunctionalComp, HeaderComp } from "../../../_components/externalComp";
 
 const FunctionData: string[] = [
     "Coordinate and review policies, priorities, and strategies of agricultural research, training, and extension for the Council, National Agricultural Research Institutes (NARIs), and Federal College of Agriculture (FCA) under the purview of the Council.",
@@ -65,18 +66,16 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="h-[380px] w-full bg-[#ECF7FA]">
-                <div className="w-[1250px] ml-32 space-y-8 pt-16">
-                    <h1 className="text-[40px] font-semibold">Planning Research & Statistics</h1>
-                    <p className="text-lg">
-                        Plannig research and statistics coordinate and review policies, priorities and strategies of agricultural research, training and<br /> 
-                        extension for the council, National Agricultural Research Institutes (NARIs) and Federal College of Agriculture (FCAs)<br /> 
-                        under the purview of the Council.
-                    </p>
-                </div>
-            </div>
+            <HeaderComp
+                bgColor="bg-[#ECF7FA]"
+                title="Planning Research & Statistics"
+                description={<>Plannig research and statistics coordinate and review policies, priorities and strategies of agricultural research, training and<br className='hidden md:block' /> 
+                    extension for the council, National Agricultural Research Institutes (NARIs) and Federal College of Agriculture (FCAs)<br className='hidden md:block' /> 
+                    under the purview of the Council.
+                </>}
+            />
 
-            <div className="w-[1250px] mx-auto py-5">
+            <div className="w-full md:w-[1250px] mx-auto px-2.5 py-5">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -120,45 +119,16 @@ const ServiceDepartmentDetails = () => {
                     </BreadcrumbList>
                 </Breadcrumb>
 
-                <div className='py-14'>
-                    <h2 className='font-semibold text-[32px]'>Mandate</h2>
+                <FunctionalComp
+                    title="Mandate"
+                    FunctionData={FunctionData}
+                />
 
-                    <div className='font-normal py-6 '>
-                        {FunctionData?.map((item, index) => {
-                            return (
-                                <div key={index} className='flex items-center gap-2 justify-start' >
-                                    <div>
-                                    <CircleCheck className="w-5 h-5" />
-
-                                    </div>
-                                    <p className='py-4 text-base'>{item}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div className="space-y-5">
-                    <h1 className="text-[38px] font-semibold">Planning Research & Statistics Divisions</h1>
-                    
-                    <div className="space-y-7">
-                        {AdminDepartmentData?.map(({description, descriptionList, title}, index) => {
-                            return (
-                                <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', "rounded-[16.17px] py-6 px-7 space-y-4 w-[94%]")}>
-                                    <h1 className="text-2xl font-bold">{title}</h1>
-                                    <div>
-                                        {description && <p>{description}</p>}
-                                        <ul className="font text-base list-decimal list-inside">
-                                            {descriptionList?.map((item, index) => {
-                                                return <li key={index}>{item}</li>
-                                            })}
-                                        </ul>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+                <ContentComp
+                    title="Planning Research & Statistics Divisions"
+                    AdminDepartmentData={AdminDepartmentData}
+                    listType="list-decimal"
+                />
             </div>
         </section>
     );
