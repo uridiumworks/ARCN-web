@@ -31,8 +31,8 @@ const New = () => {
                   <div key={index} className="space-y-3">
                     <div>
                       <Image
-                        // src={n?.bannerUrl || "/Images/News and Events/Place.png"}
-                        src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
+                        src={n?.bannerUrl || "/Images/News and Events/Place.png"}
+                        // src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
                         alt={n?.category}
                         width={395}
                         height={268.59}

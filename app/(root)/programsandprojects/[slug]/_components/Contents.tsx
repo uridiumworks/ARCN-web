@@ -240,7 +240,7 @@ export default function Contents() {
               </div>
 
               <div className='space-y-4'>
-                <hr className="border-[0] border-black my-2" />
+                <hr className="border-[0.5] border-black my-2" />
                 <h2>For more information about the FASA project, contact: The Agricultural Research Council of Nigeria <br />[es@arcn.gov.ng | info@arcn.gov.ng]Related Resources:</h2>
                 <div className=' space-y-1 '>
                   <h1 className='font-normal text-base flex items-start px-5 gap-2'>

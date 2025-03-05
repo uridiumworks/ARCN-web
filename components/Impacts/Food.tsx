@@ -1,4 +1,4 @@
-import { Link } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 
 const Food = () => {
@@ -30,9 +30,12 @@ const Food = () => {
                             <Image src="/Images/Aboutpage/Pink.png" alt="Peach" width={64} height={64} />
                             <p className="font-bold text-base text-[#CA848B]">GENDER AND YOUTH</p>
                             <p className="font-normal text-xs text-[#495057]">Lorem ipsum dolor sit amet consectetur. Erat pharetra dictumst nunc vestibulum in pretium.</p>
-                            <Link href={"/impacts/gender"}>
+                            <Link href={`/impacts/gender/gender`}>
                                 <button className="font-bold text-xs text-[#171717]">READ MORE</button>
                             </Link>
+                            {/* <Link href={"/impacts/gender"}>
+                                <button className="font-bold text-xs text-[#171717]">READ MORE</button>
+                            </Link> */}
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 const Ours = () => {
 
     return ( 
-        <main>
+        <section className=""> 
             <div className="flex flex-col justify-center text-center mx-auto py-5 font-montserrat space-y-6 ">
                 <div className="">
                     <h1 className="text-[#111827] text-[39.5px] font-bold">Our Impacts in the Last 10 Years</h1>
@@ -13,7 +13,7 @@ const Ours = () => {
                     <p className="text-[#64728F] text-base font-normal">Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id<br /> ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi.<br /> Magna nulla consequat.</p>
                 </div>
             </div>
-        </main>
+        </section>
     );
 }
  
