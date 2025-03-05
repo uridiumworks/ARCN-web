@@ -13,7 +13,7 @@ export default function Contents() {
           <CustomBreadcrumbs text="News" />
             <div className="flex flex-col justify-center gap-7 md:w-7/12 mx-auto "> 
                 <div className="flex flex-col text-center space-y-7">
-                    <p className="font-medium text-sm md:text-xl text-[#3F4654]">More than 85% of the world&apos;s 1.2 billion youth live in low- and middle-income countries, where many face limited opportunities for employment or entrepreneurship.</p>
+                  <p className="font-medium text-sm md:text-xl text-[#3F4654]">More than 85% of the world&apos;s 1.2 billion youth live in low- and middle-income countries, where many face limited opportunities for employment or entrepreneurship.</p>
                 </div>
                 
                 <div className=" flex items-center gap-4 justify-center ">
