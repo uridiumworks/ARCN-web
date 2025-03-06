@@ -3,8 +3,6 @@
 import React, { useState } from 'react'
 import PublicationsMotto from './_components/PublicationsMotto'
 import Journals from './_components/Journals'
-import Newsletter from './_components/Newsletter'
-import Reports from './_components/reports'
 import FundingMotto from './_components/fundingMotto'
 import JournalsMotto from './_components/journals-motto'
 import Soil from './_components/Soil'
