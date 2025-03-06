@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const FundingMotto = () => {
     return (
-        <div className='w-full font-montserrat bg-black flex justify-center items-center py-28'>
+        <div className='w-full font-montserrat bg-black flex justify-center items-center py-14 md:py-28'>
             <div className="text-center">
                 <h1 className="text-4xl font-bold text-white">ARCN secures $2.5 million seed<br />
                     funding to optimize on-demand food<br />
