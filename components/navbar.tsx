@@ -33,10 +33,10 @@ const Navbar = (props: Props) => {
       case "mandate":
         return pathname.toLowerCase().includes("mandate");
       case "News & Events":
-        return pathname.toLowerCase().includes("newsandevents");
+        return pathname.toLowerCase().includes("news-and-events");
 
       case "Programs & Projects":
-        return pathname.toLowerCase().includes("programsandprojects");
+        return pathname.toLowerCase().includes("programs-and-projects");
 
       case "Impacts":
         return pathname.toLowerCase().includes("impacts");

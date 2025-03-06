@@ -8,10 +8,8 @@ export default function Home() {
     return (
       <main>
         <Banner />
-        <CustomContainer>
-          <Projects />
-          <Programs />
-        </CustomContainer>
+        <Projects />
+        <Programs />
         <Journal />
       </main>
       

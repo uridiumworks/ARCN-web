@@ -1,6 +1,6 @@
 .picker {
     background-image: url('/Images/Homepage/Frame.png');
     background-size: cover;
-    background-position: center;
+    background-position: center contain !important;
     background-repeat: no-repeat;
 }

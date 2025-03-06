@@ -36,7 +36,7 @@ export default function CustomBreadcrumbs({ text }: Props) {
         <BreadcrumbItem>
           <BreadcrumbLink>
             <Link
-              href="/newsandevents"
+              href="/news-and-events"
               className="font-medium text-sm text-[#A5ACBA] hover:text-[#2E7636] transition"
             >
               News & Events
