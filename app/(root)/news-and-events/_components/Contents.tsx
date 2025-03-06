@@ -12,26 +12,26 @@ export default function Contents() {
         <div className="flex flex-col gap-8 sm:gap-14">
           <CustomBreadcrumbs text="News" />
             <div className="flex flex-col justify-center gap-7 md:w-7/12 mx-auto "> 
-                <div className="flex flex-col text-center space-y-7">
-                    <p className="font-medium text-sm md:text-xl text-[#3F4654]">More than 85% of the world&apos;s 1.2 billion youth live in low- and middle-income countries, where many face limited opportunities for employment or entrepreneurship.</p>
+              <div className="flex flex-col text-center space-y-7">
+                <p className="font-medium text-sm md:text-xl text-[#3F4654]">More than 85% of the world&apos;s 1.2 billion youth live in low- and middle-income countries, where many face limited opportunities for employment or entrepreneurship.</p>
+              </div>
+              
+              <div className=" flex items-center gap-4 justify-center ">
+                <Image src={"/Images/woman.png"} alt="woman" width={48} height={48} />
+                <div className="flex flex-col justify-start">
+                  <h1 className="font-medium text-[#3F4654] text-sm">Ayush Jangra</h1>
+                  <p className="font-normal text-[#6B7589] text-xs">Updated on Apr 19, 2024</p>
                 </div>
-                
-                <div className=" flex items-center gap-4 justify-center ">
-                    <Image src={"/Images/woman.png"} alt="woman" width={48} height={48} />
-                    <div className="flex flex-col justify-start pb-5">
-                        <h1 className="font-medium text-[#3F4654] text-sm">Ayush Jangra</h1>
-                        <p className="font-normal text-[#6B7589] text-xs">Updated on Apr 19, 2024</p>
-                    </div>
-                </div>
+              </div>
             </div>
 
           <div className="flex flex-col gap-10">
-            <div className="shrink-0 rounded-3xl overflow-hidden  w-full h-auto">
+            <div className="shrink-0 rounded-3xl overflow-hidden w-full h-auto">
               <Image
                 className="w-full h-auto object-cover"
                 src="/Images/Mandatepage/coordination-report-holder-img.png"
                 alt=""
-                height={560}
+                height={360}
                 width={750}
               />
             </div>
