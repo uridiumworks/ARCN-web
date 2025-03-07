@@ -97,6 +97,7 @@ const Navbar = (props: Props) => {
         <div>
           <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
         </div>
+
         <div className="hidden lg:flex lg:flex-col lg:gap-6 text-center">
           <div className="flex justify-center items-center gap-8 text-white">
             {topNav.map((t, index) => (
@@ -111,13 +112,12 @@ const Navbar = (props: Props) => {
               </p>
             ))}
           </div>
+
           <div className="flex justify-center gap-6 text-white">
             {mainNav.map((t, index) => (
               <p
                 onClick={() => routePathLinks(t)}
-                className={`font-bold text-sm leading-[2rem] uppercase ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
-                }  cursor-pointer`}
+                className={`font-bold text-[13px] leading-[2rem] uppercase ${isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"}  cursor-pointer`}
                 key={index}
               >
                 {t}
@@ -125,6 +125,7 @@ const Navbar = (props: Props) => {
             ))}
           </div>
         </div>
+
         <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2.5 bg-[#FFFFFF0F] border  border-[#3C3C3C]">
           <input
             type="search"
@@ -133,6 +134,7 @@ const Navbar = (props: Props) => {
           />
           <Search color="#2E7636" size="14px" />
         </div>
+
         <div className="lg:hidden flex items-center">
           <Menu size="24px" color="#EFEFEF" onClick={toggleMobileMenu} />
         </div>
@@ -169,6 +171,7 @@ const Navbar = (props: Props) => {
                 </p>
               ))}
             </div>
+            
             <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
               <input
                 type="search"

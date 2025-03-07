@@ -90,7 +90,6 @@ export default function LayoutProvider({ children }: LayoutType) {
 
           <Button className="bg-[#71C348] w-fit mx-auto rounded-[48px] font-bold text-base sm:text-lg px-6 sm:px-9 py-4 sm:py-7">Submit Now</Button>
         </div>
-
       </div>
     </div>
   )
