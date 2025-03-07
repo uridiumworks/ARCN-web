@@ -6,9 +6,9 @@ const Impact = () => {
       <div className="min-h-[30rem] bg-[#011610] flex items-center py-12 md:py-20">
         <CustomContainer>
           <div className="text-center space-y-9">
-            <h1 className="text-[#E6E9E7] text-3xl sm:text-4xl font-semibold">
+            <h2 className="text-[#E6E9E7] text-3xl sm:text-4xl font-semibold leading-[2.25rem]">
               Impacts Based On Numbers
-            </h1>
+            </h2>
 
             <div className="flex flex-col md:flex-row  mx-auto justify-center gap-6">
               <div className="border border-[#409A72] bg-[#409A72] w-full  sm:w-[11.9375rem] h-[7.5625rem] rounded-lg text-center place-content-center">
@@ -53,8 +53,9 @@ const Impact = () => {
               <p className="text-[#E6E9E7] text-base font-normal text-opacity-[92%]">
                 The results of research activities coordinated by ARCN have
                 significantly improved agricultural
-                <br className="hidden md:block" /> production and productivity, increased incomes and
-                enriched the livelihoods of millions of farmers and
+                <br className="hidden md:block" /> production and productivity,
+                increased incomes and enriched the livelihoods of millions of
+                farmers and
                 <br className="hidden md:block" /> entrepreneurs in Nigeria.
               </p>
             </div>

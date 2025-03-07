@@ -41,7 +41,7 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
                   currentRoute === url
                     ? "text-[#30A85F] bg-[#F2F2F2] rounded-sm"
                     : " text-[#444444]",
-                  "inline-block py-2 px-3.5 text-sm font-medium transition hover:text-[#30A85F]"
+                  "inline-block py-2 px-3 text-xs font-medium transition hover:text-[#30A85F]"
                 );
 
                 return (

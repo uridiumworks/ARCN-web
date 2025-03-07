@@ -24,7 +24,7 @@ const Intro = () => {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <h2 className="font-bold text-[#171717] text-3xl sm:text-4xl sm:leading-[2.25rem]">
+            <h2 className="font-bold text-[#171717] text-3xl sm:text-4xl leading-[2.25rem]">
               Welcome to ARCN
             </h2>
             <div className="flex flex-col">

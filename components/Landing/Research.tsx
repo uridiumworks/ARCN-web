@@ -112,7 +112,7 @@ const Research = () => {
     <section className="py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="text-center font-bold text-3xl sm:text-4xl sm:leading-[2.25rem] text-[#111111]">
+          <h2 className="text-center font-bold text-3xl sm:text-4xl leading-[2.25rem] text-[#111111]">
             Our Core Mandates
           </h2>
 

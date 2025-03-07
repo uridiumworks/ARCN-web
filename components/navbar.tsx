@@ -103,7 +103,9 @@ const Navbar = (props: Props) => {
               <p
                 onClick={() => routePathLinks(t)}
                 className={`font-normal text-[0.75rem]  leading-[2rem] ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-opacity-85 text-[#121212]"
+                  isActiveFunc(t)
+                    ? "text-[#30A85F]"
+                    : "text-opacity-85 text-[#121212]"
                 }  cursor-pointer`}
                 key={index}
               >
@@ -125,11 +127,11 @@ const Navbar = (props: Props) => {
             ))}
           </div>
         </div>
-        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2.5 bg-[#fff] border  border-[#3C3C3C]">
+        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2 bg-[#fff] border  border-[#3C3C3C]">
           <input
             type="search"
             placeholder="Search"
-            className="outline-none bg-transparent text-[#121212] py-1 px-1.5 text-[0.75rem] leading-[2rem] focus-visible:outline-none border-none placeholder:text-[#121212]"
+            className="outline-none bg-transparent text-[#121212] py-1.5 px-1 text-xs leading-[1.2rem] focus-visible:outline-none border-none placeholder:text-[#121212] placeholder:text-xs"
           />
           <Search color="#2E7636" size="14px" />
         </div>

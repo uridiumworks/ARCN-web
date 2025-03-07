@@ -6,25 +6,16 @@ const Meet = () => {
     <section className="pt-8 pb-14">
       <CustomContainer>
         <div className="flex flex-col gap-16">
-          <div className="flex flex-col gap-2 text-center">
-            <h2 className="text-3xl sm:text-5xl sm:leading-[4.125rem] text-[#1B222B] font-semibold">
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="text-3xl sm:text-4xl leading-[2.25rem] text-[#1B222B] font-bold">
               Governance of ARCN
             </h2>
-            <p className="font-normal text-lg hidden lg:block leading-[2.125rem] text-[#1B222B]">
-              ARCN is a corporate body with perpetual succession established as
-              a grade &apos;A&apos; parastatal of the <br /> Federal Ministry of
-              Agriculture and Food Security. It has a Governing Board answerable
-              to the <br /> Minister of Agriculture and Food Security. It has a
-              chairman, members from public and private <br /> sectors covering
-              key stakeholder groups. The Executive Secretary is the CEO, with
-              seven <br />
-              directorates.
-            </p>
-            <p className="font-normal text-lg lg:hidden block leading-[2.125rem] text-[#1B222B]">ARCN is a corporate body with perpetual succession established as a grade &apos;A&apos; parastatal of the Federal Ministry of Agriculture and Food Security. It has a Governing Board answerable to the Minister of Agriculture and Food Security. It has a chairman, members from public and private sectors covering key stakeholder groups. The Executive Secretary is the CEO, with seven directorates.</p>
+         
+            <p className="font-normal text-sm leading-[1.5rem] text-[#1B222B]">ARCN is a corporate body with perpetual succession established as a grade &apos;A&apos; parastatal of the Federal Ministry of Agriculture and Food Security. It has a Governing Board answerable to the Minister of Agriculture and Food Security. It has a chairman, members from public and private sectors covering key stakeholder groups. The Executive Secretary is the CEO, with seven directorates.</p>
           </div>
 
           <div className="flex flex-col text-center gap-8">
-            <h3 className="font-semibold text-3xl sm:text-5xl sm:leading-[4.125rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl sm:leading-[2.25rem]">
               The Management Of The Council
             </h3>
 

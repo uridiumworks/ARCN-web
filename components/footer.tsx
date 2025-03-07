@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="lg:min-h-[31.875rem] bg-[#121212] text-white pt-12 pb-5 md:pt-20 md:pb-8">
+    <footer className="lg:min-h-[31.875rem] bg-[#121212] text-white pt-12 pb-2.5 md:pt-16 md:pb-4">
       <div className="flex flex-col gap-6 ">
         <CustomContainer>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-between pb-3">
@@ -22,7 +22,7 @@ const Footer = () => {
               </div>
               <div className="flex items-start gap-3.5">
                 <IoLocationSharp className="size-6" />
-                <p className="font-medium leading-[1.575rem] text-sm">
+                <p className="font-medium leading-[1.5rem] text-sm">
                   Agricultural Research House, Plot 223D <br />
                   Cadastral Zone B6, Mabushi, P .M. B. <br />
                   5026, Wuse Abuja
@@ -30,7 +30,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3.5">
                 <MailIcon />{" "}
-                <p className="font-medium text-sm leading-[1.575rem]">
+                <p className="font-medium text-sm leading-[1.5rem]">
                   es@arcn.gov.ng
                 </p>
               </div>
@@ -38,7 +38,7 @@ const Footer = () => {
                 <WWWIcon />{" "}
                 <Link
                   href="#"
-                  className="font-medium text-sm leading-[1.575rem]"
+                  className="font-medium text-sm leading-[1.5rem]"
                 >
                   www.arcn.gov.ng
                 </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
                 <h2 className="text-base sm:text-lg font-semibold leading-[1.6875rem]">
                   Company
                 </h2>
-                <ul className="text-base flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
+                <ul className="text-sm flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
                   <li>
                     <Link href="/">Home</Link>
                   </li>
@@ -66,7 +66,7 @@ const Footer = () => {
                 <h2 className="text-base sm:text-lg font-semibold leading-[1.6875rem]">
                   Our Services
                 </h2>
-                <ul className="text-base flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
+                <ul className="text-sm flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
                   <li>
                     <Link href="/mandate">Research</Link>
                   </li>
@@ -81,7 +81,7 @@ const Footer = () => {
                 <h2 className="text-base sm:text-lg font-semibold leading-[1.6875rem]">
                   Publications
                 </h2>
-                <ul className="text-base flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
+                <ul className="text-sm flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
                   <li>
                     <Link href="#">Research papers</Link>
                   </li>
@@ -96,10 +96,10 @@ const Footer = () => {
             </div>
           </div>
         </CustomContainer>
-        <hr className="border border-[#F1F1F3] border-opacity-50 my-3 mx-14" />
+        <hr className="border border-[#F1F1F3] border-opacity-50 my-3 mx-12" />
 
-        <div className="text-center text-sm font-normal leading-[1.3125rem]">
-          <h1>© 2024 ARCN. All rights reserved.</h1>
+        <div className="text-center text-sm font-normal leading-[1.5rem]">
+          <p>© 2024 ARCN. All rights reserved.</p>
         </div>
       </div>
     </footer>

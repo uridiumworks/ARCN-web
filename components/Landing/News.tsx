@@ -35,7 +35,7 @@ const News = () => {
     <section className="py-12 md:py-20 bg-[#FBFAFA]">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="uppercase font-bold text-[#171717] text-3xl sm:text-4xl sm:leading-[2.25rem] text-center">
+          <h2 className="uppercase font-bold text-[#171717] text-3xl sm:text-4xl leading-[2.25rem] text-center">
             Publications
           </h2>
           <div className="grid grid-cols-home-publication-res gap-6">

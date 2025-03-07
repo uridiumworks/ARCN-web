@@ -6,11 +6,11 @@ export default function HistoryDetails() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="bg-white pb-16 py-5 md:pb-24 md:pt-12">
+    <section className="bg-white pb-12 pt-5 md:pb-20 md:pt-12">
       <CustomContainer>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
-            <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[2.25rem]">
+            <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-4xl leading-[2.25rem]">
               Our History
             </h2>
           </div>
@@ -30,7 +30,7 @@ export default function HistoryDetails() {
               Nigeria&apos;s unification, the two departments were merged to
               form a new Department of Agriculture.
             </p>
-            <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
+            <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
               Progress was made in terms of infrastructure and human resources
               resulting in new research stations, more research personnel, and a
               more technical research program that included plant. breeding and
@@ -43,7 +43,7 @@ export default function HistoryDetails() {
             </p>
             {showAll && (
               <>
-                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
+                <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
                   Agricultural research was largely the domain of the local
                   colonial government until World War Il, when the British
                   government sought a more active role in the promotion of
@@ -62,7 +62,7 @@ export default function HistoryDetails() {
                   (NITR), Nigerian Stored Products Research Institute (NSPRI)
                   and Cocoa Research Institute of Nigeria (CRIN) came on board.
                 </p>
-                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
+                <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
                   With regional governments formed after Nigeria achieved
                   independence in 1960, research activities were regionalized,
                   which eliminated federal government involvement. The&apos;
@@ -78,7 +78,7 @@ export default function HistoryDetails() {
                   Establishment Order in 1980, under which many research
                   stations and departments were upgraded to national institutes.
                 </p>
-                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
+                <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
                   The research institutes underwent further significant
                   reorganization, including review of their mandates as part of
                   the green revolution programme of the early 1980s. The changes
@@ -97,7 +97,7 @@ export default function HistoryDetails() {
                   with Nigeria&apos;s unification, the two departments were
                   merged to form a new Department of Agriculture.
                 </p>
-                <p className="text-[#64728F] font-normal text-base  leading-[2rem]">
+                <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
                   Progress was made in terms of infrastructure and human
                   resources resulting in new research stations, more research
                   personnel, and a more technical research program that included
@@ -109,7 +109,7 @@ export default function HistoryDetails() {
                   with the establishment of the Fisheries Development Branch by
                   the Department of Agriculture.
                 </p>
-                <p className="text-[#64728F] font-normal text-base  leading-[2rem]">
+                <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
                   Agricultural research was largely the domain of the local
                   colonial government until World War Il, when the British
                   government sought a more active role in the promotion of
@@ -144,7 +144,7 @@ export default function HistoryDetails() {
                   Establishment Order in 1980, under which many research
                   stations and departments were upgraded to national institutes.
                 </p>
-                <p className="text-[#64728F] font-normal text-base  sm:leading-[2rem]">
+                <p className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
                   The research institutes underwent further significant
                   reorganization, including review of their mandates as part of
                   the green revolution programme of the early 1980s. The changes
@@ -164,19 +164,67 @@ export default function HistoryDetails() {
                   coordinate the NARIs has long been recognised by the
                   government
                 </p>
-                <p>
-                  In 1999 the Federal Military Government signed the
-                  Agricultural Research Council of Nigeria decree No 44 of May
-                  26, 1999. There was a lull in the take-off activity as
-                  government focused its priorities in the implementation of the
-                  various Presidential Initiatives and the National Special
-                  Programme on Food Security. However, during the Presidential
-                  Retreat on Agriculture and Food Security held at Kaduna in
-                  December 2005, weak linkages between research and agricultural
-                  production were identified as a major constraint. This led to
-                  the setting up of a Presidential Advisory Committee (PAC) on
-                  Improving Linkages between Research and Production. The PAC
-                  has the following Terms of Reference (TOR):
+                <div>
+                  <p className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                    In 1999 the Federal Military Government signed the
+                    Agricultural Research Council of Nigeria decree No 44 of May
+                    26, 1999. There was a lull in the take-off activity as
+                    government focused its priorities in the implementation of
+                    the various Presidential Initiatives and the National
+                    Special Programme on Food Security. However, during the
+                    Presidential Retreat on Agriculture and Food Security held
+                    at Kaduna in December 2005, weak linkages between research
+                    and agricultural production were identified as a major
+                    constraint. This led to the setting up of a Presidential
+                    Advisory Committee (PAC) on Improving Linkages between
+                    Research and Production. The PAC has the following Terms of
+                    Reference (TOR):
+                  </p>
+                  <ul className="px-0 sm:px-6 list-disc">
+                    <li className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                      To identify existing constraints and limitations on
+                      linkages
+                    </li>
+                    <li className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                      {" "}
+                      To recommend strategies to enhance public and private
+                      partnerships in research
+                    </li>
+                    <li className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                      {" "}
+                      To propose strategies for enhancing linkages between
+                      research and production
+                    </li>
+                    <li className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                      To identify roles of key stakeholders in improving
+                      linkages
+                    </li>
+                    <li className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                      To set targets for research institutes as well as
+                      streamline their basic functions
+                    </li>
+                  </ul>
+                  <p className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                    PAC submitted its report in July 2006 to the Presidential
+                    Forum on Improving Linkages between Research and Production
+                    in August 2006 and the Presidential Implementation Committee
+                    on Improving Linkages between Research and production was
+                    set up with Deputy Governors and others as members. The
+                    Honourable Minister of Agriculture was the Chairman. The
+                    Presidential Implementation Committee on Improving Linkages
+                    between Ensure the systematic and consistent implementation
+                    of all the recommendations of the PAC
+                  </p>
+                </div>
+                <p className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
+                  Give quarterly report on the implementation status/ stages to
+                  the Presidential Forum. The PIC presented its first quarter
+                  report to Mr. President in November 2006 with the key
+                  recommendation being the immediate take-off of the
+                  Agricultural Research Council of Nigeria (ARCN) as the global
+                  best practice institutional arrangement for coordination and
+                  supervision of agricultural research. Based on this, an
+                  Executive Secretary was appointed for ARCN in November 2006.
                 </p>
               </>
             )}
