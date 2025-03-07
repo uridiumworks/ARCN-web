@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="lg:min-h-[31.875rem] bg-[#121212] text-white pt-16 pb-5 md:pt-24 md:pb-10">
+    <footer className="lg:min-h-[31.875rem] bg-[#121212] text-white pt-12 pb-5 md:pt-20 md:pb-8">
       <div className="flex flex-col gap-6 ">
         <CustomContainer>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-between pb-3">
@@ -73,9 +73,7 @@ const Footer = () => {
                   <li>
                     <Link href="/mandate/training">Training</Link>
                   </li>
-                  <li>
-                    <Link href="#">Extension</Link>
-                  </li>
+                 
                 </ul>
               </div>
 

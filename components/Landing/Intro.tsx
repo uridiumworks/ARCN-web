@@ -3,7 +3,7 @@ import CustomContainer from "../CustomContainer";
 
 const Intro = () => {
   return (
-    <section className="pt-16 md:pt-24">
+    <section className="pt-12 md:pt-20">
       <CustomContainer>
         <div className="flex flex-col items-start lg:flex-row sm:items-center lg:items-start gap-12">
           <div className="shrink lg:shrink-0  object-contain relative h-auto sm:h-[31.25rem] overflow-hidden rounded-lg">

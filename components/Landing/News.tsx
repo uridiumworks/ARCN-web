@@ -32,10 +32,10 @@ const News = () => {
   // const { newsLetters } = useClientNewsLettersData();
   // console.log(newsLetters);
   return (
-    <section className="py-16 md:py-24 bg-[#FBFAFA]">
+    <section className="py-12 md:py-20 bg-[#FBFAFA]">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="uppercase font-semibold text-[#171717] text-3xl sm:text-4xl sm:leading-[2.7rem] text-center">
+          <h2 className="uppercase font-bold text-[#171717] text-3xl sm:text-4xl sm:leading-[2.25rem] text-center">
             Publications
           </h2>
           <div className="grid grid-cols-home-publication-res gap-6">

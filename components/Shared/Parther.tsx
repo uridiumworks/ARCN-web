@@ -5,11 +5,11 @@ import CustomContainer from "../CustomContainer";
 
 const Partners = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col items-center px-0 sm:px-16  gap-12">
           
-            <h2 className="font-semibold text-3xl text-center sm:text-4xl sm:leading-[3rem] text-[#1B222B]">
+            <h2 className="font-bold text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#1B222B]">
             Partner with us to advance agricultural <br className="hidden lg:block" /> research training and extension in Nigeria
             </h2>
        
@@ -26,11 +26,11 @@ const Partners = () => {
             <div className="flex flex-col items-start gap-4">
               <p className="text-[#1B222B] font-normal text-base leading-[1.75rem]">
                 We are committed to working with equally ambitious
-                <br />
+                <br className="hidden md:block" />
                 Research Institutes and stakeholders to bridge the
                 sustainability gap in Africa, ensuring smallholder farmers have
                 everything they need to
-                <br />
+                <br className="hidden md:block" />
                 succeed.
               </p>
               <Link href={"/contact"}>
