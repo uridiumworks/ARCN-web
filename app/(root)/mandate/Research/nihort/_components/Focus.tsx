@@ -5,18 +5,18 @@ import CardBorderedDetails from "../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (
-    <section className="flex flex-col gap-12 py-14 md:py-20">
+    <section className="flex flex-col gap-12 py-8 md:py-16">
       <div className="bg-[#F9FFFB] p-6">
         <CustomContainer>
           <div className="flex flex-col text-center gap-2 sm:gap-3.5 justify-center">
-            <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
+            <h3 className="font-bold uppercase text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Research Focus
             </h3>
-            <p className="text-base sm:text-lg font-normal text-[#111111] leading-[1.531875rem]">
+            <p className="text-sm font-normal text-[#111111] leading-[1.5rem]">
               NIHORT is structured into six research departments, including
-              Vegetables and Floriculture, Fruits and Spices, Citrus and <br /> Product
+              Vegetables and Floriculture, Fruits and Spices, Citrus and Product
               Development, and Information and Documentation. The institute also
-              boasts specialized units in Biotechnology, <br /> Genetic Resources, and
+              boasts specialized units in Biotechnology, Genetic Resources, and
               Seed Technology.
             </p>
           </div>

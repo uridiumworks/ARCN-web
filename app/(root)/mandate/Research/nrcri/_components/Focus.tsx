@@ -6,23 +6,23 @@ import CardBorderedDetails from "../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (
-    <section className=" flex flex-col gap-16 py-14 md:py-20">
+    <section className=" flex flex-col gap-16 py-8 md:py-16">
       <div className="bg-[#FCFCFC] p-6">
         <CustomContainer>
           <div className=" flex flex-col gap-6">
-            <h2 className="font-medium text-center text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h2 className="font-bold uppercase text-center text-3xl sm:text-4xl leading-[2.25rem] text-[#111111]">
               Strategic Focus Areas
             </h2>
             <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
               <div className="flex items-start  gap-2.5">
                 <div className="flex-1 ">
-                  <FlowerHandIcon  />
+                  <FlowerHandIcon />
                 </div>
                 <div className="flex flex-col gap-3 flex-2">
-                  <h3 className="font-medium text-2xl sm:text-[2rem] text-[#111111] leading-[2rem]">
+                  <h3 className="font-medium text-xl  text-[#111111] leading-[2rem]">
                     Research and Development
                   </h3>
-                  <p className="text-[#1B222B] font-normal text-sm sm:text-base leading-[1.875rem]">
+                  <p className="text-[#1B222B] font-normal text-sm  leading-[1.5rem]">
                     Enhancing the genetic potential and resilience of root{" "}
                     <br />
                     tuber crops.
@@ -35,10 +35,10 @@ export default function Focus() {
                   <FarmerIcon2 className="scale-[.55]" />
                 </div>
                 <div className="flex flex-col gap-3 flex-2">
-                  <h3 className="font-medium text-2xl sm:text-[2rem] text-[#111111] leading-[2rem]">
+                  <h3 className="font-medium text-xl  text-[#111111] leading-[2rem]">
                     Extension and Training
                   </h3>
-                  <p className="text-[#1B222B] font-normal text-sm sm:text-base leading-[1.875rem]">
+                  <p className="text-[#1B222B] font-normal text-sm leading-[1.5rem]">
                     Bridging the gap between research <br /> outputs and farmer
                     adoption.
                   </p>
@@ -50,10 +50,10 @@ export default function Focus() {
                   <TractorIcon2 className="scale-[.55]" />
                 </div>
                 <div className="flex flex-col gap-3 flex-2">
-                  <h3 className="font-medium text-2xl sm:text-[2rem] text-[#111111] leading-[2rem]">
+                  <h3 className="font-medium text-xl text-[#111111] leading-[2rem]">
                     Sustainable Practices
                   </h3>
-                  <p className="text-[#1B222B] font-normal text-sm sm:text-base leading-[1.875rem]">
+                  <p className="text-[#1B222B] font-normal text-sm  leading-[1.5rem]">
                     Promoting eco-friendly farming <br /> techniques and
                     post-harvest <br />
                     technologies.
@@ -95,16 +95,16 @@ export default function Focus() {
           />
 
           <div className="flex flex-col gap-5 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
-            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-medium text-lg leading-[2.875rem] text-[#111111]">
               Impact and Contribution to SDGs
             </h3>
             <div className="flex flex-col gap-3">
-              <p className="text-sm sm:text-base text-[#171616] leading-[2rem]">
+              <p className="text-sm  text-[#171616] leading-[1.5rem]">
                 NRCRI’s efforts align with Sustainable Development Goals (SDGs)
                 by addressing hunger (SDG 2), promoting sustainable agriculture
                 (SDG 12), and fostering partnerships for development (SDG 17).
               </p>
-              <p className="text-sm sm:text-base text-[#171616] leading-[2rem]">
+              <p className="text-sm  text-[#171616] leading-[1.5rem]">
                 With its rich history, strategic initiatives, and unwavering
                 commitment to agricultural development, NRCRI continues to be a
                 vital player in enhancing Nigeria&apos;s agricultural

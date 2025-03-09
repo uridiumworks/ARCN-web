@@ -3,14 +3,14 @@ import React from "react";
 
 export default function Overview() {
   return (
-    <section className="bg-white flex flex-col gap-20 pt-4 pb-16 md:pb-24">
+    <section className="bg-white flex flex-col gap-16 pt-6 pb-14 md:pb-20">
       <CustomContainer>
         <div className="flex flex-col gap-10">
-          <div className="flex flex-col gap-10">
-            <h4 className="text-center font-semibold text-[#013B43]  text-sm sm:text-lg leading-[0.975rem]">
+          <div className="flex flex-col gap-6">
+            <h4 className="text-center font-semibold text-[#013B43]  text-sm  leading-[0.975rem]">
               OVERVIEW
             </h4>
-            <p className="text-[#64728F] font-normal text-lg sm:text-xl leading-[2rem]">
+            <p className="text-[#64728F] font-normal text-sm leading-[1.5rem]">
               The National Animal Production Research Institute (NAPRI)
               originated from the Shika Cattle Stud farm established in 1928.
               Initially focused on selecting indigenous breeds of bulls for
@@ -26,20 +26,11 @@ export default function Overview() {
           <div className="flex flex-col gap-10 sm:px-14">
             <div className="grid grid-cols-[100%] lg:grid-cols-2 gap-10">
               <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-                <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
                   Our Vision
                 </h3>
 
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] hidden lg:block ">
-                  To be a Research Institute of Excellence in the <br />{" "}
-                  development and dissemination of <br /> innovations and
-                  appropriate technologies for <br /> commercial and competitive
-                  smallholder, <br /> medium and large scale environmentally{" "}
-                  <br /> friendly animal production systems to ensure <br />{" "}
-                  animal food security in Nigeria.
-                </p>
-
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] block lg:hidden ">
+                <p className="font-normal text-sm leading-[1.5rem] text-[#64728F]">
                   To be a Research Institute of Excellence in the development
                   and dissemination of innovations and appropriate technologies
                   for commercial and competitive smallholder, medium and large
@@ -48,20 +39,11 @@ export default function Overview() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-                <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
                   OUR MISSION
                 </h3>
 
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] hidden lg:block ">
-                  To conduct demand-driven research and <br /> training in
-                  animal production and <br /> dissemination of technologies to
-                  animal <br /> producers, processors and marketers in an <br />{" "}
-                  integrated value-chain system to achieve <br /> sustainable
-                  employment generation, poverty <br /> alleviation and improved
-                  livelihood in Nigeria.
-                </p>
-
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] block lg:hidden ">
+                <p className="font-normal text-sm leading-[1.5rem] text-[#64728F]">
                   To conduct demand-driven research and training in animal
                   production and dissemination of technologies to animal
                   producers, processors and marketers in an integrated
@@ -73,29 +55,29 @@ export default function Overview() {
             </div>
             <div className="grid grid-cols-[100%] rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
               <div className="flex flex-col gap-4">
-                <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
                   Our Mandate
                 </h3>
 
                 <div className="flex flex-col gap-3">
-                  <h4 className="font-normal text-sm sm:text-lg text-[#64728F] leading-[2rem]">
+                  <h4 className="font-normal text-sm  text-[#64728F] leading-[1.5rem]">
                     The institute is mandated to conduct research in:
                   </h4>
                   <div className="flex flex-col gap-2">
-                    <p className="font-normal text-sm sm:text-lg text-[#64728F] leading-[2rem] ">
+                    <p className="font-normal text-sm  text-[#64728F] leading-[1.5rem] ">
                       . Genetic, nutritional, and reproductive improvements of
                       livestock species
                     </p>
-                    <p className="font-normal text-sm sm:text-lg text-[#64728F] leading-[2rem] ">
+                    <p className="font-normal text-sm  text-[#64728F] leading-[1.5rem] ">
                       . Improvement and management of sown pastures
                     </p>
-                    <p className="font-normal text-sm sm:text-lg text-[#64728F] leading-[2rem] ">
+                    <p className="font-normal text-sm  text-[#64728F] leading-[1.5rem] ">
                       . Management and improvement of rangeland feed resources
                     </p>
-                    <p className="font-normal text-sm sm:text-lg text-[#64728F] leading-[2rem] ">
+                    <p className="font-normal text-sm  text-[#64728F] leading-[1.5rem] ">
                       . Development of animal nutrition packages
                     </p>
-                    <p className="font-normal text-sm sm:text-lg text-[#64728F] leading-[2rem] ">
+                    <p className="font-normal text-sm  text-[#64728F] leading-[1.5rem] ">
                       . Integration of livestock into farming systems
                     </p>
                   </div>

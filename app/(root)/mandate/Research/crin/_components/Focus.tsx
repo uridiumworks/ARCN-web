@@ -4,37 +4,37 @@ import CardBorderedDetails from "../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (
-    <section className="py-9 sm:py-18 flex flex-col gap-10">
+    <section className="py-8 sm:py-16 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col  gap-3.5 items-center text-center">
-            <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
+            <h3 className="font-bold uppercase text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Research Focus
             </h3>
             <div className="flex flex-col gap-2 text-center">
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 CRIN&apos;s research activities are structured into various
                 directorates including:
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Research Operations
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Research Outreach
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Value Added Research
               </p>
 
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Production and Substations
               </p>
 
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Training
               </p>
 
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Planning
               </p>
             </div>

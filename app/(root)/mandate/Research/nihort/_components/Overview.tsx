@@ -4,52 +4,42 @@ import CardBorderedlessDetails from "../../_components/CardBorderedlessDetails";
 
 export default function Overview() {
   return (
-    <section className="bg-white flex flex-col gap-20 pt-4 pb-16 md:pb-24">
+    <section className="bg-white flex flex-col gap-16 pt-6 pb-14 md:pb-20">
       <CustomContainer>
         <div className="flex flex-col gap-10">
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
             <h4 className="text-center font-semibold text-[#013B43]  text-sm sm:text-lg leading-[0.975rem]">
               OVERVIEW
             </h4>
-            <p className="text-[#64728F] font-normal text-lg sm:text-xl leading-[2rem]">
+            <p className="text-[#64728F] font-normal text-sm  leading-[1.5rem]">
               The National Horticultural Research Institute (NIHORT) is
               Nigeria&apos;s premier institute dedicated to the research,
-              development, and <br /> promotion of horticultural crops. Established
+              development, and promotion of horticultural crops. Established
               through the Federal Government&apos;s Agricultural Research
-              Institute Establishment <br /> Degree Order No. 35 of June 1975, NIHORT
+              Institute Establishment Degree Order No. 35 of June 1975, NIHORT
               has since been instrumental in advancing tropical horticulture. It
-              serves as a hub for <br /> innovation in horticultural crop production,
+              serves as a hub for innovation in horticultural crop production,
               processing, storage, and utilization.
             </p>
           </div>
           <div className="flex flex-col gap-10 sm:px-14 ">
             <div className="grid grid-cols-[100%] lg:grid-cols-2 gap-10">
               <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-                <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
                   Our Vision
                 </h3>
 
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] hidden lg:block ">
-                  To foster the development of horticultural <br /> produce and
-                  products for both local <br /> consumption and export markets.
-                </p>
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] block lg:hidden ">
+                <p className="font-normal text-sm leading-[1.5rem] text-[#64728F]">
                   To foster the development of horticultural produce and
                   products for both local consumption and export markets.
                 </p>
               </div>
               <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
-                <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
                   OUR MISSION
                 </h3>
 
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] hidden lg:block ">
-                  To achieve excellence in fruits, vegetables,
-                  <br /> spices, ornamentals, and aromatic plant <br /> research
-                  through sustainable production and <br /> utilization
-                  strategies.
-                </p>
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] block lg:hidden ">
+                <p className="font-normal text-sm leading-[1.5rem] text-[#64728F]">
                   To achieve excellence in fruits, vegetables, spices,
                   ornamentals, and aromatic plant research through sustainable
                   production and utilization strategies.
@@ -58,19 +48,11 @@ export default function Overview() {
             </div>
             <div className="grid grid-cols-[100%] rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
               <div className="flex flex-col gap-3">
-                <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
+                <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
                   Our Mandate
                 </h3>
 
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] hidden lg:block ">
-                  The institute is tasked with conducting research into genetic
-                  improvement, production <br /> techniques, processing,
-                  storage, and marketing of horticultural crops. NIHORT&apos;s
-                  mandate <br /> also includes knowledge dissemination and
-                  capacity building to enhance agricultural <br /> productivity
-                  and sustainability.
-                </p>
-                <p className="font-normal text-sm sm:text-lg sm:leading-[1.61375rem] text-[#64728F] block lg:hidden ">
+                <p className="font-normal text-sm leading-[1.5rem] text-[#64728F]">
                   The institute is tasked with conducting research into genetic
                   improvement, production techniques, processing, storage, and
                   marketing of horticultural crops. NIHORT&apos;s mandate also

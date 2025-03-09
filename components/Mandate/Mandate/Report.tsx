@@ -27,10 +27,10 @@ const Report = () => {
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col text-center gap-2.5">
-            <h2 className="text-center text-[#171717] font-bold text-3xl sm:text-4xl sm:leading-[2.7rem]">
+            <h2 className="text-center text-[#171717] font-bold text-3xl sm:text-4xl leading-[2.25rem]">
               Coordination Report
             </h2>
-            <p className="text-black font-normal text-sm sm:text-base sm:leading-[1.75rem]">
+            <p className="text-black font-normal text-sm leading-[1.5rem]">
               Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
               etiam euismod quisque <br className="hidden md:block" /> montes arcu risus. Magnis posuere
               tincidunt elit ultrices tortor. Sit semper cras sed duis tortor{" "}
