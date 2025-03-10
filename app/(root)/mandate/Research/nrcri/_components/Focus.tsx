@@ -10,7 +10,7 @@ export default function Focus() {
       <div className="bg-[#FCFCFC] p-6">
         <CustomContainer>
           <div className=" flex flex-col gap-6">
-            <h2 className="font-bold uppercase text-center text-3xl sm:text-4xl leading-[2.25rem] text-[#111111]">
+            <h2 className="font-bold  text-center text-3xl sm:text-4xl leading-[2.25rem] text-[#111111]">
               Strategic Focus Areas
             </h2>
             <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8 ">

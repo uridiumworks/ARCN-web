@@ -10,7 +10,7 @@ export default function Historical() {
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col items-center px-0 sm:px-8 md:px-16 gap-3.5">
-            <h3 className="font-medium text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Historical Significance
             </h3>
             <div className="flex flex-col gap-4">
