@@ -208,6 +208,7 @@ export const  reportsData = [
     },
 
 ]
+
 export const  newsletterData = [
     {
         id: 1,
