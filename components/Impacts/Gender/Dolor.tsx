@@ -8,9 +8,9 @@ const Dolor = () => {
                     <button type="button" className="text-base font-semibold text-[#3F4654] border-2 border-[#0B3D7929] rounded-md md:w-2/12 mx-auto  py-2 px-4">IMPACT</button>
                 </div>
 
-                <div className="flex flex-col text-center md:px-12 space-y-7">
-                    <h1 className="font-bold text-[#111827] text-2xl md:text-5xl">Closing the gender gap and enhancing opportunities for youth in food, land, and water systems.</h1>
-                    <p className="font-medium text-base md:text-xl md:px-14 text-[#3F4654]">More than 85% of the world&apos;s 1.2 billion youth live in low- and middle-income countries, where many face limited opportunities for employment or entrepreneurship.</p>
+                <div className="flex flex-col text-center md:px-14 space-y-7">
+                    <h1 className="font-bold text-[#111827] text-2xl px-36 md:text-4xl">Closing the gender gap and enhancing opportunities for youth in food, land, and water systems.</h1>
+                    <p className="font-medium text-base md:text-xl md:px-28 text-[#3F4654]">More than 85% of the world&apos;s 1.2 billion youth live in low- and middle-income countries, where many face limited opportunities for employment or entrepreneurship.</p>
                 </div>
 
                 <div className=" flex flex-row gap-4 justify-center items-center ">

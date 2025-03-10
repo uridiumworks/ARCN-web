@@ -42,7 +42,7 @@ const Impart = () => {
 
             <div className="pt-10 pb-32 lg:w-[100%]">
                 <div className="text-center place-content-center font-montserrat">
-                    <h1 className="text-4xl font-bold">Impact</h1>
+                    <h1 className="text-3xl font-bold">Impact</h1>
                     <p className="text-lg text-[#64728F] font-normal ">Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id<br /> ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi.<br /> Magna nulla consequat.</p>
                 </div>
                 <div className=" w-full px-4 lg:px-0 md:mx-auto">

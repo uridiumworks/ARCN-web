@@ -12,7 +12,7 @@ const Programs = () => {
   return (
     <section>
       <div className="text-center space-y-6 py-10">
-        <h1 className="font-bold text-3xl md:text-[40px]">Programs</h1>
+        <h1 className="font-bold text-3xl md:text-[35px]">Programs</h1>
         <p className="font-normal text-base md:text-xl">
           Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id{" "}
           <br />

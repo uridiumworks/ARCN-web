@@ -10,7 +10,7 @@ const Projects = () => {
     <section className="min-h-screen">
       <div className="">
         <div className="text-center py-5 px-2 md:p-9 space-y-4">
-          <h1 className="font-bold text-3xl md:text-4xl">Our Projects</h1>
+          <h1 className="font-bold text-3xl md:text-3xl">Our Projects</h1>
           <p className="font-normal text-base md:text-xl">
             Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
             etiam euismod quisque <br className="hidden md:block" />
