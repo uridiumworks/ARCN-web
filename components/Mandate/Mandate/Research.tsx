@@ -28,7 +28,7 @@ const OurTechnologies = () => {
         (el, i) => (
           <div
             key={i}
-            className="relative overflow-hidden rounded-lg max-h-[20rem]"
+            className="relative overflow-hidden rounded-lg max-h-[18rem]"
           >
             <Image
               className="h-full w-full object-cover"

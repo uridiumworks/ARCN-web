@@ -13,7 +13,7 @@ export default function page() {
           <div className="flex flex-col gap-10">
             <ResearchInstitueBreadcrumbsV1 text="Research Coordination Report" />
             <div className="flex flex-col gap-6">
-              <h2 className="font-bold uppercase text-3xl sm:text-4xl leading-[2.25rem] ">
+              <h2 className="font-bold  text-3xl sm:text-4xl leading-[2.25rem] ">
                 Research Coordination Report
               </h2>
               <p className="font-medium text-sm leading-[1.5rem]">

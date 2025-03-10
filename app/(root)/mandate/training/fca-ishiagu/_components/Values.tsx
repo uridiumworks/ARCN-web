@@ -1,18 +1,18 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedlessDetails from "../../_components/CardBorderedlessDetails";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedlessDetails from "../../../_components/CardBorderedlessDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 
 export default function Values() {
   return (
-    <section className="py-9 sm:py-18 flex flex-col gap-10">
+    <section className="py-8 sm:py-16 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col items-center gap-3.5 text-center">
-          <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
+            <h3 className="font-medium text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Core Values
             </h3>
-            <p  className="text-[#111111] font-normal text-base sm:text-base leading-[1.531875rem]">
+            <p className="text-[#111111] font-normal text-sm leading-[1.5rem]">
               Excellence, Innovation, Self-reliance, and Sustainable Development
             </p>
           </div>
@@ -47,18 +47,17 @@ export default function Values() {
             />
           </div>
           <div className="flex flex-col gap-8">
-            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-bold sm:text-2xl text-xl leading-[2.25rem] text-[#111111]">
               Academic Structure
             </h3>
             <div className="flex flex-col gap-12">
               <div className="flex flex-col gap-6">
-                <h4 className="font-semibold text-xl sm:text-[1.75rem] leading-[2.875rem]">
+                <h4 className="font-semibold text-xl leading-[2.25rem]">
                   School of Agricultural Technology
                 </h4>
                 <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10">
                   <CardBorderedlessDetails
                     title="Higher National Diploma (HND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Animal Health and Production",
                       "Animal Production",
@@ -70,7 +69,6 @@ export default function Values() {
 
                   <CardBorderedlessDetails
                     title="National Diploma (ND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Agricultural Technology",
                       "Animal Health and Production",
@@ -84,13 +82,12 @@ export default function Values() {
               </div>
 
               <div className="flex flex-col gap-6">
-                <h4 className="font-semibold text-xl sm:text-[1.75rem] leading-[2.875rem]">
+                <h4 className="font-semibold text-xl leading-[2.25rem]">
                   School of Applied Agriculture and Management Technology
                 </h4>
                 <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10 items-start">
                   <CardBorderedlessDetails
                     title="Higher National Diploma (HND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Agribusiness",
                       "Agricultural Extension",
@@ -102,7 +99,6 @@ export default function Values() {
 
                   <CardBorderedlessDetails
                     title="National Diploma (ND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Accountancy",
                       "Business Administration",
@@ -119,13 +115,12 @@ export default function Values() {
               </div>
 
               <div className="flex flex-col gap-6">
-                <h4 className="font-semibold text-xl sm:text-[1.75rem] leading-[2.875rem]">
+                <h4 className="font-semibold text-xl leading-[2.25rem]">
                   School of Engineering Technology
                 </h4>
                 <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10 items-start">
                   <CardBorderedlessDetails
                     title="Higher National Diploma (HND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Agricultural Engineering (Farm Power and Post Harvest Options)",
                       "Industrial Safety",
@@ -134,7 +129,6 @@ export default function Values() {
 
                   <CardBorderedlessDetails
                     title="National Diploma (ND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Agricultural Engineering",
                       "Computer Engineering",
@@ -145,19 +139,17 @@ export default function Values() {
               </div>
 
               <div className="flex flex-col gap-6">
-                <h4 className="font-semibold text-xl sm:text-[1.75rem] leading-[2.875rem]">
+                <h4 className="font-semibold text-xl leading-[2.25rem]">
                   School of Engineering Technology
                 </h4>
                 <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-10 items-start">
                   <CardBorderedlessDetails
                     title="Higher National Diploma (HND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={["Computer Science"]}
                   />
 
                   <CardBorderedlessDetails
                     title="National Diploma (ND) Programs:"
-                    titleSize="sm:text-[2rem] text-2xl"
                     points={[
                       "Computer Science",
                       "Environmental Management",

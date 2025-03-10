@@ -10,12 +10,20 @@ const Meet = () => {
             <h2 className="text-3xl sm:text-4xl leading-[2.25rem] text-[#1B222B] font-bold">
               Governance of ARCN
             </h2>
-         
-            <p className="font-normal text-sm leading-[1.5rem] text-[#1B222B]">ARCN is a corporate body with perpetual succession established as a grade &apos;A&apos; parastatal of the Federal Ministry of Agriculture and Food Security. It has a Governing Board answerable to the Minister of Agriculture and Food Security. It has a chairman, members from public and private sectors covering key stakeholder groups. The Executive Secretary is the CEO, with seven directorates.</p>
+
+            <p className="font-normal text-sm leading-[1.5rem] text-[#1B222B]">
+              ARCN is a corporate body with perpetual succession established as
+              a grade &apos;A&apos; parastatal of the Federal Ministry of
+              Agriculture and Food Security. It has a Governing Board answerable
+              to the Minister of Agriculture and Food Security. It has a
+              chairman, members from public and private sectors covering key
+              stakeholder groups. The Executive Secretary is the CEO, with seven
+              directorates.
+            </p>
           </div>
 
           <div className="flex flex-col text-center gap-8">
-            <h3 className="font-bold text-3xl sm:text-4xl sm:leading-[2.25rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl leading-[2.25rem]">
               The Management Of The Council
             </h3>
 

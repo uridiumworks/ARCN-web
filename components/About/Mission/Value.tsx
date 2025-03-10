@@ -25,8 +25,7 @@ const data = [
     icon: <PlantIcon2 className="scale-75" />,
   },
   {
-    description:
-      "Agricultural Knowledge management system established",
+    description: "Agricultural Knowledge management system established",
     icon: <PlantGrowthIcon className="scale-75" />,
   },
 ];
@@ -37,7 +36,7 @@ const Value = () => {
       <CustomContainer>
         <div className="flex flex-col gap-14">
           <div className="flex flex-col gap-4 text-center">
-            <h3 className="text-[#0A1425] font-bold text-3xl sm:text-4xl sm:leading-[2.25rem] ">
+            <h3 className="text-[#0A1425] font-bold text-3xl sm:text-4xl leading-[2.25rem] ">
               Our Result Areas
             </h3>
             <p className="text-[#64728F] text-sm leading-[1.5rem]">

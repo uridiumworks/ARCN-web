@@ -1,6 +1,6 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedlessDetails from "../../_components/CardBorderedlessDetails";
+import CardBorderedlessDetails from "../../../_components/CardBorderedlessDetails";
 
 export default function Values() {
   return (
@@ -8,7 +8,7 @@ export default function Values() {
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col items-center gap-3.5 text-center">
-            <h3 className="font-bold uppercase text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Core Values
             </h3>
             <div className="flex flex-col  text-center">

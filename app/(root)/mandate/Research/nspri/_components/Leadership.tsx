@@ -28,7 +28,7 @@ export default function Leadership({
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col items-center gap-8 sm:gap-10">
-            <h3 className="font-bold uppercase text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#111111]">
+            <h3 className="font-bold text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#111111]">
               Leadership
             </h3>
             <div className="flex flex-col items-start gap-6">
@@ -81,7 +81,6 @@ export default function Leadership({
                 </h4>
                 <Link
                   href={website}
-                  
                   className="font-normal text-[#121212] text-sm leading-[1.4rem]"
                 >
                   {website.split("https://")[1]}

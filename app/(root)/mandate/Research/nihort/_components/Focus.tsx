@@ -1,7 +1,7 @@
 "use client";
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (
@@ -9,7 +9,7 @@ export default function Focus() {
       <div className="bg-[#F9FFFB] p-6">
         <CustomContainer>
           <div className="flex flex-col text-center gap-2 sm:gap-3.5 justify-center">
-            <h3 className="font-bold uppercase text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Research Focus
             </h3>
             <p className="text-sm font-normal text-[#111111] leading-[1.5rem]">

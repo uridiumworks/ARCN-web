@@ -2,7 +2,7 @@
 import React from "react";
 import { FarmerIcon2, TractorIcon2, FlowerHandIcon } from "@/assets/icons";
 import CustomContainer from "@/components/CustomContainer";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (

@@ -23,16 +23,12 @@ const Ourmandate = () => {
               </h3>
 
               <p className="font-normal text-sm leading-[1.5rem] text-[#464646] ">
-               To achieve significant improvements in
-                agricultural productivity, marketing
-                and competitiveness by generating appropriate
-               technologies and policy options, promoting
-                innovation, establishing a knowledgeable
-               Management capacity and strengthening the 
-                agricultural research system.
+                To achieve significant improvements in agricultural
+                productivity, marketing and competitiveness by generating
+                appropriate technologies and policy options, promoting
+                innovation, establishing a knowledgeable Management capacity and
+                strengthening the agricultural research system.
               </p>
-
-             
             </div>
           </div>
           <div className="grid grid-cols-[100%] rounded-xl pt-5 pb-5 sm:pb-8 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
@@ -41,7 +37,6 @@ const Ourmandate = () => {
                 Our Mandate
               </h3>
 
-             
               <p className="font-normal text-sm leading-[1.5rem] text-[#464646] block ">
                 The mandate of ARCN is to coordinate, supervise and regulate
                 agricultural research,training and extension in the National

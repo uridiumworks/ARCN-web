@@ -1,6 +1,6 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (
@@ -8,11 +8,12 @@ export default function Focus() {
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col items-center gap-3.5 text-center">
-          <h3 className="font-bold uppercase text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Research Focus
             </h3>
             <p className="text-[#111111] font-normal text-sm leading-[1.5rem]">
-              NAPRI conducts research on various livestock species including: <br />
+              NAPRI conducts research on various livestock species including:{" "}
+              <br />
               Cattle, Sheep, Goats, Swine, Poultry, Rabbits, Donkeys, Horses,
               Camels
             </p>

@@ -24,11 +24,11 @@ export default function Content() {
             </div>
 
             <div className="px-0 sm:px-20 flex flex-col gap-4 sm:gap-8">
-              <h2 className="text-[#111827] font-bold text-3xl leading-[2.7rem]">
+              <h2 className="text-[#111827] font-bold text-3xl  sm:text-4xlleading-[2.25rem]">
                 Lorem ipsum dolor sit amet consectetur. Quis faucibus{" "}
               </h2>
               <div className="flex flex-col gap-4">
-                <p className="font-normal text-sm sm:text-base text-[#111827] sm:leading-[2.025rem]">
+                <p className="font-normal text-sm  text-[#111827] sm:leading-[1.5rem]">
                   Lorem ipsum dolor sit amet consectetur. Amet gravida eu
                   egestas est vulputate massa pretium at. Vestibulum proin ut
                   cras ac dolor viverra lectus tempor. Diam phasellus arcu leo
@@ -36,12 +36,12 @@ export default function Content() {
                   egestas vestibulum. Sit et porta non integer nulla nisl amet
                   ac et. Sit id tellus at nulla pulvinar.
                 </p>
-                <p className="font-normal text-sm sm:text-base text-[#111827] sm:leading-[2.025rem]">
+                <p className="font-normal text-sm  text-[#111827] sm:leading-[1.5rem]">
                   Lorem ipsum dolor sit amet consectetur. Ultrices elit amet sem
                   nullam volutpat convallis aliquam sed id. Sagittis id a sed a
                   lacus. In pretium est.
                 </p>
-                <p className="font-normal text-sm sm:text-base text-[#111827] sm:leading-[2.025rem]">
+                <p className="font-normal text-sm  text-[#111827] sm:leading-[1.5rem]">
                   Lorem ipsum dolor sit amet consectetur. Amet gravida eu
                   egestas est vulputate massa pretium at. Vestibulum proin ut
                   cras ac dolor viverra lectus tempor. Diam phasellus arcu leo
@@ -49,7 +49,7 @@ export default function Content() {
                   egestas vestibulum. Sit et porta non integer nulla nisl amet
                   ac et. Sit id tellus at nulla pulvinar.
                 </p>
-                <p className="font-normal text-sm sm:text-base text-[#111827] sm:leading-[2.025rem]">
+                <p className="font-normal text-sm  text-[#111827] sm:leading-[1.5rem]">
                   Lorem ipsum dolor sit amet consectetur. Amet gravida eu
                   egestas est vulputate massa pretium at. Vestibulum proin ut
                   cras ac dolor viverra lectus tempor. Diam phasellus arcu leo
@@ -57,7 +57,7 @@ export default function Content() {
                   egestas vestibulum. Sit et porta non integer nulla nisl amet
                   ac et. Sit id tellus at nulla pulvinar.
                 </p>
-                <p className="font-normal text-sm sm:text-base text-[#111827] sm:leading-[2.025rem]">
+                <p className="font-normal text-sm  text-[#111827] sm:leading-[1.5rem]">
                   Lorem ipsum dolor sit amet consectetur. Amet gravida eu
                   egestas est vulputate massa pretium at. Vestibulum proin ut
                   cras ac dolor viverra lectus tempor. Diam phasellus arcu leo

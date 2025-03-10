@@ -212,7 +212,7 @@ const Institutes = () => {
         <div className="flex flex-col gap-10">
           <div className="self-center text-center flex flex-col gap-4">
             <h2 className="font-bold text-[#171717] text-3xl sm:text-4xl leading-[2.25rem]">
-              Our Institutions
+             Institutions
             </h2>
             <p className="text-[#111111] text-opacity-[90%] text-sm leading-[1.5rem]">
               Explore our network of research institutes and Federal Colleges of

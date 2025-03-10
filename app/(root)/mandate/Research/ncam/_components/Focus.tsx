@@ -1,6 +1,6 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (

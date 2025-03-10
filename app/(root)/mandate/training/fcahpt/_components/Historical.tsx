@@ -1,16 +1,16 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedlessDetails from "../../_components/CardBorderedlessDetails";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedlessDetails from "../../../_components/CardBorderedlessDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 import { CircleCheck } from "lucide-react";
 
 export default function Historical() {
   return (
-    <section className="py-9 sm:py-18 flex flex-col gap-14">
+    <section className="py-8 sm:py-16 flex flex-col gap-14">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col items-center px-0 sm:px-8 md:px-16 gap-3.5">
-            <h3 className="font-medium text-3xl sm:text-[2.625rem] text-[#111111] leading-[2.875rem]">
+            <h3 className="font-medium text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Historical Significance
             </h3>
             <div className="flex flex-col gap-4">
@@ -18,7 +18,7 @@ export default function Historical() {
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
-                <p className="text-sm sm:text-base text-[#171616] font-normal leading-[2.25rem]">
+                <p className="text-sm text-[#171616] font-normal leading-[1.5rem]">
                   First Higher Institution in West Africa to produce graduate
                   Veterinary Surgeons before Nigeria&apos;s first university
                 </p>
@@ -28,7 +28,7 @@ export default function Historical() {
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
-                <p className="text-sm sm:text-base text-[#171616] font-normal leading-[2.25rem]">
+                <p className="text-sm text-[#171616] font-normal leading-[1.5rem]">
                   Pioneering role in training middle level veterinary manpower
                   for African countries (1947-1962)
                 </p>
@@ -38,7 +38,7 @@ export default function Historical() {
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
-                <p className="text-sm sm:text-base text-[#171616] font-normal leading-[2.25rem]">
+                <p className="text-sm text-[#171616] font-normal leading-[1.5rem]">
                   Served countries including Cameroons, Liberia, Ghana, Sierra
                   Leone, Gambia, Ethiopia, and Sudan
                 </p>
@@ -52,13 +52,11 @@ export default function Historical() {
         <div className="flex flex-col gap-10">
           <CardBorderedDetails
             title="Academic Affiliations"
-            subContent=""
             points={["Abubakar Tafawa Balewa University Bauchi State (ATBU)"]}
           />
 
           <CardBorderedDetails
             title="Research Focus Areas"
-            subContent=""
             points={[
               "Ethno-veterinary practices in Nigeria",
               "Identification and characterization of medicinal plants",

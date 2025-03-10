@@ -13,7 +13,7 @@ const Research = () => {
           <div className="flex flex-col gap-6">
             <ResearchInstitueBreadcrumbsV1 text="Research Institutes" />
             <div className="flex flex-col gap-7">
-              <h2 className="font-bold text-3xl sm:text-4xl leading-[2.25rem]">Research Institutes</h2>
+              <h2 className="font-bold uppercase text-3xl sm:text-4xl leading-[2.25rem]">Research Institutes</h2>
               <p className="font-medium text-sm leading-[1.5rem]">
                 <span className="text-[15.88px] font-medium text-[#2D7636]">
                   ARCN Research Institutes
