@@ -109,10 +109,10 @@ const data = [
 
 const Research = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="text-center font-medium text-3xl sm:text-5xl sm:leading-[2.875rem] text-[#111111]">
+          <h2 className="text-center font-bold text-3xl sm:text-4xl leading-[2.25rem] text-[#111111]">
             Our Core Mandates
           </h2>
 
@@ -124,7 +124,7 @@ const Research = () => {
                   <h3 className="font-medium text-[#1B222B] text-[1.74rem] leading-[1.74rem]">
                     {el.title}
                   </h3>
-                  <p className="text-sm leading-[1.6rem] font-normal text-[#1B222B]">
+                  <p className="text-sm leading-[1.5rem] font-normal text-[#1B222B]">
                     {el.content}
                   </p>
                 </div>

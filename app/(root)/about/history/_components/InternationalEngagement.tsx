@@ -116,10 +116,10 @@ const data = [
 
 export default function InternationalEngagement() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-10">
-          <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[3.75rem]">
+          <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-4xl leading-[2.25rem]">
             International Engagements
           </h2>
           <div className="grid grid-cols-engagement-res gap-12">

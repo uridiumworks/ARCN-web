@@ -20,14 +20,14 @@ export default function CardBorderedDetails({
   
 }: Props) {
   return (
-    <div className="flex flex-col gap-4 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
-      <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+    <div className={`flex flex-col gap-2 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4`}>
+      <h3 className="font-medium text-lg leading-[2.875rem] text-[#111111]">
         {title}
       </h3>
       <div className="flex flex-col gap-3">
         {subContent && (
           <h3
-            className={`${subContentClassNames} text-black text-sm leading-[2rem] sm:text-base`}
+            className={`${subContentClassNames} text-black text-sm leading-[1.5rem]`}
           >
             {subContent}
           </h3>
@@ -39,7 +39,7 @@ export default function CardBorderedDetails({
               <CircleCheck color="#171616" size={20} />
             </div>
             {el.includes(":") ? (
-              <p className="text-sm sm:text-base text-[#171616] leading-[2rem]">
+              <p className="text-sm text-[#171616] leading-[1.5rem]">
                 {" "}
                 <span className={`${shouldBoldPointText ? "font-bold" : ""}`}>
                   {el.split(":")[0].trim()}:
@@ -47,13 +47,13 @@ export default function CardBorderedDetails({
                 {el.split(":")[1].trim()}
               </p>
             ) : (
-              <p className="text-sm sm:text-base text-[#171616] leading-[2rem]">{el}</p>
+              <p className="text-sm  text-[#171616] leading-[1.5rem]">{el}</p>
             )}
           </div>
         ))}
 
         {endContent && (
-          <h3 className={`font-normal text-black text-sm sm:text-base leading-[2rem]`}>
+          <h3 className={`font-normal text-black text-sm  leading-[1.5rem]`}>
             {endContent}
           </h3>
         )}

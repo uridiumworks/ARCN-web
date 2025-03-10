@@ -1,113 +1,13 @@
 "use client";
-import { useClientFCAsData } from "@/hooks/FCAs.hooks";
-import { useClientNarissData } from "@/hooks/Naris.hooks";
+// import { useClientFCAsData } from "@/hooks/FCAs.hooks";
+// import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { LocationOutlineIcon, WebIcon } from "@/assets/icons";
 import CustomContainer from "../CustomContainer";
 
-const InstitutesOld = () => {
-  const { loading, nariss, error } = useClientNarissData();
-  const { loading: fcasLoading, fcas, error: fcasError } = useClientFCAsData();
-
-  return (
-    <main className="w-full space-y-8 px-4 py-10 mx-auto font-montserrat">
-      <div className="space-y-6">
-        <div className="text-center space-y-4">
-          <h1 className="font-medium text-3xl lg:text-4xl xl:text-[48px]">
-            Our Institutions
-          </h1>
-          <p className="font-normal text-base lg:text-lg">
-            Explore our network of research institutes dedicated to advancing
-            <br className="hidden md:block" />
-            agricultural innovation and sustainability across Nigeria.
-          </p>
-        </div>
-
-        <div className="border-[1.5] p-6 lg:p-10 rounded-xl bg-[#f5f2f2] space-y-6 w-full md:w-[100%]">
-          <div className="border-[0.59px] py-2 px-4 lg:w-[468px] bg-[#0C513F0D] rounded-lg text-center">
-            <h1 className="font-semibold text-xl lg:text-2xl text-[#0C513F]">
-              Research Institutes
-            </h1>
-          </div>
-
-          <div className="border rounded-lg p-6 lg:p-10 bg-[#F9F9F9] space-y-4 lg:space-y-7">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <>
-                {nariss?.length > 0 &&
-                  nariss?.slice(0, 4)?.map((naris: any, index: number) => (
-                    <div
-                      key={index}
-                      className="border-[0.59px] py-2 px-3 bg-white rounded-lg flex items-center gap-3"
-                    >
-                      <Image
-                        src="/Images/Icons/Cocoa.png"
-                        alt="Cocoa"
-                        width={42}
-                        height={42}
-                      />
-                      <h1 className="font-semibold text-sm lg:text-base">
-                        {naris?.institutionName}
-                      </h1>
-                    </div>
-                  ))}
-              </>
-              <Link href={"/mandate/research"}>
-                <div className="border border-[#2E7636] py-2 px-3 rounded-lg flex justify-center items-center">
-                  <button className="font-medium text-base text-[#2E7636]">
-                    See All Research Institutes
-                  </button>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-[1.5] p-6 lg:p-10 rounded-xl bg-[#F9F9F9] space-y-6 mx-auto w-full md:w-[100%]">
-          <div className="border-[0.59px] py-2 px-4 lg:w-[468px] bg-[#0C513F0D] rounded-lg text-center">
-            <h1 className="font-semibold text-xl lg:text-2xl text-[#0C513F]">
-              Federal Colleges of Agriculture
-            </h1>
-          </div>
-
-          <div className="border rounded-lg p-6 lg:p-10 bg-[#F9F9F9] space-y-4 lg:space-y-7">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <>
-                {fcas?.length > 0 &&
-                  fcas?.slice(0, 4)?.map((fca: any, index: number) => (
-                    <div
-                      key={index}
-                      className="border-[0.59px] py-2 px-3 bg-white rounded-lg flex items-center gap-3"
-                    >
-                      <Image
-                        src="/Images/Icons/Ibandan.png"
-                        alt="Ibandan"
-                        width={42}
-                        height={42}
-                      />
-                      <h1 className="font-semibold text-sm lg:text-base">
-                        {fca?.institutionName}
-                      </h1>
-                    </div>
-                  ))}
-              </>
-              <Link href={"/mandate/training/college"}>
-                <div className="border border-[#2E7636] py-2 px-3 rounded-lg flex justify-center items-center">
-                  <button className="font-medium text-base text-[#2E7636]">
-                    See All Research Institutes
-                  </button>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
-};
-
-const tabs = ["Our Research Institutes", "Federal Colleges of Agriculture "];
+const tabs = ["Research Institutes", "Fed Colleges of Agric"];
 
 const data = [
   {
@@ -222,7 +122,8 @@ const TabOne = () => {
                   <WebIcon />
                 </div>{" "}
                 <Link
-                  href={`www.${el.webUrl}`}
+                  href={`https://www.${el.webUrl}`}
+                  target="_blank"
                   className="text-[#30A85F] font-normal text-sm leading-[1.4rem]"
                 >
                   {el.webUrl}
@@ -273,7 +174,8 @@ const TabTwo = () => {
               <div className="flex items-center gap-3">
                 <WebIcon />{" "}
                 <Link
-                  href={`www.${el.webUrl}`}
+                  href={`https://www.${el.webUrl}`}
+                  target="_blank"
                   className="text-[#30A85F] leading-[1.4rem] font-normal text-sm"
                 >
                   {el.webUrl}
@@ -305,17 +207,18 @@ const Institutes = () => {
   }, [currentTab]);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12 md:py-20">
       <CustomContainer>
-        <div className="flex flex-col gap-12">
-          <div className="self-center text-center flex flex-col gap-6">
-            <h2 className="font-medium text-3xl sm:text-5xl sm:leading-[2.875rem] text-[#111111]">
-              Our Institutions
+        <div className="flex flex-col gap-10">
+          <div className="self-center text-center flex flex-col gap-4">
+            <h2 className="font-bold text-[#171717] text-3xl sm:text-4xl leading-[2.25rem]">
+             Institutions
             </h2>
-            <p className="text-[#111111] text-opacity-[90%] text-base sm:text-lg sm:leading-[1.531875rem]">
-              Explore our network of research institutes and Federal Colleges of <br />
-              Agriculture dedicated to advancing agricultural innovation and <br />
-              sustainability across Nigeria.
+            <p className="text-[#111111] text-opacity-[90%] text-sm leading-[1.5rem]">
+              Explore our network of research institutes and Federal Colleges of
+              Agriculture dedicated to <br className="hidden md:block" />{" "}
+              advancing agricultural innovation and sustainability across
+              Nigeria.
             </p>
           </div>
           <div className="flex flex-col gap-10">
@@ -324,7 +227,7 @@ const Institutes = () => {
               {tabs.map((el, i) => (
                 <div
                   key={el}
-                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1rem] sm:leading-[1.575rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
+                  className={`font-medium text-[0.75rem] sm:text-sm leading-[1.5rem] transition text-center rounded-full p-3 sm:p-5 cursor-pointer ${
                     currentTab === i
                       ? "bg-[#30A85F] text-white"
                       : "bg-transparent text-[#111111]"

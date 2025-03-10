@@ -32,16 +32,25 @@ const News = () => {
   // const { newsLetters } = useClientNewsLettersData();
   // console.log(newsLetters);
   return (
-    <section className="py-16 md:py-24 bg-[#FBFAFA]">
+    <section className="py-12 md:py-20 bg-[#FBFAFA]">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="uppercase font-semibold text-[#171717] text-3xl sm:text-4xl sm:leading-[2.7rem] text-center">
+          <h2 className="font-bold text-[#171717] text-3xl sm:text-4xl leading-[2.25rem] text-center">
             Publications
           </h2>
           <div className="grid grid-cols-home-publication-res gap-6">
             {data.map((el, i) => (
-              <div key={i} className={`flex flex-col gap-3.5 ${i === 0 ? "border-[0px] sm:border-r border-[#E7E7E7] sm:pr-2.5" : "sm:pr-2.5"} `}>
-                <h3 className={`font-medium text-[#131517] text-xl sm:text-2xl leading-[1.46625rem] text-opacity-85  `}>
+              <div
+                key={i}
+                className={`flex flex-col gap-3.5 ${
+                  i === 0
+                    ? "border-[0px] sm:border-r border-[#E7E7E7] sm:pr-2.5"
+                    : "sm:pr-2.5"
+                } `}
+              >
+                <h3
+                  className={`font-medium text-[#131517] text-xl sm:text-2xl leading-[1.46625rem] text-opacity-85  `}
+                >
                   {el.type}
                 </h3>
                 <div className="grid grid-rows-[min_content_auto] gap-8">

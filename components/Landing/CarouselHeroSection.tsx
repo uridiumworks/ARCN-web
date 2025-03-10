@@ -50,7 +50,7 @@ export default function CarouselHeroSection() {
   }, []); // Removed nextSlide from dependencies
 
   return (
-    <div className="relative flex justify-center items-start overflow-hidden w-full h-[42rem] sm:h-[40rem] bg-red-300">
+    <div className="relative flex justify-center items-start overflow-hidden w-full h-[42rem] sm:h-[40rem]">
       {carouselItems.map((item, index) => (
         <div
           key={item.id}
@@ -72,7 +72,7 @@ export default function CarouselHeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-20"></div>
 
       {/* Carousel Content - Fixed text that doesn't change */}
-      <div className=" flex flex-col gap-3 sm:gap-6 items-center justify-center text-white z-30 px-4 sm:px-6 pt-8 sm:pt-12 lg:pt-24 ">
+      <div className=" flex flex-col gap-3 sm:gap-6 items-center justify-center text-white z-30 px-4 sm:px-6 pt-8 sm:pt-20 lg:pt-28 ">
         <h1 className="font-bold text-2xl text-center sm:text-3xl lg:text-[2.5rem] leading-[2.5rem] sm:leading-[2.875rem]">
           ARCN and UNN introduce new <br className="hidden md:block" /> strategy agroecological sustainable
           farming
@@ -106,22 +106,22 @@ export default function CarouselHeroSection() {
         </div>
       </div>
 
-      <div className="min-h-[10%] bg-[#000000B2] py-4 sm:py-8 absolute bottom-0 left-0 w-full z-30">
+      <div className="min-h-[10%] bg-[#000000B2] py-1.5 absolute bottom-0 left-0 w-full z-30">
         <CustomContainer>
           <div className="flex flex-col sm:flex-row sm:justify-between lg:justify-center items-center gap-8 sm:gap-14 lg:gap-24 ">
             <div className="hidden lg:block lg:shrink-0">
               <Image
                 src="/Images/Homepage/Newpaper.png"
-                width={180}
-                height={145}
+                width={130}
+                height={125}
                 alt="paper"
               />
             </div>
-            <div className=" text-center flex flex-col items-center gap-3.5">
-              <h2 className="font-medium text-2xl lg:text-[2rem] lg:leading-[2.796875rem] text-white">
+            <div className=" text-center flex flex-col items-center gap-1">
+              <h2 className="font-medium text-xl  lg:leading-[2.796875rem] text-white">
                 Journal of Applied Agricultural Research (JAAR)
               </h2>
-              <p className="font-normal text-base lg:text-[1.2rem] lg:leading-[1.303125rem] text-white text-opacity-[94%]">
+              <p className="font-normal text-sm lg:leading-[1.303125rem] text-white text-opacity-[94%]">
                 CALL FOR PAPERS AND SUBMISSION OF MANUSCRIPTS
               </p>
             </div>
