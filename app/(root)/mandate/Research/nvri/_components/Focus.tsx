@@ -1,36 +1,36 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
 
 export default function Focus() {
   return (
-    <section className="py-9 sm:py-18 flex flex-col gap-10">
+    <section className="py-8 sm:py-16 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col gap-3.5 items-center text-center">
-          <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Research Focus
             </h3>
             <div className="flex flex-col gap-2 text-center">
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem] ">
+              <p className="font-medium text-sm text-[#111111] leading-[1.5rem]">
                 NVRI conducts research across various areas including:
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm text-[#111111] leading-[1.5rem]">
                 . Zoonotic diseases (Mpox, COVID-19, Lassa Fever)
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm text-[#111111] leading-[1.5rem]">
                 . Livestock diseases (African Swine Fever, Foot-and-Mouth
                 Disease)
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm text-[#111111] leading-[1.5rem]">
                 . Vaccine development and production
               </p>
 
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm text-[#111111] leading-[1.5rem]">
                 . Disease surveillance and diagnosis
               </p>
 
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm text-[#111111] leading-[1.5rem]">
                 . Animal health and production technology
               </p>
             </div>

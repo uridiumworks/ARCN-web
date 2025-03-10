@@ -22,17 +22,17 @@ type Props = {
   location: string;
   website: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 };
 
 export default function Hero({
+  phoneNumber = "",
   logo,
   title,
   accroymn,
   location,
   website,
   email,
-  phoneNumber,
 }: Props) {
   return (
     <section className="flex flex-col gap-6 bg-[#101010] pt-3 px-3 pb-6 sm:pb-16 mt-3">
@@ -41,7 +41,7 @@ export default function Hero({
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="self-center flex flex-col gap-3 justify-center items-center text-center">
             <Image src={logo} alt="logo" width={120} height={120} />
-            <h2 className="font-bold text-white text-3xl sm:text-4xl leading-[3rem]">
+            <h2 className="font-bold text-white text-3xl sm:text-4xl leading-[2.25rem]">
               {title.split("<br />").map((ct, i) => (
                 <>
                   {ct.trim()} {i !== title.split("<br />").length && <br />}{" "}
@@ -74,10 +74,10 @@ export default function Hero({
                 </h4>
                 <Link
                   href={website}
-                   target="_blank"
+                  target="_blank"
                   className="font-normal text-[#EFEFEF] text-sm leading-[1.4rem]"
                 >
-                    {website.split("https://")[1]}
+                  {website.split("https://")[1]}
                 </Link>
               </div>
             </div>

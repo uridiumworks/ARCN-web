@@ -7,14 +7,14 @@ import ResearchInstitueBreadcrumbsV1 from "../_components/ResearchInstitueBreadc
 
 const Research = () => {
   return (
-    <section className="pb-14 md:pb-24 pt-6">
+    <section className="pb-12 md:pb-20 pt-6">
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="flex flex-col gap-6">
             <ResearchInstitueBreadcrumbsV1 text="Research Institutes" />
-            <div className="flex flex-col gap-7">
-              <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.7rem]">Research Institutes</h2>
-              <p className="font-medium text-base leading-[1.75rem]">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-bold  text-3xl sm:text-4xl leading-[2.25rem]">Research Institutes</h2>
+              <p className="font-medium text-sm leading-[1.5rem]">
                 <span className="text-[15.88px] font-medium text-[#2D7636]">
                   ARCN Research Institutes
                 </span>{" "}
@@ -520,7 +520,7 @@ const Research = () => {
                 </Link>
               </div>
 
-              <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
+              {/* <div className="border-[0.86px] border-[#e7e7e7] flex flex-col gap-4 p-4 sm:p-6 bg-[#FFFFFF] text-[#111111] rounded-lg ">
                 <div>
                   <Image
                     src="/Images/Icons/ncam-logo.svg"
@@ -552,7 +552,7 @@ const Research = () => {
                     <IoArrowForwardSharp className="text-xl" />
                   </div>
                 </Link>
-              </div>
+              </div> */}
             </div>
 
             {/* <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8">

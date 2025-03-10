@@ -25,25 +25,22 @@ const Super = () => {
   console.log(supervisionReports);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-8 md:py-16">
       <CustomContainer>
         <div className="flex flex-col gap-10 sm:gap-14">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col text-center gap-8">
-              <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.7rem]">
+              <h2 className="font-bold  text-3xl sm:text-4xl sm:leading-[2.25rem]">
                 Supervision Report
               </h2>
-              <p className="font-medium text-sm sm:text-base sm:leading-[1.75rem]">
+              <p className="font-normal text-sm leading-[1.5rem]">
                 {/* <span className="text-[15.88px] font-medium text-[#2D7636]">
                     ARCN Research Institutes
                   </span>{" "} */}
                 Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper
-                quis etiam <br className="hidden md:block" />
-                euismod quisque montes arcu risus. Magnis posuere tincidunt elit
-                ultrices tortor. Sit
-                <br className="hidden md:block" />
-                semper cras sed duis tortor tempor amet gravida. Rhoncus quis
-                nisl etiam tortor.
+                quis etiam euismod quisque montes arcu risus. <br className="hidden md:block" /> Magnis posuere
+                tincidunt elit ultrices tortor. Sit semper cras sed duis tortor
+                tempor amet gravida. Rhoncus quis nisl etiam tortor.
               </p>
             </div>
           </div>
@@ -96,7 +93,7 @@ const Super = () => {
 
           <Link
             href="/mandate/training/supervision-report"
-            className="self-center py-3 px-10 leading-[2rem] bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
+            className="self-center py-2.5 px-8 leading-[2rem] bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm"
           >
             VIEW ALL
           </Link>

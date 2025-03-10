@@ -7,7 +7,7 @@ import ResearchInstitueBreadcrumbsV1 from "../../_components/ResearchInstitueBre
 
 const College = () => {
   return (
-    <section className="pb-14 md:pb-24 pt-6">
+    <section className="pb-12 md:pb-20 pt-6">
       <CustomContainer>
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="flex flex-col gap-6">
@@ -16,23 +16,19 @@ const College = () => {
               secondaryText="Training"
               secondaryUrl="/mandate/training"
             />
-            <div className="flex flex-col gap-8">
-              <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.75rem]">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-bold text-3xl sm:text-4xl leading-[2.25rem]">
                 Federal College of Agricultures
               </h2>
-              <p className="font-medium text-base leading-[1.75rem]">
+              <p className="font-medium text-sm leading-[1.5rem]">
                 <span className="text-[15.88px] font-medium text-[#2D7636]">
                   ARCN Research Institutes
                 </span>{" "}
                 are non-profit research organizations conducting innovative{" "}
-                <br />
                 research. Home to more than 9,000 scientists, researchers,
-                technicians and staff, the
-                <br />
-                Centers work to transform food, land and water systems in a
-                climate crisis. Click on a
-                <br />
-                Center below to learn more.
+                technicians and staff, the Centers work to transform food, land
+                and water systems in a climate crisis. Click on a Center below
+                to learn more.
               </p>
             </div>
           </div>

@@ -41,7 +41,7 @@ export default function Hero({
         <div className="flex flex-col gap-12 sm:gap-16">
           <div className="self-center flex flex-col gap-3 justify-center items-center text-center">
             <Image src={logo} alt="logo" width={120} height={120} />
-            <h2 className="font-bold text-white text-3xl sm:text-4xl leading-[3rem]">
+            <h2 className="font-bold text-white text-3xl sm:text-4xl leading-[2.25rem]">
               {title.split("<br />").map((ct, i) => (
                 <>
                   {ct.trim()} {i !== title.split("<br />").length && <br />}{" "}

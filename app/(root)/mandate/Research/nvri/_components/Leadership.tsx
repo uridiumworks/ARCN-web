@@ -24,11 +24,11 @@ export default function Leadership({
   email,
 }: Props) {
   return (
-    <section className="bg-[#F9FFFB] py-9 sm:py-18">
+    <section className="bg-[#F9FFFB] py-8 sm:py-16">
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col items-center gap-8 sm:gap-10">
-            <h3 className="font-medium text-3xl text-center sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-bold text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#111111]">
               Leadership
             </h3>
             <div className="flex flex-col items-start gap-6 sm:px-16">
@@ -36,7 +36,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm font-normal leading-[1.5rem]">
                   {" "}
                   <span className="font-bold">
                     Director/Chief Executive:
@@ -48,7 +48,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm font-normal leading-[1.5rem]">
                   {" "}
                   <span className="font-bold">Director Production:</span> Dr.
                   Nicholas Douglas Nwankpa
@@ -59,7 +59,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm font-normal leading-[1.5rem]">
                   {" "}
                   <span className="font-bold">Director Research:</span> Dr. Sati
                   Ngulunku
@@ -70,7 +70,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm font-normal leading-[1.5rem]">
                   {" "}
                   <span className="font-bold">Director, Planning:</span> Mosun
                   E. Ogedengbe
@@ -81,7 +81,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm font-normal leading-[1.5rem]">
                   {" "}
                   <span className="font-bold">
                     Director Quality Assurance:
@@ -94,7 +94,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">
                     Director Diagnostic and Extension:
