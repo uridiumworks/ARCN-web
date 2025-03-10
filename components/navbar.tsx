@@ -70,10 +70,10 @@ const Navbar = (props: Props) => {
         router.push("/mandate");
         break;
       case "News & Events":
-        router.push("/newsandevents");
+        router.push("/news-and-events");
         break;
       case "Programs & Projects":
-        router.push("/programsandprojects");
+        router.push("/programs-and-projects");
         break;
       case "Impacts":
         router.push("/impacts");
