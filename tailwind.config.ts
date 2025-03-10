@@ -25,7 +25,7 @@ const config = {
         "home-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
         "home-publication-res": "repeat(auto-fit,minmax(20rem,1fr))",
         "footer-res": "repeat(auto-fit,minmax(10rem,1fr))",
-        "mandate-research-res": "repeat(auto-fit,minmax(18rem,1fr))",
+        "mandate-research-res": "repeat(auto-fit,minmax(16rem,1fr))",
         "research-institutes-details-res": "repeat(auto-fit,minmax(14rem,1fr))",
         "mandate-research-technology":"repeat(auto-fit,minmax(16.5rem,1fr))",
         "coordination-report-res":"repeat(auto-fit,minmax(27rem,1fr))"

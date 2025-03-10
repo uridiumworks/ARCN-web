@@ -16,7 +16,7 @@ export default function CardBorderedlessDetails({
   points,
 }: Props) {
   return (
-    <div className="flex flex-col gap-4 sm:gap-6">
+    <div className={`flex flex-col  ${subContent ? "gap-4 sm:gap-6" : "gap-2"}`}>
       {title && (
         <h3 className="font-medium text-lg leading-[2.875rem] text-[#111111]">
           {title}

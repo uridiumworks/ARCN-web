@@ -22,11 +22,11 @@ const data = [
   {
     description:
       "Agricultural Research, training and extension system strengthened",
-    icon: <PlantIcon2 className="scale-75" />,
+    icon: <PlantIcon2 className="scale-[.75]" />,
   },
   {
     description: "Agricultural Knowledge management system established",
-    icon: <PlantGrowthIcon className="scale-75" />,
+    icon: <PlantGrowthIcon className="scale-[.65]" />,
   },
 ];
 
@@ -54,7 +54,7 @@ const Value = () => {
               .
             </p>
           </div>
-          <div className="px-0 sm:px-4 lg:px-8 grid grid-cols-about-core-res gap-8 items-start">
+          <div className="px-0 sm:px-4 lg:px-8 grid grid-cols-about-core-res gap-8 items-start sm:items-center">
             {data.map((el, i) => (
               <div key={i} className="flex flex-col gap-4 items-center">
                 {el.icon}

@@ -28,10 +28,10 @@ const OurTechnologies = () => {
         (el, i) => (
           <div
             key={i}
-            className="relative overflow-hidden rounded-lg max-h-[18rem]"
+            className="relative overflow-hidden rounded-lg  max-h-[24rem]"
           >
             <Image
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover bg-center"
               alt={el?.title}
               src={el?.bannerUrl || "/Images/Mandatepage/Casava.png"}
               width={300}
@@ -50,7 +50,7 @@ const OurTechnologies = () => {
 
 const Research = () => {
   return (
-    <div className="bg-[#15271C] flex flex-col px-4 pt-4 pb-16 sm:pb-16 gap-8 sm:gap-16 text-white">
+    <div className="bg-[#15271C] flex flex-col px-4 pt-4 pb-16 sm:pb-16 gap-8 text-white">
       <h2 className="text-center text-5xl leading-[5.28125rem] font-bold">
         Research
       </h2>

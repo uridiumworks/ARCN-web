@@ -16,8 +16,8 @@ const College = () => {
               secondaryText="Training"
               secondaryUrl="/mandate/training"
             />
-            <div className="flex flex-col gap-8">
-              <h2 className="font-bold uppercase text-3xl sm:text-4xl sm:leading-[2.25rem]">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-bold text-3xl sm:text-4xl leading-[2.25rem]">
                 Federal College of Agricultures
               </h2>
               <p className="font-medium text-sm leading-[1.5rem]">

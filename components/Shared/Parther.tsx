@@ -24,7 +24,7 @@ const Partners = () => {
               />
             </div>
             <div className="flex flex-col items-start gap-4">
-              <p className="text-[#1B222B] font-normal text-base leading-[1.75rem]">
+              <p className="text-[#1B222B] font-normal text-sm leading-[1.75rem]">
                 We are committed to working with equally ambitious
                 <br className="hidden md:block" />
                 Research Institutes and stakeholders to bridge the
@@ -35,10 +35,10 @@ const Partners = () => {
               </p>
               <Link href={"/contact"}>
               <div className="flex items-center cursor-pointer">
-                <p className="text-[#669933] font-medium text-base">
+                <p className="text-[#669933] font-medium text-sm">
                 Get in touch
                 </p>
-                <LuChevronRight color="#669933" size={24} />
+                <LuChevronRight color="#669933" size={20} />
               </div>
               </Link>
             </div>

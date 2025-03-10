@@ -5,7 +5,7 @@ const Institutes = () => {
     <section className="py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-8 sm:px-24">
-          <h2 className="text-[#E6E9E7] text-3xl sm:text-4xl font-bold leading-[2.25rem]">
+          <h2 className="text-[#171717] text-3xl sm:text-4xl font-bold leading-[2.25rem]">
             Research Institutes
           </h2>
           <p className="font-normal text-sm leading-[1.5rem] ">

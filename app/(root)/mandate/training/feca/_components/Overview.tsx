@@ -36,7 +36,7 @@ export default function Overview() {
               </div>
               <div className="flex flex-col gap-4 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
                 <h3 className="font-medium text-base leading-[1.61375rem] text-[#131517]">
-                  OUR MISSION
+                  Our Mission
                 </h3>
 
                 <div className="flex flex-col gap-4">
