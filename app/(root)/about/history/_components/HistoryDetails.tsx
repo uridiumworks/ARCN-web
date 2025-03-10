@@ -10,7 +10,7 @@ export default function HistoryDetails() {
       <CustomContainer>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
-            <h2 className="text-[#0A1425] font-bold text-center text-3xl sm:text-[2.5rem] sm:leading-[3.75rem]">
+            <h2 className="text-[#0A1425] font-bold text-center xl:text-3xl 2xl:text-[2.5rem] sm:leading-[3.75rem]">
               Our History
             </h2>
           </div>

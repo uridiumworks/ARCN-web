@@ -17,6 +17,7 @@ const Ourmandate = () => {
                 development in Nigeria
               </p>
             </div>
+
             <div className="flex flex-col gap-3 rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
               <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
                 Our Mission
@@ -41,6 +42,7 @@ const Ourmandate = () => {
               </p>
             </div>
           </div>
+          
           <div className="grid grid-cols-[100%] rounded-xl pt-5 pb-5 sm:pb-14 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
             <div className="flex flex-col gap-3">
               <h3 className="font-medium text-xl sm:text-2xl sm:leading-[1.61375rem] text-[#131517]">
