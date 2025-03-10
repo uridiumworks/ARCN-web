@@ -16,9 +16,9 @@ const Federal = () => {
           </h2>
           <p className="font-normal text-sm leading-[1.5rem] ">
             Federal College of Agriculture are non-profit research organizations
-            conducting innovative research. Home to more than 9,000 scientists,
+            conducting innovative research. <br className="hidden md:block" /> Home to more than 9,000 scientists,
             researchers, technicians and staff, the Centers work to transform
-            food, land and water systems in a climate crisis. Click on a Center
+            food, <br className="hidden md:block" /> land and water systems in a climate crisis. Click on a Center
             below to learn more.{" "}
           </p>
         </div>

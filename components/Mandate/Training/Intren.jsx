@@ -50,7 +50,7 @@ const Intern = () => {
             Enterpreneurship
           </h2>
           <p className="font-normal text-sm text-[#64728F] leading-[1.5rem]">
-            Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh.
+            Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. <br className="hidden md:block" />
             Id ullamcorper nec leo porta. Enim nunc lacinia dui vehicula
             pellentesque morbi. Magna nulla consequat.
           </p>

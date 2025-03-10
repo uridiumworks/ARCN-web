@@ -87,7 +87,7 @@ const Report = () => {
 
           <Link
             href="/mandate/research/coordination-report"
-            className="self-center py-2 px-10 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm leading-[2rem]"
+            className="self-center py-2.5 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm leading-[2rem]"
           >
             VIEW ALL
           </Link>

@@ -20,7 +20,7 @@ export default function CardBorderedDetails({
   
 }: Props) {
   return (
-    <div className={`flex flex-col ${subContent ? "gap-3" : "gap-2"} border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4`}>
+    <div className={`flex flex-col gap-2 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4`}>
       <h3 className="font-medium text-lg leading-[2.875rem] text-[#111111]">
         {title}
       </h3>
