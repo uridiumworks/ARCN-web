@@ -55,7 +55,7 @@ export default function Contents() {
             </div>
 
             <div className="px-0 sm:px-8 space-y-4 flex flex-col gap-8">
-              <h2 className="text-[#111827] font-bold text-2xl sm:text-4xl">
+              <h2 className="text-[#111827] font-bold text-2xl sm:text-3xl">
                 Lorem ipsum dolor sit amet consectetur. Quis faucibus{" "}
               </h2>
               <div className="flex flex-col space-y-5 gap-4">
@@ -100,7 +100,7 @@ export default function Contents() {
             </div>
 
             <div className="px-0 sm:px-8 flex flex-col gap-8">
-              <h2 className="text-[#111827] font-bold text-2xl sm:text-4xl">
+              <h2 className="text-[#111827] font-bold text-2xl sm:text-3xl">
                 Lorem ipsum dolor sit amet consectetur. Quis faucibus{" "}
               </h2>
               <div className="flex flex-col space-y-5 gap-4">

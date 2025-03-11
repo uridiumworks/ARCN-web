@@ -24,7 +24,7 @@ export default function Contents() {
             </div>
 
             <div className='space-y-7'>
-              <h1 className='font-bold text-3xl md:text-4xl'>Project Partners</h1>
+              <h1 className='font-bold text-3xl md:text-3xl'>Project Partners</h1>
               <div>
                 <h1 className='flex items-start gap-2'>
                   <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />
@@ -78,7 +78,7 @@ export default function Contents() {
             </div>
 
             <div className='space-y-7'>
-              <h1 className='font-bold text-3xl md:text-4xl'>Project Goals and Expected Outcomes</h1>
+              <h1 className='font-bold text-3xl md:text-3xl'>Project Goals and Expected Outcomes</h1>
               <div className='space-y-7'>
                 <h1 className='flex items-start gap-2'>
                   <p className='font-bold text-lg'>Outcome 1: Enhanced Stakeholder Capacity</p>
@@ -172,7 +172,7 @@ export default function Contents() {
             </div>
 
             <div className='space-y-7'>
-              <h1 className='font-bold text-3xl md:text-4xl'>RESEARCH AREA</h1>
+              <h1 className='font-bold text-2xl md:text-3xl'>RESEARCH AREA</h1>
               <div>
                 <h1 className='flex items-start gap-2'>
                   <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />
@@ -190,7 +190,7 @@ export default function Contents() {
             </div>
 
             <div className='space-y-7'>
-              <h1 className='font-bold text-3xl md:text-4xl'>Progress to Date</h1>
+              <h1 className='font-bold text-3xl md:text-3xl'>Progress to Date</h1>
               <div>
                 <h1 className='flex items-start gap-2'>
                   <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />
@@ -212,7 +212,7 @@ export default function Contents() {
             </div>
 
             <div className='space-y-7'>
-              <h1 className='font-bold text-3xl md:text-4xl'>Upcoming Activities</h1>
+              <h1 className='font-bold text-3xl md:text-3xl'>Upcoming Activities</h1>
               <div>
                 <h1 className='flex items-start gap-2'>
                   <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />
@@ -226,7 +226,7 @@ export default function Contents() {
             </div>
 
             <div className='space-y-9'>
-              <h1 className='font-bold text-3xl md:text-4xl'>Impact on Food Security</h1>
+              <h1 className='font-bold text-3xl md:text-3xl'>Impact on Food Security</h1>
               <div className='space-y-7'>
                 <h1 className='flex items-start gap-2'>
                   <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />

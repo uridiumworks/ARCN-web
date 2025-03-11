@@ -28,7 +28,7 @@ const New = () => {
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0, 3)?.map((n: any, index: number) => (
-                  <div key={index} className="space-y-3 md:w-[395px]">
+                  <div key={index} className="space-y-3 md:w-[385px]">
                     <div className="h-[268.59px] w-full">
                       <Image
                         src={n?.bannerUrl || "/Images/News and Events/Place.png"}
@@ -42,7 +42,7 @@ const New = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h1 className="font-semibold text-sm">
+                      <h1 className="font-semibold text-base">
                        Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
                       <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
@@ -70,7 +70,7 @@ const New = () => {
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0,3)?.map((n: any, index: number) => (
-                  <div key={index} className="space-y-3 md:w-[395px]">
+                  <div key={index} className="space-y-3 md:w-[385px]">
                     <div className="h-[268.59px] w-full">
                       <Image
                         src={n?.bannerUrl || "/Images/News and Events/Place.png"}
@@ -83,7 +83,7 @@ const New = () => {
                       />
                     </div>
                     <div className="space-y-4">
-                      <h1 className="font-semibold text-sm">
+                      <h1 className="font-semibold text-base">
                         Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
                       <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>

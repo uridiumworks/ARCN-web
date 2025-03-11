@@ -59,12 +59,12 @@ const Open = () => {
                     </div>
 
                     <div className="bg-[#30A85F] border lg:w-[60%] rounded-2xl px-4 py-4 space-y-4 text-white items-center">
-                        <h1 className="font-bold text-2xl">Don&lsquo;t see a position you&lsquo;re interested in but<br className="hidden md:block" />u&lsquo;d still like to apply?</h1>
-                        <p className="font-normal text-sm">{`We welcome anyone to apply by sending submitting their resume and telling us why they're interested in
+                        <h1 className="font-bold text-3xl">Don&lsquo;t see a position you&lsquo;re interested in but<br className="hidden md:block" />you&lsquo;d still like to apply?</h1>
+                        <p className="font-normal text-base">{`We welcome anyone to apply by sending submitting their resume and telling us why they're interested in
                         joining our #paid team!`}</p>
 
                         <div className="flex items-center gap-3 bg-[#000000] w-[144px] h-[50px] text-white rounded-full py-1.5 px-5">
-                            <button className="text-xs font-semibold">Learn More </button>
+                            <button className="text-sm font-semibold">Learn More </button>
                             <LuArrowRight size={19} />
                         </div>
                     </div>
