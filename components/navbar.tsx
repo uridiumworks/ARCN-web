@@ -70,10 +70,10 @@ const Navbar = (props: Props) => {
         router.push("/mandate");
         break;
       case "News & Events":
-        router.push("/newsandevents");
+        router.push("/news-and-events");
         break;
       case "Programs & Projects":
-        router.push("/programsandprojects");
+        router.push("/programs-and-projects");
         break;
       case "Impacts":
         router.push("/impacts");
@@ -92,18 +92,20 @@ const Navbar = (props: Props) => {
     }
   };
   return (
-    <div className="py-5 sticky z-50 top-0 bg-[#121212]">
+    <div className="py-4 sticky z-50 top-0 bg-[#FFFFFF] border-b border-gray-200">
       <div className="w-full px-8 sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
         <div>
           <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
         </div>
-        <div className="hidden lg:flex lg:flex-col lg:gap-6 text-center">
+        <div className="hidden lg:flex lg:flex-col lg:gap-2.5 text-center">
           <div className="flex justify-center items-center gap-8 text-white">
             {topNav.map((t, index) => (
               <p
                 onClick={() => routePathLinks(t)}
                 className={`font-normal text-[0.75rem]  leading-[2rem] ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-opacity-85 text-[#EFEFEF]"
+                  isActiveFunc(t)
+                    ? "text-[#30A85F]"
+                    : "text-opacity-85 text-[#121212]"
                 }  cursor-pointer`}
                 key={index}
               >
@@ -115,8 +117,8 @@ const Navbar = (props: Props) => {
             {mainNav.map((t, index) => (
               <p
                 onClick={() => routePathLinks(t)}
-                className={`font-bold text-sm leading-[2rem] uppercase ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
+                className={`font-bold text-xs leading-[2rem] uppercase ${
+                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#121212]"
                 }  cursor-pointer`}
                 key={index}
               >
@@ -125,28 +127,28 @@ const Navbar = (props: Props) => {
             ))}
           </div>
         </div>
-        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2.5 bg-[#FFFFFF0F] border  border-[#3C3C3C]">
+        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2 bg-[#fff] border  border-[#3C3C3C]">
           <input
             type="search"
             placeholder="Search"
-            className="outline-none bg-transparent text-[#EFEFEF] py-1 px-1.5 text-[0.75rem] leading-[2rem] focus-visible:outline-none border-none placeholder:text-[#EFEFEF]"
+            className="outline-none bg-transparent text-[#121212] py-1.5 px-1 text-xs leading-[1.2rem] focus-visible:outline-none border-none placeholder:text-[#121212] placeholder:text-xs"
           />
           <Search color="#2E7636" size="14px" />
         </div>
         <div className="lg:hidden flex items-center">
-          <Menu size="24px" color="#EFEFEF" onClick={toggleMobileMenu} />
+          <Menu size="24px" color="#121212" onClick={toggleMobileMenu} />
         </div>
       </div>
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-[#121212]  z-50 flex flex-col gap-7 items-center p-4">
+        <div className="absolute top-0 left-0 w-full h-screen bg-[#fff]  z-50 flex flex-col gap-7 items-center p-4">
           <div className="flex  items-center justify-between w-full">
             <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
 
             <X
               size="24px"
-              color="#EFEFEF"
+              color="#121212"
               onClick={toggleMobileMenu}
               className="cursor-pointer"
             />
@@ -157,7 +159,7 @@ const Navbar = (props: Props) => {
               {mainNav.map((t, index) => (
                 <p
                   className={`font-bold text-sm sm:text-lg uppercase  ${
-                    isActiveFunc(t) ? "text-[#30A85F]" : "text-[#EFEFEF]"
+                    isActiveFunc(t) ? "text-[#30A85F]" : "text-[#121212]"
                   }`}
                   key={index}
                   onClick={() => {
@@ -169,11 +171,11 @@ const Navbar = (props: Props) => {
                 </p>
               ))}
             </div>
-            <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#3C3C3C] p-3">
+            <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#fff] p-3 border  border-[#3C3C3C]">
               <input
                 type="search"
                 placeholder="Search"
-                className="outline-none bg-transparent flex-1 py-1 px-1.5 text-[#EFEFEF] text-sm leading-[1.5rem] focus-visible:outline-none border-[#3C3C3C]"
+                className="outline-none bg-transparent flex-1 py-1 px-1.5 text-[#121212] placeholder:text-[#121212] text-sm leading-[1.5rem] focus-visible:outline-none border-[#3C3C3C]"
               />
               <Search color="#2E7636" size="24px" />
             </div>

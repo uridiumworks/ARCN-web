@@ -1,33 +1,33 @@
 import CustomContainer from "@/components/CustomContainer";
 import React from "react";
-import CardBorderedDetails from "../../_components/CardBorderedDetails";
-import CardBorderedlessDetails from "../../_components/CardBorderedlessDetails";
+import CardBorderedDetails from "../../../_components/CardBorderedDetails";
+import CardBorderedlessDetails from "../../../_components/CardBorderedlessDetails";
 
 export default function Focus() {
   return (
-    <section className="py-9 sm:py-18 flex flex-col gap-10">
+    <section className="py-8 sm:py-16 flex flex-col gap-10">
       <div className="bg-[#F9FFFB] p-8 sm:p-10">
         <CustomContainer>
           <div className="flex flex-col items-center gap-3.5 text-center">
-          <h3 className="font-medium text-3xl sm:text-[2.5rem] text-[#111111] leading-[2.875rem]">
+            <h3 className="font-bold text-3xl sm:text-4xl text-[#111111] leading-[2.25rem]">
               Research Focus
             </h3>
             <div className="flex flex-col gap-2 text-center">
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.531875rem]">
                 Research activities are conducted through specialized
                 departments:
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Perishable Crops Research
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Durable Crops Research
               </p>
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Research Outreach
               </p>
 
-              <p className="font-medium text-sm sm:text-base text-[#111111] leading-[1.531875rem]">
+              <p className="font-medium text-sm  text-[#111111] leading-[1.5rem]">
                 . Postharvest Engineering Research
               </p>
             </div>
@@ -75,7 +75,7 @@ export default function Focus() {
           </div>
 
           <div className="flex flex-col gap-6 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
-            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-medium text-xl sm:text-2xl leading-[2.25rem] text-[#111111]">
               Recent Achievements
             </h3>
             <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
@@ -137,7 +137,7 @@ export default function Focus() {
           </div>
 
           <div className="flex flex-col gap-6 border border-[#E7E7E7] bg-[#FCFCFC] rounded-2xl px-3 py-4">
-            <h3 className="font-medium text-3xl sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-medium text-xl sm:text-2xl leading-[2.25rem] text-[#111111]">
               Impact Metrics
             </h3>
             <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-8">
@@ -167,7 +167,9 @@ export default function Focus() {
                 subContentClassNames="font-bold"
               />
             </div>
-            <p className={`font-normal text-[#171616] text-sm sm:text-base leading-[2rem]`}>
+            <p
+              className={`font-normal text-[#171616] text-sm  leading-[1.5rem]`}
+            >
               NSPRI continues to lead in postharvest research and technology
               development, significantly contributing to food security and
               agricultural sustainability in Nigeria.

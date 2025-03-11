@@ -22,10 +22,10 @@ const Events = () => {
   const { loading, events, error } = useClientEventsData();
   console.log(events);
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="text-center text-[#171717] font-semibold text-2xl sm:text-4xl sm:leading-[2.7rem]">
+          <h2 className="text-center text-[#171717] font-bold text-3xl sm:text-4xl leading-[2.25rem]">
             UPCOMING EVENTS
           </h2>
           <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">

@@ -7,18 +7,19 @@ const Technolody = () => {
   const { loading, projects, error } = useClientProjectsData();
 
   return (
-    <section className="bg-white py-12 md:py-16">
+    <section className="bg-white py-12 md:py-20">
       <CustomContainer>
         <div className="flex flex-col gap-6">
           <div className="place-content-center text-center p-9 space-y-4 font-montserrat">
-            <h2 className="font-bold text-3xl sm:text-4xl sm:leading-[2.7rem]">
+            <h2 className="font-bold text-3xl sm:text-4xl leading-[2.25rem]">
               Our Technologies
             </h2>
-            <p className="font-normal text-sm sm:text-base sm:leading-[1.75rem]">
+            <p className="font-normal text-sm leading-[1.5rem]">
               Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
-              etiam euismod quisque <br /> montes arcu risus. Magnis posuere
-              tincidunt elit ultrices tortor. Sit semper cras sed duis tortor{" "}
-              <br /> tempor amet gravida. Rhoncus quis nisl etiam tortor.
+              etiam euismod quisque <br className="hidden md:block" /> montes
+              arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit
+              semper cras sed duis tortor <br className="hidden md:block" />{" "}
+              tempor amet gravida. Rhoncus quis nisl etiam tortor.
             </p>
           </div>
 
@@ -26,7 +27,10 @@ const Technolody = () => {
             {projects?.length > 0 && (
               <>
                 {projects?.slice(0, 4)?.map((p: any, index: number) => (
-                  <div key={index} className="relative h-[17.5rem] rounded-lg overflow-hidden">
+                  <div
+                    key={index}
+                    className="relative h-[17.5rem] rounded-lg overflow-hidden"
+                  >
                     <Image
                       src={p?.bannerUrl || "/Images/Mandatepage/Casava.png"}
                       alt={p?.title}

@@ -26,11 +26,11 @@ export default function Leadership({
   email,
 }: Props) {
   return (
-    <section className="bg-[#F9FFFB] py-9 sm:py-18">
+    <section className="bg-[#F9FFFB] py-8 sm:py-16">
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col items-center gap-8 sm:gap-10">
-            <h3 className="font-medium text-3xl text-center sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-bold text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#111111]">
               Leadership
             </h3>
             <div className="flex flex-col items-start gap-6">
@@ -38,7 +38,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm  font-normal leading-[2.25rem]">
                   {" "}
                   <span className="font-bold">Executive Director:</span> Engr.
                   Dr. Kamal, Abdulgafar Rasheed FNSE, FNIAE
@@ -50,22 +50,22 @@ export default function Leadership({
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <h4 className="text-sm sm:text-lg font-bold leading-[1.524375rem]">
+                  <h4 className="text-sm  font-bold leading-[1.5rem]">
                     Key Directors:
                   </h4>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Engr. Dr. Ademiluyi, Yinka Segun (Processing and Storage
                     Engineering)
                   </p>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Engr. Dr. Ozumba, Isaac Chinedu (Agro-Industrial
                     Development and Extension)
                   </p>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Engr. Dr. Adeogun Emmanuel Olaolu (Land and Water
                     Engineering)
                   </p>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Other departmental directors
                   </p>
                 </div>
@@ -98,7 +98,6 @@ export default function Leadership({
                 </h4>
                 <Link
                   href={website}
-                  
                   className="font-normal text-[#121212] text-sm leading-[1.4rem]"
                 >
                   {website.split("https://")[1]}

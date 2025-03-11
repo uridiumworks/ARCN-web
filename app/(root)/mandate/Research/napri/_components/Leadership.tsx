@@ -24,11 +24,11 @@ export default function Leadership({
   email,
 }: Props) {
   return (
-    <section className="bg-[#F9FFFB] py-9 sm:py-18">
+    <section className="bg-[#F9FFFB] py-8 sm:py-16">
       <CustomContainer>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col items-center gap-8 sm:gap-10">
-          <h3 className="font-medium text-3xl text-center sm:text-[2.5rem] leading-[2.875rem] text-[#111111]">
+            <h3 className="font-bold text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#111111]">
               Leadership
             </h3>
             <div className="flex flex-col items-start gap-6 sm:px-16">
@@ -36,7 +36,7 @@ export default function Leadership({
                 <div>
                   <CircleCheck color="#30A85F" size={20} />
                 </div>{" "}
-                <p className="text-sm sm:text-lg font-normal leading-[2.25rem]">
+                <p className="text-sm  font-normal leading-[1.5rem]">
                   {" "}
                   <span className="font-bold">Executive Director:</span>{" "}
                   Professor Hassan Mohammed Rabiu
@@ -48,20 +48,20 @@ export default function Leadership({
                   <CircleCheck color="#30A85F" size={20} />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <h4 className="text-sm sm:text-lg font-bold leading-[1.524375rem]">
+                  <h4 className="text-sm  font-bold leading-[1.5rem]">
                     Key Personnel:
                   </h4>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Dr. Matha O. Otu (Deputy Director Research)
                   </p>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Dr. Yunusa M. Ishiaku (Assistant Director, Extension and
                     Linkages)
                   </p>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Alh. Gambo Ibrahim Muktar (Finance Officer)
                   </p>
-                  <p className="text-sm sm:text-lg font-normal leading-[1.524375rem]">
+                  <p className="text-sm  font-normal leading-[1.5rem]">
                     . Mal. Lawan Saminu (Institute Secretary)
                   </p>
                 </div>
@@ -97,7 +97,7 @@ export default function Leadership({
                   target="_blank"
                   className="font-normal text-[#121212] text-sm leading-[1.4rem]"
                 >
-                   {website.split("https://")[1]}
+                  {website.split("https://")[1]}
                 </Link>
               </div>
             </div>

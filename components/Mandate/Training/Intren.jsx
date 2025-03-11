@@ -43,18 +43,16 @@ const Intern = () => {
   console.log(entrepreneurships);
 
   return (
-    <section className="flex flex-col gap-10 py-14 md:py-20">
+    <section className="flex flex-col gap-10 py-8 md:py-16">
       <CustomContainer>
-        <div className="flex flex-col gap-4 text-center">
-          <h2 className="font-bold text-3xl text-[#0A1425] sm:text-4xl sm:leading-[2.7rem]">
+        <div className="flex flex-col gap-6 text-center">
+          <h2 className="font-bold  text-3xl text-[#0A1425] sm:text-4xl leading-[2.25rem]">
             Enterpreneurship
           </h2>
-          <p className="font-normal text-sm text-[#64728F] sm:text-base sm:leading-[1.75rem]">
-            Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh.
-            Id <br className="hidden md:block" />
-            ullamcorper nec leo porta. Enim nunc lacinia dui vehicula
-            pellentesque morbi. <br className="hidden md:block" />
-            Magna nulla consequat.
+          <p className="font-normal text-sm text-[#64728F] leading-[1.5rem]">
+            Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. <br className="hidden md:block" />
+            Id ullamcorper nec leo porta. Enim nunc lacinia dui vehicula
+            pellentesque morbi. Magna nulla consequat.
           </p>
         </div>
       </CustomContainer>
