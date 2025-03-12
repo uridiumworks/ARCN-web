@@ -14,9 +14,7 @@ const Upcoming = () => {
     <section className="bg-white py-16 md:py-24">
       <CustomContainer>
         <div className="flex flex-col gap-12">
-          <h2 className="text-center text-[#171717] font-semibold text-3xl sm:text-4xl">
-            UPCOMING EVENTS
-          </h2>
+          <h2 className="text-center text-[#171717] font-semibold text-3xl sm:text-4xl">Upcoming Events </h2>
 
           <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
             {events?.length > 0 &&

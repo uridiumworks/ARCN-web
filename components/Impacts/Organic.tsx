@@ -5,7 +5,7 @@ const Organic = () => {
         <main>
             <div className="w-[100%] pt-10 pb-16 px-3 space-y-8">
                 <div className="text-center">
-                    <h1 className="font-bold text-3xl md:text-4xl text-[#0A1425]">IMPACT STORIES</h1>
+                    <h1 className="font-bold text-3xl md:text-4xl text-[#0A1425]">Impact Stories</h1>
                 </div>
                 <div className="lg:w-[64%] mx-auto flex flex-col md:flex-row gap-7">
                     <div className="space-y-4">

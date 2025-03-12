@@ -113,6 +113,7 @@ const Navbar = (props: Props) => {
               </p>
             ))}
           </div>
+
           <div className="flex justify-center gap-6 text-white">
             {mainNav.map((t, index) => (
               <p
@@ -135,6 +136,7 @@ const Navbar = (props: Props) => {
           />
           <Search color="#2E7636" size="14px" />
         </div>
+
         <div className="lg:hidden flex items-center">
           <Menu size="24px" color="#121212" onClick={toggleMobileMenu} />
         </div>
