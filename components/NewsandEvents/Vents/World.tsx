@@ -11,7 +11,7 @@ const World = () => {
             <CustomContainer>
             <div className="space-y-10 py-20 lg:w-11/12 lg:mx-auto">
                 <div className="pt-7 lg:px-16">
-                    <h1 className="font-semibold text-2xl">OTHER UPCOMING EVENTS</h1>
+                    <h1 className="font-semibold text-3xl md:text-4xl">OTHER UPCOMING EVENTS</h1>
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-10 lg:px-20">
