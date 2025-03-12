@@ -55,7 +55,7 @@ const Contactform =() => {
 
             <div className="pt-10">
                 <div className="">
-                    <h1 className="font-medium text-[18px] text-[#010101]">Get In Touch</h1>
+                    <h1 className="font-medium text-lg text-[#010101]">Get In Touch</h1>
                     <hr className="w-[40px] bg-[#28a359] h-0.5" />
                 </div>
                 <div className="font-light items-center font-montserrat flex flex-row gap-1 py-4 ">
