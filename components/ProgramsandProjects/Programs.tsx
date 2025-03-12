@@ -12,8 +12,8 @@ const Programs = () => {
   return (
     <section>
       <div className="text-center space-y-6 py-10">
-        <h1 className="font-bold text-3xl md:text-[40px]">Programs</h1>
-        <p className="font-normal text-base md:text-xl">
+        <h1 className="font-bold text-3xl md:text-4xl">Programs</h1>
+        <p className="font-normal text-sm">
           Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id{" "}
           <br />
           ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque
@@ -29,10 +29,10 @@ const Programs = () => {
               {programs?.slice(0, 4)?.map((p: any, index: number) => (
                 <div key={index} className="border py-2 px-4  grid grid-cols-1 md:grid-cols-2 justify-center gap-2 rounded-xl">
                   <div className="space-y-4 flex flex-col justify-center">
-                    <h1 className="font-medium text-lg">
+                    <h1 className="font-medium text-base">
                       E-Learning Programs
                     </h1>
-                    <p className="font-normal text-xs text-[#464646]">
+                    <p className="font-normal text-sm text-[#464646]">
                       {p?.subjects}
                       Our land. Our future. We are #GenerationRestoration.
                     </p>
@@ -75,10 +75,10 @@ const Programs = () => {
               {programs?.slice(0, 4)?.map((p: any, index: number) => (
                 <div key={index} className="border p-4 grid grid-cols-1 md:grid-cols-2 justify-center gap-5 rounded-xl">
                   <div className="space-y-4 flex flex-col justify-center">
-                    <h1 className="font-medium text-lg">
+                    <h1 className="font-medium text-base">
                       E-Learning Programs
                     </h1>
-                    <p className="font-normal text-xs text-[#464646]">
+                    <p className="font-normal text-sm text-[#464646]">
                       {p?.subjects}
                       Our land. Our future. We are #GenerationRestoration.
                     </p>

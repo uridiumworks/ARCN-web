@@ -15,34 +15,33 @@ const New = () => {
     // Convert to a readable format
     return date.toLocaleDateString('en-US', options as any);
 }
-
+console.log(newsLetters)
   return (
     <section className="w-full">
       <div className="">
         <div className="w-full mx-auto">
-          <h1 className="font-semibold font-montserrat text-4xl text-center pt-20 pb-8">News</h1>
+          <h1 className="font-semibold font-montserrat text-3xl md:text-4xl text-center pt-20 pb-8">News</h1>
         </div>
 
         <div className="lg:w-9/12 lg:mx-auto px-3 space-y-7">
-          <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-5 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-7 ">
             {newsLetters?.length > 0 && (
               <>
-                {newsLetters?.slice(0, 3)?.map((n: any, index: number) => (
-                  <div key={index} className="space-y-3 md:w-[395px]">
-                    <div className="h-[268.59px] w-full">
+                {newsLetters?.slice(0, 6)?.map((n: any, index: number) => (
+                  <div key={index} className="space-y-3">
+                    <div className="relative w-full h-[268.59px]">
                       <Image
-                        src={n?.bannerUrl || "/Images/News and Events/Place.png"}
-                        // src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
-                        alt={n?.category}
-                        width={395}
-                        height={268.59}
-                        className="shadow-lg"
-                        style={{height: "auto", maxHeight: 268.59}}
+                        src={n?.bannerUrl || "/Placeholder.png"}
+                        alt="special image"
+                        className="object-cover rounded-t-md w-full"
+                        priority
+                        fill={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
 
                     <div className="space-y-4">
-                      <h1 className="font-semibold text-sm">
+                      <h1 className="font-semibold text-base">
                        Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
                       <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
@@ -66,24 +65,24 @@ const New = () => {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-5 ">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-5 ">
             {newsLetters?.length > 0 && (
               <>
                 {newsLetters?.slice(0,3)?.map((n: any, index: number) => (
-                  <div key={index} className="space-y-3 md:w-[395px]">
-                    <div className="h-[268.59px] w-full">
+                  <div key={index} className="space-y-3">
+                     <div className="relative w-full h-[268.59px]">
                       <Image
-                        src={n?.bannerUrl || "/Images/News and Events/Place.png"}
-                        // src={"https://res.cloudinary.com/dvvpqxkhw/image/upload/v1728908904/profilepicture/Life%20insurance-1688565756271-612912741.png.png"}
-                        alt={n?.category}
-                        width={395}
-                        height={268.59}
-                        className="shadow-lg"
-                        style={{height: "auto", maxHeight: 268.59}}
+                        src={n?.bannerUrl || "/Placeholder.png"}
+                        alt="special image"
+                        className="object-cover rounded-t-md w-full"
+                        priority
+                        fill={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
+
                     <div className="space-y-4">
-                      <h1 className="font-semibold text-sm">
+                      <h1 className="font-semibold text-base">
                         Nature-positive farms on remote hillsides in India show the future of resilient farming
                       </h1>
                       <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
@@ -103,7 +102,7 @@ const New = () => {
                 ))}
               </>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
