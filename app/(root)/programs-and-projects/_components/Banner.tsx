@@ -6,7 +6,7 @@ export default function Banner() {
     <section className=" text-center md:p-28 bg-black p-6">
           <CustomContainer>
             <h2 className="font-extrabold text-white text-xl md:text-3xl sm:text-4xl">
-                Calcium A Cassava
+              Calcium A Cassava
             </h2>
           </CustomContainer>
         </section>

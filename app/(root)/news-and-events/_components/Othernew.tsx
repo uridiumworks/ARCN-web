@@ -32,13 +32,13 @@ export default function Othernew() {
     <section className='py-10 '>
         <CustomContainer>
             <div className='text-center pb-10'>
-                <h1 className='font-bold text-4xl'>Other News</h1>
+                <h1 className='font-bold text-3xl md:text-4xl'>Other News</h1>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {data.map((item, index) => (
                     <div key={index} className='space-y-4'>
                         <img src={item.image} alt={item.title} width={355} height={268.59} />
-                        <h2 className='font-semibold text-lg'>{item.title}</h2>
+                        <h2 className='font-semibold text-base'>{item.title}</h2>
                         <p className='font-normal text-sm '>{item.description}</p>
                         <div className='flex gap-3'>
                             <p className='font-bold text-[#999999]'>{item.date}</p>
