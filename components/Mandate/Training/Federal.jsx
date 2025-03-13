@@ -4,8 +4,23 @@ import CustomContainer from "@/components/CustomContainer";
 import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Link from "next/link";
 
+const federalColleges = [
+  "Federal College of Agriculture, Akure",
+  "Federal College Of Agricultural Produce Technology, Kano",
+  "Federal College of Agriculture, Ibadan",
+  "Federal College Of Fisheries And Marine Technology, Lagos",
+  "Federal College of Agriculture, Ishiagu",
+  "Federal College Of Freshwater Fisheries Technology, Baga",
+  "Federal College Of Animal Health And Production, Moor Plantation, Ibadan",
+  "Federal College Of Freshwater Fisheries Technology, New Bussa",
+  "Federal Cooperative College, Kaduna",
+  "Federal College Of Horticultural Technology, Dadinkowa, Gombe",
+  "Federal College Of Animal Health And Production, Vom",
+  "Federal College Of Veterinary And Medical Laboratory Technology, Vom",
+];
+
 const Federal = () => {
-  const { loading, nariss, error } = useClientNarissData();
+  // const { loading, nariss, error } = useClientNarissData();
 
   return (
     <section className="py-8 md:py-16 flex flex-col gap-8 sm:gap-14">
@@ -16,10 +31,11 @@ const Federal = () => {
           </h2>
           <p className="font-normal text-sm leading-[1.5rem] ">
             Federal College of Agriculture are non-profit research organizations
-            conducting innovative research. <br className="hidden md:block" /> Home to more than 9,000 scientists,
-            researchers, technicians and staff, the Centers work to transform
-            food, <br className="hidden md:block" /> land and water systems in a climate crisis. Click on a Center
-            below to learn more.{" "}
+            conducting innovative research. <br className="hidden md:block" />{" "}
+            Home to more than 9,000 scientists, researchers, technicians and
+            staff, the Centers work to transform food,{" "}
+            <br className="hidden md:block" /> land and water systems in a
+            climate crisis. Click on a Center below to learn more.{" "}
           </p>
         </div>
       </CustomContainer>
@@ -28,14 +44,14 @@ const Federal = () => {
         <CustomContainer>
           <div className="flex flex-col gap-8">
             <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around gap-5">
-              {nariss?.length > 0 && (
+              {federalColleges.length > 0 && (
                 <>
-                  {nariss?.map((n, index) => (
+                  {federalColleges?.map((n, index) => (
                     <p
                       key={index}
                       className="text-[#2D3657] font-semibold text-sm leading-[1.5rem]"
                     >
-                      {n?.institutionName}
+                      {n}
                     </p>
                   ))}
                 </>
