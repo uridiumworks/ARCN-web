@@ -41,6 +41,8 @@ const Login = () => {
     await login(payload);
   };
 
+  console.log(error);
+
   return (
     <div className="bg-gray-100 flex items-center justify-center h-screen">
       <div className="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">

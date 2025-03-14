@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AxiosError } from 'axios';
 import { deleteAPI, getAPI, postAPI } from '@/lib/Axios';
+import axiosInstance from '@/lib/axiosInstance';
+import { useRouter } from 'next/navigation';
 
 interface LoginResponse {
   success: boolean;
@@ -123,28 +125,30 @@ const useLoginUser = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [data, setData] = useState<LoginResponse | null>(null);
-  
+  const {push} = useRouter()
     const login = async (payload: LoginPayload) => {
       setLoading(true);
       setError(null);
   
       try {
-        const response = await postAPI('/api/User/LoginUser', payload);
+        const response = await axiosInstance.post('/api/User/LoginUser', payload);
         console.log('API response:', response); // Debugging
   
-        if (response.success && response.data?.token) {
+        if (response?.data?.success && response?.data?.data?.token && response.data.statusCode === 0) {
           // Save token and user info to localStorage
-          localStorage.setItem('userToken', response.data.token);
-          localStorage.setItem('userData', JSON.stringify(response.data)); // Optionally store other user data
+          localStorage.setItem('userToken', response.data?.data?.token);
+          localStorage.setItem('userData', JSON.stringify(response.data?.data)); // Optionally store other user data
+          push('/admin');
+          setData(response.data?.data);
+        }else {
+          throw new Error(response.data?.message || response.data?.errors)
         }
-  
-        setData(response);
-      } catch (err) {
+      } catch (err:any) {
         if (err instanceof AxiosError && err.response) {
           const errorResponse = err.response.data as LoginResponse;
           setError(errorResponse.errors ? errorResponse.errors.join(', ') : errorResponse.message || 'An unknown error occurred');
         } else {
-          setError('An unknown error occurred');
+          setError(err.message)
         }
       } finally {
         setLoading(false);
