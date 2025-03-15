@@ -1,5 +1,6 @@
 "use client"; // Add this line at the top
 
+import { DataTablePagination } from "@/components/Shared/data-table-pagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,8 +15,12 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
-  useReactTable,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
   getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
 import React from "react";
@@ -40,6 +45,10 @@ const ReportsTable = <TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
   return (
     <>
@@ -148,6 +157,7 @@ const ReportsTable = <TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <DataTablePagination table={table} />
     </>
   );
 };

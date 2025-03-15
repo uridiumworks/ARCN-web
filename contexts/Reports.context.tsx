@@ -31,13 +31,7 @@ export const useReportsContext = () => {
 export const ReportsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [reports, setReports] = useState<any>(() => {
-    if (typeof window !== "undefined") {
-      const savedData = localStorage.getItem("reportData");
-      return savedData ? JSON.parse(savedData) : [];
-    }
-    return []; // Return a default value for SSR
-  });
+  const [reports, setReports] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,7 +48,7 @@ export const ReportsProvider: React.FC<{ children: ReactNode }> = ({
       setError(null);
       const response: any = await getAPI("odata/GetAllReports", token as any);
       console.log(response);
-      localStorage.setItem("reportData", JSON.stringify(response)); // Save to localStorage
+      // localStorage.setItem("reportData", JSON.stringify(response)); // Save to localStorage
       setReports(response);
       setIsLoading(false);
     } catch (error: any) {

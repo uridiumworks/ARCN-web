@@ -31,13 +31,7 @@ export const useNewsletterContext = () => {
 export const NewsletterProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-    const [newsLetters, setNewsLetters] = useState<any>(() => {
-        if (typeof window !== 'undefined') {
-          const savedData = localStorage.getItem("NewsLetterData");
-          return savedData ? JSON.parse(savedData) : [];
-        }
-        return []; // Return a default value for SSR
-      });
+    const [newsLetters, setNewsLetters] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,7 +48,7 @@ export const NewsletterProvider: React.FC<{ children: ReactNode }> = ({
       setError(null);
       const response: any = await getAPI("odata/GetAllNewsLetter", token as any);
       console.log(response);
-      localStorage.setItem("NewsLetterData", JSON.stringify(response)); 
+      // localStorage.setItem("NewsLetterData", JSON.stringify(response)); 
       setNewsLetters(response);
       setIsLoading(false);
     } catch (error: any) {

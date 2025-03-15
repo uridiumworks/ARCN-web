@@ -12,7 +12,7 @@ import { useReport } from "@/contexts/Reports.context";
 
 const ReportsView = () => {
   const [createNewReport, setCreateNewReport] = useState<boolean>(false);
-  const [reportsArray, setReportsArray] = useState<any[]>([]);
+  // const [reportsArray, setReportsArray] = useState<any[]>([]);
   // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
   // const { loading, reports, error,fetchDashboard } = useReportsData(token);
@@ -34,11 +34,13 @@ const ReportsView = () => {
     fetch();
   }, [getReports]);
 
-  useEffect(() => {
-    if (reports?.length > 0) {
-      setReportsArray(reports);
-    }
-  }, [reports]);
+  // useEffect(() => {
+  //   if (reports?.length > 0) {
+  //     setReportsArray(reports);
+  //   }
+  // }, [reports]);
+
+  // console.log(reportsArray,"HERE")
   // if (loading && reports?.length < 1) return <p>Loading....</p>
   return (
     <>
@@ -63,7 +65,7 @@ const ReportsView = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <ReportsTable
                   columns={Reportscolumns}
-                  data={reportsArray ?? []}
+                  data={reports ?? []}
                   setCreateNewReport={setCreateNewReport}
                 />
               </div>

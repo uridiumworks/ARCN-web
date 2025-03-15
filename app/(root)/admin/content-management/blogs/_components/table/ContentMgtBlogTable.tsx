@@ -1,5 +1,6 @@
 "use client"; // Add this line at the top
 
+import { DataTablePagination } from "@/components/Shared/data-table-pagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,7 +15,11 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
   getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
@@ -41,6 +46,10 @@ const ContentMgtBlogTable = <TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
   return (
@@ -148,6 +157,7 @@ const ContentMgtBlogTable = <TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <DataTablePagination table={table} />
     </>
   );
 };

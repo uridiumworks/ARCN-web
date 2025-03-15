@@ -1,5 +1,6 @@
 "use client"; // Add this line at the top
 
+import { DataTablePagination } from "@/components/Shared/data-table-pagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,7 +15,11 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
   getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
@@ -35,13 +40,16 @@ const JournalTable = <TData, TValue>({
   data,
   setCreateNewJournal,
 }: DataTableProps<TData, TValue>) => {
-  const table = useReactTable({
+ const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
-
   return (
     <>
       <div className="w-full h-auto p-2 md:p-5 flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
@@ -149,6 +157,7 @@ const JournalTable = <TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <DataTablePagination table={table} />
     </>
   );
 };
