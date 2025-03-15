@@ -31,6 +31,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateUser, useGetAllUsers } from "@/hooks/user.hook";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
+import { useUsers } from "@/contexts/Users.context";
 
 interface Props {
   setDialog: React.Dispatch<React.SetStateAction<number>>;
@@ -54,20 +55,8 @@ const formSchema = z.object({
 });
 
 const UserForm = ({ setDialog }: Props) => {
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const {
-    createUser,
-    data,
-    loading: createLoading,
-    error: createError,
-  } = useCreateUser();
-  const { loading, users, error } = useGetAllUsers(triggerRefetch);
+  const { isCreating, createUsers } = useUsers();
 
-  useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -81,7 +70,10 @@ const UserForm = ({ setDialog }: Props) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await createUser(values);
+    try {
+      await createUsers(values);
+      setDialog(0);
+    } catch (error) {}
   }
   return (
     <DialogContent className="bg-white h-auto overflow-auto">
@@ -169,6 +161,12 @@ const UserForm = ({ setDialog }: Props) => {
                           autoComplete="new-password"
                           placeholder="Enter Title"
                           className="bg-white outline-none"
+                          maxLength={11} // Max length set to 11
+                          pattern="\d*" // Only allows numeric values
+                          onInput={(e) => {
+                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                            field.onChange(e); // Update the field value
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
@@ -210,14 +208,14 @@ const UserForm = ({ setDialog }: Props) => {
                   </Button>
                   <Button
                     type="submit"
-                    disabled={createLoading}
+                    disabled={isCreating}
                     className="w-full bg-[#30a85f] text-white border-2 hover:bg-[#30a85f] hover:text-white"
                   >
-                    {createLoading ? (
-                    <ButtonSpinner />
-                  ) : (
-                    <span className="text-[14px] font-noraml">Add User</span>
-                  )}
+                    {isCreating ? (
+                      <ButtonSpinner />
+                    ) : (
+                      <span className="text-[14px] font-noraml">Add User</span>
+                    )}
                   </Button>
                 </div>
               </div>

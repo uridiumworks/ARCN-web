@@ -37,11 +37,11 @@ export const SideLink: Array<SideLinkType> = [
     url: "/admin/training",
     icon: <HealthIcon className="scale-95 text-[#fff]" />,
   },
-  {
-    name: "Extension",
-    url: "/admin/extension",
-    icon: <MarketResearchIcon className="scale-95 stroke-[#fff]" />,
-  },
+  // {
+  //   name: "Extension",
+  //   url: "/admin/extension",
+  //   icon: <MarketResearchIcon className="scale-95 stroke-[#fff]" />,
+  // },
   {
     name: "Programs and Projects",
     url: "/admin/programs-and-projects",

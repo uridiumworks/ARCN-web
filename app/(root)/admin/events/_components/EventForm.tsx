@@ -31,6 +31,7 @@ import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
+import { useEvents } from "@/contexts/Events.context";
 
 interface Props {
   setCreateNewEvent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -68,32 +69,20 @@ const formSchema = z.object({
 const EventForm = ({ setCreateNewEvent }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [imageName, setImageName] = useState<string>("");
-  const {
-    createEvent,
-    data,
-    loading: createLoading,
-    error: createError,
-  } = useCreateEvent(token);
+  const { createEvents, isCreating } = useEvents();
+
   const {
     uploadImage,
     data: ImageUrl,
     loading: imageLoading,
     error: imageError,
   } = useUploadImage(token);
-  const { loading, events, error } = useEventsData(token, triggerRefetch);
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
     setToken(userToken);
   }, []);
-
-  useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -136,8 +125,10 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
   }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await createEvent(values);
+    try {
+      await createEvents(values);
+      setCreateNewEvent(false);
+    } catch (error) {}
   }
   return (
     <div>
@@ -154,8 +145,8 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           autoComplete="current-password"
         >
-             <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
-             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
+          <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+            <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
                 name="subject"
@@ -406,10 +397,10 @@ const EventForm = ({ setCreateNewEvent }: Props) => {
                 />
                 <Button
                   type="submit"
-                  disabled={createLoading}
+                  disabled={isCreating}
                   className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                 >
-                  {createLoading ? (
+                  {isCreating ? (
                     <ButtonSpinner />
                   ) : (
                     <span className="text-[14px] font-noraml">Post</span>

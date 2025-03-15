@@ -31,6 +31,7 @@ import { useRouter } from "next/navigation";
 import { useEventData, useUpdateEvent } from "@/hooks/Events.hooks";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 import Loader from "@/components/Shared/Loader";
+import { useEvents } from "@/contexts/Events.context";
 
 type Props = {
   params: { eventId: any };
@@ -69,12 +70,7 @@ const UpdateEvent = ({ params }: Props) => {
   const [token, setToken] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const {
-    updateEvent,
-    success,
-    loading: updateLoading,
-    error: updateError,
-  } = useUpdateEvent(token);
+  const { isUpdating, updateEvent } = useEvents();
   const {
     uploadImage,
     data: ImageUrl,
@@ -411,11 +407,11 @@ const UpdateEvent = ({ params }: Props) => {
                                     )}
                                 /> */}
                       <Button
-                        disabled={updateLoading}
+                        disabled={isUpdating}
                         type="submit"
                         className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                       >
-                        {updateLoading ? (
+                        {isUpdating ? (
                           <ButtonSpinner />
                         ) : (
                           <span className="text-[14px] font-noraml">
