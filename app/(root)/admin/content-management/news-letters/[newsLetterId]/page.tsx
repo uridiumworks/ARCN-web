@@ -37,6 +37,11 @@ import {
 } from "@/hooks/NewsLetters.hooks";
 import Loader from "@/components/Shared/Loader";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
@@ -69,6 +74,7 @@ const UpdateNewsLetters = ({ params }: Props) => {
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const {
     updateNewsLetter,
     success,
@@ -116,7 +122,10 @@ const UpdateNewsLetters = ({ params }: Props) => {
 
   useEffect(() => {
     if (newsLetter) {
-      form.reset(newsLetter);
+      form.reset({
+        ...newsLetter,
+        publishDate: newsLetter?.publishDate?.split("T")[0],
+      });
     }
   }, [form, newsLetter]);
 
@@ -144,9 +153,17 @@ const UpdateNewsLetters = ({ params }: Props) => {
     }
   }, [ImageUrl, form]);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateNewsLetter(params?.newsLetterId, values,"/admin/content-management/news-letters");
+    await updateNewsLetter(
+      params?.newsLetterId,
+      values,
+      "/admin/content-management/news-letters"
+    );
   }
   return (
     <>
@@ -289,27 +306,30 @@ const UpdateNewsLetters = ({ params }: Props) => {
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Blog Post Editor</FormLabel>
+                          <FormLabel>NewsLetter Post Editor</FormLabel>
                           <FormControl>
                             <>
-                              {/* {isMounted && <ReactQuill
-                                          // ref={reactQuillRef}
-                                          theme="snow"
-                                          value={field.value}
-                                          onChange={field.onChange}
-                                          modules={{
-                                              toolbar: {
-                                                  container: [
-                                                      [{ header: [1, 2, 3, 4, false] }],
-                                                      ['bold', 'italic', 'underline'],
-                                                      [{ align: [] }],
-                                                      ['image', 'clean'], // Add image button
-                                                  ],
-                                                  // handlers: {
-                                                  //     image: imageHandler, // Set custom image handler
-                                                  // },
-                                              },
-                                          }} />} */}
+                              {isMounted && (
+                                <ReactQuill
+                                  // ref={reactQuillRef}
+                                  theme="snow"
+                                  value={field.value}
+                                  onChange={field.onChange}
+                                  modules={{
+                                    toolbar: {
+                                      container: [
+                                        [{ header: [1, 2, 3, 4, false] }],
+                                        ["bold", "italic", "underline"],
+                                        [{ align: [] }],
+                                        ["image", "clean"], // Add image button
+                                      ],
+                                      // handlers: {
+                                      //     image: imageHandler, // Set custom image handler
+                                      // },
+                                    },
+                                  }}
+                                />
+                              )}
                             </>
                           </FormControl>
                           <FormMessage />
@@ -417,10 +437,10 @@ const UpdateNewsLetters = ({ params }: Props) => {
                                   </SelectValue>
                                 </SelectTrigger>
                                 <SelectContent className="bg-[#f3f3f3]">
-                                  <SelectItem value="Visibility">
-                                    Visibility
+                                  <SelectItem value="public">Public</SelectItem>
+                                  <SelectItem value="private">
+                                    Private
                                   </SelectItem>
-                                  <SelectItem value="Hidden">Hidden</SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>

@@ -43,7 +43,7 @@ const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
   bannerUrl: z.any(),
-  blogPosttext: z.any(),
+  description: z.any(),
   authorName: z
     .string()
     .min(3, { message: "Author Name must be at least 3 characters." }),
@@ -85,7 +85,7 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
       title: "",
       category: "blogs",
       bannerUrl: "",
-      blogPosttext: "",
+      description: "",
       authorName: "",
       authorEmail: "",
       authorPhoneNumber: "",
@@ -94,6 +94,8 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
       useBanner: false,
     },
   });
+
+  console.log(form.watch('publishDate'))
 
   useEffect(() => {
     const userToken = typeof window !== "undefined" ? localStorage.getItem("userToken") : null;
@@ -135,6 +137,8 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
 
     
   }
+
+  
 
   return (
     <div>
@@ -245,7 +249,7 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
               />
               <FormField
                 control={form.control}
-                name="blogPosttext"
+                name="description"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Blog Post Editor</FormLabel>

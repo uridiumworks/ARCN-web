@@ -44,7 +44,7 @@ const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
   bannerUrl: z.any(),
-  blogPosttext: z.any(),
+  description: z.any(),
   authorName: z
     .string()
     .min(3, { message: "Author Name must be at least 3 characters." }),
@@ -89,7 +89,7 @@ const ReportForm = ({ setCreateNewReport,onAction }: Props) => {
       title: "",
       category: "reports",
       bannerUrl: "",
-      blogPosttext: "",
+      description: "",
       authorName: "",
       authorEmail: "",
       authorPhoneNumber: "",
@@ -278,7 +278,7 @@ const ReportForm = ({ setCreateNewReport,onAction }: Props) => {
               />
               <FormField
                 control={form.control}
-                name="blogPosttext"
+                name="description"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Report Post Editor</FormLabel>
@@ -416,10 +416,10 @@ const ReportForm = ({ setCreateNewReport,onAction }: Props) => {
                             </SelectValue>
                           </SelectTrigger>
                           <SelectContent className="bg-[#f3f3f3]">
-                            <SelectItem value="Visibility">
-                              Visibility
+                            <SelectItem value="public">
+                              Public
                             </SelectItem>
-                            <SelectItem value="Hidden">Hidden</SelectItem>
+                            <SelectItem value="private">Private</SelectItem>
                           </SelectContent>
                         </Select>
                       </FormControl>

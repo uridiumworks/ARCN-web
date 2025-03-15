@@ -41,7 +41,7 @@ const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
   bannerUrl: z.any(),
-  blogPosttext: z.any(),
+  description: z.any(),
   authorName: z
     .string()
     .min(3, { message: "Author Name must be at least 3 characters." }),
@@ -94,7 +94,7 @@ const UpdateBlog = ({ params }: Props) => {
       title: "",
       category: "blogs",
       bannerUrl: "",
-      blogPosttext: "",
+      description: "",
       authorName: "",
       authorEmail: "",
       authorPhoneNumber: "",
@@ -117,7 +117,7 @@ const UpdateBlog = ({ params }: Props) => {
 
   useEffect(() => {
     if (blog) {
-      form.reset(blog);
+      form.reset({...blog,publishDate: blog?.publishDate?.split("T")[0]});
     }
   }, [blog, form]);
 
@@ -287,7 +287,7 @@ const UpdateBlog = ({ params }: Props) => {
                     />
                     <FormField
                       control={form.control}
-                      name="blogPosttext"
+                      name="description"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Blog Post Editor</FormLabel>
@@ -416,10 +416,10 @@ const UpdateBlog = ({ params }: Props) => {
                                   </SelectValue>
                                 </SelectTrigger>
                                 <SelectContent className="bg-[#f3f3f3]">
-                                  <SelectItem value="Visibility">
-                                    Visibility
+                                  <SelectItem value="public">
+                                    Public
                                   </SelectItem>
-                                  <SelectItem value="Hidden">Hidden</SelectItem>
+                                  <SelectItem value="private">Private</SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>

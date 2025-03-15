@@ -33,6 +33,12 @@ import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useJournalData, useUpdateJournal } from "@/hooks/Journals.hooks";
 import Loader from "@/components/Shared/Loader";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
@@ -65,6 +71,7 @@ const UpdateJournal = ({ params }: Props) => {
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+    const [isMounted, setIsMounted] = useState<boolean>(false);
   const {
     updateJournal,
     success,
@@ -112,7 +119,7 @@ const UpdateJournal = ({ params }: Props) => {
 
   useEffect(() => {
     if (journal) {
-      form.reset(journal);
+      form.reset({...journal,publishDate: journal?.publishDate?.split("T")[0]});
     }
   }, [form, journal]);
 
@@ -139,6 +146,11 @@ const UpdateJournal = ({ params }: Props) => {
       form.setValue("bannerUrl", ImageUrl);
     }
   }, [ImageUrl, form]);
+
+  
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
@@ -286,10 +298,10 @@ const UpdateJournal = ({ params }: Props) => {
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Blog Post Editor</FormLabel>
+                          <FormLabel>Journal Editor</FormLabel>
                           <FormControl>
                             <>
-                              {/* {isMounted && <ReactQuill
+                              {isMounted && <ReactQuill
                                             // ref={reactQuillRef}
                                             theme="snow"
                                             value={field.value}
@@ -306,7 +318,7 @@ const UpdateJournal = ({ params }: Props) => {
                                                     //     image: imageHandler, // Set custom image handler
                                                     // },
                                                 },
-                                            }} />} */}
+                                            }} />}
                             </>
                           </FormControl>
                           <FormMessage />
@@ -414,10 +426,10 @@ const UpdateJournal = ({ params }: Props) => {
                                   </SelectValue>
                                 </SelectTrigger>
                                 <SelectContent className="bg-[#f3f3f3]">
-                                  <SelectItem value="Visibility">
-                                    Visibility
+                                  <SelectItem value="public">
+                                    Public
                                   </SelectItem>
-                                  <SelectItem value="Hidden">Hidden</SelectItem>
+                                  <SelectItem value="private">Private</SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>

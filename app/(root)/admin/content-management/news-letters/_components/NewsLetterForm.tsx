@@ -423,10 +423,10 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                             </SelectValue>
                           </SelectTrigger>
                           <SelectContent className="bg-[#f3f3f3]">
-                            <SelectItem value="Visibility">
-                              Visibility
+                            <SelectItem value="public">
+                              Public
                             </SelectItem>
-                            <SelectItem value="Hidden">Hidden</SelectItem>
+                            <SelectItem value="private">Private</SelectItem>
                           </SelectContent>
                         </Select>
                       </FormControl>

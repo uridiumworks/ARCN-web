@@ -38,11 +38,16 @@ import {
 import { useReportData, useUpdateReport } from "@/hooks/Reports.hooks";
 import Loader from "@/components/Shared/Loader";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
   bannerUrl: z.any(),
-  blogPosttext: z.any(),
+  description: z.any(),
   authorName: z
     .string()
     .min(3, { message: "Author Name must be at least 3 characters." }),
@@ -70,6 +75,7 @@ const UpdateReport = ({ params }: Props) => {
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const {
     updateReport,
     success,
@@ -94,7 +100,7 @@ const UpdateReport = ({ params }: Props) => {
       title: "",
       category: "reports",
       bannerUrl: "",
-      blogPosttext: "",
+      description: "",
       authorName: "",
       authorEmail: "",
       authorPhoneNumber: "",
@@ -117,7 +123,10 @@ const UpdateReport = ({ params }: Props) => {
 
   useEffect(() => {
     if (report) {
-      form.reset(report);
+      form.reset({
+        ...report,
+        publishDate: report?.publishDate?.split("T")[0],
+      });
     }
   }, [form, report]);
 
@@ -147,7 +156,11 @@ const UpdateReport = ({ params }: Props) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateReport(params?.reportsId, values,"/admin/content-management/reports");
+    await updateReport(
+      params?.reportsId,
+      values,
+      "/admin/content-management/reports"
+    );
   }
   return (
     <>
@@ -283,30 +296,33 @@ const UpdateReport = ({ params }: Props) => {
                     />
                     <FormField
                       control={form.control}
-                      name="blogPosttext"
+                      name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Blog Post Editor</FormLabel>
+                          <FormLabel>Report Post Editor</FormLabel>
                           <FormControl>
                             <>
-                              {/* {isMounted && <ReactQuill
-                                            // ref={reactQuillRef}
-                                            theme="snow"
-                                            value={field.value}
-                                            onChange={field.onChange}
-                                            modules={{
-                                                toolbar: {
-                                                    container: [
-                                                        [{ header: [1, 2, 3, 4, false] }],
-                                                        ['bold', 'italic', 'underline'],
-                                                        [{ align: [] }],
-                                                        ['image', 'clean'], // Add image button
-                                                    ],
-                                                    // handlers: {
-                                                    //     image: imageHandler, // Set custom image handler
-                                                    // },
-                                                },
-                                            }} />} */}
+                              {isMounted && (
+                                <ReactQuill
+                                  // ref={reactQuillRef}
+                                  theme="snow"
+                                  value={field.value}
+                                  onChange={field.onChange}
+                                  modules={{
+                                    toolbar: {
+                                      container: [
+                                        [{ header: [1, 2, 3, 4, false] }],
+                                        ["bold", "italic", "underline"],
+                                        [{ align: [] }],
+                                        ["image", "clean"], // Add image button
+                                      ],
+                                      // handlers: {
+                                      //     image: imageHandler, // Set custom image handler
+                                      // },
+                                    },
+                                  }}
+                                />
+                              )}
                             </>
                           </FormControl>
                           <FormMessage />
@@ -414,10 +430,10 @@ const UpdateReport = ({ params }: Props) => {
                                   </SelectValue>
                                 </SelectTrigger>
                                 <SelectContent className="bg-[#f3f3f3]">
-                                  <SelectItem value="Visibility">
-                                    Visibility
+                                  <SelectItem value="public">Public</SelectItem>
+                                  <SelectItem value="private">
+                                    Private
                                   </SelectItem>
-                                  <SelectItem value="Hidden">Hidden</SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>
