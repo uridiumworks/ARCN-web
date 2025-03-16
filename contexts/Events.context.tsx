@@ -135,7 +135,10 @@ export const EventsProvider: React.FC<{ children: ReactNode }> = ({
     setIsUpdating(true);
 
     try {
-      await putAPI(`/api/Event/UpdateEvent/${id}`, body, token);
+      const response = await putAPI(`/api/Event/UpdateEvent/${id}`, body, token);
+      toast({
+        description: response?.message || "Event updated successfully.",
+      });
       push("/admin/events");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
