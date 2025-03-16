@@ -20,31 +20,45 @@ import { useCordinationReportData, useUpdateCordinationReport } from '@/hooks/Co
 import ButtonSpinner from '@/components/Shared/ButtonSpinner';
 import Loader from '@/components/Shared/Loader';
 
+import dynamic from "next/dynamic";
+import { useResearchCordination } from '@/contexts/ResearchCoordination.context';
 
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 type Props = {
     params: { cordinationReportId: any };
 };
 
-const formSchema = z.object({
+
+const createFormSchema = (existing: any) => {
+    const needsBannerValidation = !existing?.bannerUrl || existing.bannerUrl === "";
+return z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
-    bannerUrl: z.string().min(3, { message: "uploaded Banner must be provided.", }),
+    bannerUrl:  needsBannerValidation
+          ? z.string().min(1, { message: "Please upload a banner image" })
+          : z.string(),
     description: z.any(),
     publisherName: z.string().min(3, { message: "publisher Name must be at least 3 characters.", }),
     authorEmail: z.string().min(3, { message: "author Email must be at least 3 characters.", }).email({ message: "Invalid email format." }),
     publishDate: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
 })
 
+}
+
 const UpdateCordinationReport = ({ params }: Props) => {
     const router = useRouter();
     const docImgRef = useRef<HTMLInputElement | null>(null);
     const [token, setToken] = useState<string | null>(null)
     const [imageName, setImageName] = useState<string>("")
-    const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
-    const { updateReport, success, loading: updateLoading, error: updateError } = useUpdateCordinationReport(token)
+      const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+    createFormSchema(null)
+  );
     const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
     const { loading, report, error } = useCordinationReportData(token, params?.cordinationReportId, triggerRefetch)
-
+   const {isUpdating,updateCordination} = useResearchCordination()
     useEffect(() => {
         const userToken = localStorage.getItem("userToken");
         setToken(userToken)
@@ -84,21 +98,27 @@ const UpdateCordinationReport = ({ params }: Props) => {
     useEffect(() => {
         if (ImageUrl) {
             form.setValue("bannerUrl", ImageUrl)
+            form.clearErrors("bannerUrl")
         }
     }, [ImageUrl, form])
 
     useEffect(() => {
         if (report) {
-            form.reset(report)
+            form.reset({...report,publishDate: report?.publishDate?.split("T")[0]})
         }
     }, [form, report])
 
+
+      useEffect(() => {
+        setIsMounted(true);
+      }, []);
+    
 
 
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
-        await updateReport(params?.cordinationReportId, values)
+        await updateCordination(params?.cordinationReportId, values)
     }
     return (
         <>
@@ -171,6 +191,17 @@ const UpdateCordinationReport = ({ params }: Props) => {
                                                     </div>
                                                     <FaRegTrashAlt style={{ cursor: "pointer" }} color="#FF3236" onClick={() => {
                                                         form.setValue("bannerUrl", "")
+                                                         // If the original event had no banner, this will trigger validation
+                                     if (
+                                        !report?.bannerUrl ||
+                                        report.bannerUrl === ""
+                                      ) {
+                                        form.setError("bannerUrl", {
+                                          type: "manual",
+                                          message:
+                                            "Please upload a banner image",
+                                        });
+                                      }
                                                     }} />
                                                 </div>}
                                             </>
@@ -187,11 +218,12 @@ const UpdateCordinationReport = ({ params }: Props) => {
                                         <FormLabel>Blog Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {/* {isMounted && <ReactQuill
+                                            {isMounted && <ReactQuill
                                                     // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
                                                     onChange={field.onChange}
+                                                    className="h-64"
                                                     modules={{
                                                         toolbar: {
                                                             container: [
@@ -204,7 +236,7 @@ const UpdateCordinationReport = ({ params }: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />} */}
+                                                    }} />}
                                             </>
                                         </FormControl>
                                         <FormMessage />
@@ -272,7 +304,7 @@ const UpdateCordinationReport = ({ params }: Props) => {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" disabled={updateLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{updateLoading ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
+                                <Button type="submit" disabled={isUpdating || imageLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{isUpdating ? <ButtonSpinner/> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
                             </div>
                         </div>
                     </div>

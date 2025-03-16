@@ -20,7 +20,7 @@ const useDashboardData = () => {
           variant: "destructive",
         });
         localStorage.clear();
-        push("/signin");
+        push("/login");
         return;
       }
       try {

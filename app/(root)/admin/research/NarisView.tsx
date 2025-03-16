@@ -5,29 +5,21 @@ import { Nariscolumns } from "./_components/table/column";
 import NarisForm from "./_components/forms/NarisForm";
 import { useNarissData } from "@/hooks/Naris.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useResearchNaris } from "@/contexts/ResearchNaris.context";
 
 const NarisView = () => {
   const [createNewInstitute, setCreateNewInstitute] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
-  const [narisArray, setNarisArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, nariss, error } = useNarissData(token, triggerRefetch);
+  const {naris,isLoading,getNaris} = useResearchNaris()
 
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
+    getNaris()
+  },[getNaris])
 
-  useEffect(() => {
-    if (nariss?.length > 0) {
-      setNarisArray(nariss);
-    }
-  }, [nariss]);
-  // if (loading && nariss?.length < 1) return <p>Loading....</p>
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewInstitute ? (
@@ -45,7 +37,7 @@ const NarisView = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <NarisTable
                   columns={Nariscolumns}
-                  data={narisArray ?? []}
+                  data={naris ?? []}
                   setCreateNewInstitute={setCreateNewInstitute}
                 />
               </div>

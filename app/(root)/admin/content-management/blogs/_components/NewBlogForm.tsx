@@ -39,10 +39,18 @@ interface Props {
   onAction: () => Promise<void>;
 }
 
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
+
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
-  bannerUrl: z.any(),
+  bannerUrl: z.string().min(1, { message: "Please upload a banner image" }),
   description: z.any(),
   authorName: z
     .string()
@@ -51,10 +59,14 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-    authorPhoneNumber: z
+  authorPhoneNumber: z
     .string()
-    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
-    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
+    .length(11, {
+      message: "Author Phone Number must be exactly 11 characters.",
+    })
+    .regex(/^\d+$/, {
+      message: "Phone Number can only contain numeric characters.",
+    }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -62,17 +74,13 @@ const formSchema = z.object({
   }),
 });
 
-const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
+const NewBlogForm = ({ setCreateNewBlog, onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
   // const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const {
-    createBlog,
-    data,
-    loading: createLoading,
-  } = useCreateBlog(token);
+  const { createBlog, data, loading: createLoading } = useCreateBlog(token);
   const {
     uploadImage,
     data: ImageUrl,
@@ -95,10 +103,11 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
     },
   });
 
-  console.log(form.watch('publishDate'))
+  console.log(form.watch("publishDate"));
 
   useEffect(() => {
-    const userToken = typeof window !== "undefined" ? localStorage.getItem("userToken") : null;
+    const userToken =
+      typeof window !== "undefined" ? localStorage.getItem("userToken") : null;
     setToken(userToken);
   }, []);
 
@@ -112,7 +121,9 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
     setIsMounted(true);
   }, []);
 
-  const handleFileChangeDocHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChangeDocHandler = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file: any = event.target.files?.[0];
     if (file) {
       setImageName(file.name);
@@ -123,22 +134,17 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl");
     }
   }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await createBlog(values);
-      await onAction()
-      setCreateNewBlog(false)
-    } catch (error) {
-      
-    }
-
-    
+      await onAction();
+      setCreateNewBlog(false);
+    } catch (error) {}
   }
-
-  
 
   return (
     <div>
@@ -179,7 +185,11 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
                   <FormItem>
                     <FormLabel>Category</FormLabel>
                     <FormControl>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}   disabled={true}>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        disabled={true}
+                      >
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Blogs">Blogs</SelectValue>
                         </SelectTrigger>
@@ -232,7 +242,9 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
                           <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
                             <div className="flex justify-start items-center gap-3">
                               <FaFilePdf color="#ED1B24" />
-                              <p className="text-base font-medium text-[#5F6D7E]">{imageName}</p>
+                              <p className="text-base font-medium text-[#5F6D7E]">
+                                {imageName}
+                              </p>
                             </div>
                             <FaRegTrashAlt
                               style={{ cursor: "pointer" }}
@@ -330,7 +342,10 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
                         maxLength={11} // Max length set to 11
                         pattern="\d*" // Only allows numeric values
                         onInput={(e) => {
-                          e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                          e.currentTarget.value = e.currentTarget.value.replace(
+                            /\D/g,
+                            ""
+                          ); // Prevent non-numeric input
                           field.onChange(e); // Update the field value
                         }}
                       />
@@ -350,6 +365,8 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
                         {...field}
                         type="date"
                         className="bg-white outline-none"
+                        placeholder="DD/MM/YYYY"
+                        min={today}
                       />
                     </FormControl>
                     <FormMessage />
@@ -363,9 +380,14 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
                   <FormItem>
                     <FormLabel>Visibility</FormLabel>
                     <FormControl>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select Visibility">Select Visibility</SelectValue>
+                          <SelectValue placeholder="Select Visibility">
+                            Select Visibility
+                          </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="public">Public</SelectItem>
@@ -383,7 +405,10 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
                     </FormControl>
                     <FormLabel className="ml-2">Use Banner</FormLabel>
                     <FormMessage />
@@ -393,7 +418,11 @@ const NewBlogForm = ({ setCreateNewBlog,onAction }: Props) => {
             </div>
           </div>
           <div className="w-full flex justify-end mt-5">
-            <Button type="submit" className="bg-blue-500 text-white">
+            <Button
+              type="submit"
+              className="bg-blue-500 text-white"
+              disabled={createLoading || imageLoading}
+            >
               {createLoading ? <ButtonSpinner /> : "Create Blog"}
             </Button>
           </div>

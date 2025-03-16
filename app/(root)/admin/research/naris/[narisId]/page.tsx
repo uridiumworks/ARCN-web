@@ -36,51 +36,61 @@ import {
 import { useRouter } from "next/navigation";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 import Loader from "@/components/Shared/Loader";
+import { useResearchNaris } from "@/contexts/ResearchNaris.context";
+
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 type Props = {
   params: { narisId: any };
 };
 
-const formSchema = z.object({
-  institutionName: z
-    .string()
-    .min(3, { message: "subject must be at least 3 characters." }),
-  phoneNumber: z
-    .string()
-    .min(11, { message: "Phone Number must be at least 11 characters." }),
-  email: z
-    .string()
-    .min(3, { message: "Email must be at least 3 characters." })
-    .email({ message: "Invalid email format." }),
-  website: z
-    .string()
-    .min(3, { message: "Website must be at least 3 characters." })
-    .url({ message: "Invalid website URL." }),
-  address: z
-    .string()
-    .min(3, { message: "Address must be at least 3 characters." }),
-  stateId: z.any(),
-  localGovernmentAreaId: z.any(),
-  establishDate: z
-    .string()
-    .min(3, { message: "Date Established must be provided." }),
-  joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
-  logoUrl: z.any(),
-  description: z.any(),
-});
+const createFormSchema = (existing: any) => {
+  const needsBannerValidation = !existing?.logoUrl || existing.logoUrl === "";
+  return z.object({
+    institutionName: z
+      .string()
+      .min(3, { message: "subject must be at least 3 characters." }),
+    phoneNumber: z
+      .string()
+      .min(11, { message: "Phone Number must be at least 11 characters." }),
+    email: z
+      .string()
+      .min(3, { message: "Email must be at least 3 characters." })
+      .email({ message: "Invalid email format." }),
+    website: z
+      .string()
+      .min(3, { message: "Website must be at least 3 characters." })
+      .url({ message: "Invalid website URL." }),
+    address: z
+      .string()
+      .min(3, { message: "Address must be at least 3 characters." }),
+    stateId: z.any(),
+    localGovernmentAreaId: z.any(),
+    establishDate: z
+      .string()
+      .min(3, { message: "Date Established must be provided." }),
+    joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
+    logoUrl: needsBannerValidation
+      ? z.string().min(1, { message: "Please upload a logo image" })
+      : z.string(),
+    description: z.any(),
+  });
+};
 
 const UpdateNaris = ({ params }: Props) => {
   const router = useRouter();
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>("");
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+    createFormSchema(null)
+  );
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const {
-    updateNaris,
-    success,
-    loading: updateLoading,
-    error: updateError,
-  } = useUpdateNaris(token);
+  const { updateNaris, isUpdating } = useResearchNaris();
   const {
     uploadImage,
     data: ImageUrl,
@@ -136,19 +146,29 @@ const UpdateNaris = ({ params }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("logoUrl", ImageUrl);
+      form.clearErrors("logoUrl");
     }
   }, [ImageUrl, form]);
 
   useEffect(() => {
     if (naris) {
-      form.reset(naris);
+      form.reset({
+        ...naris,
+        establishDate: naris?.establishDate?.split("T")[0],
+        joinDate: naris?.joinDate?.split("T")[0],
+      });
     }
   }, [form, naris]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     await updateNaris(params?.narisId, values);
   }
+  
   return (
     <>
       <Loader loading={loading} />
@@ -181,7 +201,7 @@ const UpdateNaris = ({ params }: Props) => {
                               {...field}
                               type="text"
                               autoComplete="new-password"
-                              placeholder="Enter Title"
+                              placeholder="Enter Institution Name"
                               className="bg-white outline-none"
                             />
                           </FormControl>
@@ -201,8 +221,15 @@ const UpdateNaris = ({ params }: Props) => {
                                 {...field}
                                 type="text"
                                 autoComplete="new-password"
-                                placeholder="Enter Title"
+                                placeholder="Enter Phone Number"
                                 className="bg-white outline-none"
+                                maxLength={11} // Max length set to 11
+                                pattern="\d*" // Only allows numeric values
+                                onInput={(e) => {
+                                  e.currentTarget.value =
+                                    e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                                  field.onChange(e); // Update the field value
+                                }}
                               />
                             </FormControl>
                             <FormMessage />
@@ -220,7 +247,7 @@ const UpdateNaris = ({ params }: Props) => {
                                 {...field}
                                 type="email"
                                 autoComplete="new-password"
-                                placeholder="Enter Title"
+                                placeholder="Enter Email"
                                 className="bg-white outline-none"
                               />
                             </FormControl>
@@ -260,7 +287,7 @@ const UpdateNaris = ({ params }: Props) => {
                                 {...field}
                                 type="text"
                                 autoComplete="new-password"
-                                placeholder="Enter Title"
+                                placeholder="Enter Address"
                                 className="bg-white outline-none"
                               />
                             </FormControl>
@@ -281,7 +308,7 @@ const UpdateNaris = ({ params }: Props) => {
                                 {...field}
                                 type="text"
                                 autoComplete="new-password"
-                                placeholder="Enter website url"
+                                placeholder="Enter State"
                                 className="bg-white outline-none"
                               />
                             </FormControl>
@@ -300,7 +327,7 @@ const UpdateNaris = ({ params }: Props) => {
                                 {...field}
                                 type="text"
                                 autoComplete="new-password"
-                                placeholder="Enter Title"
+                                placeholder="Enter Local Government Area"
                                 className="bg-white outline-none"
                               />
                             </FormControl>
@@ -354,7 +381,7 @@ const UpdateNaris = ({ params }: Props) => {
                       name="logoUrl"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Upload banner</FormLabel>
+                          <FormLabel>Upload Logo</FormLabel>
                           <FormControl>
                             <>
                               <div style={{ display: "none" }}>
@@ -405,6 +432,18 @@ const UpdateNaris = ({ params }: Props) => {
                                     color="#FF3236"
                                     onClick={() => {
                                       form.setValue("logoUrl", "");
+                                    
+                                     // If the original event had no banner, this will trigger validation
+                                     if (
+                                      !naris?.logoUrl ||
+                                      naris.logoUrl === ""
+                                    ) {
+                                      form.setError("logoUrl", {
+                                        type: "manual",
+                                        message:
+                                          "Please upload a logo image",
+                                      });
+                                    }
                                     }}
                                   />
                                 </div>
@@ -415,19 +454,21 @@ const UpdateNaris = ({ params }: Props) => {
                         </FormItem>
                       )}
                     />
+                    <div className="mb-14">
                     <FormField
                       control={form.control}
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Blog Post Editor</FormLabel>
+                          <FormLabel>Naris Post Editor</FormLabel>
                           <FormControl>
                             <>
-                              {/* {isMounted && <ReactQuill
+                              {isMounted && <ReactQuill
                                                     // ref={reactQuillRef}
                                                     theme="snow"
                                                     value={field.value}
                                                     onChange={field.onChange}
+                                                    className="h-64"
                                                     modules={{
                                                         toolbar: {
                                                             container: [
@@ -440,19 +481,20 @@ const UpdateNaris = ({ params }: Props) => {
                                                             //     image: imageHandler, // Set custom image handler
                                                             // },
                                                         },
-                                                    }} />} */}
+                                                    }} />}
                             </>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
+                    </div>
                     <Button
                       type="submit"
-                      disabled={updateLoading}
+                      disabled={isUpdating || imageLoading}
                       className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                     >
-                      {updateLoading ? (
+                      {isUpdating ? (
                         <ButtonSpinner />
                       ) : (
                         <span className="text-[14px] font-noraml">Publish</span>

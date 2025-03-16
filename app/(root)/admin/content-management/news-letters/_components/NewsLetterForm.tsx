@@ -40,13 +40,21 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   setCreateNewNewsletter: React.Dispatch<React.SetStateAction<boolean>>;
-  onAction: () => Promise<void>
+  onAction: () => Promise<void>;
 }
+
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
 
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
-  bannerUrl: z.any(),
+  bannerUrl: z.string().min(1, { message: "Please upload a banner image" }),
   description: z.any(),
   authorName: z
     .string()
@@ -55,10 +63,14 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-    authorPhoneNumber: z
+  authorPhoneNumber: z
     .string()
-    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
-    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
+    .length(11, {
+      message: "Author Phone Number must be exactly 11 characters.",
+    })
+    .regex(/^\d+$/, {
+      message: "Phone Number can only contain numeric characters.",
+    }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -66,7 +78,7 @@ const formSchema = z.object({
   }),
 });
 
-const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
+const NewsLetterForm = ({ setCreateNewNewsletter, onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
@@ -137,6 +149,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl");
     }
   }, [ImageUrl, form]);
 
@@ -148,12 +161,9 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
     // console.log(values);
     try {
       await createNewsLetter(values);
-      onAction()
-     setCreateNewNewsletter(false)
-    }catch(error){
-
-    }
-   
+      onAction();
+      setCreateNewNewsletter(false);
+    } catch (error) {}
   }
   return (
     <div>
@@ -170,7 +180,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           autoComplete="current-password"
         >
-            <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+          <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
@@ -209,7 +219,9 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                           </SelectValue>
                         </SelectTrigger>
                         <SelectContent className="bg-[#f3f3f3]">
-                          <SelectItem value="newsletters">News Letters</SelectItem>
+                          <SelectItem value="newsletters">
+                            News Letters
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
@@ -291,25 +303,28 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                     <FormLabel>NewsLetter Post Editor</FormLabel>
                     <FormControl>
                       <>
-                        {isMounted && <ReactQuill
-                                            // ref={reactQuillRef}
-                                            theme="snow"
-                                            value={field.value}
-                                            onChange={field.onChange}
-                                            className="h-64"
-                                            modules={{
-                                                toolbar: {
-                                                    container: [
-                                                        [{ header: [1, 2, 3, 4, false] }],
-                                                        ['bold', 'italic', 'underline'],
-                                                        [{ align: [] }],
-                                                        ['image', 'clean'], // Add image button
-                                                    ],
-                                                    // handlers: {
-                                                    //     image: imageHandler, // Set custom image handler
-                                                    // },
-                                                },
-                                            }} />}
+                        {isMounted && (
+                          <ReactQuill
+                            // ref={reactQuillRef}
+                            theme="snow"
+                            value={field.value}
+                            onChange={field.onChange}
+                            className="h-64"
+                            modules={{
+                              toolbar: {
+                                container: [
+                                  [{ header: [1, 2, 3, 4, false] }],
+                                  ["bold", "italic", "underline"],
+                                  [{ align: [] }],
+                                  ["image", "clean"], // Add image button
+                                ],
+                                // handlers: {
+                                //     image: imageHandler, // Set custom image handler
+                                // },
+                              },
+                            }}
+                          />
+                        )}
                       </>
                     </FormControl>
                     <FormMessage />
@@ -376,7 +391,8 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                           maxLength={11} // Max length set to 11
                           pattern="\d*" // Only allows numeric values
                           onInput={(e) => {
-                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                            e.currentTarget.value =
+                              e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
                             field.onChange(e); // Update the field value
                           }}
                         />
@@ -398,6 +414,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                           autoComplete="new-password"
                           placeholder="DD/MM/YYYY"
                           className="bg-inherit outline-none"
+                          min={today}
                         />
                       </FormControl>
                       <FormMessage />
@@ -423,9 +440,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                             </SelectValue>
                           </SelectTrigger>
                           <SelectContent className="bg-[#f3f3f3]">
-                            <SelectItem value="public">
-                              Public
-                            </SelectItem>
+                            <SelectItem value="public">Public</SelectItem>
                             <SelectItem value="private">Private</SelectItem>
                           </SelectContent>
                         </Select>
@@ -464,7 +479,7 @@ const NewsLetterForm = ({ setCreateNewNewsletter,onAction }: Props) => {
                 />
                 <Button
                   type="submit"
-                  disabled={createLoading}
+                  disabled={createLoading || imageLoading}
                   className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                 >
                   {createLoading ? (

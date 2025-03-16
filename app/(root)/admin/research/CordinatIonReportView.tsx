@@ -4,34 +4,20 @@ import { CordinationReportTablecolumns } from "./_components/table/column";
 import ReportForm from "./_components/forms/CordinationReportForm";
 import { useReportsData } from "@/hooks/Reports.hooks";
 import CordinationReportForm from "./_components/forms/CordinationReportForm";
-import { useCordinationReportsData } from "@/hooks/CordinationReport.hooks";
+import { useCordinationReportData, useCordinationReportsData } from "@/hooks/CordinationReport.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useResearchCordination } from "@/contexts/ResearchCoordination.context";
 
 const CordinationReportView = () => {
   const [createReport, setCreateReport] = useState<boolean>(false);
-  const [token, setToken] = useState<string | null>(null);
-  const [reportArray, setReportArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, cordinationReport, error } = useCordinationReportsData(
-    token,
-    triggerRefetch
-  );
+const {isLoading,getCordination,cordination} = useResearchCordination()
+ 
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
-
-  useEffect(() => {
-    if (cordinationReport?.length > 0) {
-      setReportArray(cordinationReport);
-    }
-  }, [cordinationReport]);
-  // if (loading && cordinationReport?.length < 1) return <p>Loading....</p>
+useEffect(() => {getCordination()},[getCordination])
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createReport ? (
@@ -49,7 +35,7 @@ const CordinationReportView = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <CordinationReportTable
                   columns={CordinationReportTablecolumns}
-                  data={reportArray ?? []}
+                  data={cordination ?? []}
                   setCreateReport={setCreateReport}
                 />
               </div>

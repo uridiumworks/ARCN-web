@@ -60,7 +60,7 @@ const useBlogsDataV2 = () => {
         variant: "destructive",
       });
       localStorage.clear();
-      push("/signin");
+      push("/login");
       return;
     }
     setLoading(true);

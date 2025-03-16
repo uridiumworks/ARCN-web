@@ -42,27 +42,46 @@ import dynamic from "next/dynamic";
 // Dynamically import ReactQuill to prevent SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const formSchema = z.object({
-  title: z.string().min(3, { message: "Title must be at least 3 characters." }),
-  category: z.string().min(1, { message: "Category must be selected" }),
-  bannerUrl: z.any(),
-  description: z.any(),
-  authorName: z
-    .string()
-    .min(3, { message: "Author Name must be at least 3 characters." }),
-  authorEmail: z
-    .string()
-    .min(3, { message: "Author Email must be at least 3 characters." })
-    .email({ message: "Invalid email format." }),
-  authorPhoneNumber: z
-    .string()
-    .min(11, { message: "Author Phone Number must be 11 characters." }),
-  publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
-  visibility: z.string().min(3, { message: "Visibility must be provided" }),
-  useBanner: z.boolean().refine((value) => value === true, {
-    message: "Visibility must be provided",
-  }),
-});
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
+
+const createFormSchema = (existing: any) => {
+  const needsBannerValidation =
+    !existing?.bannerUrl || existing.bannerUrl === "";
+  return z.object({
+    title: z
+      .string()
+      .min(3, { message: "Title must be at least 3 characters." }),
+    category: z.string().min(1, { message: "Category must be selected" }),
+    // Conditionally validate the banner URL
+    bannerUrl: needsBannerValidation
+      ? z.string().min(1, { message: "Please upload a banner image" })
+      : z.string(),
+    description: z.any(),
+    authorName: z
+      .string()
+      .min(3, { message: "Author Name must be at least 3 characters." }),
+    authorEmail: z
+      .string()
+      .min(3, { message: "Author Email must be at least 3 characters." })
+      .email({ message: "Invalid email format." }),
+    authorPhoneNumber: z
+      .string()
+      .min(11, { message: "Author Phone Number must be 11 characters." }),
+    publishDate: z
+      .string()
+      .min(3, { message: "Publish Date must be provided" }),
+    visibility: z.string().min(3, { message: "Visibility must be provided" }),
+    useBanner: z.boolean().refine((value) => value === true, {
+      message: "Visibility must be provided",
+    }),
+  });
+};
 
 type Props = {
   params: { newsLetterId: any };
@@ -75,6 +94,9 @@ const UpdateNewsLetters = ({ params }: Props) => {
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+    createFormSchema(null)
+  );
   const {
     updateNewsLetter,
     success,
@@ -150,6 +172,7 @@ const UpdateNewsLetters = ({ params }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl");
     }
   }, [ImageUrl, form]);
 
@@ -291,6 +314,17 @@ const UpdateNewsLetters = ({ params }: Props) => {
                                     color="#FF3236"
                                     onClick={() => {
                                       form.setValue("bannerUrl", "");
+                                      // If the original event had no banner, this will trigger validation
+                                      if (
+                                        !newsLetter?.bannerUrl ||
+                                        newsLetter.bannerUrl === ""
+                                      ) {
+                                        form.setError("bannerUrl", {
+                                          type: "manual",
+                                          message:
+                                            "Please upload a banner image",
+                                        });
+                                      }
                                     }}
                                   />
                                 </div>
@@ -311,22 +345,17 @@ const UpdateNewsLetters = ({ params }: Props) => {
                             <>
                               {isMounted && (
                                 <ReactQuill
-                                  // ref={reactQuillRef}
                                   theme="snow"
                                   value={field.value}
                                   onChange={field.onChange}
+                                  className="h-64"
                                   modules={{
-                                    toolbar: {
-                                      container: [
-                                        [{ header: [1, 2, 3, 4, false] }],
-                                        ["bold", "italic", "underline"],
-                                        [{ align: [] }],
-                                        ["image", "clean"], // Add image button
-                                      ],
-                                      // handlers: {
-                                      //     image: imageHandler, // Set custom image handler
-                                      // },
-                                    },
+                                    toolbar: [
+                                      [{ header: [1, 2, 3, 4, false] }],
+                                      ["bold", "italic", "underline"],
+                                      [{ align: [] }],
+                                      ["image", "clean"],
+                                    ],
                                   }}
                                 />
                               )}
@@ -393,6 +422,13 @@ const UpdateNewsLetters = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="Phone Number"
                                 className="bg-inherit outline-none"
+                                maxLength={11} // Max length set to 11
+                                pattern="\d*" // Only allows numeric values
+                                onInput={(e) => {
+                                  e.currentTarget.value =
+                                    e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                                  field.onChange(e); // Update the field value
+                                }}
                               />
                             </FormControl>
                             <FormMessage />
@@ -412,6 +448,21 @@ const UpdateNewsLetters = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="DD/MM/YYYY"
                                 className="bg-inherit outline-none"
+                                min={
+                                  newsLetter?.publishDate
+                                    ? formatDateForInput(
+                                        new Date(
+                                          new Date(
+                                            newsLetter.publishDate
+                                          ).setDate(
+                                            new Date(
+                                              newsLetter.publishDate
+                                            ).getDate() + 1
+                                          )
+                                        )
+                                      )
+                                    : today
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -478,7 +529,7 @@ const UpdateNewsLetters = ({ params }: Props) => {
                       />
                       <Button
                         type="submit"
-                        disabled={updateLoading}
+                        disabled={updateLoading || imageLoading}
                         className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                       >
                         {updateLoading ? (
