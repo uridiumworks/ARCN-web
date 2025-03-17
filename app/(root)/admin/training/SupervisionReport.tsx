@@ -5,35 +5,21 @@ import { SupervisionReportTablecolumns } from "./_components/table/columns";
 import SupervisionReportForm from "./_components/forms/SupervisionReportForm";
 import { useSupervisionReportsData } from "@/hooks/SupervisionReports.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useTrainingSupervsionReportContext } from "@/contexts/TrainingSupervisionReport.context";
 
 const SupervisionReport = () => {
   const [createSupervisionReport, setCreateSupervisionReport] =
     useState<boolean>(false);
-  const [token, setToken] = useState<string | null>(null);
-  const [supervisionReportsArray, setSupervisionReportsArray] = useState<any[]>(
-    []
-  );
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, supervisionReports, error } = useSupervisionReportsData(
-    token,
-    triggerRefetch
-  );
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
+    const {isLoading,trainingSupervsionReport,getTrainingSupervsionReport} = useTrainingSupervsionReportContext()
 
-  useEffect(() => {
-    if (supervisionReports?.length > 0) {
-      setSupervisionReportsArray(supervisionReports);
-    }
-  }, [supervisionReports]);
-  // if (loading && supervisionReports?.length < 1) return <p>Loading....</p>;
+    useEffect(() => {
+      getTrainingSupervsionReport()
+    },[getTrainingSupervsionReport])
 
   return (
     <>
-    <Loader loading={loading} />
+    <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createSupervisionReport ? (
@@ -53,7 +39,7 @@ const SupervisionReport = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <SupervisionReportTable
                   columns={SupervisionReportTablecolumns}
-                  data={supervisionReportsArray ?? []}
+                  data={trainingSupervsionReport ?? []}
                   setCreateSupervisionReport={setCreateSupervisionReport}
                 />
               </div>

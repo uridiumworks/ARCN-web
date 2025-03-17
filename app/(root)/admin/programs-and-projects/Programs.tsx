@@ -5,29 +5,17 @@ import { Programscolumns } from "./_components/tables/columns";
 import ProgramForm from "./_components/forms/ProgramForm";
 import { useProgramsData } from "@/hooks/Programs.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useProgramsContext } from "@/contexts/Programs.context";
 
 const Programs = () => {
   const [createNewProgram, setCreateNewProgram] = useState<boolean>(false);
-  const [token, setToken] = useState<string | null>(null);
-  const [programArray, setProgramArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, programs, error } = useProgramsData(token, triggerRefetch);
+ const {isLoading,getPrograms,programs} = useProgramsContext();
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
-
-  useEffect(() => {
-    if (programs?.length > 0) {
-      setProgramArray(programs);
-    }
-  }, [programs]);
-  // if (loading && programs?.length < 1) return <p>Loading....</p>
+ useEffect(() => {getPrograms()},[getPrograms])
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewProgram ? (
@@ -45,7 +33,7 @@ const Programs = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <ProgramsTable
                   columns={Programscolumns}
-                  data={programArray ?? []}
+                  data={programs ?? []}
                   setCreateNewProgram={setCreateNewProgram}
                 />
               </div>

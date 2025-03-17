@@ -74,15 +74,13 @@ const CordinationReportForm = ({ setCreateReport }: Props) => {
     loading: imageLoading,
     error: imageError,
   } = useUploadImage(token);
-  const {isCreating,createCordination} = useResearchCordination()
- 
+  const { isCreating, createCordination } = useResearchCordination();
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
     setToken(userToken);
   }, []);
 
-  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -116,22 +114,20 @@ const CordinationReportForm = ({ setCreateReport }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
-      form.clearErrors("bannerUrl")
+      form.clearErrors("bannerUrl");
     }
   }, [ImageUrl, form]);
 
-   useEffect(() => {
-        setIsMounted(true);
-      }, []);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
- try {
-  console.log(values);
-  await createCordination(values);
-  setCreateReport(false)
- } catch (error) {
-  
- }
+    try {
+      console.log(values);
+      await createCordination(values);
+      setCreateReport(false);
+    } catch (error) {}
   }
   return (
     <div>
@@ -148,8 +144,8 @@ const CordinationReportForm = ({ setCreateReport }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           autoComplete="current-password"
         >
-             <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
-             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
+          <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+            <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
                 name="title"
@@ -240,10 +236,10 @@ const CordinationReportForm = ({ setCreateReport }: Props) => {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Blog Post Editor</FormLabel>
+                    <FormLabel>Cordination Report Post Editor</FormLabel>
                     <FormControl>
                       <>
-                      {isMounted && (
+                        {isMounted && (
                           <ReactQuill
                             theme="snow"
                             value={field.value}

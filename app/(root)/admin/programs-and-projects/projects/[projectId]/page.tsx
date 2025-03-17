@@ -37,9 +37,24 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import Loader from "@/components/Shared/Loader";
 
-const formSchema = z.object({
+import dynamic from "next/dynamic";
+import { useProjectsContext } from "@/contexts/Projects.context";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+const createFormSchema = (existing: any) => {
+  // Determine if we need to validate the banner URL
+  // Only validate if the existing event has no banner URL
+  const needsBannerValidation =
+    !existing?.bannerUrl || existing.bannerUrl === "";
+
+return z.object({
   title: z.string().min(3, { message: "title must be at least 3 characters." }),
-  bannerUrl: z.string(),
+    // Conditionally validate the banner URL
+    bannerUrl: needsBannerValidation
+      ? z.string().min(1, { message: "Please upload a banner image" })
+      : z.string(),
   description: z.string(),
   publisherName: z
     .string()
@@ -52,6 +67,8 @@ const formSchema = z.object({
   }),
 });
 
+}
+
 type Props = {
   params: { projectId: any };
 };
@@ -61,13 +78,12 @@ const UpdateProject = ({ params }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>("");
+ const [isMounted, setIsMounted] = useState<boolean>(false);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const {
-    updateProject,
-    success,
-    loading: updateLoading,
-    error: updateError,
-  } = useUpdateProject(token);
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+    createFormSchema(null)
+  );
+ const {isUpdating,updateProjects} = useProjectsContext()
   const {
     uploadImage,
     data: ImageUrl,
@@ -98,15 +114,14 @@ const UpdateProject = ({ params }: Props) => {
     setToken(userToken);
   }, []);
 
-  useEffect(() => {
-    if (success) {
-      setTriggerRefetch(true);
-    }
-  }, [success]);
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
 
   useEffect(() => {
     if (project) {
-      form.reset(project);
+      form.reset({...project,publishOn:project?.publishOn?.split("T")[0]});
     }
   }, [form, project]);
 
@@ -131,12 +146,13 @@ const UpdateProject = ({ params }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl")
     }
   }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateProject(params?.projectId, values);
+    await updateProjects(params?.projectId, values);
   }
 
   return (
@@ -235,7 +251,19 @@ const UpdateProject = ({ params }: Props) => {
                                     color="#FF3236"
                                     onClick={() => {
                                       form.setValue("bannerUrl", "");
+                                       // If the original event had no banner, this will trigger validation
+                                       if (
+                                        !project?.bannerUrl ||
+                                        project.bannerUrl === ""
+                                      ) {
+                                        form.setError("bannerUrl", {
+                                          type: "manual",
+                                          message:
+                                            "Please upload a banner image",
+                                        });
+                                      }
                                     }}
+                                    
                                   />
                                 </div>
                               )}
@@ -250,27 +278,25 @@ const UpdateProject = ({ params }: Props) => {
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Blog Post Editor</FormLabel>
+                          <FormLabel>Project Post Editor</FormLabel>
                           <FormControl>
                             <>
-                              {/* {isMounted && <ReactQuill
-                                                    // ref={reactQuillRef}
-                                                    theme="snow"
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                    modules={{
-                                                        toolbar: {
-                                                            container: [
-                                                                [{ header: [1, 2, 3, 4, false] }],
-                                                                ['bold', 'italic', 'underline'],
-                                                                [{ align: [] }],
-                                                                ['image', 'clean'], // Add image button
-                                                            ],
-                                                            // handlers: {
-                                                            //     image: imageHandler, // Set custom image handler
-                                                            // },
-                                                        },
-                                                    }} />} */}
+                            {isMounted && (
+                                <ReactQuill
+                                  theme="snow"
+                                  value={field.value}
+                                  onChange={field.onChange}
+                                  className="h-64"
+                                  modules={{
+                                    toolbar: [
+                                      [{ header: [1, 2, 3, 4, false] }],
+                                      ["bold", "italic", "underline"],
+                                      [{ align: [] }],
+                                      ["image", "clean"],
+                                    ],
+                                  }}
+                                />
+                              )}
                             </>
                           </FormControl>
                           <FormMessage />
@@ -362,10 +388,10 @@ const UpdateProject = ({ params }: Props) => {
                       />
                       <Button
                         type="submit"
-                        disabled={updateLoading}
+                        disabled={isUpdating || imageLoading}
                         className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                       >
-                        {updateLoading ? (
+                        {isUpdating ? (
                           <ButtonSpinner />
                         ) : (
                           <span className="text-[14px] font-noraml">

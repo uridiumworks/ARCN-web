@@ -5,29 +5,19 @@ import { Projectscolumns } from "./_components/tables/columns";
 import ProjectForm from "./_components/forms/ProjectForm";
 import { useProjectsData } from "@/hooks/Projects.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useProjectsContext } from "@/contexts/Projects.context";
 
 const Projects = () => {
   const [createNewProject, setCreateNewProject] = useState<boolean>(false);
-  const [token, setToken] = useState<string | null>(null);
-  const [projectArray, setProjectArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, projects, error } = useProjectsData(token, triggerRefetch);
+const {isLoading,projects,getProjects} = useProjectsContext();
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
-
-  useEffect(() => {
-    if (projects?.length > 0) {
-      setProjectArray(projects);
-    }
-  }, [projects]);
-  // if (loading && projects?.length < 1) return <p>Loading....</p>
+useEffect(() => {
+  getProjects()
+},[getProjects])
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createNewProject ? (
@@ -45,7 +35,7 @@ const Projects = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <ProjectTable
                   columns={Projectscolumns}
-                  data={projectArray ?? []}
+                  data={projects ?? []}
                   setCreateNewProject={setCreateNewProject}
                 />
               </div>

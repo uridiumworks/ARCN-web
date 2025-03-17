@@ -1,5 +1,6 @@
 "use client";
 
+import { DataTablePagination } from "@/components/Shared/data-table-pagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,6 +15,11 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
@@ -34,11 +40,16 @@ const EntreprenuershipTable = <TData, TValue>({
   data,
   setCreateEntreprenuership,
 }: DataTableProps<TData, TValue>) => {
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
+   const table = useReactTable({
+     data,
+     columns,
+     getCoreRowModel: getCoreRowModel(),
+     getFilteredRowModel: getFilteredRowModel(),
+     getPaginationRowModel: getPaginationRowModel(),
+     getSortedRowModel: getSortedRowModel(),
+     getFacetedRowModel: getFacetedRowModel(),
+     getFacetedUniqueValues: getFacetedUniqueValues(),
+   });
   return (
     <>
       <div className="w-full h-auto p-2 md:p-5 flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
@@ -46,14 +57,14 @@ const EntreprenuershipTable = <TData, TValue>({
           <div className="relative">
             <Input
               type="text"
-              placeholder="Search with name..."
+              placeholder="Search by subject name..."
               className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
               style={{ outline: "none" }}
               value={
-                (table.getColumn("title")?.getFilterValue() as string) ?? ""
+                (table.getColumn("subject")?.getFilterValue() as string) ?? ""
               }
               onChange={(event) =>
-                table.getColumn("title")?.setFilterValue(event.target.value)
+                table.getColumn("subject")?.setFilterValue(event.target.value)
               }
             />
             <IoSearchOutline
@@ -142,6 +153,7 @@ const EntreprenuershipTable = <TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <DataTablePagination table={table} />
     </>
   );
 };

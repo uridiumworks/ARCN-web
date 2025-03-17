@@ -34,33 +34,69 @@ import {
 } from "@/hooks/Entrepreneurships.hooks";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 import Loader from "@/components/Shared/Loader";
+import { useTrainingEntrepenshipContext } from "@/contexts/TrainingEnterpenship.context";
+
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
 
 type Props = {
   params: { entrepreneurshipId: any };
 };
 
-const formSchema = z.object({
-  subject: z
-    .string()
-    .min(3, { message: "subject must be at least 3 characters." }),
-  description: z
-    .string()
-    .min(6, { message: "description must be at least 6 characters." }),
-  venue: z.string().min(3, { message: "Venue must be at least 3 characters." }),
-  bannerUrl: z.any(),
-  authorName: z
-    .string()
-    .min(3, { message: "Author's name must be at least 3 characters." }),
-  eventStartDate: z
-    .string()
-    .min(3, { message: "Event start Date must be provided" }),
-  eventEndDate: z
-    .string()
-    .min(3, { message: "Event end Date must be provided" }),
-  durationPerDay: z
-    .string()
-    .min(3, { message: "Duration Per Day must be provided" }),
-});
+// Create a schema factory function that takes the existing event data
+const createFormSchema = (existingEvent: any) => {
+  // Determine if we need to validate the banner URL
+  // Only validate if the existing event has no banner URL
+  const needsBannerValidation =
+    !existingEvent?.bannerUrl || existingEvent.bannerUrl === "";
+
+  return z.object({
+    subject: z
+      .string()
+      .min(3, { message: "subject must be at least 3 characters." }),
+    description: z
+      .string()
+      .min(6, { message: "description must be at least 6 characters." }),
+    venue: z
+      .string()
+      .min(3, { message: "Venue must be at least 3 characters." }),
+    // Conditionally validate the banner URL
+    bannerUrl: needsBannerValidation
+      ? z.string().min(1, { message: "Please upload a banner image" })
+      : z.string(),
+    authorName: z
+      .string()
+      .min(3, { message: "Author's name must be at least 3 characters." }),
+    eventStartDate: z
+      .string()
+      .min(3, { message: "Event start Date must be provided" }),
+    eventEndDate: z
+      .string()
+      .min(3, { message: "Event end Date must be provided" }),
+    durationPerDay: z
+      .string()
+      .min(3, { message: "Duration Per Day must be provided" }),
+  }).refine(
+    (data) => {
+      // Only validate if both dates are provided
+      if (!data.eventStartDate || !data.eventEndDate) return true;
+
+      const startDate = new Date(data.eventStartDate);
+      const endDate = new Date(data.eventEndDate);
+
+      return endDate >= startDate;
+    },
+    {
+      message: "End date cannot be earlier than start date",
+      path: ["eventEndDate"], // This will show the error on the end date field
+    }
+  );
+};
 
 const UpdateEntrepreneurship = ({ params }: Props) => {
   const router = useRouter();
@@ -68,12 +104,13 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
   const [token, setToken] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const {
-    updateEntrepreneurship,
-    success,
-    loading: updateLoading,
-    error: updateError,
-  } = useUpdateEntrepreneurship(token);
+   const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+      createFormSchema(null)
+    );
+      // Store the original dates for validation and min attributes
+      const [originalStartDate, setOriginalStartDate] = useState<string>("");
+      const [originalEndDate, setOriginalEndDate] = useState<string>("");
+const {isUpdating,updateTrainingEntrepenship} = useTrainingEntrepenshipContext()
   const {
     uploadImage,
     data: ImageUrl,
@@ -97,6 +134,7 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
       eventEndDate: "",
       durationPerDay: "",
     },
+    mode: "onChange",
   });
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -121,25 +159,74 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
     setToken(userToken);
   }, []);
 
+    // Update the form schema and original dates when the event data is loaded
+    useEffect(() => {
+      if (entrepreneurship) {
+        setFormSchema(createFormSchema(entrepreneurship));
+  
+        // Store the original dates for validation
+        if (entrepreneurship.eventStartDate) {
+          // Extract just the date part (YYYY-MM-DD) from the ISO string
+          const startDate = entrepreneurship.eventStartDate.split("T")[0];
+          setOriginalStartDate(startDate);
+        }
+  
+        if (entrepreneurship.eventEndDate) {
+          // Extract just the date part (YYYY-MM-DD) from the ISO string
+          const endDate = entrepreneurship.eventEndDate.split("T")[0];
+          setOriginalEndDate(endDate);
+        }
+      }
+    }, [entrepreneurship]);
+
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl")
     }
   }, [ImageUrl, form]);
 
   useEffect(() => {
     if (entrepreneurship) {
-      form.reset(entrepreneurship);
+      form.reset({
+        ...entrepreneurship,
+        eventStartDate: entrepreneurship?.eventStartDate?.split("T")[0],
+        eventEndDate: entrepreneurship?.eventEndDate?.split("T")[0],
+      });
     }
   }, [entrepreneurship, form]);
 
+   // Helper function to check if a date is in the past
+    const isDateInPast = (dateString: string): boolean => {
+      const date = new Date(dateString);
+      const currentDate = new Date();
+      // Reset time to compare dates only
+      currentDate.setHours(0, 0, 0, 0);
+      return date < currentDate;
+    };
+  
+    // Helper function to check if a date is valid (not in the past or is the original date)
+    const isValidDate = (dateString: string, originalDate: string): boolean => {
+      // If it's the original date, it's always valid
+      if (dateString === originalDate) return true;
+  
+      // Otherwise, it should not be in the past
+      return !isDateInPast(dateString);
+    };
+  
+    // Simplified validation for start date
+    useEffect(() => {
+      // Remove all manual validations on form change
+      form.clearErrors();
+    }, [form.formState.isDirty]);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateEntrepreneurship(params?.entrepreneurshipId, values);
+    await updateTrainingEntrepenship(params?.entrepreneurshipId, values);
   }
   return (
     <>
-    <Loader loading={loading} />
+      <Loader loading={loading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           <div>
@@ -251,6 +338,18 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
                                     color="#FF3236"
                                     onClick={() => {
                                       form.setValue("bannerUrl", "");
+                                       // If the original event had no banner, this will trigger validation
+                                       if (
+                                        !entrepreneurship?.bannerUrl ||
+                                        entrepreneurship.bannerUrl === ""
+                                      ) {
+                                        form.setError("bannerUrl", {
+                                          type: "manual",
+                                          message:
+                                            "Please upload a banner image",
+                                        });
+                                      }
+                                  
                                     }}
                                   />
                                 </div>
@@ -318,6 +417,21 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="DD/MM/YYYY"
                                 className="bg-inherit outline-none"
+                                min={
+                                  entrepreneurship?.eventStartDate
+                                    ? formatDateForInput(
+                                        new Date(
+                                          new Date(
+                                            entrepreneurship.eventStartDate
+                                          ).setDate(
+                                            new Date(
+                                              entrepreneurship.eventStartDate
+                                            ).getDate() + 1
+                                          )
+                                        )
+                                      )
+                                    : today
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -337,6 +451,21 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="DD/MM/YYYY"
                                 className="bg-inherit outline-none"
+                                min={
+                                  entrepreneurship?.eventStartDate
+                                    ? formatDateForInput(
+                                        new Date(
+                                          new Date(
+                                            entrepreneurship.eventStartDate
+                                          ).setDate(
+                                            new Date(
+                                              entrepreneurship.eventStartDate
+                                            ).getDate() + 1
+                                          )
+                                        )
+                                      )
+                                    : today
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -377,10 +506,10 @@ const UpdateEntrepreneurship = ({ params }: Props) => {
                       />
                       <Button
                         type="submit"
-                        disabled={updateLoading}
+                        disabled={isUpdating || imageLoading}
                         className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                       >
-                        {updateLoading ? (
+                        {isUpdating ? (
                           <ButtonSpinner />
                         ) : (
                           <span className="text-[14px] font-noraml">

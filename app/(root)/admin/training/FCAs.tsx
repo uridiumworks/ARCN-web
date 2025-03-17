@@ -6,29 +6,19 @@ import { FCAscolumns } from "./_components/table/columns";
 import FCAsForm from "./_components/forms/FCAsForm";
 import { useFCAsData } from "@/hooks/FCAs.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useTrainingFcaContext } from "@/contexts/TrainingFcas.context";
 
 const FCAs = () => {
   const [createFCAs, setCreateFCAs] = useState<boolean>(false);
-  const [token, setToken] = useState<string | null>(null);
-  const [fcasArray, setFcasArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, fcas, error } = useFCAsData(token, triggerRefetch);
+ const {isLoading,getTrainingFca,trainingFca} = useTrainingFcaContext();
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
-
-  useEffect(() => {
-    if (fcas?.length > 0) {
-      setFcasArray(fcas);
-    }
-  }, [fcas]);
-  // if (loading && fcas?.length < 1) return <p>Loading....</p>;
+ useEffect(() => {
+  getTrainingFca()
+ },[getTrainingFca])
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
           {createFCAs ? (
@@ -49,7 +39,7 @@ const FCAs = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <FCAsTable
                   columns={FCAscolumns}
-                  data={fcasArray ?? []}
+                  data={trainingFca ?? []}
                   setCreateFCAs={setCreateFCAs}
                 />
               </div>

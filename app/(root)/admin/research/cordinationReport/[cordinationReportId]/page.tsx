@@ -215,7 +215,7 @@ const [isMounted, setIsMounted] = useState<boolean>(false);
                                 name="description"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Blog Post Editor</FormLabel>
+                                        <FormLabel>Cordination Report Post Editor</FormLabel>
                                         <FormControl>
                                             <>
                                             {isMounted && <ReactQuill

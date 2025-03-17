@@ -6,33 +6,21 @@ import EntreprenuershipTable from "./_components/table/EntreprenuershipTable";
 import EntreprenuershipForm from "./_components/forms/EntreprenuershipForm";
 import { useEntrepreneurshipsData } from "@/hooks/Entrepreneurships.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useTrainingEntrepenshipContext } from "@/contexts/TrainingEnterpenship.context";
 
 const Entreprenuership = () => {
   const [createEntreprenuership, setCreateEntreprenuership] =
     useState<boolean>(false);
-  const [token, setToken] = useState<string | null>(null);
-  const [entrepreneurshipArray, setEntrepreneurshipArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, entrepreneurships, error } = useEntrepreneurshipsData(
-    token,
-    triggerRefetch
-  );
+ const {isLoading,trainingEntrepenship,getTrainingEntrepenship} = useTrainingEntrepenshipContext()
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
 
-  useEffect(() => {
-    if (entrepreneurships?.length > 0) {
-      setEntrepreneurshipArray(entrepreneurships);
-    }
-  }, [entrepreneurships]);
-  // if (loading && entrepreneurships?.length < 1) return <p>Loading....</p>
+ useEffect(() => {
+  getTrainingEntrepenship()
+ },[getTrainingEntrepenship])
 
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
 
       <div className="w-full min-h-screen bg-[#f9fafb] p-10">
         <div className="w-full min-h-[70vh]">
@@ -53,7 +41,7 @@ const Entreprenuership = () => {
               <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
                 <EntreprenuershipTable
                   columns={Entreprenuershipcolumns}
-                  data={entrepreneurshipArray ?? []}
+                  data={trainingEntrepenship ?? []}
                   setCreateEntreprenuership={setCreateEntreprenuership}
                 />
               </div>

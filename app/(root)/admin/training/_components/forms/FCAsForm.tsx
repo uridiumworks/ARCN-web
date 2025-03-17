@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { cn } from "@/lib/utils";
@@ -30,6 +30,12 @@ import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useCreateFCA, useFCAsData } from "@/hooks/FCAs.hooks";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
 
+
+import dynamic from "next/dynamic";
+import { useTrainingFcaContext } from "@/contexts/TrainingFcas.context";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 interface Props {
   setCreateFCAs: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -58,7 +64,7 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Date Established must be provided." }),
   joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
-  logoUrl: z.any(),
+  logoUrl: z.string().min(1, { message: "Please upload a Logo image" }),
   description: z.any(),
 });
 
@@ -67,30 +73,25 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [imageName, setImageName] = useState<string>("");
-  const {
-    createFCA,
-    data,
-    loading: createLoading,
-    error: createError,
-  } = useCreateFCA(token);
+  const {isCreating, createTrainingFca} = useTrainingFcaContext()
+    const [isMounted, setIsMounted] = useState<boolean>(false);
   const {
     uploadImage,
     data: ImageUrl,
     loading: imageLoading,
     error: imageError,
   } = useUploadImage(token);
-  const { loading, fcas, error } = useFCAsData(token, triggerRefetch);
+
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
     setToken(userToken);
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
+    useEffect(() => {
+        setIsMounted(true);
+      }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -128,12 +129,19 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("logoUrl", ImageUrl);
+      form.clearErrors("logoUrl");
     }
   }, [ImageUrl, form]);
 
+
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await createFCA(values);
+    try {
+      await createTrainingFca(values)
+      setCreateFCAs(false)
+    } catch (error) {
+      
+    }
   }
   return (
     <div>
@@ -163,7 +171,7 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                         {...field}
                         type="text"
                         autoComplete="new-password"
-                        placeholder="Enter Title"
+                        placeholder="Enter Institute Name"
                         className="bg-white outline-none"
                       />
                     </FormControl>
@@ -183,8 +191,17 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           {...field}
                           type="text"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter a valid Phone Number"
                           className="bg-white outline-none"
+                          maxLength={11} // Max length set to 11
+                          pattern="\d*" // Only allows numeric values
+                          onInput={(e) => {
+                            e.currentTarget.value = e.currentTarget.value.replace(
+                              /\D/g,
+                              ""
+                            ); // Prevent non-numeric input
+                            field.onChange(e); // Update the field value
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
@@ -202,7 +219,7 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           {...field}
                           type="email"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter Email"
                           className="bg-white outline-none"
                         />
                       </FormControl>
@@ -242,7 +259,7 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           {...field}
                           type="text"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter Address"
                           className="bg-white outline-none"
                         />
                       </FormControl>
@@ -263,7 +280,7 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           {...field}
                           type="number"
                           autoComplete="new-password"
-                          placeholder="Enter website url"
+                          placeholder="Enter State"
                           className="bg-white outline-none"
                           required
                         />
@@ -283,7 +300,7 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           {...field}
                           type="number"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter Local Goverment Area"
                           className="bg-white outline-none"
                           required
                         />
@@ -399,44 +416,46 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                   </FormItem>
                 )}
               />
+
+              <div className="mb-10">
               <FormField
                 control={form.control}
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Blog Post Editor</FormLabel>
+                    <FormLabel>Training Fca Post Editor</FormLabel>
                     <FormControl>
                       <>
-                        {/* {isMounted && <ReactQuill
-                                                    // ref={reactQuillRef}
-                                                    theme="snow"
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                    modules={{
-                                                        toolbar: {
-                                                            container: [
-                                                                [{ header: [1, 2, 3, 4, false] }],
-                                                                ['bold', 'italic', 'underline'],
-                                                                [{ align: [] }],
-                                                                ['image', 'clean'], // Add image button
-                                                            ],
-                                                            // handlers: {
-                                                            //     image: imageHandler, // Set custom image handler
-                                                            // },
-                                                        },
-                                                    }} />} */}
+                      {isMounted && (
+                          <ReactQuill
+                            theme="snow"
+                            value={field.value}
+                            onChange={field.onChange}
+                            className="h-64"
+                            modules={{
+                              toolbar: [
+                                [{ header: [1, 2, 3, 4, false] }],
+                                ["bold", "italic", "underline"],
+                                [{ align: [] }],
+                                ["image", "clean"],
+                              ],
+                            }}
+                          />
+                        )}
                       </>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              </div>
+
               <Button
                 type="submit"
-                disabled={createLoading}
+                disabled={isCreating || imageLoading}
                 className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
               >
-                {createLoading ? (
+                {isCreating ? (
                     <ButtonSpinner />
                   ) : (
                     <span className="text-[14px] font-noraml">Submit</span>

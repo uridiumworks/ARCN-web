@@ -15,7 +15,6 @@ const SettingsPage = () => {
   const [tab, setTab] = useState(1);
   const settingsPageViewTab: Array<settingsPageViewTabType> = [
     { tab: 1, name: "Reset Password" },
-    { tab: 2, name: "Preferences" },
   ];
 
   const toggleTab =
