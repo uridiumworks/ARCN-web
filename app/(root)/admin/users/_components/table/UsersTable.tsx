@@ -66,7 +66,7 @@ const UsersTable = <TData, TValue>({
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Search with name..."
+                placeholder="Search by fullname..."
                 className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
                 style={{ outline: "none" }}
                 value={

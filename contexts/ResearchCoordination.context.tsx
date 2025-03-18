@@ -162,7 +162,7 @@ export const ResearchCordinationProvider: React.FC<{
         description:
           response?.message || "Cordination Report updated successfully.",
       });
-      push("/admin/research");
+      push("/admin/research?tab=cordination");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

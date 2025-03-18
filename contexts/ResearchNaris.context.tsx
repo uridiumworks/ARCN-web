@@ -157,7 +157,7 @@ export const ResearchNarisProvider: React.FC<{ children: ReactNode }> = ({
       toast({
         description: response?.message || "Naris updated successfully.",
       });
-      push("/admin/research");
+      push("/admin/research?tab=naris");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

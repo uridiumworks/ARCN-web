@@ -1,9 +1,10 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import React, { MouseEventHandler, ReactNode, useState } from 'react'
+import React, { MouseEventHandler, ReactNode, useEffect, useState } from 'react'
 import NarisView from './NarisView';
 import CordinationReportView from './CordinatIonReportView';
+import { useSearchParams } from 'next/navigation';
 
 
 
@@ -18,6 +19,18 @@ const ResearchPageView = () => {
         { tab: 1, name: "NARIS" },
         { tab: 2, name: "CORDINATION REPORT" },
     ];
+
+    const queryParams = useSearchParams();
+
+    useEffect(() => {
+      if(queryParams && queryParams.get('tab')?.toLowerCase() === 'cordination'){
+        setTab(2)
+      }else {
+        setTab(1)
+      }
+  
+      return () => {}
+    },[queryParams])
 
 
     const toggleTab =

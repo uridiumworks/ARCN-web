@@ -1,107 +1,81 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { FiUploadCloud } from "react-icons/fi";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
-import { FaFilePdf } from "react-icons/fa6";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { useUploadImage } from "@/hooks/BannerUpload.hooks";
-import {
-  useCreateNaris,
-  useNarisData,
-  useNarissData,
-  useUpdateNaris,
-} from "@/hooks/Naris.hooks";
-import { useRouter } from "next/navigation";
-import ButtonSpinner from "@/components/Shared/ButtonSpinner";
-import Loader from "@/components/Shared/Loader";
-import { useResearchNaris } from "@/contexts/ResearchNaris.context";
+"use client"
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import type React from "react"
+import { useEffect, useRef, useState } from "react"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { FiUploadCloud } from "react-icons/fi"
+import { FaFilePdf } from "react-icons/fa6"
+import { FaRegTrashAlt } from "react-icons/fa"
+import { useUploadImage } from "@/hooks/BannerUpload.hooks"
+import { useNarisData } from "@/hooks/Naris.hooks"
+import { useRouter } from "next/navigation"
+import ButtonSpinner from "@/components/Shared/ButtonSpinner"
+import Loader from "@/components/Shared/Loader"
+import { useResearchNaris } from "@/contexts/ResearchNaris.context"
 
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic"
 
 // Dynamically import ReactQuill to prevent SSR issues
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false })
 
 type Props = {
-  params: { narisId: any };
-};
+  params: { narisId: any }
+}
 
 const createFormSchema = (existing: any) => {
-  const needsBannerValidation = !existing?.logoUrl || existing.logoUrl === "";
-  return z.object({
-    institutionName: z
-      .string()
-      .min(3, { message: "subject must be at least 3 characters." }),
-    phoneNumber: z
-      .string()
-      .min(11, { message: "Phone Number must be at least 11 characters." }),
-    email: z
-      .string()
-      .min(3, { message: "Email must be at least 3 characters." })
-      .email({ message: "Invalid email format." }),
-    website: z
-      .string()
-      .min(3, { message: "Website must be at least 3 characters." })
-      .url({ message: "Invalid website URL." }),
-    address: z
-      .string()
-      .min(3, { message: "Address must be at least 3 characters." }),
-    stateId: z.any(),
-    localGovernmentAreaId: z.any(),
-    establishDate: z
-      .string()
-      .min(3, { message: "Date Established must be provided." }),
-    joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
-    logoUrl: needsBannerValidation
-      ? z.string().min(1, { message: "Please upload a logo image" })
-      : z.string(),
-    description: z.any(),
-  });
-};
+  const needsBannerValidation = !existing?.logoUrl || existing.logoUrl === ""
+  return z
+    .object({
+      institutionName: z.string().min(3, { message: "subject must be at least 3 characters." }),
+      phoneNumber: z.string().min(11, { message: "Phone Number must be at least 11 characters." }),
+      email: z
+        .string()
+        .min(3, { message: "Email must be at least 3 characters." })
+        .email({ message: "Invalid email format." }),
+      website: z
+        .string()
+        .min(3, { message: "Website must be at least 3 characters." })
+        .url({ message: "Invalid website URL." }),
+      address: z.string().min(3, { message: "Address must be at least 3 characters." }),
+      stateId: z.any(),
+      localGovernmentAreaId: z.any(),
+      establishDate: z.string().min(3, { message: "Date Established must be provided." }),
+      joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
+      logoUrl: needsBannerValidation ? z.string().min(1, { message: "Please upload a logo image" }) : z.string(),
+      description: z.any(),
+    })
+    .refine(
+      (data) => {
+        // Only perform validation if both dates are provided
+        if (data.establishDate && data.joinDate) {
+          const establishDate = new Date(data.establishDate)
+          const joinDate = new Date(data.joinDate)
+          return joinDate >= establishDate
+        }
+        return true // Skip validation if either date is missing
+      },
+      {
+        message: "Join date cannot be earlier than establishment date",
+        path: ["joinDate"], // This will show the error under the joinDate field
+      },
+    )
+}
 
 const UpdateNaris = ({ params }: Props) => {
-  const router = useRouter();
-  const docImgRef = useRef<HTMLInputElement | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [imageName, setImageName] = useState<string>("");
-  const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
-    createFormSchema(null)
-  );
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { updateNaris, isUpdating } = useResearchNaris();
-  const {
-    uploadImage,
-    data: ImageUrl,
-    loading: imageLoading,
-    error: imageError,
-  } = useUploadImage(token);
-  const { loading, naris, error } = useNarisData(
-    token,
-    params?.narisId,
-    triggerRefetch
-  );
+  const router = useRouter()
+  const docImgRef = useRef<HTMLInputElement | null>(null)
+  const [token, setToken] = useState<string | null>(null)
+  const [imageName, setImageName] = useState<string>("")
+  const [isMounted, setIsMounted] = useState<boolean>(false)
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(createFormSchema(null))
+  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+  const { updateNaris, isUpdating } = useResearchNaris()
+  const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
+  const { loading, naris, error } = useNarisData(token, params?.narisId, triggerRefetch)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -118,37 +92,35 @@ const UpdateNaris = ({ params }: Props) => {
       logoUrl: "",
       description: "",
     },
-  });
+  })
 
-  const handleFileChangeDocHandler = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file: any = event.target.files?.["0"];
-    console.log(event.target.files?.["0"], "selectedFile");
+  const handleFileChangeDocHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file: any = event.target.files?.["0"]
+    console.log(event.target.files?.["0"], "selectedFile")
     new Promise<void>((resolve, reject) => {
-      const blober = URL.createObjectURL(file);
+      const blober = URL.createObjectURL(file)
       setTimeout(() => {
         // setSelectedDocFile(blober);
         // form.setValue("identificationImageUrl", blober);
         // console.log(setSelectedDocFile, "select");
-      }, 1000);
-      resolve();
-    });
-    setImageName(file?.name);
-    uploadImage(file, "docs");
-  };
+      }, 1000)
+      resolve()
+    })
+    setImageName(file?.name)
+    uploadImage(file, "docs")
+  }
 
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
+    const userToken = localStorage.getItem("userToken")
+    setToken(userToken)
+  }, [])
 
   useEffect(() => {
     if (ImageUrl) {
-      form.setValue("logoUrl", ImageUrl);
-      form.clearErrors("logoUrl");
+      form.setValue("logoUrl", ImageUrl)
+      form.clearErrors("logoUrl")
     }
-  }, [ImageUrl, form]);
+  }, [ImageUrl, form])
 
   useEffect(() => {
     if (naris) {
@@ -156,19 +128,19 @@ const UpdateNaris = ({ params }: Props) => {
         ...naris,
         establishDate: naris?.establishDate?.split("T")[0],
         joinDate: naris?.joinDate?.split("T")[0],
-      });
+      })
     }
-  }, [form, naris]);
+  }, [form, naris])
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await updateNaris(params?.narisId, values);
+    console.log(values)
+    await updateNaris(params?.narisId, values)
   }
-  
+
   return (
     <>
       <Loader loading={loading} />
@@ -184,10 +156,7 @@ const UpdateNaris = ({ params }: Props) => {
               </Button>
             </div>
             <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                autoComplete="current-password"
-              >
+              <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
                 <div className="w-full flex justify-start gap-5 mt-5">
                   <div className="w-[70%] grid grid-cols-1 gap-6">
                     <FormField
@@ -226,9 +195,8 @@ const UpdateNaris = ({ params }: Props) => {
                                 maxLength={11} // Max length set to 11
                                 pattern="\d*" // Only allows numeric values
                                 onInput={(e) => {
-                                  e.currentTarget.value =
-                                    e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
-                                  field.onChange(e); // Update the field value
+                                  e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "") // Prevent non-numeric input
+                                  field.onChange(e) // Update the field value
                                 }}
                               />
                             </FormControl>
@@ -389,16 +357,14 @@ const UpdateNaris = ({ params }: Props) => {
                                   type="file"
                                   accept="image/*"
                                   name="bannerImage"
-                                  onChange={(event) =>
-                                    handleFileChangeDocHandler(event)
-                                  }
+                                  onChange={(event) => handleFileChangeDocHandler(event)}
                                   ref={docImgRef}
                                 />
                               </div>
                               <div
                                 onClick={() => {
-                                  if (imageLoading) return;
-                                  docImgRef.current?.click();
+                                  if (imageLoading) return
+                                  docImgRef.current?.click()
                                 }}
                                 className="w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]"
                               >
@@ -431,19 +397,15 @@ const UpdateNaris = ({ params }: Props) => {
                                     style={{ cursor: "pointer" }}
                                     color="#FF3236"
                                     onClick={() => {
-                                      form.setValue("logoUrl", "");
-                                    
-                                     // If the original event had no banner, this will trigger validation
-                                     if (
-                                      !naris?.logoUrl ||
-                                      naris.logoUrl === ""
-                                    ) {
-                                      form.setError("logoUrl", {
-                                        type: "manual",
-                                        message:
-                                          "Please upload a logo image",
-                                      });
-                                    }
+                                      form.setValue("logoUrl", "")
+
+                                      // If the original event had no banner, this will trigger validation
+                                      if (!naris?.logoUrl || naris.logoUrl === "") {
+                                        form.setError("logoUrl", {
+                                          type: "manual",
+                                          message: "Please upload a logo image",
+                                        })
+                                      }
                                     }}
                                   />
                                 </div>
@@ -455,50 +417,49 @@ const UpdateNaris = ({ params }: Props) => {
                       )}
                     />
                     <div className="mb-14">
-                    <FormField
-                      control={form.control}
-                      name="description"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Naris Post Editor</FormLabel>
-                          <FormControl>
-                            <>
-                              {isMounted && <ReactQuill
-                                                    // ref={reactQuillRef}
-                                                    theme="snow"
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                    className="h-64"
-                                                    modules={{
-                                                        toolbar: {
-                                                            container: [
-                                                                [{ header: [1, 2, 3, 4, false] }],
-                                                                ['bold', 'italic', 'underline'],
-                                                                [{ align: [] }],
-                                                                ['image', 'clean'], // Add image button
-                                                            ],
-                                                            // handlers: {
-                                                            //     image: imageHandler, // Set custom image handler
-                                                            // },
-                                                        },
-                                                    }} />}
-                            </>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                      <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Naris Post Editor</FormLabel>
+                            <FormControl>
+                              <>
+                                {isMounted && (
+                                  <ReactQuill
+                                    // ref={reactQuillRef}
+                                    theme="snow"
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    className="h-64"
+                                    modules={{
+                                      toolbar: {
+                                        container: [
+                                          [{ header: [1, 2, 3, 4, false] }],
+                                          ["bold", "italic", "underline"],
+                                          [{ align: [] }],
+                                          ["image", "clean"], // Add image button
+                                        ],
+                                        // handlers: {
+                                        //     image: imageHandler, // Set custom image handler
+                                        // },
+                                      },
+                                    }}
+                                  />
+                                )}
+                              </>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
                     <Button
                       type="submit"
                       disabled={isUpdating || imageLoading}
                       className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                     >
-                      {isUpdating ? (
-                        <ButtonSpinner />
-                      ) : (
-                        <span className="text-[14px] font-noraml">Publish</span>
-                      )}
+                      {isUpdating ? <ButtonSpinner /> : <span className="text-[14px] font-noraml">Publish</span>}
                     </Button>
                   </div>
                 </div>
@@ -508,7 +469,8 @@ const UpdateNaris = ({ params }: Props) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default UpdateNaris;
+export default UpdateNaris
+

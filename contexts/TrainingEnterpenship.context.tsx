@@ -161,7 +161,7 @@ export const TrainingEntrepenshipProvider: React.FC<{
         description:
           response?.message || "Entrepreneurship updated successfully.",
       });
-      push("/admin/training");
+      push("/admin/training?tab=entrepreneurship");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

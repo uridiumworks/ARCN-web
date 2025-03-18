@@ -102,7 +102,7 @@ const UserForm = ({ setDialog }: Props) => {
                           {...field}
                           type="text"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter First Name"
                           className="bg-white outline-none"
                         />
                       </FormControl>
@@ -121,7 +121,7 @@ const UserForm = ({ setDialog }: Props) => {
                           {...field}
                           type="text"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter Last Name"
                           className="bg-white outline-none"
                         />
                       </FormControl>
@@ -140,7 +140,7 @@ const UserForm = ({ setDialog }: Props) => {
                           {...field}
                           type="email"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter Email"
                           className="bg-white outline-none"
                         />
                       </FormControl>
@@ -159,7 +159,7 @@ const UserForm = ({ setDialog }: Props) => {
                           {...field}
                           type="text"
                           autoComplete="new-password"
-                          placeholder="Enter Title"
+                          placeholder="Enter Phone Number"
                           className="bg-white outline-none"
                           maxLength={11} // Max length set to 11
                           pattern="\d*" // Only allows numeric values

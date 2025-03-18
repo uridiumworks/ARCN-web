@@ -166,7 +166,7 @@ export const TrainingSupervsionReportProvider: React.FC<{
         description:
           response?.message || "Supervision report updated successfully.",
       });
-      push("/admin/training");
+      push("/admin/training?tab=supervision");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

@@ -153,7 +153,7 @@ export const TrainingFcaProvider: React.FC<{ children: ReactNode }> = ({
         toast({
           description: response?.message || "FCA updated successfully."
         });
-        push("/admin/training");
+        push("/admin/training?tab=fca");
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
           const errorResponse = err.response.data;

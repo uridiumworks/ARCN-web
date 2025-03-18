@@ -1,96 +1,80 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import React, { use, useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { FiUploadCloud } from "react-icons/fi";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
-import { FaFilePdf } from "react-icons/fa6";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { useUploadImage } from "@/hooks/BannerUpload.hooks";
-import { useCreateFCA, useFCAsData } from "@/hooks/FCAs.hooks";
-import ButtonSpinner from "@/components/Shared/ButtonSpinner";
+"use client"
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import type React from "react"
+import { useEffect, useRef, useState } from "react"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { FiUploadCloud } from "react-icons/fi"
+import { FaFilePdf } from "react-icons/fa6"
+import { FaRegTrashAlt } from "react-icons/fa"
+import { useUploadImage } from "@/hooks/BannerUpload.hooks"
+import ButtonSpinner from "@/components/Shared/ButtonSpinner"
 
-
-import dynamic from "next/dynamic";
-import { useTrainingFcaContext } from "@/contexts/TrainingFcas.context";
+import dynamic from "next/dynamic"
+import { useTrainingFcaContext } from "@/contexts/TrainingFcas.context"
 
 // Dynamically import ReactQuill to prevent SSR issues
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false })
 interface Props {
-  setCreateFCAs: React.Dispatch<React.SetStateAction<boolean>>;
+  setCreateFCAs: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const formSchema = z.object({
-  institutionName: z
-    .string()
-    .min(3, { message: "college Name must be at least 3 characters." }),
-  phoneNumber: z
-    .string()
-    .min(11, { message: "Phone Number must be at least 11 characters." }),
-  email: z
-    .string()
-    .min(3, { message: "Email must be at least 3 characters." })
-    .email({ message: "Invalid email format." }),
-  website: z
-    .string()
-    .min(3, { message: "Website must be at least 3 characters." })
-    .url({ message: "Invalid website URL." }),
-  address: z
-    .string()
-    .min(3, { message: "Address must be at least 3 characters." }),
-  stateId: z.any(),
-  localGovernmentAreaId: z.any(),
-  establishDate: z
-    .string()
-    .min(3, { message: "Date Established must be provided." }),
-  joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
-  logoUrl: z.string().min(1, { message: "Please upload a Logo image" }),
-  description: z.any(),
-});
+const formSchema = z
+  .object({
+    institutionName: z.string().min(3, { message: "college Name must be at least 3 characters." }),
+    phoneNumber: z.string().min(11, { message: "Phone Number must be at least 11 characters." }),
+    email: z
+      .string()
+      .min(3, { message: "Email must be at least 3 characters." })
+      .email({ message: "Invalid email format." }),
+    website: z
+      .string()
+      .min(3, { message: "Website must be at least 3 characters." })
+      .url({ message: "Invalid website URL." }),
+    address: z.string().min(3, { message: "Address must be at least 3 characters." }),
+    stateId: z.any(),
+    localGovernmentAreaId: z.any(),
+    establishDate: z.string().min(3, { message: "Date Established must be provided." }),
+    joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
+    logoUrl: z.string().min(1, { message: "Please upload a Logo image" }),
+    description: z.any(),
+  })
+  .refine(
+    (data) => {
+      // Only perform validation if both dates are provided
+      if (data.establishDate && data.joinDate) {
+        const establishDate = new Date(data.establishDate)
+        const joinDate = new Date(data.joinDate)
+        return joinDate >= establishDate
+      }
+      return true // Skip validation if either date is missing
+    },
+    {
+      message: "Join date cannot be earlier than establishment date",
+      path: ["joinDate"], // This will show the error under the joinDate field
+    },
+  )
 
 const FCAsForm = ({ setCreateFCAs }: Props) => {
-  const docImgRef = useRef<HTMLInputElement | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const [imageName, setImageName] = useState<string>("");
-  const {isCreating, createTrainingFca} = useTrainingFcaContext()
-    const [isMounted, setIsMounted] = useState<boolean>(false);
-  const {
-    uploadImage,
-    data: ImageUrl,
-    loading: imageLoading,
-    error: imageError,
-  } = useUploadImage(token);
-
+  const docImgRef = useRef<HTMLInputElement | null>(null)
+  const [token, setToken] = useState<string | null>(null)
+  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+  const [imageName, setImageName] = useState<string>("")
+  const { isCreating, createTrainingFca } = useTrainingFcaContext()
+  const [isMounted, setIsMounted] = useState<boolean>(false)
+  const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
 
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
+    const userToken = localStorage.getItem("userToken")
+    setToken(userToken)
+  }, [])
 
-    useEffect(() => {
-        setIsMounted(true);
-      }, []);
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -107,41 +91,35 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
       logoUrl: "",
       description: "",
     },
-  });
-  const handleFileChangeDocHandler = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file: any = event.target.files?.["0"];
-    console.log(event.target.files?.["0"], "selectedFile");
+  })
+  const handleFileChangeDocHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file: any = event.target.files?.["0"]
+    console.log(event.target.files?.["0"], "selectedFile")
     new Promise<void>((resolve, reject) => {
-      const blober = URL.createObjectURL(file);
+      const blober = URL.createObjectURL(file)
       setTimeout(() => {
         // setSelectedDocFile(blober);
         // form.setValue("identificationImageUrl", blober);
         // console.log(setSelectedDocFile, "select");
-      }, 1000);
-      resolve();
-    });
-    setImageName(file?.name);
-    uploadImage(file, "docs");
-  };
+      }, 1000)
+      resolve()
+    })
+    setImageName(file?.name)
+    uploadImage(file, "docs")
+  }
 
   useEffect(() => {
     if (ImageUrl) {
-      form.setValue("logoUrl", ImageUrl);
-      form.clearErrors("logoUrl");
+      form.setValue("logoUrl", ImageUrl)
+      form.clearErrors("logoUrl")
     }
-  }, [ImageUrl, form]);
-
-
+  }, [ImageUrl, form])
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await createTrainingFca(values)
       setCreateFCAs(false)
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
   return (
     <div>
@@ -154,11 +132,8 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
         </Button>
       </div>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          autoComplete="current-password"
-        >
-            <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+        <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="current-password">
+          <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
@@ -196,11 +171,8 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           maxLength={11} // Max length set to 11
                           pattern="\d*" // Only allows numeric values
                           onInput={(e) => {
-                            e.currentTarget.value = e.currentTarget.value.replace(
-                              /\D/g,
-                              ""
-                            ); // Prevent non-numeric input
-                            field.onChange(e); // Update the field value
+                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "") // Prevent non-numeric input
+                            field.onChange(e) // Update the field value
                           }}
                         />
                       </FormControl>
@@ -363,16 +335,14 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                             type="file"
                             accept="image/*"
                             name="bannerImage"
-                            onChange={(event) =>
-                              handleFileChangeDocHandler(event)
-                            }
+                            onChange={(event) => handleFileChangeDocHandler(event)}
                             ref={docImgRef}
                           />
                         </div>
                         <div
                           onClick={() => {
-                            if (imageLoading) return;
-                            docImgRef.current?.click();
+                            if (imageLoading) return
+                            docImgRef.current?.click()
                           }}
                           className="w-full h-[78px] flex justify-center items-center bg-[#f4f5f5] cursor-pointer border-dashed border-[3px] border-[#d3d3d3]"
                         >
@@ -397,15 +367,13 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                           <div className="w-full py-3 px-6 flex justify-between items-center bg-gray-100 mt-3">
                             <div className="flex justify-start items-center gap-3">
                               <FaFilePdf color="#ED1B24" />
-                              <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">
-                                {imageName}
-                              </p>
+                              <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">{imageName}</p>
                             </div>
                             <FaRegTrashAlt
                               style={{ cursor: "pointer" }}
                               color="#FF3236"
                               onClick={() => {
-                                form.setValue("logoUrl", "");
+                                form.setValue("logoUrl", "")
                               }}
                             />
                           </div>
@@ -418,36 +386,36 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
               />
 
               <div className="mb-10">
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Training Fca Post Editor</FormLabel>
-                    <FormControl>
-                      <>
-                      {isMounted && (
-                          <ReactQuill
-                            theme="snow"
-                            value={field.value}
-                            onChange={field.onChange}
-                            className="h-64"
-                            modules={{
-                              toolbar: [
-                                [{ header: [1, 2, 3, 4, false] }],
-                                ["bold", "italic", "underline"],
-                                [{ align: [] }],
-                                ["image", "clean"],
-                              ],
-                            }}
-                          />
-                        )}
-                      </>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Training Fca Post Editor</FormLabel>
+                      <FormControl>
+                        <>
+                          {isMounted && (
+                            <ReactQuill
+                              theme="snow"
+                              value={field.value}
+                              onChange={field.onChange}
+                              className="h-64"
+                              modules={{
+                                toolbar: [
+                                  [{ header: [1, 2, 3, 4, false] }],
+                                  ["bold", "italic", "underline"],
+                                  [{ align: [] }],
+                                  ["image", "clean"],
+                                ],
+                              }}
+                            />
+                          )}
+                        </>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
 
               <Button
@@ -455,18 +423,15 @@ const FCAsForm = ({ setCreateFCAs }: Props) => {
                 disabled={isCreating || imageLoading}
                 className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
               >
-                {isCreating ? (
-                    <ButtonSpinner />
-                  ) : (
-                    <span className="text-[14px] font-noraml">Submit</span>
-                  )}
+                {isCreating ? <ButtonSpinner /> : <span className="text-[14px] font-noraml">Submit</span>}
               </Button>
             </div>
           </div>
         </form>
       </Form>
     </div>
-  );
-};
+  )
+}
 
-export default FCAsForm;
+export default FCAsForm
+

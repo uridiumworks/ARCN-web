@@ -161,7 +161,7 @@ export const ProjectsProvider: React.FC<{
         description:
           response?.message || "Project updated successfully.",
       });
-      push("/admin/programs-and-projects");
+      push("/admin/programs-and-projects?tab=project");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;

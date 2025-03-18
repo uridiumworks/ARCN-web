@@ -155,7 +155,7 @@ export const ProgramsProvider: React.FC<{
       toast({
         description: response?.message || "Program updated successfully.",
       });
-      push("/admin/programs-and-projects");
+      push("/admin/programs-and-projects?tab=program");
     } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
         const errorResponse = err.response.data;
