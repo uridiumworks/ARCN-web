@@ -189,7 +189,7 @@ const TabTwo = () => {
         href="/mandate/training/college"
         className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
-        See All Reseach Institutes
+        See All Fed Colleges of Agric
       </Link>
     </div>
   );

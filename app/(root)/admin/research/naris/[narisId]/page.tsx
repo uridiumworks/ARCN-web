@@ -16,8 +16,10 @@ import { useRouter } from "next/navigation"
 import ButtonSpinner from "@/components/Shared/ButtonSpinner"
 import Loader from "@/components/Shared/Loader"
 import { useResearchNaris } from "@/contexts/ResearchNaris.context"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 import dynamic from "next/dynamic"
+import { useGetLGAByStateId, useGetStates } from "@/hooks/general.hooks"
 
 // Dynamically import ReactQuill to prevent SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false })
@@ -41,8 +43,8 @@ const createFormSchema = (existing: any) => {
         .min(3, { message: "Website must be at least 3 characters." })
         .url({ message: "Invalid website URL." }),
       address: z.string().min(3, { message: "Address must be at least 3 characters." }),
-      stateId: z.any(),
-      localGovernmentAreaId: z.any(),
+      stateId: z.string().min(1, { message: "State is required" }),
+      localGovernmentAreaId: z.string().min(1, { message: "Local Government Area is required." }),
       establishDate: z.string().min(3, { message: "Date Established must be provided." }),
       joinDate: z.string().min(3, { message: "Date Joined must be provided." }),
       logoUrl: needsBannerValidation ? z.string().min(1, { message: "Please upload a logo image" }) : z.string(),
@@ -76,6 +78,11 @@ const UpdateNaris = ({ params }: Props) => {
   const { updateNaris, isUpdating } = useResearchNaris()
   const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
   const { loading, naris, error } = useNarisData(token, params?.narisId, triggerRefetch)
+  const { isLoading: loadingState, states, fetchStates } = useGetStates()
+  const { isLoading: loadingLga, lga, fetchLga } = useGetLGAByStateId()
+  const [imageRequired, setImageRequired] = useState<boolean>(false)
+  // Add a key state to force re-render of file input
+  const [fileInputKey, setFileInputKey] = useState<number>(0)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -94,52 +101,237 @@ const UpdateNaris = ({ params }: Props) => {
     },
   })
 
-  const handleFileChangeDocHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file: any = event.target.files?.["0"]
-    console.log(event.target.files?.["0"], "selectedFile")
-    new Promise<void>((resolve, reject) => {
-      const blober = URL.createObjectURL(file)
-      setTimeout(() => {
-        // setSelectedDocFile(blober);
-        // form.setValue("identificationImageUrl", blober);
-        // console.log(setSelectedDocFile, "select");
-      }, 1000)
-      resolve()
-    })
-    setImageName(file?.name)
-    uploadImage(file, "docs")
+  const stateId = form.watch("stateId")
+
+  // Add a function to extract filename from Cloudinary URL
+  const extractFilenameFromUrl = (url: string): string => {
+    if (!url) return ""
+    const parts = url.split("/")
+    // Get the last part of the URL (index 6 or beyond)
+    if (parts.length >= 7) {
+      return parts[8] // This would be the filename in a Cloudinary URL
+    }
+    return "Current logo"
   }
+
+  // Add a state to track if we're using the original image or a new one
+  const [usingOriginalImage, setUsingOriginalImage] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (stateId && !loading) {
+      // Only fetch LGAs when stateId changes due to user interaction, not during initial form setup
+      const stateIdNumber = Number(stateId.split("-")[1])
+      fetchLga(stateIdNumber)
+
+      // When state changes, clear the LGA selection
+      form.setValue("localGovernmentAreaId", "")
+    }
+  }, [fetchLga, stateId, loading])
+
+  useEffect(() => {
+    fetchStates()
+  }, [fetchStates])
+
+  useEffect(() => {
+    if (!loading && naris) {
+      // Create a new schema with the existing data
+      setFormSchema(createFormSchema(naris))
+
+      // Set the image name from the existing logoUrl if it exists
+      if (naris.logoUrl) {
+        setImageName(extractFilenameFromUrl(naris.logoUrl))
+        setUsingOriginalImage(true)
+      }
+
+      // Only proceed if states are loaded
+      if (!loadingState && states.length > 0) {
+        let stateIdValue = ""
+
+        // Find matching state from loaded states
+        if (naris?.stateId) {
+          const matchedState = states.find((st) => st.stateId === naris.stateId)
+          if (matchedState) {
+            stateIdValue = `${matchedState.stateName}-${matchedState.stateId}`
+
+            // Fetch LGAs for the initial state only during first load
+            fetchLga(naris.stateId)
+          }
+        }
+
+        // Set form values without LGA first
+        form.reset({
+          ...naris,
+          stateId: stateIdValue,
+          localGovernmentAreaId: "",
+          establishDate: naris?.establishDate?.split("T")[0],
+          joinDate: naris?.joinDate?.split("T")[0],
+        })
+      }
+    }
+  }, [naris, states, loadingState, form, loading, fetchLga])
+
+  // Add a new useEffect to set the LGA value after LGAs are loaded
+  useEffect(() => {
+    // Only run this effect when we have naris data, LGAs are loaded, and form has been initialized
+    if (naris && !loadingLga && lga.length > 0 && form.getValues("stateId")) {
+      if (naris.localGovernmentAreaId) {
+        const matchedLga = lga.find((lg) => lg.localGovernmentAreaId === naris.localGovernmentAreaId)
+
+        if (matchedLga) {
+          const lgaIdValue = `${matchedLga.localGovernmentName}-${matchedLga.localGovernmentAreaId}`
+          form.setValue("localGovernmentAreaId", lgaIdValue)
+        }
+      }
+    }
+  }, [naris, lga, loadingLga, form])
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken")
     setToken(userToken)
   }, [])
 
-  useEffect(() => {
-    if (ImageUrl) {
-      form.setValue("logoUrl", ImageUrl)
-      form.clearErrors("logoUrl")
+  const handleFileChangeDocHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) {
+      console.log("No file selected")
+      return
     }
-  }, [ImageUrl, form])
 
-  useEffect(() => {
-    if (naris) {
-      form.reset({
-        ...naris,
-        establishDate: naris?.establishDate?.split("T")[0],
-        joinDate: naris?.joinDate?.split("T")[0],
+    console.log("File selected for upload:", file.name)
+
+    // File size validation (500KB = 512000 bytes)
+    const maxFileSize = 512000 // 500KB in bytes
+    if (file.size > maxFileSize) {
+      form.setError("logoUrl", {
+        message: "File size must be less than 500KB",
+      })
+      return
+    }
+
+    // Image dimension validation
+    const validateImageDimensions = (file: File): Promise<boolean> => {
+      return new Promise((resolve) => {
+        const img = new Image()
+
+        img.onload = () => {
+          // Set minimum dimensions based on the logo image
+          const minWidth = 150
+          const minHeight = 150
+          // Set maximum dimensions for a logo
+          const maxWidth = 300
+          const maxHeight = 300
+
+          // Log dimensions for debugging
+          console.log(`Image dimensions: ${img.width}x${img.height}`)
+
+          // Check if dimensions are within allowed range
+          const isValid =
+            img.width >= minWidth && img.height >= minHeight && img.width <= maxWidth && img.height <= maxHeight
+
+          if (!isValid) {
+            form.setError("logoUrl", {
+              message: `Image dimensions must be between ${minWidth}x${minHeight}px and ${maxWidth}x${maxHeight}px (current: ${img.width}x${img.height}px)`,
+            })
+          }
+
+          URL.revokeObjectURL(img.src) // Clean up
+          resolve(isValid)
+        }
+
+        img.onerror = () => {
+          form.setError("logoUrl", {
+            message: "Invalid image file",
+          })
+          URL.revokeObjectURL(img.src) // Clean up
+          resolve(false)
+        }
+
+        img.src = URL.createObjectURL(file)
       })
     }
-  }, [form, naris])
+
+    try {
+      const isValidDimensions = await validateImageDimensions(file)
+      if (!isValidDimensions) return
+
+      // If all validations pass, proceed with upload
+      console.log("Setting image name to:", file.name)
+      setImageName(file.name) // Set the new file name
+      setUsingOriginalImage(false) // We're now using a new image
+
+      // Clear any existing errors before upload
+      form.clearErrors("logoUrl")
+
+      // Upload the image
+      uploadImage(file, "docs")
+    } catch (error) {
+      console.error("Error validating image:", error)
+      form.setError("logoUrl", {
+        message: "Error processing image",
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (ImageUrl) {
+      console.log("Image uploaded successfully:", ImageUrl)
+
+      // Update form with new image URL
+      form.setValue("logoUrl", ImageUrl, { shouldValidate: true })
+
+      // Explicitly clear any errors
+      form.clearErrors("logoUrl")
+
+      // Update state
+      setUsingOriginalImage(false)
+
+      // Make sure we set the image name - use the original file name if available
+      const extractedName = extractFilenameFromUrl(ImageUrl)
+      console.log("Setting image name after upload to:", extractedName)
+      setImageName(extractedName)
+
+      // Force a re-validation of the form
+      form.trigger("logoUrl").then(() => {
+        console.log("Form validation triggered after image upload")
+        console.log("Current form errors:", form.formState.errors)
+      })
+    }
+  }, [ImageUrl, form])
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    await updateNaris(params?.narisId, values)
+    // Always check if logoUrl is empty regardless of schema validation
+    if (!values.logoUrl || values.logoUrl.trim() === "") {
+      form.setError("logoUrl", {
+        type: "manual",
+        message: "Please upload a logo image",
+      })
+      return // Prevent form submission
+    }
+
+    // Extract the IDs from the combined values
+    const formattedValues = {
+      ...values,
+      stateId: values.stateId ? Number(values.stateId.split("-")[1]) : undefined,
+      localGovernmentAreaId: values.localGovernmentAreaId
+        ? Number(values.localGovernmentAreaId.split("-")[1])
+        : undefined,
+    }
+
+    await updateNaris(params?.narisId, formattedValues)
   }
+
+  useEffect(() => {
+    if (imageRequired && (!form.getValues("logoUrl") || form.getValues("logoUrl").trim() === "")) {
+      form.setError("logoUrl", {
+        type: "manual",
+        message: "Please upload a logo image",
+      })
+    }
+  }, [imageRequired, form])
 
   return (
     <>
@@ -272,13 +464,30 @@ const UpdateNaris = ({ params }: Props) => {
                           <FormItem>
                             <FormLabel>State</FormLabel>
                             <FormControl>
-                              <Input
+                              {/* <Input
                                 {...field}
                                 type="text"
                                 autoComplete="new-password"
                                 placeholder="Enter State"
                                 className="bg-white outline-none"
-                              />
+                              /> */}
+
+                              <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingState}>
+                                <SelectTrigger className="w-full bg-white">
+                                  <SelectValue placeholder={field.value.split("-")[0] || "Select State"}>
+                                    {field.value.split("-")[0] || "Select Option"}
+                                  </SelectValue>
+                                </SelectTrigger>
+                                <SelectContent className="bg-[#f3f3f3]">
+                                  {!loadingState &&
+                                    states.length > 0 &&
+                                    states.map((state, i) => (
+                                      <SelectItem key={i} value={`${state.stateName}-${state.stateId.toString()}`}>
+                                        {state.stateName}
+                                      </SelectItem>
+                                    ))}
+                                </SelectContent>
+                              </Select>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -291,13 +500,37 @@ const UpdateNaris = ({ params }: Props) => {
                           <FormItem>
                             <FormLabel>LGA</FormLabel>
                             <FormControl>
-                              <Input
+                              {/* <Input
                                 {...field}
                                 type="text"
                                 autoComplete="new-password"
                                 placeholder="Enter Local Government Area"
                                 className="bg-white outline-none"
-                              />
+                              /> */}
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                                disabled={loadingState || loadingLga}
+                              >
+                                <SelectTrigger className="w-full bg-white">
+                                  <SelectValue placeholder={field.value.split("-")[0] || "Select Local Goverment Area"}>
+                                    {field.value.split("-")[0] || "Select Option"}
+                                  </SelectValue>
+                                </SelectTrigger>
+                                <SelectContent className="bg-[#f3f3f3]">
+                                  {!loadingState &&
+                                    !loadingLga &&
+                                    lga.length > 0 &&
+                                    lga.map((lg, i) => (
+                                      <SelectItem
+                                        key={i}
+                                        value={`${lg?.localGovernmentName}-${lg?.localGovernmentAreaId}`}
+                                      >
+                                        {lg?.localGovernmentName}
+                                      </SelectItem>
+                                    ))}
+                                </SelectContent>
+                              </Select>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -354,11 +587,16 @@ const UpdateNaris = ({ params }: Props) => {
                             <>
                               <div style={{ display: "none" }}>
                                 <input
+                                  key={`file-input-${fileInputKey}-${Date.now()}`}
                                   type="file"
                                   accept="image/*"
                                   name="bannerImage"
-                                  onChange={(event) => handleFileChangeDocHandler(event)}
+                                  onChange={(event) => {
+                                    handleFileChangeDocHandler(event)
+                                    console.log("File selected:", event.target.files?.[0]?.name)
+                                  }}
                                   ref={docImgRef}
+                                  value=""
                                 />
                               </div>
                               <div
@@ -380,7 +618,7 @@ const UpdateNaris = ({ params }: Props) => {
                                   </div>
                                   <div className="w-full flex justify-center items-center gap-3">
                                     <span className="font-[Montserrat] font-normal text-xs leading-[18px] text-[#475467]">
-                                      SVG, PNG, JPG or GIF (max. 800x400px)
+                                      SVG, PNG, JPG or GIF (150x150px to 300x300px, max 500KB)
                                     </span>
                                   </div>
                                 </div>
@@ -390,22 +628,42 @@ const UpdateNaris = ({ params }: Props) => {
                                   <div className="flex justify-start items-center gap-3">
                                     <FaFilePdf color="#ED1B24" />
                                     <p className="text-base font-medium font-[Config Rounded] text-[#5F6D7E]">
-                                      {imageName}
+                                      {imageName ||
+                                        extractFilenameFromUrl(form.getValues("logoUrl")) ||
+                                        "Uploaded image"}
                                     </p>
                                   </div>
                                   <FaRegTrashAlt
                                     style={{ cursor: "pointer" }}
                                     color="#FF3236"
                                     onClick={() => {
-                                      form.setValue("logoUrl", "")
+                                      console.log("Delete button clicked")
 
-                                      // If the original event had no banner, this will trigger validation
-                                      if (!naris?.logoUrl || naris.logoUrl === "") {
+                                      // Clear the logo URL
+                                      form.setValue("logoUrl", "", { shouldValidate: true })
+                                      setUsingOriginalImage(false)
+                                      setImageName("")
+
+                                      // Clear the file input value directly
+                                      if (docImgRef.current) {
+                                        docImgRef.current.value = ""
+                                      }
+
+                                      // Reset the key with a slight delay to ensure browser refreshes the input
+                                      setTimeout(() => {
+                                        setFileInputKey((prev) => prev + 1)
+
+                                        // Set error after reset
                                         form.setError("logoUrl", {
                                           type: "manual",
                                           message: "Please upload a logo image",
                                         })
-                                      }
+
+                                        // Set our custom state to indicate image is required
+                                        setImageRequired(true)
+
+                                        console.log("File input reset completed")
+                                      }, 100)
                                     }}
                                   />
                                 </div>
