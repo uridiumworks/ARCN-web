@@ -4,6 +4,8 @@ import { IoLocationSharp } from "react-icons/io5";
 import CustomContainer from "./CustomContainer";
 import { MailIcon, WWWIcon } from "@/assets/icons";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Footer = () => {
   return (
@@ -13,12 +15,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-between pb-3">
             <div className="flex flex-col gap-3">
               <div>
-                <Image
-                  src="/Images/logo.png"
-                  width={212}
-                  height={71.47}
-                  alt="logo"
-                />
+                <h2 className="font-bold text-base">Agricultural Research Council of Nigeria</h2>
               </div>
               <div className="flex items-start gap-3.5">
                 <IoLocationSharp className="size-6" />
@@ -47,7 +44,7 @@ const Footer = () => {
             <div className="grid grid-cols-footer-res gap-5">
               <div className="flex flex-col gap-3">
                 <h2 className="text-base sm:text-lg font-semibold leading-[1.6875rem]">
-                  Company
+                  ARCN
                 </h2>
                 <ul className="text-sm flex flex-col gap-2.5 font-normal text-[#EFEFEF]">
                   <li>
@@ -92,6 +89,11 @@ const Footer = () => {
                     <Link href="#">Newsletter</Link>
                   </li>
                 </ul>
+                <Link href={`https://mail.arcn.gov.ng/owa/`} target="_blank" className="pt-20">
+                  <Button type="submit" className="w-fit text-base text-white bg-[#30A85F]  items-center">
+                  <span>Outlook Webmail Login</span>
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

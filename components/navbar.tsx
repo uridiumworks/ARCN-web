@@ -147,7 +147,6 @@ const Navbar = (props: Props) => {
         <div className="absolute top-0 left-0 w-full h-screen bg-[#fff]  z-50 flex flex-col gap-7 items-center p-4">
           <div className="flex  items-center justify-between w-full">
             <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
-
             <X
               size="24px"
               color="#121212"
@@ -156,7 +155,7 @@ const Navbar = (props: Props) => {
             />
           </div>
 
-          <div className="flex flex-col gap-8 sm:gap-12 px-6 self-stretch justify-self-center absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-full sm:w-[75%] sm:mx-auto">
+          <div className="flex flex-col gap-4 sm:gap-12 px-6 self-stretch justify-self-center absolute top-[53q%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-full sm:w-[75%] sm:mx-auto">
             <div className=" flex flex-col gap-6 items-center text-white">
               {mainNav.map((t, index) => (
                 <p
@@ -173,7 +172,36 @@ const Navbar = (props: Props) => {
                 </p>
               ))}
             </div>
-            <div className="flex items-center justify-between mt-6 rounded-md w-full bg-[#fff] p-3 border  border-[#3C3C3C]">
+
+            <div className="flex flex-col gap-4 items-center text-white">
+              {topNav.map((t, index) => (
+                <p
+                className={`font-bold text-sm sm:text-lg uppercase  ${
+                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#121212]"
+                }`}
+                key={index}
+                onClick={() => {
+                  routePathLinks(t);
+                  toggleMobileMenu();
+                }}
+              >
+                {t}
+              </p>
+                // <p
+                //   onClick={() => routePathLinks(t)}
+                //   className={`font-normal text-[0.75rem]  leading-[2rem] ${
+                //     isActiveFunc(t)
+                //       ? "text-[#30A85F]"
+                //       : "text-[#121212]"
+                //   }  cursor-pointer`}
+                //   key={index}
+                // >
+                //   {t}
+                // </p>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-between mt-1 rounded-md w-full bg-[#fff] p-3 border  border-[#3C3C3C]">
               <input
                 type="search"
                 placeholder="Search"
