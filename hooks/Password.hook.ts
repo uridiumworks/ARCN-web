@@ -2,59 +2,48 @@ import { useEffect, useState } from 'react';
 import { AxiosError } from 'axios';
 import { deleteAPI, getAPI, postAPI } from '@/lib/Axios';
 import { useToast } from './use-toast'; // Import the useToast hook
+import { useRouter } from 'next/navigation';
 
-const useResetPassword = () => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<any>(null);
-  const { toast } = useToast(); // Initialize toast
+export function useForgotPassword(){
+  const [isLoading,setIsLoading] = useState(false);
+  const {toast} = useToast();
+  const {push} = useRouter()
 
-  const resetPassword = async (payload: any) => {
-    setLoading(true);
-    setError(null);
+  async function forgotPassword(email:string){
 
+    setIsLoading(true)
     try {
-      const token = localStorage.getItem('userToken');
-      if (!token) {
-        setError('No token found');
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "No token found.",
-        });
-        return;
-      }
+      
 
-      const response = await postAPI('/api/User/ResetPassword', { ...payload, token: token }, token);
-      console.log('ResetPassword response:', response); // Debugging
-
-      setData(response);
-      toast({
-        description: "Password reset successfully.",
-      });
-    } catch (err) {
+      const response = await postAPI("User/ForgotPassword",{email})
+      console.log(response)
+      push("/")
+      
+    } catch (err: any) {
       if (err instanceof AxiosError && err.response) {
-        const errorResponse = err.response.data as any;
-        setError(errorResponse.errors ? errorResponse.errors.join(', ') : errorResponse.message || 'An unknown error occurred');
+        const errorResponse = err.response.data;
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
-          description: errorResponse.errors ? errorResponse.errors.join(', ') : errorResponse.message || "An unknown error occurred",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
         });
       } else {
-        setError('An unknown error occurred');
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
-          description: "An unknown error occurred.",
+          description: "An unknown error occurred",
         });
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
+}
 
-  return { resetPassword, data, loading, error };
-};
+export function useResetPassword(){
 
-export { useResetPassword };
+  const [isLoading,setIsLoading] = useState(false);
+
+}
