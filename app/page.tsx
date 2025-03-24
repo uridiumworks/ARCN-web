@@ -18,9 +18,9 @@ export default function Home() {
         {/* <Banner /> */}
         <CarouselHeroSection />
         <Intro />
-        <Institutes />
-        <Impact />
         <Research />
+        <Impact />
+        <Institutes />
         <News />
         <Events />
         <OurPartners />

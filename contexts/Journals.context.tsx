@@ -31,13 +31,7 @@ export const useJournalContext = () => {
 export const JournalsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [journals, setJournals] = useState<any>(() => {
-    if (typeof window !== "undefined") {
-      const savedData = localStorage.getItem("JournalData");
-      return savedData ? JSON.parse(savedData) : [];
-    }
-    return []; // Return a default value for SSR
-  });
+  const [journals, setJournals] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,7 +48,7 @@ export const JournalsProvider: React.FC<{ children: ReactNode }> = ({
       setError(null);
       const response: any = await getAPI("odata/GetJournals", token as any);
       console.log(response);
-      localStorage.setItem("JournalData", JSON.stringify(response)); // Save to localStorage
+      // localStorage.setItem("JournalData", JSON.stringify(response)); // Save to localStorage
       setJournals(response);
       setIsLoading(false);
     } catch (error: any) {

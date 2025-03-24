@@ -117,7 +117,7 @@ const TabOne = () => {
                   {el.location}
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <div>
                   <WebIcon />
                 </div>{" "}
@@ -128,7 +128,7 @@ const TabOne = () => {
                 >
                   {el.webUrl}
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
@@ -171,7 +171,7 @@ const TabTwo = () => {
                   {el.location}
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <WebIcon />{" "}
                 <Link
                   href={`https://www.${el.webUrl}`}
@@ -180,7 +180,7 @@ const TabTwo = () => {
                 >
                   {el.webUrl}
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
@@ -189,7 +189,7 @@ const TabTwo = () => {
         href="/mandate/training/college"
         className="self-center text-center font-sans font-medium text-base rounded-lg px-10 md:px-24 py-4 bg-transparent border border-[#2E7636] text-[#2E7636]"
       >
-        See All Reseach Institutes
+        See all Colleges
       </Link>
     </div>
   );
@@ -223,7 +223,7 @@ const Institutes = () => {
           </div>
           <div className="flex flex-col gap-10">
             {/* tab */}
-            <div className="sm:self-center bg-[#F2F2F2] rounded-[2rem] p-1 flex flex-row sm:justify-between gap-3 sm:gap-5">
+            <div className="self-center bg-[#F2F2F2] rounded-[2rem] p-1 flex flex-row sm:justify-between gap-3 sm:gap-5">
               {tabs.map((el, i) => (
                 <div
                   key={el}

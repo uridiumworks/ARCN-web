@@ -1,15 +1,11 @@
-"use client";
-
+'use client'
 import Navbar from "@/components/navbar";
 import { usePathname } from "next/navigation";
 import Sidebar from "./_components/Sidebar";
 import AdminNavbar from "./admin/_components/AdminNavbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
-import { BlogsProvider } from "@/contexts/Blogs.context";
-import { JournalsProvider } from "@/contexts/Journals.context";
-import { ReportsProvider } from "@/contexts/Reports.context";
-import { NewsletterProvider } from "@/contexts/Newsletter.context";
+import ContextProvider from "@/components/ContextProvider";
 
 export default function RootLayout({
   children,
@@ -45,13 +41,7 @@ export default function RootLayout({
         </div>
         <div className="w-full h-auto">
           <AdminNavbar />
-          <BlogsProvider>
-            <JournalsProvider>
-              <ReportsProvider>
-                <NewsletterProvider>{children}</NewsletterProvider>
-              </ReportsProvider>
-            </JournalsProvider>
-          </BlogsProvider>
+          <ContextProvider>{children}</ContextProvider>
         </div>
       </div>
       <Toaster />

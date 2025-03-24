@@ -38,27 +38,51 @@ import {
 import { useReportData, useUpdateReport } from "@/hooks/Reports.hooks";
 import Loader from "@/components/Shared/Loader";
 
-const formSchema = z.object({
-  title: z.string().min(3, { message: "Title must be at least 3 characters." }),
-  category: z.string().min(1, { message: "Category must be selected" }),
-  bannerUrl: z.any(),
-  blogPosttext: z.any(),
-  authorName: z
-    .string()
-    .min(3, { message: "Author Name must be at least 3 characters." }),
-  authorEmail: z
-    .string()
-    .min(3, { message: "Author Email must be at least 3 characters." })
-    .email({ message: "Invalid email format." }),
-  authorPhoneNumber: z
-    .string()
-    .min(11, { message: "Author Phone Number must be 11 characters." }),
-  publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
-  visibility: z.string().min(3, { message: "Visibility must be provided" }),
-  bannerUsage: z.boolean().refine((value) => value === true, {
-    message: "Visibility must be provided",
-  }),
-});
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
+
+const createFormSchema = (existing: any) => {
+  const needsBannerValidation =
+    !existing?.bannerUrl || existing.bannerUrl === "";
+  return z.object({
+    title: z
+      .string()
+      .min(3, { message: "Title must be at least 3 characters." }),
+    category: z.string().min(1, { message: "Category must be selected" }),
+    // Conditionally validate the banner URL
+    bannerUrl: needsBannerValidation
+      ? z.string().min(1, { message: "Please upload a banner image" })
+      : z.string(),
+    description: z.any(),
+    authorName: z
+      .string()
+      .min(3, { message: "Author Name must be at least 3 characters." }),
+    authorEmail: z
+      .string()
+      .min(3, { message: "Author Email must be at least 3 characters." })
+      .email({ message: "Invalid email format." }),
+    authorPhoneNumber: z
+      .string()
+      .min(11, { message: "Author Phone Number must be 11 characters." }),
+    publishDate: z
+      .string()
+      .min(3, { message: "Publish Date must be provided" }),
+    visibility: z.string().min(3, { message: "Visibility must be provided" }),
+    bannerUsage: z.boolean().refine((value) => value === true, {
+      message: "Visibility must be provided",
+    }),
+  });
+};
 
 type Props = {
   params: { reportsId: any };
@@ -70,6 +94,10 @@ const UpdateReport = ({ params }: Props) => {
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+    createFormSchema(null)
+  );
   const {
     updateReport,
     success,
@@ -94,7 +122,7 @@ const UpdateReport = ({ params }: Props) => {
       title: "",
       category: "reports",
       bannerUrl: "",
-      blogPosttext: "",
+      description: "",
       authorName: "",
       authorEmail: "",
       authorPhoneNumber: "",
@@ -117,7 +145,10 @@ const UpdateReport = ({ params }: Props) => {
 
   useEffect(() => {
     if (report) {
-      form.reset(report);
+      form.reset({
+        ...report,
+        publishDate: report?.publishDate?.split("T")[0],
+      });
     }
   }, [form, report]);
 
@@ -142,12 +173,21 @@ const UpdateReport = ({ params }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl");
     }
   }, [ImageUrl, form]);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateReport(params?.reportsId, values,"/admin/content-management/reports");
+    await updateReport(
+      params?.reportsId,
+      values,
+      "/admin/content-management/reports"
+    );
   }
   return (
     <>
@@ -271,6 +311,17 @@ const UpdateReport = ({ params }: Props) => {
                                     color="#FF3236"
                                     onClick={() => {
                                       form.setValue("bannerUrl", "");
+                                      // If the original event had no banner, this will trigger validation
+                                      if (
+                                        !report?.bannerUrl ||
+                                        report.bannerUrl === ""
+                                      ) {
+                                        form.setError("bannerUrl", {
+                                          type: "manual",
+                                          message:
+                                            "Please upload a banner image",
+                                        });
+                                      }
                                     }}
                                   />
                                 </div>
@@ -283,30 +334,28 @@ const UpdateReport = ({ params }: Props) => {
                     />
                     <FormField
                       control={form.control}
-                      name="blogPosttext"
+                      name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Blog Post Editor</FormLabel>
+                          <FormLabel>Report Post Editor</FormLabel>
                           <FormControl>
                             <>
-                              {/* {isMounted && <ReactQuill
-                                            // ref={reactQuillRef}
-                                            theme="snow"
-                                            value={field.value}
-                                            onChange={field.onChange}
-                                            modules={{
-                                                toolbar: {
-                                                    container: [
-                                                        [{ header: [1, 2, 3, 4, false] }],
-                                                        ['bold', 'italic', 'underline'],
-                                                        [{ align: [] }],
-                                                        ['image', 'clean'], // Add image button
-                                                    ],
-                                                    // handlers: {
-                                                    //     image: imageHandler, // Set custom image handler
-                                                    // },
-                                                },
-                                            }} />} */}
+                              {isMounted && (
+                                <ReactQuill
+                                  theme="snow"
+                                  value={field.value}
+                                  onChange={field.onChange}
+                                  className="h-64"
+                                  modules={{
+                                    toolbar: [
+                                      [{ header: [1, 2, 3, 4, false] }],
+                                      ["bold", "italic", "underline"],
+                                      [{ align: [] }],
+                                      ["image", "clean"],
+                                    ],
+                                  }}
+                                />
+                              )}
                             </>
                           </FormControl>
                           <FormMessage />
@@ -370,6 +419,13 @@ const UpdateReport = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="Phone Number"
                                 className="bg-inherit outline-none"
+                                maxLength={11} // Max length set to 11
+                                pattern="\d*" // Only allows numeric values
+                                onInput={(e) => {
+                                  e.currentTarget.value =
+                                    e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                                  field.onChange(e); // Update the field value
+                                }}
                               />
                             </FormControl>
                             <FormMessage />
@@ -389,6 +445,19 @@ const UpdateReport = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="DD/MM/YYYY"
                                 className="bg-inherit outline-none"
+                                min={
+                                  report?.publishDate
+                                    ? formatDateForInput(
+                                        new Date(
+                                          new Date(report.publishDate).setDate(
+                                            new Date(
+                                              report.publishDate
+                                            ).getDate() + 1
+                                          )
+                                        )
+                                      )
+                                    : today
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -414,10 +483,10 @@ const UpdateReport = ({ params }: Props) => {
                                   </SelectValue>
                                 </SelectTrigger>
                                 <SelectContent className="bg-[#f3f3f3]">
-                                  <SelectItem value="Visibility">
-                                    Visibility
+                                  <SelectItem value="public">Public</SelectItem>
+                                  <SelectItem value="private">
+                                    Private
                                   </SelectItem>
-                                  <SelectItem value="Hidden">Hidden</SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>
@@ -455,7 +524,7 @@ const UpdateReport = ({ params }: Props) => {
                       />
                       <Button
                         type="submit"
-                        disabled={updateLoading}
+                        disabled={updateLoading || imageLoading}
                         className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                       >
                         {updateLoading ? (

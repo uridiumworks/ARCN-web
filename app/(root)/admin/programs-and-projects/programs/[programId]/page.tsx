@@ -37,17 +37,37 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { useProgramData, useUpdateProgram } from "@/hooks/Programs.hooks";
 import Loader from "@/components/Shared/Loader";
+import { useProgramsContext } from "@/contexts/Programs.context";
 
-const formSchema = z.object({
-  title: z
+
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
+
+// Create a schema factory function that takes the existing event data
+const createFormSchema = (existingEvent: any) => {
+  // Determine if we need to validate the banner URL
+  // Only validate if the existing event has no banner URL
+  const needsBannerValidation =
+    !existingEvent?.bannerUrl || existingEvent.bannerUrl === "";
+
+return z.object({
+  subject: z
     .string()
     .min(3, { message: "subject must be at least 3 characters." }),
   description: z
     .string()
     .min(6, { message: "description must be at least 6 characters." }),
   venue: z.string().min(3, { message: "Venue must be at least 3 characters." }),
-  bannerUrl: z.any(),
-  publisherName: z
+ // Conditionally validate the banner URL
+       bannerUrl: needsBannerValidation
+         ? z.string().min(1, { message: "Please upload a banner image" })
+         : z.string(),
+  author: z
     .string()
     .min(3, { message: "Author's name must be at least 3 characters." }),
   eventStartDate: z
@@ -59,7 +79,22 @@ const formSchema = z.object({
   durationPerDay: z
     .string()
     .min(3, { message: "Duration Per Day must be provided" }),
-});
+}).refine(
+  (data) => {
+    // Only validate if both dates are provided
+    if (!data.eventStartDate || !data.eventEndDate) return true;
+
+    const startDate = new Date(data.eventStartDate);
+    const endDate = new Date(data.eventEndDate);
+
+    return endDate >= startDate;
+  },
+  {
+    message: "End date cannot be earlier than start date",
+    path: ["eventEndDate"], // This will show the error on the end date field
+  }
+);
+}
 
 type Props = {
   params: { programId: any };
@@ -71,12 +106,10 @@ const UpdateProgram = ({ params }: Props) => {
   const [token, setToken] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const {
-    updateProgram,
-    success,
-    loading: updateLoading,
-    error: updateError,
-  } = useUpdateProgram(token);
+const {isUpdating,updatePrograms} = useProgramsContext()
+  const [formSchema, setFormSchema] = useState<z.ZodType<any>>(
+    createFormSchema(null)
+  );
   const {
     uploadImage,
     data: ImageUrl,
@@ -89,18 +122,23 @@ const UpdateProgram = ({ params }: Props) => {
     triggerRefetch
   );
 
+    // Store the original dates for validation and min attributes
+    const [originalStartDate, setOriginalStartDate] = useState<string>("");
+    const [originalEndDate, setOriginalEndDate] = useState<string>("");
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
+      subject: "",
       description: "",
       bannerUrl: "",
       venue: "",
-      publisherName: "",
+      author: "",
       eventStartDate: "",
       eventEndDate: "",
       durationPerDay: "",
     },
+    mode: "onChange",
   });
 
   useEffect(() => {
@@ -108,17 +146,61 @@ const UpdateProgram = ({ params }: Props) => {
     setToken(userToken);
   }, []);
 
-  useEffect(() => {
-    if (success) {
-      setTriggerRefetch(true);
-    }
-  }, [success]);
+
+    // Update the form schema and original dates when the event data is loaded
+    useEffect(() => {
+      if (program) {
+        setFormSchema(createFormSchema(program));
+  
+        // Store the original dates for validation
+        if (program.eventStartDate) {
+          // Extract just the date part (YYYY-MM-DD) from the ISO string
+          const startDate = program.eventStartDate.split("T")[0];
+          setOriginalStartDate(startDate);
+        }
+  
+        if (program.eventEndDate) {
+          // Extract just the date part (YYYY-MM-DD) from the ISO string
+          const endDate = program.eventEndDate.split("T")[0];
+          setOriginalEndDate(endDate);
+        }
+      }
+    }, [program]);
+
 
   useEffect(() => {
     if (program) {
-      form.reset(program);
+      form.reset({
+        ...program,
+        eventStartDate: program?.eventStartDate?.split("T")[0],
+        eventEndDate: program?.eventEndDate?.split("T")[0],
+      });
     }
   }, [form, program]);
+
+  // Helper function to check if a date is in the past
+    const isDateInPast = (dateString: string): boolean => {
+      const date = new Date(dateString);
+      const currentDate = new Date();
+      // Reset time to compare dates only
+      currentDate.setHours(0, 0, 0, 0);
+      return date < currentDate;
+    };
+  
+    // Helper function to check if a date is valid (not in the past or is the original date)
+    const isValidDate = (dateString: string, originalDate: string): boolean => {
+      // If it's the original date, it's always valid
+      if (dateString === originalDate) return true;
+  
+      // Otherwise, it should not be in the past
+      return !isDateInPast(dateString);
+    };
+  
+    // Simplified validation for start date
+    useEffect(() => {
+      // Remove all manual validations on form change
+      form.clearErrors();
+    }, [form.formState.isDirty]);
 
   const handleFileChangeDocHandler = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -141,12 +223,13 @@ const UpdateProgram = ({ params }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl")
     }
   }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await updateProgram(params?.programId, values);
+    await updatePrograms(params?.programId, values);
   }
   return (
     <>
@@ -171,7 +254,7 @@ const UpdateProgram = ({ params }: Props) => {
                   <div className="w-[70%] grid grid-cols-1 gap-6">
                     <FormField
                       control={form.control}
-                      name="title"
+                      name="subject"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Subject</FormLabel>
@@ -180,7 +263,7 @@ const UpdateProgram = ({ params }: Props) => {
                               {...field}
                               type="text"
                               autoComplete="new-password"
-                              placeholder="Enter Title"
+                              placeholder="Enter Subject"
                               className="bg-inherit outline-none"
                             />
                           </FormControl>
@@ -262,6 +345,17 @@ const UpdateProgram = ({ params }: Props) => {
                                     color="#FF3236"
                                     onClick={() => {
                                       form.setValue("bannerUrl", "");
+                                       // If the original event had no banner, this will trigger validation
+                                       if (
+                                        !program?.bannerUrl ||
+                                        program.bannerUrl === ""
+                                      ) {
+                                        form.setError("bannerUrl", {
+                                          type: "manual",
+                                          message:
+                                            "Please upload a banner image",
+                                        });
+                                      }
                                     }}
                                   />
                                 </div>
@@ -294,12 +388,12 @@ const UpdateProgram = ({ params }: Props) => {
                   </div>
                   <div className="w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
                     <p className="font-[Montserrat] font-bold text-base leading-[19px] text-[#4D4D4D]">
-                      Publish
+                      Publisher
                     </p>
                     <div className="grid grid-cols-1 gap-6 mt-5">
                       <FormField
                         control={form.control}
-                        name="publisherName"
+                        name="author"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>{`Author`}</FormLabel>
@@ -329,6 +423,21 @@ const UpdateProgram = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="DD/MM/YYYY"
                                 className="bg-inherit outline-none"
+                                min={
+                                  program?.eventStartDate
+                                    ? formatDateForInput(
+                                        new Date(
+                                          new Date(
+                                            program.eventStartDate
+                                          ).setDate(
+                                            new Date(
+                                              program.eventStartDate
+                                            ).getDate() + 1
+                                          )
+                                        )
+                                      )
+                                    : today
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -348,6 +457,21 @@ const UpdateProgram = ({ params }: Props) => {
                                 autoComplete="new-password"
                                 placeholder="DD/MM/YYYY"
                                 className="bg-inherit outline-none"
+                                min={
+                                  program?.eventStartDate
+                                    ? formatDateForInput(
+                                        new Date(
+                                          new Date(
+                                            program.eventStartDate
+                                          ).setDate(
+                                            new Date(
+                                              program.eventStartDate
+                                            ).getDate() + 1
+                                          )
+                                        )
+                                      )
+                                    : today
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -388,10 +512,10 @@ const UpdateProgram = ({ params }: Props) => {
                       />
                       <Button
                         type="submit"
-                        disabled={updateLoading}
+                        disabled={isUpdating || imageLoading}
                         className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                       >
-                        {updateLoading ? (
+                        {isUpdating ? (
                           <ButtonSpinner />
                         ) : (
                           <span className="text-[14px] font-noraml">Post</span>

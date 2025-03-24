@@ -153,8 +153,8 @@ const Meet = () => {
                       Woru Adamu Kerenji
                     </p>
                     <p className="text-[0.6875rem] font-normal leading-[1.5rem] text-[#3D4852]">
-                      Assistant Director Finance and <br></br>
-                      Account
+                      Ag. Director Finance and <br></br>
+                      Account Department
                     </p>
                   </div>
                 </div>
@@ -208,8 +208,7 @@ const Meet = () => {
                       Dr. Aliyu Shuaibu Madugu
                     </p>
                     <p className="text-[0.6875rem] font-normal leading-[1.5rem] text-[#3D4852]">
-                      Head of Department Planning Research <br></br>and
-                      Statistics.
+                      Director
                     </p>
                   </div>
                 </div>

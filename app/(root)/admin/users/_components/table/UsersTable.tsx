@@ -15,6 +15,11 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
@@ -24,6 +29,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { LuRefreshCw } from "react-icons/lu";
 import UserForm from "../UserForm";
+import { DataTablePagination } from "@/components/Shared/data-table-pagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,6 +46,11 @@ const UsersTable = <TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
   return (
     <>
@@ -47,17 +58,23 @@ const UsersTable = <TData, TValue>({
         {dialog === 1 && <UserForm setDialog={setDialog} />}
         <div className="w-full h-auto p-2 md:p-5 flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
           <div className="w-fit flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-2 px-2 md:px-5">
-            <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]">
+            {/* <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]">
               <CiFilter size={20} />{" "}
               <span className="text-[14px] font-noraml">Filter</span>{" "}
               <IoIosArrowDown color="#121212" size={20} />
-            </Button>
+            </Button> */}
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Search with name..."
+                placeholder="Search by fullname..."
                 className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
                 style={{ outline: "none" }}
+                value={
+                  (table.getColumn("userName")?.getFilterValue() as string) ?? ""
+                }
+                onChange={(event) =>
+                  table.getColumn("userName")?.setFilterValue(event.target.value)
+                }
               />
               <IoSearchOutline
                 className="absolute top-[25%] left-[5%]"
@@ -153,6 +170,7 @@ const UsersTable = <TData, TValue>({
             )}
           </TableBody>
         </Table>
+        <DataTablePagination table={table} />
       </Dialog>
     </>
   );

@@ -14,25 +14,20 @@ import {
   MaterialSymbols,
 } from "@/assets/icons";
 import { useDashboardData } from "@/hooks/Dashboard.hooks";
-import { useBlogsData } from "@/hooks/Blogs.hooks";
+import { useBlogsDataV2 } from "@/hooks/Blogs.hooks";
 import Loader from "@/components/Shared/Loader";
 
 const ViewBlogDashboard = () => {
-  const [token, setToken] = useState<string | null>(null);
+  // const [token, setToken] = useState<string | null>(null);
   const [blogArray, setBlogArray] = useState<any[]>([]);
-  const { loading, dashboard, error } = useDashboardData(token);
+  const { loading, dashboard, error } = useDashboardData();
   const {
     loading: loadingBlogs,
     blogs,
-    error: errorBlogs,
-  } = useBlogsData(token);
+    fetchBlogsDashboard,
+  } = useBlogsDataV2();
 
   console.log(blogs);
-
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
 
   useEffect(() => {
     if (blogs?.length > 0) {
@@ -52,10 +47,14 @@ const ViewBlogDashboard = () => {
     }
   }, [blogs]);
 
-//   if (loading) return <p>Loading....</p>;
+  useEffect(() => {
+    fetchBlogsDashboard();
+  }, [fetchBlogsDashboard]);
+
+  //   if (loading) return <p>Loading....</p>;
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={loading || loadingBlogs} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-3 md:p-10">
         <div className="w-full h-[auto] rounded-lg overflow-hidden border-2 border-[#d1d9e2]">
           <div className="w-full h-[100px] bg-[#d6e8be] p-5 border-b-2 border-[#d1d9e2] flex justify-between items-center">
@@ -136,8 +135,15 @@ const ViewBlogDashboard = () => {
             <div className="w-full h-full border-2 border-[#d1d9e2] p-5 flex justify-between items-start">
               <div className="w-fit h-full">
                 <p className="text-lg text-[#667582]">Total Publications</p>
-                <p className="text-2xl text-[#667582]">645.48</p>
-                <p className="text-md text-[#667582]">+2% monthly growth</p>
+                <p className="text-2xl text-[#667582]">
+                  {dashboard?.totalNewsLetter}
+                </p>
+                <p className="text-md text-[#667582]">
+                  {dashboard?.newsLetterGrowth > 0
+                    ? `+${dashboard?.newsLetterGrowth}`
+                    : dashboard?.newsLetterGrowth}
+                  % monthly growth
+                </p>
               </div>
               <div className="w-fit h-fit p-2 bg-[#d6e8be] rounded-md">
                 <JournalIcon className="scale-95 text-[#2E7636]" />

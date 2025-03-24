@@ -4,8 +4,8 @@ export type EventTableType = {
     checkbox: any;
     subject: string;
     description: string;
-    eventDate: string;
-    eventTime: string;
+    eventStartDate: string;
+    eventEndDate: string;
     venue: string;
     action: any;
   };

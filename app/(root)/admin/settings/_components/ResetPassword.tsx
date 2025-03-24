@@ -105,7 +105,7 @@ const ResetPassword = () => {
     <div className="px-10 py-3">
       <div>
         <span className="text-xs text-[#4b5563]">
-          we will send a reset link to the email attached to this account
+        We will send a reset link to the email attached to this account
         </span>
       </div>
       <div className="mt-2">

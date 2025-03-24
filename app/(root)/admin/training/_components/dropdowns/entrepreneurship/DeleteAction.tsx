@@ -4,19 +4,14 @@ import { Button } from '@/components/ui/button'
 import { DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { useTrainingEntrepenshipContext } from '@/contexts/TrainingEnterpenship.context'
 import { useDeleteEntrepreneurship } from '@/hooks/Entrepreneurships.hooks'
 import React, { useEffect, useRef, useState } from 'react'
 
 const DeleteAction = ({id}: any) => {
   console.log("🚀 ~ DeleteAction ~ id:", id)
   const closeDeleteDialogRef = useRef<HTMLButtonElement>(null);
-  const [token, setToken] = useState<string | null>(null)
-  const { deleteEntrepreneurship, loading, error, success } = useDeleteEntrepreneurship(token)
-
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken)
-},[])
+const {isDeleting,deleteTrainingEntrepenship} = useTrainingEntrepenshipContext()
 
 
   return (
@@ -40,8 +35,8 @@ const DeleteAction = ({id}: any) => {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button disabled={loading} type='button' onClick={() => deleteEntrepreneurship(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
-                {loading ? <ButtonSpinner/>  : "Delete"}
+              <Button disabled={isDeleting} type='button' onClick={() => deleteTrainingEntrepenship(id, closeDeleteDialogRef)} className="bg-red-600 text-white hover:bg-red-600 hover:text-white">
+                {isDeleting ? <ButtonSpinner/>  : "Delete"}
               </Button>
             </div>
     </DialogContent>

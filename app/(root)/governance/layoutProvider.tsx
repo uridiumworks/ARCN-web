@@ -45,11 +45,11 @@ export default function LayoutProvider({ children }: LayoutType) {
       status: "active",
       url: "/governance/department",
     },
-    {
-      name: "ES Office",
-      status: "active",
-      url: "/governance/account-settings/security",
-    },
+    // {
+    //   name: "ES Office",
+    //   status: "active",
+    //   url: "/governance/account-settings/security",
+    // },
   ];
 
   const isTabActive = (tabUrl: string) => {

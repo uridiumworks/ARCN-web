@@ -34,10 +34,19 @@ import { useUploadImage } from "@/hooks/BannerUpload.hooks";
 import { FaFilePdf } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 import ButtonSpinner from "@/components/Shared/ButtonSpinner";
+import { useTrainingEntrepenshipContext } from "@/contexts/TrainingEnterpenship.context";
 
 interface Props {
   setCreateEntreprenuership: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0]
+}
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date())
 
 const formSchema = z.object({
   subject: z
@@ -47,52 +56,65 @@ const formSchema = z.object({
     .string()
     .min(6, { message: "description must be at least 6 characters." }),
   venue: z.string().min(3, { message: "Venue must be at least 3 characters." }),
-  bannerUrl: z.any(),
+ bannerUrl: z.string().min(1, { message: "Please upload a banner image" }),
   authorName: z
     .string()
     .min(3, { message: "Author's name must be at least 3 characters." }),
   eventStartDate: z
-    .string()
-    .min(3, { message: "Event start Date must be provided" }),
+       .string()
+       .min(3, { message: "Event start Date must be provided" })
+       .refine(
+         (date) => {
+           // Check if the date is not in the past
+           const selectedDate = new Date(date)
+           const currentDate = new Date()
+           // Reset time to compare dates only
+           currentDate.setHours(0, 0, 0, 0)
+           return selectedDate >= currentDate
+         },
+         { message: "Start date cannot be in the past" },
+       ),
   eventEndDate: z
     .string()
     .min(3, { message: "Event end Date must be provided" }),
   durationPerDay: z
     .string()
     .min(3, { message: "Duration Per Day must be provided" }),
-});
+}).refine(
+  (data) => {
+    // Only validate if both dates are provided
+    if (!data.eventStartDate || !data.eventEndDate) return true
+
+    const startDate = new Date(data.eventStartDate)
+    const endDate = new Date(data.eventEndDate)
+
+    return endDate >= startDate
+  },
+  {
+    message: "End date cannot be earlier than start date",
+    path: ["eventEndDate"], // This will show the error on the end date field
+  },
+);
 const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
   const [imageName, setImageName] = useState<string>("");
-  const {
-    createEntrepreneurship,
-    data,
-    loading: createLoading,
-    error: createError,
-  } = useCreateEntrepreneurship(token);
+const {isCreating,createTrainingEntrepenship} = useTrainingEntrepenshipContext()
   const {
     uploadImage,
     data: ImageUrl,
     loading: imageLoading,
     error: imageError,
   } = useUploadImage(token);
-  const { loading, entrepreneurships, error } = useEntrepreneurshipsData(
-    token,
-    triggerRefetch
-  );
+  
 
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
     setToken(userToken);
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setTriggerRefetch(true);
-    }
-  }, [data]);
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -128,12 +150,58 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl")
     }
   }, [ImageUrl, form]);
 
+    // Validate start date is not in the past
+    useEffect(() => {
+      const startDate = form.watch("eventStartDate")
+  
+      if (startDate) {
+        const selectedDate = new Date(startDate)
+        const currentDate = new Date()
+        // Reset time to compare dates only
+        currentDate.setHours(0, 0, 0, 0)
+  
+        if (selectedDate < currentDate) {
+          form.setError("eventStartDate", {
+            type: "manual",
+            message: "Start date cannot be in the past",
+          })
+        } else {
+          form.clearErrors("eventStartDate")
+        }
+      }
+    }, [form.watch("eventStartDate")])
+  
+    // Validate end date is not earlier than start date
+    useEffect(() => {
+      const startDate = form.watch("eventStartDate")
+      const endDate = form.watch("eventEndDate")
+  
+      if (startDate && endDate) {
+        const start = new Date(startDate)
+        const end = new Date(endDate)
+  
+        if (end < start) {
+          form.setError("eventEndDate", {
+            type: "manual",
+            message: "End date cannot be earlier than start date",
+          })
+        } else {
+          form.clearErrors("eventEndDate")
+        }
+      }
+    }, [form.watch("eventStartDate"), form.watch("eventEndDate")])
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await createEntrepreneurship(values);
+    try {
+      await createTrainingEntrepenship(values)
+      setCreateEntreprenuership(false)
+    } catch (error) {
+      
+    }
   }
   return (
     <div>
@@ -312,6 +380,7 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
                           autoComplete="new-password"
                           placeholder="DD/MM/YYYY"
                           className="bg-inherit outline-none"
+                          min={today}
                         />
                       </FormControl>
                       <FormMessage />
@@ -331,6 +400,7 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
                           autoComplete="new-password"
                           placeholder="DD/MM/YYYY"
                           className="bg-inherit outline-none"
+                          min={form.watch("eventStartDate") || today}
                         />
                       </FormControl>
                       <FormMessage />
@@ -367,10 +437,10 @@ const EntreprenuershipForm = ({ setCreateEntreprenuership }: Props) => {
                 />
                 <Button
                   type="submit"
-                  disabled={createLoading}
+                  disabled={isCreating || imageLoading}
                   className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                 >
-                  {createLoading ? (
+                  {isCreating ? (
                     <ButtonSpinner />
                   ) : (
                     <span className="text-[14px] font-noraml">Publish</span>

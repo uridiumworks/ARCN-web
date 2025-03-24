@@ -25,12 +25,12 @@ export const Projectscolumns: ColumnDef<ProjectsTableType>[] = [
       header: "Title",
     },
     {
-      accessorKey: "instituteName",
-      header: "Institute Name",
+      accessorKey: "publisherName",
+      header: "Publisher Name",
     },
     {
       accessorKey: "publishOn",
-      header: "Date Created",
+      header: "Publish Date",
     },
     {
       accessorKey: "action",
@@ -62,12 +62,12 @@ export const Projectscolumns: ColumnDef<ProjectsTableType>[] = [
       header: "Description",
     },
     {
-      accessorKey: "eventDate",
-      header: "Event Date",
+      accessorKey: "eventStartDate",
+      header: "Event State Date",
     },
     {
-      accessorKey: "eventTime",
-      header: "Event Time",
+      accessorKey: "eventEndDate",
+      header: "Event End Date",
     },
     {
       accessorKey: "venue",
