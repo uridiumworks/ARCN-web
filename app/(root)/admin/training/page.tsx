@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import React, {
   MouseEventHandler,
   ReactNode,
+  Suspense,
   useEffect,
   useState,
 } from "react";
@@ -18,7 +19,7 @@ type researchPageViewTabType = {
   name: string;
 };
 
-const TrainingPage = () => {
+const TrainingPageContent = () => {
   const [tab, setTab] = useState(1);
   const researchPageViewTab: Array<researchPageViewTabType> = [
     { tab: 1, name: "FCAs" },
@@ -112,4 +113,10 @@ const TrainingPage = () => {
   );
 };
 
-export default TrainingPage;
+export default function TrainingPage() {
+  return (
+      <Suspense fallback={<div>Loading...</div>}>
+          <TrainingPageContent />
+      </Suspense>
+  )
+}

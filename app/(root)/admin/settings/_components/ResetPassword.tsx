@@ -10,7 +10,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useResetPassword } from "@/hooks/Password.hook";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { passwordStrength } from "check-password-strength";
@@ -41,12 +40,7 @@ const formSchema = z
   });
 
 const ResetPassword = () => {
-  const {
-    resetPassword,
-    data,
-    loading: createLoading,
-    error: createError,
-  } = useResetPassword();
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -98,7 +92,6 @@ const ResetPassword = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    await resetPassword(values);
   }
 
   return (
@@ -189,12 +182,8 @@ const ResetPassword = () => {
                 />
               </div>
             </div>
-            <Button disabled={createLoading} className="w-full bg-[#30a85f] mt-5 text-[#fff] text-center border-2 border-[#dcdee6] flex justify-center items-center hover:bg-[#30a85f] hover:text-[#fff]">
-              {createLoading ? (
-                <ButtonSpinner />
-              ) : (
+            <Button  className="w-full bg-[#30a85f] mt-5 text-[#fff] text-center border-2 border-[#dcdee6] flex justify-center items-center hover:bg-[#30a85f] hover:text-[#fff]">
                 <span className="text-[14px] font-noraml">Change Password</span>
-              )}
             </Button>
           </form>
         </Form>
