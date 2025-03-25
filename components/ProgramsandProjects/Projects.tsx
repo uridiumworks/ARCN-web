@@ -2,6 +2,8 @@
 import { useClientProjectsData } from "@/hooks/Projects.hooks";
 import Link from "next/link";
 import Image from "next/image";
+import ProjectsSkeletonLoading from "../skeletonloading/ProjectsSkeletonLoading";
+import CustomContainer from "../CustomContainer";
 
 const Projects = () => {
   const { loading, projects, error } = useClientProjectsData();
@@ -14,13 +16,16 @@ const Projects = () => {
           <p className="font-normal text-sm">
             Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
             etiam euismod quisque <br className="hidden md:block" />
-            montes arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit
-            semper cras sed duis tortor <br className="hidden md:block"  />
+            montes arcu risus. Magnis posuere tincidunt elit ultrices tortor.
+            Sit semper cras sed duis tortor <br className="hidden md:block" />
             tempor amet gravida. Rhoncus quis nisl etiam tortor.
           </p>
         </div>
 
-        <div className="lg:w-8/12 lg:mx-auto space-y-6">
+        {/* <div className="lg:w-8/12 lg:mx-auto space-y-6"> */}
+          
+          <CustomContainer>
+          {/* <ProjectsSkeletonLoading /> */}
           <div className="p-3 grid grid-cols-1 md:grid-cols-3 gap-6">
             {projects?.length > 0 && (
               <>
@@ -44,6 +49,8 @@ const Projects = () => {
               </>
             )}
           </div>
+          </CustomContainer>
+         
 
           {/* <div className="p-3 grid grid-cols-1 md:grid-cols-3 gap-6">
             {projects?.length > 0 && (
@@ -68,7 +75,7 @@ const Projects = () => {
               </>
             )}
           </div> */}
-        </div>
+        {/* </div> */}
 
         <div className="p-9 text-center">
           <button
