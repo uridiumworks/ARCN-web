@@ -36,13 +36,21 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   setCreateNewJournal: React.Dispatch<React.SetStateAction<boolean>>;
-  onAction : () => Promise<void>
+  onAction: () => Promise<void>;
 }
+
+// Format date to YYYY-MM-DD for HTML date input
+const formatDateForInput = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
+// Get today's date formatted for the date input
+const today = formatDateForInput(new Date());
 
 const formSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters." }),
   category: z.string().min(1, { message: "Category must be selected" }),
-  bannerUrl: z.any(),
+  bannerUrl: z.string().min(1, { message: "Please upload a banner image" }),
   description: z.any(),
   authorName: z
     .string()
@@ -51,10 +59,14 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Author Email must be at least 3 characters." })
     .email({ message: "Invalid email format." }),
-    authorPhoneNumber: z
+  authorPhoneNumber: z
     .string()
-    .length(11, { message: "Author Phone Number must be exactly 11 characters." })
-    .regex(/^\d+$/, { message: "Phone Number can only contain numeric characters." }),
+    .length(11, {
+      message: "Author Phone Number must be exactly 11 characters.",
+    })
+    .regex(/^\d+$/, {
+      message: "Phone Number can only contain numeric characters.",
+    }),
   publishDate: z.string().min(3, { message: "Publish Date must be provided" }),
   visibility: z.string().min(3, { message: "Visibility must be provided" }),
   useBanner: z.boolean().refine((value) => value === true, {
@@ -62,7 +74,7 @@ const formSchema = z.object({
   }),
 });
 
-const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
+const NewJournalForm = ({ setCreateNewJournal, onAction }: Props) => {
   const docImgRef = useRef<HTMLInputElement | null>(null);
   const [imageName, setImageName] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
@@ -103,7 +115,6 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
     setToken(userToken);
   }, []);
 
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -129,17 +140,16 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
   useEffect(() => {
     if (ImageUrl) {
       form.setValue("bannerUrl", ImageUrl);
+      form.clearErrors("bannerUrl");
     }
   }, [ImageUrl, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await createJournal(values);
-      onAction()
-      setCreateNewJournal(false)
-    } catch(e){
- 
-    }
+      onAction();
+      setCreateNewJournal(false);
+    } catch (e) {}
   }
 
   return (
@@ -157,8 +167,8 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           autoComplete="current-password"
         >
-             <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
-             <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
+          <div className="w-full flex flex-col gap-2 md:flex-row md:justify-start md:gap-5 mt-5">
+            <div className="w-full md:w-[70%] grid grid-cols-1 gap-6">
               <FormField
                 control={form.control}
                 name="title"
@@ -270,7 +280,7 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
                   </FormItem>
                 )}
               />
-             <FormField
+              <FormField
                 control={form.control}
                 name="description"
                 render={({ field }) => (
@@ -298,9 +308,8 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )} />
-
-
+                )}
+              />
             </div>
             <div className="w-full mt-3 md:mt-0 md:w-[30%] min-h-[70vh] border-[1px] border-[#dcdee6] py-5 px-3">
               <p className="font-[Montserrat] font-bold text-base leading-[19px] text-[#4D4D4D]">
@@ -361,7 +370,8 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
                           maxLength={11} // Max length set to 11
                           pattern="\d*" // Only allows numeric values
                           onInput={(e) => {
-                            e.currentTarget.value = e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
+                            e.currentTarget.value =
+                              e.currentTarget.value.replace(/\D/g, ""); // Prevent non-numeric input
                             field.onChange(e); // Update the field value
                           }}
                         />
@@ -383,6 +393,7 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
                           autoComplete="new-password"
                           placeholder="DD/MM/YYYY"
                           className="bg-inherit outline-none"
+                          min={today}
                         />
                       </FormControl>
                       <FormMessage />
@@ -408,10 +419,8 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
                             </SelectValue>
                           </SelectTrigger>
                           <SelectContent className="bg-[#f3f3f3]">
-                            <SelectItem value="Visibility">
-                              Visibility
-                            </SelectItem>
-                            <SelectItem value="Hidden">Hidden</SelectItem>
+                            <SelectItem value="public">Public</SelectItem>
+                            <SelectItem value="private">Private</SelectItem>
                           </SelectContent>
                         </Select>
                       </FormControl>
@@ -449,7 +458,7 @@ const NewJournalForm = ({ setCreateNewJournal,onAction }: Props) => {
                 />
                 <Button
                   type="submit"
-                  disabled={createLoading}
+                  disabled={createLoading || imageLoading}
                   className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]"
                 >
                   {createLoading ? (

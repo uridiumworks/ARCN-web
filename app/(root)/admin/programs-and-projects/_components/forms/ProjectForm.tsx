@@ -18,13 +18,18 @@ import { useUploadImage } from '@/hooks/BannerUpload.hooks';
 import { FaFilePdf, FaRegTrashAlt } from 'react-icons/fa'
 
 
+import dynamic from "next/dynamic";
+import { useProjectsContext } from '@/contexts/Projects.context';
+
+// Dynamically import ReactQuill to prevent SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 interface Props {
     setCreateNewProject: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const formSchema = z.object({
     title: z.string().min(3, { message: "title must be at least 3 characters.", }),
-    bannerUrl: z.string(),
+   bannerUrl: z.string().min(1, { message: "Please upload a banner image" }),
     description: z.string(),
     publisherName: z.string().min(3, { message: "Creator Name must be at least 3 characters.", }),
     publishOn: z.string().min(3, { message: "publish Date must be at least 3 characters.", }),
@@ -48,22 +53,21 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
     const docImgRef = useRef<HTMLInputElement | null>(null);
     const [token, setToken] = useState<string | null>(null)
     const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false)
+    const [isMounted, setIsMounted] = useState<boolean>(false);
     const [imageName, setImageName] = useState<string>("")
-    const { createProject, data, loading: createLoading, error: createError } = useCreateProject(token)
+const {isCreating, createProjects} = useProjectsContext()
     const { uploadImage, data: ImageUrl, loading: imageLoading, error: imageError } = useUploadImage(token)
-    const { loading, projects, error } = useProjectsData(token, triggerRefetch)
+
 
     useEffect(() => {
         const userToken = localStorage.getItem("userToken");
         setToken(userToken)
     }, [])
 
+      useEffect(() => {
+        setIsMounted(true);
+      }, []);
 
-    useEffect(() => {
-        if (data) {
-            setTriggerRefetch(true)
-        }
-    }, [data])
 
     const handleFileChangeDocHandler = async (
         event: React.ChangeEvent<HTMLInputElement>
@@ -86,13 +90,18 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
     useEffect(() => {
         if (ImageUrl) {
             form.setValue("bannerUrl", ImageUrl)
+            form.clearErrors("bannerUrl")
         }
     }, [ImageUrl, form])
 
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
-        await createProject(values)
+        try {
+            await createProjects(values)
+            setCreateNewProject(false)
+        } catch (error) {
+            
+        }
     }
     return (
         <div>
@@ -173,27 +182,25 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
                                 name="description"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Blog Post Editor</FormLabel>
+                                        <FormLabel>Project Post Editor</FormLabel>
                                         <FormControl>
                                             <>
-                                                {/* {isMounted && <ReactQuill
-                                                    // ref={reactQuillRef}
-                                                    theme="snow"
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                    modules={{
-                                                        toolbar: {
-                                                            container: [
-                                                                [{ header: [1, 2, 3, 4, false] }],
-                                                                ['bold', 'italic', 'underline'],
-                                                                [{ align: [] }],
-                                                                ['image', 'clean'], // Add image button
-                                                            ],
-                                                            // handlers: {
-                                                            //     image: imageHandler, // Set custom image handler
-                                                            // },
-                                                        },
-                                                    }} />} */}
+                                            {isMounted && (
+                          <ReactQuill
+                            theme="snow"
+                            value={field.value}
+                            onChange={field.onChange}
+                            className="h-64"
+                            modules={{
+                              toolbar: [
+                                [{ header: [1, 2, 3, 4, false] }],
+                                ["bold", "italic", "underline"],
+                                [{ align: [] }],
+                                ["image", "clean"],
+                              ],
+                            }}
+                          />
+                        )}
                                             </>
                                         </FormControl>
                                         <FormMessage />
@@ -270,7 +277,7 @@ const ProjectForm = ({ setCreateNewProject }: Props) => {
                                         </div>
                                     )}
                                 />
-                                <Button type="submit" disabled={createLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{createLoading ? <ButtonSpinner /> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
+                                <Button type="submit" disabled={isCreating || imageLoading} className="w-full bg-[#30a85f] text-[#fff] border-2 border-[#dcdee6] flex justify-center items-center gap-2 px-5 hover:bg-[#30a85f] hover:text-[#fff]">{isCreating ? <ButtonSpinner /> : <span className="text-[14px] font-noraml">Publish</span>}</Button>
                             </div>
                         </div>
                     </div>

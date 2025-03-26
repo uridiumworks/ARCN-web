@@ -1,9 +1,10 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import React, { MouseEventHandler, ReactNode, useState } from 'react'
+import React, { MouseEventHandler, ReactNode, Suspense, useEffect, useState } from 'react'
 import Projects from './Projects';
 import Programs from './Programs';
+import { useSearchParams } from 'next/navigation';
 
 
 type programsAndProjectsTabType = {
@@ -11,12 +12,24 @@ type programsAndProjectsTabType = {
     name: string;
 };
 
-const ProgramsAndProjects = () => {
+const ProgramsAndProjectsContent = () => {
     const [tab, setTab] = useState(1);
     const researchPageViewTab: Array<programsAndProjectsTabType> = [
         { tab: 1, name: "PROJECTS" },
         { tab: 2, name: "PROGRAMS" },
     ];
+
+    const queryParams = useSearchParams();
+
+    useEffect(() => {
+      if(queryParams && queryParams.get('tab')?.toLowerCase() === 'program'){
+        setTab(2)
+      }else {
+        setTab(1)
+      }
+  
+      return () => {}
+    },[queryParams])
 
 
     const toggleTab =
@@ -75,4 +88,10 @@ const ProgramsAndProjects = () => {
     )
 }
 
-export default ProgramsAndProjects
+export default function ProgramsAndProjects() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ProgramsAndProjectsContent />
+        </Suspense>
+    )
+}

@@ -39,7 +39,7 @@ const TechnicalDepartmentData = [
         description: 'Plant resource department is organized into divisions which are framed to monitor production of solutions in research development and innovation and also organize research',
         descriptionList: [
             "Arable Crops Research",
-            "Tree Crops ResearchTree Crops Research",
+            "Tree Crops Research",
             "Roots, Tubers & Horticultural Crops Research",
             "Plant Genetics Resources & Biotechnology Research",
         ],
@@ -107,8 +107,8 @@ const TechnicalDepartment = () => {
             
             <div className="py-10 space-y-10">
                 <div className="">
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#1B222B]">Technical Department </h1>
-                    <p className="text-sm text-gray pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat <br className='hidden md:block' /> elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
+                    <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-bold text-[#1B222B]">Technical Department </h1>
+                    <p className="text-sm leading-[1.5rem] text-gray pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
                 </div>
 
                 {TechnicalDepartmentData?.map(({description, descriptionList, title, url}, index) => {
@@ -116,8 +116,8 @@ const TechnicalDepartment = () => {
                         <div key={index} className={cn(index === 0 && 'bg-[#F6E8414D]', index === 1 && 'bg-[#2A59FE4D]', index === 2 && 'bg-[#87C12F4D]', index === 3 && 'bg-[#FF91A04D]', index === 4 && 'bg-[#013B434D]', index === 5 && 'bg-[#BEE5ED4D]', 'md:grid-cols-2 w-full py-6 px-5 rounded-2xl  mx-auto')}>
                             <div className="md:py-5 md:px-8 space-y-5">
                                 <div>
-                                    <h1 className="text-lg text-black text-bold mb-5 font-bold">{title}</h1>
-                                    <p className="text-sm text-gray mt-4 py-3">{description}</p>
+                                    <h1 className="text-3xl sm:text-4xl leading-[2.25rem] text-black text-bold mb-5 font-bold">{title}</h1>
+                                    <p className="text-sm leading-[1.5rem] text-gray mt-4 py-3">{description}</p>
                                 </div>
 
                                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-10 font-bold text-xl'>

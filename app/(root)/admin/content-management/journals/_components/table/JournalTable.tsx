@@ -1,5 +1,6 @@
 "use client"; // Add this line at the top
 
+import { DataTablePagination } from "@/components/Shared/data-table-pagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,7 +15,11 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
   getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import Image from "next/image";
@@ -35,22 +40,20 @@ const JournalTable = <TData, TValue>({
   data,
   setCreateNewJournal,
 }: DataTableProps<TData, TValue>) => {
-  const table = useReactTable({
+ const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
-
   return (
     <>
       <div className="w-full h-auto p-2 md:p-5 flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
         <div className="w-fit flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-2 px-2 md:px-5">
-          <Button className="w-fit bg-white text-[#121212] border-2 border-[#dcdee6] flex justify-between items-center gap-2 px-5 hover:bg-white hover:text-[#121212]">
-            <CiFilter size={20} />{" "}
-            <span className="text-[14px] font-noraml">Filter</span>{" "}
-            <IoIosArrowDown color="#121212" size={20} />
-          </Button>
           <div className="relative">
             <Input
               type="text"
@@ -58,10 +61,13 @@ const JournalTable = <TData, TValue>({
               className="px-8 my-auto outline-none bg-[#f3f4f6] border-[2px] border-[#D1D5DB] text-sm text-[#4B5563] font-semibold"
               style={{ outline: "none" }}
               value={
-                (table.getColumn("authorName")?.getFilterValue() as string) ?? ""
+                (table.getColumn("authorName")?.getFilterValue() as string) ??
+                ""
               }
               onChange={(event) =>
-                table.getColumn("authorName")?.setFilterValue(event.target.value)
+                table
+                  .getColumn("authorName")
+                  ?.setFilterValue(event.target.value)
               }
             />
             <IoSearchOutline
@@ -151,6 +157,7 @@ const JournalTable = <TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <DataTablePagination table={table} />
     </>
   );
 };

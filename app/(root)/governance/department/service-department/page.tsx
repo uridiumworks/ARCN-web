@@ -44,9 +44,9 @@ const ServiceDepartment = () => {
             
             <div className="py-10 space-y-10">
                 <div className="">
-                    <h1 className="text-3xl md:text-4xl md:text-[40px] font-bold text-[#1B222B]">Service Department</h1>
-                    <p className="text-sm text-gray-700 mt-4 leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat<br className='hidden md:block' /> 
+                    <h1 className=" text-3xl sm:text-4xl leading-[2.25rem]  font-bold text-[#1B222B]">Service Department</h1>
+                    <p className="text-sm leading-[1.5rem] text-gray-700 mt-4">
+                        Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat
                         elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.
                     </p>
                 </div>
@@ -54,8 +54,8 @@ const ServiceDepartment = () => {
                 <div className='md:grid-cols-2 w-full py-6 px-5 rounded-2xl bg-[#F6E8414D] mx-auto'>
                     <div className="md:py-5 md:px-8 space-y-5">
                         <div>
-                            <h1 className="text-lg text-black text-bold mb-5 font-bold">Administration Department</h1>
-                            <p className="text-sm text-gray mt-4 py-3">The Administrative Department as the secretariat of ARCN covers broad areas of the council&rsquo;s mandate as well as the NARS. It<br className='hidden md:block' /> is responsible for managing and overseeing various administrative activities for the smooth running of the council.</p>
+                            <h1 className="text-3xl sm:text-4xl leading-[2.25rem] text-black text-bold mb-5 font-bold">Administration Department</h1>
+                            <p className="text-sm leading-[1.5rem] text-gray mt-4 py-3">The Administrative Department as the secretariat of ARCN covers broad areas of the council&rsquo;s mandate as well as the NARS. It<br className='hidden md:block' /> is responsible for managing and overseeing various administrative activities for the smooth running of the council.</p>
                         </div>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full mb-10 font-bold text-sm'>
@@ -87,8 +87,8 @@ const ServiceDepartment = () => {
                 <div className='md:grid-cols-2 w-full py-6 px-5 rounded-2xl bg-[#87C12F4D] mx-auto'>
                     <div className="md:py-5 md:px-8 space-y-5">
                         <div>
-                            <h1 className="text-lg text-black text-bold mb-5 font-bold">Finance And Account Department</h1>
-                            <p className="text-sm text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet<br /> sagittis sit. In.</p>
+                            <h1 className="text-3xl sm:text-4xl leading-[2.25rem] text-black text-bold mb-5 font-bold">Finance And Account Department</h1>
+                            <p className="text-sm leading-[1.5rem] text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet<br /> sagittis sit. In.</p>
                         </div>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-[100px] mb-10 font-bold text-sm'>

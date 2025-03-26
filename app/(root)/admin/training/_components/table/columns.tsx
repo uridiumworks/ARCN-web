@@ -1,8 +1,11 @@
-"use client"
-
+"use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { EntreprenuershipTableType, FCAsTableType, SupervisionReportTableType } from "./types";
+import {
+  EntreprenuershipTableType,
+  FCAsTableType,
+  SupervisionReportTableType,
+} from "./types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowDown } from "react-icons/io";
@@ -10,119 +13,141 @@ import EntrepreneurshipAction from "../dropdowns/entrepreneurship/Entrepreneursh
 import FCAsAction from "../dropdowns/FCAs/FCAsAction";
 import SupervisionReportAction from "../dropdowns/supervision-report/SupervisionReportAction";
 
-
-
-
 export const FCAscolumns: ColumnDef<FCAsTableType>[] = [
+  {
+    accessorKey: "checkbox",
+    header: "",
+    cell: ({ row }) => {
+      const blogData: any = row.original;
+      return <Checkbox className="border-[#838799]" />;
+    },
+  },
+  {
+    accessorKey: "institutionName",
+    header: "Institution Name",
+    enableGlobalFilter: true,
+  },
+  {
+    accessorKey: "establishDate",
+    header: "Date Established",
+    cell: ({ row }) => {
+      const value = new Date(row.original.establishDate);
+      const formattedDate = value.toISOString().slice(0, 19).replace("T", " ");
+      return <div>{formattedDate}</div>;
+    },
+    enableGlobalFilter: false,
+  },
+  {
+    accessorKey: "joinDate",
+    header: "Date Joined",
+    cell: ({ row }) => {
+      const value = new Date(row.original.joinDate);
+      const formattedDate = value.toISOString().slice(0, 19).replace("T", " ");
+      return <div>{formattedDate}</div>;
+    },
+    enableGlobalFilter: false,
+  },
+  {
+    accessorKey: "address",
+    header: "Location",
+    enableGlobalFilter: false,
+  },
+  {
+    accessorKey: "action",
+    header: "Action",
+    cell: ({ row }) => {
+      const fCAsData: any = row.original;
+      return <FCAsAction fCAsData={fCAsData} />;
+    },
+  },
+];
+
+export const SupervisionReportTablecolumns: ColumnDef<SupervisionReportTableType>[] =
+  [
     {
       accessorKey: "checkbox",
       header: "",
       cell: ({ row }) => {
         const blogData: any = row.original;
-        return <Checkbox className="border-[#838799]" />
-        ;
-      },
-    },
-    {
-      accessorKey: "institutionName",
-      header: "Institution Name",
-    },
-    {
-      accessorKey: "establishDate",
-      header: "Date Established",
-    },
-    {
-      accessorKey: "joinDate",
-      header: "Date Joined",
-    },
-    {
-      accessorKey: "address",
-      header: "Location",
-    },
-    {
-      accessorKey: "action",
-      header: "Action",
-      cell: ({ row }) => {
-        const fCAsData: any = row.original;
-        return <FCAsAction fCAsData={fCAsData} />;
-      },
-    },
-  ];
-
-
-  export const SupervisionReportTablecolumns: ColumnDef<SupervisionReportTableType>[] = [
-    {
-      accessorKey: "checkbox",
-      header: "",
-      cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Checkbox className="border-[#838799]" />
-        ;
+        return <Checkbox className="border-[#838799]" />;
       },
     },
     {
       accessorKey: "title",
       header: "Title",
+      enableGlobalFilter:false
     },
     {
-      accessorKey: "publisher",
+      accessorKey: "publisherName",
       header: "Publisher",
+      enableGlobalFilter:true
     },
     {
-        accessorKey: "authorEmail",
-        header: "Author's Email",
+      accessorKey: "authorEmail",
+      header: "Author's Email",
+      enableGlobalFilter:false
     },
     {
-      accessorKey: "dateCreated",
-      header: "Date Created",
+      accessorKey: "publishOn",
+      header: "Publish Date",
+      enableGlobalFilter:false
     },
     {
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
         const supervisionReportData: any = row.original;
-        return <SupervisionReportAction supervisionReportData={supervisionReportData} />;
+        return (
+          <SupervisionReportAction
+            supervisionReportData={supervisionReportData}
+          />
+        );
       },
     },
   ];
 
-
-  export const Entreprenuershipcolumns: ColumnDef<EntreprenuershipTableType>[] = [
-    {
-      accessorKey: "checkbox",
-      header: "",
-      cell: ({ row }) => {
-        const blogData: any = row.original;
-        return <Checkbox className="border-[#838799]" />
-        ;
-      },
+export const Entreprenuershipcolumns: ColumnDef<EntreprenuershipTableType>[] = [
+  {
+    accessorKey: "checkbox",
+    header: "",
+    cell: ({ row }) => {
+      const blogData: any = row.original;
+      return <Checkbox className="border-[#838799]" />;
     },
-    {
-      accessorKey: "subject",
-      header: "Subject",
+  },
+  {
+    accessorKey: "subject",
+    header: "Subject",
+    enableGlobalFilter:true
+  },
+  {
+    accessorKey: "description",
+    header: "Description",
+    enableGlobalFilter:false
+  },
+  {
+    accessorKey: "eventStartDate",
+    header: "Event Start Date",
+    enableGlobalFilter:false
+  },
+  {
+    accessorKey: "eventEndDate",
+    header: "Event End Date",
+    enableGlobalFilter:false
+  },
+  {
+    accessorKey: "venue",
+    header: "Venue",
+    enableGlobalFilter:false
+  },
+  {
+    accessorKey: "action",
+    header: "Action",
+    cell: ({ row }) => {
+      const entrepreneurshipData: any = row.original;
+      return (
+        <EntrepreneurshipAction entrepreneurshipData={entrepreneurshipData} />
+      );
     },
-    {
-      accessorKey: "description",
-      header: "Description",
-    },
-    {
-      accessorKey: "eventDate",
-      header: "Event Date",
-    },
-    {
-      accessorKey: "eventTime",
-      header: "Event Time",
-    },
-    {
-      accessorKey: "venue",
-      header: "Venue",
-    },
-    {
-      accessorKey: "action",
-      header: "Action",
-      cell: ({ row }) => {
-        const entrepreneurshipData: any = row.original;
-        return <EntrepreneurshipAction entrepreneurshipData={entrepreneurshipData} />;
-      },
-    },
-  ];
+  },
+];

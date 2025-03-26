@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CustomContainer from "../CustomContainer";
 
 const Journal = () => {
@@ -14,9 +15,13 @@ const Journal = () => {
             </p>
           </div>
 
-          <button className="bg-[#71C348] text-white text-base sm:text-base capitalize leading-[0.9625rem] py-2.5 px-4 rounded-full font-sans font-bold">
+          <Link
+            href="https://jaarbox.com/site/home"
+            target="_blank"
+            className="bg-[#71C348] text-white text-base sm:text-base capitalize leading-[0.9625rem] py-2.5 px-4 rounded-full font-sans font-bold"
+          >
             Submit Now
-          </button>
+          </Link>
         </div>
       </CustomContainer>
     </section>

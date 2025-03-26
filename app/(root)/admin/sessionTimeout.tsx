@@ -75,7 +75,7 @@ const SessionTimeout: React.FC = () => {
         sessionStorage.removeItem("lastTimeStamp");
         localStorage.removeItem("userToken");
         console.log("Logging out and redirecting to login page");
-        router.replace("/signin"); // Update the path if necessary
+        router.replace("/login"); // Update the path if necessary
         window.location.reload();
       }
     }, 1000); // Check every second

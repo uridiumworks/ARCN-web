@@ -31,13 +31,7 @@ export const useBlogContext = () => {
 export const BlogsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [blogs, setBlogs] = useState<any>(() => {
-    if (typeof window !== "undefined") {
-      const savedData = localStorage.getItem("blogData");
-      return savedData ? JSON.parse(savedData) : [];
-    }
-    return []; // Return a default value for SSR
-  });
+  const [blogs, setBlogs] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +49,7 @@ export const BlogsProvider: React.FC<{ children: ReactNode }> = ({
       const response: any = await getAPI("odata/GetAllBlog", token as any);
 
       console.log(response);
-      localStorage.setItem("blogData", JSON.stringify(response)); // Save to localStorage
+      // localStorage.setItem("blogData", JSON.stringify(response)); // Save to localStorage
       setBlogs(response);
       setIsLoading(false);
     } catch (error: any) {

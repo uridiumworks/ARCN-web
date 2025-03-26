@@ -4,27 +4,20 @@ import UsersTable from "./_components/table/UsersTable";
 import { Userscolumns } from "./_components/table/column";
 import { useGetAllUsers } from "@/hooks/user.hook";
 import Loader from "@/components/Shared/Loader";
+import { useUsers } from "@/contexts/Users.context";
 
 const Users = () => {
-  const [token, setToken] = useState<string | null>(null);
-  const [usersArray, setUsersArray] = useState<any[]>([]);
-  const [triggerRefetch, setTriggerRefetch] = useState<boolean>(false);
-  const { loading, users, error } = useGetAllUsers(triggerRefetch);
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    setToken(userToken);
-  }, []);
+const {getUsers,users,isLoading} = useUsers()
 
-  useEffect(() => {
-    if (users?.length > 0) {
-      setUsersArray(users);
-    }
-  }, [users]);
+useEffect(() => {
+  getUsers()
+},[getUsers])
+
   // if (loading && users?.length < 1) return <p>Loading....</p>
   return (
     <>
-      <Loader loading={loading} />
+      <Loader loading={isLoading} />
       <div className="w-full min-h-screen bg-[#f9fafb] p-3 lg:p-10">
         <div className="w-full min-h-[70vh]">
           <div>
@@ -36,7 +29,7 @@ const Users = () => {
             </p>
           </div>
           <div className="w-full min-h-[70vh] bg-white rounded-md mt-5">
-            <UsersTable columns={Userscolumns} data={usersArray ?? []} />
+            <UsersTable columns={Userscolumns} data={users ?? []} />
           </div>
         </div>
       </div>

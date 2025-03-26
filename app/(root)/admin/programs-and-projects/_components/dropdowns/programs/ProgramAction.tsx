@@ -15,7 +15,7 @@ const ProgramAction = ({programData}: any) => {
   const router = useRouter();
   return (
     <Dialog>
-      {dialog === 1 && <DeleteAction id={programData?.projectId}/>}
+      {dialog === 1 && <DeleteAction id={programData?.arcnProgramId}/>}
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
         <Button className="bg-white border-2 border-[#d1d5db] hover:bg-white"><IoIosArrowDown color="#4b5563" /></Button>
@@ -26,7 +26,7 @@ const ProgramAction = ({programData}: any) => {
         >
           <DropdownMenuItem
             className="flex justify-start gap-3 items-center cursor-pointer"
-            onClick={() => router.push(`/admin/programs-and-projects/programs/${programData?.programId}`)}
+            onClick={() => router.push(`/admin/programs-and-projects/programs/${programData?.arcnProgramId}`)}
           >
             <EditIcon className="scale-95" /> <span>Edit</span>
           </DropdownMenuItem>

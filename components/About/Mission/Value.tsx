@@ -11,21 +11,21 @@ import Link from "next/link";
 const data = [
   {
     description:
-      "Demand Driven agricultural technologies generated and innovations promoted",
-    icon: <TractorIcon2 className="scale-75" />,
+      "Demand Driven agricultural technologies <br /> generated and innovations promoted",
+    icon: <TractorIcon2 className="scale-[.65]" />,
   },
   {
     description:
-      "Appropriate policy options for agricultural growth formulated and made available",
-    icon: <FarmerIcon2 className="scale-75" />,
+      "Appropriate policy options for <br /> agricultural growth formulated and <br /> made available",
+    icon: <FarmerIcon2 className="scale-[.65]" />,
   },
   {
     description:
-      "Agricultural Research, training and extension system strengthened",
-    icon: <PlantIcon2 className="scale-[.75]" />,
+      "Agricultural Research, training and <br /> extension system strengthened",
+    icon: <PlantIcon2 className="scale-[.8]" />,
   },
   {
-    description: "Agricultural Knowledge management system established",
+    description: "Agricultural Knowledge management system <br /> established",
     icon: <PlantGrowthIcon className="scale-[.65]" />,
   },
 ];
@@ -54,20 +54,19 @@ const Value = () => {
               .
             </p>
           </div>
-          <div className="px-0 sm:px-4 lg:px-8 grid grid-cols-about-core-res gap-8 items-start sm:items-center">
+          <div className="px-0 sm:px-4 lg:px-8 grid grid-cols-about-core-res gap-8 items-start">
             {data.map((el, i) => (
               <div key={i} className="flex flex-col gap-4 items-center">
                 {el.icon}
                 <p className="font-normal text-[#1B222B] text-center text-sm sm:leading-[1.5rem]">
-                  {/* {el.description
+                  {el.description
                     .split("<br />")
-                    .slice(0, 3)
                     .map((ct) => (
                       <>
                         {ct.trim()} <br />
                       </>
-                    ))} */}
-                  {el.description}
+                    ))}
+                  {/* {el.description} */}
                 </p>
               </div>
             ))}
