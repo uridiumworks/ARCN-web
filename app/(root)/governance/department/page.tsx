@@ -23,8 +23,8 @@ const Departments = () => {
     return ( 
         <section className='w-full px-2.5 md:px-10 py-7 md:py-14 '>
             <div className='lg:px-32 space-y-5 md:space-y-10 mb-8'>
-                <h1 className="text-2xl sm:text-3xl md:text-[40px] font-bold text-[#1B222B]">Our Department</h1>
-                <p className="text-base sm:text-lg text-gray-700 mt-4 leading-relaxed">
+                <h1 className="text-3xl md:text-4xl font-bold text-[#1B222B]">Our Department</h1>
+                <p className="text-sm text-gray-700 mt-4 leading-relaxed">
                     Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat<br className='hidden md:block' /> 
                     elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.
                 </p>
@@ -37,10 +37,10 @@ const Departments = () => {
                             <div className='space-y-8 py-9 px-3 md:px-14 w-full md:w-8/12'>
                                 <div className={cn(index === 0 ? 'text-white' : 'text-[#101010]')}>
                                     <h1 className="md:text-2xl text-[27px]  text-bold mb-5 font-bold">{title}</h1>
-                                    <p className='text-base '>{description}</p>
+                                    <p className='text-sm '>{description}</p>
                                 </div>
 
-                                <Button variant={index === 0 ? 'ghost' : "default"} className={cn(index === 0 ? 'bg-[#FFFFFF] text-[#30A85F]' : 'text-[#FFC74E]', 'border-none rounded-full  py-6 px-5  font-normal text-base ')}>
+                                <Button variant={index === 0 ? 'ghost' : "default"} className={cn(index === 0 ? 'bg-[#FFFFFF] text-[#30A85F]' : 'text-[#FFC74E]', 'border-none rounded-full  py-6 px-5  font-normal text-sm ')}>
                                     <Link href={url}>See Departments</Link>
                                 </Button>
                             </div>

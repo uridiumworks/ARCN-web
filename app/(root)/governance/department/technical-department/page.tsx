@@ -123,15 +123,15 @@ const TechnicalDepartment = () => {
                                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-10 font-bold text-xl'>
                                     {descriptionList?.map((item, index) => {
                                         return (
-                                            <div key={index} className={cn(index === 0 && 'bg-[#FFC74E] text-black', index === 1 && 'bg-[#2E7636] text-white', index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', ' h-[150px] p-8 flex items-center  rounded-[16.17px] text-left')}>
-                                                <h1 className="">{item}</h1>
+                                            <div key={index} className={cn(index === 0 && 'bg-[#FFC74E] text-black', index === 1 && 'bg-[#2E7636] text-white', index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', ' h-[100px] p-8 flex items-center rounded-[16.17px] text-left')}>
+                                                <h1 className="text-sm">{item}</h1>
                                             </div>
                                         )
                                     })}
                                 </div>
 
                                 <div className="pt-10">
-                                    <Button variant='ghost' className='bg-[#FFFFFF] border-none rounded-full p-6 font-normal text-base '>
+                                    <Button variant='ghost' className='bg-[#FFFFFF] border-none rounded-full p-6 font-normal text-sm '>
                                         <Link href={url}>Learn More</Link>
                                     </Button>
                                 </div>

@@ -60,10 +60,10 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="md:h-[380px] w-full bg-[#FCF8C6]">
-                <div className="w-full p-3 md:p-0 w-full md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
-                    <h1 className="text-2xl sm:text-3xl md:text-[40px] font-semibold">Administration Department</h1>
-                    <p className="text-lg">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
+            <div className="md:h-[280px] w-full bg-[#FCF8C6]">
+                <div className="w-full p-3 md:p-0  md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
+                    <h1 className="text-3xl md:text-4xl font-semibold">Administration Department</h1>
+                    <p className="text-sm">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
                     mandate as well as the NARS. It is responsible for managing and overseeing various administrative<br className='hidden md:block' /> activities for the smooth running of the council.</p>
                 </div>
 
@@ -114,14 +114,14 @@ const ServiceDepartmentDetails = () => {
                 </Breadcrumb>
 
                 <div className='py-7 md:py-14'>
-                    <h2 className='font-semibold text-2xl sm:text-3xl md:text-[32px]'>Functions</h2>
+                    <h2 className='font-semibold text-3xl'>Functions</h2>
 
                     <div className='font-normal py-6'>
                         {FunctionData?.map((item, index) => {
                             return (
                                 <div key={index} className='flex items-center gap-2 justify-start' >
-                                    <CircleCheck size={24} />
-                                    <p className='py-4 text-sm md:text-base'>{item}</p>
+                                    <CircleCheck size={18} />
+                                    <p className='py-4 text-sm md:text-sm'>{item}</p>
                                 </div>
                             )
                         })}
@@ -129,17 +129,17 @@ const ServiceDepartmentDetails = () => {
                 </div>
 
                 <div className="space-y-5">
-                    <h1 className="text-2xl sm:text-3xl md:text-[38px] font-semibold">Administration Department Divisions</h1>
+                    <h1 className="text-3xl md:text-4xl font-semibold">Administration Department Divisions</h1>
                     
                     <div className="space-y-7">
                         {AdminDepartmentData?.map(({description, descriptionList, title}, index) => {
                             return (
                                 <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-4 md:py-6 px-4 md:px-7 space-y-4 w-full md:w-11/12")}>
-                                    <h1 className="text-xl md:text-2xl font-bold">{title}</h1>
+                                    <h1 className="text-base font-bold">{title}</h1>
 
                                     <div>
                                         {description !== "" && <p>{description}</p>}
-                                        <ul className="font text-base list-decimal list-inside">
+                                        <ul className="font text-sm leading-7 list-decimal list-inside">
                                             {descriptionList?.map((item, index) => {
                                                 return <li key={index}>{item}</li>
                                             })}
