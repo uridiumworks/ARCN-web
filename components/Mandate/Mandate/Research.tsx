@@ -2,9 +2,14 @@
 import { useClientNarissData } from "@/hooks/Naris.hooks";
 import { useClientProjectsData } from "@/hooks/Projects.hooks";
 import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useEffect, useState } from "react";
+import ResearchMandateSkeletonItemLoading from "@/components/skeletonloading/ResearchMandateSkeletonItemLoading";
 
 const data = [
   {
@@ -22,48 +27,51 @@ const data = [
 ];
 
 const OurTechnologies = () => {
-  const [api, setApi] = useState<any>()
-  const [current, setCurrent] = useState(0)
+  const [api, setApi] = useState<any>();
+  const [current, setCurrent] = useState(0);
   const { loading, projects, error } = useClientProjectsData();
 
-   // Set up auto-sliding
-   useEffect(() => {
-    if (!api) return
+  // Set up auto-sliding
+  useEffect(() => {
+    if (!api) return;
 
     // Update current slide when the carousel changes
     const onSelect = (api: any) => {
-      setCurrent(api.selectedScrollSnap())
-    }
+      setCurrent(api.selectedScrollSnap());
+    };
 
-    api.on("select", onSelect)
+    api.on("select", onSelect);
 
     // Auto-slide timer
     const autoSlideInterval = setInterval(() => {
-      api.scrollNext()
-    }, 3000) // Change slide every 3 seconds
+      api.scrollNext();
+    }, 3000); // Change slide every 3 seconds
 
     return () => {
-      api.off("select", onSelect)
-      clearInterval(autoSlideInterval)
-    }
-  }, [api])
+      api.off("select", onSelect);
+      clearInterval(autoSlideInterval);
+    };
+  }, [api]);
 
   return (
     <Carousel
-    opts={{
-      align: "start",
-      loop: true,
-      containScroll: "trimSnaps",
-    }}
-    setApi={setApi}
-    className="w-full"
-  >
-    <CarouselContent className="-ml-10">
-    {projects?.map(
-      // @ts-ignore
-      (el, index) => (
-              <CarouselItem key={index} className="pl-10 md:basis-1/2 lg:basis-1/3">
-                <div className="relative overflow-hidden rounded-lg  max-h-[24rem]">
+      opts={{
+        align: "start",
+        loop: true,
+        containScroll: "trimSnaps",
+      }}
+      setApi={setApi}
+      className="w-full"
+    >
+      <CarouselContent className="-ml-10">
+        {projects?.map(
+          // @ts-ignore
+          (el, index) => (
+            <CarouselItem
+              key={index}
+              className="pl-10 md:basis-1/2 lg:basis-1/3"
+            >
+              <div className="relative overflow-hidden rounded-lg  max-h-[24rem]">
             <Image
               className="h-full w-full object-cover bg-center"
               alt={el?.title}
@@ -76,9 +84,11 @@ const OurTechnologies = () => {
               {el?.title}
             </div>
           </div>
-              </CarouselItem>
-            ))}
-    </CarouselContent>
+              {/* <ResearchMandateSkeletonItemLoading /> */}
+            </CarouselItem>
+          )
+        )}
+      </CarouselContent>
     </Carousel>
     // <div className="grid grid-cols-mandate-research-res gap-14">
     //   {projects?.map(
