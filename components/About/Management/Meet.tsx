@@ -47,23 +47,26 @@ const Meet = () => {
               </div>
 
               <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-4 gap-3 items-start justify-center mt-8">
-                <div className="text-center flex flex-col gap-5 mx-auto">
+                
+              <div className="flex flex-col">
                   <Image
-                    src="/Images/image 75 (1).png"
+                    src="/Images/image 75 (8).png"
                     alt=""
                     width={170}
                     height={170}
                     className="mx-auto rounded-full"
                   />
+
                   <div className="flex flex-col gap-1">
                     <p className="font-bold text-sm leading-[1.5rem] text-[#1B222B]">
-                      Prof. Bello Zaki Abubakar
+                      Dr. Aliyu Shuaibu Madugu
                     </p>
                     <p className="text-[0.6875rem] font-normal leading-[1.5rem] text-[#3D4852]">
-                      Director Extension and Social – Economic Department
+                      Director
                     </p>
                   </div>
                 </div>
+              
                 <div className="text-center mx-auto flex flex-col gap-5">
                   <Image
                     src="/Images/image 75 (2).png"
@@ -194,21 +197,20 @@ const Meet = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col">
+                <div className="text-center flex flex-col gap-5 mx-auto">
                   <Image
-                    src="/Images/image 75 (8).png"
+                    src="/Images/image 75 (1).png"
                     alt=""
                     width={170}
                     height={170}
                     className="mx-auto rounded-full"
                   />
-
                   <div className="flex flex-col gap-1">
                     <p className="font-bold text-sm leading-[1.5rem] text-[#1B222B]">
-                      Dr. Aliyu Shuaibu Madugu
+                      Prof. Bello Zaki Abubakar
                     </p>
                     <p className="text-[0.6875rem] font-normal leading-[1.5rem] text-[#3D4852]">
-                      Director
+                      Director Extension and Social – Economic Department
                     </p>
                   </div>
                 </div>
