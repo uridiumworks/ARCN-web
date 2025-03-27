@@ -7,14 +7,18 @@ import { Input } from "./ui/input";
 import { Search, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -54,80 +58,64 @@ const Navbar = (props: Props) => {
 
   console.log(isActiveFunc("About Us"), "me");
 
-  const routePathLinks = (arg: any) => {
-    switch (arg) {
-      case "Governance":
-        router.push("/governance");
-        break;
-
-      case "Home":
-        router.push("/");
-        break;
-      case "About Us":
-        router.push("/about/history");
-        break;
-      case "mandate":
-        router.push("/mandate");
-        break;
-      case "News & Events":
-        router.push("/news-and-events");
-        break;
-      case "Programs & Projects":
-        router.push("/programs-and-projects");
-        break;
-      case "Impacts":
-        router.push("/impacts");
-        break;
-      case "Contact":
-        router.push("/contact");
-        break;
-      case "Careers":
-        router.push("/career");
-        break;
-      case "Publications":
-        router.push("/publications");
-        break;
-      default:
-        break;
-    }
-  };
   return (
-    <div className="py-4 sticky z-50 top-0 bg-[#FFFFFF] border-b border-gray-200">
-      <div className="w-full px-8 sm:max-w-[77.5rem] sm:mx-auto flex items-center justify-between">
-        <div>
-          <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
-        </div>
-        <div className="hidden lg:flex lg:flex-col lg:gap-2.5 text-center">
-          <div className="flex justify-center items-center gap-8 text-white">
-            {topNav.map((t, index) => (
-              <p
-                onClick={() => routePathLinks(t)}
-                className={`font-normal text-[0.75rem]  leading-[2rem] ${
-                  isActiveFunc(t)
-                    ? "text-[#30A85F]"
-                    : "text-opacity-85 text-[#121212]"
-                }  cursor-pointer`}
-                key={index}
-              >
-                {t}
-              </p>
-            ))}
+    <nav className="shadow lg:px-2 sm:px-4 py-3.5 bg-white sticky w-full z-50 top-0 left-0 border-b-[#D3D7DB]">
+      {/* <nav className="py-4 sticky z-50 top-0 bg-[#FFFFFF] border-b border-gray-200"> */}
+      <div className="md:w-[1100px] flex flex-col md:flex-row justify-between items-center mx-auto ">
+        <div className="flex py-3 lg:py-0 w-full md:w-auto flex-wrap items-center justify-between ">
+          <Link href="/" className="text-center ml-4 lg:ml-0">
+            <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
+          </Link>
+  
+          <div className="flex lg:order-2">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              data-collapse-toggle="navbar-sticky"
+              type="button"
+              className="inline-flex items-center p-2 lg:hidden focus:outline-none mr-4 lg:mr-0"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+        </div>
 
-          <div className="flex justify-center gap-6 text-white">
-            {mainNav.map((t, index) => (
-              <p
-                onClick={() => routePathLinks(t)}
-                className={`font-bold text-xs leading-[2rem] uppercase ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#121212]"
-                }  cursor-pointer`}
-                key={index}
-              >
-                {t}
-              </p>
-            ))}
+        <div className="space-y-4 w-full md:w-auto px-3.5 lg:px-0 md:text-center">
+          <div className={`${isOpen ? "block" : "hidden"} blue-background lg:flex flex-col  items-center border-t lg:border-0 py-1 justify-between relative top-3 lg:top-0 w-full lg:w-auto lg:order-1 h-screen lg:h-auto text-base animate-slide_down lg:animate-none`}>
+            <ul className="md:flex justify-center items-center gap-8 ">
+              {topNav.map((item, index) => {
+                const isActive = item.url === pathname
+                return (
+                  <li key={index} className={cn(isActive ? "text-[#30A85F]" : "text-[#121212]", "")}>
+                    <Link href={item.url}
+                      className={`font-normal text-[0.75rem]  leading-[2rem] cursor-pointer`}
+                      key={index}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+
+                )})}
+            </ul>
+
+            <ul className="flex flex-col md:flex-row justify-start md:justify-center gap-6">
+              {mainNav.map((item, index) => {
+                const isActive = item.url === pathname
+                return (
+                  <li key={index} className={cn(isActive ? "text-[#30A85F]" : "text-black", "")}>
+                    <Link href={item.url}
+                      className={`font-bold text-xs leading-[2rem] uppercase cursor-pointer`}
+                      key={index}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+
+                )})}
+            </ul>
           </div>
         </div>
+        
         <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2 bg-[#fff] border  border-[#3C3C3C]">
           <input
             type="search"
@@ -136,83 +124,8 @@ const Navbar = (props: Props) => {
           />
           <Search color="#2E7636" size="14px" />
         </div>
-
-        <div className="lg:hidden flex items-center">
-          <Menu size="24px" color="#121212" onClick={toggleMobileMenu} />
-        </div>
       </div>
-
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-[#fff]  z-50 flex flex-col gap-7 items-center p-4">
-          <div className="flex  items-center justify-between w-full">
-            <Image src="/Images/logov1.png" width={80} height={35} alt="logo" />
-            <X
-              size="24px"
-              color="#121212"
-              onClick={toggleMobileMenu}
-              className="cursor-pointer"
-            />
-          </div>
-
-          <div className="flex flex-col gap-4 sm:gap-12 px-6 self-stretch justify-self-center absolute top-[53q%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-full sm:w-[75%] sm:mx-auto">
-            <div className=" flex flex-col gap-6 items-center text-white">
-              {mainNav.map((t, index) => (
-                <p
-                  className={`font-bold text-sm sm:text-lg uppercase  ${
-                    isActiveFunc(t) ? "text-[#30A85F]" : "text-[#121212]"
-                  }`}
-                  key={index}
-                  onClick={() => {
-                    routePathLinks(t);
-                    toggleMobileMenu();
-                  }}
-                >
-                  {t}
-                </p>
-              ))}
-            </div>
-
-            <div className="flex flex-col gap-4 items-center text-white">
-              {topNav.map((t, index) => (
-                <p
-                className={`font-bold text-sm sm:text-lg uppercase  ${
-                  isActiveFunc(t) ? "text-[#30A85F]" : "text-[#121212]"
-                }`}
-                key={index}
-                onClick={() => {
-                  routePathLinks(t);
-                  toggleMobileMenu();
-                }}
-              >
-                {t}
-              </p>
-                // <p
-                //   onClick={() => routePathLinks(t)}
-                //   className={`font-normal text-[0.75rem]  leading-[2rem] ${
-                //     isActiveFunc(t)
-                //       ? "text-[#30A85F]"
-                //       : "text-[#121212]"
-                //   }  cursor-pointer`}
-                //   key={index}
-                // >
-                //   {t}
-                // </p>
-              ))}
-            </div>
-
-            <div className="flex items-center justify-between mt-1 rounded-md w-full bg-[#fff] p-3 border  border-[#3C3C3C]">
-              <input
-                type="search"
-                placeholder="Search"
-                className="outline-none bg-transparent flex-1 py-1 px-1.5 text-[#121212] placeholder:text-[#121212] text-sm leading-[1.5rem] focus-visible:outline-none border-[#3C3C3C]"
-              />
-              <Search color="#2E7636" size="24px" />
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+    </nav>
   );
 };
 

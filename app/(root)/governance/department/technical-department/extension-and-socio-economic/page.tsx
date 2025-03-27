@@ -52,7 +52,7 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <HeaderComp 
+            <HeaderComp
                 bgColor="bg-[#FFC74E]"
                 title="Extension & Socio-Economic Department"
                 description={<>The Extension and Socio-economics Department of the Agricultural Research Council of Nigeria<br className='hidden md:block' /> 
@@ -104,17 +104,18 @@ const ServiceDepartmentDetails = () => {
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
+                <div className="text-sm">
+                    <FunctionalComp
+                        title="Functions"
+                        FunctionData={FunctionData}
+                    />
 
-                <FunctionalComp
-                    title="Functions"
-                    FunctionData={FunctionData}
-                 />
-
-                <ContentComp
-                    title="Extension & Socio-Economic Divisions"
-                    AdminDepartmentData={AdminDepartmentData}
-                    listType="list-disc"
-                />
+                    <ContentComp
+                        title="Extension & Socio-Economic Divisions"
+                        AdminDepartmentData={AdminDepartmentData}
+                        listType="list-disc"
+                    />
+                </div>
             </div>
 
         </section>

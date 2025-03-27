@@ -58,7 +58,7 @@ const ServiceDepartment = () => {
                             <p className="text-sm leading-[1.5rem] text-gray mt-4 py-3">The Administrative Department as the secretariat of ARCN covers broad areas of the council&rsquo;s mandate as well as the NARS. It<br className='hidden md:block' /> is responsible for managing and overseeing various administrative activities for the smooth running of the council.</p>
                         </div>
 
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full mb-10 font-bold text-xl'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full mb-10 font-bold text-sm'>
                             <div className='bg-[#FFC74E] p-8 flex items-center  rounded-[16.17px] text-left'>
                                 <h1 className="">Transport Unit</h1>
                             </div>
@@ -77,7 +77,7 @@ const ServiceDepartment = () => {
                         </div>
 
                         <div className="pt-10">
-                            <Button variant='ghost' className='bg-[#FFFFFF] border-none rounded-full p-6 font-normal text-base '>
+                            <Button variant='ghost' className='bg-[#FFFFFF] border-none rounded-full p-6 font-normal text-sm '>
                                 <Link href='/governance/department/service-department/administration-department'>Learn More</Link>
                             </Button>
                         </div>
@@ -91,14 +91,14 @@ const ServiceDepartment = () => {
                             <p className="text-sm leading-[1.5rem] text-gray mt-4 py-3">Lorem ipsum dolor sit amet consectetur. Mi enim arcu vulputate ut at. Sagittis venenatis amet<br /> sagittis sit. In.</p>
                         </div>
 
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-[140px] mb-10 font-bold text-xl'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-[100px] mb-10 font-bold text-sm'>
                             <div className='bg-black text-white border p-8 flex items-center  rounded-[16.17px] text-left'>
                                 <h1 className="">Finance And Account Unit</h1>
                             </div>
                         </div>
 
                         <div className="pt-10">
-                            <Button variant='ghost' className='bg-[#FFFFFF] border-none rounded-full p-6 font-normal text-base '>
+                            <Button variant='ghost' className='bg-[#FFFFFF] border-none rounded-full p-6 font-normal text-sm '>
                                 <Link href='/governance/department/service-department/administration-department'>Learn More</Link>
                             </Button>
                         </div>

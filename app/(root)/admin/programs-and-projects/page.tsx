@@ -1,7 +1,7 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import React, { MouseEventHandler, ReactNode, useEffect, useState } from 'react'
+import React, { MouseEventHandler, ReactNode, Suspense, useEffect, useState } from 'react'
 import Projects from './Projects';
 import Programs from './Programs';
 import { useSearchParams } from 'next/navigation';
@@ -12,7 +12,7 @@ type programsAndProjectsTabType = {
     name: string;
 };
 
-const ProgramsAndProjects = () => {
+const ProgramsAndProjectsContent = () => {
     const [tab, setTab] = useState(1);
     const researchPageViewTab: Array<programsAndProjectsTabType> = [
         { tab: 1, name: "PROJECTS" },
@@ -88,4 +88,10 @@ const ProgramsAndProjects = () => {
     )
 }
 
-export default ProgramsAndProjects
+export default function ProgramsAndProjects() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ProgramsAndProjectsContent />
+        </Suspense>
+    )
+}

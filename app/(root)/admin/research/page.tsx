@@ -1,7 +1,7 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import React, { MouseEventHandler, ReactNode, useEffect, useState } from 'react'
+import React, { MouseEventHandler, ReactNode, Suspense, useEffect, useState } from 'react'
 import NarisView from './NarisView';
 import CordinationReportView from './CordinatIonReportView';
 import { useSearchParams } from 'next/navigation';
@@ -13,14 +13,14 @@ type researchPageViewTabType = {
     name: string;
 };
 
-const ResearchPageView = () => {
+function ResearchPageViewContent() {
     const [tab, setTab] = useState(1);
     const researchPageViewTab: Array<researchPageViewTabType> = [
         { tab: 1, name: "NARIS" },
         { tab: 2, name: "CORDINATION REPORT" },
     ];
-
     const queryParams = useSearchParams();
+    
 
     useEffect(() => {
       if(queryParams && queryParams.get('tab')?.toLowerCase() === 'cordination'){
@@ -90,4 +90,10 @@ const ResearchPageView = () => {
     )
 }
 
-export default ResearchPageView
+export default function ResearchPageView() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ResearchPageViewContent />
+        </Suspense>
+    )
+}
