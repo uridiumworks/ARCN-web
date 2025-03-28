@@ -50,6 +50,11 @@ const Governance: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center text-center justify-center mt-8">
+         <div className=''>
+              <Image src="/Images/image 75 (8).png" alt="" width={170} height={170} className='mx-auto rounded-full' />
+              <p className='font-[700] text-[14px] mt-3'>Dr. Aliyu Shuaibu Madugu Director</p>
+              <p className='text-[11px] font-[400] text-[#3D4852]'>Planning Research<br></br>and Statistics Department </p>
+          </div>
           <div className='text center mx-auto'>
               <Image src="/Images/image 75 (5).png" alt="" width={170} height={170} className='mx-auto rounded-full' />
               <p className='font-[700] text-[14px] mt-3'>Kayode I. Aiyedogbon</p>
@@ -58,8 +63,8 @@ const Governance: React.FC = () => {
           <div className=''>
               <Image src="/Images/image 75 (6).png" alt="" width={170} height={170} className='mx-auto rounded-full' />
               <p className='font-[700] text-[14px] mt-3'>Woru Adamu Kerenji</p>
-              <p className='text-[11px] font-[400] text-[#3D4852]'>Assistant Director Finance and <br></br> 
-              Account</p>
+              <p className='text-[11px] font-[400] text-[#3D4852]'>Ag. Director Finance and <br></br> 
+              Account Department</p>
           </div>
           <div className=''>
               <Image src="/Images/image 75 (7).png" alt="" width={170} height={170} className='mx-auto rounded-full' />
@@ -70,14 +75,9 @@ const Governance: React.FC = () => {
           <div className=''>
               <Image src="/Images/image 76.png" alt="" width={170} height={170} className='mx-auto rounded-full' />
               <p className='font-[700] text-[14px] mt-3'>Barr. Shehu Aliyu</p>
-              <p className='text-[11px] font-[400] text-[#3D4852]'>AD (Legal) / Legal Advisor. <br></br>
-              LLB. LLM.</p>
-          </div>
-          <div className=''>
-              <Image src="/Images/image 75 (8).png" alt="" width={170} height={170} className='mx-auto rounded-full' />
-              <p className='font-[700] text-[14px] mt-3'>Dr. Aliyu Shuaibu Madugu</p>
-              <p className='text-[11px] font-[400] text-[#3D4852]'>Head of Department Planning Research  <br></br>and Statistics.</p>
-          </div>
+              <p className='text-[11px] font-[400] text-[#3D4852]'>Legal Adviser.<br></br>
+              LLB. LLM@</p>
+          </div> 
       </div>
     </div>
   )

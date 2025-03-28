@@ -124,6 +124,24 @@ const Meet = () => {
               </div>
 
               <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-5 gap-3 items-start text-center justify-center mt-8">
+                <div className="flex flex-col">
+                  <Image
+                    src="/Images/image 75 (8).png"
+                    alt=""
+                    width={170}
+                    height={170}
+                    className="mx-auto rounded-full"
+                  />
+
+                  <div className="flex flex-col gap-1">
+                    <p className="font-bold text-sm leading-[1.5rem] text-[#1B222B]">
+                      Dr. Aliyu Shuaibu Madugu Director
+                    </p>
+                    <p className="text-[0.6875rem] font-normal leading-[1.5rem] text-[#3D4852]">
+                      Planning Research <br /> and Statistics Department
+                    </p>
+                  </div>
+                </div>
                 <div className="text center flex flex-col gap-5 mx-auto">
                   <Image
                     src="/Images/image 75 (5).png"
@@ -192,8 +210,7 @@ const Meet = () => {
                       Barr. Shehu Aliyu
                     </p>
                     <p className="text-[0.6875rem] font-normal leading-[1.5rem] text-[#3D4852]">
-                      AD (Legal) / Legal Advisor. <br></br>
-                      LLB. LLM.
+                    Legal Adviser. LLB. LLM@.
                     </p>
                   </div>
                 </div>
