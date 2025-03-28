@@ -3,15 +3,17 @@ import CustomContainer from "../CustomContainer";
 const Impact = () => {
   return (
     <section className="">
-      <div className="min-h-[30rem] bg-[#011610] flex items-center py-12 md:py-20">
+      <div className="min-h-[30rem] bg-impact-static-bg bg-fixed bg-cover bg-center bg-no-repeat relative flex items-center py-12 md:py-20">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-[#011610] bg-opacity-[.65]"></div>
         <CustomContainer>
-          <div className="text-center space-y-9">
+          <div className="text-center space-y-9 relative z-10">
             <h2 className="text-[#E6E9E7] text-3xl sm:text-4xl font-semibold leading-[2.25rem]">
               Impacts Based On Numbers
             </h2>
 
             <div className="flex flex-col md:flex-row  mx-auto justify-center gap-6">
-              <div className="border border-[#409A72] bg-[#409A72] w-full  sm:w-[11.9375rem] h-[7.5625rem] rounded-lg text-center place-content-center">
+              <div className="  w-full  sm:w-[11.9375rem] h-[7.5625rem] rounded-lg text-center place-content-center">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
                   638
                 </h1>
@@ -21,7 +23,7 @@ const Impact = () => {
                 </p>
               </div>
 
-              <div className="border border-[#409A72] bg-[#409A72] w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
+              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
                   105
                 </h1>
@@ -30,7 +32,7 @@ const Impact = () => {
                 </p>
               </div>
 
-              <div className="border border-[#409A72] bg-[#409A72] w-full md:w-[21.6875rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
+              <div className="  w-full md:w-[21.6875rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
                   132
                 </h1>
@@ -39,7 +41,7 @@ const Impact = () => {
                 </p>
               </div>
 
-              <div className="border border-[#409A72] bg-[#409A72] w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
+              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
                   2791
                 </h1>
