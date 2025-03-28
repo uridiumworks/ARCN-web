@@ -1,8 +1,11 @@
+import CustomContainer from "@/components/CustomContainer";
 import Image from "next/image";
 
 const Picture = () => {
   return (
-    <section className="py-4 px-6">
+    <section className="py-4">
+      <CustomContainer>
+
       <div className="flex flex-col gap-8">
         <h2 className="font-bold text-[#2E7636] text-2xl sm:text-4xl leading-[2.25rem] text-center self-center px-6">
           ARCN ORGANOGRAM
@@ -11,11 +14,13 @@ const Picture = () => {
           <Image
             src="/Images/Aboutpage/diagram-v2.svg"
             alt="Diagram"
-            width={1250}
+            width={1550}
             height={800}
           />
         </div>
       </div>
+      </CustomContainer>
+     
     </section>
   );
 };

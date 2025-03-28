@@ -12,7 +12,7 @@ const Impact = () => {
               Impacts Based On Numbers
             </h2>
 
-            <div className="flex flex-col md:flex-row  mx-auto justify-center gap-6">
+            <div className="flex flex-col md:flex-row  mx-auto justify-center gap-6 ">
               <div className="  w-full  sm:w-[11.9375rem] h-[7.5625rem] rounded-lg text-center place-content-center">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
                   638

@@ -25,7 +25,7 @@ const Federal = () => {
   return (
     <section className="py-8 md:py-16 flex flex-col gap-8 sm:gap-14">
       <CustomContainer>
-        <div className="flex flex-col gap-6 sm:px-16">
+        <div className="flex flex-col gap-6">
           <h2 className="font-bold  text-3xl sm:text-4xl leading-[2.25rem] text-[#171717]">
             Federal College of Agriculture
           </h2>
@@ -42,7 +42,7 @@ const Federal = () => {
 
       <div className="py-12 md:py-20 bg-[#F6F6F6]">
         <CustomContainer>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-10">
             <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around gap-5">
               {federalColleges.length > 0 && (
                 <>
