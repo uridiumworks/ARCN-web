@@ -81,7 +81,7 @@ const Navbar = (props: Props) => {
         </div>
 
         <div className="space-y-4 w-full md:w-auto px-3.5 lg:px-0 md:text-center">
-          <div className={`${isOpen ? "block" : "hidden"} blue-background lg:flex flex-col  items-center border-t lg:border-0 py-1 justify-between relative top-3 lg:top-0 w-full lg:w-auto lg:order-1 h-screen lg:h-auto text-base animate-slide_down lg:animate-none`}>
+          <div className={`${isOpen ? "block" : "hidden"} blue-background lg:flex flex-col-reverse lg:flex-col items-center border-t lg:border-0 py-1 justify-between relative top-3 lg:top-0 w-full lg:w-auto lg:order-1 h-screen lg:h-auto text-base animate-slide_down lg:animate-none`}>
             <ul className="md:flex justify-center items-center gap-8 ">
               {topNav.map((item, index) => {
                 const isActive = item.url === pathname
