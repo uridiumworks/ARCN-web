@@ -31,7 +31,7 @@ const config = {
         "coordination-report-res": "repeat(auto-fit,minmax(27rem,1fr))",
       },
       backgroundImage: {
-        "impact-static-bg": "url('/images/Homepage/impact-img-static.jpg')",
+        "impact-static-bg": "url('/Images/Homepage/impact-img-static.jpg')",
       },
 
       colors: {
