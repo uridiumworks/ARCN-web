@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { House } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CustomContainer from "@/components/CustomContainer";
   
 
 const ServiceDepartment = () => {
     return (
-        <section className="w-full md:w-[1250px] px-2.5 py-4 mx-auto">
+        <section className="w-full px-2.5 py-4">
+            <CustomContainer>
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -105,6 +107,8 @@ const ServiceDepartment = () => {
                     </div>
                 </div>
             </div>
+            </CustomContainer>
+          
         </section>
     );
 }
