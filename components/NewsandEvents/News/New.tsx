@@ -20,7 +20,7 @@ const New = () => {
   return (
     <section className="py-12 md:py-20">
       <CustomContainer>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-12">
           <h2 className="font-semibold text-3xl md:text-4xl leading-[2.25rem] text-center">
             News
           </h2>
