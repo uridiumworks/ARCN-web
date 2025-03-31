@@ -2,6 +2,7 @@ import { CircleCheck, House } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import CustomContainer from "@/components/CustomContainer";
 
 const FunctionData: string[] = [
     "Participate through a consultative process in the appointment of ED and Provosts of NARIs and FCAs respectively.", 
@@ -60,16 +61,19 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="md:h-[280px] w-full bg-[#FCF8C6]">
-                <div className="w-full p-3 md:p-0  md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
-                    <h1 className="text-3xl md:text-4xl font-semibold">Administration Department</h1>
-                    <p className="text-sm">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
+            <div className="sm:py-[5rem] py-[3.5rem] w-full bg-[#FCF8C6]">
+                <CustomContainer>
+                <div className="w-full p-3 flex flex-col gap-3">
+                    <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-semibold">Administration Department</h1>
+                    <p className="text-sm leading-[1.5rem]">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
                     mandate as well as the NARS. It is responsible for managing and overseeing various administrative<br className='hidden md:block' /> activities for the smooth running of the council.</p>
                 </div>
-
+</CustomContainer>
             </div>
+            <CustomContainer>
 
-            <div className="w-full md:w-[1250px] mx-auto px-2.5 py-5">
+
+            <div className="w-full px-2.5 py-5">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -134,7 +138,7 @@ const ServiceDepartmentDetails = () => {
                     <div className="space-y-7">
                         {AdminDepartmentData?.map(({description, descriptionList, title}, index) => {
                             return (
-                                <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-4 md:py-6 px-4 md:px-7 space-y-4 w-full md:w-11/12")}>
+                                <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-4 md:py-6 px-4 md:px-7 space-y-4 w-full")}>
                                     <h1 className="text-base font-bold">{title}</h1>
 
                                     <div>
@@ -152,6 +156,8 @@ const ServiceDepartmentDetails = () => {
                     </div>
                 </div>
             </div>
+            </CustomContainer>
+            
         </section>
     );
 }

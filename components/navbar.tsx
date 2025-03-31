@@ -61,7 +61,7 @@ const Navbar = (props: Props) => {
   return (
     <nav className="shadow lg:px-2 sm:px-4 py-3.5 bg-white sticky w-full z-50 top-0 left-0 border-b-[#D3D7DB]">
       {/* <nav className="py-4 sticky z-50 top-0 bg-[#FFFFFF] border-b border-gray-200"> */}
-      <div className="md:w-[1100px] flex flex-col md:flex-row justify-between items-center mx-auto ">
+      <div className="w-full sm:max-w-[71.25rem] sm:mx-auto px-3.5 md:px-10 flex flex-col md:flex-row justify-between items-center  ">
         <div className="flex py-3 lg:py-0 w-full md:w-auto flex-wrap items-center justify-between ">
           <Link href="/" className="text-center ml-4 lg:ml-0">
             <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
@@ -81,7 +81,7 @@ const Navbar = (props: Props) => {
         </div>
 
         <div className="space-y-4 w-full md:w-auto px-3.5 lg:px-0 md:text-center">
-          <div className={`${isOpen ? "block" : "hidden"} blue-background lg:flex flex-col  items-center border-t lg:border-0 py-1 justify-between relative top-3 lg:top-0 w-full lg:w-auto lg:order-1 h-screen lg:h-auto text-base animate-slide_down lg:animate-none`}>
+          <div className={`${isOpen ? "block" : "hidden"} blue-background lg:flex flex-col-reverse lg:flex-col items-center border-t lg:border-0 py-1 justify-between relative top-3 lg:top-0 w-full lg:w-auto lg:order-1 h-screen lg:h-auto text-base animate-slide_down lg:animate-none`}>
             <ul className="md:flex justify-center items-center gap-8 ">
               {topNav.map((item, index) => {
                 const isActive = item.url === pathname

@@ -51,9 +51,9 @@ const Super = () => {
                 key={i}
                 className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5"
               >
-                <div className="flex flex-col gap-2 items-start order-2 lg:order-1">
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
+                <div className="flex flex-col gap-1 items-start order-2 lg:order-1">
+                  <div className="flex flex-col">
+                    <h3 className="text-base leading-[1.5rem] text-[#131517] font-medium">
                       {el.title}
                     </h3>
                     <p className="font-normal leading-[1.5rem] text-[#464646] text-xs">
@@ -77,7 +77,7 @@ const Super = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="relative w-full sm:w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                <div className="relative w-full lg:w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                   <Image
                     src="/Images/Homepage/event-imgholder.png"
                     alt="event-imgholder"

@@ -1,4 +1,5 @@
 "use client";
+import CustomContainer from "@/components/CustomContainer";
 import { useClientNewsLettersData } from "@/hooks/NewsLetters.hooks";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,20 +11,20 @@ const New = () => {
     const date = new Date(isoDateStr);
 
     // Options for formatting
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: "numeric", month: "long", day: "numeric" };
 
     // Convert to a readable format
-    return date.toLocaleDateString('en-US', options as any);
-}
-console.log(newsLetters)
+    return date.toLocaleDateString("en-US", options as any);
+  }
+  console.log(newsLetters);
   return (
-    <section className="w-full">
-      <div className="">
-        <div className="w-full mx-auto">
-          <h1 className="font-semibold font-montserrat text-3xl md:text-4xl text-center pt-20 pb-8">News</h1>
-        </div>
+    <section className="py-12 md:py-20">
+      <CustomContainer>
+        <div className="flex flex-col gap-12">
+          <h2 className="font-semibold text-3xl md:text-4xl leading-[2.25rem] text-center">
+            News
+          </h2>
 
-        <div className="lg:w-9/12 lg:mx-auto px-3 space-y-7">
           <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-7 ">
             {newsLetters?.length > 0 && (
               <>
@@ -42,19 +43,30 @@ console.log(newsLetters)
 
                     <div className="space-y-4">
                       <h1 className="font-semibold text-base">
-                       Nature-positive farms on remote hillsides in India show the future of resilient farming
+                        Nature-positive farms on remote hillsides in India show
+                        the future of resilient farming
                       </h1>
-                      <p className="font-normal text-sm" style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
-                       Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages the deluges br…
+                      <p
+                        className="font-normal text-sm"
+                        style={{
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        Monsoons are a mixed blessing for rain-dependent farmers
+                        in remote mountain villages the deluges br…
                       </p>
                       <div className="flex flex-row">
                         <p className="font-bold flex gap-2 text-sm text-[#15271C] ">
                           <span className="font-normal text-sm text-[#999999]">
                             {convertToReadableDate(n?.publishDate)}
                           </span>
-                          <br /> 
+                          <br />
                           <Link href={`/news-and-events/news`} passHref>
-                            <span className="cursor-pointer hover:underline">Read more</span>
+                            <span className="cursor-pointer hover:underline">
+                              Read more
+                            </span>
                           </Link>
                         </p>
                       </div>
@@ -104,7 +116,7 @@ console.log(newsLetters)
             )}
           </div> */}
         </div>
-      </div>
+      </CustomContainer>
     </section>
   );
 };

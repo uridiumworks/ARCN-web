@@ -239,7 +239,7 @@ const Institutes = () => {
               ))}
             </div>
             {/* content */}
-            <div className="px-0 sm:px-12">{loadContent()}</div>
+            <div className="px-0">{loadContent()}</div>
           </div>
         </div>
       </CustomContainer>

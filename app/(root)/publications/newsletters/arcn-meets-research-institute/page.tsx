@@ -5,10 +5,10 @@ import Text from '../../_components/text'
 
 const Newsletters = () => {
   return (
-    <div>
+    <>
       <FundingMotto />
       <Text /> 
-    </div>
+    </>
   )
 }
 

@@ -4,11 +4,11 @@ import Journal from "@/components/Shared/Journal";
 
 const Career =() => {
     return (
-        <main>
+        <section>
             <Banner />
             <Open />
             <Journal />
-        </main>
+        </section>
     )
 }
 

@@ -29,7 +29,7 @@ const Maps = () => {
   return (
     <section className="py-12 md:py-20 bg-[#F6F6F6]">
       <CustomContainer>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-10">
           <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around  gap-5">
             {/* {nariss?.length > 0 && (
               <>

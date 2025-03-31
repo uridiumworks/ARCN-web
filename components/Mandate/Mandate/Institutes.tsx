@@ -4,7 +4,7 @@ const Institutes = () => {
   return (
     <section className="py-12 md:py-20">
       <CustomContainer>
-        <div className="flex flex-col gap-8 sm:px-24">
+        <div className="flex flex-col gap-8">
           <h2 className="text-[#171717] text-3xl sm:text-4xl font-bold leading-[2.25rem]">
             Research Institutes
           </h2>

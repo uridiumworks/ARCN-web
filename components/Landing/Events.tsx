@@ -58,7 +58,7 @@ const Events = () => {
                         Register Here
                       </div>
                     </div>
-                    <div className="relative w-full sm:w-[9.375rem] h-[9.375rem] lg:h-full  shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                    <div className="relative w-full lg:w-[9.375rem] h-[9.375rem] lg:h-full  shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
                       <Image
                         src="/Images/Homepage/event-imgholder.png"
                         alt="event-imgholder"
