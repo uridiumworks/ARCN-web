@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import GovernanceMotto from "./_components/governance-motto";
 import Journal from "@/components/Shared/Journal";
+import CustomContainer from "@/components/CustomContainer";
 
 interface LayoutType {
   children: React.ReactNode;
@@ -69,28 +70,30 @@ export default function LayoutProvider({ children }: LayoutType) {
       <div className="">
         <div className="w-full">
           {NoLayout && (
-            <div className="w-full whitespace-nowrap">
-              <ul className="flex text-sm lg:text-lg gap-4 border-b dark:border-gray-600 -mb-px py-4 md:px-10 justify-center md:justify-start max-w-full">
-                {AccountSettingsTab.map(({ name, status, url }, index) => {
-                  const activeTab = cn(
-                    isTabActive(url)
-                      ? "font-bold font-semibold text-[#2E7636]"
-                      : "border-0 text-black font-medium",
-                    "inline-block rounded py-2 uppercase bg-[#F7F7F7] px-3.5 text-xs font-Hind"
-                  );
+            <CustomContainer>
+              <div className="w-full whitespace-nowrap">
+                <ul className="flex text-sm lg:text-lg gap-4 border-b dark:border-gray-600 -mb-px py-4 justify-center md:justify-start max-w-full">
+                  {AccountSettingsTab.map(({ name, status, url }, index) => {
+                    const activeTab = cn(
+                      isTabActive(url)
+                        ? "font-bold font-semibold text-[#2E7636]"
+                        : "border-0 text-black font-medium",
+                      "inline-block rounded py-2 uppercase bg-[#F7F7F7] px-3.5 text-xs font-Hind"
+                    );
 
-                  return (
-                    <li key={index}>
-                      {status === "active" && (
-                        <Link href={url} className={activeTab}>
-                          {name}
-                        </Link>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+                    return (
+                      <li key={index}>
+                        {status === "active" && (
+                          <Link href={url} className={activeTab}>
+                            {name}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </CustomContainer>
           )}
 
           {NoLayout && <GovernanceMotto />}
