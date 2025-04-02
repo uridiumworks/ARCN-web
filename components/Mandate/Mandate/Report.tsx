@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useClientReportsData } from "@/hooks/Reports.hooks";
 import CustomContainer from "@/components/CustomContainer";
 import Link from "next/link";
+import { useGlobalClient } from "@/contexts/GlobalClientContext";
+import { useEffect, useState } from "react";
+import { CoordinationReportSkeletonLoading } from "@/components/skeletonloading/CoordinationReportSkeletonLoading";
 
 // const data = [
 //   {
@@ -20,7 +23,21 @@ import Link from "next/link";
 
 const Report = () => {
   const { loading, reports, error } = useClientReportsData();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   console.log(reports);
+
+  const {
+    isLoadingCoordinationReports,
+    coordinationReports,
+    fetchCoordinationReports,
+  } = useGlobalClient();
+
+  useEffect(() => {
+    fetchCoordinationReports(currentPage, pageSize);
+  }, [currentPage, fetchCoordinationReports, pageSize]);
+
+  console.log("COORINDATION", coordinationReports);
 
   return (
     <section className="bg-white py-12 md:py-20">
@@ -32,13 +49,14 @@ const Report = () => {
             </h2>
             <p className="text-black font-normal text-sm leading-[1.5rem]">
               Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
-              etiam euismod quisque <br className="hidden md:block" /> montes arcu risus. Magnis posuere
-              tincidunt elit ultrices tortor. Sit semper cras sed duis tortor{" "}
-              <br className="hidden md:block" /> tempor amet gravida. Rhoncus quis nisl etiam tortor.
+              etiam euismod quisque <br className="hidden md:block" /> montes
+              arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit
+              semper cras sed duis tortor <br className="hidden md:block" />{" "}
+              tempor amet gravida. Rhoncus quis nisl etiam tortor.
             </p>
           </div>
 
-          <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
+          {/* <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
             {reports?.length > 0 &&
               reports?.slice(0, 4)?.map(
                 // @ts-ignore
@@ -52,16 +70,13 @@ const Report = () => {
                         <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                           {el.title}
                         </h3>
-                       
-                          <p className="font-normal text-[#464646] text-xs leading-[1.5rem]">
-                            {el.description || "Our land. Our future. We are #GenerationRestoration."}
-                          </p>
-                       
+
+                        <p className="font-normal text-[#464646] text-xs leading-[1.5rem]">
+                          {el.description ||
+                            "Our land. Our future. We are #GenerationRestoration."}
+                        </p>
                       </div>
                       <div className="flex gap-2 mt-auto">
-                        {/* <button className="bg-transparent border border-[#E6E6E6] font-sans font-medium text-sm text-[#07A460] rounded-sm px-7 py-2.5">
-                      Download
-                    </button> */}
                         <Link
                           href={`/mandate/research/coordination-report/${el.reportsId}/report`}
                           className="bg-[#30A85F] text-white font-sans rounded-sm px-8 py-4 leading-[0.875rem] text-sm mt-auto"
@@ -83,7 +98,10 @@ const Report = () => {
                   </div>
                 )
               )}
-          </div>
+          </div> */}
+          {isLoadingCoordinationReports && (
+            <CoordinationReportSkeletonLoading />
+          )}
 
           <Link
             href="/mandate/research/coordination-report"
