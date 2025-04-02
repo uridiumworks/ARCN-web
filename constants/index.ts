@@ -1,4 +1,5 @@
 type TopNavType = {
+    // label: ReactNode;
     name: string;
     url: string;
 }

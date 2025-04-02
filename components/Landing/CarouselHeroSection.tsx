@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import {
   RightButtonCarouselIcon,
@@ -30,11 +30,11 @@ export default function CarouselHeroSection() {
     },
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) =>
       prev === carouselItems.length - 1 ? 0 : prev + 1
     );
-  };
+  }, [carouselItems.length]);
 
   const prevSlide = () => {
     setCurrentSlide((prev) =>
@@ -43,11 +43,12 @@ export default function CarouselHeroSection() {
   };
 
   useEffect(() => {
+    fetch("http://92.205.63.251:81/api/home-slide?populate=images")
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, []); // Removed nextSlide from dependencies
+  }, [nextSlide]); // Added nextSlide to dependencies
 
   return (
     <div className="relative flex justify-center items-start overflow-hidden w-full h-[42rem] sm:h-[40rem]">

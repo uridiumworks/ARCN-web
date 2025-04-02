@@ -14,7 +14,7 @@ import CarouselHeroSection from "@/components/Landing/CarouselHeroSection";
 export default function Home() {
   return (
     <MainLayout>
-      <div>
+      <div className="">
         {/* <Banner /> */}
         <CarouselHeroSection />
         <Intro />
