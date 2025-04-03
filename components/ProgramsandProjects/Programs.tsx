@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useClientProgramsData } from "@/hooks/Programs.hooks";
 import Image from "next/image";
@@ -7,12 +7,34 @@ import { LuMapPin } from "react-icons/lu";
 import { LuClock5 } from "react-icons/lu";
 import ProgramsSkeletonLoading from "../skeletonloading/ProgramsSkeletonLoading";
 import CustomContainer from "../CustomContainer";
+import { useGlobalClient } from "@/contexts/GlobalClientContext";
+import CustomPagination from "../Shared/CustomPagination";
+
+const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 
 const Programs = () => {
-  const { loading, programs, error } = useClientProgramsData();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize] = useState(10);
 
+  const { isLoadingOurPrograms, ourPrograms, fetchOurPrograms } =
+    useGlobalClient();
+  useEffect(() => {
+    fetchOurPrograms(currentPage, pageSize);
+  }, [currentPage, fetchOurPrograms, pageSize]);
+
+  useEffect(() => {
+    if (ourPrograms && ourPrograms.meta.pagination?.pageCount) {
+      setTotalPages(ourPrograms.meta.pagination.pageCount);
+      setCurrentPage(ourPrograms.meta.pagination.page);
+    }
+  }, [ourPrograms]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   return (
-    <section className="py-12 md:py-20">
+    <section className="py-6 md:py-10">
       <CustomContainer>
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4 text-center">
@@ -28,69 +50,74 @@ const Programs = () => {
             </p>
           </div>
 
-          <div className=" flex flex-col gap-10">
+          <div className=" flex flex-col gap-6">
+            {isLoadingOurPrograms && <ProgramsSkeletonLoading />}
+            {!isLoadingOurPrograms &&
+              (!ourPrograms || ourPrograms?.data.length === 0) && (
+                <p>no data</p>
+              )}
+
             {/* <ProgramsSkeletonLoading /> */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              {programs?.length > 0 && (
-                <>
-                  {programs?.slice(0, 4)?.map((p: any, index: number) => (
-                    <div
-                      key={index}
-                      className="border py-2 px-4  grid grid-cols-1 md:grid-cols-2 justify-center gap-2 rounded-xl"
-                    >
-                      <div className="space-y-4 flex flex-col justify-center">
-                        <h1 className="font-medium text-base">
-                          E-Learning Programs
-                        </h1>
-                        <p className="font-normal text-sm text-[#464646]">
-                          {p?.subjects}
-                          Our land. Our future. We are #GenerationRestoration.
+            {!isLoadingOurPrograms && ourPrograms?.data.length && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {ourPrograms?.data?.map((p, index: number) => (
+                  <div
+                    key={p?.id}
+                    className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5 "
+                  >
+                    <div className="flex flex-col gap-2 lg:self-center items-start order-2 lg:order-1">
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
+                          {p?.Title}
+                        </h3>
+
+                        <p className="font-normal text-[#464646] text-xs leading-[1.2rem]">
+                          {p?.Description[0]?.children[0]?.text.length > 55
+                            ? `${p?.Description[0]?.children[0]?.text}...`
+                            : p?.Description[0]?.children[0]?.text}
                         </p>
-                        <div className="flex gap-1 items-center text-[#1315175C]">
-                          <LuMapPin size={20} />
-                          <p className="font-normal text-sm">
-                            Live-streamed event via Zoom
-                          </p>
-                        </div>
-
-                        <div className="flex gap-1 items-center">
-                          <LuClock5 size={20} />
-                          <p className="font-normal text-sm text-[#1315175C] ">
-                            {new Date(p?.eventStartDate).toLocaleDateString(
-                              "en-us",
-                              {
-                                month: "short",
-                                year: "numeric",
-                                day: "numeric",
-                              }
-                            )}{" "}
-                            -{" "}
-                            {new Date(p?.eventEndDate).toLocaleDateString(
-                              "en-us",
-                              {
-                                month: "short",
-                                year: "numeric",
-                                day: "numeric",
-                              }
-                            )}
-                          </p>
-                        </div>
                       </div>
-
-                      <div className="flex flex-col md:items-end">
-                        <Image
-                          src={p?.bannerUrl || "/Images/Homepage/World.png"}
-                          alt={p?.subject}
-                          width={201}
-                          height={201}
-                          className="rounded-md"
-                        />
+                      <div className="flex gap-1 items-center">
+                        <LuClock5 size={20} />
+                        <p className="font-normal text-sm text-[#1315175C] ">
+                          {p?.StartDate &&
+                            new Date(p?.StartDate).toLocaleDateString("en-us", {
+                              month: "short",
+                              year: "numeric",
+                              day: "numeric",
+                            })}{" "}
+                          -{" "}
+                          {p?.EndDate &&
+                            new Date(p?.EndDate).toLocaleDateString("en-us", {
+                              month: "short",
+                              year: "numeric",
+                              day: "numeric",
+                            })}
+                        </p>
                       </div>
                     </div>
-                  ))}
-                </>
-              )}
-            </div>
+                    <div className="relative w-full lg:w-[9.375rem] h-[9.375rem] lg:h-full shrink-0  rounded-xl overflow-hidden order-1 lg:order-2 ">
+                      <Image
+                        src={`${baseURL}${p?.Image?.url}`}
+                        alt="event-imgholder"
+                        className="object-cover h-full w-full"
+                        width={150}
+                        height={150}
+                        priority
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {!isLoadingOurPrograms && ourPrograms?.data.length && (
+              <CustomPagination
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+                totalPages={totalPages}
+              />
+            )}
           </div>
         </div>
       </CustomContainer>

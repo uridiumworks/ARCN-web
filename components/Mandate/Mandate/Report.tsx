@@ -117,7 +117,8 @@ const Report = () => {
               )}
 
               {!isLoadingCoordinationReports &&
-                coordinationReports?.data.length === 0 && <p>no data</p>}
+                (!coordinationReports ||
+                  coordinationReports?.data.length === 0) && <p>no data</p>}
               {!isLoadingCoordinationReports &&
                 coordinationReports?.data.length && (
                   <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
@@ -135,7 +136,9 @@ const Report = () => {
                               </h3>
 
                               <p className="font-normal text-[#464646] text-xs leading-[1.2rem]">
-                                {el?.Description.length > 55 ? `${el?.Description}...` : el?.Description}
+                                {el?.Description.length > 55
+                                  ? `${el?.Description}...`
+                                  : el?.Description}
                               </p>
                             </div>
                             <div className="flex gap-2 mt-auto">

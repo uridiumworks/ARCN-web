@@ -5,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 type Props = {
   counts?: number;
 };
-export function CoordinationReportSkeletonLoading({ counts = 12 }: Props) {
+export function CoordinationReportSkeletonLoading({ counts = 8 }: Props) {
   return (
     <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
       {Array.from({ length: counts }, (_, i) => i + 1).map((el) => (
@@ -32,7 +32,7 @@ export function CoordinationReportSkeletonLoading({ counts = 12 }: Props) {
 }
 
 export function ResearchCoordinationReportSkeletonLoading({
-  counts = 12,
+  counts = 6,
 }: Props) {
   return (
     <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
