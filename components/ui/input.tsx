@@ -15,7 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative">
         {type === "search" ? (
-          <div className="absolute top-2.5 left-3 ">
+          <div className="absolute top-[50%] left-3 ">
             <Search className="w-6 h-6 text-[#2A59FE4D]" />
           </div>
         ) : null}

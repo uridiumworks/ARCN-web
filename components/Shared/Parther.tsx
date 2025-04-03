@@ -7,7 +7,7 @@ const Partners = () => {
   return (
     <section className="py-12 md:py-20">
       <CustomContainer>
-        <div className="flex flex-col items-center px-0 sm:px-16  gap-12">
+        <div className="flex flex-col items-center px-0   gap-12">
           
             <h2 className="font-bold text-3xl text-center sm:text-4xl leading-[2.25rem] text-[#1B222B]">
             Partner with us to advance agricultural <br className="hidden lg:block" /> research training and extension in Nigeria

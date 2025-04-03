@@ -1,3 +1,4 @@
+import CustomContainer from "@/components/CustomContainer";
 import { cn } from "@/lib/utils";
 import { CircleCheck } from "lucide-react";
 
@@ -17,6 +18,7 @@ const HeaderComp: React.FC<Props> = ({title, description, bgImage}) => {
                 <h1 className="text-3xl md:text-4xl font-semibold">{title}</h1>
                 <p className="text-sm">{description}</p>
             </div>
+            </CustomContainer>
         </div>
     )
 }
@@ -42,13 +44,13 @@ const FunctionalComp: React.FC<Props> = ({title, FunctionData}) => {
 }
 const ContentComp: React.FC<Props> = ({title, AdminDepartmentData, listType}) => {
     return (
-        <div className="space-y-5 px-0 md:px-20">
-            <h1 className="md:text-4xl text-3xl font-semibold">{title}</h1>
+        <div className="space-y-5">
+            <h1 className="sm:text-4xl leading-[2.25rem] text-3xl font-semibold">{title}</h1>
             
             <div className="space-y-7">
                 {AdminDepartmentData?.map(({description, descriptionList, title}: any, index: number) => {
                     return (
-                        <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-6 px-7 space-y-4 w-full md:w-[94%]")}>
+                        <div key={index} className={cn(index === 0 && "bg-[#FFC74E] text-black", index === 1 && "bg-[#2E7636] text-white", index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', index === 4 && 'bg-[#011843] text-white', " rounded-[16.17px] py-6 px-7 space-y-4 w-full")}>
                             <h1 className="text-lg font-bold">{title}</h1>
                             <div>
                                 {description && <p>{description}</p>}
