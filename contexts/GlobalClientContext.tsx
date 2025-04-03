@@ -6,6 +6,8 @@ import {
   createContext,
   useContext,
   ReactNode,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -31,11 +33,12 @@ interface GlobalClientContextInterface {
   isLoadingCoordinationReports: boolean;
   isCreatingContact: boolean;
   fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
-  fetchAllReports: (page: number, pageSize: number) => Promise<void>;
+  fetchAllReports: (page: number, pageSize: number,customEndpoint?: string) => Promise<void>;
   fetchOurTechs: (page: number, pageSize: number) => Promise<void>;
   fetchOurProjects: (page: number, pageSize: number) => Promise<void>;
   fetchCoordinationReports: (page: number, pageSize: number) => Promise<void>;
   createContactUs: (data: ContactUsData) => Promise<void>;
+  setReports:Dispatch<SetStateAction<Report | undefined>>
 }
 
 const GlobalClientContext = createContext<GlobalClientContextInterface | null>(
@@ -105,12 +108,17 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   );
 
   const fetchAllReports = useCallback(
-    async (page: number, pageSize: number) => {
+    async (page: number, pageSize: number,customEndpoint?: string) => {
+
       try {
+
+        const apiUrl =
+        customEndpoint ||
+        `${ApiEndpointsEnum.ALL_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+
+
         const response = (
-          await axiosInstance.get<Report>(
-            `${ApiEndpointsEnum.ALL_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
-          )
+          await axiosInstance.get<Report>(apiUrl)
         ).data;
         setReports(response);
       } catch (err: any) {
@@ -289,6 +297,7 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         ourTechs,
         ourProjects,
         reports,
+        setReports
       }}
     >
       {children}

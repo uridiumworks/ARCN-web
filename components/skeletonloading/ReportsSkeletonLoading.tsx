@@ -16,7 +16,7 @@ export default function ReportsSkeletonLoading({ counts = 8 }: Props) {
             <div className="flex flex-col gap-2">
               <Skeleton className="h-[1rem] w-[6rem]" />
               <Skeleton className="h-[0.8rem] w-[16rem]" />
-              <Skeleton className="h-[0.8rem] w-[9rem]" />
+              {/* <Skeleton className="h-[0.8rem] w-[9rem]" /> */}
             </div>
             <div className="flex gap-2 mt-auto">
               <Skeleton className="h-[2.5rem] w-[5rem]" />
