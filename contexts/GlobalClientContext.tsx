@@ -21,17 +21,20 @@ import axiosInstance from "@/lib/axiosInstance";
 interface GlobalClientContextInterface {
   ourPrograms?: OurPrograms;
   reports?: Report;
-  ourTechsAndProjects?: OurTechnologiesAndProjects;
+  ourTechs?: OurTechnologiesAndProjects;
+  ourProjects?: OurTechnologiesAndProjects;
   coordinationReports?: Report;
   isLoadingOurPrograms: boolean;
   isLoadingReports: boolean;
-  isLoadingOurTechsAndProjects: boolean;
+  isLoadingOurTechs: boolean;
+  isLoadingOurProjects: boolean;
   isLoadingCoordinationReports: boolean;
   isCreatingContact: boolean;
-  fetchOurPrograms: (page:number,pageSize:number) => Promise<void>;
-  fetchAllReports: (page:number,pageSize:number) => Promise<void>;
-  fetchOurTechsAndProjects: (page:number,pageSize:number) => Promise<void>;
-  fetchCoordinationReports: (page:number,pageSize:number) => Promise<void>;
+  fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
+  fetchAllReports: (page: number, pageSize: number) => Promise<void>;
+  fetchOurTechs: (page: number, pageSize: number) => Promise<void>;
+  fetchOurProjects: (page: number, pageSize: number) => Promise<void>;
+  fetchCoordinationReports: (page: number, pageSize: number) => Promise<void>;
   createContactUs: (data: ContactUsData) => Promise<void>;
 }
 
@@ -57,9 +60,10 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     useState<boolean>(true);
   const [reports, setReports] = useState<Report>();
   const [isLoadingReports, setIsLoadingReports] = useState<boolean>(true);
-  const [ourTechsAndProjects, setOurTechsAndProjects] =
-    useState<OurTechnologiesAndProjects>();
-  const [isLoadingOurTechsAndProjects, setIsLoadingOurTechsAndProjects] =
+  const [ourTechs, setOurTechs] = useState<OurTechnologiesAndProjects>();
+  const [ourProjects, setOurProjects] = useState<OurTechnologiesAndProjects>();
+  const [isLoadingOurTechs, setIsLoadingOurTechs] = useState<boolean>(true);
+  const [isLoadingOurProjects, setIsLoadingOurProjects] =
     useState<boolean>(true);
   const [coordinationReports, setCoordinationReports] = useState<Report>();
   const [isLoadingCoordinationReports, setIsLoadingCoordinationReports] =
@@ -67,117 +71,169 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   const [isCreatingContact, setIsCreatingContact] = useState<boolean>(false);
   const { toast } = useToast();
 
-  const fetchOurPrograms = useCallback(async (page:number,pageSize:number) => {
-    try {
-      const response = (
-        await axiosInstance.get<OurPrograms>(`${ApiEndpointsEnum.PROGRAMS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`)
-      ).data;
-      setOurPrograms(response);
-    } catch (err: any) {
-      if (err instanceof AxiosError && err.response) {
-        const errorResponse = err.response.data;
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: errorResponse.errors
-            ? errorResponse.errors.join(", ")
-            : errorResponse.message || "An unknown error occurred",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "An unknown error occurred",
-        });
+  const fetchOurPrograms = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<OurPrograms>(
+            `${ApiEndpointsEnum.PROGRAMS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setOurPrograms(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurPrograms(false);
       }
-    } finally {
-      setIsLoadingOurPrograms(false);
-    }
-  }, [toast]);
+    },
+    [toast]
+  );
 
-  const fetchAllReports = useCallback(async (page:number,pageSize:number) => {
-    try {
-      const response = (
-        await axiosInstance.get<Report>(`${ApiEndpointsEnum.ALL_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`)
-      ).data;
-      setReports(response);
-    } catch (err: any) {
-      if (err instanceof AxiosError && err.response) {
-        const errorResponse = err.response.data;
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: errorResponse.errors
-            ? errorResponse.errors.join(", ")
-            : errorResponse.message || "An unknown error occurred",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "An unknown error occurred",
-        });
+  const fetchAllReports = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<Report>(
+            `${ApiEndpointsEnum.ALL_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setReports(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
       }
-    } finally {
-      setIsLoadingReports(false);
-    }
-  }, [toast]);
+    },
+    [toast]
+  );
 
-  const fetchOurTechsAndProjects = useCallback(async (page:number,pageSize:number) => {
-    try {
-      const response = (
-        await axiosInstance.get<Report>(`${ApiEndpointsEnum.COORDINARION_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`)
-      ).data;
-      setCoordinationReports(response);
-    } catch (err: any) {
-      if (err instanceof AxiosError && err.response) {
-        const errorResponse = err.response.data;
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: errorResponse.errors
-            ? errorResponse.errors.join(", ")
-            : errorResponse.message || "An unknown error occurred",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "An unknown error occurred",
-        });
+  const fetchOurTechs = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<Report>(
+            `${ApiEndpointsEnum.OUR_PROJECTS_AND_TECHS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setOurTechs(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurTechs(false);
       }
-    } finally {
-      setIsLoadingOurTechsAndProjects(false);
-    }
-  }, [toast]);
+    },
+    [toast]
+  );
+  const fetchOurProjects = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<Report>(
+            `${ApiEndpointsEnum.OUR_PROJECTS_AND_TECHS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setOurProjects(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurProjects(false);
+      }
+    },
+    [toast]
+  );
 
-  const fetchCoordinationReports = useCallback(async (page:number,pageSize:number) => {
-    try {
-      const response = (
-        await axiosInstance.get<Report>(`${ApiEndpointsEnum.COORDINARION_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`)
-      ).data;
-      setCoordinationReports(response);
-    } catch (err: any) {
-      if (err instanceof AxiosError && err.response) {
-        const errorResponse = err.response.data;
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: errorResponse.errors
-            ? errorResponse.errors.join(", ")
-            : errorResponse.message || "An unknown error occurred",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "An unknown error occurred",
-        });
+  const fetchCoordinationReports = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<Report>(
+            `${ApiEndpointsEnum.COORDINARION_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setCoordinationReports(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingCoordinationReports(false);
       }
-    } finally {
-      setIsLoadingCoordinationReports(false);
-    }
-  }, [toast]);
+    },
+    [toast]
+  );
 
   const createContactUs = useCallback(
     async (body: ContactUsRequestBody) => {
@@ -186,7 +242,8 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         await axiosInstance.post(ApiEndpointsEnum.CONTACT_US);
         toast({
           title: "🎉 Thank You!",
-          description: "Thanks for reaching out! We’ll respond as soon as possible.",
+          description:
+            "Thanks for reaching out! We’ll respond as soon as possible.",
         });
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
@@ -220,14 +277,17 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         fetchAllReports,
         fetchCoordinationReports,
         fetchOurPrograms,
-        fetchOurTechsAndProjects,
+        fetchOurTechs,
+        fetchOurProjects,
         isCreatingContact,
         isLoadingCoordinationReports,
         isLoadingOurPrograms,
-        isLoadingOurTechsAndProjects,
+        isLoadingOurTechs,
+        isLoadingOurProjects,
         isLoadingReports,
         ourPrograms,
-        ourTechsAndProjects,
+        ourTechs,
+        ourProjects,
         reports,
       }}
     >
