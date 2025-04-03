@@ -227,5 +227,5 @@ export enum ApiEndpointsEnum {
   OUR_PROJECTS_AND_TECHS = "/technologies?populate=Image",
   COORDINARION_REPORTS = "/reports?populate=Image&populate=category&filters[category][slug][$eq]=coordination-report",
   ALL_REPORTS = "/reports?populate=Image&populate=category",
-  MANDATE_SEARCH = "'/mandate-slide?populate=Slides'",
+  MANDATE_SEARCH = "/mandate-slide?populate=Slides",
 }
