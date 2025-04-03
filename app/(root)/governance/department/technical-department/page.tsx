@@ -106,14 +106,14 @@ const TechnicalDepartment = () => {
             </Breadcrumb>
             
             <div className="py-10 space-y-10">
-                <div className="">
+                <div className="px-20">
                     <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-bold text-[#1B222B]">Technical Department </h1>
                     <p className="text-sm leading-[1.5rem] text-gray pt-5">Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.</p>
                 </div>
 
                 {TechnicalDepartmentData?.map(({description, descriptionList, title, url}, index) => {
                     return (
-                        <div key={index} className={cn(index === 0 && 'bg-[#F6E8414D]', index === 1 && 'bg-[#2A59FE4D]', index === 2 && 'bg-[#87C12F4D]', index === 3 && 'bg-[#FF91A04D]', index === 4 && 'bg-[#013B434D]', index === 5 && 'bg-[#BEE5ED4D]', 'md:grid-cols-2 w-full py-6 px-5 rounded-2xl  mx-auto')}>
+                        <div key={index} className={cn(index === 0 && 'bg-[#F6E8414D]', index === 1 && 'bg-[#2A59FE4D]', index === 2 && 'bg-[#87C12F4D]', index === 3 && 'bg-[#FF91A04D]', index === 4 && 'bg-[#013B434D]', index === 5 && 'bg-[#BEE5ED4D]', 'md:grid-cols-2 w-full lg:w-10/12 py-2 px-5 rounded-2xl mx-auto')}>
                             <div className="md:py-5 md:px-8 space-y-5">
                                 <div>
                                     <h1 className="text-3xl sm:text-4xl leading-[2.25rem] text-black text-bold mb-5 font-bold">{title}</h1>
@@ -123,7 +123,7 @@ const TechnicalDepartment = () => {
                                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-10 font-bold text-xl'>
                                     {descriptionList?.map((item, index) => {
                                         return (
-                                            <div key={index} className={cn(index === 0 && 'bg-[#FFC74E] text-black', index === 1 && 'bg-[#2E7636] text-white', index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', ' h-[100px] p-8 flex items-center rounded-[16.17px] text-left')}>
+                                            <div key={index} className={cn(index === 0 && 'bg-[#FFC74E] text-black', index === 1 && 'bg-[#2E7636] text-white', index === 2 && 'bg-black text-white', index === 3 && 'bg-[#75CDFD] text-black', ' h-[80px] p-8 flex items-center rounded-[16.17px] text-left')}>
                                                 <h1 className="text-sm">{item}</h1>
                                             </div>
                                         )

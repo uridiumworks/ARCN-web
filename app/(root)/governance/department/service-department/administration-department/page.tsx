@@ -2,6 +2,7 @@ import { CircleCheck, House } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import "./styles.css";
 
 const FunctionData: string[] = [
     "Participate through a consultative process in the appointment of ED and Provosts of NARIs and FCAs respectively.", 
@@ -60,8 +61,8 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="md:h-[280px] w-full bg-[#FCF8C6]">
-                <div className="w-full p-3 md:p-0  md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
+            <div className="desk bg-card lg:h-[19rem] w-full bg-[#FCF8C6]">
+                <div className="w-full p-3 text-white px-44 md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
                     <h1 className="text-3xl md:text-4xl font-semibold">Administration Department</h1>
                     <p className="text-sm">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
                     mandate as well as the NARS. It is responsible for managing and overseeing various administrative<br className='hidden md:block' /> activities for the smooth running of the council.</p>

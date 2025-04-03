@@ -18,8 +18,8 @@ type reportsProps = {
 
 const Reports = () => {
   return (
-    <section className="px-3 py-10 md:py-20 w-full md:w-10/12 mx-auto">
-      <div className="">
+    <section className="px-3 py-10 md:py-20 w-full md:w-8/12 mx-auto">
+      <div className="py-4">
         <h3 className="text-3xl font-bold text-[#1B222B]">Reports</h3>
         <p className="text-sm text-gray pt-2">
           Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis

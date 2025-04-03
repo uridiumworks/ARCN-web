@@ -93,6 +93,9 @@ const config = {
       fontFamily: {
         sans: ["var(--font-montserrat)"],
       },
+      backgroundImage: { 
+        "card-pattern": "url('/public/Images/naris.png')",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

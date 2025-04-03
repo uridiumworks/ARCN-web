@@ -14,7 +14,7 @@ type NewsletterProps = {
 
 const Newsletter = () => {
   return (
-    <section className='px-3 py-10 md:py-20 w-full md:w-10/12 mx-auto'>
+    <section className='px-3 py-10 md:py-20 w-full md:w-8/12 mx-auto'>
       <div className=''>
         <h3 className="text-3xl font-bold text-[#1B222B]">Newsletter</h3>
         <p className="text-sm text-gray pt-2">Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis etiam euismod quisque montes arcu risus. Magnis posuere tincidunt elit <br />  ultrices tortor. Sit semper cras sed duis tortor tempor amet gravida. Rhoncus quis nisl etiam tortor.</p>

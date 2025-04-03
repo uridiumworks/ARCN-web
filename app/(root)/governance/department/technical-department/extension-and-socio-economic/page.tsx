@@ -53,7 +53,7 @@ const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
             <HeaderComp
-                bgColor="bg-[#FFC74E]"
+                bgImage="bg-[url('/public/Images/naris.png')]"
                 title="Extension & Socio-Economic Department"
                 description={<>The Extension and Socio-economics Department of the Agricultural Research Council of Nigeria<br className='hidden md:block' /> 
                     (ARCN) is charged with the management and supervision of research and extension activities of<br className='hidden md:block' /> 

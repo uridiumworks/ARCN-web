@@ -6,10 +6,6 @@ const Food = () => {
     return ( 
         <main>
             <div className="py-10 lg:w-[100%]">
-                <div className="text-center space-y-3 place-content-center font-montserrat">
-                    <h1 className="text-3xl md:text-4xl font-bold">Impact</h1>
-                    <p className="text-sm text-[#64728F] font-normal ">Lorem ipsum dolor sit amet consectetur. Nunc pharetra a felis nibh. Id<br /> ullamcorper nec leo porta. Enim nunc lacinia dui vehicula pellentesque morbi.<br /> Magna nulla consequat.</p>
-                </div>
                 <div className="lg:w-[70%] w-full px-4 lg:px-0 md:mx-auto">
                     <div className="flex flex-col lg:flex-row gap-5 pt-14 justify-evenly">
                         <div className="border rounded-xl w-full lg:w-[420px] space-y-3 p-4">
