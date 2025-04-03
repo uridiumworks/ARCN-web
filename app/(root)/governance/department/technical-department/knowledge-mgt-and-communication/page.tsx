@@ -66,7 +66,7 @@ const TechnicalDepartmentDetails = () => {
   return (
     <section className="w-full">
       <HeaderComp
-        bgColor="bg-[#B3C4C7]"
+        bgImage="bg-CardPattern"
         title="Knowledge Management & Communication"
         description={
           <>

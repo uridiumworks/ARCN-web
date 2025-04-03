@@ -18,7 +18,6 @@ const HeaderComp: React.FC<Props> = ({title, description, bgImage}) => {
                 <h1 className="text-3xl md:text-4xl font-semibold">{title}</h1>
                 <p className="text-sm">{description}</p>
             </div>
-            </CustomContainer>
         </div>
     )
 }
