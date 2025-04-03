@@ -75,8 +75,8 @@ const Programs = () => {
                     key={p?.id}
                     className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white border border-[#E8E8E8] rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5 "
                   >
-                    <div className="flex flex-col gap-2 lg:self-center items-start order-2 lg:order-1">
-                      <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-3 lg:self-center items-start order-2 lg:order-1">
+                      <div className="flex flex-col gap-1.5">
                         <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">
                           {p?.Title}
                         </h3>

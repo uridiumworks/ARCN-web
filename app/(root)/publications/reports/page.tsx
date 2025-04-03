@@ -109,18 +109,15 @@ const Reports = () => {
               </p>
             </div>
 
-            <div className="relative w-full md:w-[400px] mt-5">
-              {/* <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                <Search className="h-4 w-4 text-gray-400" />
-              </div> */}
+           
               <Input
-                className="outline:none border w-full"
+                className="outline:none border w-full md:w-[400px] mt-5"
                 type="search"
                 placeholder="Search reports"
                 value={searchQuery}
                 onChange={handleSearch}
               />
-            </div>
+          
           </div>
 
           <div className="flex flex-col gap-6">

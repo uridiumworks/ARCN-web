@@ -3,7 +3,6 @@ import CustomContainer from "@/components/CustomContainer";
 import CustomPagination from "@/components/Shared/CustomPagination";
 import NoDataMessage from "@/components/Shared/NoDataMessage";
 import OurTechnologiesSkeletonLoading from "@/components/skeletonloading/OurTechnologiesSkeletonLoading";
-import { useClientProjectsData } from "@/hooks/Projects.hooks";
 import { useContextSelector } from "@/hooks/use-context-selector";
 import Image from "next/image";
 import { useEffect, useState } from "react";

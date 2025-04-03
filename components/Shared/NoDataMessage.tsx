@@ -7,7 +7,7 @@ type Props = {
 
 export default function NoDataMessage({ message }: Props) {
   return (
-    <div className="bg-[#30A85F] p-3 text-base font-medium text-[#f0f0f0] rounded-lg">
+    <div className="bg-[#30A85F]/80 p-3 text-base font-medium text-[#f0f0f0] rounded-lg">
       {message}
     </div>
   );

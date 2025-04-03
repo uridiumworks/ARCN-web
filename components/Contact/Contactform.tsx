@@ -60,6 +60,7 @@ const Contactform = () => {
                 type="text"
                 id="Your name"
                 className="px-6 py-2 md:h-[45px] md:w-[496px] rounded-sm border border-[#e6e5e5] bg-[#F8F9FC]"
+                disabled={isCreatingContact}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -75,6 +76,7 @@ const Contactform = () => {
                 type="text"
                 id="email"
                 className="px-6 py-2 md:h-[45px] md:w-[496px] rounded-sm border border-[#e6e5e5] bg-[#F8F9FC]"
+                disabled={isCreatingContact}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -90,6 +92,7 @@ const Contactform = () => {
                 type="text"
                 id="subject"
                 className=" px-6 py-2 md:h-[45px] md:w-[496px] rounded-sm border border-[#e6e5e5] bg-[#F8F9FC]"
+                disabled={isCreatingContact}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -104,6 +107,7 @@ const Contactform = () => {
                 value={message}
                 id="message"
                 className=" md:h-[230px] md:w-[496px] px-6 py-2 rounded-sm border border-[#e6e5e5] bg-[#F8F9FC]"
+                disabled={isCreatingContact}
               ></textarea>
             </div>
             <button
