@@ -2,8 +2,8 @@
 import CustomContainer from "@/components/CustomContainer";
 import CustomPagination from "@/components/Shared/CustomPagination";
 import OurTechnologiesSkeletonLoading from "@/components/skeletonloading/OurTechnologiesSkeletonLoading";
-import { useGlobalClient } from "@/contexts/GlobalClientContext";
 import { useClientProjectsData } from "@/hooks/Projects.hooks";
+import { useContextSelector } from "@/hooks/use-context-selector";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -14,7 +14,11 @@ const Technolody = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize] = useState(10);
 
-const { fetchOurTechs, isLoadingOurTechs, ourTechs } = useGlobalClient();
+  const fetchOurTechs = useContextSelector((context) => context.fetchOurTechs);
+  const ourTechs = useContextSelector((context) => context.ourTechs);
+  const isLoadingOurTechs = useContextSelector(
+    (context) => context.isLoadingOurTechs
+  );
 
   useEffect(() => {
     fetchOurTechs(currentPage, pageSize);
@@ -72,7 +76,9 @@ const { fetchOurTechs, isLoadingOurTechs, ourTechs } = useGlobalClient();
                         {p?.Title}
                       </h3>
                       <p className="font-normal text-[0.6875rem] leading-[1.2125rem]">
-                        {p?.Description.length > 110 ? `${p?.Description}...` : p?.Description}
+                        {p?.Description.length > 110
+                          ? `${p?.Description}...`
+                          : p?.Description}
                       </p>
                     </div>
                   </div>

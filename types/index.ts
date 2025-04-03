@@ -24,6 +24,73 @@ export type ContactUsData = {
   publishedAt: Date;
 };
 
+// MANDATE SEARCH
+export type MandateSearch = {
+  data: MandateSearchData;
+  meta: Meta;
+};
+
+export type MandateSearchData = {
+  id: number;
+  documentId: string;
+  Title: string;
+  Description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  Slides: Slide[];
+};
+
+export type Slide = {
+  id: number;
+  documentId: string;
+  name: string;
+  alternativeText: null;
+  caption: null;
+  width: number;
+  height: number;
+  formats: MandateSearchFormats;
+  hash: string;
+  ext: EXT;
+  mime: MIME;
+  size: number;
+  url: string;
+  previewUrl: null;
+  provider: string;
+  provider_metadata: null;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+};
+
+export type MandateSearchFormats = {
+  large: FormatSizes;
+  small: FormatSizes;
+  medium: FormatSizes;
+  thumbnail: FormatSizes;
+};
+
+export type FormatSizes = {
+  ext: EXT;
+  url: string;
+  hash: string;
+  mime: MIME;
+  name: string;
+  path: null;
+  size: number;
+  width: number;
+  height: number;
+  sizeInBytes: number;
+};
+
+export enum MIME {
+  ImageJPEG = "image/jpeg",
+}
+
+export enum EXT {
+  Jpg = ".jpg",
+}
+
 // REPORTS
 
 export type Report = {
@@ -160,4 +227,5 @@ export enum ApiEndpointsEnum {
   OUR_PROJECTS_AND_TECHS = "/technologies?populate=Image",
   COORDINARION_REPORTS = "/reports?populate=Image&populate=category&filters[category][slug][$eq]=coordination-report",
   ALL_REPORTS = "/reports?populate=Image&populate=category",
+  MANDATE_SEARCH = "'/mandate-slide?populate=Slides'",
 }

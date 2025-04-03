@@ -1,6 +1,5 @@
 import { AxiosError } from "axios";
 import {
-  useEffect,
   useState,
   useCallback,
   createContext,
@@ -11,16 +10,17 @@ import {
 } from "react";
 import { useToast } from "@/hooks/use-toast";
 import {
-  ContactUsData,
   OurPrograms,
   OurTechnologiesAndProjects,
   Report,
   ApiEndpointsEnum,
   ContactUsRequestBody,
+  MandateSearch,
 } from "@/types";
 import axiosInstance from "@/lib/axiosInstance";
 
 interface GlobalClientContextInterface {
+  mandateSearch?: MandateSearch;
   ourPrograms?: OurPrograms;
   reports?: Report;
   ourTechs?: OurTechnologiesAndProjects;
@@ -31,19 +31,24 @@ interface GlobalClientContextInterface {
   isLoadingOurTechs: boolean;
   isLoadingOurProjects: boolean;
   isLoadingCoordinationReports: boolean;
+  isLoadingMandateSearch: boolean;
   isCreatingContact: boolean;
   fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
-  fetchAllReports: (page: number, pageSize: number,customEndpoint?: string) => Promise<void>;
+  fetchAllReports: (
+    page: number,
+    pageSize: number,
+    customEndpoint?: string
+  ) => Promise<void>;
   fetchOurTechs: (page: number, pageSize: number) => Promise<void>;
   fetchOurProjects: (page: number, pageSize: number) => Promise<void>;
   fetchCoordinationReports: (page: number, pageSize: number) => Promise<void>;
-  createContactUs: (data: ContactUsData) => Promise<void>;
-  setReports:Dispatch<SetStateAction<Report | undefined>>
+  fetchMandateSearch: () => Promise<void>;
+  createContactUs: (data: ContactUsRequestBody) => Promise<void>;
+  setReports: Dispatch<SetStateAction<Report | undefined>>;
 }
 
-const GlobalClientContext = createContext<GlobalClientContextInterface | null>(
-  null
-);
+export const GlobalClientContext =
+  createContext<GlobalClientContextInterface | null>(null);
 
 export const useGlobalClientContext = () => {
   const context = useContext(GlobalClientContext);
@@ -58,6 +63,9 @@ export const useGlobalClientContext = () => {
 export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const [mandateSearch, setMandateSearch] = useState<MandateSearch>();
+  const [isLoadingMandateSearch, setIsLoadingMandateSearch] =
+    useState<boolean>(true);
   const [ourPrograms, setOurPrograms] = useState<OurPrograms>();
   const [isLoadingOurPrograms, setIsLoadingOurPrograms] =
     useState<boolean>(true);
@@ -108,18 +116,13 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   );
 
   const fetchAllReports = useCallback(
-    async (page: number, pageSize: number,customEndpoint?: string) => {
-
+    async (page: number, pageSize: number, customEndpoint?: string) => {
       try {
-
         const apiUrl =
-        customEndpoint ||
-        `${ApiEndpointsEnum.ALL_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+          customEndpoint ||
+          `${ApiEndpointsEnum.ALL_REPORTS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
 
-
-        const response = (
-          await axiosInstance.get<Report>(apiUrl)
-        ).data;
+        const response = (await axiosInstance.get<Report>(apiUrl)).data;
         setReports(response);
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
@@ -243,11 +246,43 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
+  const fetchMandateSearch = useCallback(async () => {
+    try {
+      const response = (
+        await axiosInstance.get<MandateSearch>(
+          `${ApiEndpointsEnum.MANDATE_SEARCH}`
+        )
+      ).data;
+      setMandateSearch(response);
+    } catch (err: any) {
+      if (err instanceof AxiosError && err.response) {
+        const errorResponse = err.response.data;
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: errorResponse.errors
+            ? errorResponse.errors.join(", ")
+            : errorResponse.message || "An unknown error occurred",
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "An unknown error occurred",
+        });
+      }
+    } finally {
+      setIsLoadingMandateSearch(false);
+    }
+  }, [toast]);
+
   const createContactUs = useCallback(
     async (body: ContactUsRequestBody) => {
       setIsCreatingContact(true);
       try {
-        await axiosInstance.post(ApiEndpointsEnum.CONTACT_US);
+        await axiosInstance.post(ApiEndpointsEnum.CONTACT_US, {
+          data: body,
+        });
         toast({
           title: "🎉 Thank You!",
           description:
@@ -297,7 +332,10 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         ourTechs,
         ourProjects,
         reports,
-        setReports
+        setReports,
+        mandateSearch,
+        isLoadingMandateSearch,
+        fetchMandateSearch,
       }}
     >
       {children}

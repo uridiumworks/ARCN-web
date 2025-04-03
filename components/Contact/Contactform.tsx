@@ -1,38 +1,42 @@
 "use client";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { FaEnvelope } from "react-icons/fa6";
 import { IoIosPin } from "react-icons/io";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Form } from "../ui/form";
 import Image from "next/image";
 import CustomContainer from "../CustomContainer";
+import { useContextSelector } from "@/hooks/use-context-selector";
 
 const Contactform = () => {
-  const [yourname, setYOURname] = useState("");
-  const [youremail, setYOURemail] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefalt();
+  // Only select the specific parts of the context that this component needs
+  const isCreatingContact = useContextSelector(
+    (context) => context.isCreatingContact
+  );
 
-    console.log("Your name:", yourname);
-    console.log("Your email:", youremail);
-    console.log("Subject:", subject);
-    console.log("Message:", message);
+  const createContactUs = useContextSelector(
+    (context) => context.createContactUs
+  );
 
-    const res = await fetch("", {
-      method: "",
-      headers: {},
-      body: JSON.stringify({
-        yourname,
-        youremail,
-        subject,
-        message,
-      }),
+  const isDisabled = isCreatingContact || !name || !email || !subject;
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setName("");
+    setEmail("");
+    setMessage("");
+    setSubject("");
+    await createContactUs({
+      name,
+      email,
+      message,
+      subject,
     });
-
-    const { msg } = await res.json();
   };
 
   return (
@@ -45,14 +49,14 @@ const Contactform = () => {
           <div className="py-6 md:mt-5 flex flex-col gap-8 text-[#010101]  text-[15px] font-normal ">
             <div className="flex flex-col gap-2">
               <label
-                htmlFor="Yourname"
+                htmlFor="name"
                 className="font-montserrat text-sm text-[#010101]"
               >
                 Your name
               </label>
               <input
-                onChange={(e) => setYOURname(e.target.value)}
-                value={yourname}
+                onChange={(e) => setName(e.target.value)}
+                value={name}
                 type="text"
                 id="Your name"
                 className="px-6 py-2 md:h-[45px] md:w-[496px] rounded-sm border border-[#e6e5e5] bg-[#F8F9FC]"
@@ -60,14 +64,14 @@ const Contactform = () => {
             </div>
             <div className="flex flex-col gap-2">
               <label
-                htmlFor="youremail"
+                htmlFor="email"
                 className="font-montserrat text-sm text-[#010101]"
               >
                 Your email
               </label>
               <input
-                onChange={(e) => setYOURemail(e.target.value)}
-                value={youremail}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 type="text"
                 id="email"
                 className="px-6 py-2 md:h-[45px] md:w-[496px] rounded-sm border border-[#e6e5e5] bg-[#F8F9FC]"
@@ -103,7 +107,8 @@ const Contactform = () => {
               ></textarea>
             </div>
             <button
-              className="bg-[#30A85F] p-3 text-xs text-[#f0f0f0] font-normal rounded-sm md:w-[185px] "
+              className="bg-[#30A85F] p-3 text-xs text-[#f0f0f0] font-normal rounded-sm md:w-[185px] disabled:bg-opacity-60 "
+              disabled={isDisabled}
               type="submit"
             >
               Submit

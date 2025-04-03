@@ -5,15 +5,24 @@ import Image from "next/image";
 import ProjectsSkeletonLoading from "../skeletonloading/ProjectsSkeletonLoading";
 import CustomContainer from "../CustomContainer";
 import { useEffect, useState } from "react";
-import { useGlobalClient } from "@/contexts/GlobalClientContext";
 import CustomPagination from "../Shared/CustomPagination";
+import { useContextSelector } from "@/hooks/use-context-selector";
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize] = useState(10);
-  const { isLoadingOurProjects, fetchOurProjects, ourProjects } =
-    useGlobalClient();
+
+  // Only select the specific parts of the context that this component needs
+  const isLoadingOurProjects = useContextSelector(
+    (context) => context.isLoadingOurProjects
+  );
+
+  const ourProjects = useContextSelector((context) => context.ourProjects);
+
+  const fetchOurProjects = useContextSelector(
+    (context) => context.fetchOurProjects
+  );
 
   useEffect(() => {
     fetchOurProjects(currentPage, pageSize);
@@ -60,26 +69,28 @@ const Projects = () => {
               {!isLoadingOurProjects && ourProjects?.data.length && (
                 <div className="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {ourProjects?.data.map((p, index: number) => (
-                     <div
-                                       key={index}
-                                       className="relative h-[18.5rem] rounded-lg overflow-hidden"
-                                     >
-                                       <Image
-                                         src={`${baseURL}${p?.Image?.url}`}
-                                         alt={p?.Title}
-                                         width={328}
-                                         height={200}
-                                         className="h-full w-full object-cover"
-                                       />
-                                       <div className="absolute w-full bg-[#000000CC] bottom-0 flex flex-col  text-white px-2 py-2.5">
-                                         <h3 className="font-medium text-sm leading-[1.74625rem]">
-                                           {p?.Title}
-                                         </h3>
-                                         <p className="font-normal text-[0.6875rem] leading-[1.2125rem]">
-                                           {p?.Description.length > 110 ? `${p?.Description}...` : p?.Description}
-                                         </p>
-                                       </div>
-                                     </div>
+                    <div
+                      key={index}
+                      className="relative h-[18.5rem] rounded-lg overflow-hidden"
+                    >
+                      <Image
+                        src={`${baseURL}${p?.Image?.url}`}
+                        alt={p?.Title}
+                        width={328}
+                        height={200}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute w-full bg-[#000000CC] bottom-0 flex flex-col  text-white px-2 py-2.5">
+                        <h3 className="font-medium text-sm leading-[1.74625rem]">
+                          {p?.Title}
+                        </h3>
+                        <p className="font-normal text-[0.6875rem] leading-[1.2125rem]">
+                          {p?.Description.length > 110
+                            ? `${p?.Description}...`
+                            : p?.Description}
+                        </p>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}

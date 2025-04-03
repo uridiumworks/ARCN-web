@@ -2,9 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useGlobalClient } from "@/contexts/GlobalClientContext";
 import CustomPagination from "@/components/Shared/CustomPagination";
 import { CoordinationReportSkeletonLoading } from "@/components/skeletonloading/CoordinationReportSkeletonLoading";
+import { useContextSelector } from "@/hooks/use-context-selector";
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 export default function Reports() {
@@ -12,11 +12,18 @@ export default function Reports() {
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize] = useState(10);
 
-  const {
-    isLoadingCoordinationReports,
-    coordinationReports,
-    fetchCoordinationReports,
-  } = useGlobalClient();
+  // Only select the specific parts of the context that this component needs
+  const isLoadingCoordinationReports = useContextSelector(
+    (context) => context.isLoadingCoordinationReports
+  );
+
+  const coordinationReports = useContextSelector(
+    (context) => context.coordinationReports
+  );
+
+  const fetchCoordinationReports = useContextSelector(
+    (context) => context.fetchCoordinationReports
+  );
 
   useEffect(() => {
     fetchCoordinationReports(currentPage, pageSize);

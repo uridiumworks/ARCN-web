@@ -6,22 +6,30 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import CustomContainer from "@/components/CustomContainer";
-import { useGlobalClient } from "@/contexts/GlobalClientContext";
 import ReportsSkeletonLoading from "@/components/skeletonloading/ReportsSkeletonLoading";
 import CustomPagination from "@/components/Shared/CustomPagination";
 import { ApiEndpointsEnum } from "@/types";
+import { useContextSelector } from "@/hooks/use-context-selector";
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 const Reports = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [pageSize] = useState(1);
+  const [pageSize] = useState(10);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
-  // Get the fetchAllReports function from your context
-  const { isLoadingReports, reports, fetchAllReports } = useGlobalClient();
+  // Only select the specific parts of the context that this component needs
+  const isLoadingReports = useContextSelector(
+    (context) => context.isLoadingReports
+  );
+
+  const reports = useContextSelector((context) => context.reports);
+
+  const fetchAllReports = useContextSelector(
+    (context) => context.fetchAllReports
+  );
 
   // Debounce search input to avoid too many API calls
   useEffect(() => {
@@ -105,9 +113,9 @@ const Reports = () => {
                 <Search className="h-4 w-4 text-gray-400" />
               </div>
               <Input
-                className="pl-10 outline:none border w-full"
+                className="outline:none border w-full"
                 type="search"
-                placeholder="Search reports..."
+                placeholder="Search reports"
                 value={searchQuery}
                 onChange={handleSearch}
               />

@@ -7,8 +7,8 @@ import { LuMapPin } from "react-icons/lu";
 import { LuClock5 } from "react-icons/lu";
 import ProgramsSkeletonLoading from "../skeletonloading/ProgramsSkeletonLoading";
 import CustomContainer from "../CustomContainer";
-import { useGlobalClient } from "@/contexts/GlobalClientContext";
 import CustomPagination from "../Shared/CustomPagination";
+import { useContextSelector } from "@/hooks/use-context-selector";
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 
@@ -17,8 +17,17 @@ const Programs = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize] = useState(10);
 
-  const { isLoadingOurPrograms, ourPrograms, fetchOurPrograms } =
-    useGlobalClient();
+  // Only select the specific parts of the context that this component needs
+  const isLoadingOurPrograms = useContextSelector(
+    (context) => context.isLoadingOurPrograms
+  );
+
+  const ourPrograms = useContextSelector((context) => context.ourPrograms);
+
+  const fetchOurPrograms = useContextSelector(
+    (context) => context.fetchOurPrograms
+  );
+
   useEffect(() => {
     fetchOurPrograms(currentPage, pageSize);
   }, [currentPage, fetchOurPrograms, pageSize]);
