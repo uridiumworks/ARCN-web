@@ -1,6 +1,7 @@
 "use client";
 import CustomContainer from "@/components/CustomContainer";
 import CustomPagination from "@/components/Shared/CustomPagination";
+import NoDataMessage from "@/components/Shared/NoDataMessage";
 import OurTechnologiesSkeletonLoading from "@/components/skeletonloading/OurTechnologiesSkeletonLoading";
 import { useClientProjectsData } from "@/hooks/Projects.hooks";
 import { useContextSelector } from "@/hooks/use-context-selector";
@@ -36,7 +37,7 @@ const Technolody = () => {
   };
 
   return (
-    <section className="bg-white py-12 md:py-20">
+    <section className="bg-white py-8 md:py-16">
       <CustomContainer>
         <div className="flex flex-col gap-6">
           <div className="place-content-center text-center p-9 space-y-4">
@@ -54,9 +55,10 @@ const Technolody = () => {
 
           <div className="flex flex-col gap-4">
             {isLoadingOurTechs && <OurTechnologiesSkeletonLoading />}
-            {!isLoadingOurTechs && ourTechs?.data.length === 0 && (
-              <p>no data</p>
-            )}
+            {!isLoadingOurTechs &&
+              (!ourTechs?.data || ourTechs?.data.length === 0) && (
+                <NoDataMessage message="No Technologies avaliable" />
+              )}
             {!isLoadingOurTechs && ourTechs?.data.length && (
               <div className="grid grid-cols-[100%] sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-self-center sm:justify-self-stretch">
                 {ourTechs?.data.map((p, index: number) => (

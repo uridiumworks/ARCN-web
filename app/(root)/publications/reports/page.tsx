@@ -10,6 +10,7 @@ import ReportsSkeletonLoading from "@/components/skeletonloading/ReportsSkeleton
 import CustomPagination from "@/components/Shared/CustomPagination";
 import { ApiEndpointsEnum } from "@/types";
 import { useContextSelector } from "@/hooks/use-context-selector";
+import NoDataMessage from "@/components/Shared/NoDataMessage";
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 const Reports = () => {
@@ -109,9 +110,9 @@ const Reports = () => {
             </div>
 
             <div className="relative w-full md:w-[400px] mt-5">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+              {/* <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
-              </div>
+              </div> */}
               <Input
                 className="outline:none border w-full"
                 type="search"
@@ -123,18 +124,21 @@ const Reports = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            {isLoadingReports && <ReportsSkeletonLoading counts={6} />}
+            {isLoadingReports && <ReportsSkeletonLoading />}
 
             {!isLoadingReports &&
               (!reports?.data || reports.data.length === 0) && (
-                <div className="text-center text-gray-500">
+                <div>
                   {isSearching ? (
-                    <p>
-                      No reports found matching &quot;{debouncedSearchQuery}
-                      &quot;.
-                    </p>
+                    // <p>
+                    //   No reports found matching &quot;{debouncedSearchQuery}
+                    //   &quot;.
+                    // </p>
+                    <NoDataMessage
+                      message={`No reports found matching "${debouncedSearchQuery}"`}
+                    />
                   ) : (
-                    <p>No reports available.</p>
+                    <NoDataMessage message="No Reports avaliable" />
                   )}
                 </div>
               )}

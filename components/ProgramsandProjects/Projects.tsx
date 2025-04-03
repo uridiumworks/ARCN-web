@@ -7,6 +7,7 @@ import CustomContainer from "../CustomContainer";
 import { useEffect, useState } from "react";
 import CustomPagination from "../Shared/CustomPagination";
 import { useContextSelector } from "@/hooks/use-context-selector";
+import NoDataMessage from "../Shared/NoDataMessage";
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,8 +64,8 @@ const Projects = () => {
             <div className="flex flex-col gap-6">
               {isLoadingOurProjects && <ProjectsSkeletonLoading />}
               {!isLoadingOurProjects &&
-                (!ourProjects || ourProjects?.data.length === 0) && (
-                  <p>no data</p>
+                (!ourProjects?.data || ourProjects?.data.length === 0) && (
+                  <NoDataMessage message="No Projects avaliable" />
                 )}
               {!isLoadingOurProjects && ourProjects?.data.length && (
                 <div className="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

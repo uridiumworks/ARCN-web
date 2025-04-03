@@ -9,6 +9,7 @@ import ProgramsSkeletonLoading from "../skeletonloading/ProgramsSkeletonLoading"
 import CustomContainer from "../CustomContainer";
 import CustomPagination from "../Shared/CustomPagination";
 import { useContextSelector } from "@/hooks/use-context-selector";
+import NoDataMessage from "../Shared/NoDataMessage";
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 
@@ -62,8 +63,8 @@ const Programs = () => {
           <div className=" flex flex-col gap-6">
             {isLoadingOurPrograms && <ProgramsSkeletonLoading />}
             {!isLoadingOurPrograms &&
-              (!ourPrograms || ourPrograms?.data.length === 0) && (
-                <p>no data</p>
+              (!ourPrograms?.data || ourPrograms?.data.length === 0) && (
+                <NoDataMessage message="No Programs avaliable" />
               )}
 
             {/* <ProgramsSkeletonLoading /> */}
