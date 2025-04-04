@@ -32,6 +32,7 @@ const config = {
       },
       backgroundImage: {
         "impact-static-bg": "url('/Images/Homepage/impact-img-static.jpg')",
+        "CardPattern": "url('/Images/lands.png')",
       },
 
       colors: {
@@ -95,6 +96,7 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-montserrat)"],
+      // Removed duplicate backgroundImage property
       },
     },
   },

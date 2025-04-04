@@ -18,7 +18,7 @@ type JournalProps = {
 
 const Journals = () => {
     return (
-        <section className='px-20 py-20'>
+        <section className='px-20 py-20 '>
             <div className=''>
                 <h3 className="text-3xl font-bold text-[#1B222B]">Journals</h3>
                 <p className="text-sm text-gray pt-2">
