@@ -61,14 +61,15 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="sm:py-[5rem] py-[3.5rem] w-full bg-CardPattern h-[19rem] opacity-100 bg-no-repeat bg-blend-overlay bg-cover bg-center flex items-center justify-center">
+            <div className="sm:py-[5rem] text-white relative place-content-center py-[3.5rem] w-full bg-CardPattern h-[19rem] bg-no-repeat bg-blend-overlay bg-cover bg-center flex items-center justify-center">
+                <div className="absolute inset-0 lg:h-[19rem] bg-[#2e2e2e] bg-opacity-[.42]"></div>
                 <CustomContainer>
-                <div className="w-full p-3 flex flex-col gap-3">
+                <div className="w-full relative z-10  p-3 flex flex-col gap-3">
                     <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-semibold">Administration Department</h1>
                     <p className="text-sm leading-[1.5rem]">The Administrative Department as the secretariat of ARCN covers broad areas of the council&apos;s<br className='hidden md:block' /> 
                     mandate as well as the NARS. It is responsible for managing and overseeing various administrative<br className='hidden md:block' /> activities for the smooth running of the council.</p>
                 </div>
-</CustomContainer>
+                </CustomContainer>
             </div>
             <CustomContainer>
 

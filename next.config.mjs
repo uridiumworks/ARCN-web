@@ -25,6 +25,24 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    // unoptimized: true,
+    domains: ["92.205.63.251", "res.cloudinary.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "92.205.63.251",
+        port: "",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

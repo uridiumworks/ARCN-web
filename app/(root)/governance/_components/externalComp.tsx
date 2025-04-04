@@ -13,8 +13,9 @@ type Props = {
 
 const HeaderComp: React.FC<Props> = ({title, description, bgImage}) => {
     return (
-        <div className={cn("text-left md:px-44 md:h-[19rem] w-full", bgImage)}>
-            <div className="w-full md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
+        <div className={cn("text-left text-white relative place-content-center py-4 md:px-28 md:h-[19rem] w-full", bgImage)}>
+            <div className="absolute inset-0 lg:h-[19rem] bg-[#2e2e2e] bg-opacity-[.32]"></div>
+            <div className="w-full relative z-10 md:w-[1250px] md:ml-32 space-y-4 pt-8 md:pt-16">
                 <h1 className="text-3xl md:text-4xl font-semibold">{title}</h1>
                 <p className="text-sm">{description}</p>
             </div>

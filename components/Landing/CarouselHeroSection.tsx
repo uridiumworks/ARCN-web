@@ -3,10 +3,11 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import Image from "next/image"
 import { RightButtonCarouselIcon, LeftButtonCarouselIcon } from "@/assets/icons"
 import CustomContainer from "../CustomContainer"
+import axios from "axios"
  
 interface CarouselItem {
   id: number
-  imageUrl: string
+  url: string
 }
  
 export default function CarouselHeroSection() {
@@ -18,19 +19,27 @@ export default function CarouselHeroSection() {
  
   
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([])
+  const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URLS;
 
   // Fetch carousel data from API
   useEffect(() => {
     const fetchCarouselData = async () => {
       try {
         setIsLoading(true)
-        const response = await fetch("'http://92.205.63.251:81/api/home-slide?populate=images'")
+        const response = await axios.get(`${BASE_URL}/api/home-slide?populate=images`, 
+          { 
+            headers: { 
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+              'Content-Type': 'application/json'
+            }, 
+          }
+        )
 
-        if (!response.ok) {
+        if (!response) {
           throw new Error("Failed to fetch carousel data")
         }
-
-        const data = await response.json()
+        console.log("Carousel data:", response?.data?.data?.images)
+        const data = await response.data?.data?.images || []
         setCarouselItems(data)
         setIsLoading(false)
       } catch (err) {
@@ -39,20 +48,20 @@ export default function CarouselHeroSection() {
         setIsLoading(false)
 
         // Fallback to default items if API fails
-        setCarouselItems([
-          {
-            id: 1,
-            imageUrl: "/Images/Homepage/Banner.png",
-          },
-          {
-            id: 2,
-            imageUrl: "/Images/Homepage/Banner.png",
-          },
-          {
-            id: 3,
-            imageUrl: "/Images/Homepage/Banner.png",
-          },
-        ])
+        // setCarouselItems([
+        //   {
+        //     id: 1,
+        //     imageUrl: "/Images/Homepage/Banner.png",
+        //   },
+        //   {
+        //     id: 2,
+        //     imageUrl: "/Images/Homepage/Banner.png",
+        //   },
+        //   {
+        //     id: 3,
+        //     imageUrl: "/Images/Homepage/Banner.png",
+        //   },
+        // ])
       }
     }
 
@@ -114,13 +123,12 @@ export default function CarouselHeroSection() {
         {carouselItems.map((item, index) => (
         <div key={item.id} className="min-w-full h-full relative flex-shrink-0">
           <Image
-            src={item.imageUrl || "/placeholder.svg"}
+            src={`${BASE_URL}${item.url}` || "/placeholder.svg"}
             alt={`Agricultural slide ${index + 1}`}
             fill
             className="object-cover"
             priority={index === 0}
           />
-          {/* Individual slide overlay */}
           <div className="absolute inset-0 bg-black/50"></div>
         </div>))}
       </div>

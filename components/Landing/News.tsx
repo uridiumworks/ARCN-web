@@ -2,6 +2,35 @@
 import Image from "next/image";
 import CustomContainer from "../CustomContainer";
 import { useClientNewsLettersData } from "@/hooks/NewsLetters.hooks";
+import { useEffect, useState } from "react";
+
+const Newsdata = () => {
+  const [newsLetters, setNewsLetters] = useState([]);
+  const [journal,setJournals ] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+
+  // Fetch data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/journal?populate=Images");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setJournals(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Failed to fetch data");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+};
 
 const data = [
   {
@@ -53,6 +82,7 @@ const News = () => {
                 >
                   {el.type}
                 </h3>
+
                 <div className="grid grid-rows-[min_content_auto] gap-8">
                   <div className="flex gap-4 justify-start">
                     {el.imgs.map((img, i) => (
@@ -70,6 +100,7 @@ const News = () => {
                       </div>
                     ))}
                   </div>
+
                   <div className="flex flex-col items-start gap-2.5">
                     <h4 className="font-medium text-base sm:text-lg sm:leading-[1.28625rem] text-[#131517]">
                       {el.subject}
@@ -84,6 +115,7 @@ const News = () => {
                 </div>
               </div>
             ))}
+
             <div className="flex flex-col  gap-3.5  col-span-1 sm:col-span-full lg:col-span-1">
               <h3 className="font-medium text-[#131517] text-xl sm:text-2xl leading-[1.46625rem] text-opacity-85">
                 NEWS ALERTS
@@ -105,6 +137,7 @@ const News = () => {
                     Read More
                   </div>
                 </div>
+
                 <div className="flex flex-col gap-3 items-start rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white">
                   <h4 className="text-[#131517] text-[1.345rem] font-medium leading-[1.5625rem]">
                     News Title
@@ -131,3 +164,15 @@ const News = () => {
 };
 
 export default News;
+function setJournals(data: any) {
+  throw new Error("Function not implemented.");
+}
+
+function setError(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+
+function setIsLoading(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
