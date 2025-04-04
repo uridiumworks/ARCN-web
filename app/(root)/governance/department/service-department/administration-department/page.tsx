@@ -61,7 +61,7 @@ const AdminDepartmentData = [
 const ServiceDepartmentDetails = () => {
     return (
         <section className="w-full">
-            <div className="sm:py-[5rem] py-[3.5rem] w-full bg-[#FCF8C6]">
+            <div className="sm:py-[5rem] py-[3.5rem] w-full bg-CardPattern h-[19rem] opacity-100 bg-no-repeat bg-blend-overlay bg-cover bg-center flex items-center justify-center">
                 <CustomContainer>
                 <div className="w-full p-3 flex flex-col gap-3">
                     <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-semibold">Administration Department</h1>

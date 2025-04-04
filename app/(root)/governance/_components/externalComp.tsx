@@ -5,28 +5,26 @@ import { CircleCheck } from "lucide-react";
 type Props = {
     title: string;
     description?: any;
-    bgColor?: string;
+    bgImage?: string;
     listType?: string;
     FunctionData?: string[];
     AdminDepartmentData?: any;
 }
 
-const HeaderComp: React.FC<Props> = ({title, description, bgColor}) => {
+const HeaderComp: React.FC<Props> = ({title, description, bgImage}) => {
     return (
-        <div className={cn("sm:py-[5rem] py-[3.5rem] w-full", bgColor)}>
-            <CustomContainer>
-            <div className="w-full p-3 flex flex-col gap-3">
-                <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-semibold">{title}</h1>
-                <p className="text-sm leading-[1.5rem]">{description}</p>
+        <div className={cn("text-left md:px-44 md:h-[19rem] w-full", bgImage)}>
+            <div className="w-full md:w-[1250px] md:ml-32 space-y-8 pt-8 md:pt-16">
+                <h1 className="text-3xl md:text-4xl font-semibold">{title}</h1>
+                <p className="text-sm">{description}</p>
             </div>
-            </CustomContainer>
         </div>
     )
 }
 const FunctionalComp: React.FC<Props> = ({title, FunctionData}) => {
     return (
-        <div className='py-7 md:py-14'>
-            <h2 className='font-semibold text-3xl sm:text-4xl leading-[2.25rem]'>{title}</h2>
+        <div className='py-7 md:px-20 md:py-14'>
+            <h2 className='font-semibold text-3xl md:text-4xl'>{title}</h2>
 
             <div className='font-normal py-6 '>
                 {FunctionData?.map((item, index) => {

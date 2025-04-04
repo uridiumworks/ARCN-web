@@ -61,7 +61,7 @@ const ServiceDepartmentDetails = () => {
   return (
     <section className="w-full">
       <HeaderComp
-        bgColor="bg-[#BFCDFF]"
+        bgImage="bg-CardPattern"
         title="Livestock Department"
         description={
           <>

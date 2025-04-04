@@ -1,0 +1,6 @@
+.record {
+    background-image: url('/Images/Homepage/Record.png');
+    background-size: cover;
+    background-position: center contain !important;
+    background-repeat: no-repeat;
+}
