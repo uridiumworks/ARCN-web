@@ -6,6 +6,7 @@ import AdminNavbar from "./admin/_components/AdminNavbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import ContextProvider from "@/components/ContextProvider";
+import { GlobalClientProvider } from "@/contexts/GlobalClientContext";
 
 export default function RootLayout({
   children,
@@ -26,7 +27,10 @@ export default function RootLayout({
     return (
       <main>
         <Navbar />
-        <div>{children}</div>
+        
+        <div>
+          
+        <GlobalClientProvider>{children}</GlobalClientProvider></div>
         <Footer />
         <Toaster />
       </main>

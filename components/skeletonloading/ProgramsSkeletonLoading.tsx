@@ -1,36 +1,32 @@
 "use client";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-export default function ProgramsSkeletonLoading() {
+
+type Props = {
+  counts?: number;
+};
+
+export default function ProgramsSkeletonLoading({ counts = 8 }: Props) {
   return (
     <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white  rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5 ">
-        <div className="flex flex-col gap-4 lg:self-center items-start order-2 lg:order-1">
-          <div className="flex flex-col gap-2">
-            <Skeleton className="h-[1rem] w-[6rem]" />
-            <Skeleton className="h-[0.8rem] w-[16rem]" />
-            <Skeleton className="h-[0.8rem] w-[9rem]" />
-            <Skeleton className="h-[0.8rem] w-[4rem]" />
+      {Array.from({ length: counts }, (_, i) => i + 1).map((el) => (
+        <div
+          className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white  rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5 "
+          key={el}
+        >
+          <div className="flex flex-col gap-4 lg:self-center items-start order-2 lg:order-1">
+            <div className="flex flex-col gap-2">
+              <Skeleton className="h-[1rem] w-[6rem]" />
+              <Skeleton className="h-[0.8rem] w-[16rem]" />
+              <Skeleton className="h-[0.8rem] w-[9rem]" />
+              {/* <Skeleton className="h-[0.8rem] w-[4rem]" /> */}
+            </div>
+          </div>
+          <div className="relative order-1 lg:order-2 shrink-0 overflow-hidden">
+            <Skeleton className="w-full lg:w-[9.375rem] h-[9.375rem]" />
           </div>
         </div>
-        <div className="relative order-1 lg:order-2 shrink-0 overflow-hidden">
-          <Skeleton className="w-full lg:w-[9.375rem] h-[9.375rem]" />
-        </div>
-      </div>
-
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-10 bg-white  rounded-xl py-3 px-3.5 lg:px-2.5 lg:py-1.5 ">
-        <div className="flex flex-col gap-4 lg:self-center items-start order-2 lg:order-1">
-          <div className="flex flex-col gap-2">
-            <Skeleton className="h-[1rem] w-[6rem]" />
-            <Skeleton className="h-[0.8rem] w-[16rem]" />
-            <Skeleton className="h-[0.8rem] w-[9rem]" />
-            <Skeleton className="h-[0.8rem] w-[4rem]" />
-          </div>
-        </div>
-        <div className="relative order-1 lg:order-2 shrink-0 overflow-hidden">
-          <Skeleton className="w-full lg:w-[9.375rem] h-[9.375rem]" />
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
