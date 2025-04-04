@@ -26,13 +26,13 @@ const Departments = () => {
             <CustomContainer>
             <div className='flex flex-col  mb-8'>
                 <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-bold text-[#1B222B]">Our Department</h1>
-                <p className="text-sm text-gray-700 leading-[1.5rem] mt-4 leading-relaxed">
+                <p className="text-sm text-gray-700  mt-4 leading-relaxed">
                     Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat<br className='hidden md:block' /> 
                     elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.
                 </p>
             </div>
 
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col  gap-6'>
                 {DepartmentData?.map(({description, image, title, url}, index) => {
                     return (
                         <div key={index} className={cn(index === 0 ? 'bg-[#30A85F]': 'bg-[#FFC74E]', 'flex flex-col-reverse md:flex-row w-full rounded-[20px]  mx-auto pt-8 px-2')}>
