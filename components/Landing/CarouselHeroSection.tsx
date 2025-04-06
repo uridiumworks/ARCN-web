@@ -4,6 +4,7 @@ import Image from "next/image"
 import { RightButtonCarouselIcon, LeftButtonCarouselIcon } from "@/assets/icons"
 import CustomContainer from "../CustomContainer"
 import axios from "axios"
+import axiosInstance from "@/lib/axiosInstance"
  
 interface CarouselItem {
   id: number
@@ -26,15 +27,7 @@ export default function CarouselHeroSection() {
     const fetchCarouselData = async () => {
       try {
         setIsLoading(true)
-        const response = await axios.get(`${BASE_URL}/api/home-slide?populate=images`, 
-          { 
-            headers: { 
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-              'Content-Type': 'application/json'
-            }, 
-          }
-        )
-
+        const response = await axiosInstance.get(`/api/home-slide?populate=images`)
         if (!response) {
           throw new Error("Failed to fetch carousel data")
         }
