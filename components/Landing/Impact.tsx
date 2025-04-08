@@ -5,7 +5,7 @@ const Impact = () => {
     <section className="">
       <div className="min-h-[30rem] bg-impact-static-bg bg-fixed bg-cover bg-center bg-no-repeat relative flex items-center py-12 md:py-20">
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#011610] bg-opacity-[.65]"></div>
+        <div className="absolute inset-0 bg-[#011610] bg-opacity-[.85]"></div>
         <CustomContainer>
           <div className="text-center space-y-9 relative z-10">
             <h2 className="text-[#E6E9E7] text-3xl sm:text-4xl font-semibold leading-[2.25rem]">
