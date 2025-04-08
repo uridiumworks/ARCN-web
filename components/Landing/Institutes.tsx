@@ -117,18 +117,6 @@ const TabOne = () => {
                   {el.location}
                 </p>
               </div>
-              {/* <div className="flex items-center gap-3">
-                <div>
-                  <WebIcon />
-                </div>{" "}
-                <Link
-                  href={`https://www.${el.webUrl}`}
-                  target="_blank"
-                  className="text-[#30A85F] font-normal text-sm leading-[1.4rem]"
-                >
-                  {el.webUrl}
-                </Link>
-              </div> */}
             </div>
           </div>
         ))}
@@ -171,16 +159,6 @@ const TabTwo = () => {
                   {el.location}
                 </p>
               </div>
-              {/* <div className="flex items-center gap-3">
-                <WebIcon />{" "}
-                <Link
-                  href={`https://www.${el.webUrl}`}
-                  target="_blank"
-                  className="text-[#30A85F] leading-[1.4rem] font-normal text-sm"
-                >
-                  {el.webUrl}
-                </Link>
-              </div> */}
             </div>
           </div>
         ))}
