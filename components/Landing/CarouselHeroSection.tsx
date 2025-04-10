@@ -39,22 +39,6 @@ export default function CarouselHeroSection() {
         console.error("Error fetching carousel data:", err)
         setError("Failed to load carousel data")
         setIsLoading(false)
-
-        // Fallback to default items if API fails
-        // setCarouselItems([
-        //   {
-        //     id: 1,
-        //     imageUrl: "/Images/Homepage/Banner.png",
-        //   },
-        //   {
-        //     id: 2,
-        //     imageUrl: "/Images/Homepage/Banner.png",
-        //   },
-        //   {
-        //     id: 3,
-        //     imageUrl: "/Images/Homepage/Banner.png",
-        //   },
-        // ])
       }
     }
 
