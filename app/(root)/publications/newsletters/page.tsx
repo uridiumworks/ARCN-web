@@ -24,10 +24,9 @@ const Newsletter = () => {
                 Newsletter
               </h3>
               <p className="text-sm leading-[1.5rem] text-gray pt-2">
-                Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper
-                quis etiam euismod quisque montes arcu risus. Magnis posuere
-                tincidunt elit <br /> ultrices tortor. Sit semper cras sed duis
-                tortor tempor amet gravida. Rhoncus quis nisl etiam tortor.
+              Stay informed with ARCN Quarterly! Get policy updates, breakthrough research highlights, and 
+              <br/>success stories from Nigeria&apos;s agricultural innovation ecosystem. Subscribe for insights in English, 
+              <br/>French, and Arabic.
               </p>
             </div>
 

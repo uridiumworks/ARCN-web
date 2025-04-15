@@ -13,13 +13,15 @@ interface NewsItem {
 }
 
 interface ApiResponse {
-  data: any[]
+  data: any | any[]
   meta?: any
 }
 
 const Newsdata = () => {
   const [newsLettersData, setNewsLettersData] = useState<ApiResponse | null>(null)
+  const [newsLettersItem, setNewsLettersItem] = useState<any | null>(null)
   const [journalData, setJournalData] = useState<ApiResponse | null>(null)
+  const [journalItem, setJournalItem] = useState<any | null>(null)
   const [articlesData, setArticlesData] = useState<ApiResponse | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -29,6 +31,24 @@ const Newsdata = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const fallbackData = [
+          {
+            type: "ARCN JOURNAL",
+            url: ["/Images/Homepage/journal-img-1.png", "/Images/Homepage/journal-img-2.png"],
+            subject: "Journal Title",
+            content:
+              "ARCN plays a pivotal role in the dissemination of cutting-edge research through its published journals. These journals serve as a platform for researchers from diverse fields and various institutes to share their findings, insights, and innovations with the global academic community.",
+            id: 1,
+          },
+          {
+            type: "NEWSLETTER",
+            url: ["/Images/Homepage/newsletter-img-1.png", "/Images/Homepage/newsletter-img-2.png"],
+            subject: "Newsletter Title",
+            content:
+              "ARCN plays a pivotal role in the dissemination of cutting-edge research through its published journals. These journals serve as a platform for researchers from diverse fields and various institutes to share their findings, insights, and innovations with the global academic community.",
+            id: 2,
+          },
+        ]
         setIsLoading(true)
 
         // Create all fetch requests
@@ -62,10 +82,31 @@ const Newsdata = () => {
 
         // Validate responses and set data
         if (journalResponse.status >= 200 && journalResponse.status < 300) {
+         setJournalItem({
+          type: "ARCN JOURNAL",
+          url: journalResponse.data?.data.attributes?.Images?.map((img: any) => img.url) || [
+            "/Images/Homepage/journal-img-1.png",
+            "/Images/Homepage/journal-img-2.png",
+          ],
+          subject: journalResponse.data?.data?.Title || "Journal Title",
+          content: journalResponse.data?.data?.Description || fallbackData[0].content,
+          id: 1,
+        })
           setJournalData(journalResponse.data)
         }
 
         if (newslettersResponse.status >= 200 && newslettersResponse.status < 300) {
+          console.log("newslettersResponse.data", newslettersResponse.data);
+          setNewsLettersItem({
+            type: "NEWSLETTER",
+            url: newslettersResponse.data.data.attributes?.Images?.map((img: any) => img.url) || [
+              "/Images/Homepage/newsletter-img-1.png",
+              "/Images/Homepage/newsletter-img-2.png",
+            ],
+            subject: newslettersResponse.data.data?.Title || "Newsletter Title",
+            content: newslettersResponse.data.data?.Description || fallbackData[1].content,
+            id: 2,
+          })
           setNewsLettersData(newslettersResponse.data)
         }
 
@@ -92,64 +133,22 @@ const Newsdata = () => {
   }
 
   // Fallback data if API fails
-  const fallbackData = [
-    {
-      type: "ARCN JOURNAL",
-      url: ["/Images/Homepage/journal-img-1.png", "/Images/Homepage/journal-img-2.png"],
-      subject: "Journal Title",
-      content:
-        "ARCN plays a pivotal role in the dissemination of cutting-edge research through its published journals. These journals serve as a platform for researchers from diverse fields and various institutes to share their findings, insights, and innovations with the global academic community.",
-      id: 1,
-    },
-    {
-      type: "NEWSLETTER",
-      url: ["/Images/Homepage/newsletter-img-1.png", "/Images/Homepage/newsletter-img-2.png"],
-      subject: "Newsletter Title",
-      content:
-        "ARCN plays a pivotal role in the dissemination of cutting-edge research through its published journals. These journals serve as a platform for researchers from diverse fields and various institutes to share their findings, insights, and innovations with the global academic community.",
-      id: 2,
-    },
-  ]
+  
 
   // Use API data if available, otherwise use fallback data
-  const journalItem = journalData?.data?.length
-    ? {
-        type: "ARCN JOURNAL",
-        url: journalData.data[0]?.attributes?.Images?.data?.map((img: any) => img.attributes.url) || [
-          "/Images/Homepage/journal-img-1.png",
-          "/Images/Homepage/journal-img-2.png",
-        ],
-        subject: journalData.data[0]?.attributes?.title || "Journal Title",
-        content: journalData.data[0]?.attributes?.description || fallbackData[0].content,
-        id: 1,
-      }
-    : fallbackData[0]
+  
 
-  const newsletterItem = newsLettersData?.data?.length
-    ? {
-        type: "NEWSLETTER",
-        url: newsLettersData.data[0]?.attributes?.Images?.data?.map((img: any) => img.attributes.url) || [
-          "/Images/Homepage/newsletter-img-1.png",
-          "/Images/Homepage/newsletter-img-2.png",
-        ],
-        subject: newsLettersData.data[0]?.attributes?.title || "Newsletter Title",
-        content: newsLettersData.data[0]?.attributes?.description || fallbackData[1].content,
-        id: 2,
-      }
-    : fallbackData[1]
+ 
 
-  const newsDataArray = [journalItem, newsletterItem]
+  const newsDataArray = [journalItem, newsLettersItem]
 
   // Prepare articles data
   const articles = articlesData?.data?.length
     ? articlesData.data.map((article: any, index: number) => ({
-        title: article.attributes?.title || `News Title ${index + 1}`,
-        content: article.attributes?.content || fallbackData[0].content,
+        title: article?.title || `News Title ${index + 1}`,
+        content: article?.description,
       }))
-    : [
-        { title: "News Title 1", content: fallbackData[0].content },
-        { title: "News Title 2", content: fallbackData[0].content },
-      ]
+    : []
 
   return (
     <section className="py-12 md:py-20 bg-[#FBFAFA]">
@@ -201,7 +200,7 @@ const Newsdata = () => {
                 NEWS ALERTS
               </h3>
               <div className="flex flex-col sm:flex-row lg:flex-col gap-6">
-                {articles.map((article, index) => (
+                {(articles as any[]).map((article, index) => (
                   <div
                     key={index}
                     className="flex flex-col gap-3 items-start rounded-xl py-5 px-7 border-[1.08px] border-[#E8E8E8] bg-white"

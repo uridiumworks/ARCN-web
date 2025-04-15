@@ -43,20 +43,20 @@ const Federal = () => {
       <div className="py-12 md:py-20 bg-[#F6F6F6]">
         <CustomContainer>
           <div className="flex flex-col gap-10">
-            <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around gap-5">
+            <ul  className="grid grid-cols-1 sm:grid-cols-2 gap-5 list-[circle] list-outside pl-5">
               {federalColleges.length > 0 && (
                 <>
                   {federalColleges?.map((n, index) => (
-                    <p
+                    <li
                       key={index}
                       className="text-[#2D3657] font-semibold text-sm leading-[1.5rem]"
                     >
                       {n}
-                    </p>
+                    </li>
                   ))}
                 </>
               )}
-            </div>
+            </ul>
             {/* button */}
             <Link
               href="/mandate/training/college"

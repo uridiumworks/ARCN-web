@@ -52,11 +52,10 @@ const Report = () => {
               Coordination Report
             </h2>
             <p className="text-black font-normal text-sm leading-[1.5rem]">
-              Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
-              etiam euismod quisque <br className="hidden md:block" /> montes
-              arcu risus. Magnis posuere tincidunt elit ultrices tortor. Sit
-              semper cras sed duis tortor <br className="hidden md:block" />{" "}
-              tempor amet gravida. Rhoncus quis nisl etiam tortor.
+            These reports outline ARCN’s strategic coordination of Nigeria’s agricultural research 
+            <br /> system—tracking policy impact, technology adoption, institutional performance, and 
+            <br/> budget execution—to align with federal priorities, drive sector growth, and ensure 
+            <br/> accountability across research institutes.
             </p>
           </div>
 

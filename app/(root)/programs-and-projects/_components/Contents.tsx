@@ -57,10 +57,10 @@ export default function Contents() {
               <div className='space-y-3'>
                 <h1 className='font-normal text-sm'>In Nigeria, CORAF coordinates the project through the Agricultural Research Council of Nigeria (ARCN), working with:</h1>
                 <ul >
-                  <li className='font-normal text-sm  flex items-start px-5 gap-2'>
+                  {/* <li className='font-normal text-sm  flex items-start px-5 gap-2'>
                     <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />
                     <span>Nigerian Institute for Oceanography and Marine Research (NIOMR), Lagos</span>
-                  </li>
+                  </li> */}
                   <li className='font-normal text-sm  flex items-start px-5 gap-2'>
                     <span className="mt-2 h-1 w-1 rounded-full bg-black flex-shrink-0" />
                     <span>National Institute for Freshwater Fisheries Research, New Bussa</span>

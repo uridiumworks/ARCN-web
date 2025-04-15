@@ -34,10 +34,13 @@ const Publications = () => {
                 Journals
               </h2>
               <p className="text-sm leading-[1.5rem] text-grays">
-                Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper
-                quis etiam euismod quisque montes arcu risus. Magnis posuere
-                tincidunt elit <br /> ultrices tortor. Sit semper cras sed duis
-                tortor tempor amet gravida. Rhoncus quis nisl etiam tortor.
+              Agricultural research journals serve as essential knowledge products for disseminating valuable 
+              <br/> scientific findings and innovations in the agricultural sector. These periodic publications feature 
+              <br/> carefully curated content selected by our editorial boards comprised of experts representing diverse 
+              <br/> agricultural disciplines and specializations. With our rigorous review process, we ensure that only 
+              <br/> publications of the highest academic integrity and scientific merit are published for our 
+              <br/> stakeholders. Each submission undergoes thorough evaluation to maintain quality standards and 
+              <br/> relevance for our diverse audience of researchers, practitioners, and policymakers.
               </p>
             </div>
 

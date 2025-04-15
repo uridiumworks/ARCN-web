@@ -100,7 +100,7 @@ const New = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-7">
               {newsLetters.slice(0, 6).map((article) => {
-                const imageUrl = article.cover?.data?.attributes?.url || "/Placeholder.png"
+                const imageUrl = BASE_URL + article.cover?.url || "/Placeholder.png"
                 const title = article.title
                 const description = article.content
                 const publishDate = article.publishedAt

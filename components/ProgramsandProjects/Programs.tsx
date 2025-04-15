@@ -82,11 +82,11 @@ const Programs = () => {
                           {p?.Title}
                         </h3>
 
-                        <p className="font-normal text-[#464646] text-xs leading-[1.2rem]">
+                        {/* <p className="font-normal text-[#464646] text-xs leading-[1.2rem]">
                           {p?.Description[0]?.children[0]?.text.length > 55
                             ? `${p?.Description[0]?.children[0]?.text}...`
                             : p?.Description[0]?.children[0]?.text}
-                        </p>
+                        </p> */}
                       </div>
                       <div className="flex gap-1 items-center">
                         <LuClock5 size={20} />
