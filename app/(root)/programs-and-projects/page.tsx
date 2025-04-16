@@ -9,7 +9,7 @@ export default function Home() {
       <main>
         <Banner />
         <Projects />
-        <Programs />
+        {/* <Programs /> */}
         <Journal />
       </main>
       

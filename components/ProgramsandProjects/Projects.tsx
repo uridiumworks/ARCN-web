@@ -16,25 +16,25 @@ const Projects = () => {
 
   // Only select the specific parts of the context that this component needs
   const isLoadingOurProjects = useContextSelector(
-    (context) => context.isLoadingOurProjects
+    (context) => context.isLoadingReports
   );
 
-  const ourProjects = useContextSelector((context) => context.ourProjects);
+  const ourProjects = useContextSelector((context) => context.projectData);
 
   const fetchOurProjects = useContextSelector(
-    (context) => context.fetchOurProjects
+    (context) => context.fetchProjects
   );
 
   useEffect(() => {
-    fetchOurProjects(currentPage, pageSize);
-  }, [currentPage, fetchOurProjects, pageSize]);
+    fetchOurProjects();
+  }, [fetchOurProjects]);
 
-  useEffect(() => {
-    if (ourProjects && ourProjects.meta.pagination?.pageCount) {
-      setTotalPages(ourProjects.meta.pagination.pageCount);
-      setCurrentPage(ourProjects.meta.pagination.page);
-    }
-  }, [ourProjects]);
+  // useEffect(() => {
+  //   if (ourProjects && ourProjects.meta.pagination?.pageCount) {
+  //     setTotalPages(ourProjects.meta.pagination.pageCount);
+  //     setCurrentPage(ourProjects.meta.pagination.page);
+  //   }
+  // }, [ourProjects]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -46,7 +46,7 @@ const Projects = () => {
 
       <CustomContainer>
         <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-4 text-center">
+          <div className="flex flex-col gap-4 text-left">
             <h2 className="font-bold leading-[2.25rem] text-3xl sm:text-4xl">
               Our Projects
             </h2>
@@ -64,44 +64,46 @@ ARCN collaborates with international organizations, government agencies, researc
             <div className="flex flex-col gap-6">
               {isLoadingOurProjects && <ProjectsSkeletonLoading />}
               {!isLoadingOurProjects &&
-                (!ourProjects?.data || ourProjects?.data.length === 0) && (
+                (!ourProjects || ourProjects?.length === 0) && (
                   <NoDataMessage message="No Projects avaliable" />
                 )}
-              {!isLoadingOurProjects && ourProjects?.data.length && (
+              {!isLoadingOurProjects && ourProjects?.length && (
                 <div className="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {ourProjects?.data.map((p, index: number) => (
+                  {ourProjects.map((p, index: number) => (
                     <div
                       key={index}
                       className="relative h-[18.5rem] rounded-lg overflow-hidden"
                     >
+                      <Link href={'/programs-and-projects/project/'+ p.documentId}>
                       <Image
-                        src={`${baseURL}${p?.Image?.url}`}
-                        alt={p?.Title}
+                        src={`${baseURL}${p?.image?.url}`}
+                        alt={p?.title}
                         width={328}
                         height={200}
                         className="h-full w-full object-cover"
                       />
                       <div className="absolute w-full bg-[#000000CC] bottom-0 flex flex-col  text-white px-2 py-2.5">
                         <h3 className="font-medium text-sm leading-[1.74625rem]">
-                          {p?.Title}
+                          {p?.title}
                         </h3>
-                        <p className="font-normal text-[0.6875rem] leading-[1.2125rem]">
-                          {p?.Description.length > 110
-                            ? `${p?.Description}...`
-                            : p?.Description}
+                        <p className="font-normal text-[0.6875rem] leading-[1.2125rem] line-clamp-3 ">
+                          {p?.excerpt.length > 50
+                            ? `${p?.excerpt}...`
+                            : p?.excerpt}
                         </p>
                       </div>
+                      </Link>
                     </div>
                   ))}
                 </div>
               )}
-              {!isLoadingOurProjects && ourProjects?.data.length && (
+              {/* {!isLoadingOurProjects && ourProjects?.data.length && (
                 <CustomPagination
                   currentPage={currentPage}
                   handlePageChange={handlePageChange}
                   totalPages={totalPages}
                 />
-              )}
+              )} */}
             </div>
           </div>
         </div>
