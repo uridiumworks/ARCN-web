@@ -33,6 +33,7 @@ interface GlobalClientContextInterface {
   ourTechs?: TechnologyData[];
   ourProjects?: OurTechnologiesAndProjects;
   techCategory?: TechCategory[];
+  multimediaCategory?: TechCategory[];
   techCategoryItem?: TechCategory;
   downloadData?: BaseResponseWithPagination<DownloadData>;
   techSubCategory?: TechSubCategory[];
@@ -64,6 +65,7 @@ interface GlobalClientContextInterface {
   fetchTechnologyCategoryDetails: (categoryId: string) => Promise<void>;
   fetchDownloadCategory: () => Promise<void>;
   fetchProjects: () => Promise<void>;
+  fetchMultimediaCategory: () => Promise<void>;
   fetchDownloads: (categoryId: string) => Promise<void>;
 }
 
@@ -92,6 +94,7 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   const [reports, setReports] = useState<Report>();
   const [isLoadingReports, setIsLoadingReports] = useState<boolean>(true);
   const [ourTechs, setOurTechs] = useState<TechnologyData[]>();
+  const [multimediaCategory, setMultimediaCategory] = useState<TechCategory[]>();
   const [techCategory, setTechCategory] = useState<TechCategory[]>([]);
   const [techCategoryItem, setTechCategoryItem] = useState<TechCategory>();
   const [techSubCategory, setTechSubCategory] = useState<TechSubCategory[]>([]);
@@ -371,6 +374,39 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
+  const fetchMultimediaCategory = useCallback(
+    async () => {
+      try {
+        const response = (
+          await axiosInstance.get<BaseResponse<TechCategory[]>>(
+            `${ApiEndpointsEnum.MULTIMEDIA_CATEGORY}`
+          )
+        ).data;
+        setMultimediaCategory(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurPrograms(false);
+      }
+    },
+    [toast]
+  );
+
   const fetchDownloads = useCallback(
     async (categoryId: string) => {
       try {
@@ -602,7 +638,10 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         projectData,
         fetchProjects,
         fetchProjectDetails,
-        project
+        project,
+        fetchMultimediaCategory,
+        multimediaCategory
+        
       }}
     >
       {children}

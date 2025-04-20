@@ -23,6 +23,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useContextSelector } from "@/hooks/use-context-selector";
 import { Skeleton } from "@/components/ui/skeleton";
+import MultimediaCategory from "./MultimediaCategory";
 
 const SearchResults = () => {
   const params = useParams();
@@ -79,7 +80,7 @@ const SearchResults = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <section className="w-full my-10 px-4 py-6 space-y-6">
+      {downloadCategory && downloadCategory.find(x=>x.documentId == id)?.isMultimedia? <MultimediaCategory/> : <section className="w-full my-10 px-4 py-6 space-y-6">
         <div className="flex justify-between items-center flex-wrap gap-4">
           <p className="text-lg font-semibold">
             {isLoading ? "Loading..." : `${downloadItems.length} results`}
@@ -174,7 +175,7 @@ const SearchResults = () => {
             ))}
           </div>
         )}
-      </section>
+      </section>}
     </CustomContainer>
   );
 };

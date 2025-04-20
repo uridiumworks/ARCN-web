@@ -228,6 +228,8 @@ export interface TechCategory  {
   updatedAt: string
   publishedAt: string
   icon: Image
+  isMultimedia: boolean
+  link: string
 }
 export interface TechSubCategory  {
   id: number
@@ -308,5 +310,6 @@ export enum ApiEndpointsEnum {
   ALL_REPORTS = "/reports?populate=Image&populate=category",
   MANDATE_SEARCH = "/mandate-slide?populate=Slides",
   PROJECTS = "/projects?populate=image&fields[0]=title&fields[1]=excerpt&fields[2]=documentId",
-  PROJECT_DETAILS = "/projects/{0}?populate=image"
+  PROJECT_DETAILS = "/projects/{0}?populate=image",
+  MULTIMEDIA_CATEGORY = "/multimedia-categories?populate=icon"
 }
