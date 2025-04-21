@@ -9,8 +9,8 @@ const training = () => {
     <section>
       <Banner />
       <Federal />
-      <Intern />
-      <Super />
+      {/* <Intern /> */}
+      {/* <Super /> */}
       <Journal />
     </section>
   );

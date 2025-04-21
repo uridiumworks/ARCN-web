@@ -26,10 +26,10 @@ const Impact = () => {
 
               <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-start">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
-                  ***
+                  2500+
                 </h1>
                 <p className="text-[#FFFFFF] text-sm font-normal text-opacity-85">
-                  Improved Agricultural <br /> Technologies
+                Middle Level  <br /> Manpower Trained
                 </p>
               </div>
 
@@ -48,10 +48,10 @@ const Impact = () => {
 
               <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-start">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
-                2000+
+                3000+
                 </h1>
                 <p className="text-[#FFFFFF] text-sm font-normal text-opacity-85">
-                  Students trained in <br /> Masters and PhD
+                 Professionals in <br /> our Research and  <br />Academia Network 
                 </p>
               </div>
             </div>

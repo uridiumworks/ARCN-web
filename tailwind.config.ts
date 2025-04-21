@@ -34,6 +34,7 @@ const config = {
         "impact-static-bg": "url('/Images/Homepage/impact-img-static.jpg')",
         "CardPattern": "url('/Images/lands.png')",
         "group":"url('/Images/plantbase.png')",
+        "news-cover":"url('/Images/News and Events/NewsAndEventsBanner.png')",
       },
 
       colors: {

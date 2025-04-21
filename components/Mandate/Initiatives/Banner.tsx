@@ -3,7 +3,7 @@ import Image from "next/image";
 import "./stylefile.css";
 const Banner = () => {
   return (
-    <section className="flex flex-col gap-4 h-[19rem] px-4 relative  place-content-center sm:gap-10 banner  pt-4 pb-4 md:pb-24">
+    <section className="flex flex-col gap-4 h-[19rem] max-sm:h-[30rem] px-4 relative  place-content-center sm:gap-10 banner  pt-4 pb-4 md:pb-24">
       <div className="absolute inset-0 lg:h-[19rem] bg-[#000] bg-opacity-[.65]"></div>
       <CustomContainer>
         <div className="flex flex-col relative z-10 sm:gap-3.5  text-left text-white">

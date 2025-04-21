@@ -1,11 +1,9 @@
 "use client";
 import CustomContainer from "@/components/CustomContainer";
-import { useClientNarissData } from "@/hooks/Naris.hooks";
 import Link from "next/link";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode, Key } from "react";
 
 const AROCs = () => {
-  const { loading, nariss, error } = useClientNarissData();
   const extensionActivities = [
     {
       title: "Overview of Extension Activities",

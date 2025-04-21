@@ -52,7 +52,7 @@ const Report = () => {
               Coordination Report
             </h2>
             <p className="text-black font-normal text-sm leading-[1.5rem]">
-            These reports outline ARCN’s strategic coordination of Nigeria’s agricultural research 
+            These reports outline ARCN&apos;s strategic coordination of Nigeria&apos;s agricultural research 
             <br /> system—tracking policy impact, technology adoption, institutional performance, and 
             <br/> budget execution—to align with federal priorities, drive sector growth, and ensure 
             <br/> accountability across research institutes.
@@ -71,7 +71,8 @@ const Report = () => {
                   <NoDataMessage message="No Coordination avaliable" />
                 )}
               {!isLoadingCoordinationReports &&
-                coordinationReports?.data.length && (
+                 !(!coordinationReports?.data ||
+                  coordinationReports?.data.length === 0) && (
                   <div className="grid grid-cols-[100%] sm:grid-cols-2 gap-14">
                     {coordinationReports?.data.map(
                       // @ts-ignore
@@ -118,7 +119,8 @@ const Report = () => {
                 )}
 
               {!isLoadingCoordinationReports &&
-                coordinationReports?.data.length && (
+               !(!coordinationReports?.data ||
+                coordinationReports?.data.length === 0) && (
                   <CustomPagination
                     currentPage={currentPage}
                     handlePageChange={handlePageChange}
@@ -127,12 +129,14 @@ const Report = () => {
                 )}
             </div>
 
-            <Link
+            {!isLoadingCoordinationReports &&
+                !(coordinationReports?.data ||
+                  coordinationReports?.data.length === 0) &&<Link
               href="/mandate/research/coordination-report"
               className="self-center py-2.5 px-8 bg-transparent border border-[#E6E6E6] font-bold text-[#15271C] font-sans capitalize text-sm leading-[2rem]"
             >
               VIEW ALL
-            </Link>
+            </Link>}
           </div>
         </div>
       </CustomContainer>
