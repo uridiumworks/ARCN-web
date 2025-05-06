@@ -12,38 +12,43 @@ const Impact = () => {
               Impacts Based On Numbers
             </h2>
 
-            <div className="flex flex-col md:flex-row  mx-auto justify-center gap-6 ">
-              <div className="  w-full  sm:w-[11.9375rem] h-[7.5625rem] rounded-lg text-center place-content-center">
+            <div className="flex flex-col md:flex-row  mx-auto justify-start gap-6 ">
+              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-start">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
-                  638
+                435+
                 </h1>
                 <p className="text-[#FFFFFF] text-sm font-normal text-opacity-85">
-                  Agricultural <br />
-                  Innovations
+                Agricultural  <br />
+                Innovations and <br/>
+                improved technologies
                 </p>
               </div>
 
-              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
+              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-start">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
-                  105
+                  ***
                 </h1>
                 <p className="text-[#FFFFFF] text-sm font-normal text-opacity-85">
                   Improved Agricultural <br /> Technologies
                 </p>
               </div>
 
-              <div className="  w-full md:w-[21.6875rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
+              <div className="  w-full md:w-[21.6875rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-start">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
-                  132
+                578
                 </h1>
                 <p className="text-[#FFFFFF] text-sm font-normal text-opacity-85">
-                  Small and medium sized <br /> enterprises (SMEs) supported
+                Adopted villages & <br />
+                Adopted schools -  <br />
+                Agricultural Research  <br />
+                Outreach Centres <br />
+                (AROC)
                 </p>
               </div>
 
-              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-center">
+              <div className="  w-full md:w-[14.0625rem] h-[7.5625rem] rounded-lg text-center flex flex-col justify-start">
                 <h1 className="text-[#FBBA03] text-xl sm:text-3xl font-semibold">
-                  2791
+                2000+
                 </h1>
                 <p className="text-[#FFFFFF] text-sm font-normal text-opacity-85">
                   Students trained in <br /> Masters and PhD
@@ -53,12 +58,10 @@ const Impact = () => {
 
             <div className="px-4 lg:px-0">
               <p className="text-[#E6E9E7] text-base font-normal text-opacity-[92%]">
-                The results of research activities coordinated by ARCN have
-                significantly improved agricultural
-                <br className="hidden md:block" /> production and productivity,
-                increased incomes and enriched the livelihoods of millions of
-                farmers and
-                <br className="hidden md:block" /> entrepreneurs in Nigeria.
+              Managing research, extension, and training activities across Nigeria’s NARS has driven significant 
+              <br className="hidden md:block" /> agricultural growth. These efforts have boosted production and improved livelihoods, strengthening food 
+              <br className="hidden md:block" /> security and economic development nationwide.
+                
               </p>
             </div>
           </div>

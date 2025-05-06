@@ -3,9 +3,9 @@ const nextConfig = {
    images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '92.205.63.251',
-        port: '81',
+        protocol: 'https',
+        hostname: 'admin.arcn.gov.ng',
+        port: '',
         pathname: '/uploads/**',
       },
       {
@@ -27,11 +27,11 @@ const nextConfig = {
   },
   images: {
     // unoptimized: true,
-    domains: ["92.205.63.251", "res.cloudinary.com"],
+    domains: ["admin.arcn.gov.ng", "res.cloudinary.com"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "92.205.63.251",
+        hostname: "admin.arcn.gov.ng",
         port: "",
         pathname: "**",
       },

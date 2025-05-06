@@ -258,11 +258,57 @@ export type Pagination = {
   pageCount: number;
   total: number;
 };
+export interface TechCategory  {
+  id: number
+  documentId: string
+  name: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  icon: Image
+}
+export interface TechSubCategory  {
+  id: number
+  documentId: string
+  name: string
+  color: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  technologies: CountData
+  technology_category?: TechCategory
+}
+
+export interface TechnologyData{
+  id: number
+  documentId: string
+  Title: string
+  Description: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  yearReleased: string
+  adoptionRate: string
+  institutionResponsible: string
+  Image: Image,
+  technology_sub_category: TechSubCategory
+}
+export interface CountData{
+  count: number
+}
+export interface BaseResponse<T> {
+  data: T
+}
+
 
 export enum ApiEndpointsEnum {
   CONTACT_US = "/contacts",
   PROGRAMS = "/events?populate=Image&populate=category&filters[category][slug][$eq]=upcoming",
+  TECHNOLOGIES = "/technologies?populate[Image][fields][1]=url&populate[1]=technology_sub_category&populate[technology_sub_category][populate]=technology_category&filters[technology_sub_category][documentId][$eq]={0}",
   OUR_PROJECTS_AND_TECHS = "/technologies?populate=Image",
+  TECHNOLOGY_CATEGORY = "/technology-categories?populate=icon",
+  TECHNOLOGY_CATEGORY_DETAILS = "technology-categories",
+  TECHNOLOGY_SUB_CATEGORY = "/technology-sub-categories?filters[technology_category][documentId][$eq]={0}&populate[technologies][count]=true",
   COORDINARION_REPORTS = "/reports?populate=Image&populate=category&filters[category][slug][$eq]=coordination-report",
   ALL_REPORTS = "/reports?populate=Image&populate=category",
   MANDATE_SEARCH = "/mandate-slide?populate=Slides",

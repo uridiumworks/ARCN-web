@@ -51,11 +51,11 @@ const Projects = () => {
               Our Projects
             </h2>
             <p className="font-normal text-sm leading-[1.5rem]">
-              Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper quis
-              etiam euismod quisque <br className="hidden md:block" />
-              montes arcu risus. Magnis posuere tincidunt elit ultrices tortor.
-              Sit semper cras sed duis tortor <br className="hidden md:block" />
-              tempor amet gravida. Rhoncus quis nisl etiam tortor.
+            The Agricultural Research Council of Nigeria (ARCN) implements diverse agricultural development projects addressing critical challenges across Nigeria&apos;s food systems. These initiatives range from enhancing aquaculture sustainability through innovative feed solutions to strengthening climate-resilient rice production and improving agricultural data collection methodologies.
+            <br/>
+            <br/>
+ARCN collaborates with international organizations, government agencies, research institutes, and local stakeholders to execute these projects, focusing on sustainable practices, technology adoption, and capacity building. Each project follows a structured implementation approach with clearly defined objectives, timelines, and expected outcomes. Through strategic partnerships and evidence-based interventions, these projects contribute significantly to Nigeria&apos;s agricultural productivity, food security, and climate resilience while creating opportunities for smallholder farmers and promoting knowledge exchange across the agricultural sector.
+
             </p>
           </div>
 

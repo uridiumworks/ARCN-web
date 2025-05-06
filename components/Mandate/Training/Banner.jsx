@@ -11,7 +11,7 @@ const Banner = () => {
             Training
           </h2>
           <p className="font-normal text-sm leading-[1.5rem] ">
-            Transforming Food, Land, and Water Systems in a Climate Crisis
+          ARCN oversees agricultural education and human resource development across Federal Colleges of Agriculture. We establish training standards, develop curricula, and build capacity in modern farming practices to create a skilled workforce.
           </p>
         </div>
       </CustomContainer>

@@ -42,7 +42,7 @@ const Value = () => {
             <p className="text-[#64728F] text-sm leading-[1.5rem]">
               Taking into account the priority areas of our stakeholders, the
               Council has designed four result areas to complement and <br />{" "}
-              value to our partners&apos; strategies and programmes, including
+              add value to our partners&apos; strategies and programmes, including
               those of{" "}
               <Link href="#" className="underline text-[#125FFE]">
                 FARA

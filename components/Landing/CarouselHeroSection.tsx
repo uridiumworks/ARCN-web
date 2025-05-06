@@ -27,7 +27,7 @@ export default function CarouselHeroSection() {
     const fetchCarouselData = async () => {
       try {
         setIsLoading(true)
-        const response = await axiosInstance.get(`/api/home-slide?populate=images`)
+        const response = await axiosInstance.get(`/home-slide?populate=images`)
         if (!response) {
           throw new Error("Failed to fetch carousel data")
         }

@@ -101,15 +101,15 @@ const Newsletter = () => {
               <div className="flex flex-col gap-3">
                 <h2 className="text-3xl sm:text-4xl leading-[2.25rem] font-bold text-[#1B222B]">
                 Newsletter
-                </h2>
-                <p className="text-sm leading-[1.5rem] text-gray pt-2">
-                Lorem ipsum dolor sit amet consectetur. Elementum ullamcorper
-                quis etiam euismod quisque montes arcu risus. Magnis posuere
-                tincidunt elit <br /> ultrices tortor. Sit semper cras sed duis
-                tortor tempor amet gravida. Rhoncus quis nisl etiam tortor.
-                </p>
-              </div>            
-              <Input
+              </h3>
+              <p className="text-sm leading-[1.5rem] text-gray pt-2">
+              Stay informed with ARCN Quarterly! Get policy updates, breakthrough research highlights, and 
+              <br/>success stories from Nigeria&apos;s agricultural innovation ecosystem. Subscribe for insights in English, 
+              <br/>French, and Arabic.
+              </p>
+            </div>
+
+            <Input
               className="outline:none border w-full md:w-[400px] mt-5"
               type="search"
               placeholder="Search Newsletter"

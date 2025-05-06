@@ -7,7 +7,7 @@ import CustomContainer from "@/components/CustomContainer";
 
 const researchInstitutes = [
   "Cocoa Research Institute Of Nigeria, Ibadan",
-  "Nigerian Institute For Oceanography And Marine Research, Lagos",
+  //"Nigerian Institute For Oceanography And Marine Research, Lagos",
   "National Root Crops Research Institute, Umudike",
   "Nigerian Institute For Oil Palm Research, Benin",
   "National Cereals Research Institute, Badeggi",
@@ -16,7 +16,7 @@ const researchInstitutes = [
   "Institute Of Agricultural Research And Training, Ibadan",
   "National Horticultural Research Institute, Ibadan",
   "Institute For Agricultural Research, Zaria",
-  "National Institute For Fresh Fisheries Research, New Bussa",
+  //"National Institute For Fresh Fisheries Research, New Bussa",
   "Lake Chad Research Institute, Maiduguri",
   "National Agricultural Extension Research Liason Services, Zaria",
   "Rubber Research Institute Of Nigeria, Benin City",
@@ -30,7 +30,7 @@ const Maps = () => {
     <section className="py-12 md:py-20 bg-[#F6F6F6]">
       <CustomContainer>
         <div className="flex flex-col gap-10">
-          <div className="grid grid-cols-[100%] sm:grid-cols-2 sm:justify-around  gap-5">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 list-[circle] list-outside pl-5">
             {/* {nariss?.length > 0 && (
               <>
                 {nariss?.map(
@@ -52,17 +52,17 @@ const Maps = () => {
                 {researchInstitutes?.map(
                   // @ts-ignore
                   (n, index) => (
-                    <p
+                    <li
                       key={index}
                       className="text-[#2D3657] font-semibold text-sm leading-[1.5rem]"
                     >
                       {n}
-                    </p>
+                    </li>
                   )
                 )}
               </>
             )}
-          </div>
+          </ul>
           {/* button */}
           <Link
             href="/mandate/research"

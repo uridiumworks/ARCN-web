@@ -18,6 +18,10 @@ import {
   ApiEndpointsEnum,
   ContactUsRequestBody,
   MandateSearch,
+  BaseResponse,
+  TechCategory,
+  TechSubCategory,
+  TechnologyData,
 } from "@/types";
 import axiosInstance from "@/lib/axiosInstance";
 
@@ -25,10 +29,11 @@ interface GlobalClientContextInterface {
   mandateSearch?: MandateSearch;
   ourPrograms?: OurPrograms;
   reports?: Report;
-  journals?: Journal;
-  newsletters?: NewsLetter;
-  ourTechs?: OurTechnologiesAndProjects;
+  ourTechs?: TechnologyData[];
   ourProjects?: OurTechnologiesAndProjects;
+  techCategory?: TechCategory[];
+  techCategoryItem?: TechCategory;
+  techSubCategory?: TechSubCategory[];
   coordinationReports?: Report;
   isLoadingOurPrograms: boolean;
   isLoadingReports: boolean;
@@ -45,7 +50,7 @@ interface GlobalClientContextInterface {
     pageSize: number,
     customEndpoint?: string
   ) => Promise<void>;
-  fetchOurTechs: (page: number, pageSize: number) => Promise<void>;
+  fetchOurTechs: (categoryId: string, page: number, pageSize: number) => Promise<void>;
   fetchOurProjects: (page: number, pageSize: number) => Promise<void>;
   fetchCoordinationReports: (page: number, pageSize: number) => Promise<void>;
   fetchMandateSearch: () => Promise<void>;
@@ -53,9 +58,9 @@ interface GlobalClientContextInterface {
   fetchAllNewsletters: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
   createContactUs: (data: ContactUsRequestBody) => Promise<void>;
   setReports: Dispatch<SetStateAction<Report | undefined>>;
-  setJournals: Dispatch<SetStateAction<Journal | undefined>>;
-  setNewsLetters: Dispatch<SetStateAction<NewsLetter | undefined>>;
-  
+  fetchTechnologyCategory: () => Promise<void>;
+  fetchTechnologySubCategory: (documentId: string) => Promise<void>;
+  fetchTechnologyCategoryDetails: (categoryId: string) => Promise<void>;
 }
 
 export const GlobalClientContext =
@@ -82,7 +87,10 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     useState<boolean>(true);
   const [reports, setReports] = useState<Report>();
   const [isLoadingReports, setIsLoadingReports] = useState<boolean>(true);
-  const [ourTechs, setOurTechs] = useState<OurTechnologiesAndProjects>();
+  const [ourTechs, setOurTechs] = useState<TechnologyData[]>();
+  const [techCategory, setTechCategory] = useState<TechCategory[]>([]);
+  const [techCategoryItem, setTechCategoryItem] = useState<TechCategory>();
+  const [techSubCategory, setTechSubCategory] = useState<TechSubCategory[]>([]);
   const [ourProjects, setOurProjects] = useState<OurTechnologiesAndProjects>();
   const [isLoadingOurTechs, setIsLoadingOurTechs] = useState<boolean>(true);
   const [isLoadingOurProjects, setIsLoadingOurProjects] =
@@ -165,73 +173,6 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
-  const fetchAllJournals = useCallback(
-    async (page: number, pageSize: number) => {
-      try {
-        const response = (
-          await axiosInstance.get<Journal>(
-            `${ApiEndpointsEnum. ALL_JOURNAL}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
-          )
-        ).data;
-        setJournals(response);
-      } catch (err: any) {
-        if (err instanceof AxiosError && err.response) {
-          const errorResponse = err.response.data;
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: errorResponse.errors
-              ? errorResponse.errors.join(", ")
-              : errorResponse.message || "An unknown error occurred",
-          });
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: "An unknown error occurred",
-          });
-        }
-      } finally {
-        setIsLoadingJournals(false);
-      }
-    },
-    [toast]
-  );
-
-  const fetchAllNewsletters = useCallback(
-    async (page: number, pageSize: number) => {
-      try {
-        const response = (
-          await axiosInstance.get<NewsLetter>(
-            `${ApiEndpointsEnum.ALL_NEWSLETTERS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
-          )
-        ).data;
-        setNewsLetters(response);
-      } catch (err: any) {
-        if (err instanceof AxiosError && err.response) {
-          const errorResponse = err.response.data;
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: errorResponse.errors
-              ? errorResponse.errors.join(", ")
-              : errorResponse.message || "An unknown error occurred",
-          });
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: "An unknown error occurred",
-          });
-        }
-      } finally {
-        setIsLoadingNewsLetters(false);
-      }
-    },
-    [toast]
-  );
-
-
   const fetchOurTechs = useCallback(
     async (page: number, pageSize: number) => {
       try {
@@ -240,7 +181,39 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
             `${ApiEndpointsEnum.OUR_PROJECTS_AND_TECHS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
           )
         ).data;
-        setOurTechs(response);
+        setTechCategoryItem(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
+  const fetchTechnologySubCategory = useCallback(
+    async (documentId: string) => {
+      try {
+        const url = ApiEndpointsEnum.TECHNOLOGY_SUB_CATEGORY.replace(
+          "{0}", documentId);
+        const response = (
+          await axiosInstance.get<BaseResponse<TechSubCategory[]>>(url)).data;
+        setTechSubCategory(response.data);
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
           const errorResponse = err.response.data;
@@ -428,6 +401,12 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         mandateSearch,
         isLoadingMandateSearch,
         fetchMandateSearch,
+        techCategory,
+        fetchTechnologyCategory,
+        techSubCategory,
+        fetchTechnologySubCategory,
+        techCategoryItem,
+        fetchTechnologyCategoryDetails,
       }}
     >
       {children}

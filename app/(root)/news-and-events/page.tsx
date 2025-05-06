@@ -3,6 +3,7 @@ import New from "@/components/NewsandEvents/News/New";
 import Upcoming from "@/components/NewsandEvents/News/Upcoming";
 import Journal from "@/components/Shared/Journal";
 import CustomContainer from "@/components/CustomContainer";
+import Events from "@/components/Landing/Events";
 
 const NewsandEvents = () => {
 
@@ -10,7 +11,7 @@ const NewsandEvents = () => {
         <main>
             <Collection />
             <New />
-            <Upcoming/>
+            <Events/>
             <Journal />
         </main>
     );

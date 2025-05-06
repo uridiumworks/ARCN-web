@@ -16,9 +16,9 @@ interface Event {
     text: string;
   }
   Location: string;
-  Startdate?: string
-  Enddate?: string
-  image?: {
+  StartDate?: string
+  EndDate?: string
+  Image?: {
     url: string
   }
 }
@@ -59,7 +59,7 @@ const Events = () => {
 
   if (isLoading) {
     return (
-      <div className="text-black text-xl flex justify-center py-20">Loading image...</div>
+      <div className="text-black text-xl flex justify-center py-20">Loading events...</div>
     )
   }
   if (error !== null) {
@@ -89,14 +89,15 @@ const Events = () => {
                 >
                   <div className="flex flex-col lg:self-center items-start order-2 lg:order-1 flex-grow">
                     <div className="flex text-sm gap-1 font-medium">
-                      <span className="text-[#1315175C]">{event.Startdate || "6:00 PM"}</span>
-                      <span className="text-[#D19D20]">{event.Enddate || "7:00 PM GMT+2"}</span>
+                      <span className="text-[#1315175C]">{ new Date(event.StartDate as string).toDateString()}</span>
+                      -
+                      <span className="text-[#D19D20]">{new Date(event.EndDate as string).toDateString()}</span>
                     </div>
                     <div className="flex flex-col">
-                      <h3 className="text-lg leading-[1.5rem] text-[#131517] font-medium">{event.Title}</h3>
+                      <h3 className="text-[1rem] leading-[1.5rem] text-[#131517] font-medium">{event.Title}</h3>
                       <p className="font-normal leading-[1.5rem] text-[#464646] text-[0.75rem]">{event.Description.text}</p>
-                      <div className="flex items-center gap-2">
-                        <LocationOutlineIcon2 className="scale-[.8]" />
+                      <div className="flex items-center gap-4">
+                        <LocationOutlineIcon2 className="scale-[.8] min-w-6" />
                         <p className="text-[#1315175C] leading-[1.5rem] text-[0.75rem] font-normal">{event.Location}</p>
                       </div>
                     </div>
@@ -112,7 +113,7 @@ const Events = () => {
                   </div>
                   <div className="relative w-full lg:w-[9.375rem] h-[9.375rem] lg:h-full shrink-0 rounded-xl overflow-hidden order-1 lg:order-2">
                     <Image
-                      src={event.image?.url || "/Images/Homepage/event-imgholder.png"}
+                      src={((BASE_URL as string) + event.Image?.url) || "/Images/Homepage/event-imgholder.png"}
                       alt={`Event image ${event.id}`}
                       // fill
                       className="object-cover h-full w-full"
