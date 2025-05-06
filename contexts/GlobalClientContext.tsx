@@ -13,6 +13,8 @@ import {
   OurPrograms,
   OurTechnologiesAndProjects,
   Report,
+  Journal,
+  NewsLetter,
   ApiEndpointsEnum,
   ContactUsRequestBody,
   MandateSearch,
@@ -23,6 +25,8 @@ interface GlobalClientContextInterface {
   mandateSearch?: MandateSearch;
   ourPrograms?: OurPrograms;
   reports?: Report;
+  journals?: Journal;
+  newsletters?: NewsLetter;
   ourTechs?: OurTechnologiesAndProjects;
   ourProjects?: OurTechnologiesAndProjects;
   coordinationReports?: Report;
@@ -33,6 +37,8 @@ interface GlobalClientContextInterface {
   isLoadingCoordinationReports: boolean;
   isLoadingMandateSearch: boolean;
   isCreatingContact: boolean;
+  isLoadingJournals: boolean;
+  isLoadingNewsLetters: boolean;
   fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
   fetchAllReports: (
     page: number,
@@ -43,8 +49,13 @@ interface GlobalClientContextInterface {
   fetchOurProjects: (page: number, pageSize: number) => Promise<void>;
   fetchCoordinationReports: (page: number, pageSize: number) => Promise<void>;
   fetchMandateSearch: () => Promise<void>;
+  fetchAllJournals: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
+  fetchAllNewsletters: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
   createContactUs: (data: ContactUsRequestBody) => Promise<void>;
   setReports: Dispatch<SetStateAction<Report | undefined>>;
+  setJournals: Dispatch<SetStateAction<Journal | undefined>>;
+  setNewsLetters: Dispatch<SetStateAction<NewsLetter | undefined>>;
+  
 }
 
 export const GlobalClientContext =
@@ -81,6 +92,12 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     useState<boolean>(true);
   const [isCreatingContact, setIsCreatingContact] = useState<boolean>(false);
   const { toast } = useToast();
+  const [isLoadingJournals, setIsLoadingJournals] = useState<boolean>(true);
+  const [journals, setJournals] = useState<Journal>();
+  const [isLoadingNewsLetters, setIsLoadingNewsLetters] =useState<boolean>(true);
+  const [newsletters, setNewsLetters] = useState<NewsLetter>();
+    useState<boolean>(false);
+
 
   const fetchOurPrograms = useCallback(
     async (page: number, pageSize: number) => {
@@ -147,6 +164,73 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     },
     [toast]
   );
+
+  const fetchAllJournals = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<Journal>(
+            `${ApiEndpointsEnum. ALL_JOURNAL}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setJournals(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingJournals(false);
+      }
+    },
+    [toast]
+  );
+
+  const fetchAllNewsletters = useCallback(
+    async (page: number, pageSize: number) => {
+      try {
+        const response = (
+          await axiosInstance.get<NewsLetter>(
+            `${ApiEndpointsEnum.ALL_NEWSLETTERS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          )
+        ).data;
+        setNewsLetters(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingNewsLetters(false);
+      }
+    },
+    [toast]
+  );
+
 
   const fetchOurTechs = useCallback(
     async (page: number, pageSize: number) => {
@@ -322,15 +406,23 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         fetchOurPrograms,
         fetchOurTechs,
         fetchOurProjects,
+        fetchAllJournals,
+        fetchAllNewsletters,
         isCreatingContact,
         isLoadingCoordinationReports,
         isLoadingOurPrograms,
         isLoadingOurTechs,
         isLoadingOurProjects,
         isLoadingReports,
+        isLoadingJournals,
+        isLoadingNewsLetters,
+        setJournals,
+        setNewsLetters,
         ourPrograms,
         ourTechs,
         ourProjects,
+        newsletters,
+        journals,
         reports,
         setReports,
         mandateSearch,

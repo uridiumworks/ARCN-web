@@ -12,18 +12,6 @@ interface Article {
   title: any;
   content: any;
   id: string
-  attributes: {
-    title: string
-    description: string
-    publishedAt: string
-    cover: {
-      data: {
-        attributes: {
-          url: string
-        }
-      } | null
-    }
-  }
 }
 
 const New = () => {
@@ -100,31 +88,31 @@ const New = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-7">
               {newsLetters.slice(0, 6).map((article) => {
-                const imageUrl = article.cover?.data?.attributes?.url || "/Placeholder.png"
+                const imageUrl = article?.cover?.url ? `${BASE_URL}${article.cover.url}` : "/Placeholder.png"
                 const title = article.title
                 const description = article.content
                 const publishDate = article.publishedAt
 
                 return (
-                  <div key={article.id} className="space-y-3 flex flex-col h-full">
+                  <div key={article.id} className="space-y-1 flex flex-col h-full">
                     <div className="relative w-full h-[268.59px]">
                       <Image
-                        src={imageUrl || "/placeholder.svg"}
+                        src={imageUrl}
                         alt={title}
-                        className="object-cover rounded-t-md w-full"
+                        className="object-cover rounded-md w-full"
                         priority
                         fill={true}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
 
-                    <div className="space-y-4 flex-grow">
+                    <div className="space-y-1 flex-grow">
                       <h1 className="font-semibold text-base line-clamp-2">{title}</h1>
                       <p className="font-normal text-sm line-clamp-2">{description}</p>
                       <div className="flex flex-row items-center justify-between mt-auto">
                         <span className="font-normal text-sm text-[#999999]">{convertToReadableDate(publishDate)}</span>
                         <Link
-                          href={`/news-and-events/news/${article.id}`}
+                          href={`/news-and-events/news`}
                           className="font-bold text-sm text-[#15271C] hover:underline"
                         >
                           Read more
