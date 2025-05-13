@@ -17,10 +17,10 @@ export const topNav: TopNavType[] = [
         name: "Publications",
         url: "/publications",
     },
-    {
-        name: "Careers",
-        url: "/career",
-    } ,
+    // {
+    //     name: "Careers",
+    //     url: "/career",
+    // } ,
     {
         name: "Contact",
         url: "/contact",

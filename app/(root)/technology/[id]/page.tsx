@@ -113,7 +113,7 @@ const TechnologyCategoryId = () => {
               {techDetails.name}
             </h1>}
             <p className="text-sm leading-[1.5rem] text-gray-700 mt-4 max-w-2xl">
-              Explore technologies by tree crop type. Click a category to see
+              Explore our {techDetails?.name} technologies . Click a category to see
               its research-backed innovations.
             </p>
           </div>

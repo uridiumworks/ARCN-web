@@ -125,9 +125,8 @@ const TechnicalDepartment = () => {
               Technical Department{" "}
             </h1>
             <p className="text-sm leading-[1.5rem] text-gray pt-5">
-              Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id
-              in sed ipsum. Lectus placerat elementum duis scelerisque sit
-              faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.
+              Collectively, these technical departments drive agricultural innovation through the planning and coordination of research, training, extension and knowledge transfer to boost Nigeria&apos;s productivity sustainably
+
             </p>
           </div>
 

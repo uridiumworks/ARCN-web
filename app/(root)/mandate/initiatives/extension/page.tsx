@@ -11,7 +11,7 @@ export default function Extensions() {
      
       {/* Main Content */}
       
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className=" mx-auto px-4 py-12">
         {/* Introduction */}
         <CustomContainer>
         <section className="mb-16 space-y-5">
@@ -110,14 +110,13 @@ export default function Extensions() {
         </CustomContainer>
 
         {/* Distribution Map */}
-        <CustomContainer>
+       
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6">Distribution</h2>
-          <div className="bg-white p-4 ">
+          <div className="bg-white py-4 w-full">
             <NigeriaMap />
           </div>
         </section>
-        </CustomContainer>
 
         {/* Key Stakeholders */}
         <CustomContainer>
@@ -168,7 +167,7 @@ export default function Extensions() {
               <TabsItem value="capacity">Capacity Building</TabsItem>
               <TabsItem value="infrastructure">Infrastructure Development</TabsItem>
             </TabsList>
-            <TabsContent value="technology" className="p-4 border rounded-md mt-2 text-sm">
+            <TabsContent value="technology" className="p-4 border rounded-md mt-2 max-sm:mt-14 text-sm">
               <h3 className="text-lg font-semibold mb-4">Technology Dissemination</h3>
               <div className="space-y-4">
                 <div>

@@ -1,152 +1,257 @@
-"use client";
+"use client"
 
-import { mainNav, topNav } from "@/constants";
-import Image from "next/image";
-import React, { useState } from "react";
-import { Input } from "./ui/input";
-import { Search, Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
-import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { mainNav, topNav } from "@/constants"
+import Image from "next/image"
+import { useState, useEffect, useRef } from "react"
+import { Search, Menu, X } from "lucide-react"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { usePathname } from "next/navigation"
 
-type Props = {};
+type Props = {}
 
 const Navbar = (props: Props) => {
-  const router = useRouter();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false)
+   const searchInputRef = useRef<HTMLInputElement>(null)
 
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [isOpen])
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const isActiveFunc = (arg: string) => {
-    switch (arg) {
-      case "Governance":
-        return pathname.toLowerCase().includes("governance");
-
-      case "Home":
-        return pathname.toLowerCase() === "/";
-
-      case "About Us":
-        return pathname.toLowerCase().includes("about");
-      case "mandate":
-        return pathname.toLowerCase().includes("mandate");
-      case "News & Events":
-        return pathname.toLowerCase().includes("news-and-events");
-
-      case "Programs & Projects":
-        return pathname.toLowerCase().includes("programs-and-projects");
-
-      case "Impacts":
-        return pathname.toLowerCase().includes("impacts");
-      case "Contact":
-        return pathname.toLowerCase().includes("contact");
-      case "Careers":
-        return pathname.toLowerCase().includes("career");
-      case "Publications":
-        return pathname.toLowerCase().includes("publications");
-
-      default:
-        return false;
+    setIsOpen((prev) => !prev)
+  }
+  const handleSearch = () => {
+    const searchValue = searchInputRef.current?.value || ""
+    if (searchValue.trim()) {
+      console.log("Search action triggered:", searchValue)
+      window.location.href = `/search?q=${encodeURIComponent(searchValue.trim())}`
     }
-  };
+  }
+  const searchWebsite = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch()
+    }
+  }
+    
 
-  console.log(isActiveFunc("About Us"), "me");
+  const isActiveFunc = (name: string) => {
+    switch (name) {
+      case "Governance":
+        return pathname.toLowerCase().includes("governance")
+      case "Home":
+        return pathname.toLowerCase() === "/"
+      case "About Us":
+        return pathname.toLowerCase().includes("about")
+      case "mandate":
+        return pathname.toLowerCase().includes("mandate")
+      case "News & Events":
+        return pathname.toLowerCase().includes("news-and-events")
+      case "Programs & Projects":
+        return pathname.toLowerCase().includes("programs-and-projects")
+      case "Impacts":
+        return pathname.toLowerCase().includes("impacts")
+      case "Contact":
+        return pathname.toLowerCase().includes("contact")
+      case "Careers":
+        return pathname.toLowerCase().includes("career")
+      case "Publications":
+        return pathname.toLowerCase().includes("publications")
+      default:
+        return false
+    }
+  }
 
   return (
-    <nav className="shadow lg:px-2 sm:px-4 py-3.5 bg-white sticky w-full z-50 top-0 left-0 border-b-[#D3D7DB]">
-      {/* <nav className="py-4 sticky z-50 top-0 bg-[#FFFFFF] border-b border-gray-200"> */}
-      <div className="w-full sm:max-w-[71.25rem] sm:mx-auto px-3.5 md:px-10 flex flex-col md:flex-row justify-between items-center  ">
-        <div className="flex py-3 lg:py-0 w-full md:w-auto flex-wrap items-center justify-between ">
-          <Link href="/" className="text-center ml-4 lg:ml-0">
+    <nav className=" lg:px-2 sm:px-4 py-3.5 bg-white sticky w-full z-[100] top-0 left-0 ">
+      <div className="w-full max-md:max-w-full sm:max-w-[71.25rem] sm:mx-auto px-3.5 md:px-10 flex flex-col md:flex-row justify-between items-center">
+        {/* Logo + Menu toggle */}
+        <div className="flex py-3 lg:py-0 w-full max-md:w-full md:w-auto flex-wrap items-center justify-between">
+          <Link href="/" className="text-center">
             <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" />
           </Link>
 
-          <div className="flex lg:order-2">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              data-collapse-toggle="navbar-sticky"
-              type="button"
-              className="inline-flex items-center p-2 lg:hidden focus:outline-none mr-4 lg:mr-0"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+          <button
+            onClick={toggleMobileMenu}
+            type="button"
+            className="inline-flex items-center p-2 lg:hidden focus:outline-none"
+          >
+            <span className="sr-only">Open main menu</span>
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
 
-        <div className="space-y-4 w-full md:w-auto px-3.5 lg:px-0 md:text-center flex gap-4 ">
-          <div
-            className={cn("blue-background w-full md:flex flex-col-reverse lg:gap-0 py-6 lg:py-0 gap-7 md:flex-col overflow-y-auto h-[85vh] lg:h-auto", isOpen ? "flex" : "hidden"
-            )}
-          >
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex w-full md:w-auto px-3.5 lg:px-0 flex-col lg:flex-row gap-4">
+          <div className="w-full md:flex flex-col-reverse lg:flex-col gap-7 md:gap-0 py-6 lg:py-0">
+            {/* Top nav */}
             <div className="lg:flex justify-center items-center space-y-8 lg:space-y-0 gap-6">
               {topNav.map((item, index) => {
-                const isActive = item.url === pathname;
+                const isActive = isActiveFunc(item.name)
                 return (
-                  <p
+                  <a
                     key={index}
+                    href={item.url}
                     className={cn(
-                      isActive ? "lg:text-[#30A85F] text-[#020202e7]" : "lg:text-[#121212] text-[#f0f0f0]",
-                      "border md:border-none px-3 bg-[#6d9462]  lg:bg-white uppercase lg:capitalize md:px-0 py-2 md:py-0 rounded-md"
+                      "font-bold lg:font-normal text-sm lg:text-[0.75rem] leading-[2rem] cursor-pointer uppercase lg:capitalize",
+                      isActive ? "lg:text-[#30A85F]" : "lg:text-[#121212]",
                     )}
                   >
-                    <Link
-                      href={item.url}
-                      className={`font-bold lg:font-normal text-sm lg:text-[0.75rem] leading-[2rem] cursor-pointer`}
-                      key={index}
-                    >
-                      {item.name}
-                    </Link>
-                  </p>
-                );
+                    {item.name}
+                  </a>
+                )
               })}
             </div>
 
+            {/* Main nav */}
             <div className="flex flex-col md:flex-row justify-start md:justify-center gap-6">
               {mainNav.map((item, index) => {
-                const isActive = item.url === pathname;
+                const isActive = isActiveFunc(item.name)
                 return (
-                  <p
+                  <a
                     key={index}
+                    href={item.url}
                     className={cn(
-                      isActive ? "lg:text-[#30A85F] text-[#020202e7]" : "lg:text-[#121212] text-[#0f0f0f]",
-                      "border md:border-none px-3 bg-[#d7eec7] lg:bg-white md:px-0 py-2 md:py-0 rounded-md"
+                      "font-bold text-sm lg:text-xs leading-[2rem] uppercase cursor-pointer",
+                      isActive ? "lg:text-[#30A85F]" : "lg:text-[#121212]",
                     )}
                   >
-                    <Link
-                      href={item.url}
-                      className={`font-bold text-sm lg:text-xs leading-[2rem] uppercase cursor-pointer`}
-                      key={index}
-                    >
-                      {item.name}
-                    </Link>
-                  </p>
-                );
+                    {item.name}
+                  </a>
+                )
               })}
             </div>
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2 bg-[#fff] border  border-[#3C3C3C]">
-          <input
-            type="search"
-            placeholder="Search"
-            className="outline-none bg-transparent text-[#121212] py-1.5 px-1 text-xs leading-[1.2rem] focus-visible:outline-none border-none placeholder:text-[#121212] placeholder:text-xs"
-          />
-          <Search color="#2E7636" size="14px" />
+        {/* Search bar (Desktop Only) */}
+        <div className="hidden lg:flex items-center gap-8 justify-between rounded-md px-2 bg-[#fff] border border-[#3C3C3C]">
+           <input
+        ref={searchInputRef}
+        type="search"
+        placeholder="Search"
+        className="outline-none bg-transparent text-[#121212] py-1.5 px-1 text-xs leading-[1.2rem] focus-visible:outline-none placeholder:text-[#121212] placeholder:text-xs"
+        onKeyDown={searchWebsite}
+      />
+      
+            <div
+        onClick={handleSearch}
+        className="cursor-pointer p-1 hover:bg-gray-100 rounded-full"
+        role="button"
+        aria-label="Search"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            handleSearch()
+          }
+        }}
+      >
+        <Search color="#2E7636" size="14px" />
+      </div>
+        </div>
+
+        {/* Mobile Menu - Overlay */}
+        {isOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={toggleMobileMenu}></div>
+        )}
+
+        {/* Mobile Menu - Content */}
+        <div
+          className={cn(
+            "fixed left-0 right-0 top-0 z-50 bg-white shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto lg:hidden h-[90vh]",
+            isOpen ? "translate-y-0" : "-translate-y-full",
+          )}
+        >
+          <div className="flex flex-col p-6">
+            {/* Mobile Menu Header with Logo and Close Button */}
+            <div className="flex items-center justify-between mb-6">
+              <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
+                <Image src="/Images/logov1.svg" width={80} height={35} alt="logo" className="h-auto" />
+              </Link>
+              <button
+                onClick={toggleMobileMenu}
+                type="button"
+                className="p-2 rounded-md focus:outline-none"
+                aria-label="Close navigation"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Mobile Search */}
+            <div className="flex items-center justify-between rounded-md px-3 py-2 bg-white border border-[#3C3C3C] mb-6">
+              <input
+                type="search"
+                placeholder="Search"
+                onKeyDown={searchWebsite}
+                className="outline-none bg-transparent text-[#121212] text-sm w-full focus:outline-none"
+              />
+              <Search color="#2E7636" size={18} />
+            </div>
+
+            {/* Mobile Main Navigation */}
+            <div className="space-y-4 mb-6">
+              <h3 className="text-sm font-bold text-[#30A85F] uppercase">Main Menu</h3>
+              <div className="flex flex-col space-y-3">
+                {mainNav.map((item, index) => {
+                  const isActive = isActiveFunc(item.name)
+                  return (
+                    <Link
+                      key={index}
+                      href={item.url}
+                      className={cn(
+                        "py-2 px-3 rounded-md text-sm uppercase font-medium transition-colors duration-200",
+                        isActive ? "bg-[#d7eec7] text-[#020202e7]" : "bg-[#f5f5f5] text-[#121212] hover:bg-[#e0e0e0]",
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Mobile Top Navigation */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-[#30A85F] uppercase">Quick Links</h3>
+              <div className="flex flex-col space-y-3">
+                {topNav.map((item, index) => {
+                  const isActive = isActiveFunc(item.name)
+                  return (
+                    <Link
+                      key={index}
+                      href={item.url}
+                      className={cn(
+                        "py-2 px-3 rounded-md text-sm capitalize font-medium transition-colors duration-200",
+                        isActive ? "bg-[#6d9462] text-[#020202e7]" : "bg-[#f5f5f5] text-[#121212] hover:bg-[#e0e0e0]",
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -160,15 +160,11 @@ const SearchResults = () => {
                 className="bg-white border p-4 rounded-md shadow-sm"
               >
                 <h3 className="text-green-700 font-semibold text-base hover:underline cursor-pointer">
-                  <a href={item.link}>{item.title}</a> 
+                  <a href={`/downloads/item/${item.documentId}`}>{item.title}</a> 
                 </h3>
                 <p className="text-sm text-gray-500 mt-1">
-                  {item.download_category?.name ?? "Unknown type"} •{" "}
-                  {new Date(item.datePublished).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                  {item.author ?? "Unknown type"} •{" "}
+                  {new Date(item.datePublished).getFullYear()}
                 </p>
                 <p className="text-sm text-gray-700 mt-2">{item.excerpt}...</p>
               </div>

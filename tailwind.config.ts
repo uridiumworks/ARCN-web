@@ -100,6 +100,11 @@ const config = {
         sans: ["var(--font-montserrat)"],
       // Removed duplicate backgroundImage property
       },
+      screens: {
+        'max-1369': {'max': '1369px'},
+        'max-md': {'max': '1025px'},
+        'max-sm': {'max': '500px'},
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

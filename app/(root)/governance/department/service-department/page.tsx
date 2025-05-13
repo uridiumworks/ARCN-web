@@ -48,8 +48,8 @@ const ServiceDepartment = () => {
                 <div className="">
                     <h1 className=" text-3xl sm:text-4xl leading-[2.25rem]  font-bold text-[#1B222B]">Service Department</h1>
                     <p className="text-sm leading-[1.5rem] text-gray-700 mt-4">
-                        Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat
-                        elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.
+                        Together, these departments provide the critical infrastructure—both administrative and financial—that empowers the technical teams to focus on innovation and field-level impact.
+
                     </p>
                 </div>
 

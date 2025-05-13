@@ -91,7 +91,7 @@ const Footer = () => {
                 </ul>
                 
               </div>
-              <Link href={`https://mail.arcn.gov.ng/owa/`} target="_blank" className="pt-20 relative right-[-141%] top-[-51%] max-sm:right-[58%] max-sm:top-0">
+              <Link href={`https://mail.arcn.gov.ng/owa/`} target="_blank" className="pt-20 relative right-[-141%] top-[-51%] max-md:right-[58%] max-md:top-0">
                   <Button type="submit" className="w-fit text-base text-white bg-[#30A85F]  items-center">
                   <span>Outlook Webmail Login</span>
                   </Button>

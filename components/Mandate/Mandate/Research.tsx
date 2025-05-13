@@ -126,8 +126,8 @@ export default function Research() {
         ></div>
 
         {/* Carousel Content - Fixed text that doesn't change */}
-        <div className="absolute  inset-0 flex items-center justify-left px-10 z-30 md:max-w-[1100px] ">
-          <div className="py-8 mx-auto text-left xl:pl-96 xl:max-w-[1100px]">
+        <div className="absolute  inset-0 flex items-center justify-left px-10 z-30 md:max-w-[1100px]  max-1369:max-w-[1010px]">
+          <div className="py-8 mx-auto text-left md:pl-0 2xl:pl-96 xl:max-w-[1100px] max-1369:max-w-[1010px] ">
             <h2 className="font-bold text-3xl text-left sm:text-5xl lg:text-[2.5rem] leading-[1.2] sm:leading-[1.2] text-white mb-4 line-clamp-3">
               {mandateSearch?.data?.Title &&
               mandateSearch?.data?.Title.length > 500

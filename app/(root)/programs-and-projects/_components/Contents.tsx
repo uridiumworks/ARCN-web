@@ -12,7 +12,7 @@ export default function Contents(prop: ProjectData) {
       <CustomContainer>
         <div className='py-6'>
           <CustomBreadcrumbs text={prop.title} />
-          <div className='text-[#111827] space-y-11 py-20 lg:px-24'>
+          <div className='text-[#111827] space-y-11 py-20'>
             <div className='md:w-full md:mx-auto w-fit'>
               <Image src={BASE_URL + prop.image.url} alt="programsandprojects" width={1920} height={1080} />
             </div>

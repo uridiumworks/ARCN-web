@@ -242,6 +242,16 @@ export interface TechSubCategory  {
   technologies: CountData
   technology_category?: TechCategory
 }
+export interface SearchResponse{
+  data: SearchData[]
+  meta: Pagination
+}
+export interface SearchData {
+  id: string
+  title: string
+  description: string
+  type: string
+}
 
 export interface TechnologyData{
   id: number
@@ -264,11 +274,13 @@ export interface DownloadData{
   title: string
   excerpt: string
   datePublished: string
+  fullDetails: string
   link: string
   createdAt: string
   updatedAt: string
   publishedAt: string
   download_category: TechCategory
+  author :string
 }
 export interface ProjectData {
   id: number
@@ -311,5 +323,7 @@ export enum ApiEndpointsEnum {
   MANDATE_SEARCH = "/mandate-slide?populate=Slides",
   PROJECTS = "/projects?populate=image&fields[0]=title&fields[1]=excerpt&fields[2]=documentId",
   PROJECT_DETAILS = "/projects/{0}?populate=image",
-  MULTIMEDIA_CATEGORY = "/multimedia-categories?populate=icon"
+  MULTIMEDIA_CATEGORY = "/multimedia-categories?populate=icon",
+  DOWNLOAD_DETAILS = "/downloads/{0}?populate=download_category",
+  SEARCH = "/global-search?query={0}&page={1}&pageSize={2}"
 }

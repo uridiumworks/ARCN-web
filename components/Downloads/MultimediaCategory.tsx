@@ -25,8 +25,8 @@ const MultimediaCategory = () => {
 
   return (
     <section className="bg-white py-8 md:py-16">
-    <CustomContainer>
-      <div className="flex flex-col gap-6">
+    
+      <div className="flex flex-col ">
         
         <div className="flex flex-col gap-4">
           {isLoadingOurTechs && <OurTechnologiesSkeletonLoading />}
@@ -36,6 +36,13 @@ const MultimediaCategory = () => {
           )}
   
           {!isLoadingOurTechs && (ourTechs as  TechCategory[]).length > 0 && (
+            <>
+            <div className="flex flex-col gap-4">
+              <h2 className="text-2xl font-bold text-gray-800">Multimedia</h2>
+              <p className="text-gray-600 text-sm">
+              Explore our dynamic multimedia hub with videos showcasing research breakthroughs and farmer success stories, and listen to expert discussions and policy insights in our podcasts, or browse our photo gallery for vivid snapshots of field activities, technology demonstrations, and the real-world impact of our agricultural innovations across Nigeria.
+              </p>
+              </div>
             <div className=" my-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-24 justify-items-center">
               {(ourTechs as  TechCategory[]).map((tech, index) => (
                 
@@ -58,11 +65,11 @@ const MultimediaCategory = () => {
                
               ))}
             </div>
+            </>
           )}
           
         </div>
       </div>
-    </CustomContainer>
   </section>
   
   );

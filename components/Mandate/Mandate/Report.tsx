@@ -68,7 +68,7 @@ const Report = () => {
               {!isLoadingCoordinationReports &&
                 (!coordinationReports?.data ||
                   coordinationReports?.data.length === 0) && (
-                  <NoDataMessage message="No Coordination avaliable" />
+                  <NoDataMessage message="No report avaliable" />
                 )}
               {!isLoadingCoordinationReports &&
                  !(!coordinationReports?.data ||
