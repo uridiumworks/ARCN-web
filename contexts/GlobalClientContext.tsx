@@ -24,6 +24,7 @@ import {
   DownloadData,
   ProjectData,
   SearchResponse,
+  NewsData,
 } from "@/types";
 import axiosInstance from "@/lib/axiosInstance";
 
@@ -42,6 +43,7 @@ interface GlobalClientContextInterface {
   techSubCategory?: TechSubCategory[];
   projectData?: ProjectData[];
   project?: ProjectData;
+  newsDetails?: NewsData;
   coordinationReports?: Report;
   isLoadingOurPrograms: boolean;
   isLoadingReports: boolean;
@@ -71,6 +73,7 @@ interface GlobalClientContextInterface {
   fetchMultimediaCategory: () => Promise<void>;
   fetchDownloads: (categoryId: string) => Promise<void>;
   fetchDownloadDetails: (documentId: string) => Promise<void>;
+  fetchNewsDetails: (documentId: string) => Promise<void>;
   searchWebsite: (search: string, page: number, pageSize: number) => Promise<void>;
 }
 
@@ -105,6 +108,7 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   const [techSubCategory, setTechSubCategory] = useState<TechSubCategory[]>([]);
   const [downloadData, setDownloadData] = useState<BaseResponseWithPagination<DownloadData>>();
   const [downloadDetails, setDownloadDetails] = useState<DownloadData>();
+  const [newsDetails, setNewsDetails] = useState<NewsData>();
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
   const [project, setProject] = useState<ProjectData>();
   const [ourProjects, setOurProjects] = useState<OurTechnologiesAndProjects>();
@@ -511,6 +515,39 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
+   const fetchNewsDetails = useCallback(
+    async (documentId: string) => {
+      try {
+        const url = ApiEndpointsEnum.NEWS_DETAILS.replace("{0}", documentId)
+        const response = (
+          await axiosInstance.get<BaseResponse<NewsData>>(url)
+        ).data;
+        setNewsDetails(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
+
    const searchWebsite = useCallback(
     async (search: string, page: number = 1, pageSize: number= 10) => {
       try {
@@ -715,7 +752,9 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         downloadDetails,
         fetchDownloadDetails,
         searchData,
-        searchWebsite
+        searchWebsite,
+        fetchNewsDetails,
+        newsDetails
       }}
     >
       {children}

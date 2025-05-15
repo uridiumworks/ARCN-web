@@ -282,6 +282,19 @@ export interface DownloadData{
   download_category: TechCategory
   author :string
 }
+
+export interface NewsData {
+  id: number
+  documentId: string
+  title: string
+  description: string
+  slug: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  exerpt: string
+  cover: Image
+}
 export interface ProjectData {
   id: number
   documentId: string
@@ -325,5 +338,6 @@ export enum ApiEndpointsEnum {
   PROJECT_DETAILS = "/projects/{0}?populate=image",
   MULTIMEDIA_CATEGORY = "/multimedia-categories?populate=icon",
   DOWNLOAD_DETAILS = "/downloads/{0}?populate=download_category",
-  SEARCH = "/global-search?query={0}&page={1}&pageSize={2}"
+  SEARCH = "/global-search?query={0}&page={1}&pageSize={2}",
+  NEWS_DETAILS = "/articles/{0}?populate=cover"
 }

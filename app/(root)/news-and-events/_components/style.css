@@ -4,3 +4,20 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.inner-content p,.inner-content li,.inner-content ul{
+    font-size: 14px;
+    line-height: 25px;
+}
+.inner-content p, .inner-content ul{
+    margin: 10px auto;
+}
+
+.inner-content li {
+    list-style: disc;
+    margin-left: 20px;
+}
+.inner-content a{
+    color: green;
+    text-decoration: underline;
+}
