@@ -8,13 +8,13 @@ import CustomContainer from '@/components/CustomContainer'
 const DepartmentData = [
     {
         title: "Service Department",
-        description: <>Lorem ipsum dolor sit amet consectetur. Volutpat lobortis imperdiet<br className='hidden md:block' />  adipiscing egestas. Sodales non est nec ac malesuada tempus ultrices<br className='hidden md:block' /> adipiscing iaculis.</>,
+        description: <>Together, these departments provide the critical infrastructure—both <br className='hidden md:block' />  administrative and financial—that empowers the technical teams to <br className='hidden md:block' /> focus on innovation and field-level impact.</>,
         image: "/Images/OBJECTS.png",
         url: "/governance/department/service-department"
     },
     {
         title: "Technical Department",
-        description: <>Lorem ipsum dolor sit amet consectetur. Vestibulum et turpis pretium viverra<br className='hidden md:block' /> non eget. Sit tortor vitae tempor amet habitant semper. Viverra tortor.</>,
+        description: <>Collectively, these technical departments drive agricultural innovation<br className='hidden md:block' /> through the planning and coordination of research, training, extension <br className='hidden md:block' /> and knowledge transfer to boost Nigeria&apos;s productivity sustainably</>,
         image: "/Images/OBJECT(1).png",
         url: "/governance/department/technical-department"
     }
@@ -27,8 +27,8 @@ const Departments = () => {
             <div className='flex flex-col  mb-8'>
                 <h1 className="text-3xl sm:text-4xl leading-[2.25rem] font-bold text-[#1B222B]">Our Department</h1>
                 <p className="text-sm text-gray-700  mt-4 leading-relaxed">
-                    Lorem ipsum dolor sit amet consectetur. Vitae vestibulum morbi id in sed ipsum. Lectus placerat<br className='hidden md:block' /> 
-                    elementum duis scelerisque sit faucibus velit nisl dui. Rhoncus tellus sit et elementum. Tempus.
+                    In accordance with extant rules, the Council is structured into six core technical departments and two service departments to effectively deliver its mandate. The technical departments include Planning, Research & Statistics; Plant Resources; Livestock; Fisheries & Aquaculture; Agricultural Extension & Socio-Economics; and Knowledge Management & Communications. Supporting these are two (2) service departments - Administration and Finance & Accounts.
+
                 </p>
             </div>
 

@@ -12,6 +12,19 @@ interface Article {
   title: any;
   content: any;
   id: string
+  documentId: string;
+  attributes: {
+    title: string
+    description: string
+    publishedAt: string
+    cover: {
+      data: {
+        attributes: {
+          url: string
+        }
+      } | null
+    }
+  }
 }
 
 const New = () => {
@@ -112,7 +125,7 @@ const New = () => {
                       <div className="flex flex-row items-center justify-between mt-auto">
                         <span className="font-normal text-sm text-[#999999]">{convertToReadableDate(publishDate)}</span>
                         <Link
-                          href={`/news-and-events/news`}
+                          href={`/news-and-events/${article.documentId}`}
                           className="font-bold text-sm text-[#15271C] hover:underline"
                         >
                           Read more

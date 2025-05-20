@@ -17,12 +17,12 @@ const Tabs = [
     url: "/mandate/training",
     subUrl: "/mandate/training/college",
   },
-  // {
-  //   name: "Extension",
-  //   status: "active",
-  //   url: "/mandate/initiatives",
-  //   subUrl: "/mandate/initiatives/federal",
-  // },
+  {
+    name: "Extension",
+    status: "active",
+    url: "/mandate/initiatives",
+    subUrl: "/mandate/initiatives/federal",
+  },
 ];
 
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {

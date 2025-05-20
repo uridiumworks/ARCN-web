@@ -146,7 +146,8 @@ const Newsdata = () => {
   const articles = articlesData?.data?.length
     ? articlesData.data.map((article: any, index: number) => ({
         title: article?.title || `News Title ${index + 1}`,
-        content: article?.description,
+        content: article?.exerpt,
+        id: article?.documentId
       }))
     : []
 
@@ -209,9 +210,9 @@ const Newsdata = () => {
                     <p className="font-normal text-[0.75rem] text-[#464646] leading-[1.28625rem] text-left">
                       {article.content}
                     </p>
-                    <div className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] leading-[1.5625rem] py-1 px-4 cursor-pointer">
+                    <a href={"/news-and-events/" + article.id} className="bg-[#0C513F0D] rounded-sm text-[#0C513F] font-medium text-[0.75rem] leading-[1.5625rem] py-1 px-4 cursor-pointer">
                       Read More
-                    </div>
+                    </a>
                   </div>
                 ))}
               </div>

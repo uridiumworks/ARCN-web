@@ -266,6 +266,8 @@ export interface TechCategory  {
   updatedAt: string
   publishedAt: string
   icon: Image
+  isMultimedia: boolean
+  link: string
 }
 export interface TechSubCategory  {
   id: number
@@ -277,6 +279,16 @@ export interface TechSubCategory  {
   publishedAt: string
   technologies: CountData
   technology_category?: TechCategory
+}
+export interface SearchResponse{
+  data: SearchData[]
+  meta: Pagination
+}
+export interface SearchData {
+  id: string
+  title: string
+  description: string
+  type: string
 }
 
 export interface TechnologyData{
@@ -293,13 +305,59 @@ export interface TechnologyData{
   Image: Image,
   technology_sub_category: TechSubCategory
 }
+
+export interface DownloadData{
+  id: number
+  documentId: string
+  title: string
+  excerpt: string
+  datePublished: string
+  fullDetails: string
+  link: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  download_category: TechCategory
+  author :string
+}
+
+export interface NewsData {
+  id: number
+  documentId: string
+  title: string
+  description: string
+  slug: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  exerpt: string
+  cover: Image
+}
+export interface ProjectData {
+  id: number
+  documentId: string
+  title: string
+  excerpt: string
+  details: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  image: Image
+}
 export interface CountData{
   count: number
 }
 export interface BaseResponse<T> {
   data: T
 }
+export interface PaginationMeta{
+  pagination: Pagination
+}
 
+export interface BaseResponseWithPagination<T>{
+  data: T[],
+  meta: PaginationMeta
+}
 
 export enum ApiEndpointsEnum {
   CONTACT_US = "/contacts",
@@ -307,11 +365,17 @@ export enum ApiEndpointsEnum {
   TECHNOLOGIES = "/technologies?populate[Image][fields][1]=url&populate[1]=technology_sub_category&populate[technology_sub_category][populate]=technology_category&filters[technology_sub_category][documentId][$eq]={0}",
   OUR_PROJECTS_AND_TECHS = "/technologies?populate=Image",
   TECHNOLOGY_CATEGORY = "/technology-categories?populate=icon",
+  DOWNLOAD_CATEGORY = "/download-categories?populate=icon",
+  DOWNLOADS = "/downloads?populate=download_category&filters[download_category][documentId][$eq]={0}",
   TECHNOLOGY_CATEGORY_DETAILS = "technology-categories",
   TECHNOLOGY_SUB_CATEGORY = "/technology-sub-categories?filters[technology_category][documentId][$eq]={0}&populate[technologies][count]=true",
   COORDINARION_REPORTS = "/reports?populate=Image&populate=category&filters[category][slug][$eq]=coordination-report",
   ALL_REPORTS = "/reports?populate=Image&populate=category",
   MANDATE_SEARCH = "/mandate-slide?populate=Slides",
-  ALL_JOURNAL = "/journal?populate=Images",
-  ALL_NEWSLETTERS = "/newsletter?populate=Images",
+  PROJECTS = "/projects?populate=image&fields[0]=title&fields[1]=excerpt&fields[2]=documentId",
+  PROJECT_DETAILS = "/projects/{0}?populate=image",
+  MULTIMEDIA_CATEGORY = "/multimedia-categories?populate=icon",
+  DOWNLOAD_DETAILS = "/downloads/{0}?populate=download_category",
+  SEARCH = "/global-search?query={0}&page={1}&pageSize={2}",
+  NEWS_DETAILS = "/articles/{0}?populate=cover"
 }

@@ -20,6 +20,9 @@ export default function CarouselHeroSection() {
  
   
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([])
+  const [title, setTitle]  = useState<string>("")
+  const [description, setDescription]  = useState<string>("")
+  const [link, setLink] = useState<string>("");
   const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URLS;
 
   // Fetch carousel data from API
@@ -34,6 +37,9 @@ export default function CarouselHeroSection() {
         console.log("Carousel data:", response?.data?.data?.images)
         const data = await response.data?.data?.images || []
         setCarouselItems(data)
+        setTitle(response.data.data?.Title);
+        setDescription(response.data.data?.SubTitle)
+        setLink(response.data.data?.Link);
         setIsLoading(false)
       } catch (err) {
         console.error("Error fetching carousel data:", err)
@@ -111,25 +117,24 @@ export default function CarouselHeroSection() {
       </div>
  
       {/* Overlay with dark gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/10 to-black/10 z-20"></div>
  
       {/* Carousel Content - Fixed text that doesn't change */}
       <div className="absolute inset-0 flex flex-col gap-3 sm:gap-6 items-center justify-center text-white z-30 px-4 sm:px-6 pt-8 sm:pt-20 lg:pt-28">
-        <h1 className="font-bold text-2xl text-center sm:text-3xl lg:text-[2.5rem] leading-[2.5rem] sm:leading-[2.875rem]">
-          ARCN and UNN introduce new <br className="hidden md:block" /> strategy agroecological sustainable farming
+        <h1 className="font-bold text-2xl text-center sm:text-3xl lg:text-[2.5rem] leading-[2.5rem] sm:leading-[2.875rem] max-w-[74rem]">
+          {title}
         </h1>
         <div className="flex flex-col items-center gap-5 sm:gap-7">
           <div className="flex flex-col gap-3">
             <p className="text-[#FFC84F] text-base text-center md:text-[1.25rem] font-medium leading-6 lg:leading-[2.125rem]">
-              Regional government and CGIAR partnership launch agroforestry
-              <br className="hidden md:block" /> corridor to preserve biodiversity.
+              {description}
             </p>
-            <button
-              type="button"
+            <a
+              href={link}
               className="border-2 py-3 px-5 sm:px-8 rounded-sm self-center font-bold text-[0.75rem] sm:text-sm text-[#15271C] focus:outline-none font-sans border-white bg-white"
             >
               READ MORE
-            </button>
+            </a>
           </div>
  
           {/* Indicator Dots */}

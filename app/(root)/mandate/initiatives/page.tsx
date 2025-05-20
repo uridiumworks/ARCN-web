@@ -8,7 +8,6 @@ const Initiatives = () => {
     <section>
       <Banner />
       <AROCs />
-      <Services />
       <Journal />
     </section>
   );

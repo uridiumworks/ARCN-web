@@ -13,8 +13,6 @@ import {
   OurPrograms,
   OurTechnologiesAndProjects,
   Report,
-  Journal,
-  NewsLetter,
   ApiEndpointsEnum,
   ContactUsRequestBody,
   MandateSearch,
@@ -22,21 +20,30 @@ import {
   TechCategory,
   TechSubCategory,
   TechnologyData,
+  BaseResponseWithPagination,
+  DownloadData,
+  ProjectData,
+  SearchResponse,
+  NewsData,
 } from "@/types";
 import axiosInstance from "@/lib/axiosInstance";
 
 interface GlobalClientContextInterface {
-  newsletters: any;
   mandateSearch?: MandateSearch;
   ourPrograms?: OurPrograms;
   reports?: Report;
   ourTechs?: TechnologyData[];
   ourProjects?: OurTechnologiesAndProjects;
   techCategory?: TechCategory[];
+  multimediaCategory?: TechCategory[];
   techCategoryItem?: TechCategory;
-  setTechCategoryItem: Dispatch<SetStateAction<TechCategory | undefined>>;
-  setTechCategory: Dispatch<SetStateAction<TechCategory[]>>;
+  downloadData?: BaseResponseWithPagination<DownloadData>;
+  searchData?: SearchResponse;
+  downloadDetails?: DownloadData;
   techSubCategory?: TechSubCategory[];
+  projectData?: ProjectData[];
+  project?: ProjectData;
+  newsDetails?: NewsData;
   coordinationReports?: Report;
   isLoadingOurPrograms: boolean;
   isLoadingReports: boolean;
@@ -45,8 +52,6 @@ interface GlobalClientContextInterface {
   isLoadingCoordinationReports: boolean;
   isLoadingMandateSearch: boolean;
   isCreatingContact: boolean;
-  isLoadingJournals: boolean;
-  isLoadingNewsLetters: boolean;
   fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
   fetchAllReports: (
     page: number,
@@ -57,16 +62,19 @@ interface GlobalClientContextInterface {
   fetchOurProjects: (page: number, pageSize: number) => Promise<void>;
   fetchCoordinationReports: (page: number, pageSize: number) => Promise<void>;
   fetchMandateSearch: () => Promise<void>;
-  fetchAllJournals: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
-  fetchAllNewsletters: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
   createContactUs: (data: ContactUsRequestBody) => Promise<void>;
   setReports: Dispatch<SetStateAction<Report | undefined>>;
-  journals?: Journal;
-  setJournals: Dispatch<SetStateAction<Journal | undefined>>;
-  setNewsLetters: Dispatch<SetStateAction<NewsLetter | undefined>>;
   fetchTechnologyCategory: () => Promise<void>;
   fetchTechnologySubCategory: (documentId: string) => Promise<void>;
+  fetchProjectDetails: (documentId: string) => Promise<void>;
   fetchTechnologyCategoryDetails: (categoryId: string) => Promise<void>;
+  fetchDownloadCategory: () => Promise<void>;
+  fetchProjects: () => Promise<void>;
+  fetchMultimediaCategory: () => Promise<void>;
+  fetchDownloads: (categoryId: string) => Promise<void>;
+  fetchDownloadDetails: (documentId: string) => Promise<void>;
+  fetchNewsDetails: (documentId: string) => Promise<void>;
+  searchWebsite: (search: string, page: number, pageSize: number) => Promise<void>;
 }
 
 export const GlobalClientContext =
@@ -94,24 +102,25 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   const [reports, setReports] = useState<Report>();
   const [isLoadingReports, setIsLoadingReports] = useState<boolean>(true);
   const [ourTechs, setOurTechs] = useState<TechnologyData[]>();
+  const [multimediaCategory, setMultimediaCategory] = useState<TechCategory[]>();
   const [techCategory, setTechCategory] = useState<TechCategory[]>([]);
   const [techCategoryItem, setTechCategoryItem] = useState<TechCategory>();
   const [techSubCategory, setTechSubCategory] = useState<TechSubCategory[]>([]);
+  const [downloadData, setDownloadData] = useState<BaseResponseWithPagination<DownloadData>>();
+  const [downloadDetails, setDownloadDetails] = useState<DownloadData>();
+  const [newsDetails, setNewsDetails] = useState<NewsData>();
+  const [projectData, setProjectData] = useState<ProjectData[]>([]);
+  const [project, setProject] = useState<ProjectData>();
   const [ourProjects, setOurProjects] = useState<OurTechnologiesAndProjects>();
   const [isLoadingOurTechs, setIsLoadingOurTechs] = useState<boolean>(true);
   const [isLoadingOurProjects, setIsLoadingOurProjects] =
     useState<boolean>(true);
   const [coordinationReports, setCoordinationReports] = useState<Report>();
+  const [searchData, setSearchData] = useState<SearchResponse>();
   const [isLoadingCoordinationReports, setIsLoadingCoordinationReports] =
     useState<boolean>(true);
   const [isCreatingContact, setIsCreatingContact] = useState<boolean>(false);
   const { toast } = useToast();
-  const [isLoadingJournals, setIsLoadingJournals] = useState<boolean>(true);
-  const [journals, setJournals] = useState<Journal>();
-  const [isLoadingNewsLetters, setIsLoadingNewsLetters] =useState<boolean>(true);
-  const [newsletters, setNewsLetters] = useState<NewsLetter>();
-    useState<boolean>(false);
-
 
   const fetchOurPrograms = useCallback(
     async (page: number, pageSize: number) => {
@@ -182,12 +191,15 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   const fetchOurTechs = useCallback(
     async (categoryId: string, page: number, pageSize: number) => {
       try {
+        const url= ApiEndpointsEnum.TECHNOLOGIES.replace(
+          "{0}", categoryId);
         const response = (
-          await axiosInstance.get<TechnologyData[]>(
-            `${ApiEndpointsEnum.OUR_PROJECTS_AND_TECHS}?categoryId=${categoryId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          await axiosInstance.get<BaseResponse<TechnologyData[]>>(
+            `${url}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
           )
         ).data;
-        setOurTechs(response);
+        console.log("response", response);
+        setOurTechs(response.data);
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
           const errorResponse = err.response.data;
@@ -207,6 +219,70 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         }
       } finally {
         setIsLoadingOurTechs(false);
+      }
+    },
+    [toast]
+  );
+  const fetchTechnologyCategory = useCallback(
+    async () => {
+      try {
+        const response = (
+          await axiosInstance.get<BaseResponse<TechCategory[]>>(
+            `${ApiEndpointsEnum.TECHNOLOGY_CATEGORY}`
+          )
+        ).data;
+        setTechCategory(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurTechs(false);
+      }
+    },
+    [toast]
+  );
+  const fetchTechnologyCategoryDetails = useCallback(
+    async (categoryId: string) => {
+      try {
+        const response = (
+          await axiosInstance.get<BaseResponse<TechCategory>>(
+            `${ApiEndpointsEnum.TECHNOLOGY_CATEGORY_DETAILS}/${categoryId}`
+          )
+        ).data;
+        setTechCategoryItem(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
       }
     },
     [toast]
@@ -243,72 +319,6 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     },
     [toast]
   );
-
-  const fetchAllJournals = useCallback(
-    async (page: number, pageSize: number, customEndpoint?: string) => {
-      try {
-        const apiUrl =
-          customEndpoint ||
-          `${ApiEndpointsEnum.ALL_JOURNAL}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
-
-        const response = (await axiosInstance.get<Journal>(apiUrl)).data;
-        setJournals(response);
-      } catch (err: any) {
-        if (err instanceof AxiosError && err.response) {
-          const errorResponse = err.response.data;
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: errorResponse.errors
-              ? errorResponse.errors.join(", ")
-              : errorResponse.message || "An unknown error occurred",
-          });
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: "An unknown error occurred",
-          });
-        }
-      } finally {
-        setIsLoadingJournals(false);
-      }
-    },
-    [toast]
-  );
-  const fetchAllNewsletters = useCallback(
-    async (page: number, pageSize: number, customEndpoint?: string) => {
-      try {
-        const apiUrl =
-          customEndpoint ||
-          `${ApiEndpointsEnum.ALL_NEWSLETTERS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
-
-        const response = (await axiosInstance.get<NewsLetter>(apiUrl)).data;
-        setNewsLetters(response);
-      } catch (err: any) {
-        if (err instanceof AxiosError && err.response) {
-          const errorResponse = err.response.data;
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: errorResponse.errors
-              ? errorResponse.errors.join(", ")
-              : errorResponse.message || "An unknown error occurred",
-          });
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Something went wrong.",
-            description: "An unknown error occurred",
-          });
-        }
-      } finally {
-        setIsLoadingNewsLetters(false);
-      }
-    },
-    [toast]
-  );
-
   const fetchOurProjects = useCallback(
     async (page: number, pageSize: number) => {
       try {
@@ -342,6 +352,136 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
+  const fetchDownloadCategory = useCallback(
+    async () => {
+      try {
+        const response = (
+          await axiosInstance.get<BaseResponse<TechCategory[]>>(
+            `${ApiEndpointsEnum.DOWNLOAD_CATEGORY}`
+          )
+        ).data;
+        setTechCategory(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurTechs(false);
+      }
+    },
+    [toast]
+  );
+
+  const fetchMultimediaCategory = useCallback(
+    async () => {
+      try {
+        const response = (
+          await axiosInstance.get<BaseResponse<TechCategory[]>>(
+            `${ApiEndpointsEnum.MULTIMEDIA_CATEGORY}`
+          )
+        ).data;
+        setMultimediaCategory(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingOurPrograms(false);
+      }
+    },
+    [toast]
+  );
+
+  const fetchDownloads = useCallback(
+    async (categoryId: string) => {
+      try {
+        const url = ApiEndpointsEnum.DOWNLOADS.replace("{0}", categoryId)
+        const response = (
+          await axiosInstance.get<BaseResponseWithPagination<DownloadData>>(url)
+        ).data;
+        setDownloadData(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
+  const fetchDownloadDetails = useCallback(
+    async (documentId: string) => {
+      try {
+        const url = ApiEndpointsEnum.DOWNLOAD_DETAILS.replace("{0}", documentId)
+        const response = (
+          await axiosInstance.get<BaseResponse<DownloadData>>(url)
+        ).data;
+        setDownloadDetails(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
   const fetchCoordinationReports = useCallback(
     async (page: number, pageSize: number) => {
       try {
@@ -351,6 +491,71 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
           )
         ).data;
         setCoordinationReports(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingCoordinationReports(false);
+      }
+    },
+    [toast]
+  );
+
+   const fetchNewsDetails = useCallback(
+    async (documentId: string) => {
+      try {
+        const url = ApiEndpointsEnum.NEWS_DETAILS.replace("{0}", documentId)
+        const response = (
+          await axiosInstance.get<BaseResponse<NewsData>>(url)
+        ).data;
+        setNewsDetails(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
+
+   const searchWebsite = useCallback(
+    async (search: string, page: number = 1, pageSize: number= 10) => {
+      try {
+        const url = ApiEndpointsEnum.SEARCH.replace("{0}", search.toString()).replace("{1}", page.toString()).replace("{2}", pageSize.toString());
+        const response = (
+          await axiosInstance.get<SearchResponse>(url)
+        ).data;
+        setSearchData(response);
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
           const errorResponse = err.response.data;
@@ -441,6 +646,70 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
+  const fetchProjects = useCallback(
+    async () => {
+      try {
+        const url = ApiEndpointsEnum.PROJECTS
+        const response = (
+          await axiosInstance.get<BaseResponse<ProjectData[]>>(url)
+        ).data;
+        setProjectData(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
+  const fetchProjectDetails = useCallback(
+    async (documentId: string) => {
+      try {
+        const url = ApiEndpointsEnum.PROJECT_DETAILS.replace("{0}", documentId)
+        const response = (
+          await axiosInstance.get<BaseResponse<ProjectData>>(url)
+        ).data;
+        setProject(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingReports(false);
+      }
+    },
+    [toast]
+  );
+
   return (
     <GlobalClientContext.Provider
       value={{
@@ -448,43 +717,44 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         createContactUs,
         fetchAllReports,
         fetchCoordinationReports,
-        setTechCategoryItem,
         fetchOurPrograms,
-        setTechCategory,
         fetchOurTechs,
         fetchOurProjects,
-        fetchAllJournals,
-        fetchAllNewsletters,
         isCreatingContact,
         isLoadingCoordinationReports,
         isLoadingOurPrograms,
         isLoadingOurTechs,
         isLoadingOurProjects,
         isLoadingReports,
-        isLoadingJournals,
-        isLoadingNewsLetters,
         ourPrograms,
         ourTechs,
         ourProjects,
-        newsletters,
-        journals,
         reports,
+        setReports,
         mandateSearch,
         isLoadingMandateSearch,
         fetchMandateSearch,
         techCategory,
-        fetchTechnologySubCategory,
+        fetchTechnologyCategory,
         techSubCategory,
+        fetchTechnologySubCategory,
         techCategoryItem,
-        setReports,
-        setJournals,
-        setNewsLetters,
-        fetchTechnologyCategory: async () => {
-          // Add implementation for fetchTechnologyCategory if needed
-        },
-        fetchTechnologyCategoryDetails: async (categoryId: string) => {
-          // Add implementation for fetchTechnologyCategoryDetails if needed
-        },
+        fetchTechnologyCategoryDetails,
+        fetchDownloadCategory,
+        downloadData,
+        fetchDownloads,
+        projectData,
+        fetchProjects,
+        fetchProjectDetails,
+        project,
+        fetchMultimediaCategory,
+        multimediaCategory,
+        downloadDetails,
+        fetchDownloadDetails,
+        searchData,
+        searchWebsite,
+        fetchNewsDetails,
+        newsDetails
       }}
     >
       {children}

@@ -12,7 +12,7 @@ const Picture = () => {
         </h2>
         <div className="mx-auto items-center px-0 sm:px-6">
           <Image
-            src="/Images/Aboutpage/diagram-v2.svg"
+            src="/Images/Aboutpage/revised_arcn_organogram.drawio.png"
             alt="Diagram"
             width={1550}
             height={800}
