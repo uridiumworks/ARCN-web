@@ -107,19 +107,19 @@ const New = () => {
                 const publishDate = article.publishedAt
 
                 return (
-                  <div key={article.id} className="space-y-3 flex flex-col h-full">
+                  <div key={article.id} className="space-y-1 flex flex-col h-full">
                     <div className="relative w-full h-[268.59px]">
                       <Image
-                        src={imageUrl || "/placeholder.svg"}
+                        src={imageUrl}
                         alt={title}
-                        className="object-cover rounded-t-md w-full"
+                        className="object-cover rounded-md w-full"
                         priority
                         fill={true}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
 
-                    <div className="space-y-4 flex-grow">
+                    <div className="space-y-1 flex-grow">
                       <h1 className="font-semibold text-base line-clamp-2">{title}</h1>
                       <p className="font-normal text-sm line-clamp-2">{description}</p>
                       <div className="flex flex-row items-center justify-between mt-auto">

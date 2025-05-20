@@ -1,54 +1,133 @@
-import CustomContainer from '@/components/CustomContainer'
-import React from 'react'
+"use client";
+import CustomContainer from "@/components/CustomContainer";
+import { useClientNewsLettersData } from "@/hooks/NewsLetters.hooks";
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
-export default function Othernew() {
-    const data = [
-        {
-            image: '/Images/News and Events/Place.png',
-            title: 'Nature-positive farms on remote hillsides in India show the future of resilient farming',
-            description: 'Monsoons are a mixed blessing for rain-dependent farmers in remote mountain villages:the deluges br…',
-            date: 'Friday, June 17 2022',
-            link: '/newsandevents/Read more',
-            
-        },
-        {
-            image: '/Images/News and Events/wheat.png',
-            title: 'Maximizing Wheat Productivity with Supplemental Irrigation',
-            description: 'A new ICARDA study shows how applying key agri-innovations can strengthen dryland rainfed production…',
-            date: 'Friday, June 17 2022',
-            link: '/newsandevents/Read more',
-            
-        },
-        {
-            image: '/Images/News and Events/Borancow.png',
-            title: 'First drone-based measurement of ruminant methane emissions in Africa',
-            description: 'Flying a mere nine metres above the grasslands at Kapiti, the International Livestock Research Insti…',
-            date: 'Friday, June 17 2022',
-            link: '/newsandevents/Read more',
-            
-        },
-    ]
-  return (
-    <section className='py-10 '>
-        <CustomContainer>
-            <div className='text-center pb-10'>
-                <h1 className='font-bold text-3xl md:text-4xl'>Other News</h1>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                {data.map((item, index) => (
-                    <div key={index} className='space-y-4'>
-                        <img src={item.image} alt={item.title} width={355} height={268.59} />
-                        <h2 className='font-semibold text-base'>{item.title}</h2>
-                        <p className='font-normal text-sm '>{item.description}</p>
-                        <div className='flex gap-3'>
-                            <p className='font-bold text-[#999999]'>{item.date}</p>
-                            <a href={item.link} className='font-bold text-[#15271C]'>Read more</a>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-        </CustomContainer>
-    </section>
-  )
+interface Article {
+  publishedAt: any;
+  cover: any;
+  title: any;
+  content: any;
+  id: string
 }
+
+const New = () => {
+  // const { loading, newsLetters, error } = useClientNewsLettersData();
+  const [othernews, setOtherNews] = useState<Article[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URLS;
+
+   useEffect(() => {
+      const fetchOtherNewsData = async () => {
+        try {
+          setIsLoading(true)
+          const response = await axios.get(`${BASE_URL}/api/articles?populate=cover`,
+            { 
+              headers: { 
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+                'Content-Type': 'application/json'
+              }, 
+            }
+          );
+          if (!response) {
+            throw new Error("Failed to fetch news data")
+          }
+          const data = await response.data?.data || []
+          setOtherNews(data)
+          setIsLoading(false)
+  
+        } catch (err) {
+          console.error("Error fetching news data:", err)
+          setError("Failed to load news data")
+          setIsLoading(false)
+        }
+      };
+      fetchOtherNewsData();
+    }, []);
+
+    const convertToReadableDate = (isoDateStr: string): string => {
+      const date = new Date(isoDateStr)
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
+  
+    if (isLoading) {
+      return (
+        <div className="flex justify-center items-center py-20">
+          <div className="text-black text-xl">Loading news articles...</div>
+        </div>
+      )
+    }
+  
+    if (error) {
+      return (
+        <div className="flex justify-center items-center py-20">
+          <div className="text-black text-xl">{error}</div>
+        </div>
+      )
+    }
+
+    
+  console.log(othernews, "news");
+
+  return (
+    <section className="py-12 md:py-20">
+      <CustomContainer>
+        <div className="flex flex-col gap-12">
+          <h2 className="font-semibold text-3xl md:text-4xl leading-[2.25rem] text-center">News</h2>
+
+          {othernews.length === 0 ? (
+            <div className="text-center text-gray-500">No news articles available</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-7">
+              {othernews.slice(0, 6).map((article) => {
+                const imageUrl = article?.cover?.url ? `${BASE_URL}${article.cover.url}` : "/Placeholder.png"
+                const title = article.title
+                const description = article.content
+                const publishDate = article.publishedAt
+
+                return (
+                  <div key={article.id} className="space-y-1 flex flex-col h-full">
+                    <div className="relative w-full h-[268.59px]">
+                      <Image
+                        src={imageUrl}
+                        alt={title}
+                        className="object-cover rounded-md w-full"
+                        priority
+                        fill={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+
+                    <div className="space-y-1 flex-grow">
+                      <h1 className="font-semibold text-base line-clamp-2">{title}</h1>
+                      <p className="font-normal text-sm line-clamp-2">{description}</p>
+                      <div className="flex flex-row items-center justify-between mt-auto">
+                        <span className="font-normal text-sm text-[#999999]">{convertToReadableDate(publishDate)}</span>
+                        <Link
+                          href={`/news-and-events`}
+                          className="font-bold text-sm text-[#15271C] hover:underline"
+                        >
+                          Read more
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      </CustomContainer>
+    </section>
+  );
+};
+
+export default New;

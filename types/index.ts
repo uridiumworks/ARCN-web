@@ -111,6 +111,44 @@ export type ReportData = {
   category: Category;
 };
 
+//JOURNALS
+export type Journal = {
+  data: JournalData[];
+  meta: Meta;
+};
+
+export type JournalData = {
+  id: number;
+  documentId: string;
+  Title: string;
+  Description: string;
+  Link: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  Image: any;
+  category: Category; 
+};
+
+//NEWSLETTERS
+export type NewsLetter = {
+  data: NewsLetterData[];
+  meta: Meta;
+};
+
+export type NewsLetterData = {
+  id: number;
+  documentId: string;
+  Title: string;
+  Description: string;
+  Link: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  Images: Image[];
+  category: Category; 
+};
+
 // OUR TECHNOLOGIES AND OUR PROJECTS
 export type OurTechnologiesAndProjects = {
   data: OurTechsAndProjectsData[];
