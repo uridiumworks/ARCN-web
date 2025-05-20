@@ -21,3 +21,8 @@
     color: green;
     text-decoration: underline;
 }
+figcaption{
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-style: italic;
+}

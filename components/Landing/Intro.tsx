@@ -9,14 +9,14 @@ const Intro = () => {
           <div className="shrink lg:shrink-0  object-contain relative h-auto sm:h-[31.25rem] overflow-hidden rounded-lg">
             <div className="absolute flex flex-col gap-1 py-4 justify-center text-center bg-[#00000061] bottom-0 left-0 w-full">
               <h3 className="text-white font-bold text-base">
-                Prof. Garba Hamidu Sharubutu
+               Prof. Bello Zaki Abubakar
               </h3>
               <p className="text-white text-opacity-[90%] text-sm leading-[1.5rem] font-medium">
-                Executive Secretary 
+                Ag. Executive Secretary
               </p>
             </div>
             <Image
-              src="/Images/Homepage/maleperson-img.png"
+              src="/Images/Homepage/intro.jpg"
               alt="plants"
               width={375}
               height={500}

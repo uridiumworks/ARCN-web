@@ -31,6 +31,7 @@ export default function Contents({ news }: Props) {
                   height={360}
                   width={750}
                 />
+                <p className="italic pl-4 text-xs">{news.cover.caption || ""}</p>
               </div>
             )}
 
