@@ -101,7 +101,7 @@ const Newsletter = () => {
               <div className="flex flex-col gap-3">
                 <h2 className="text-3xl sm:text-4xl leading-[2.25rem] font-bold text-[#1B222B]">
                 Newsletter
-              </h3>
+              </h2>
               <p className="text-sm leading-[1.5rem] text-gray pt-2">
               Stay informed with ARCN Quarterly! Get policy updates, breakthrough research highlights, and 
               <br/>success stories from Nigeria&apos;s agricultural innovation ecosystem. Subscribe for insights in English, 
@@ -139,40 +139,39 @@ const Newsletter = () => {
               )}
               {!isLoadingNewsLetters && newsletters?.data && newsletters.data.length > 0 && (
                 <>
-                {JSON.stringify(newsletters)}
-                <div className="grid grid-cols-[100%] sm:grid-cols-3 gap-3">
+                  {JSON.stringify(newsletters)}
+                  <div className="grid grid-cols-[100%] sm:grid-cols-3 gap-3">
+                    {newsletters.data.map((el: { id: number; Title: string; Description: string; Images: { url: string }[]; Link: string }) => (
+                    <div key={el?.id} className="border-2 rounded-lg h-[100%] space-y-4 md:space-y-0 flex flex-col justify-between">
+                      <div className="py-5 space-y-3">
+                        <Link href={``}>
+                          <Image
+                            src={`${baseURL}${el?.Images[0]?.url}`}
+                            alt="event-imgholder"
+                            className="object-cover h-full w-full"
+                            width={150}
+                            height={150}
+                            priority
+                          />
+                        </Link>
+                        <div className="space-y-2">
+                          <h1 className="text-lg font-bold py-1 font-montserrat">{el?.Title}</h1>
+                          <p className="text-sm text-[#858C95]">{el?.Description}</p>
+                        </div>
+                        <div className=" w-full rounded-lg  py-3 px-2 ">
+                          <Link href={el?.Link}>
+                            <Button variant="ghost" className="text-[#0C513F] bg-[#0C513F0D] w-full ">
+                              READ MORE
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
 
-{newsletters.data.map((el) => (
-  <div key={el?.id} className="border-2 rounded-lg h-[100%] space-y-4 md:space-y-0 flex flex-col justify-between">
-    <div className="py-5 space-y-3">
-      <Link href={``}>
-        <Image
-          src={`${baseURL}${el?.Images[0]?.url}`}
-          alt="event-imgholder"
-          className="object-cover h-full w-full"
-          width={150}
-          height={150}
-          priority
-        />
-      </Link>
-      <div className="space-y-2">
-        <h1 className="text-lg font-bold py-1 font-montserrat">{el?.Title}</h1>
-        <p className="text-sm text-[#858C95]">{el?.Description}</p>
-      </div>
-      <div className=" w-full rounded-lg  py-3 px-2 ">
-        <Link href={el?.Link}>
-          <Button variant="ghost" className="text-[#0C513F] bg-[#0C513F0D] w-full ">
-            READ MORE
-          </Button>
-        </Link>
-      </div>
-    </div>
-
-  </div>
-))}
-</div>
+                    </div>
+                    ))}
+                  </div>
                 </>
-                
+            
               )}
               {!isLoadingNewsLetters && newsletters?.data && newsletters.data.length > 0 && (
                 <CustomPagination
@@ -185,7 +184,7 @@ const Newsletter = () => {
           </div>
         </CustomContainer>
       </section>
-    )  
+    )
 }
 export default Newsletter;
 

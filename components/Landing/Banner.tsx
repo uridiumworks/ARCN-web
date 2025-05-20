@@ -39,7 +39,7 @@ const Bander = () => {
         <>
         <div>
           <div>
-            <img src={item?.images[0]} alt={item.title} className="h-[250px] object-contain" />
+            <Image src={item?.images[0]} alt={item.title} className="h-[250px] object-contain" />
           </div>
         </div>
         </>

@@ -10,6 +10,15 @@ import { ApiEndpointsEnum } from "@/types";
 import { useContextSelector } from "@/hooks/use-context-selector";
 import NoDataMessage from "@/components/Shared/NoDataMessage";
 import Link from "next/link";
+import { journalData } from "./_components/data";
+
+type JournalProps = {
+  id: number;
+  imgUrl: string;
+  title: string;
+  desc: string;
+  authorImg: string;
+};
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_UPLOAD_URL;
 const Publications = () => {

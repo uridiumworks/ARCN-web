@@ -4,6 +4,26 @@ type TopNavType = {
     url: string;
 }
 
+type NavType = {
+  title?: string;
+  url: string;
+}
+
+export const Ourservices: NavType[] = [
+  {
+    title: "ARCN Consult",
+    url: "/consult",
+  },
+  {
+    title: "ARCN Technical Services",
+    url: "/technical-services",
+  },
+  {
+    title: "Our Media Services",
+    url: "/our-media",
+  },
+]
+
 export const topNav: TopNavType[] = [ 
     {
         name: "Resources & Downloads",
@@ -17,14 +37,20 @@ export const topNav: TopNavType[] = [
         name: "Publications",
         url: "/publications",
     },
-    {
-        name: "Careers",
-        url: "/career",
-    } ,
+    // {
+    //     name: "Careers",
+    //     url: "/career",
+    // } ,
     {
         name: "Contact",
         url: "/contact",
     },
+
+    {
+        name: "Impacts",
+        url:"/impacts",
+    },
+   
 ]
 
 type MainNavType = {
@@ -58,9 +84,10 @@ export const mainNav: MainNavType[] = [
     },
 
     {
-        name: "Impacts",
-        url:"/impacts",
+        name: "Our Services",
+        url: "#",
     },
+    
 
    ] as const;
 

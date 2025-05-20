@@ -26,6 +26,7 @@ import {
 import axiosInstance from "@/lib/axiosInstance";
 
 interface GlobalClientContextInterface {
+  newsletters: any;
   mandateSearch?: MandateSearch;
   ourPrograms?: OurPrograms;
   reports?: Report;
@@ -33,6 +34,8 @@ interface GlobalClientContextInterface {
   ourProjects?: OurTechnologiesAndProjects;
   techCategory?: TechCategory[];
   techCategoryItem?: TechCategory;
+  setTechCategoryItem: Dispatch<SetStateAction<TechCategory | undefined>>;
+  setTechCategory: Dispatch<SetStateAction<TechCategory[]>>;
   techSubCategory?: TechSubCategory[];
   coordinationReports?: Report;
   isLoadingOurPrograms: boolean;
@@ -58,6 +61,9 @@ interface GlobalClientContextInterface {
   fetchAllNewsletters: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
   createContactUs: (data: ContactUsRequestBody) => Promise<void>;
   setReports: Dispatch<SetStateAction<Report | undefined>>;
+  journals?: Journal;
+  setJournals: Dispatch<SetStateAction<Journal | undefined>>;
+  setNewsLetters: Dispatch<SetStateAction<NewsLetter | undefined>>;
   fetchTechnologyCategory: () => Promise<void>;
   fetchTechnologySubCategory: (documentId: string) => Promise<void>;
   fetchTechnologyCategoryDetails: (categoryId: string) => Promise<void>;
@@ -174,14 +180,14 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   );
 
   const fetchOurTechs = useCallback(
-    async (page: number, pageSize: number) => {
+    async (categoryId: string, page: number, pageSize: number) => {
       try {
         const response = (
-          await axiosInstance.get<Report>(
-            `${ApiEndpointsEnum.OUR_PROJECTS_AND_TECHS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+          await axiosInstance.get<TechnologyData[]>(
+            `${ApiEndpointsEnum.OUR_PROJECTS_AND_TECHS}?categoryId=${categoryId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
           )
         ).data;
-        setTechCategoryItem(response.data);
+        setOurTechs(response);
       } catch (err: any) {
         if (err instanceof AxiosError && err.response) {
           const errorResponse = err.response.data;
@@ -200,7 +206,7 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
           });
         }
       } finally {
-        setIsLoadingReports(false);
+        setIsLoadingOurTechs(false);
       }
     },
     [toast]
@@ -237,6 +243,72 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     },
     [toast]
   );
+
+  const fetchAllJournals = useCallback(
+    async (page: number, pageSize: number, customEndpoint?: string) => {
+      try {
+        const apiUrl =
+          customEndpoint ||
+          `${ApiEndpointsEnum.ALL_JOURNAL}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+
+        const response = (await axiosInstance.get<Journal>(apiUrl)).data;
+        setJournals(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingJournals(false);
+      }
+    },
+    [toast]
+  );
+  const fetchAllNewsletters = useCallback(
+    async (page: number, pageSize: number, customEndpoint?: string) => {
+      try {
+        const apiUrl =
+          customEndpoint ||
+          `${ApiEndpointsEnum.ALL_NEWSLETTERS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+
+        const response = (await axiosInstance.get<NewsLetter>(apiUrl)).data;
+        setNewsLetters(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingNewsLetters(false);
+      }
+    },
+    [toast]
+  );
+
   const fetchOurProjects = useCallback(
     async (page: number, pageSize: number) => {
       try {
@@ -376,7 +448,9 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         createContactUs,
         fetchAllReports,
         fetchCoordinationReports,
+        setTechCategoryItem,
         fetchOurPrograms,
+        setTechCategory,
         fetchOurTechs,
         fetchOurProjects,
         fetchAllJournals,
@@ -389,24 +463,28 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         isLoadingReports,
         isLoadingJournals,
         isLoadingNewsLetters,
-        setJournals,
-        setNewsLetters,
         ourPrograms,
         ourTechs,
         ourProjects,
         newsletters,
         journals,
         reports,
-        setReports,
         mandateSearch,
         isLoadingMandateSearch,
         fetchMandateSearch,
         techCategory,
-        fetchTechnologyCategory,
-        techSubCategory,
         fetchTechnologySubCategory,
+        techSubCategory,
         techCategoryItem,
-        fetchTechnologyCategoryDetails,
+        setReports,
+        setJournals,
+        setNewsLetters,
+        fetchTechnologyCategory: async () => {
+          // Add implementation for fetchTechnologyCategory if needed
+        },
+        fetchTechnologyCategoryDetails: async (categoryId: string) => {
+          // Add implementation for fetchTechnologyCategoryDetails if needed
+        },
       }}
     >
       {children}
