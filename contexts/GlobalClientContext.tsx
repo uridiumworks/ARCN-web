@@ -25,10 +25,13 @@ import {
   ProjectData,
   SearchResponse,
   NewsData,
+  Journal,
+  NewsLetter,
 } from "@/types";
 import axiosInstance from "@/lib/axiosInstance";
 
 interface GlobalClientContextInterface {
+  newsletters: any;
   mandateSearch?: MandateSearch;
   ourPrograms?: OurPrograms;
   reports?: Report;
@@ -52,6 +55,8 @@ interface GlobalClientContextInterface {
   isLoadingCoordinationReports: boolean;
   isLoadingMandateSearch: boolean;
   isCreatingContact: boolean;
+  isLoadingJournals: boolean;
+  isLoadingNewsLetters: boolean;
   fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
   fetchAllReports: (
     page: number,
@@ -75,6 +80,11 @@ interface GlobalClientContextInterface {
   fetchDownloadDetails: (documentId: string) => Promise<void>;
   fetchNewsDetails: (documentId: string) => Promise<void>;
   searchWebsite: (search: string, page: number, pageSize: number) => Promise<void>;
+  journals?: Journal;
+  setJournals: Dispatch<SetStateAction<Journal | undefined>>;
+  setNewsLetters: Dispatch<SetStateAction<NewsLetter | undefined>>;
+  fetchAllJournals: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
+  fetchAllNewsletters: (page: number, pageSize: number, customEndpoint?: string) => Promise<void>;
 }
 
 export const GlobalClientContext =
@@ -121,6 +131,12 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     useState<boolean>(true);
   const [isCreatingContact, setIsCreatingContact] = useState<boolean>(false);
   const { toast } = useToast();
+  const [isLoadingJournals, setIsLoadingJournals] = useState<boolean>(true);
+  const [journals, setJournals] = useState<Journal>();
+  const [isLoadingNewsLetters, setIsLoadingNewsLetters] =useState<boolean>(true);
+  const [newsletters, setNewsLetters] = useState<NewsLetter>();
+    useState<boolean>(false);
+
 
   const fetchOurPrograms = useCallback(
     async (page: number, pageSize: number) => {
@@ -709,6 +725,70 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     },
     [toast]
   );
+    const fetchAllJournals = useCallback(
+    async (page: number, pageSize: number, customEndpoint?: string) => {
+      try {
+        const apiUrl =
+          customEndpoint ||
+          `${ApiEndpointsEnum.ALL_JOURNAL}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+
+        const response = (await axiosInstance.get<Journal>(apiUrl)).data;
+        setJournals(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingJournals(false);
+      }
+    },
+    [toast]
+  );
+  const fetchAllNewsletters = useCallback(
+    async (page: number, pageSize: number, customEndpoint?: string) => {
+      try {
+        const apiUrl =
+          customEndpoint ||
+          `${ApiEndpointsEnum.ALL_NEWSLETTERS}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+
+        const response = (await axiosInstance.get<NewsLetter>(apiUrl)).data;
+        setNewsLetters(response);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingNewsLetters(false);
+      }
+    },
+    [toast]
+  );
 
   return (
     <GlobalClientContext.Provider
@@ -754,7 +834,15 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         searchData,
         searchWebsite,
         fetchNewsDetails,
-        newsDetails
+        newsDetails,
+        setJournals,
+        setNewsLetters,
+        journals,
+        isLoadingJournals,
+        isLoadingNewsLetters,
+        newsletters,
+        fetchAllJournals,
+        fetchAllNewsletters
       }}
     >
       {children}

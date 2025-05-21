@@ -12,15 +12,15 @@ type NavType = {
 export const Ourservices: NavType[] = [
   {
     title: "ARCN Consult",
-    url: "/consult",
+    url: "/our-services/consult",
   },
   {
     title: "ARCN Technical Services",
-    url: "/technical-services",
+    url: "/our-services/technical-services",
   },
   {
     title: "Our Media Services",
-    url: "/our-media",
+    url: "/our-services/our-media",
   },
 ]
 

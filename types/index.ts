@@ -377,5 +377,7 @@ export enum ApiEndpointsEnum {
   MULTIMEDIA_CATEGORY = "/multimedia-categories?populate=icon",
   DOWNLOAD_DETAILS = "/downloads/{0}?populate=download_category",
   SEARCH = "/global-search?query={0}&page={1}&pageSize={2}",
-  NEWS_DETAILS = "/articles/{0}?populate=cover"
+  NEWS_DETAILS = "/articles/{0}?populate=cover",
+  ALL_JOURNAL = "/journal?populate=Images",
+  ALL_NEWSLETTERS = "/newsletter?populate=Images",
 }
