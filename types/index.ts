@@ -136,6 +136,17 @@ export type NewsLetter = {
   meta: Meta;
 };
 
+export interface SocialData {
+  id: number
+  documentId: string
+  name: string
+  Link: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  icon: Image
+}
+
 export type NewsLetterData = {
   id: number;
   documentId: string;
@@ -380,4 +391,5 @@ export enum ApiEndpointsEnum {
   NEWS_DETAILS = "/articles/{0}?populate=cover",
   ALL_JOURNAL = "/journal?populate=Images",
   ALL_NEWSLETTERS = "/newsletter?populate=Images",
+  SOCIAL = "/socials?populate=icon",
 }

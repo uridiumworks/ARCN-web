@@ -27,6 +27,7 @@ import {
   NewsData,
   Journal,
   NewsLetter,
+  SocialData,
 } from "@/types";
 import axiosInstance from "@/lib/axiosInstance";
 
@@ -45,6 +46,7 @@ interface GlobalClientContextInterface {
   downloadDetails?: DownloadData;
   techSubCategory?: TechSubCategory[];
   projectData?: ProjectData[];
+  socialData?: SocialData[];
   project?: ProjectData;
   newsDetails?: NewsData;
   coordinationReports?: Report;
@@ -57,6 +59,7 @@ interface GlobalClientContextInterface {
   isCreatingContact: boolean;
   isLoadingJournals: boolean;
   isLoadingNewsLetters: boolean;
+  isLoadingSocial:boolean;
   fetchOurPrograms: (page: number, pageSize: number) => Promise<void>;
   fetchAllReports: (
     page: number,
@@ -76,6 +79,7 @@ interface GlobalClientContextInterface {
   fetchDownloadCategory: () => Promise<void>;
   fetchProjects: () => Promise<void>;
   fetchMultimediaCategory: () => Promise<void>;
+  fetchSocials: () => Promise<void>;
   fetchDownloads: (categoryId: string) => Promise<void>;
   fetchDownloadDetails: (documentId: string) => Promise<void>;
   fetchNewsDetails: (documentId: string) => Promise<void>;
@@ -120,9 +124,11 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
   const [downloadDetails, setDownloadDetails] = useState<DownloadData>();
   const [newsDetails, setNewsDetails] = useState<NewsData>();
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
+  const [socialData, setSocialData] = useState<SocialData[]>([]);
   const [project, setProject] = useState<ProjectData>();
   const [ourProjects, setOurProjects] = useState<OurTechnologiesAndProjects>();
   const [isLoadingOurTechs, setIsLoadingOurTechs] = useState<boolean>(true);
+  const [isLoadingSocial, setIsLoadingSocial] = useState<boolean>(true);
   const [isLoadingOurProjects, setIsLoadingOurProjects] =
     useState<boolean>(true);
   const [coordinationReports, setCoordinationReports] = useState<Report>();
@@ -790,6 +796,38 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
     [toast]
   );
 
+  const fetchSocials = useCallback(
+    async () => {
+      try {
+        const url = ApiEndpointsEnum.SOCIAL
+        const response = (
+          await axiosInstance.get<BaseResponse<SocialData[]>>(url)
+        ).data;
+        setSocialData(response.data);
+      } catch (err: any) {
+        if (err instanceof AxiosError && err.response) {
+          const errorResponse = err.response.data;
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: errorResponse.errors
+              ? errorResponse.errors.join(", ")
+              : errorResponse.message || "An unknown error occurred",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "An unknown error occurred",
+          });
+        }
+      } finally {
+        setIsLoadingSocial(false);
+      }
+    },
+    [toast]
+  );
+
   return (
     <GlobalClientContext.Provider
       value={{
@@ -842,7 +880,10 @@ export const GlobalClientProvider: React.FC<{ children: ReactNode }> = ({
         isLoadingNewsLetters,
         newsletters,
         fetchAllJournals,
-        fetchAllNewsletters
+        fetchAllNewsletters,
+        fetchSocials,
+        isLoadingSocial,
+        socialData
       }}
     >
       {children}
